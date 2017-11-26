@@ -1,8 +1,9 @@
-title = "Notre-Dame de Paris"
-baseURL = "https://example.com"
+title = "Institute of Infomation Systems"
+baseURL = "https://wisample.github.io/blog"
 languageCode = "en-us"
 theme = "gohugo-theme-ananke"
 themesDir = "themes"
+author = "Inst. Inf. Syst."
 publishDir = "docs"
 
 MetaDataFormat = "yaml"
