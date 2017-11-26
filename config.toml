@@ -3,7 +3,6 @@ baseURL = "https://wisample.github.io/blog"
 languageCode = "en-us"
 theme = "gohugo-theme-ananke"
 themesDir = "themes"
-author = "Inst. Inf. Syst."
 publishDir = "docs"
 
 MetaDataFormat = "yaml"
@@ -20,7 +19,7 @@ enableRobotsTXT = true
 
 [params]
   favicon = ""
-  description = "The last theme you'll ever need. Maybe."
+  description = ""
   facebook = ""
   twitter = "https://twitter.com/GoHugoIO"
   instagram = ""

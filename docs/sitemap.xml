@@ -3,16 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://wisample.github.io/blog/post/</loc>
-    <lastmod>2017-03-02T12:00:00-05:00</lastmod>
+    <loc>https://wisample.github.io/blog/post/working-with-jupyternotebook/</loc>
+    <lastmod>2017-11-26T14:36:01+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/about/</loc>
+    <loc>https://wisample.github.io/blog/post/first-post/</loc>
+    <lastmod>2017-11-26T14:13:53+01:00</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0</priority>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/post/</loc>
+    <lastmod>2017-03-02T12:00:00-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
@@ -29,6 +37,7 @@
   
   <url>
     <loc>https://wisample.github.io/blog/</loc>
+    <lastmod>2017-11-26T14:36:01+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -37,12 +46,6 @@
     <loc>https://wisample.github.io/blog/tags/</loc>
     <changefreq>monthly</changefreq>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/about/about/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
   
 </urlset>
