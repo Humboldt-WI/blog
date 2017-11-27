@@ -1,5 +1,5 @@
 ---
-title: "Institute of Information Systems"
+title: "Chair of Information Systems"
 featured_image: '/images/gohugo-wiwi-main-building-image.jpg'
 description: "The best institute to learn data science!"
 ---
