@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Chair of Information Systems on Chair of Infomation Systems at HU-Berlin</title>
-    <link>https://wisample.github.io/blog/</link>
-    <description>Recent content in Chair of Information Systems on Chair of Infomation Systems at HU-Berlin</description>
+    <title>Instructions on Chair of Infomation Systems at HU-Berlin</title>
+    <link>https://wisample.github.io/blog/post/instruction/</link>
+    <description>Recent content in Instructions on Chair of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 26 Nov 2017 14:36:01 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 02 Mar 2017 12:00:00 -0500</lastBuildDate>
     
-	<atom:link href="https://wisample.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wisample.github.io/blog/post/instruction/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -23,15 +23,6 @@ I studied physics and astronomy, finishing my PhD in 2005. I worked in academia 
     </item>
     
     <item>
-      <title>First Post</title>
-      <link>https://wisample.github.io/blog/post/first-post/</link>
-      <pubDate>Sun, 26 Nov 2017 14:13:53 +0100</pubDate>
-      
-      <guid>https://wisample.github.io/blog/post/first-post/</guid>
-      <description>Welcome to Chair of Information System</description>
-    </item>
-    
-    <item>
       <title>From Power Calculations to P-Values: A/B Testing at Stack Overflow</title>
       <link>https://wisample.github.io/blog/post/instruction/2017-10-17-ab-testing/</link>
       <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
@@ -39,16 +30,6 @@ I studied physics and astronomy, finishing my PhD in 2005. I worked in academia 
       <guid>https://wisample.github.io/blog/post/instruction/2017-10-17-ab-testing/</guid>
       <description>library(knitr) knitr::opts_chunk$set(cache = TRUE, warning = FALSE, message = FALSE, echo = TRUE, dpi = 180) options(width=80, dplyr.width = 150)  Note: cross-posted with the Stack Overflow blog.
 If you hang out on Meta Stack Overflow, you may have noticed news from time to time about A/B tests of various features here at Stack Overflow. We use A/B testing to compare a new version to a baseline for a design, a machine learning model, or practically any feature of what we do here at Stack Overflow; these tests are part of our decision-making process.</description>
-    </item>
-    
-    <item>
-      <title>Contact</title>
-      <link>https://wisample.github.io/blog/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://wisample.github.io/blog/contact/</guid>
-      <description>This is an example of a custom shortcode that you can put right into your content. You will need to add a form action to the the shortcode to make it work. Check out Formspree for a simple, free form service.
-Your Name Email Address An email address is required.  Message   </description>
     </item>
     
   </channel>
