@@ -1,10 +1,17 @@
-title = "Chair of Infomation Systems at HU-Berlin"
+title = "Institute of Infomation Systems at HU-Berlin"
 baseURL = "https://wisample.github.io/blog"
 languageCode = "en-us"
 theme = "gohugo-theme-ananke"
 themesDir = "themes"
 publishDir = "docs"
-
+builddrafts = true
+canonifyurls = true
+contentdir = "content"
+layoutdir = "layouts"
+author = "Inst. Inf. Syst."
+disqusshortname = "ShortName"
+pluralizelisttitles = false
+ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 MetaDataFormat = "yaml"
 DefaultContentLanguage = "en"
 SectionPagesMenu = "main"
@@ -18,15 +25,46 @@ enableRobotsTXT = true
   filename = "sitemap.xml"
 
 [params]
-  favicon = ""
-  description = ""
-  facebook = ""
-  twitter = ""
-  instagram = ""
-  youtube = ""
-  github = ""
-  linkedin = ""
-  # choose a background color from any on this page: http://tachyons.io/docs/themes/skins/ and preface it with "bg-"
-  background_color_class = "bg-black"
+   
+  favicon = "images/logo.png"
+  description = "The official Blog of Humboldt University"
+  dateform = "Jan 2, 2006"
+  dateformfull = "Mon Jan 2 2006 15:04:05 MST"
+  copyright = "Copyright © Institute of Information Systems, Humboldt University Berlin"
+  highlightjs = true
+  # options for highlight.js (version, additional languages, and theme)
+  highlightjsVersion = "9.11.0"
+  highlightjsCDN = "https://cdn.bootcss.com"
+  highlightjsLang = ["r", "yaml"]
+  highlightjsTheme = "github"
+  progressively = true
+  latestpostcount = 5
+  github = "https://github.com/Humboldt-DataMining/InformationSystemsWS1718"
+  #email = "bujarek@wiwi.hu-berlin.de"
+  linkedin = "https://www.linkedin.com/school/15463/"
+  twitter = "https://twitter.com/humboldtuni"
+  #social_banner = "img/banner.png"
+  posts_navigation = true
   featured_image = "/images/gohugo-wiwi-main-building-image.jpg"
-  recent_posts_number = 2
+
+
+[[menu.main]]
+    name = "About Us"
+    pre = "<i class='fa fa-heart'></i>"
+    weight = -110
+    identifier = "about"
+    url = "/about/"
+  
+  [[menu.main]]
+    name = "More"
+    pre = "<i class='fa fa-heart'></i>"
+    weight = -110
+    identifier = "oneday"
+    url = "/oneday/"
+  
+  [[menu.main]]
+    name = "Blog"
+    pre = "<i class='fa fa-heart'></i>"
+    weight = -110
+    identifier = "blog"
+    url = "/blog/"

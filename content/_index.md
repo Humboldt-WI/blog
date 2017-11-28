@@ -1,6 +1,6 @@
 ---
-title: "Chair of Information Systems"
+title: "Institute of Information Systems"
 featured_image: '/images/gohugo-wiwi-main-building-image.jpg'
-description: "The best institute to learn data science!"
+
 ---
-Welcome to the official blogs of Chair of Information Systems at HU-Berlin
+Welcome to the official blog of the Institute of Information Systems at HU-Berlin

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://wisample.github.io/blog/blog/</link>
+    <description>Recent content in Blog on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright © Institute of Information Systems, Humboldt University Berlin</copyright>
+    <lastBuildDate>Tue, 17 Oct 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://wisample.github.io/blog/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A Jupyter Notebook Example Post</title>
+      <link>https://wisample.github.io/blog/blog/2017/chapter23/</link>
+      <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/blog/2017/chapter23/</guid>
+      <description>This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
+Python Analysis I # %load std_ipython_import.txt import pandas as pd import numpy as np import matplotlib.pyplot as plt import seaborn as sns import pymc3 as pm  Model # Using the Theano @as_op decorator with a custom function to calculate the threshold probabilities. # Theano cannot compute a gradient for these custom functions, so it is not possible to use # gradient based samplers in PyMC3.</description>
+    </item>
+    
+    <item>
+      <title>A second Jupyter Notebook Post</title>
+      <link>https://wisample.github.io/blog/blog/2017/chapter2/</link>
+      <pubDate>Tue, 17 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/blog/2017/chapter2/</guid>
+      <description>Here could be a second blog post.</description>
+    </item>
+    
+  </channel>
+</rss>
