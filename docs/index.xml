@@ -19,7 +19,7 @@
       
       <guid>https://wisample.github.io/blog/blog/2017/chapter23/</guid>
       <description>This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
- Python Analysis I # %load std_ipython_import.txt import pandas as pd import numpy as np import matplotlib.pyplot as plt import seaborn as sns import pymc3 as pm  Model # Using the Theano @as_op decorator with a custom function to calculate the threshold probabilities. # Theano cannot compute a gradient for these custom functions, so it is not possible to use # gradient based samplers in PyMC3.</description>
+Python Analysis I # %load std_ipython_import.txt import pandas as pd import numpy as np import matplotlib.pyplot as plt import seaborn as sns import pymc3 as pm  Model # Using the Theano @as_op decorator with a custom function to calculate the threshold probabilities. # Theano cannot compute a gradient for these custom functions, so it is not possible to use # gradient based samplers in PyMC3.</description>
     </item>
     
     <item>

@@ -12,11 +12,6 @@ date: '2017-10-17'
 This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
 
 
-
-<script src="https://gist.github.com/HsueanL/fe837b828a814f70967e9dd485912d67.js"></script>
-
-
-
 ## Python Analysis I
 
 ```python
@@ -78,6 +73,12 @@ with ordinal_model_single:
 ```python
 pm.traceplot(trace1);
 ```
+
+An alternative way is to post the jupyter notebook on Gist.
+
+<script src="https://gist.github.com/HsueanL/fe837b828a814f70967e9dd485912d67.js"></script>
+
+
 Besides demonstrating code, it makes sense to show the reader plots and outputs.
 
 ![png](/images/chapter23/output_11_0.png)
