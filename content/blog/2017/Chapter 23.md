@@ -2,12 +2,20 @@
 
 ---
 title: "A Jupyter Notebook Example Post"
-slug: chapter23
+tags: [Blogging]
+categories: [Instruction]
+author: "Team Social Media"
+slug: “chapter23”
 date: '2017-10-17'
-tags: 
 ---
 
 This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
+
+
+
+<script src="https://gist.github.com/HsueanL/fe837b828a814f70967e9dd485912d67.js"></script>
+
+
 
 ## Python Analysis I
 
