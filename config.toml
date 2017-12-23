@@ -1,75 +1,168 @@
+baseurl = "https://wisample.github.io/blog"
 title = "Institute of Infomation Systems at HU-Berlin"
-baseURL = "https://wisample.github.io/blog"
-languageCode = "en-us"
-theme = "gohugo-theme-ananke"
+theme = "hugo-universal-theme"
 themesDir = "themes"
 publishDir = "docs"
-builddrafts = true
-canonifyurls = true
-contentdir = "content"
-layoutdir = "layouts"
-author = "Inst. Inf. Syst."
-disqusshortname = "ShortName"
-pluralizelisttitles = false
-ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
-MetaDataFormat = "yaml"
-DefaultContentLanguage = "en"
-SectionPagesMenu = "main"
-Paginate = 3 # this is set low for demonstrating with dummy content. Set to a higher number
+languageCode = "en-us"
+# Site language. Available translations in the theme's `/i18n` directory.
+defaultContentLanguage = "en"
+# Enable comments by entering your Disqus shortname
+disqusShortname = ""
+# Enable Google Analytics by entering your tracking code
 googleAnalytics = ""
-enableRobotsTXT = true
 
-[sitemap]
-  changefreq = "monthly"
-  priority = 0.5
-  filename = "sitemap.xml"
+# Define the number of posts per page
+paginate = 10
 
-[taxonomies]
-  category = "categories"
-  tag = "tags"
+[menu]
+
+# Main menu
+
+[[menu.main]]
+    name = "Home"
+    url  = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "News"
+    url  = "/news/"
+    weight = 2
+
+[[menu.main]]
+    name = "Team"
+    identifier = "/team/"
+    url  = "/team/"
+    weight = 3
+
+[[menu.main]]
+    name = "Teaching"
+    identifier = "/Teaching/"
+    url  = "/teaching/"
+    weight = 4
+
+[[menu.main]]
+    name = "blog"
+    identifier = "/blog/"
+    url  = "/blog/"
+    weight = 5
+
+# Top bar social links menu
+
+[[menu.topbar]]
+    weight = 1
+    name = "GitHub"
+    url = "https://github.com/wisample/blog"
+    pre = "<i class='fa fa-2x fa-github'></i>"
+
+[[menu.topbar]]
+    weight = 2
+    name = "Facebook"
+    url = "http://facebook.com"
+    pre = "<i class='fa fa-2x fa-facebook'></i>"
+
 
 
 [params]
-   
-  favicon = "images/logo.png"
-  description = "The official Blog of Humboldt University"
-  dateform = "Jan 2, 2006"
-  dateformfull = "Mon Jan 2 2006 15:04:05 MST"
-  copyright = "Copyright © Institute of Information Systems, Humboldt University Berlin"
-  highlightjs = true
-  # options for highlight.js (version, additional languages, and theme)
-  highlightjsVersion = "9.11.0"
-  highlightjsCDN = "https://cdn.bootcss.com"
-  highlightjsLang = ["r", "yaml"]
-  highlightjsTheme = "github"
-  progressively = true
-  latestpostcount = 5
-  github = "https://github.com/Humboldt-DataMining/InformationSystemsWS1718"
-  #email = "bujarek@wiwi.hu-berlin.de"
-  linkedin = "https://www.linkedin.com/school/15463/"
-  twitter = "https://twitter.com/humboldtuni"
-  #social_banner = "img/banner.png"
-  posts_navigation = true
-  featured_image = "/images/gohugo-wiwi-main-building-image.jpg"
+    viewMorePostLink = "/blog/"
+    author = "SocialMediaTeam"
+    defaultKeywords = ["devows", "hugo", "go"]
+    defaultDescription = "Site template made by devcows using hugo"
 
+    # Google Maps API key (if not set will default to not passing a key.)
+    googleMapsApiKey = "AIzaSyCFhtWLJcE30xOAjcbSFi-0fnoVmQZPb1Y"
 
-[[menu.main]]
-    name = "About Us"
-    pre = "<i class='fa fa-heart'></i>"
-    weight = -110
-    identifier = "about"
-    url = "/about/"
-  
-  [[menu.main]]
-    name = "More"
-    pre = "<i class='fa fa-heart'></i>"
-    weight = -110
-    identifier = "oneday"
-    url = "/oneday/"
-  
-  [[menu.main]]
-    name = "Blog"
-    pre = "<i class='fa fa-heart'></i>"
-    weight = -110
-    identifier = "blog"
-    url = "/blog/"
+    # Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
+    style = "blue"
+
+    # Since this template is static, the contact form uses www.formspree.io as a
+    # proxy. The form makes a POST request to their servers to send the actual
+    # email. Visitors can send up to a 1000 emails each month for free.
+    #
+    # What you need to do for the setup?
+    #
+    # - set your email address under 'email' below
+    # - upload the generated site to your server
+    # - send a dummy email yourself to confirm your account
+    # - click the confirm link in the email from www.formspree.io
+    # - you're done. Happy mailing!
+    #
+    # Enable the contact form by entering your Formspree.io email
+    email = "your@email.com"
+
+    about_us = "<p>Chair of Information Systems</p>"
+    copyright = "Copyright (c) 2017, Chari of Information System at HU-Berlin; all rights reserved."
+
+    # Format dates with Go's time formatting
+    date_format = "January 2, 2006"
+
+    logo = "img/Logo.png"
+    address = """<p><strong>Humboldt-University of Berlin</strong>
+        <br>School of Business and Economics
+        <br>Chair of Information Systems
+        <br>Spandauer Straße 1
+        <br>10178 Berlin
+        <br><strong>Germany</strong>
+      </p>
+      """
+    latitude = "-12.043333"
+    longitude = "-77.028333"
+
+[Permalinks]
+    blog = "/blog/:year/:month/:day/:filename/"
+
+# Enable or disable top bar with social icons
+[params.topbar]
+    enable = true
+    text = """<p class="hidden-sm hidden-xs">Contact us on +49 30 2093-5742 or bujarek@hu-berlin.de.</p>
+      <p class="hidden-md hidden-lg"><a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>
+      <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+      </p>
+      """
+
+# Enable and disable widgets for the right sidebar
+[params.widgets]
+    categories = true
+    tags = true
+    search = true
+
+[params.carousel]
+    enable = true
+    # All carousel items are defined in their own files. You can find example items
+    # at 'exampleSite/data/carousel'.
+    # For more informtion take a look at the README.
+
+[params.features]
+    enable = false
+    # All features are defined in their own files. You can find example items
+    # at 'exampleSite/data/features'.
+    # For more informtion take a look at the README.
+
+[params.testimonials]
+    enable = false
+    # All testimonials are defined in their own files. You can find example items
+    # at 'exampleSite/data/testimonials'.
+    # For more informtion take a look at the README.
+    title = "Team"
+    subtitle = ""
+
+[params.see_more]
+    enable = true
+    icon = "fa fa-university"
+    title = "Chair of Information Systems"
+    subtitle = "Find more information about us"
+    link_url = "https://www.wiwi.hu-berlin.de/en/professuren/quantitativ/wi"
+    link_text = "Official Homepages"
+
+[params.clients]
+    enable = false
+    icon = "fa fa-university"
+    # All clients are defined in their own files. You can find example items
+    # at 'exampleSite/data/clients'.
+    # For more informtion take a look at the README.
+    title = "Our Clients"
+    subtitle = ""
+
+[params.recent_posts]
+    enable = true
+    title = "From our blog"
+    subtitle = "Here are recent research findings from our institute."
