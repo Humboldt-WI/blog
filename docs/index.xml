@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://wisample.github.io/blog/</link>
+    <description>Recent content on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2017, Chari of Information System at HU-Berlin; all rights reserved.</copyright>
+    <lastBuildDate>Thu, 21 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://wisample.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Blockchain Nights</title>
+      <link>https://wisample.github.io/blog/news/bcn4/</link>
+      <pubDate>Thu, 21 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/news/bcn4/</guid>
+      <description>18.01 Blockchain Nights #4
+ Nikola Stojanow, Business Development at Aeternity &amp;ldquo;Scalable blockchain technology for smart contracts&amp;rdquo;
+ Sherry Li, COO at scry.info (Singapore) &amp;ldquo;Applications of blockchain to data science&amp;rdquo; ​
+ Joshua Scigala, CEO at Vaultoro.com (tab) &amp;ldquo;Money&amp;hellip; WTF is it anyway?&amp;rdquo; ​ ​ ​
+  </description>
+    </item>
+    
+    <item>
+      <title>Dissertation Test</title>
+      <link>https://wisample.github.io/blog/blog/2017/12/14/post2/</link>
+      <pubDate>Thu, 14 Dec 2017 00:26:17 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/blog/2017/12/14/post2/</guid>
+      <description>Good</description>
+    </item>
+    
+    <item>
+      <title>A Jupyter Notebook Example Post</title>
+      <link>https://wisample.github.io/blog/blog/2017/12/12/chapter--23/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/blog/2017/12/12/chapter--23/</guid>
+      <description>This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
+Python Analysis I # %load std_ipython_import.txt import pandas as pd import numpy as np import matplotlib.pyplot as plt import seaborn as sns import pymc3 as pm  Model # Using the Theano @as_op decorator with a custom function to calculate the threshold probabilities. # Theano cannot compute a gradient for these custom functions, so it is not possible to use # gradient based samplers in PyMC3.</description>
+    </item>
+    
+    <item>
+      <title>A Jupyter Notebook Example Post2</title>
+      <link>https://wisample.github.io/blog/blog/2017/12/12/chapter--2/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/blog/2017/12/12/chapter--2/</guid>
+      <description>This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
+Python Analysis I # %load std_ipython_import.txt import pandas as pd import numpy as np import matplotlib.pyplot as plt import seaborn as sns import pymc3 as pm  Model # Using the Theano @as_op decorator with a custom function to calculate the threshold probabilities. # Theano cannot compute a gradient for these custom functions, so it is not possible to use # gradient based samplers in PyMC3.</description>
+    </item>
+    
+    <item>
+      <title>New Reasearch Findings</title>
+      <link>https://wisample.github.io/blog/blog/2017/12/12/chapter2/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/blog/2017/12/12/chapter2/</guid>
+      <description>Reasearch Test page</description>
+    </item>
+    
+    <item>
+      <title>Teaching</title>
+      <link>https://wisample.github.io/blog/teaching/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/teaching/</guid>
+      <description>Students are in the focus of our teaching. We want to enable them to be able to understand the basic concepts, to learn acquiring knowledge independently and, as following, implement it adequately within a given context. Based on these requirements the content and didactic components of our teaching are established. Our teaching offer is mainly based on the main research focus of the department in order to provide teaching grounded on recent academic developments.</description>
+    </item>
+    
+    <item>
+      <title>Team</title>
+      <link>https://wisample.github.io/blog/team/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/team/</guid>
+      <description>Students are in the focus of our teaching. We want to enable them to be able to understand the basic concepts, to learn acquiring knowledge independently and, as following, implement it adequately within a given context. Based on these requirements the content and didactic components of our teaching are established. Our teaching offer is mainly based on the main research focus of the department in order to provide teaching grounded on recent academic developments.</description>
+    </item>
+    
+  </channel>
+</rss>
