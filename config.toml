@@ -1,4 +1,4 @@
-baseurl = "https://wisample.github.io/blog"
+baseurl = "https://wisample.github.io/blog/"
 title = "Institute of Infomation Systems at HU-Berlin"
 theme = "hugo-universal-theme"
 themesDir = "themes"
