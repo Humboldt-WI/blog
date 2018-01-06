@@ -46,6 +46,12 @@ paginate = 10
     url  = "/blog/"
     weight = 5
 
+[[menu.main]]
+    name = "Contact"
+    identifier = "/contact/"
+    url  = "/contact/"
+    weight = 6
+	
 # Top bar social links menu
 
 [[menu.topbar]]
@@ -69,9 +75,14 @@ paginate = 10
     defaultDescription = "Site template made by devcows using hugo"
 
     # Google Maps API key (if not set will default to not passing a key.)
-    googleMapsApiKey = "AIzaSyCFhtWLJcE30xOAjcbSFi-0fnoVmQZPb1Y"
+    #googleMapsApiKey = "AIzaSyCFhtWLJcE30xOAjcbSFi-0fnoVmQZPb1Y"
 
-    # Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
+	latitude = "52.521166"
+    longitude = "13.402748"
+	#direction = "Wirtschaftswissenschaftliche Fakultät, Spandauer Str. 1, 10178 Berlin"
+	
+	
+    # Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
     style = "blue"
 
     # Since this template is static, the contact form uses www.formspree.io as a
@@ -86,7 +97,7 @@ paginate = 10
     # - click the confirm link in the email from www.formspree.io
     # - you're done. Happy mailing!
     #
-    # Enable the contact form by entering your Formspree.io email
+    # Enable the contact form by entering your Formspree.io email
     email = "your@email.com"
 
     about_us = "<p>Chair of Information Systems</p>"
@@ -104,8 +115,7 @@ paginate = 10
         <br><strong>Germany</strong>
       </p>
       """
-    latitude = "-12.043333"
-    longitude = "-77.028333"
+    
 
 [Permalinks]
     blog = "/blog/:year/:month/:day/:filename/"
@@ -165,4 +175,4 @@ paginate = 10
 [params.recent_posts]
     enable = true
     title = "From our blog"
-    subtitle = "Here are recent research findings from our institute."
+    subtitle = "" #Here are recent research findings from our institute.
