@@ -9,7 +9,7 @@ defaultContentLanguage = "en"
 # Enable comments by entering your Disqus shortname
 disqusShortname = ""
 # Enable Google Analytics by entering your tracking code
-googleAnalytics = ""
+googleAnalytics = "UA-112025566-1"
 
 # Define the number of posts per page
 paginate = 10
@@ -36,7 +36,7 @@ paginate = 10
 
 [[menu.main]]
     name = "Teaching"
-    identifier = "/Teaching/"
+    identifier = "/teaching/"
     url  = "/teaching/"
     weight = 4
 
@@ -68,6 +68,7 @@ paginate = 10
 
 
 
+
 [params]
     viewMorePostLink = "/blog/"
     author = "SocialMediaTeam"
@@ -77,8 +78,8 @@ paginate = 10
     # Google Maps API key (if not set will default to not passing a key.)
     #googleMapsApiKey = "AIzaSyCFhtWLJcE30xOAjcbSFi-0fnoVmQZPb1Y"
 
-	latitude = "52.521166"
-    longitude = "13.402748"
+	#latitude = "52.521166"
+    #longitude = "13.402748"
 	#direction = "Wirtschaftswissenschaftliche Fakultät, Spandauer Str. 1, 10178 Berlin"
 	
 	
@@ -135,6 +136,7 @@ paginate = 10
     tags = true
     search = true
 
+
 [params.carousel]
     enable = true
     # All carousel items are defined in their own files. You can find example items
@@ -147,13 +149,6 @@ paginate = 10
     # at 'exampleSite/data/features'.
     # For more informtion take a look at the README.
 
-[params.testimonials]
-    enable = false
-    # All testimonials are defined in their own files. You can find example items
-    # at 'exampleSite/data/testimonials'.
-    # For more informtion take a look at the README.
-    title = "Team"
-    subtitle = ""
 
 [params.see_more]
     enable = true
@@ -176,3 +171,4 @@ paginate = 10
     enable = true
     title = "From our blog"
     subtitle = "" #Here are recent research findings from our institute.
+	

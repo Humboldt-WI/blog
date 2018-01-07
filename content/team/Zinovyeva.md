@@ -10,7 +10,7 @@ banner = "img/team/image_preview (5).jpg"
 
 ![](/blog/img/team/image_preview (5).jpg)
 
-Elizaveta Zinovyeva
+
 
 ###  Contact
 

@@ -6,7 +6,8 @@ id = "contact"
 +++
 
 
-We are happy to get in touch with you. For directly contacting us, please use one of the following:
+#### We are happy to get in touch with you.
+#### For directly contacting us, please use one of the following:
 
 
 	Contact Person: Anna-Lena Bujarek

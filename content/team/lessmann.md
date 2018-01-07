@@ -128,7 +128,7 @@ Selected publications (complete list of publications à link auf Seite mit allen
 	- Strategy development to enhance the client’s marketing policy and increase marketing ROI
 
 #### 2009 - 2010
-
+	
 - Demand Planning in Maritime Logistics
 
 	Customer: leading international logistic services company
