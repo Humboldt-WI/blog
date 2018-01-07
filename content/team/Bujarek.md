@@ -1,10 +1,13 @@
 +++
 title = "Anna-Lena Bujarek"
-description = "Professor - Chair of Information Systems"
-keywords = ["Professor"]
+description = "Office - Chair of Information Systems"
+keywords = ["Administration"]
+banner = "img/team/image_preview2.png"
+date = 2018-01-01T11:46:33+01:00
+weight = 4
 +++
 	
-![sdsd](/img/team/image_preview2.png)
+![bujarek](/blog/img/team/image_preview2.png)
 
 
 

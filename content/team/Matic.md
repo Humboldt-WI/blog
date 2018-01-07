@@ -1,13 +1,15 @@
 +++
 title = "Lili Jovanka Matic "
-description = "Professor - Chair of Information Systems"
-keywords = ["Professor"]
+description = "Student Assistant - Chair of Information Systems"
+keywords = ["Student Assistant"]
+banner = "img/team/image_preview (4).jpg"
+weight = 6
 +++
 
 
 
 	
-![](/img/team/image_preview (4).jpg)
+![](/blog/img/team/image_preview (4).jpg)
 
 Lili Jovanka Matic 
 
@@ -15,7 +17,7 @@ Lili Jovanka Matic
 
 	Email: jovankamatic24[at]gmail.com
 	Office Hours: By Appointment
-	Room: 324
+	Room:  SPA1, 324
 	
 
 

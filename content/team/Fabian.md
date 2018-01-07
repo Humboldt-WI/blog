@@ -2,12 +2,14 @@
 title = "Prof. Dr. Benjamin Fabian"
 description = "Associated Researcher"
 keywords = ["Professor", "Researcher"]
+banner = "img/team/image_preview (3).jpg"
+weight = 5
 +++
 
 
 
 	
-![](/img/team/image_preview (3).jpg)
+![](/blog/img/team/image_preview (3).jpg)
 
 
 Website: www.phorminx.de/ben_fabian.html

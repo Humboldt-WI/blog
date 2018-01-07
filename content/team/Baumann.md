@@ -1,12 +1,14 @@
 +++
 title = "Annika Baumann, M.Sc."
-description = "Professor - Chair of Information Systems"
-keywords = ["Professor"]
+description = "Researcher - Chair of Information Systems"
+keywords = ["Researcher", "Graph Theory", "Social Networks", "Customer Analysis", "Internet Topology"]
+banner = "img/team/baumann.jpg"
+weight = 3
 +++
 
 
 
-![jpg](/img/team/baumann.jpg)
+![jpg](/blog/img/team/baumann.jpg)
  
  
 https://www.linkedin.com/in/annika-baumann-61b51b75/

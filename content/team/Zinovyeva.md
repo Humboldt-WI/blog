@@ -2,13 +2,13 @@
 title = "Elizaveta Zinovyeva"
 description = ""
 keywords = ["Researcher"]
-
+banner = "img/team/image_preview (5).jpg"
 +++
 
 
 
 
-![](/img/team/image_preview (5).jpg)
+![](/blog/img/team/image_preview (5).jpg)
 
 Elizaveta Zinovyeva
 

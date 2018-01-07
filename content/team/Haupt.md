@@ -1,14 +1,16 @@
 +++
 title = "Johannes Haupt, M.Sc."
-description = "Proffessor - Chair of Information Systems"
-keywords = ["Proffessor"]
+description = "Researcher - Chair of Information Systems"
+keywords = ["Researcher"]
+banner = "img/team/image_preview (2).jpg"
+weight = 2
 +++
 
 
 
 
 
-![](/img/team/image_preview (2).jpg)
+![](/blog/img/team/image_preview (2).jpg)
 
 Since April 2016, he has been working as a researcher at the Chair of Information Systems of the Business and Economics department. He implemented a machine learning framework to detect tracking objects in e-mails as part of his master's thesis. In the course of his PhD, he researches applications for machine learning in e-commerce and unstructured data 
 
