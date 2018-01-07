@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2017, Chari of Information System at HU-Berlin; all rights reserved.</copyright>
-    <lastBuildDate>Thu, 14 Dec 2017 00:26:17 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jan 2018 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://wisample.github.io/blog/categories/dissertation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dissertation Test2</title>
+      <link>https://wisample.github.io/blog/blog/2018/01/07/post3/</link>
+      <pubDate>Sun, 07 Jan 2018 00:00:00 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/blog/2018/01/07/post3/</guid>
+      <description>Good</description>
+    </item>
     
     <item>
       <title>Dissertation Test</title>

@@ -1,9 +1,8 @@
 +++
 title = "Anna-Lena Bujarek"
 description = "Office - Chair of Information Systems"
-keywords = ["Administration"]
+date = 2017-01-01
 banner = "img/team/image_preview2.png"
-date = 2018-01-01T11:46:33+01:00
 weight = 4
 +++
 	

@@ -1,7 +1,7 @@
 +++
 title = "Johannes Haupt, M.Sc."
 description = "Researcher - Chair of Information Systems"
-keywords = ["Researcher"]
+date = 2017-01-01
 banner = "img/team/image_preview (2).jpg"
 weight = 2
 +++

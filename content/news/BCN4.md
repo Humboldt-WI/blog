@@ -2,7 +2,6 @@
 title = "Blockchain Nights"
 date = "2017-12-21"
 tags = ["blockchian"]
-categories = ["event"]
 banner = "img/banners/hu-logo.jpg"
 +++
 
@@ -10,14 +9,23 @@ banner = "img/banners/hu-logo.jpg"
 
 
 
- 1.  Nikola Stojanow, Business Development at Aeternity
-     "Scalable blockchain technology for smart contracts"
+  Nikola Stojanow, Business Development at Aeternity
+
  
- 2.  Sherry Li, COO at scry.info (Singapore)
-     "Applications of blockchain to data science"
-​
- 3.  Joshua Scigala, CEO at Vaultoro.com (tab)
-     "Money... WTF is it anyway?"
+    - "Scalable blockchain technology for smart contracts"
+
+
+----
+
+  Sherry Li, COO at scry.info (Singapore)
+
+     - "Applications of blockchain to data science"
+	
+----
+
+ Joshua Scigala, CEO at Vaultoro.com (tab)
+ 
+     - "Money... WTF is it anyway?"
 ​
 ​
 ​

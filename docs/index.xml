@@ -7,10 +7,92 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2017, Chari of Information System at HU-Berlin; all rights reserved.</copyright>
-    <lastBuildDate>Thu, 21 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://wisample.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Prof. Dr. Stefan Lessmann</title>
+      <link>https://wisample.github.io/blog/team/lessmann/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/team/lessmann/</guid>
+      <description>Stefan received a diploma in business administration and a PhD from the University of Hamburg in 2002 and 2007, respectively. Stefan worked as a lecturer and senior lecture in business informatics at the Institute of Information Systems of the University of Hamburg. Since 2008, Stefan is a guest lecturer at the School of Management of University of Southampton, where he teaches under- and postgraduate courses on quantitative methods, electronic business, and web application development.</description>
+    </item>
+    
+    <item>
+      <title>Johannes Haupt, M.Sc.</title>
+      <link>https://wisample.github.io/blog/team/haupt/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/team/haupt/</guid>
+      <description>Since April 2016, he has been working as a researcher at the Chair of Information Systems of the Business and Economics department. He implemented a machine learning framework to detect tracking objects in e-mails as part of his master&amp;rsquo;s thesis. In the course of his PhD, he researches applications for machine learning in e-commerce and unstructured data
+https://www.researchgate.net/profile/Johannes_Haupt
+Research Interests  Customer behavior in e-Commerce
+ Recommendation Engines
+ Text analytics</description>
+    </item>
+    
+    <item>
+      <title>Annika Baumann, M.Sc.</title>
+      <link>https://wisample.github.io/blog/team/baumann/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/team/baumann/</guid>
+      <description>https://www.linkedin.com/in/annika-baumann-61b51b75/
+https://www.researchgate.net/profile/Annika_Baumann2
+Annika Baumann, M.Sc., studied the Master in Information Systems at the Humboldt University in Berlin. Since June 2013 she works as a researcher at the Institute of information systems at the Humboldt University in Berlin. As part of her master&amp;rsquo;s thesis she investigated the robustness of the Internet graph based on a current dataset. In the course of her PhD she investigates the Internet topology, the readability of privacy policies as well as the social news aggregator Reddit.</description>
+    </item>
+    
+    <item>
+      <title>Anna-Lena Bujarek</title>
+      <link>https://wisample.github.io/blog/team/bujarek/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/team/bujarek/</guid>
+      <description> Anna-Lena Bujarek
+Mrs. Bujarek is the secretary of our chair and does this and that &amp;hellip;
+Contact Telephone: +49 30 2093-5742 Email: bujarek[at]wiwi.hu-berlin.de Office Hours: Tuesdays - Thursdays, 10-14 Uhr Room: SPA1, 326  </description>
+    </item>
+    
+    <item>
+      <title>Prof. Dr. Benjamin Fabian</title>
+      <link>https://wisample.github.io/blog/team/fabian/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/team/fabian/</guid>
+      <description> Website: www.phorminx.de/ben_fabian.html
+Contact Telephone: +49 30 2093-5662 Email: bfabian[at]wiwi.hu-berlin.de Website: www.phorminx.de/ben_fabian.html Office Hours: By Appointment Room: SPA1, 335  </description>
+    </item>
+    
+    <item>
+      <title>Lili Jovanka Matic </title>
+      <link>https://wisample.github.io/blog/team/matic/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/team/matic/</guid>
+      <description> Lili Jovanka Matic
+Contact Email: jovankamatic24[at]gmail.com Office Hours: By Appointment Room: SPA1, 324  </description>
+    </item>
+    
+    <item>
+      <title>Elias Baumann</title>
+      <link>https://wisample.github.io/blog/team/baumanne/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/team/baumanne/</guid>
+      <description> Contact Telephone: Email: e.baumann.study[at]gmail.com Room: SPA1, 324 Office Hours: By Appointment  </description>
+    </item>
+    
+    <item>
+      <title>Dissertation Test2</title>
+      <link>https://wisample.github.io/blog/blog/2018/01/07/post3/</link>
+      <pubDate>Sun, 07 Jan 2018 00:00:00 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/blog/2018/01/07/post3/</guid>
+      <description>Good</description>
+    </item>
     
     <item>
       <title>Blockchain Nights</title>
@@ -19,10 +101,10 @@
       
       <guid>https://wisample.github.io/blog/news/bcn4/</guid>
       <description>18.01 Blockchain Nights #4
- Nikola Stojanow, Business Development at Aeternity &amp;ldquo;Scalable blockchain technology for smart contracts&amp;rdquo;
- Sherry Li, COO at scry.info (Singapore) &amp;ldquo;Applications of blockchain to data science&amp;rdquo; ​
- Joshua Scigala, CEO at Vaultoro.com (tab) &amp;ldquo;Money&amp;hellip; WTF is it anyway?&amp;rdquo; ​ ​ ​
-  </description>
+Nikola Stojanow, Business Development at Aeternity
+- &amp;quot;Scalable blockchain technology for smart contracts&amp;quot;  Sherry Li, COO at scry.info (Singapore)
+ - &amp;quot;Applications of blockchain to data science&amp;quot;  Joshua Scigala, CEO at Vaultoro.com (tab)
+ - &amp;quot;Money... WTF is it anyway?&amp;quot;  ​ ​ ​</description>
     </item>
     
     <item>
@@ -64,21 +146,67 @@ Python Analysis I # %load std_ipython_import.txt import pandas as pd import nump
     </item>
     
     <item>
-      <title>Teaching</title>
-      <link>https://wisample.github.io/blog/teaching/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Publications</title>
+      <link>https://wisample.github.io/blog/blog/2017/12/12/publications/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/teaching/</guid>
-      <description>Students are in the focus of our teaching. We want to enable them to be able to understand the basic concepts, to learn acquiring knowledge independently and, as following, implement it adequately within a given context. Based on these requirements the content and didactic components of our teaching are established. Our teaching offer is mainly based on the main research focus of the department in order to provide teaching grounded on recent academic developments.</description>
+      <guid>https://wisample.github.io/blog/blog/2017/12/12/publications/</guid>
+      <description>Test</description>
     </item>
     
     <item>
-      <title>Team</title>
-      <link>https://wisample.github.io/blog/team/</link>
+      <title>Completed Projects</title>
+      <link>https://wisample.github.io/blog/blog/2017/12/11/completedprojects/</link>
+      <pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/blog/2017/12/11/completedprojects/</guid>
+      <description>Test</description>
+    </item>
+    
+    <item>
+      <title>Elizaveta Zinovyeva</title>
+      <link>https://wisample.github.io/blog/team/zinovyeva/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/team/zinovyeva/</guid>
+      <description> Contact Email: zinovyee[at]hu-berlin.de Office Hours: By Appointment Room: 324  </description>
+    </item>
+    
+    <item>
+      <title>Theses</title>
+      <link>https://wisample.github.io/blog/teaching/thesis/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/teaching/thesis/</guid>
+      <description>Some thoughts on writing a master thesis with us… Research at the Chair of Information Systems (CIS) focuses on big data analytics (BDA). Approaches associated with the support of managerial decision-making and quantitative, data-driven methods are of particular interest. This scope offers a variety of research questions to be examined in a master’s dissertation, examples for which you can find here. Hence, students with skills in, e.g., scientific computing, databases, programming, econometrics and statistics, machine learning, etc.</description>
+    </item>
+    
+    <item>
+      <title>Bachelor&#39;s Courses</title>
+      <link>https://wisample.github.io/blog/teaching/bachelor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/team/</guid>
-      <description>Students are in the focus of our teaching. We want to enable them to be able to understand the basic concepts, to learn acquiring knowledge independently and, as following, implement it adequately within a given context. Based on these requirements the content and didactic components of our teaching are established. Our teaching offer is mainly based on the main research focus of the department in order to provide teaching grounded on recent academic developments.</description>
+      <guid>https://wisample.github.io/blog/teaching/bachelor/</guid>
+      <description>Following courses are offered for bachelor students:    Modul Compulsory / Non-compulsory Format Credit Points Term     Marketing und E-Business Compulsory Lecture + Tutorial 4 / 6 StO/PO 2010 Winter   Strategie, Organisation und IT Compulsory Lecture + Tutorial 4 / 6 Summer   Seminar Wirtschaftsinformatik Non-compulsory Seminar 2 / 6 Summer   Business Intelligence Systems Non-compulsory Lecture + Tutorial 4 / 6 Winter   Einführung in Programmierung Non-compulsory Lecture + Tutorial 4 / 6 Summer    Requirements for writing a bachelor thesis:  Successful completion of one of the non-compulsory modules of Information Systems.</description>
+    </item>
+    
+    <item>
+      <title>Contact Us</title>
+      <link>https://wisample.github.io/blog/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/contact/</guid>
+      <description>We are happy to get in touch with you. For directly contacting us, please use one of the following: Contact Person: Anna-Lena Bujarek Room: 326 Telephone: +49 30 2093-5742 Fax:+49 30 2093-5741 E-mail: bujarek@hu-berlin.de  If you prefer mailing, see our address here:
+Humboldt-University of Berlin School of Business and Economics Chair of Information Systems University: Unter den Linden 6, 10099 Berlin Faculty: Spandauer Straße 1, 10178 Berlin   Directions: Public Transport and Park Slots:  S-Bahn (to S-Bhf Hackescher Markt) railroad line S5, S7, S75 und S9</description>
+    </item>
+    
+    <item>
+      <title>Master&#39;s Courses</title>
+      <link>https://wisample.github.io/blog/teaching/master/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/teaching/master/</guid>
+      <description>Following courses are offered for master students:    Modul Compulsory / Non-compulsory Format Credit Points Term     Applied Predictive Analytics Non-compulsory Practical Seminar 4 / 6 Spring   Digital Marketing &amp;amp; Web Analytics Non-compulsory Lecture + Tutorial 4 / 6 Spring   Business Analytics &amp;amp; Data Science Non-compulsory (compulsory for master&amp;rsquo;s WInfo) Lecture + Exercise Class 4 / 6 Fall   Seminar Advanced Information Systems Non-compulsory Seminar 2 / 6 Fall    Requirements for writing a master thesis:  Successful completion of the seminar Advanced Information Systems</description>
     </item>
     
   </channel>

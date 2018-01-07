@@ -1,7 +1,7 @@
 +++
 title = "Prof. Dr. Stefan Lessmann"
 description = "Professor - Chair of Information Systems"
-keywords = ["Professor"]
+date = 2017-01-01
 banner = "img/team/image_preview.png"
 weight = 1
 +++

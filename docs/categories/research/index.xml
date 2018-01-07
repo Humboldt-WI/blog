@@ -21,5 +21,23 @@
       <description>Reasearch Test page</description>
     </item>
     
+    <item>
+      <title>Publications</title>
+      <link>https://wisample.github.io/blog/blog/2017/12/12/publications/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/blog/2017/12/12/publications/</guid>
+      <description>Test</description>
+    </item>
+    
+    <item>
+      <title>Completed Projects</title>
+      <link>https://wisample.github.io/blog/blog/2017/12/11/completedprojects/</link>
+      <pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/blog/2017/12/11/completedprojects/</guid>
+      <description>Test</description>
+    </item>
+    
   </channel>
 </rss>

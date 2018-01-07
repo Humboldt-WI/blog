@@ -39,14 +39,7 @@ paginate = 10
     identifier = "/teaching/"
     url  = "/teaching/"
     weight = 4
-
-[[menu.main]]
-    name = "Research"
-    identifier = "/research/"
-    url  = "/research/"
-    weight = 5
-	
-	
+		
 [[menu.main]]
     name = "blog"
     identifier = "/blog/"

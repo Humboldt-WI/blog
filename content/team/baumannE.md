@@ -1,7 +1,7 @@
 +++
 title = "Elias Baumann"
 description = "Student Assistant - Chair of Information Systems"
-keywords = ["Student Assistant"]
+date = 2017-01-01
 banner = "img/team/preview.png"
 weight = 7
 +++

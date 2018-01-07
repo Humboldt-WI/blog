@@ -3,12 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://wisample.github.io/blog/team/lessmann/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/team/haupt/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/team/baumann/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/team/bujarek/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/team/fabian/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/team/matic/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/team/baumanne/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/blog/2018/01/07/post3/</loc>
+    <lastmod>2018-01-07T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/news/bcn4/</loc>
     <lastmod>2017-12-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://wisample.github.io/blog/blog/</loc>
+    <lastmod>2017-12-14T11:46:33+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/teaching/</loc>
     <lastmod>2017-12-14T11:46:33+01:00</lastmod>
   </url>
   
@@ -38,6 +83,35 @@
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/blog/2017/12/12/publications/</loc>
+    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/blog/2017/12/11/completedprojects/</loc>
+    <lastmod>2017-12-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/team/zinovyeva/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/team/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/teaching/thesis/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/teaching/bachelor/</loc>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/tags/blockchian/</loc>
     <lastmod>2017-12-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -55,27 +129,29 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/categories/dissertation/</loc>
-    <lastmod>2017-12-14T00:26:17+01:00</lastmod>
-    <priority>0</priority>
+    <loc>https://wisample.github.io/blog/contact/</loc>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/categories/event/</loc>
-    <lastmod>2017-12-21T00:00:00+00:00</lastmod>
+    <loc>https://wisample.github.io/blog/categories/dissertation/</loc>
+    <lastmod>2018-01-07T00:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wisample.github.io/blog/</loc>
-    <lastmod>2017-12-21T00:00:00+00:00</lastmod>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wisample.github.io/blog/tags/machine-learning/</loc>
-    <lastmod>2017-12-14T00:26:17+01:00</lastmod>
+    <lastmod>2018-01-07T00:00:00+01:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/teaching/master/</loc>
   </url>
   
   <url>
@@ -100,14 +176,6 @@
     <loc>https://wisample.github.io/blog/tags/</loc>
     <lastmod>2017-12-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/teaching/</loc>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/team/</loc>
   </url>
   
 </urlset>

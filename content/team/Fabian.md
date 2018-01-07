@@ -1,7 +1,7 @@
 +++
 title = "Prof. Dr. Benjamin Fabian"
 description = "Associated Researcher"
-keywords = ["Professor", "Researcher"]
+date = 2017-01-01
 banner = "img/team/image_preview (3).jpg"
 weight = 5
 +++

@@ -1,7 +1,9 @@
 +++
 title = "Theses"
+date = 2017-01-01
 description = "Writing a thesis"
 keywords = ["Thesis"]
+banner = "img/banners/hu-logo.jpg"
 +++
 
 

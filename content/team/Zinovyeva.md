@@ -1,7 +1,7 @@
 +++
 title = "Elizaveta Zinovyeva"
 description = ""
-keywords = ["Researcher"]
+date = 2017-01-01
 banner = "img/team/image_preview (5).jpg"
 +++
 

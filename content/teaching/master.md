@@ -1,6 +1,7 @@
 +++
 title = "Master's Courses"
 description = "Courses offers"
+banner = "img/banners/hu-logo.jpg"
 keywords = ["Teaching","course"]
 +++
 

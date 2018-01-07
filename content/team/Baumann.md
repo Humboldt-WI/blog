@@ -1,7 +1,7 @@
 +++
 title = "Annika Baumann, M.Sc."
 description = "Researcher - Chair of Information Systems"
-keywords = ["Researcher", "Graph Theory", "Social Networks", "Customer Analysis", "Internet Topology"]
+date = 2017-01-01
 banner = "img/team/baumann.jpg"
 weight = 3
 +++

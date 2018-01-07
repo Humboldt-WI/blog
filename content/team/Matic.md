@@ -1,7 +1,7 @@
 +++
 title = "Lili Jovanka Matic "
 description = "Student Assistant - Chair of Information Systems"
-keywords = ["Student Assistant"]
+date = 2017-01-01
 banner = "img/team/image_preview (4).jpg"
 weight = 6
 +++

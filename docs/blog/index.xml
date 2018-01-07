@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>Dissertation Test2</title>
+      <link>https://wisample.github.io/blog/blog/2018/01/07/post3/</link>
+      <pubDate>Sun, 07 Jan 2018 00:00:00 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/blog/2018/01/07/post3/</guid>
+      <description>Good</description>
+    </item>
+    
+    <item>
       <title>Dissertation Test</title>
       <link>https://wisample.github.io/blog/blog/2017/12/14/post2/</link>
       <pubDate>Thu, 14 Dec 2017 00:26:17 +0100</pubDate>
@@ -48,6 +57,24 @@ Python Analysis I # %load std_ipython_import.txt import pandas as pd import nump
       
       <guid>https://wisample.github.io/blog/blog/2017/12/12/chapter2/</guid>
       <description>Reasearch Test page</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://wisample.github.io/blog/blog/2017/12/12/publications/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/blog/2017/12/12/publications/</guid>
+      <description>Test</description>
+    </item>
+    
+    <item>
+      <title>Completed Projects</title>
+      <link>https://wisample.github.io/blog/blog/2017/12/11/completedprojects/</link>
+      <pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/blog/2017/12/11/completedprojects/</guid>
+      <description>Test</description>
     </item>
     
   </channel>
