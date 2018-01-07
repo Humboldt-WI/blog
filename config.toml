@@ -41,16 +41,23 @@ paginate = 10
     weight = 4
 
 [[menu.main]]
+    name = "Research"
+    identifier = "/research/"
+    url  = "/research/"
+    weight = 5
+	
+	
+[[menu.main]]
     name = "blog"
     identifier = "/blog/"
     url  = "/blog/"
-    weight = 5
+    weight = 6
 
 [[menu.main]]
     name = "Contact"
     identifier = "/contact/"
     url  = "/contact/"
-    weight = 6
+    weight = 7
 	
 # Top bar social links menu
 
