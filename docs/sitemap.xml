@@ -48,11 +48,6 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/blog/</loc>
-    <lastmod>2017-12-14T11:46:33+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wisample.github.io/blog/teaching/</loc>
     <lastmod>2017-12-14T11:46:33+01:00</lastmod>
   </url>
@@ -115,6 +110,11 @@
     <loc>https://wisample.github.io/blog/tags/blockchian/</loc>
     <lastmod>2017-12-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/blog/</loc>
+    <lastmod>2018-01-07T00:00:00+01:00</lastmod>
   </url>
   
   <url>
