@@ -79,7 +79,7 @@ An alternative way is to post the jupyter notebook on Gist.
 
 Besides demonstrating code, it makes sense to show the reader plots and outputs.
 
-![png](/img/chapter23/output_11_0.png)
+![png](/blog/img/chapter23/output_11_0.png)
 
 
 Additionally it is possible to directly try some changes of the code in the following window. Try to change the colors for example...
