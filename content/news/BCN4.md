@@ -7,7 +7,7 @@ banner = "img/banners/hu-logo.jpg"
 
 18.01 Blockchain Nights #4 
 
-
+<!--more-->
 
   Nikola Stojanow, Business Development at Aeternity
 
