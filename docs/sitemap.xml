@@ -8,12 +8,25 @@
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/teaching/bachelor/</loc>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/team/haupt/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/teaching/master/</loc>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/team/baumann/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/teaching/thesis/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
   </url>
   
@@ -98,15 +111,6 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/teaching/thesis/</loc>
-    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/teaching/bachelor/</loc>
-  </url>
-  
-  <url>
     <loc>https://wisample.github.io/blog/tags/blockchian/</loc>
     <lastmod>2017-12-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -148,10 +152,6 @@
     <loc>https://wisample.github.io/blog/tags/machine-learning/</loc>
     <lastmod>2018-01-07T00:00:00+01:00</lastmod>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/teaching/master/</loc>
   </url>
   
   <url>

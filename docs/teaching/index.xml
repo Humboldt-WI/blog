@@ -13,21 +13,12 @@
     
     
     <item>
-      <title>Theses</title>
-      <link>https://wisample.github.io/blog/teaching/thesis/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
-      
-      <guid>https://wisample.github.io/blog/teaching/thesis/</guid>
-      <description>Some thoughts on writing a master thesis with us… Research at the Chair of Information Systems (CIS) focuses on big data analytics (BDA). Approaches associated with the support of managerial decision-making and quantitative, data-driven methods are of particular interest. This scope offers a variety of research questions to be examined in a master’s dissertation, examples for which you can find here. Hence, students with skills in, e.g., scientific computing, databases, programming, econometrics and statistics, machine learning, etc.</description>
-    </item>
-    
-    <item>
       <title>Bachelor&#39;s Courses</title>
       <link>https://wisample.github.io/blog/teaching/bachelor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/teaching/bachelor/</guid>
-      <description>Following courses are offered for bachelor students:    Modul Compulsory / Non-compulsory Format Credit Points Term     Marketing und E-Business Compulsory Lecture + Tutorial 4 / 6 StO/PO 2010 Winter   Strategie, Organisation und IT Compulsory Lecture + Tutorial 4 / 6 Summer   Seminar Wirtschaftsinformatik Non-compulsory Seminar 2 / 6 Summer   Business Intelligence Systems Non-compulsory Lecture + Tutorial 4 / 6 Winter   Einführung in Programmierung Non-compulsory Lecture + Tutorial 4 / 6 Summer    Requirements for writing a bachelor thesis:  Successful completion of one of the non-compulsory modules of Information Systems.</description>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -36,7 +27,18 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/teaching/master/</guid>
-      <description>Following courses are offered for master students:    Modul Compulsory / Non-compulsory Format Credit Points Term     Applied Predictive Analytics Non-compulsory Practical Seminar 4 / 6 Spring   Digital Marketing &amp;amp; Web Analytics Non-compulsory Lecture + Tutorial 4 / 6 Spring   Business Analytics &amp;amp; Data Science Non-compulsory (compulsory for master&amp;rsquo;s WInfo) Lecture + Exercise Class 4 / 6 Fall   Seminar Advanced Information Systems Non-compulsory Seminar 2 / 6 Fall    Requirements for writing a master thesis:  Successful completion of the seminar Advanced Information Systems</description>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Theses</title>
+      <link>https://wisample.github.io/blog/teaching/thesis/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/teaching/thesis/</guid>
+      <description>&lt;h3 id=&#34;some-thoughts-on-writing-a-master-thesis-with-us&#34;&gt;Some thoughts on writing a master thesis with us…&lt;/h3&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
