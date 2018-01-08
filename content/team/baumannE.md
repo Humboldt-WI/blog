@@ -7,9 +7,9 @@ weight = 7
 +++
 
 
+<!--more-->
 
 ![noPicYet](/blog/img/team/preview.png)
-
 
 
 

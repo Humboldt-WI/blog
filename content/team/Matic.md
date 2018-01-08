@@ -6,10 +6,12 @@ banner = "img/team/image_preview (4).jpg"
 weight = 6
 +++
 
-
+<!--more-->
 
 	
 ![](/blog/img/team/image_preview (4).jpg)
+
+
 
 Lili Jovanka Matic 
 

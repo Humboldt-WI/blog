@@ -4,10 +4,14 @@ date = 2017-01-01
 description = "Writing a thesis"
 keywords = ["Thesis"]
 banner = "img/banners/hu-logo.jpg"
+weight = 3
 +++
 
 
+
 ###   Some thoughts on writing a master thesis with us…
+
+<!--more-->
 
 Research at the Chair of Information Systems (CIS) focuses on big data analytics (BDA). Approaches associated with the support of managerial decision-making and quantitative, data-driven methods are of particular interest. This scope offers a variety of research questions to be examined in a master’s dissertation, examples for which you can find here. Hence, students with skills in, e.g., scientific computing, databases, programming, econometrics and statistics, machine learning, etc. are welcome to write their master thesis at the CIS.
 

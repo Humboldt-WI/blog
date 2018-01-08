@@ -7,10 +7,12 @@ weight = 2
 +++
 
 
-
+<!--more-->
 
 
 ![](/blog/img/team/image_preview (2).jpg)
+
+
 
 Since April 2016, he has been working as a researcher at the Chair of Information Systems of the Business and Economics department. He implemented a machine learning framework to detect tracking objects in e-mails as part of his master's thesis. In the course of his PhD, he researches applications for machine learning in e-commerce and unstructured data 
 

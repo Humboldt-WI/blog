@@ -9,6 +9,7 @@ author = "David"
 
 This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
 
+<!--more-->
 
 ## Python Analysis I
 

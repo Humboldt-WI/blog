@@ -6,10 +6,12 @@ banner = "img/team/image_preview (3).jpg"
 weight = 5
 +++
 
-
+<!--more-->
 
 	
 ![](/blog/img/team/image_preview (3).jpg)
+
+
 
 
 Website: www.phorminx.de/ben_fabian.html

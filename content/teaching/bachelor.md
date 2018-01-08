@@ -3,10 +3,12 @@ title = "Bachelor's Courses"
 description = "Courses offers"
 keywords = ["Teaching","course"]
 banner = "img/banners/hu-logo.jpg"
+weight = 1
 +++
 
-
+<!--more-->
 ###  Following courses are offered for bachelor students:
+
  
 | Modul |  Compulsory / Non-compulsory       | Format | Credit Points | Term  |
 | :-------------: | :-------------: | :-----: | :-----: | :-----:|

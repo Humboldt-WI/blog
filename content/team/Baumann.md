@@ -6,7 +6,7 @@ banner = "img/team/baumann.jpg"
 weight = 3
 +++
 
-
+<!--more-->
 
 ![jpg](/blog/img/team/baumann.jpg)
  
@@ -14,7 +14,7 @@ weight = 3
 https://www.linkedin.com/in/annika-baumann-61b51b75/
 
 https://www.researchgate.net/profile/Annika_Baumann2
- 
+
  
 Annika Baumann, M.Sc., studied the Master in Information Systems at the Humboldt University in Berlin. Since June 2013 she works as a researcher at the Institute of information systems at the Humboldt University in Berlin. As part of her master's thesis she investigated the robustness of the Internet graph based on a current dataset. In the course of her PhD she investigates the Internet topology, the readability of privacy policies as well as the social news aggregator Reddit.
  

@@ -5,7 +5,9 @@ date = 2017-01-01
 banner = "img/team/image_preview2.png"
 weight = 4
 +++
-	
+<!--more-->	
+
+
 ![bujarek](/blog/img/team/image_preview2.png)
 
 
@@ -13,6 +15,8 @@ weight = 4
 Anna-Lena Bujarek
  
 Mrs. Bujarek is the secretary of our chair and does this and that ... 
+
+
 
 ###  Contact
  
