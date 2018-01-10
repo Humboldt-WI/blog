@@ -156,7 +156,7 @@ paginate = 10
     title = "Chair of Information Systems"
     subtitle = "Find more information about us"
     link_url = "https://www.wiwi.hu-berlin.de/en/professuren/quantitativ/wi"
-    link_text = "Official Homepages"
+    link_text = "Official Homepage"
 
 [params.clients]
     enable = false
