@@ -62,6 +62,14 @@
                                      {{ end }}</p>
 
                                     
+                                    
+                                    <p class="read-more">
+                                      {{ if .Description  }}
+                                      
+                                      {{ else }}
+                                      <a href="{{ .Permalink }}" class="btn btn-template-main">{{ i18n "continueReading" }}</a>
+                                      {{ end }}</p>
+                                    
                                 </div>
                             </div>
                         </section>
