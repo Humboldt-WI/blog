@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://wisample.github.io/blog/research/</link>
+    <description>Recent content in Blog on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2017, Chari of Information System at HU-Berlin; all rights reserved.</copyright>
+    <lastBuildDate>Sun, 07 Jan 2018 00:00:00 +0100</lastBuildDate>
+    
+	<atom:link href="https://wisample.github.io/blog/research/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dissertation Test2</title>
+      <link>https://wisample.github.io/blog/research/dissertation/post3/</link>
+      <pubDate>Sun, 07 Jan 2018 00:00:00 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/research/dissertation/post3/</guid>
+      <description>Good</description>
+    </item>
+    
+    <item>
+      <title>Dissertation Test</title>
+      <link>https://wisample.github.io/blog/research/dissertation/post2/</link>
+      <pubDate>Thu, 14 Dec 2017 00:26:17 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/research/dissertation/post2/</guid>
+      <description>Good</description>
+    </item>
+    
+    <item>
+      <title>A Jupyter Notebook Example Post</title>
+      <link>https://wisample.github.io/blog/research/seminar/chapter--23/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/research/seminar/chapter--23/</guid>
+      <description>&lt;p&gt;This is an example of a jupyter notebook to give you an idea of how your blog post could look like.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>A Jupyter Notebook Example Post2</title>
+      <link>https://wisample.github.io/blog/research/seminar/chapter--2/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/research/seminar/chapter--2/</guid>
+      <description>&lt;p&gt;This is an example of a jupyter notebook to give you an idea of how your blog post could look like.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>New Reasearch Findings</title>
+      <link>https://wisample.github.io/blog/research/researchfindings/chapter2/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/research/researchfindings/chapter2/</guid>
+      <description>Reasearch Test page</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://wisample.github.io/blog/research/researchfindings/publications/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/research/researchfindings/publications/</guid>
+      <description>Test</description>
+    </item>
+    
+    <item>
+      <title>Completed Projects</title>
+      <link>https://wisample.github.io/blog/research/researchfindings/completedprojects/</link>
+      <pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/research/researchfindings/completedprojects/</guid>
+      <description>Test</description>
+    </item>
+    
+  </channel>
+</rss>
