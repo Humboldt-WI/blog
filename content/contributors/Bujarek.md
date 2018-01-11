@@ -4,6 +4,7 @@ description = "Office - Chair of Information Systems"
 date = 2017-01-01
 banner = "img/team/image_preview2.png"
 weight = 4
+keywords = "Member"
 +++
 <!--more-->	
 

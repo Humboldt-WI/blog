@@ -4,6 +4,7 @@ description = "Student Assistant - Chair of Information Systems"
 date = 2017-01-01
 banner = "img/team/image_preview (4).jpg"
 weight = 6
+keywords = "Member"
 +++
 
 <!--more-->

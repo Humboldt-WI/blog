@@ -3,6 +3,7 @@ title = "Elizaveta Zinovyeva"
 description = ""
 date = 2017-01-01
 banner = "img/team/image_preview (5).jpg"
+keywords = "Member"
 +++
 
 <!--more-->
