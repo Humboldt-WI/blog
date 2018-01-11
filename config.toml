@@ -29,16 +29,11 @@ paginate = 10
     weight = 2
 
 [[menu.main]]
-    name = "Team"
-    identifier = "/team/"
-    url  = "/team/"
+    name = "Contributors"
+    identifier = "/contributors/"
+    url  = "/contributors/"
     weight = 3
 
-[[menu.main]]
-    name = "Teaching"
-    identifier = "/teaching/"
-    url  = "/teaching/"
-    weight = 4
 		
 [[menu.main]]
     name = "research"
