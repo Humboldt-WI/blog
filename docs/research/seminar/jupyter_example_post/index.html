@@ -6,7 +6,7 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blockchian</title>
+  <title>A Jupyter Notebook Example Post</title>
   <meta name="author" content="" />
 
   
@@ -56,9 +56,9 @@
   <link rel="alternate" href="https://wisample.github.io/index.xml" type="application/rss+xml" title="Institute of Infomation Systems at HU-Berlin">
 
   
-  <meta property="og:title" content="Blockchian" />
+  <meta property="og:title" content="A Jupyter Notebook Example Post" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/tags/blockchian//" />
+  <meta property="og:url" content="/blog/research/seminar/jupyter_example_post//" />
   <meta property="og:image" content="img/Logo.png" />
 
 </head>
@@ -77,9 +77,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="https://wisample.github.io/blog/">
-                    <img src="https://wisample.github.io/blog/img/logo.png" alt="Blockchian logo" class="hidden-xs hidden-sm">
-                    <img src="https://wisample.github.io/blog/img/logo-small.png" alt="Blockchian logo" class="visible-xs visible-sm">
-                    <span class="sr-only">Blockchian - go to homepage</span>
+                    <img src="https://wisample.github.io/blog/img/logo.png" alt="A Jupyter Notebook Example Post logo" class="hidden-xs hidden-sm">
+                    <img src="https://wisample.github.io/blog/img/logo-small.png" alt="A Jupyter Notebook Example Post logo" class="visible-xs visible-sm">
+                    <span class="sr-only">A Jupyter Notebook Example Post - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -158,7 +158,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Blockchian</h1>
+                <h1>A Jupyter Notebook Example Post</h1>
             </div>
         </div>
     </div>
@@ -167,57 +167,89 @@
 
         <div id="content">
             <div class="container">
+
                 <div class="row">
+
                     
 
-                    <div class="col-md-9" id="blog-listing-medium">
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">By <a href="#">David</a> | December 12, 2017</p>
+
+                        <div id="post-content">
+                          <p>This is an example of a jupyter notebook to give you an idea of how your blog post could look like.</p>
+
+<p></p>
+
+<h2 id="python-analysis-i">Python Analysis I</h2>
+
+<pre><code class="language-python"># %load std_ipython_import.txt
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pymc3 as pm
+
+</code></pre>
+
+<h4 id="model">Model</h4>
+
+<pre><code class="language-python"># Using the Theano @as_op decorator with a custom function to calculate the threshold probabilities.
+# Theano cannot compute a gradient for these custom functions, so it is not possible to use
+# gradient based samplers in PyMC3.
+# http://pymc-devs.github.io/pymc3/notebooks/getting_started.html#Arbitrary-deterministics
+@as_op(itypes=[tt.dvector, tt.dscalar, tt.dscalar], otypes=[tt.dvector])
+def outcome_probabilities(theta, mu, sigma):
+    out = np.empty(nYlevels)
+    n = norm(loc=mu, scale=sigma)       
+    out[0] = n.cdf(theta[0])        
+    out[1] = np.max([0, n.cdf(theta[1]) - n.cdf(theta[0])])
+    out[2] = np.max([0, n.cdf(theta[2]) - n.cdf(theta[1])])
+    out[3] = np.max([0, n.cdf(theta[3]) - n.cdf(theta[2])])
+    out[4] = np.max([0, n.cdf(theta[4]) - n.cdf(theta[3])])
+    out[5] = np.max([0, n.cdf(theta[5]) - n.cdf(theta[4])])
+    out[6] = 1 - n.cdf(theta[5])
+    return out
+
+with pm.Model() as ordinal_model_single:    
+    
+    theta = pm.Normal('theta', mu=thresh, tau=np.repeat(.5**2, len(thresh)),
+                      shape=len(thresh), observed=thresh_obs, testval=thresh[1:-1])
+    
+    mu = pm.Normal('mu', mu=nYlevels/2.0, tau=1.0/(nYlevels**2))
+    sigma = pm.Uniform('sigma', nYlevels/1000.0, nYlevels*10.0)
+    
+    pr = outcome_probabilities(theta, mu, sigma)
+    
+    y = pm.Categorical('y', pr, observed=df.Y.cat.codes.as_matrix())
+</code></pre>
+
+<pre><code class="language-python">with ordinal_model_single:
+    step = pm.Metropolis([theta, mu, sigma, pr, y])
+    trace1 = pm.sample(10000, step)
+</code></pre>
+
+<pre><code>100%|██████████| 10500/10500 [02:22&lt;00:00, 73.63it/s]
+</code></pre>
+
+<pre><code class="language-python">pm.traceplot(trace1);
+</code></pre>
+
+<p>An alternative way is to post the jupyter notebook on Gist.</p>
+
+<script src="https://gist.github.com/HsueanL/fe837b828a814f70967e9dd485912d67.js"></script>
+
+<p>Besides demonstrating code, it makes sense to show the reader plots and outputs.</p>
+
+<p><img src="/blog/img/chapter23/output_11_0.png" alt="png" /></p>
+
+<p>Additionally it is possible to directly try some changes of the code in the following window. Try to change the colors for example&hellip;</p>
+
+<iframe src="https://trinket.io/embed/python/54701dff53" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+                        </div>
                         
                         
-                        <section class="post">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  <div class="image">
-                                      <a href="https://wisample.github.io/blog/news/bcn4/">
-                                          
-                                          <img src="https://wisample.github.io/blog/img/banners/hu-logo.jpg" class="img-responsive" alt="">
-                                          
-                                      </a>
-                                  </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h2><a href="https://wisample.github.io/blog/news/bcn4/">Blockchain Nights</a></h2>
-                                    <div class="clearfix">
-                                        <p class="author-category">
-                                          
-                                          
 
-                                        </p>
-                                        <p class="date-comments">
-                                            <a href="https://wisample.github.io/blog/news/bcn4/"><i class="fa fa-calendar-o"></i> December 21, 2017</a>
-                                        </p>
-                                    </div>
-                                    <p class="intro">
-                                     
-                                     18.01 Blockchain Nights #4
-
-
-                                     </p>
-
-                                    
-                                </div>
-                            </div>
-                        </section>
-                        
-
-                        <ul class="pager">
-                            
-                            <li class="previous disabled"><a href="#">&larr; Newer</a></li>
-                            
-
-                            
-                            <li class="next disabled"><a href="#">Older &rarr;</a></li>
-                            
-                        </ul>
                     </div>
                     
 
@@ -323,6 +355,7 @@
 
                 </div>
                 
+
             </div>
             
         </div>
