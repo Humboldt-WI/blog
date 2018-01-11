@@ -6,7 +6,6 @@ banner = "img/team/baumann.jpg"
 weight = 3
 +++
 
-<!--more-->
 
 ![jpg](/blog/img/team/baumann.jpg)
  
