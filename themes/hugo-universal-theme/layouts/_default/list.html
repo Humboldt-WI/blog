@@ -55,11 +55,6 @@
                                         </p>
                                     </div>
                                     <p class="intro">{{ .Summary }}</p>
-                                    {{ if .Description }}
-                                    {{ .Description }}
-                                    {{ else }}
-                                    {{ .Summary | plainify | safeHTML }}
-                                    {{ end }}</p>
                                     <p class="read-more"><a href="{{ .Permalink }}" class="btn btn-template-main">{{ i18n "continueReading" }}</a>
                                     </p>
                                 </div>

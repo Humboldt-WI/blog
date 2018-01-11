@@ -36,9 +36,9 @@ paginate = 10
 
 		
 [[menu.main]]
-    name = "research"
-    identifier = "/research/"
-    url  = "/research/"
+    name = "blog"
+    identifier = "/blog/"
+    url  = "/blog/"
     weight = 6
 
 [[menu.main]]
