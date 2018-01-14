@@ -6,10 +6,8 @@ banner = "img/team/image_preview.png"
 weight = 1
 keywords = "Member"
 +++
-<!--more-->
 
-
-![prof](/blog/img/team/image_preview.png)
+<img align="right">![prof](/blog/img/team/image_preview.png)
 
 
 

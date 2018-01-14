@@ -8,10 +8,7 @@ keywords = "Member"
 +++
 
 
-<!--more-->
-
-
-![](/blog/img/team/image_preview (2).jpg)
+<img align="right">![](/blog/img/team/image_preview (2).jpg)
 
 
 
