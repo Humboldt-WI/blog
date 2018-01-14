@@ -12,7 +12,7 @@ disqusShortname = ""
 googleAnalytics = "UA-112025566-1"
 
 # Define the number of posts per page
-paginate = 5
+paginate = 10
 
 [menu]
 
