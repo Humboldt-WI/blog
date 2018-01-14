@@ -164,5 +164,5 @@ paginate = 10
 
 [params.recent_posts]
     enable = true
-    title = "Research Findings"
+    title = "Recent from our Chair"
     subtitle = "" #Here are recent research findings from our institute.
