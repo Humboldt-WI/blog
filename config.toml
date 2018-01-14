@@ -12,7 +12,7 @@ disqusShortname = ""
 googleAnalytics = "UA-112025566-1"
 
 # Define the number of posts per page
-paginate = 10
+paginate = 5
 
 [menu]
 
@@ -34,7 +34,7 @@ paginate = 10
     url  = "/contributors/"
     weight = 3
 
-		
+
 [[menu.main]]
     name = "research"
     identifier = "/research/"
@@ -46,7 +46,7 @@ paginate = 10
     identifier = "/contact/"
     url  = "/contact/"
     weight = 7
-	
+
 # Top bar social links menu
 
 [[menu.topbar]]
@@ -76,8 +76,8 @@ paginate = 10
 	#latitude = "52.521166"
     #longitude = "13.402748"
 	#direction = "Wirtschaftswissenschaftliche Fakultät, Spandauer Str. 1, 10178 Berlin"
-	
-	
+
+
     # Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
     style = "blue"
 
@@ -111,7 +111,7 @@ paginate = 10
         <br><strong>Germany</strong>
       </p>
       """
-    
+
 
 [Permalinks]
     blog = "/blog/:year/:month/:day/:filename/"
@@ -166,4 +166,3 @@ paginate = 10
     enable = true
     title = "Research Findings"
     subtitle = "" #Here are recent research findings from our institute.
-	

@@ -15,8 +15,8 @@ keywords = "Member"
 
 Stefan received a diploma in business administration and a PhD from the University of Hamburg in 2002 and 2007, respectively. Stefan worked as a lecturer and senior lecture in business informatics at the Institute of Information Systems of the University of Hamburg. Since 2008, Stefan is a guest lecturer at the School of Management of University of Southampton, where he teaches under- and postgraduate courses on quantitative methods, electronic business, and web application development. Stefan completed his habilitation in the area of predictive analytics in 2012. In 2014, Stefan joined the Humboldt-University of Berlin, where he heads the Chair of Information Systems at the School of Business and Economics. Stefan published several papers in leading international journals and conferences, including the European Journal of Operational Research, the IEEE Transactions of Software Engineering, and the International Conference on Information Systems. He actively participates in knowledge transfer and consulting projects with industry partners; from small start-up companies to global players.
 
- 	
-	
+
+
 https://scholar.google.com/citations?user=k71Ji-YAAAAJ
 
 https://www.researchgate.net/profile/Stefan_Lessmann
@@ -25,7 +25,7 @@ https://www.linkedin.com/in/stefanlessmann/
 
 https://www.xing.com/profile/Stefan_Lessmann
 
-## Reseach Interests 
+## Reseach Interests
 
 Stefan’s work focuses on the analysis and support managerial decision making. Much of his research is concerned with the development, application, and validation of empirical prediction models. The degree to which such models actually support managers and how to improve their alignment with managers’ requirements represent typical research questions.
 
@@ -66,8 +66,8 @@ Selected publications (complete list of publications à link auf Seite mit allen
 
 #### Governmentally funded research
 
-####   2014 
- 
+####   2014
+
 - Managing Efficiency in High Risk Environments: Andalusian Regional Government for Excellence Research Project Initiative  (Excellence Project P12-SEJ-1933); 25.300 €
 
 ####   2013
@@ -78,7 +78,7 @@ Selected publications (complete list of publications à link auf Seite mit allen
 (Knowledge Transfer Partnership Project: KTP8952); 148.500 £
 
 #### 2012
- 
+
 - Modelling and prediction of spread-trader and contract for difference trader risk: Technology Strategy Board and Star Financial Systems Ltd. (Knowledge Transfer Partnership Project: SKTP1000767); 59.450 £
 
 #### 2011
@@ -95,7 +95,7 @@ Selected publications (complete list of publications à link auf Seite mit allen
 
 - Travel Grants: Various travel grants from universities and other academic institutions to support conference attendance, research exchanges or summer schools.; ~15.000 €
 
- 
+
 
 #### Corporate research projects and knowledge transfer
 
@@ -132,14 +132,14 @@ Selected publications (complete list of publications à link auf Seite mit allen
 	- Strategy development to enhance the client’s marketing policy and increase marketing ROI
 
 #### 2009 - 2010
-	
+
 - Demand Planning in Maritime Logistics
 
 	Customer: leading international logistic services company
 
 	- Contracted joint research project with the Centre for Forecasting, Lancaster Business School and RSG Software GmbH aiming at:
 
-	- Devise a classification of demand time series,	
+	- Devise a classification of demand time series,
 
 	- Develop statistical and computational-intelligence-based forecasting models for individual time series categories,
 
@@ -154,7 +154,7 @@ Selected publications (complete list of publications à link auf Seite mit allen
 	- Contracted research aiming at:
 
 	- Assess in-house decision support models resulting from tree-based algorithms in SPSS Clementine,
- 
+
 	- Explore the potential of artificial neural networks and support vector machines to increase predictive accuracy in subscription cross-selling,
 
 	- Examine the impact of data pre-processing procedures on prediction models and develop optimal data encoding schemes.
@@ -171,7 +171,7 @@ Editorships
 
 - R. Stahlbock, S.F. Crone, S. Lessmann (Eds.). Proceedings of International Conference on Data Mining (DMIN). CSREA Press: Las Vegas (2006, 2007, 2008, 2009)
 
-- Chairman, program committee member, track/session organizer of international conference 
+- Chairman, program committee member, track/session organizer of international conference
 
 - The 6th International Conference on Ambient Systems, Networks and Technologies (ANT’15)
 
@@ -199,6 +199,3 @@ Editorships
 	Email: stefan.lessmann[at]hu-berlin.de
 	Office Hours: By Appointment
 	Room: SPA1, 327
-
-	
-	

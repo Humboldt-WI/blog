@@ -3,38 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://wisample.github.io/blog/contributors/lessmann/</loc>
+    <loc>https://wisample.github.io/blog/member/lessmann/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/contributors/haupt/</loc>
+    <loc>https://wisample.github.io/blog/member/haupt/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/contributors/baumann/</loc>
+    <loc>https://wisample.github.io/blog/member/baumann/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/contributors/bujarek/</loc>
-    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/contributors/fabian/</loc>
-    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/contributors/matic/</loc>
-    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/contributors/baumanne/</loc>
-    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+    <loc>https://wisample.github.io/blog/news/bcn5/</loc>
+    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -78,18 +63,13 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/contributors/zinovyeva/</loc>
-    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wisample.github.io/blog/contributors/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://wisample.github.io/blog/tags/blockchian/</loc>
-    <lastmod>2017-12-21T00:00:00+00:00</lastmod>
+    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -132,6 +112,12 @@
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/member/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/tags/neural-network/</loc>
     <lastmod>2017-12-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -151,7 +137,7 @@
   
   <url>
     <loc>https://wisample.github.io/blog/tags/</loc>
-    <lastmod>2017-12-21T00:00:00+00:00</lastmod>
+    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
