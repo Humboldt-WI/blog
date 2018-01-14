@@ -4,9 +4,9 @@ feedback:
 - change team to contributors ✅ 
 - make the blog dynamically (wait for the official account of lessmann)
 - change blog to research ✅ 
-XL- use high resolution picture of the "humboldt-universität zu berlin" header
+- use high resolution picture of the "humboldt-universität zu berlin" header
 - change team to contributors and one contributor for the whole class of ws 17/18
-XL- smaller icons and pictures
+- smaller icons and pictures
 - event section (either together with news section or independent)
 
 
