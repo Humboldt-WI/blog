@@ -8,15 +8,11 @@ keywords = "Member"
 +++
 
 
-<img align="right" src="https://www.wiwi.hu-berlin.de/de/professuren/quantitativ/wi/personen/annika-baumann/dsc_3226.jpg/image_preview">
+<img align="right" src="/blog/img/team/baumann.jpeg">
 
+## Short-bio
 Annika Baumann, M.Sc., studied the Master in Information Systems at the Humboldt University in Berlin. Since June 2013 she works as a researcher at the Institute of information systems at the Humboldt University in Berlin. As part of her master's thesis she investigated the robustness of the Internet graph based on a current dataset. In the course of her PhD she investigates the Internet topology, the readability of privacy policies as well as the social news aggregator Reddit.
 <br/>
-
-
-https://www.linkedin.com/in/annika-baumann-61b51b75/
-
-https://www.researchgate.net/profile/Annika_Baumann2
 
 
 ### Reseach Interests
@@ -29,7 +25,8 @@ https://www.researchgate.net/profile/Annika_Baumann2
 
 - Analysis of social networks
 
-
+### Social Media
+[<img width = "120" height = "30" src = /blog/img/sign/linkedin.png >](https://www.linkedin.com/in/annika-baumann-61b51b75/) [<img width = "150" height = "30" src = /blog/img/sign/researchgate.png >](https://www.researchgate.net/profile/Annika_Baumann2)
 
 
 ## Publications

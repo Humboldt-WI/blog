@@ -7,14 +7,15 @@ weight = 2
 keywords = "Member"
 +++
 
+<img align = "right" src = "/blog/img/team/haupt.jpg" >
 
-<img align="right">![](/blog/img/team/image_preview (2).jpg)
-
-
+## Short-bio
 
 Since April 2016, he has been working as a researcher at the Chair of Information Systems of the Business and Economics department. He implemented a machine learning framework to detect tracking objects in e-mails as part of his master's thesis. In the course of his PhD, he researches applications for machine learning in e-commerce and unstructured data
 
-https://www.researchgate.net/profile/Johannes_Haupt
+
+[<img width = "150" height = "30" src = /blog/img/sign/researchgate.png >](https://www.researchgate.net/profile/Johannes_Haupt)
+
 
 ## Research Interests
 

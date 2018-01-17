@@ -7,21 +7,10 @@ weight = 1
 keywords = "Member"
 +++
 
-<img align="right">![prof](/blog/img/team/image_preview.png)
+<img align="right" src="/blog/img/team/lessmann.png">
 
-
-
+## Short-bio
 Stefan received a diploma in business administration and a PhD from the University of Hamburg in 2002 and 2007, respectively. Stefan worked as a lecturer and senior lecture in business informatics at the Institute of Information Systems of the University of Hamburg. Since 2008, Stefan is a guest lecturer at the School of Management of University of Southampton, where he teaches under- and postgraduate courses on quantitative methods, electronic business, and web application development. Stefan completed his habilitation in the area of predictive analytics in 2012. In 2014, Stefan joined the Humboldt-University of Berlin, where he heads the Chair of Information Systems at the School of Business and Economics. Stefan published several papers in leading international journals and conferences, including the European Journal of Operational Research, the IEEE Transactions of Software Engineering, and the International Conference on Information Systems. He actively participates in knowledge transfer and consulting projects with industry partners; from small start-up companies to global players.
-
-
-
-https://scholar.google.com/citations?user=k71Ji-YAAAAJ
-
-https://www.researchgate.net/profile/Stefan_Lessmann
-
-https://www.linkedin.com/in/stefanlessmann/
-
-https://www.xing.com/profile/Stefan_Lessmann
 
 ## Reseach Interests
 
@@ -44,6 +33,9 @@ Topics of interest include, for example:
 - Sentiment and social network analysis
 
 - Time series forecasting (e.g., in finance or demand planning) with recurrent neural networks and other machine learning methods
+
+### Social Media
+[<img width = "76" height = "30" src = /blog/img/sign/Google_Scholar_logo.png >](https://scholar.google.com/citations?user=k71Ji-YAAAAJ)  [<img width = "120" height = "30" src = /blog/img/sign/linkedin.png >](https://www.linkedin.com/in/stefanlessmann/) [<img width = "150" height = "30" src = /blog/img/sign/researchgate.png >](https://www.researchgate.net/profile/Stefan_Lessmann)
 
 ## Publications
 

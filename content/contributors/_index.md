@@ -4,15 +4,19 @@ title = "Meet the Contributors"
 date = 2017-01-01
 +++
 
-[<img align="right" width="336" height="225" src="https://www.wiwi.hu-berlin.de/de/professuren/quantitativ/wi/personen/hl/stefan-lessmann_2014.jpg/image_preview">](https://wisample.github.io/blog/member/lessmann/)
+[<img align="right" width="336" height="225" src="/blog/img/team/lessmann.png">](https://wisample.github.io/blog/member/lessmann/)
 
 
 ### [Prof. Dr. Stefan Lessmann](https://wisample.github.io/blog/member/lessmann/)
 
-- Telephone: +49 30 2093-5742
-- Email: stefan.lessmann[at]hu-berlin.de
-- Office Hours: By Appointment
-- Room: SPA1, 327
+- Artificial neural networks, deep learning
+- Big Data Analytics
+- Credit risk modeling
+- Ensemble models and forecast combination
+- Marketing and E-Commerce analytics
+- Non-standard paradigms to learn from data
+- Sentiment and social network analysis
+- Time series forecasting
 <br />
 <br />
 <br />
@@ -22,15 +26,16 @@ date = 2017-01-01
 
 ------
 
-[<img align="right" width="215" height="300" src="https://www.wiwi.hu-berlin.de/de/professuren/quantitativ/wi/personen/annika-baumann/dsc_3226.jpg/image_preview">](https://wisample.github.io/blog/member/baumann/)
+[<img align="right" width="215" height="300" src="/blog/img/team/baumann.jpeg">](https://wisample.github.io/blog/member/baumann/)
 
 
 ### [Annika Baumann, M.Sc.](https://wisample.github.io/blog/member/baumann/)
 
-- Telephone: +49 30 2093-5740
-- Email: annika.baumann[at]wiwi.hu-berlin.de
-- Office Hours: By Appointment
-- Room: SPA1, 336
+
+- Internet topology
+- Graph Theory
+- Customer behavior in Ecommerce
+- Analysis of social networks
 <br />
 <br />
 <br />
@@ -42,14 +47,16 @@ date = 2017-01-01
 <br />
 
 -----
-[<img align="right" width="201" height="300" src="https://www.wiwi.hu-berlin.de/de/professuren/quantitativ/wi/personen/johannes-haupt/foto-johannes-haupt-2016.jpeg/image_preview">](https://wisample.github.io/blog/member/haupt/)
+[<img align="right" width="201" height="300" src="/blog/img/team/haupt.jpg">](https://wisample.github.io/blog/member/haupt/)
 
 ### [Johannes Haupt, M.Sc.](https://wisample.github.io/blog/member/haupt/)
 
-- Telephone: +49 30 2093-5662
-- Email: johannes.haupt[at]wiwi.hu-berlin.de
-- Office Hours: By Appointment
-- Room: SPA1, 335
+
+- Customer behavior in e-Commerce
+- Recommendation Engines
+- Text analytics
+- Image analytics
+- Deep learning
 <br />
 <br />
 <br />
