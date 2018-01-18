@@ -1,14 +1,13 @@
 +++
-title = "A Static Jupyter Notebook Example"
+title = "A Jupyter Notebook Example Post"
 date = '2017-12-12'
 tags = ["Blogging"]
 categories = ["Seminar"]
-banner = "img/banners/deepLearningKlein.png"
-author = "Class of Winter Term 2017 / 2018"
-disqusShortname = "https-wisample-github-io-blog"
+banner = "/img/banners/hu-logo.jpg"
+author = "David"
 +++
 
-### This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
+This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
 
 <!--more-->
 
@@ -84,9 +83,6 @@ Besides demonstrating code, it makes sense to show the reader plots and outputs.
 ![png](/blog/img/chapter23/output_11_0.png)
 
 
-<<<<<<< HEAD:content/research/seminar/Jupyter_example_post.md
 Additionally it is possible to directly try some changes of the code in the following window. Try to change the colors for example...
 
 <iframe src="https://trinket.io/embed/python/54701dff53" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-=======
->>>>>>> b5543fca3499cda23d8f073a627413ce3f067059:content/research/seminar/StaticJupyter_example_post.md

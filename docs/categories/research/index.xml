@@ -13,6 +13,7 @@
     
     
     <item>
+<<<<<<< HEAD
       <title>A Static Jupyter Notebook Example</title>
       <link>https://wisample.github.io/blog/research/seminar/staticjupyter_example_post/</link>
       <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
@@ -32,6 +33,14 @@
       <description>&lt;p&gt;This is an example of a jupyter notebook to give you an idea of how your blog post could look like.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
+=======
+      <title>A dynamic Jupyter Notebook Example</title>
+      <link>https://wisample.github.io/blog/research/seminar/dynamicjupyter_example_post/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/research/seminar/dynamicjupyter_example_post/</guid>
+      <description> This is an example of a jupyter notebook to give you an idea of how your blog post could look like.  </description>
+>>>>>>> origin/master
     </item>
     
   </channel>

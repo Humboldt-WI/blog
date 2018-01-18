@@ -6,7 +6,11 @@
     <description>Recent content in News on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+<<<<<<< HEAD
     <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
+=======
+    <copyright>Copyright (c) 2017, Chari of Information System at HU-Berlin; all rights reserved.</copyright>
+>>>>>>> origin/master
     <lastBuildDate>Sun, 14 Jan 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wisample.github.io/blog/categories/news/index.xml" rel="self" type="application/rss+xml" />
