@@ -8,7 +8,7 @@ author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-wisample-github-io-blog"
 +++
 
-### This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
+This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
 
 <!--more-->
 
