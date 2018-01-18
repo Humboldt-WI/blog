@@ -1,11 +1,12 @@
 +++
 title = "Blockchain Nights"
 date = "2017-12-21"
-tags = ["blockchian"]
-banner = "img/banners/hu-logo.jpg"
+tags = ["blockchain"]
+categories = ["events"]
+banner = "img/banners/HuLogoKlein.jpg"
 +++
 
-18.01 Blockchain Nights #4 
+Blockchain Nights #4 is happening on 18.01.2018
 
 <!--more-->
 

@@ -5,6 +5,7 @@ tags = ["Neural Network"]
 categories = ["Research"]
 banner = "img/banners/hu-logo.jpg"
 author = "Chair of Information System"
+draft = true
 +++
 
 Reasearch Test page
