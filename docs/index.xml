@@ -6,7 +6,7 @@
     <description>Recent content on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 2017, Chari of Information System at HU-Berlin; all rights reserved.</copyright>
+    <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://wisample.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
@@ -86,11 +86,16 @@ Research Interests  Customer behavior in e-Commerce
     </item>
     
     <item>
+<<<<<<< HEAD
+      <title>A Static Jupyter Notebook Example</title>
+      <link>https://wisample.github.io/blog/research/seminar/staticjupyter_example_post/</link>
+=======
       <title>A Jupyter Notebook Example Post</title>
       <link>https://wisample.github.io/blog/research/seminar/jupyter_example_post/</link>
+>>>>>>> origin/master
       <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/seminar/jupyter_example_post/</guid>
+      <guid>https://wisample.github.io/blog/research/seminar/staticjupyter_example_post/</guid>
       <description>&lt;p&gt;This is an example of a jupyter notebook to give you an idea of how your blog post could look like.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
@@ -102,7 +107,13 @@ Research Interests  Customer behavior in e-Commerce
       <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/research/seminar/dynamicjupyter_example_post/</guid>
+<<<<<<< HEAD
+      <description>&lt;p&gt;This is an example of a jupyter notebook to give you an idea of how your blog post could look like.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+=======
       <description> This is an example of a jupyter notebook to give you an idea of how your blog post could look like.  </description>
+>>>>>>> origin/master
     </item>
     
     <item>

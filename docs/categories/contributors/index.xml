@@ -6,7 +6,11 @@
     <description>Recent content in Contributors on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+<<<<<<< HEAD
+    <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
+=======
     <copyright>Copyright (c) 2017, Chari of Information System at HU-Berlin; all rights reserved.</copyright>
+>>>>>>> origin/master
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://wisample.github.io/blog/categories/contributors/index.xml" rel="self" type="application/rss+xml" />

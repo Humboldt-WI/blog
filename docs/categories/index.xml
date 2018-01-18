@@ -6,7 +6,7 @@
     <description>Recent content in Categories on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 2017, Chari of Information System at HU-Berlin; all rights reserved.</copyright>
+    <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
     
 	<atom:link href="https://wisample.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,6 +17,27 @@
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
       
       <guid>https://wisample.github.io/blog/categories/contributors/</guid>
+<<<<<<< HEAD
+=======
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Events</title>
+      <link>https://wisample.github.io/blog/categories/events/</link>
+      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/categories/events/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>News</title>
+      <link>https://wisample.github.io/blog/categories/news/</link>
+      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/categories/news/</guid>
+>>>>>>> origin/master
       <description></description>
     </item>
     
@@ -44,15 +65,6 @@
       <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/categories/research/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Seminar</title>
-      <link>https://wisample.github.io/blog/categories/seminar/</link>
-      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://wisample.github.io/blog/categories/seminar/</guid>
       <description></description>
     </item>
     
