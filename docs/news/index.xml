@@ -6,7 +6,7 @@
     <description>Recent content in news on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 2017, Chari of Information System at HU-Berlin; all rights reserved.</copyright>
+    <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
     <lastBuildDate>Thu, 14 Dec 2017 11:46:06 +0100</lastBuildDate>
     
 	<atom:link href="https://wisample.github.io/blog/news/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +18,19 @@
       <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/news/bcn5/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://www.blockchainnights.com&#34;&gt;22.02 Blockchain Nights #5&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p&gt;Save the date:
+&lt;a href=&#34;https://www.blockchainnights.com&#34;&gt;22.02 Blockchain Nights #5&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>New Courses for Summer Term 2018 online</title>
+      <link>https://wisample.github.io/blog/news/newcourseoutline/</link>
+      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/news/newcourseoutline/</guid>
+      <description>&lt;p&gt;Take a look at the new courses the Chair of Information Systems is offering!&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
@@ -29,7 +41,7 @@
       <pubDate>Thu, 21 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/news/bcn4/</guid>
-      <description>&lt;p&gt;18.01 Blockchain Nights #4&lt;/p&gt;
+      <description>&lt;p&gt;Blockchain Nights #4 is happening on 18.01.2018&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

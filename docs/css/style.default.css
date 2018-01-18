@@ -2019,7 +2019,7 @@ fieldset[disabled] .btn-template-primary.active {
 }
 #blog-listing-big .post .intro,
 #blog-homepage .post .intro {
-  text-align: left;
+  text-align: left; 
 }
 #blog-listing-big .post .image,
 #blog-homepage .post .image {
@@ -2031,7 +2031,8 @@ fieldset[disabled] .btn-template-primary.active {
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
-}
+  width: 100px; 
+} 
 @media (max-width: 767px) {
   #blog-listing-big .post .image img.img-responsive,
   #blog-homepage .post .image img.img-responsive {
@@ -2123,7 +2124,7 @@ fieldset[disabled] .btn-template-primary.active {
 #blog-listing-medium .post .image {
   margin-bottom: 10px;
   overflow: hidden;
-}
+} 
 #blog-listing-medium .post .image img {
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
@@ -2252,6 +2253,7 @@ fieldset[disabled] .btn-template-primary.active {
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
+  width: 100px;
 }
 @media (max-width: 767px) {
   .product .image img.img-responsive {

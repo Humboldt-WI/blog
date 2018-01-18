@@ -18,13 +18,18 @@
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/member/class1718/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/news/bcn5/</loc>
     <lastmod>2018-01-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/research/dissertation/post3/</loc>
-    <lastmod>2018-01-07T00:00:00+01:00</lastmod>
+    <loc>https://wisample.github.io/blog/news/newcourseoutline/</loc>
+    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -38,28 +43,13 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/research/dissertation/post2/</loc>
-    <lastmod>2017-12-14T00:26:17+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/research/seminar/jupyter_example_post/</loc>
+    <loc>https://wisample.github.io/blog/research/seminar/staticjupyter_example_post/</loc>
     <lastmod>2017-12-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/research/researchfindings/new_reasearch_findings/</loc>
+    <loc>https://wisample.github.io/blog/research/seminar/dynamicjupyter_example_post/</loc>
     <lastmod>2017-12-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/research/researchfindings/publications/</loc>
-    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/research/researchfindings/completedprojects/</loc>
-    <lastmod>2017-12-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -68,14 +58,14 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/tags/blockchian/</loc>
-    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
+    <loc>https://wisample.github.io/blog/tags/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/tags/blogging/</loc>
-    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+    <loc>https://wisample.github.io/blog/tags/blockchain/</loc>
+    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -85,12 +75,30 @@
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/tags/class17/18/</loc>
+    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/contact/</loc>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/categories/dissertation/</loc>
-    <lastmod>2018-01-07T00:00:00+01:00</lastmod>
+    <loc>https://wisample.github.io/blog/categories/contributors/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/tags/deep-learning/</loc>
+    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/categories/events/</loc>
+    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -101,26 +109,26 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/tags/machine-learning/</loc>
-    <lastmod>2018-01-07T00:00:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://wisample.github.io/blog/member/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/tags/neural-network/</loc>
+    <loc>https://wisample.github.io/blog/tags/neural-networks/</loc>
     <lastmod>2017-12-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/categories/news/</loc>
+    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/research/</loc>
-    <lastmod>2018-01-07T00:00:00+01:00</lastmod>
+    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -130,14 +138,8 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/categories/seminar/</loc>
-    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://wisample.github.io/blog/tags/</loc>
-    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
