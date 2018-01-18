@@ -1,8 +1,7 @@
-
 +++
 title = "Meet the Contributors"
 date = 2017-01-01
-
+Keywords = "member"
 +++
 
 [<img align="right" width="190" height="230" src="/blog/img/team/lessmannSchmal.png">](https://wisample.github.io/blog/member/lessmann/)
@@ -12,7 +11,7 @@ date = 2017-01-01
 ### [Prof. Dr. Stefan Lessmann](https://wisample.github.io/blog/member/lessmann/)
 
 Prof. Lessmann is the head of the chair Information Systems at the Humboldt University of Berlin.
-In cooperation with his team, he initiated this website in oder to present, inform and discuss latest research results. 
+In cooperation with his team, he initiated this website in oder to present, inform and discuss latest research results.
 In research, he is most active in:
 
 - Artificial neural networks, deep learning
@@ -25,7 +24,7 @@ In research, he is most active in:
 - Time series forecasting
 
 
- 
+
 ------
 
 [<img align="right" width="174" height="245" src="/blog/img/team/baumann.jpeg">](https://wisample.github.io/blog/member/baumann/)
@@ -68,21 +67,21 @@ he invests his time and energy in the follwing areas:
 
 -----
 
-[<img align="right" width="190" height="230" src="/blog/img/team/class1718draft.jpg">](https://wisample.github.io/blog/member/baumann/)
+[<img align="right" width="190" height="230" src="/blog/img/team/class1718draft.jpg">](https://wisample.github.io/blog/member/class1718/)
 
 
-### [Class of Winter Term 17 / 18](https://wisample.github.io/blog/member/baumann/)
+### [Class of Winter Term 17 / 18](https://wisample.github.io/blog/member/class1718/)
 
 The students of the Seminar Information Systems contributed to this website to great extend. Groups of Master students from Humboldt University with backgrounds
 in Business, Economics, Statistics or Computer Science worked on analytical topics and created blog posts, presenting exciting insights into the following topis:
 
-- Neural Networks and Convolutional Neural Networks 
-- Image Analysis 
+- Neural Networks and Convolutional Neural Networks
+- Image Analysis
 - Text Mining
 - Time Series Analysis
 - Survial Analysis
 - Image Captioning
-- Deep Learning and Recommender Systems 
+- Deep Learning and Recommender Systems
 
 
 <br />

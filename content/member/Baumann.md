@@ -2,11 +2,9 @@
 title = "Annika Baumann, M.Sc."
 description = "Her reseach interests include Internet topology, Graph Theory, Customer behavior in Ecommerce and Analysis of social networks"
 date = 2017-01-01
-banner = "img/team/baumann.jpg"
+banner = "img/team/baumann.jpeg"
 weight = 3
 keywords = "Member"
-tags = [""]
-categories = ["contributors"]
 +++
 
 

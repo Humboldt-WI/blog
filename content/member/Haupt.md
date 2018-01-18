@@ -2,11 +2,9 @@
 title = "Johannes Haupt, M.Sc."
 description = "As a Researcher at Chair of Information Systems, Johannes' research interests includes, Customer behavior in e-Commerce, Recommendation Engines, Text analytics,Image analytics ,and Deep learning"
 date = 2017-01-01
-banner = "img/team/image_preview (2).jpg"
+banner = "img/team/haupt.jpg"
 weight = 2
 keywords = "Member"
-tags = [""]
-categories = ["contributors"]
 +++
 
 <img align = "right" src = "/blog/img/team/haupt.jpg" >

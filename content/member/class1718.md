@@ -2,18 +2,16 @@
 title = "Class of 2017 / 2018 "
 description = ""
 date = 2017-01-01
-banner = "img/team/image_preview (3).jpg"
+banner = "img/team/class1718draft.jpg"
 weight = 5
 keywords = "Member"
 draft = false
-tags = [""]
-categories = ["contributors"]
 +++
 
 <!--more-->
 
 
-![](/blog/img/team/image_preview (3).jpg)
+![](/blog/img/team/class1718draft.jpg)
 
 
 

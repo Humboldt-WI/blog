@@ -2,11 +2,9 @@
 title = "Prof. Dr. Stefan Lessmann"
 description = "Prof. Dr. Lessmann’s work focuses on the analysis and support managerial decision making. Much of his research is concerned with the development, application, and validation of empirical prediction models."
 date = 2017-01-01
-banner = "img/team/image_preview.png"
+banner = "img/team/lessmann2.png"
 weight = 1
 keywords = "Member"
-tags = [""]
-categories = ["contributors"]
 +++
 
 <img align="right" src="/blog/img/team/lessmann.png">

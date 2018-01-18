@@ -1,8 +1,10 @@
 {{ if .Site.Params.widgets.categories }}
 {{ if isset .Site.Taxonomies "categories" }}
 {{ if not (eq (len .Site.Taxonomies.categories) 0) }}
-<div class="panel panel-default sidebar-menu">
+{{ if .Keywords }}
 
+{{else}}
+<div class="panel panel-default sidebar-menu">
     <div class="panel-heading">
       <h3 class="panel-title">{{ i18n "categoriesTitle" }}</h3>
     </div>
@@ -16,6 +18,7 @@
         </ul>
     </div>
 </div>
+{{ end }}
 {{ end }}
 {{ end }}
 {{ end }}
