@@ -6,7 +6,7 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>New Reasearch Findings</title>
+  <title>A Static Jupyter Notebook Example</title>
   <meta name="author" content="" />
 
   
@@ -56,10 +56,10 @@
   <link rel="alternate" href="https://wisample.github.io/index.xml" type="application/rss+xml" title="Institute of Infomation Systems at HU-Berlin">
 
   
-  <meta property="og:title" content="New Reasearch Findings" />
+  <meta property="og:title" content="A Static Jupyter Notebook Example" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/research/researchfindings/new_reasearch_findings//" />
-  <meta property="og:image" content="img/Logo.png" />
+  <meta property="og:url" content="/blog/research/seminar/staticjupyter_example_post//" />
+  <meta property="og:image" content="img/logoGross.png" />
 
 </head>
 
@@ -77,9 +77,9 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand home" href="https://wisample.github.io/blog/">
-                    <img src="https://wisample.github.io/blog/img/logo.png" alt="New Reasearch Findings logo" class="hidden-xs hidden-sm">
-                    <img src="https://wisample.github.io/blog/img/logo-small.png" alt="New Reasearch Findings logo" class="visible-xs visible-sm">
-                    <span class="sr-only">New Reasearch Findings - go to homepage</span>
+                    <img src="https://wisample.github.io/blog/img/logo.png" alt="A Static Jupyter Notebook Example logo" class="hidden-xs hidden-sm">
+                    <img src="https://wisample.github.io/blog/img/logo-small.png" alt="A Static Jupyter Notebook Example logo" class="visible-xs visible-sm">
+                    <span class="sr-only">A Static Jupyter Notebook Example - go to homepage</span>
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -158,7 +158,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>New Reasearch Findings</h1>
+                <h1>A Static Jupyter Notebook Example</h1>
             </div>
         </div>
     </div>
@@ -174,11 +174,74 @@
 
                     <div class="col-md-9" id="blog-post">
 
-                        <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Chair of Information System</a> | December 12, 2017</p>
+                        <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Class of Winter Term 2017 / 2018</a> | December 12, 2017</p>
 
                         <div id="post-content">
-                          <p>Reasearch Test page</p>
+                          <p>This is an example of a jupyter notebook to give you an idea of how your blog post could look like.</p>
 
+<p></p>
+
+<h2 id="python-analysis-i">Python Analysis I</h2>
+
+<pre><code class="language-python"># %load std_ipython_import.txt
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pymc3 as pm
+
+</code></pre>
+
+<h4 id="model">Model</h4>
+
+<pre><code class="language-python"># Using the Theano @as_op decorator with a custom function to calculate the threshold probabilities.
+# Theano cannot compute a gradient for these custom functions, so it is not possible to use
+# gradient based samplers in PyMC3.
+# http://pymc-devs.github.io/pymc3/notebooks/getting_started.html#Arbitrary-deterministics
+@as_op(itypes=[tt.dvector, tt.dscalar, tt.dscalar], otypes=[tt.dvector])
+def outcome_probabilities(theta, mu, sigma):
+    out = np.empty(nYlevels)
+    n = norm(loc=mu, scale=sigma)       
+    out[0] = n.cdf(theta[0])        
+    out[1] = np.max([0, n.cdf(theta[1]) - n.cdf(theta[0])])
+    out[2] = np.max([0, n.cdf(theta[2]) - n.cdf(theta[1])])
+    out[3] = np.max([0, n.cdf(theta[3]) - n.cdf(theta[2])])
+    out[4] = np.max([0, n.cdf(theta[4]) - n.cdf(theta[3])])
+    out[5] = np.max([0, n.cdf(theta[5]) - n.cdf(theta[4])])
+    out[6] = 1 - n.cdf(theta[5])
+    return out
+
+with pm.Model() as ordinal_model_single:    
+    
+    theta = pm.Normal('theta', mu=thresh, tau=np.repeat(.5**2, len(thresh)),
+                      shape=len(thresh), observed=thresh_obs, testval=thresh[1:-1])
+    
+    mu = pm.Normal('mu', mu=nYlevels/2.0, tau=1.0/(nYlevels**2))
+    sigma = pm.Uniform('sigma', nYlevels/1000.0, nYlevels*10.0)
+    
+    pr = outcome_probabilities(theta, mu, sigma)
+    
+    y = pm.Categorical('y', pr, observed=df.Y.cat.codes.as_matrix())
+</code></pre>
+
+<pre><code class="language-python">with ordinal_model_single:
+    step = pm.Metropolis([theta, mu, sigma, pr, y])
+    trace1 = pm.sample(10000, step)
+</code></pre>
+
+<pre><code>100%|██████████| 10500/10500 [02:22&lt;00:00, 73.63it/s]
+</code></pre>
+
+<pre><code class="language-python">pm.traceplot(trace1);
+</code></pre>
+
+<p>An alternative way is to post the jupyter notebook on Gist.</p>
+
+<script src="https://gist.github.com/HsueanL/fe837b828a814f70967e9dd485912d67.js"></script>
+
+<p>Besides demonstrating code, it makes sense to show the reader plots and outputs.</p>
+
+<p><img src="/blog/img/chapter23/output_11_0.png" alt="png" /></p>
                         </div>
                         
                         
@@ -196,25 +259,6 @@
 
                         
 
-<div class="panel panel-default sidebar-menu">
-
-    <div class="panel-heading">
-      <h3 class="panel-title">Search</h3>
-    </div>
-
-    <div class="panel-body">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" role="search">
-            <div class="input-group">
-                <input type="search" name="q" class="form-control" placeholder="Search">
-                <input type="hidden" name="sitesearch" value="https://wisample.github.io/blog/">
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
-                </span>
-            </div>
-        </form>
-    </div>
-</div>
-
 
 
 
@@ -230,13 +274,16 @@
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
-            <li><a href="https://wisample.github.io/blog/categories/dissertation">dissertation (2)</a>
+            <li><a href="https://wisample.github.io/blog/categories/contributors">contributors (4)</a>
             </li>
             
-            <li><a href="https://wisample.github.io/blog/categories/research">research (3)</a>
+            <li><a href="https://wisample.github.io/blog/categories/events">events (2)</a>
             </li>
             
-            <li><a href="https://wisample.github.io/blog/categories/seminar">seminar (1)</a>
+            <li><a href="https://wisample.github.io/blog/categories/news">news (1)</a>
+            </li>
+            
+            <li><a href="https://wisample.github.io/blog/categories/research">research (4)</a>
             </li>
             
         </ul>
@@ -258,16 +305,22 @@
     <div class="panel-body">
         <ul class="tag-cloud">
             
-            <li><a href="https://wisample.github.io/blog/tags/blockchian"><i class="fa fa-tags"></i> blockchian</a>
+            <li><a href="https://wisample.github.io/blog/tags/"><i class="fa fa-tags"></i> </a>
             </li>
             
-            <li><a href="https://wisample.github.io/blog/tags/blogging"><i class="fa fa-tags"></i> blogging</a>
+            <li><a href="https://wisample.github.io/blog/tags/blockchain"><i class="fa fa-tags"></i> blockchain</a>
+            </li>
+            
+            <li><a href="https://wisample.github.io/blog/tags/class17/18"><i class="fa fa-tags"></i> class17/18</a>
+            </li>
+            
+            <li><a href="https://wisample.github.io/blog/tags/deep-learning"><i class="fa fa-tags"></i> deep-learning</a>
             </li>
             
             <li><a href="https://wisample.github.io/blog/tags/machine-learning"><i class="fa fa-tags"></i> machine-learning</a>
             </li>
             
-            <li><a href="https://wisample.github.io/blog/tags/neural-network"><i class="fa fa-tags"></i> neural-network</a>
+            <li><a href="https://wisample.github.io/blog/tags/neural-networks"><i class="fa fa-tags"></i> neural-networks</a>
             </li>
             
         </ul>
@@ -318,14 +371,14 @@
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
-                        <a href="https://wisample.github.io/blog/research/dissertation/post3/">
+                        <a href="https://wisample.github.io/blog/research/dissertation/textmining/">
                           
-                            <img src="https://wisample.github.io/blog/img/banners/hu-logo.jpg" class="img-responsive" alt="Dissertation Test2">
+                            <img src="https://wisample.github.io/blog/img/banners/textMininigKlein.png" class="img-responsive" alt="From A - Z: The complex world of text mining">
                           
                         </a>
                     </div>
                     <div class="name same-height-always">
-                        <h5><a href="https://wisample.github.io/blog/research/dissertation/post3/">Dissertation Test2</a></h5>
+                        <h5><a href="https://wisample.github.io/blog/research/dissertation/textmining/">From A - Z: The complex world of text mining</a></h5>
                     </div>
                 </div>
                 
@@ -333,25 +386,25 @@
                     <div class="image same-height-always">
                         <a href="https://wisample.github.io/blog/research/dissertation/post2/">
                           
-                            <img src="https://wisample.github.io/blog/img/banners/hu-logo.jpg" class="img-responsive" alt="Dissertation Test">
+                            <img src="https://wisample.github.io/blog/img/banners/imageCaptioningKlein.jpg" class="img-responsive" alt="How to capture images">
                           
                         </a>
                     </div>
                     <div class="name same-height-always">
-                        <h5><a href="https://wisample.github.io/blog/research/dissertation/post2/">Dissertation Test</a></h5>
+                        <h5><a href="https://wisample.github.io/blog/research/dissertation/post2/">How to capture images</a></h5>
                     </div>
                 </div>
                 
                 <div class="item same-height-row clearfix">
                     <div class="image same-height-always">
-                        <a href="https://wisample.github.io/blog/research/seminar/jupyter_example_post/">
+                        <a href="https://wisample.github.io/blog/research/seminar/staticjupyter_example_post/">
                           
-                            <img src="https://wisample.github.io/blog/img/chapter23/output_11_0.jpg" class="img-responsive" alt="A Jupyter Notebook Example Post">
+                            <img src="https://wisample.github.io/blog/img/banners/deepLearningKlein.png" class="img-responsive" alt="A Static Jupyter Notebook Example">
                           
                         </a>
                     </div>
                     <div class="name same-height-always">
-                        <h5><a href="https://wisample.github.io/blog/research/seminar/jupyter_example_post/">A Jupyter Notebook Example Post</a></h5>
+                        <h5><a href="https://wisample.github.io/blog/research/seminar/staticjupyter_example_post/">A Static Jupyter Notebook Example</a></h5>
                     </div>
                 </div>
                 
@@ -400,7 +453,7 @@
     <div class="container">
         <div class="col-md-12">
             
-            <p class="pull-left">Copyright (c) 2017, Chari of Information System at HU-Berlin; all rights reserved.</p>
+            <p class="pull-left">Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</p>
             
             <p class="pull-right">
               Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.

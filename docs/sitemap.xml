@@ -43,7 +43,17 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/research/seminar/jupyter_example_post/</loc>
+    <loc>https://wisample.github.io/blog/research/dissertation/textmining/</loc>
+    <lastmod>2017-12-14T00:26:17+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/research/dissertation/post2/</loc>
+    <lastmod>2017-12-14T00:26:17+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/research/seminar/staticjupyter_example_post/</loc>
     <lastmod>2017-12-12T00:00:00+00:00</lastmod>
   </url>
   
@@ -64,25 +74,19 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/tags/blochain/</loc>
+    <loc>https://wisample.github.io/blog/tags/blockchain/</loc>
     <lastmod>2018-01-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/tags/blockchain/</loc>
-    <lastmod>2017-12-21T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/tags/blogging/</loc>
-    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://wisample.github.io/blog/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/tags/class17/18/</loc>
+    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -115,6 +119,12 @@
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/tags/machine-learning/</loc>
+    <lastmod>2017-12-14T00:26:17+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/member/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
     <priority>0</priority>
@@ -134,18 +144,12 @@
   
   <url>
     <loc>https://wisample.github.io/blog/research/</loc>
-    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+    <lastmod>2017-12-14T00:26:17+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://wisample.github.io/blog/categories/research/</loc>
-    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/categories/seminar/</loc>
-    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+    <lastmod>2017-12-14T00:26:17+01:00</lastmod>
     <priority>0</priority>
   </url>
   

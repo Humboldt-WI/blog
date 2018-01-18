@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 2017, Chari of Information System at HU-Berlin; all rights reserved.</copyright>
+    <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://wisample.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -22,29 +22,20 @@
     </item>
     
     <item>
-      <title>Blochain</title>
-      <link>https://wisample.github.io/blog/tags/blochain/</link>
-      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wisample.github.io/blog/tags/blochain/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Blockchain</title>
       <link>https://wisample.github.io/blog/tags/blockchain/</link>
-      <pubDate>Thu, 21 Dec 2017 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/tags/blockchain/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Blogging</title>
-      <link>https://wisample.github.io/blog/tags/blogging/</link>
+      <title>Class17/18</title>
+      <link>https://wisample.github.io/blog/tags/class17/18/</link>
       <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/blogging/</guid>
+      <guid>https://wisample.github.io/blog/tags/class17/18/</guid>
       <description></description>
     </item>
     
@@ -54,6 +45,15 @@
       <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Machine Learning</title>
+      <link>https://wisample.github.io/blog/tags/machine-learning/</link>
+      <pubDate>Thu, 14 Dec 2017 00:26:17 +0100</pubDate>
+      
+      <guid>https://wisample.github.io/blog/tags/machine-learning/</guid>
       <description></description>
     </item>
     

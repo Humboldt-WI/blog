@@ -6,7 +6,7 @@
     <description>Recent content in Categories on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 2017, Chari of Information System at HU-Berlin; all rights reserved.</copyright>
+    <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
     
 	<atom:link href="https://wisample.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -41,18 +41,9 @@
     <item>
       <title>Research</title>
       <link>https://wisample.github.io/blog/categories/research/</link>
-      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 14 Dec 2017 00:26:17 +0100</pubDate>
       
       <guid>https://wisample.github.io/blog/categories/research/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Seminar</title>
-      <link>https://wisample.github.io/blog/categories/seminar/</link>
-      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://wisample.github.io/blog/categories/seminar/</guid>
       <description></description>
     </item>
     
