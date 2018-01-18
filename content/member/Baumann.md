@@ -5,6 +5,8 @@ date = 2017-01-01
 banner = "img/team/baumann.jpg"
 weight = 3
 keywords = "Member"
+tags = [""]
+categories = ["contributors"]
 +++
 
 

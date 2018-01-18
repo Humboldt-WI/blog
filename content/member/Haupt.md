@@ -5,6 +5,8 @@ date = 2017-01-01
 banner = "img/team/image_preview (2).jpg"
 weight = 2
 keywords = "Member"
+tags = [""]
+categories = ["contributors"]
 +++
 
 <img align = "right" src = "/blog/img/team/haupt.jpg" >

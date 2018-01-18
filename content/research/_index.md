@@ -1,6 +1,6 @@
 
 +++
 title = "RESEARCH"
-tags = []
-categories = []
+
+disqusShortname = "devcows"
 +++

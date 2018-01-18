@@ -3,6 +3,7 @@ title = "Contact Us"
 description = "Members"
 keywords = ["Contact"]
 id = "contact"
+
 +++
 
 
@@ -23,7 +24,7 @@ id = "contact"
 	
 	
 
-If you prefer mailing, see our address here:
+#### If you prefer mailing, see our address here:
 
 	Humboldt-University of Berlin
 	School of Business and Economics

@@ -1,10 +1,13 @@
 +++
 title = "Blockchain Nights #5"
 date = "2018-01-14"
-tags = ["blockchian"]
-banner = "img/banners/hu-logo.jpg"
+tags = ["blochain"]
+categories = ["events"]
+banner = "img/banners/blockchain.jpg"
+
 +++
 
+Save the date: 
 [22.02 Blockchain Nights #5](https://www.blockchainnights.com)
 
 <!--more-->

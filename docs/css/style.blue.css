@@ -2031,11 +2031,13 @@ fieldset[disabled] .btn-template-primary.active {
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
+  width: 100px;
 }
 @media (max-width: 767px) {
   #blog-listing-big .post .image img.img-responsive,
   #blog-homepage .post .image img.img-responsive {
     min-width: 100%;
+	width: 100px;
   }
 }
 #blog-listing-big .post .video,
@@ -2127,10 +2129,12 @@ fieldset[disabled] .btn-template-primary.active {
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
+  width: 100px;
 }
 @media (max-width: 767px) {
   #blog-listing-medium .post .image img.img-responsive {
     min-width: 100%;
+	width: 100px;
   }
 }
 #blog-listing-medium .post .video {
@@ -2249,10 +2253,12 @@ fieldset[disabled] .btn-template-primary.active {
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
+  width: 100px;
 }
 @media (max-width: 767px) {
   .product .image img.img-responsive {
     min-width: 100%;
+	width: 100px;
   }
 }
 .product .text {
