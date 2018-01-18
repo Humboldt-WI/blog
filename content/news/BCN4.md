@@ -3,7 +3,7 @@ title = "Blockchain Nights"
 date = "2017-12-21"
 tags = ["blockchain"]
 categories = ["events"]
-banner = "img/banners/HuLogoKlein.jpg"
+banner = "img/banners/blockchain_image.png"
 +++
 
 Blockchain Nights #4 is happening on 18.01.2018

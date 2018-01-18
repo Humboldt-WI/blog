@@ -15,7 +15,7 @@ disqusShortname = "https-wisample-github-io-blog"
 >>>>>>> b5543fca3499cda23d8f073a627413ce3f067059:content/research/seminar/StaticJupyter_example_post.md
 +++
 
-### This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
+This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
 
 <!--more-->
 
