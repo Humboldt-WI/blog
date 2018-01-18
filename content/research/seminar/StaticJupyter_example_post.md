@@ -1,21 +1,14 @@
 +++
 title = "A Static Jupyter Notebook Example"
 date = '2017-12-12'
-<<<<<<< HEAD:content/research/seminar/Jupyter_example_post.md
 tags = ["Blogging"]
 categories = ["Seminar"]
-banner = "/img/chapter23/output_11_0.png"
-author = "David"
-=======
-tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
-categories = ["research"]
 banner = "img/banners/deepLearningKlein.png"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-wisample-github-io-blog"
->>>>>>> b5543fca3499cda23d8f073a627413ce3f067059:content/research/seminar/StaticJupyter_example_post.md
 +++
 
-This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
+### This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
 
 <!--more-->
 
