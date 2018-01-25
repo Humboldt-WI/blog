@@ -2,6 +2,7 @@
 title = "Meet the Contributors"
 date = 2017-01-01
 Keywords = "member"
+Summary = ""
 +++
 
 [<img align="right" width="190" height="230" src="/blog/img/team/lessmannSchmal.png">](https://wisample.github.io/blog/member/lessmann/)

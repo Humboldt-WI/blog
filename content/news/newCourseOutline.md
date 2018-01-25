@@ -2,6 +2,7 @@
 title = "New Courses for Summer Term 2018 online"
 date = "2018-01-14"
 categories = ["news"]
+Keywords = "news"
 banner = "img/banners/books.jpg"
 +++
 

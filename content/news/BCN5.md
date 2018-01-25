@@ -3,11 +3,12 @@ title = "Blockchain Nights #5"
 date = "2018-01-14"
 tags = ["blockchain"]
 categories = ["events"]
+Keywords = "news"
 banner = "img/banners/blockchain5.jpeg"
 
 +++
 
-Save the date: 
+Save the date:
 [22.02 Blockchain Nights #5](https://www.blockchainnights.com)
 
 <!--more-->
