@@ -130,7 +130,7 @@ paginate = 10
     categories = true
     tags = true
     search = false
-
+    PublishDate = true
 
 [params.carousel]
     enable = true
