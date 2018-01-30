@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog Instruction on Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://wisample.github.io/blog/tags/blog-instruction/</link>
+    <description>Recent content in Blog Instruction on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 30 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://wisample.github.io/blog/tags/blog-instruction/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Seminar Post Example - Neural Network Fundamentals</title>
+      <link>https://wisample.github.io/blog/research/seminar/nn_funds_draft/</link>
+      <pubDate>Tue, 30 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/research/seminar/nn_funds_draft/</guid>
+      <description>A Gentle Introduction to Neural Network Fundamentals 
+Imagine the following problem: There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.</description>
+    </item>
+    
+  </channel>
+</rss>

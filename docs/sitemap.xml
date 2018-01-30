@@ -23,6 +23,11 @@
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/research/seminar/nn_funds_draft/</loc>
+    <lastmod>2018-01-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/news/bcn5/</loc>
     <lastmod>2018-01-14T00:00:00+00:00</lastmod>
   </url>
@@ -63,6 +68,11 @@
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/research/seminar/roman/draft_of_the_tutorial/</loc>
+    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/contributors/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
   </url>
@@ -79,13 +89,19 @@
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/tags/blog-instruction/</loc>
+    <lastmod>2018-01-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wisample.github.io/blog/tags/class17/18/</loc>
-    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+    <lastmod>2018-01-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -95,7 +111,7 @@
   
   <url>
     <loc>https://wisample.github.io/blog/tags/deep-learning/</loc>
-    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+    <lastmod>2018-01-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -125,7 +141,7 @@
   
   <url>
     <loc>https://wisample.github.io/blog/tags/neural-networks/</loc>
-    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+    <lastmod>2018-01-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -137,12 +153,18 @@
   
   <url>
     <loc>https://wisample.github.io/blog/research/</loc>
-    <lastmod>2017-12-14T00:26:17+01:00</lastmod>
+    <lastmod>2018-01-30T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://wisample.github.io/blog/categories/research/</loc>
     <lastmod>2017-12-14T00:26:17+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/categories/seminar/</loc>
+    <lastmod>2018-01-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
