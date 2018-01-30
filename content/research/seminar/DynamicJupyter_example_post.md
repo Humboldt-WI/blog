@@ -14,7 +14,8 @@ disqusShortname = "https-wisample-github-io-blog"
 
 
 ### This is an example of a jupyter notebook to give you an idea of how your blog post could look like.
-
 <iframe src="https://trinket.io/embed/python/54701dff53" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
 
- 
+here: 
+
+ <script src="https://npmcdn.com/jupyter-js-widgets@~1.2.0/dist/embed.js"></script><script type="application/vnd.jupyter-embedded-widgets">{}</script>
