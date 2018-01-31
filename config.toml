@@ -130,7 +130,7 @@ paginate = 10
     categories = true
     tags = true
     search = false
-    PublishDate = true
+    month = true
 
 [params.carousel]
     enable = true
@@ -166,3 +166,9 @@ paginate = 10
     enable = true
     title = "Recent from our Chair"
     subtitle = "" #Here are recent research findings from our institute.
+
+
+[Taxonomies]
+  tag = "tags"
+  category = "categories"
+  month = "month"

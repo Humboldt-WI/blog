@@ -8,6 +8,7 @@ keywords = "Member"
 +++
 
 <img align = "right" src = "/blog/img/team/haupt.jpg" >
+<a href="https://example.org">Org Link</a> <br />
 
 ## Short-bio
 

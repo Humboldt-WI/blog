@@ -1,0 +1,25 @@
+{{ if .Site.Params.widgets.month }}
+{{ if isset .Site.Taxonomies "month" }}
+{{ if not (eq (len .Site.Taxonomies.month) 0) }}
+{{ if .Description }}
+
+{{ else }}
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title"> NEWS </h3>
+    </div>
+
+    <div class="panel-body">
+          <ul class="nav nav-pills nav-stacked">
+            {{ range $name, $items := .Site.Taxonomies.month }}
+            <li><a href="{{ $.Site.BaseURL }}month/{{ $name | urlize | lower }}">{{ $name }} ({{ len $items }})</a>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+</div>
+{{ end }}
+{{ end }}
+{{ end }}
+{{ end }}

@@ -68,11 +68,6 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/research/seminar/roman/draft_of_the_tutorial/</loc>
-    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wisample.github.io/blog/contributors/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
   </url>
@@ -80,6 +75,18 @@
   <url>
     <loc>https://wisample.github.io/blog/contributors_backup/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/month/2017-12/</loc>
+    <lastmod>2017-12-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/month/2018-01/</loc>
+    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -116,12 +123,6 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/categories/events/</loc>
-    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://wisample.github.io/blog/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
     <priority>0</priority>
@@ -140,14 +141,14 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/tags/neural-networks/</loc>
-    <lastmod>2018-01-30T00:00:00+00:00</lastmod>
+    <loc>https://wisample.github.io/blog/month/</loc>
+    <lastmod>2017-12-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/categories/news/</loc>
-    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
+    <loc>https://wisample.github.io/blog/tags/neural-networks/</loc>
+    <lastmod>2018-01-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

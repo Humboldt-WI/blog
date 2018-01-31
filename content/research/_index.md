@@ -1,6 +1,5 @@
-
 +++
 title = "RESEARCH"
-
-disqusShortname = "devcows"
+author = ""
+description = "research"
 +++

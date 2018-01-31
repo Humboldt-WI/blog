@@ -2,9 +2,8 @@
 title = "Blockchain Nights"
 date = "2017-12-21"
 tags = ["blockchain"]
-categories = ["events"]
 Keywords = "news"
-PublishDate = "2017-12-21"
+month = "2017-12"
 banner = "img/banners/blockchain_image.png"
 +++
 

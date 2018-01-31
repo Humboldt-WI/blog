@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Month on Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://wisample.github.io/blog/month/</link>
+    <description>Recent content in Month on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
+    <lastBuildDate>Thu, 21 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://wisample.github.io/blog/month/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>2017 12</title>
+      <link>https://wisample.github.io/blog/month/2017-12/</link>
+      <pubDate>Thu, 21 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/month/2017-12/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2018 01</title>
+      <link>https://wisample.github.io/blog/month/2018-01/</link>
+      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/month/2018-01/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -5,6 +5,7 @@ tags = ["Machine Learning"]
 categories = ["research"]
 author = "Johannes Haupt"
 banner = "img/banners/textMininigKlein.png"
+description = "textmining"
 +++
 
 What is the first thing a baby has to learn? It's Lanuage. Grammar, Vocabulary, Dialekts.
