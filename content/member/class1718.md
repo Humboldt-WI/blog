@@ -1,6 +1,6 @@
 +++
 title = "Class of 2017 / 2018 "
-description = ""
+description = "Class of 2017 / 2018"
 date = 2017-01-01
 banner = "img/team/class1718draft.jpg"
 weight = 5
