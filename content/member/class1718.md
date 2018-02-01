@@ -8,7 +8,6 @@ keywords = "Member"
 draft = false
 +++
 
-<!--more-->
 
 
 ![](/blog/img/team/class1718draft.jpg)
