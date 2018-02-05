@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
-    <lastBuildDate>Tue, 30 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Feb 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wisample.github.io/blog/tags/blog-instruction/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Neural Network Fundamentals II</title>
+      <link>https://wisample.github.io/blog/research/seminar/group1/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/research/seminar/group1/</guid>
+      <description>A Gentle Introduction to Neural Network Fundamentals  Implementation of the NN from scratch Let&amp;rsquo;s try to reimlement such a structure using Python. The crutial elements are:
+ layers nodes weights between them activation function  
+ import numpy as np def sigmoid(x): return 1 / (1 + np.exp(-x)) import matplotlib.pyplot as plt # Draw this function x = np.linspace(-10, 10, 100) plt.plot(x, sigmoid(x)) plt.show()  import numpy as np def sigmoid(x): return 1 / (1 + np.</description>
+    </item>
     
     <item>
       <title>Neural Network Fundamentals</title>
