@@ -1,12 +1,12 @@
 +++
-title = "Sample Post 'Neural Network Fundamentals'"
+title = "Sample Post"
 date = '2017-12-14'
 tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
 categories = ["seminar"]
-banner = "img/banners/neuralNetworkKlein.jpg"
+banner = "img/banners/hu-logo.jpg"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-wisample-github-io-blog"
-description = "This blog post is about NNs."
+description = "A Sample Post"
 +++
 
 
