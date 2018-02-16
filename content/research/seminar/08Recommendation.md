@@ -2,8 +2,8 @@
 title = "Recommendation Machines - The Magic behind Amazon telling us what to buy"
 date = '2018-02-15'
 tags = [ "Deep Learning", "Recommendation", "Class17/18",]
-categories = ["research"]
-banner = "img/banners/recommendation.PNG"
+categories = ["seminar"]
+banner = "img/seminar/recommendation/recommendation.PNG"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-wisample-github-io-blog"
 description = " "

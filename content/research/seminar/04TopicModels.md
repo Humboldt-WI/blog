@@ -2,10 +2,9 @@
 title = "Text Mining - Topic Models: Teaching an Algorithm Human Language"
 date = '2018-01-18'
 tags = [ "Deep Learning", "Text Mining", "Topic Modeling", "Class17/18",]
-categories = ["research"]
-banner = "img/banners/textMininigKlein.png"
+categories = ["seminar"]
+banner = "img/seminar/topic_models/textMininigKlein.png"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-wisample-github-io-blog"
 description = " "
 +++
-
