@@ -6,7 +6,7 @@ categories = ["research"]
 banner = "img/banners/CNN.PNG"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-wisample-github-io-blog"
-description = "This is about CNNs how your blog post could look like."
+description = "  "
 +++
 
 CNNs and some nice application

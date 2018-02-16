@@ -6,5 +6,5 @@ categories = ["research"]
 banner = "img/banners/sentiment.PNG"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-wisample-github-io-blog"
-description = "This is about sentiment analysis"
+description = " "
 +++

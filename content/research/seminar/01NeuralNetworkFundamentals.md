@@ -6,14 +6,18 @@ categories = ["research"]
 banner = "img/banners/neuralNetworkKlein.jpg"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-wisample-github-io-blog"
-description = "This blog post is about NNs."
+description = "  "
 +++
-
 
 A Gentle Introduction to Neural Network Fundamentals
 =============
 
 <br/>
+
+
+
+
+
 #### Imagine the following problem:
 
 There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.
