@@ -7,17 +7,17 @@ To do:
 (- add categories and tags)
 - use high resolution picture of the "humboldt-universität zu berlin" header
 - get final picture of lessman and the class
+-already make a draft page for each group that they only have to fill 
+
+
 
 - for the paper:
 	- explain certain scenarios of how those two components could work together (blog plus facebook)
+	- present all the dynamic tools that we tested as a "possible outlook" for the long term (repl. it , data Camp, trinklet, etc)
 
--already make a draft page for each group that they only have to fill 
 
 	
 	
-
-# Still to do:
-
 
 			
 
