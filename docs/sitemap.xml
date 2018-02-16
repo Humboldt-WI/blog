@@ -23,13 +23,23 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/research/seminar/group1/</loc>
+    <loc>https://wisample.github.io/blog/research/seminar/08recommendation/</loc>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/research/seminar/06financialtime-series/</loc>
     <lastmod>2018-02-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/research/seminar/nn_funds_draft/</loc>
-    <lastmod>2018-01-30T00:00:00+00:00</lastmod>
+    <loc>https://wisample.github.io/blog/research/seminar/04topicmodels/</loc>
+    <lastmod>2018-01-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/research/seminar/05sentimentanalysis/</loc>
+    <lastmod>2018-01-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -43,7 +53,17 @@
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/research/seminar/03imageanalysis/</loc>
+    <lastmod>2018-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/news/bcn4/</loc>
+    <lastmod>2017-12-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/research/seminar/02convolutionalneuralnetworks/</loc>
     <lastmod>2017-12-21T00:00:00+00:00</lastmod>
   </url>
   
@@ -53,23 +73,8 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/research/dissertation/textmining/</loc>
-    <lastmod>2017-12-14T00:26:17+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/research/dissertation/post2/</loc>
-    <lastmod>2017-12-14T00:26:17+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/research/seminar/staticjupyter_example_post/</loc>
-    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/research/seminar/dynamicjupyter_example_post/</loc>
-    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+    <loc>https://wisample.github.io/blog/research/seminar/01neuralnetworkfundamentals/</loc>
+    <lastmod>2017-12-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -101,19 +106,13 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/tags/blog-instruction/</loc>
-    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://wisample.github.io/blog/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wisample.github.io/blog/tags/class17/18/</loc>
-    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -122,8 +121,20 @@
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/tags/convulutional-neural-networks/</loc>
+    <lastmod>2017-12-21T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/tags/deep-learning/</loc>
-    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/tags/image-analysis/</loc>
+    <lastmod>2018-01-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -134,8 +145,14 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/tags/machine-learning/</loc>
-    <lastmod>2017-12-14T00:26:17+01:00</lastmod>
+    <loc>https://wisample.github.io/blog/tags/long-short-term-memory/</loc>
+    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/tags/lstm/</loc>
+    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -153,30 +170,54 @@
   
   <url>
     <loc>https://wisample.github.io/blog/tags/neural-networks/</loc>
-    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+    <lastmod>2017-12-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wisample.github.io/blog/research/</loc>
-    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/categories/research/</loc>
-    <lastmod>2017-12-14T00:26:17+01:00</lastmod>
+    <loc>https://wisample.github.io/blog/tags/recommendation/</loc>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/categories/seminar/</loc>
-    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+    <loc>https://wisample.github.io/blog/categories/research/</loc>
+    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/tags/sentiment-analysis/</loc>
+    <lastmod>2018-01-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wisample.github.io/blog/tags/</loc>
     <lastmod>2018-01-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/tags/text-mining/</loc>
+    <lastmod>2018-01-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/tags/time-series/</loc>
+    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/tags/topic-modeling/</loc>
+    <lastmod>2018-01-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

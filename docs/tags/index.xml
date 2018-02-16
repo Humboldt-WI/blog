@@ -22,47 +22,110 @@
     </item>
     
     <item>
-      <title>Blog Instruction</title>
-      <link>https://wisample.github.io/blog/tags/blog-instruction/</link>
-      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wisample.github.io/blog/tags/blog-instruction/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Class17/18</title>
       <link>https://wisample.github.io/blog/tags/class17/18/</link>
-      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/tags/class17/18/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Convulutional Neural Networks</title>
+      <link>https://wisample.github.io/blog/tags/convulutional-neural-networks/</link>
+      <pubDate>Thu, 21 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/tags/convulutional-neural-networks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Deep Learning</title>
       <link>https://wisample.github.io/blog/tags/deep-learning/</link>
-      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/tags/deep-learning/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Machine Learning</title>
-      <link>https://wisample.github.io/blog/tags/machine-learning/</link>
-      <pubDate>Thu, 14 Dec 2017 00:26:17 +0100</pubDate>
+      <title>Image Analysis</title>
+      <link>https://wisample.github.io/blog/tags/image-analysis/</link>
+      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/machine-learning/</guid>
+      <guid>https://wisample.github.io/blog/tags/image-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Long Short Term Memory</title>
+      <link>https://wisample.github.io/blog/tags/long-short-term-memory/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/tags/long-short-term-memory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lstm</title>
+      <link>https://wisample.github.io/blog/tags/lstm/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/tags/lstm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Neural Networks</title>
       <link>https://wisample.github.io/blog/tags/neural-networks/</link>
-      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/tags/neural-networks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recommendation</title>
+      <link>https://wisample.github.io/blog/tags/recommendation/</link>
+      <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/tags/recommendation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sentiment Analysis</title>
+      <link>https://wisample.github.io/blog/tags/sentiment-analysis/</link>
+      <pubDate>Mon, 15 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/tags/sentiment-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Text Mining</title>
+      <link>https://wisample.github.io/blog/tags/text-mining/</link>
+      <pubDate>Thu, 18 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/tags/text-mining/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Time Series</title>
+      <link>https://wisample.github.io/blog/tags/time-series/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/tags/time-series/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Topic Modeling</title>
+      <link>https://wisample.github.io/blog/tags/topic-modeling/</link>
+      <pubDate>Thu, 18 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/tags/topic-modeling/</guid>
       <description></description>
     </item>
     
