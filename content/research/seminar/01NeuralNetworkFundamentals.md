@@ -2,7 +2,7 @@
 title = "Neural Network Fundamentals"
 date = '2017-12-14'
 tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
-categories = ["research"]
+categories = ["seminar"]
 banner = "img/banners/neuralNetworkKlein.jpg"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-wisample-github-io-blog"
@@ -18,7 +18,7 @@ A Gentle Introduction to Neural Network Fundamentals
 
 There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.
 
-<img style=" width:500px;display:block;margin:0 auto;" 
+<img style=" width:500px;display:block;margin:0 auto;"
 src="/blog/img/seminar/nn_fundamentals/problem.png">
 
 
@@ -28,19 +28,19 @@ Source: https://www.jstor.org/stable/pdf/2684922.pdf
 ### Some intuition from the Nature
 People struggled to teach machines to solve this kind of problems for a long time without success. Unless they noticed a very peculiar thing. Nature creatures, even the simple ones, for instance insects, can perform complicated task with very limited brain capacities, which are far below those of the computers. So there is something nature has developed that aloows to solve tasks apparently complicated for machines tasks in a smart way. One of the ides that came to mind is to replicate the structure and certain functions of nature beigns brain and neurosystem that allow for cognitive procecess and beyond. A particular example of such structures is neuron system.
 
-<img style=" width:500px;display:block;margin:0 auto;" 
+<img style=" width:500px;display:block;margin:0 auto;"
 src="/blog/img/seminar/nn_fundamentals/neurons.png">
 
 
 
 
 
-[Source: https://www.jstor.org/stable/pdf/2684922.pdf] 
+[Source: https://www.jstor.org/stable/pdf/2684922.pdf]
 
 <br/>
 <br/>
 
-<img style=" width:500px;display:block;margin:0 auto;" 
+<img style=" width:500px;display:block;margin:0 auto;"
 src="/blog/img/banners/seminar_nn.png">
 
 [Source: https://pixabay.com/]
@@ -83,7 +83,7 @@ Staticians use these models to address the same problems:
 ### Schematic Representation
 All the aplications of neural networks mentioned above have in common a simlified structure depicted on the following picture.
 
-<img style=" width:500px;display:block;margin:0 auto;" 
+<img style=" width:500px;display:block;margin:0 auto;"
 src="/blog/img/seminar/nn_fundamentals/neural_network1.png">
 
 
@@ -125,7 +125,7 @@ Let's take a look at our data.
 <br/>
 <br/>
 
-<img style=" width:500px;display:block;margin:0 auto;" 
+<img style=" width:500px;display:block;margin:0 auto;"
 src="/blog/img/seminar/nn_fundamentals/neural_network1.png">
 
 
@@ -138,12 +138,12 @@ As we can see we have 784 elements in our inputs. Therefore it would be logical 
 ### Feed forward
 Once we have the structure of the NN updated for the specific task of prediciting numbers depicted on the images, we can run our network to get its first predictions. To do so we will have to make several steps and each of them will consist of a matrix multiplication and application of the sygmoid function. Multiply a vector of inputs by a matrix of weights that connects it with the next layer, transform the result using activation function - this is one step and it schould be repeated for all the layers except for the input one. Every time the output of the previous leyer will be used as a vector of inputs for the next layer.
 
-<img style=" width:500px;display:block;margin:0 auto;" 
+<img style=" width:500px;display:block;margin:0 auto;"
 src="/blog/img/seminar/nn_fundamentals/multiplication.png">
 
-<img style=" width:500px;display:block;margin:0 auto;" 
+<img style=" width:500px;display:block;margin:0 auto;"
 src="/blog/img/seminar/nn_fundamentals/activation.png">
- 
+
 <br/>
 <br/>
 <script src="https://gist.github.com/HsueanL/1e74e8479e93cff2b954a917521c8fbd.js"></script>
