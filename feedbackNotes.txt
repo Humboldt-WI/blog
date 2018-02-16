@@ -1,39 +1,36 @@
+﻿16.02.2018:
+Next appointment on wednesday! 
+
+To do:
+- write a documentation of how to create a blog post 
+- make a comment section under each blog post
+(- add categories and tags)
+- use high resolution picture of the "humboldt-universität zu berlin" header
+- get final picture of lessman and the class
+
+- for the paper:
+	- explain certain scenarios of how those two components could work together (blog plus facebook)
+
+-already make a draft page for each group that they only have to fill 
+
+	
+	
+
 # Still to do:
 
 
-			- add categories and tags...
+			
 
+			-
 
-			- make a comment section under each blog post
+		
 
-			- make the blog dynamically (wait for the official account of lessmann) 
-
-			- use high resolution picture of the "humboldt-universität zu berlin" header
-
-
-
-			- smaller icons and pictures
-
-
-			- event section (either together with news section or independent)
-
-
-			- add a facebook page
-			- for the paper:
-				- explain certain scenarios of how those two components could work together (blog plus facebook)
-
-	
-	
-# Already done:	
-
-			- remove continue reading button ✅ 
-			- change team to contributors ✅ 
-			- change blog to research ✅ 
-			-	adjust pictures on contributors (D)
-			- change team to contributors and one contributor for the whole class of ws 17/18 (D)
+			
 
 
 
+
+			
 
 Questions:
 			since when at the chair ? Annika, Johannes?  (for the contributors secion)
