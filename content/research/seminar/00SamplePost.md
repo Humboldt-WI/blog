@@ -6,7 +6,7 @@ categories = ["seminar"]
 banner = "img/seminar/sample/hu-logo.jpg"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-wisample-github-io-blog"
-description = "A Sample Post"
+description = " A Sample Post"
 +++
 
 

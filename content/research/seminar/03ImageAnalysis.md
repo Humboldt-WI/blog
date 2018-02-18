@@ -8,3 +8,5 @@ author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-wisample-github-io-blog"
 description = " "
 +++
+
+A nice tutorial on Image Analysis

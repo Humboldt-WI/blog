@@ -2,10 +2,11 @@
 title = "New Courses for Summer Term 2018 online"
 date = "2018-01-14"
 Keywords = "news"
-banner = "img/banners/books.jpg"
-month = "2018-01"
+banner = "img/news/books.PNG"
+month = "2018-03"
+descriptino= " "
 +++
 
-Take a look at the new courses the Chair of Information Systems is offering!
 
 <!--more-->
+Shortly you can find the courses for the upcoming summer term 2018 here!
