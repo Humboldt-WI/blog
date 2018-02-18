@@ -96,21 +96,15 @@ paginate = 10
     # Enable the contact form by entering your Formspree.io email
     email = "your@email.com"
 
-    about_us = "<p>Chair of Information Systems</p>"
+    
+
     copyright = "Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved."
 
     # Format dates with Go's time formatting
     date_format = "January 2, 2006"
 
     logo = "img/logoGross.png"
-    address = """<p><strong>Humboldt-University of Berlin</strong>
-        <br>School of Business and Economics
-        <br>Chair of Information Systems
-        <br>Spandauer Straße 1
-        <br>10178 Berlin
-        <br><strong>Germany</strong>
-      </p>
-      """
+   
 
 
 [Permalinks]

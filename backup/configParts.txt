@@ -1,0 +1,13 @@
+about_us = "This is the website of the Chair of Information Systems form the Humboldt University in Berlin"
+
+
+ address = """<p><strong>Humboldt-University of Berlin</strong>
+        <br>School of Business and Economics
+        <br>Chair of Information Systems
+        <br>Spandauer Straße 1
+        <br>10178 Berlin
+        <br><strong>Germany</strong>
+      </p>
+      """
+	  
+	      blog = "/blog/:year/:month/:day/:filename/"

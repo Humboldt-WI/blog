@@ -10,8 +10,7 @@ id = "contact"
 #### We are happy to get in touch with you.
 #### For directly contacting us, please use one of the following:
 
-
-	Contact Person: Anna-Lena Bujarek
+- Contact Person: Anna-Lena Bujarek
 	
 	Room: 326 
 	
@@ -24,7 +23,7 @@ id = "contact"
 	
 	
 
-#### If you prefer mailing, see our address here:
+#####  If you prefer mailing, see our address here:
 
 	Humboldt-University of Berlin
 	School of Business and Economics
