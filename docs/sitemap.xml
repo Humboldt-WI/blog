@@ -23,13 +23,38 @@
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/research/seminar/07imagecaptioning/</loc>
+    <lastmod>2018-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/research/seminar/08recommendation/</loc>
     <lastmod>2018-02-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/news/jobs/</loc>
+    <lastmod>2018-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/news/bcn/</loc>
+    <lastmod>2018-02-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/news/consultationhours/</loc>
+    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/research/seminar/06financialtime-series/</loc>
     <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/news/phdposition/</loc>
+    <lastmod>2018-01-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -43,11 +68,6 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/news/bcn5/</loc>
-    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wisample.github.io/blog/news/newcourseoutline/</loc>
     <lastmod>2018-01-14T00:00:00+00:00</lastmod>
   </url>
@@ -55,11 +75,6 @@
   <url>
     <loc>https://wisample.github.io/blog/research/seminar/03imageanalysis/</loc>
     <lastmod>2018-01-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wisample.github.io/blog/news/bcn4/</loc>
-    <lastmod>2017-12-21T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -93,20 +108,26 @@
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/month/2017-12/</loc>
-    <lastmod>2017-12-21T00:00:00+00:00</lastmod>
+    <loc>https://wisample.github.io/blog/month/2018-01/</loc>
+    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://wisample.github.io/blog/month/2018-01/</loc>
+    <loc>https://wisample.github.io/blog/month/2018-02/</loc>
+    <lastmod>2018-02-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/month/2018-03/</loc>
     <lastmod>2018-01-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wisample.github.io/blog/tags/blockchain/</loc>
-    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
+    <lastmod>2018-02-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -117,7 +138,7 @@
   
   <url>
     <loc>https://wisample.github.io/blog/tags/class17/18/</loc>
-    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+    <lastmod>2018-02-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -133,13 +154,19 @@
   
   <url>
     <loc>https://wisample.github.io/blog/tags/deep-learning/</loc>
-    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+    <lastmod>2018-02-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://wisample.github.io/blog/tags/image-analysis/</loc>
     <lastmod>2018-01-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/tags/image-captioning/</loc>
+    <lastmod>2018-02-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -169,7 +196,7 @@
   
   <url>
     <loc>https://wisample.github.io/blog/month/</loc>
-    <lastmod>2017-12-21T00:00:00+00:00</lastmod>
+    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -181,7 +208,7 @@
   
   <url>
     <loc>https://wisample.github.io/blog/research/</loc>
-    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+    <lastmod>2018-02-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -192,7 +219,7 @@
   
   <url>
     <loc>https://wisample.github.io/blog/categories/seminar/</loc>
-    <lastmod>2018-02-15T00:00:00+00:00</lastmod>
+    <lastmod>2018-02-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -204,7 +231,7 @@
   
   <url>
     <loc>https://wisample.github.io/blog/tags/</loc>
-    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
+    <lastmod>2018-02-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

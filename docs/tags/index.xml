@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 14 Jan 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 02 Feb 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://wisample.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Blockchain</title>
       <link>https://wisample.github.io/blog/tags/blockchain/</link>
-      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 02 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/tags/blockchain/</guid>
       <description></description>
@@ -24,7 +24,7 @@
     <item>
       <title>Class17/18</title>
       <link>https://wisample.github.io/blog/tags/class17/18/</link>
-      <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/tags/class17/18/</guid>
       <description></description>
@@ -42,7 +42,7 @@
     <item>
       <title>Deep Learning</title>
       <link>https://wisample.github.io/blog/tags/deep-learning/</link>
-      <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/tags/deep-learning/</guid>
       <description></description>
@@ -54,6 +54,15 @@
       <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/tags/image-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Image Captioning</title>
+      <link>https://wisample.github.io/blog/tags/image-captioning/</link>
+      <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/tags/image-captioning/</guid>
       <description></description>
     </item>
     

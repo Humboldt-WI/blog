@@ -53,16 +53,130 @@ Contact Telephone: +49 30 2093-5662 Email: bfabian[at]wiwi.hu-berlin.de Website:
     </item>
     
     <item>
-      <title>Recommendation Machines</title>
+      <title>A Static Jupyter Notebook Example</title>
+      <link>https://wisample.github.io/blog/research/seminar/07imagecaptioning/</link>
+      <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/research/seminar/07imagecaptioning/</guid>
+      <description>test</description>
+    </item>
+    
+    <item>
+      <title>Recommendation Machines - The Magic behind Amazon telling us what to buy</title>
       <link>https://wisample.github.io/blog/research/seminar/08recommendation/</link>
       <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/research/seminar/08recommendation/</guid>
-      <description></description>
+      <description>Recommendation Machines  Have you ever wondered how Amazon, Netflix and Co. are able to tell which products you should buy or which movies you should like? They are surprisingly precise and it is all due to the magic of recommentaion algorithms.</description>
     </item>
     
     <item>
-      <title>LSTM and Financial Time Series</title>
+      <title>Open Job Positions</title>
+      <link>https://wisample.github.io/blog/news/jobs/</link>
+      <pubDate>Mon, 05 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/news/jobs/</guid>
+      <description>&lt;h2 id=&#34;februar-2018&#34;&gt;Februar 2018&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;KPMG sucht Absolventen als Werkstudenten/Praktikanten (m/w), CIO Advisory - IT-Strategie&lt;/p&gt;
+
+&lt;p&gt;Mehr Infos &lt;a href=&#34;https://www.wiwi.hu-berlin.de/de/professuren/quantitativ/wi/stellenausschreibungen/praktikant-mw-consulting-cio-advisory.pdf&#34; title=&#34;kpmg&#34;&gt;hier&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ICT Graduate Programme - Apply online on &lt;a href=&#34;www.kerrygrads.com&#34;&gt;hier&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;MOIA - Social Movement bietet eine Werkstudentenstelle im Bereich IT-Infrastructure, mehr Infos &lt;a href=&#34;https://moia.softgarden.io/job/1557959?l=de&#34;&gt;hier!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Das Innovationszentrum Connected Living e.V. veranstaltet unter dem Titel „With Data Analytics to new Connected Home Energy Concepts“ vom 9.-11. März 2018 bei SAP in Berlin gemeinsam mit seinen Partnern SAP, Vattenfall, innogy, Conrad, TU Berlin (DAI-Labor), Fresh Energy, Signal Cruncher und IOLITE seinen ersten Hackathon „ConnHack 2018 - Shape The Future Of Connected Life”. Mehr Infos unter: &lt;a href=&#34;http://connhack.org/&#34;&gt;http://connhack.org/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Das vierte Digital Future Science Match findet am 14. Mai 2018 in Berlin statt.&lt;/p&gt;
+
+&lt;p&gt;Das Digital Future Science Match gehört zu den Großereignissen in der Digitalisierungs-Branche und findet jedes Frühjahr anlässlich der Erfindung des Computers Z3 von Konrad Zuse statt. Auch in diesem Jahr werden rund 50 WissenschaftlerInnen von Berliner Wissenschaftsinstitutionen sowie ihrer nationalen und internationalen Partner ihre Arbeit zu den Themen Artificial Intelligence, Big Data, Cloud Computing, Cyber Security, Digital Society, Industrie 4.0 und dem Internet of Things vorstellen. Und das in Keynotes und 5-Minuten-Kurzvorträgen, um ein möglichst breites Spektrum an Themen abzudecken.&lt;/p&gt;
+
+&lt;p&gt;Das Digital Future Science Match 2018 wird durch folgende Wissenschaftspartner getragen: Berlin Big Data Center (BBDC), Deutsches Forschungszentrum für Künstliche Intelligenz (DFKI), Einstein Center für Digitale Zukunft (ECDF), Hasso-Plattner-Institut (HPI), Weizenbaum-Institut für die vernetzte Gesellschaft – Das Deutsche Internet-Institut und Zuse Institut Berlin (ZIB).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Der Tagesspiegel bietet StudentInnen, DoktorandInnen, wissenschaftlichen MitarbeiterInnen und Young Professionals die Möglichkeit, sich für unser Young Digital Changers Scholarship zu bewerben. Dieses bietet ihnen den kostenlosen Zugang zu dieser Veranstaltung ermöglicht und damit auch exklusive Networking-Möglichkeiten zu renommierten Wissenschaftlern und Branchenvertretern bietet. Dafür brauchen sie sich nur über unsere Website für ein Stipendium zu bewerben: &lt;a href=&#34;https://science-match.tagesspiegel.de/digital-future-2018/young-digital-changers&#34;&gt;https://science-match.tagesspiegel.de/digital-future-2018/young-digital-changers&lt;/a&gt;
+Mehr Infos hier!&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Trainee-Programm GROW des Unternehmens Deutsche Post DHL, für den Standort Bonn. Die Ausschreibung richtet sich an Studierende mit IT-Hintergrund. Weitere Informationen über den Berufseinstieg bei Deutsche Post DHL finden Sie auf der Website: &lt;a href=&#34;https://de.dpdhl.jobs/grow-absolventenprogramm/&#34;&gt;https://de.dpdhl.jobs/grow-absolventenprogramm/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Mehr Infos hier!&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;november-2017&#34;&gt;November 2017&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Das DFKI leitet im Auftrag des Bundesministeriums für Wirtschaft und Energie die nationale Kompetenz- und Vernetzungsplattform „Smart Data Forum“. Für dieses Projekt sucht es am Standort Berlin zum nächstmöglichen Zeitpunkt eine&lt;/p&gt;
+
+&lt;p&gt;studentische Hilfskraft (m/w)
+für max. 20 Stunden/Woche;
+Kennziffer: IAM-SDF&lt;/p&gt;
+
+&lt;p&gt;Mehr Informationen zur Bewerbung finden Sie  &lt;a href=&#34;https://www.wiwi.hu-berlin.de/de/professuren/quantitativ/wi/stellenausschreibungen/dfki-20171017_hiwi_sdf.pdf&#34;&gt;hier!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;AIOS bietet seit mehr als 20 Jahren einem breiten überregionalen Mandantenstamm ein Portfolio hochqualifizierter Dienstleistungen aus den Bereichen Wirtschaftsprüfung, Steuerberatung und Consulting. Die AIOS GmbH Wirtschaftsprüfung Steuerberatungsgesellschaft sucht einen Werkstudenten in der Vergabe-, Organisations- und Prozessberatung!&lt;/p&gt;
+
+&lt;p&gt;Mehr Infos &lt;a href=&#34;https://www.wiwi.hu-berlin.de/de/professuren/quantitativ/wi/stellenausschreibungen/aios_suchprofil_werkstudent_omb.pdf&#34;&gt;hier!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;oktober-2017&#34;&gt;Oktober 2017&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Die AOK sucht eine studentische Hilfskraft im Wissenschaftlichen Institut der AOK. Mehr Infos &lt;a href=&#34;https://www.wiwi.hu-berlin.de/de/professuren/quantitativ/wi/stellenausschreibungen/stellenausschreibung_shk-hu_berlin.pdf&#34;&gt;hier!&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;september-2017&#34;&gt;September 2017&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Nevotec sucht IT-Mitarbeiter/-innen bundesweit. Mehr Infos &lt;a href=&#34;https://www.wiwi.hu-berlin.de/de/professuren/quantitativ/wi/stellenausschreibungen/studentischer_nebenjob_it-mitarbeiter-in_nevotec.pdf&#34;&gt;hier!&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;juni-2017&#34;&gt;Juni 2017&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;mindsquare bietet Bachelor- und Masterarbeiten im IT-Bereich an! Mehr Infos hier: &lt;a href=&#34;https://mindsquare.de/karriere/abschlussarbeit-informatik-und-wirtschaftsinformatik/&#34;&gt;https://mindsquare.de/karriere/abschlussarbeit-informatik-und-wirtschaftsinformatik/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;und &lt;a href=&#34;https://www.wiwi.hu-berlin.de/de/professuren/quantitativ/wi/stellenausschreibungen/mind-square_juni-2017.pdf&#34;&gt;hier!&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;februar-2017&#34;&gt;Februar 2017&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mobile App Developer für Frage- und Auswertungs-App als Nebentätigkeit gesucht, mehr Infos &lt;a href=&#34;https://www.wiwi.hu-berlin.de/de/professuren/quantitativ/wi/stellenausschreibungen/app-developer-fuer-bartz-mit-qr20170207.pdf&#34;&gt;hier!&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Blockchain Night Series: final session for Winter Term</title>
+      <link>https://wisample.github.io/blog/news/bcn/</link>
+      <pubDate>Fri, 02 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/news/bcn/</guid>
+      <description>&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Consultation Hours</title>
+      <link>https://wisample.github.io/blog/news/consultationhours/</link>
+      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/news/consultationhours/</guid>
+      <description>&lt;p&gt;As of 19th October 2017 (WS 2017 / 18) consultation hours with Prof. Lessmann will take place as follows:&lt;/p&gt;
+
+&lt;h5 id=&#34;all-students-on-thursday-10-11-am&#34;&gt;all students on Thursday 10 - 11 am.&lt;/h5&gt;
+
+&lt;p&gt;Because of the great demand, appointments will be given only with previous registration by sending an e-mail to bujarek@hu-berlin.de.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>LSTM and Financial Time Series - Predicting Stock Returns</title>
       <link>https://wisample.github.io/blog/research/seminar/06financialtime-series/</link>
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
@@ -71,7 +185,20 @@ Contact Telephone: +49 30 2093-5662 Email: bfabian[at]wiwi.hu-berlin.de Website:
     </item>
     
     <item>
-      <title>Text Mining - Topic Models </title>
+      <title>Open three year PhD Position</title>
+      <link>https://wisample.github.io/blog/news/phdposition/</link>
+      <pubDate>Sat, 20 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/news/phdposition/</guid>
+      <description>&lt;h4 id=&#34;we-seek-applications-for-a-three-year-phd-position-0-75-e13-in-bereich-credit-risk-analytics&#34;&gt;We seek applications for a three year PhD position (0.75 E13) in Bereich Credit Risk Analytics.&lt;/h4&gt;
+
+&lt;h5 id=&#34;please-send-your-application-by-email-to-prof-lessmann-deadline-09-02-2018&#34;&gt;Please send your application by email to Prof. Lessmann.(Deadline: 09.02.2018)&lt;/h5&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Text Mining - Topic Models: Teaching an Algorithm Human Language</title>
       <link>https://wisample.github.io/blog/research/seminar/04topicmodels/</link>
       <pubDate>Thu, 18 Jan 2018 00:00:00 +0000</pubDate>
       
@@ -89,46 +216,21 @@ Contact Telephone: +49 30 2093-5662 Email: bfabian[at]wiwi.hu-berlin.de Website:
     </item>
     
     <item>
-      <title>Blockchain Nights #5</title>
-      <link>https://wisample.github.io/blog/news/bcn5/</link>
-      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wisample.github.io/blog/news/bcn5/</guid>
-      <description>&lt;p&gt;Save the date:
-&lt;a href=&#34;https://www.blockchainnights.com&#34;&gt;22.02 Blockchain Nights #5&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>New Courses for Summer Term 2018 online</title>
       <link>https://wisample.github.io/blog/news/newcourseoutline/</link>
       <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wisample.github.io/blog/news/newcourseoutline/</guid>
-      <description>&lt;p&gt;Take a look at the new courses the Chair of Information Systems is offering!&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Image Analysis</title>
-      <link>https://wisample.github.io/blog/research/seminar/03imageanalysis/</link>
-      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://wisample.github.io/blog/research/seminar/03imageanalysis/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Blockchain Nights</title>
-      <link>https://wisample.github.io/blog/news/bcn4/</link>
-      <pubDate>Thu, 21 Dec 2017 00:00:00 +0000</pubDate>
+      <title>Image Analysis - </title>
+      <link>https://wisample.github.io/blog/research/seminar/03imageanalysis/</link>
+      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/news/bcn4/</guid>
-      <description>&lt;p&gt;Blockchain Nights #4 is happening on 18.01.2018&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <guid>https://wisample.github.io/blog/research/seminar/03imageanalysis/</guid>
+      <description>A nice tutorial on Image Analysis</description>
     </item>
     
     <item>

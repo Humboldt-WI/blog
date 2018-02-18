@@ -6,7 +6,9 @@ Keywords = "news"
 month = "2018-02"
 banner = "img/news/block.png"
 description = " "
-+++http://localhost:1313/blog/news/newcourseoutline/
++++
+
+
 <!--more-->
 
 Final Blockchain Night of Winter semester is coming up soon!
