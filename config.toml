@@ -58,7 +58,7 @@ paginate = 10
 [[menu.topbar]]
     weight = 2
     name = "Facebook"
-    url = "http://facebook.com"
+    url = "https://www.facebook.com/WinfoHUB/"
     pre = "<i class='fa fa-2x fa-facebook'></i>"
 
 
