@@ -330,10 +330,10 @@ https://en.wikipedia.org/wiki/Markdown
 
 Exporting the Jupyter Notebook into Gist involves following steps:
 
-* 1.Download the ipynb file
-* 2.Open it with a text editor
-* 3.Copy the content
-* 4.Paste the content into Gist (remember to include the .ipynb extension in the filename)
+1. Download the ipynb file
+2. Open it with a text editor
+3. Copy the content
+4. Paste the content into Gist (remember to include the .ipynb extension in the filename)
 
 You also can use ``the Unofficial Jupyter Notebook Extensions`` to create Gist automatically.
 <br>
