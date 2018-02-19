@@ -104,7 +104,7 @@ Press Ctrl+C to stop
 ```
 <br>
 <br>
-Quit this running process with Ctrl + C, if you are done or want to restart building the website. The later can be necessary after inserting folders or images.
+Quit this running process with ``Ctrl + C``, if you are done or want to restart building the website. The later can be necessary after inserting folders or images.
 
 Not every folder is relevant for you as an editor (Hugo of course needs all of them, so do not delete the other ones). If you are only interested in creating a blog post, then you only have to be concerned about ``content`` and ``static``. If you are curious for information about all of the folders follow this link. If not, just continue reading.
 <br>
@@ -207,7 +207,7 @@ description = " A Sample Post"
 ```
 <br>
 <br>
-Since we have predefined all the elements in the header, you only have to change the ``date`` section. Another part you need to change is the ``banner`` section.
+Although we have predefined all the elements in the header, you can change any parts you feel necessary to modify. Moreover, you have to change the ``date`` section and add one sentence description in the ``desripetion``. Another part you need to change is the ``banner`` section.
 ```
 banner = "img/seminar/sample/hu-logo.jpg"
 ```
