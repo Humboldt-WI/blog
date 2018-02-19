@@ -23,6 +23,11 @@
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/research/manual/</loc>
+    <lastmod>2018-02-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/research/seminar/07imagecaptioning/</loc>
     <lastmod>2018-02-18T00:00:00+00:00</lastmod>
   </url>
@@ -138,7 +143,7 @@
   
   <url>
     <loc>https://wisample.github.io/blog/tags/class17/18/</loc>
-    <lastmod>2018-02-18T00:00:00+00:00</lastmod>
+    <lastmod>2018-02-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -177,6 +182,12 @@
   </url>
   
   <url>
+    <loc>https://wisample.github.io/blog/categories/instruction/</loc>
+    <lastmod>2018-02-19T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://wisample.github.io/blog/tags/long-short-term-memory/</loc>
     <lastmod>2018-02-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -208,7 +219,7 @@
   
   <url>
     <loc>https://wisample.github.io/blog/research/</loc>
-    <lastmod>2018-02-18T00:00:00+00:00</lastmod>
+    <lastmod>2018-02-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>

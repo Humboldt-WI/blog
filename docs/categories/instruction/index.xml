@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Instruction on Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://wisample.github.io/blog/categories/instruction/</link>
+    <description>Recent content in Instruction on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
+    <lastBuildDate>Mon, 19 Feb 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://wisample.github.io/blog/categories/instruction/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A Manual on How To Write a Blog Post</title>
+      <link>https://wisample.github.io/blog/research/manual/</link>
+      <pubDate>Mon, 19 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/research/manual/</guid>
+      <description>The Website of the Institute of Information Systems is based on a framework called Hugo. Hugo is a static website generator, which allows us to easily present your content of your deep learning projects. In order to present results in the best way, we combine this tool with another tool called Gist. Within this documentation you will learn how to work with those tools. 1) Getting Started: Installation of Hugo framework</description>
+    </item>
+    
+  </channel>
+</rss>
