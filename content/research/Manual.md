@@ -251,7 +251,7 @@ banner = "img/seminar/your_group_folder/image.jpg"
 #### Some highlights of Markdown Syntax
 <br>
 #### Image
-All images in your
+
 In order to embed images in the markdown file, you should do the following:
 <br>
 <br>
