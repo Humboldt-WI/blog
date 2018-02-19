@@ -1,5 +1,5 @@
 +++
-title = "A Static Jupyter Notebook Example"
+title = " Image Captioning"
 date = '2018-02-18'
 tags = [ "Deep Learning", "Image Captioning", "Class17/18",]
 categories = ["seminar"]

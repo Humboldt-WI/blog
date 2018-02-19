@@ -1,5 +1,5 @@
 +++
-title = "Image Analysis - "
+title = "Image Analysis"
 date = '2018-01-11'
 tags = [ "Deep Learning", "Image Analysis", "Class17/18",]
 categories = ["seminar"]
