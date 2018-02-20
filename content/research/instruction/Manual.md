@@ -317,7 +317,7 @@ You can use HTML to control the size and alignment of the image
 <br>
 <br>
 ```
-![hu logo]<img align="right" width="200" height="200"  src="/blog/img/seminar/sample/hu-logo.jpg">
+![hu logo]<img align="center" width="200" height="200"  src="/blog/img/seminar/sample/hu-logo.jpg">
 ```
 <br>
 <br>
