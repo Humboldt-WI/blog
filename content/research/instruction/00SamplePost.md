@@ -2,7 +2,7 @@
 title = "Sample Post"
 date = '2017-12-14'
 tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
-categories = ["seminar"]
+categories = ["instruction"]
 banner = "img/seminar/sample/hu-logo.jpg"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-wisample-github-io-blog"

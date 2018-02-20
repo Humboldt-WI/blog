@@ -11,6 +11,16 @@ description = " A Manual on How To Write a Blog Post"
 
 The Website of the Institute of Information Systems is based on a framework called Hugo. Hugo is a static website generator, which allows us to easily present your content of your deep learning projects. In order to present results in the best way, we combine this tool with another tool called Gist. Within this documentation you will learn how to work with those tools.
 <br>
+The manual is composed of following sections:
+
+##### 1. Getting Started: Installation of Hugo framework
+##### 2. Getting Started: Github
+##### 3. Hugo Basics
+##### 4. How to create a blog post with Markdown
+##### 5. Code Integration Tool: Gist
+
+Besides this manual, we also created a [sample post](https://wisample.github.io/blog/research/instruction/00samplepost/) based on materials from group NN Fundamentals for your reference.
+
 <br>
 ## 1) Getting Started: Installation of Hugo framework
 <br>
@@ -144,9 +154,9 @@ content
 ├── member
 ├── news
 ├── research
-│   ├── seminar
 │   ├── _index.md
-│   └── manual.md
+│   ├── seminar
+│   └── instruction
 ├── contact.md
 └── contributors.md
 ```
@@ -157,6 +167,7 @@ Within the seminar folder you can find markdown files already created for your r
 <br>
 ```
 research
+├── _index.md
 ├── seminar
 │   ├── 00SamplePost.md
 │   ├── 01NeuralNetworkFundamentals.md
@@ -167,8 +178,7 @@ research
 │   ├── 06FinancialTime Series.md
 │   ├── 07ImageCaptioning.md
 │   └── 08Recommendation.md
-├── _index.md
-└── manual.md
+└── instruction
 ```
 <br>
 <br>
@@ -185,12 +195,17 @@ From an marketing point of view it is good to make use of the following features
 
 <br>
 <br>
-## 4) How to create a blog post
+## 4) How to create a blog post with Markdown
 <br>
 You can use any text editor to edit your Markdown file.
 (I personally use Atom. Some packages, such as Markdown Writer and Markdown Preview, make it easier to write Markdown.)
 
-Once opening your draft, you can find the header as following:
+Here you can find a simple guide of Markdown syntax:
+[Mastering Markdown](https://guides.github.com/features/mastering-markdown/
+)
+
+As we mentioned in the last section, we have already created a draft for each group in the seminar folder.
+Once opening your draft, you will see the header as following:
 <br>
 <br>
 ```
@@ -198,7 +213,7 @@ Once opening your draft, you can find the header as following:
 title = "Sample Post"
 date = '2017-12-14'
 tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
-categories = ["seminar"]
+categories = ["instruction"]
 banner = "img/seminar/sample/hu-logo.jpg"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-wisample-github-io-blog"
@@ -207,14 +222,42 @@ description = " A Sample Post"
 ```
 <br>
 <br>
-Although we have predefined all the elements in the header, you can change any parts you feel necessary to modify. Moreover, you have to change the ``date`` section and add one sentence description in the ``desripetion``. Another part you need to change is the ``banner`` section.
+Although we have pre-defined some of the variables in the header, there are many variables you still need to modify.
+<br>
+<b>Varibles have to be modified:</b>
+
+* ``date``
+  The time you publish your post; should follow the format 'YYYY-MM-DD'
+* ``description``
+  One sentence description of your post
+* ``banner``A image represents your topic the most; will show up in the content list page; details see below
+
+<b>Varibles can be modified:</b>
+
+* ``title``
+  The title of your post.
+* ``tags``
+  We have predined tags for each topic. You can add some, if you feel neccessary.
+
+<b>Varibles don't need to be modified:</b>
+
+* ``categories``
+* ``author``
+* ``disqusShortname``
+
+<br>
+#### How to customize the banner and other images in your post:
+
+You can see the variable ``banner`` displays as following in the header:
 ```
 banner = "img/seminar/sample/hu-logo.jpg"
 ```
-You can replace the banner with the picture, which represents your topic most. We also have created image folders for each group in the ``seminar`` folder under ``static``.
+In order to customize the banner, you should change the path ``img/seminar/sample/hu-logo.jpg``
 
-File structure of the static folder.
-<br>
+All images are saved under the ``static`` section.
+We have created image folders for each group in the ``seminar`` folder under ``static``.
+
+File structure of the static folder:
 <br>
 ```
 static
@@ -238,31 +281,29 @@ static
     └── teaching
 ```
 <br>
-<br>
 All the pictures in your blog post should be saved in the corresponding folder.
 <br>
-<br>
-```
-banner = "img/seminar/your_group_folder/image.jpg"
-```
+Thus, the ``banner`` should be modified as
+``
+banner = "img/seminar/your_group_folder/your_image.jpg"
+``
+in the header.
 
 <br>
 <br>
 #### Some highlights of Markdown Syntax
-<br>
 #### Image
 
 In order to embed images in the markdown file, you should do the following:
 <br>
-<br>
 ```
-![](/blog/img/seminar/your_group_folder/image.jpg)
+![](/blog/img/seminar/your_group_folder/your_image.jpg)
 ```
+Slightly different from the ``banner``, you also have to include ``/blog`` before the path ``/img``.
 <br>
 <br>
 For example:
 <br>
-<br>
 ```
 ![example](/blog/img/seminar/sample/hu-logo.jpg)
 ```
@@ -270,7 +311,8 @@ For example:
 <br>
 ![example](/blog/img/seminar/sample/hu-logo.jpg)
 
-
+<br>
+<br>
 You can use HTML to control the size and alignment of the image
 <br>
 <br>
@@ -284,7 +326,7 @@ You can use HTML to control the size and alignment of the image
 <br>
 <br>
 <br>
-##### Blank Line
+#### Blank Line
 
 As I mentioned before you can use some HTML in Markdown. To add blank line within texts, you can simply add ``<br>`` in your file.
 
@@ -335,7 +377,7 @@ Exporting the Jupyter Notebook into Gist involves following steps:
 3. Copy the content
 4. Paste the content into Gist (remember to include the .ipynb extension in the filename)
 
-You also can use ``the Unofficial Jupyter Notebook Extensions`` to create Gist automatically.
+You also can use <b>the Unofficial Jupyter Notebook Extensions</b> to create Gist automatically.
 <br>
 <br>
 More details here:
@@ -343,13 +385,13 @@ More details here:
 
 The Gist can be embedded in the Markdown file as following:
 <br>
-<br>
 ```
 <script src="https://gist.github.com/HsueanL/7356b55ef381ee05012c798be0c6ef2a.js"></script>
 ```
-<br>
 <br>
 It looks like:
 <br>
 <br>
 <script src="https://gist.github.com/HsueanL/7356b55ef381ee05012c798be0c6ef2a.js"></script>
+
+To better understand how the Markdown post works, you can further check the [sample post](https://wisample.github.io/blog/research/instruction/00samplepost/).

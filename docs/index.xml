@@ -54,11 +54,11 @@ Contact Telephone: +49 30 2093-5662 Email: bfabian[at]wiwi.hu-berlin.de Website:
     
     <item>
       <title>A Manual on How To Write a Blog Post</title>
-      <link>https://wisample.github.io/blog/research/manual/</link>
+      <link>https://wisample.github.io/blog/research/instruction/manual/</link>
       <pubDate>Mon, 19 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/manual/</guid>
-      <description>The Website of the Institute of Information Systems is based on a framework called Hugo. Hugo is a static website generator, which allows us to easily present your content of your deep learning projects. In order to present results in the best way, we combine this tool with another tool called Gist. Within this documentation you will learn how to work with those tools. 1) Getting Started: Installation of Hugo framework</description>
+      <guid>https://wisample.github.io/blog/research/instruction/manual/</guid>
+      <description>The Website of the Institute of Information Systems is based on a framework called Hugo. Hugo is a static website generator, which allows us to easily present your content of your deep learning projects. In order to present results in the best way, we combine this tool with another tool called Gist. Within this documentation you will learn how to work with those tools. The manual is composed of following sections:</description>
     </item>
     
     <item>
@@ -262,10 +262,10 @@ Kennziffer: IAM-SDF&lt;/p&gt;
     
     <item>
       <title>Sample Post</title>
-      <link>https://wisample.github.io/blog/research/seminar/00samplepost/</link>
+      <link>https://wisample.github.io/blog/research/instruction/00samplepost/</link>
       <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/seminar/00samplepost/</guid>
+      <guid>https://wisample.github.io/blog/research/instruction/00samplepost/</guid>
       <description>A Gentle Introduction to Neural Network Fundamentals 
 Imagine the following problem: There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.</description>
     </item>

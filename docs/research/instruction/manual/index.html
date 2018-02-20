@@ -58,7 +58,7 @@
   
   <meta property="og:title" content="A Manual on How To Write a Blog Post" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="/blog/research/manual//" />
+  <meta property="og:url" content="/blog/research/instruction/manual//" />
   <meta property="og:image" content="img/logoGross.png" />
 
 </head>
@@ -181,9 +181,23 @@
 
 <p>The Website of the Institute of Information Systems is based on a framework called Hugo. Hugo is a static website generator, which allows us to easily present your content of your deep learning projects. In order to present results in the best way, we combine this tool with another tool called Gist. Within this documentation you will learn how to work with those tools.
 <br>
-<br></p>
+The manual is composed of following sections:</p>
 
-<h2 id="1-getting-started-installation-of-hugo-framework">1) Getting Started: Installation of Hugo framework</h2>
+<h5 id="1-getting-started-installation-of-hugo-framework">1. Getting Started: Installation of Hugo framework</h5>
+
+<h5 id="2-getting-started-github">2. Getting Started: Github</h5>
+
+<h5 id="3-hugo-basics">3. Hugo Basics</h5>
+
+<h5 id="4-how-to-create-a-blog-post-with-markdown">4. How to create a blog post with Markdown</h5>
+
+<h5 id="5-code-integration-tool-gist">5. Code Integration Tool: Gist</h5>
+
+<p>Besides this manual, we also created a <a href="https://wisample.github.io/blog/research/instruction/00samplepost/">sample post</a> based on materials from group NN Fundamentals for your reference.</p>
+
+<p><br></p>
+
+<h2 id="1-getting-started-installation-of-hugo-framework-1">1) Getting Started: Installation of Hugo framework</h2>
 
 <p><br>
 Hugo offers a good manual on how to install all the necessary files depending on which operating system you use. Follow this link:
@@ -196,7 +210,7 @@ After a successful installation, you can download the complete content of the we
 <br>
 <br></p>
 
-<h2 id="2-getting-started-github">2) Getting Started: Github</h2>
+<h2 id="2-getting-started-github-1">2) Getting Started: Github</h2>
 
 <p><br>
 All of the data that is used by hugo to build the website is stored in our Github repository. Use the following link:
@@ -220,7 +234,7 @@ At this point, you should now have all the files of the website on you local dev
 <br>
 <br></p>
 
-<h2 id="3-hugo-basics">3) Hugo Basics</h2>
+<h2 id="3-hugo-basics-1">3) Hugo Basics</h2>
 
 <p><br>
 Open your git bash (if it isn’t already open) and make sure you are in the correct folder. In this case the folder should be called <code>blog</code> and what you should see should look like the following folder structure.
@@ -322,9 +336,9 @@ Going deeper, within the folder <code>research</code> you can find corresponding
 ├── member
 ├── news
 ├── research
-│   ├── seminar
 │   ├── _index.md
-│   └── manual.md
+│   ├── seminar
+│   └── instruction
 ├── contact.md
 └── contributors.md
 </code></pre>
@@ -336,6 +350,7 @@ Within the seminar folder you can find markdown files already created for your r
 <br></p>
 
 <pre><code>research
+├── _index.md
 ├── seminar
 │   ├── 00SamplePost.md
 │   ├── 01NeuralNetworkFundamentals.md
@@ -346,8 +361,7 @@ Within the seminar folder you can find markdown files already created for your r
 │   ├── 06FinancialTime Series.md
 │   ├── 07ImageCaptioning.md
 │   └── 08Recommendation.md
-├── _index.md
-└── manual.md
+└── instruction
 </code></pre>
 
 <p><br>
@@ -366,13 +380,17 @@ From an marketing point of view it is good to make use of the following features
 <p><br>
 <br></p>
 
-<h2 id="4-how-to-create-a-blog-post">4) How to create a blog post</h2>
+<h2 id="4-how-to-create-a-blog-post-with-markdown-1">4) How to create a blog post with Markdown</h2>
 
 <p><br>
 You can use any text editor to edit your Markdown file.
 (I personally use Atom. Some packages, such as Markdown Writer and Markdown Preview, make it easier to write Markdown.)</p>
 
-<p>Once opening your draft, you can find the header as following:
+<p>Here you can find a simple guide of Markdown syntax:
+<a href="https://guides.github.com/features/mastering-markdown/">Mastering Markdown</a></p>
+
+<p>As we mentioned in the last section, we have already created a draft for each group in the seminar folder.
+Once opening your draft, you will see the header as following:
 <br>
 <br></p>
 
@@ -380,7 +398,7 @@ You can use any text editor to edit your Markdown file.
 title = &quot;Sample Post&quot;
 date = '2017-12-14'
 tags = [ &quot;Deep Learning&quot;, &quot;Neural Networks&quot;, &quot;Class17/18&quot;,]
-categories = [&quot;seminar&quot;]
+categories = [&quot;instruction&quot;]
 banner = &quot;img/seminar/sample/hu-logo.jpg&quot;
 author = &quot;Class of Winter Term 2017 / 2018&quot;
 disqusShortname = &quot;https-wisample-github-io-blog&quot;
@@ -390,15 +408,50 @@ description = &quot; A Sample Post&quot;
 
 <p><br>
 <br>
-Although we have predefined all the elements in the header, you can change any parts you feel necessary to modify. Moreover, you have to change the <code>date</code> section and add one sentence description in the <code>desripetion</code>. Another part you need to change is the <code>banner</code> section.</p>
+Although we have pre-defined some of the variables in the header, there are many variables you still need to modify.
+<br>
+<b>Varibles have to be modified:</b></p>
+
+<ul>
+<li><code>date</code>
+The time you publish your post; should follow the format &lsquo;YYYY-MM-DD&rsquo;</li>
+<li><code>description</code>
+One sentence description of your post</li>
+<li><code>banner</code>A image represents your topic the most; will show up in the content list page; details see below</li>
+</ul>
+
+<p><b>Varibles can be modified:</b></p>
+
+<ul>
+<li><code>title</code>
+The title of your post.</li>
+<li><code>tags</code>
+We have predined tags for each topic. You can add some, if you feel neccessary.</li>
+</ul>
+
+<p><b>Varibles don&rsquo;t need to be modified:</b></p>
+
+<ul>
+<li><code>categories</code></li>
+<li><code>author</code></li>
+<li><code>disqusShortname</code></li>
+</ul>
+
+<p><br></p>
+
+<h4 id="how-to-customize-the-banner-and-other-images-in-your-post">How to customize the banner and other images in your post:</h4>
+
+<p>You can see the variable <code>banner</code> displays as following in the header:</p>
 
 <pre><code>banner = &quot;img/seminar/sample/hu-logo.jpg&quot;
 </code></pre>
 
-<p>You can replace the banner with the picture, which represents your topic most. We also have created image folders for each group in the <code>seminar</code> folder under <code>static</code>.</p>
+<p>In order to customize the banner, you should change the path <code>img/seminar/sample/hu-logo.jpg</code></p>
 
-<p>File structure of the static folder.
-<br>
+<p>All images are saved under the <code>static</code> section.
+We have created image folders for each group in the <code>seminar</code> folder under <code>static</code>.</p>
+
+<p>File structure of the static folder:
 <br></p>
 
 <pre><code>static
@@ -423,34 +476,31 @@ Although we have predefined all the elements in the header, you can change any p
 </code></pre>
 
 <p><br>
-<br>
 All the pictures in your blog post should be saved in the corresponding folder.
 <br>
-<br></p>
-
-<pre><code>banner = &quot;img/seminar/your_group_folder/image.jpg&quot;
-</code></pre>
+Thus, the <code>banner</code> should be modified as
+<code>
+banner = &quot;img/seminar/your_group_folder/your_image.jpg&quot;
+</code>
+in the header.</p>
 
 <p><br>
 <br></p>
 
 <h4 id="some-highlights-of-markdown-syntax">Some highlights of Markdown Syntax</h4>
 
-<p><br></p>
-
 <h4 id="image">Image</h4>
 
 <p>In order to embed images in the markdown file, you should do the following:
-<br>
 <br></p>
 
-<pre><code>![](/blog/img/seminar/your_group_folder/image.jpg)
+<pre><code>![](/blog/img/seminar/your_group_folder/your_image.jpg)
 </code></pre>
 
-<p><br>
+<p>Slightly different from the <code>banner</code>, you also have to include <code>/blog</code> before the path <code>/img</code>.
+<br>
 <br>
 For example:
-<br>
 <br></p>
 
 <pre><code>![example](/blog/img/seminar/sample/hu-logo.jpg)
@@ -460,7 +510,9 @@ For example:
 <br>
 <img src="/blog/img/seminar/sample/hu-logo.jpg" alt="example" /></p>
 
-<p>You can use HTML to control the size and alignment of the image
+<p><br>
+<br>
+You can use HTML to control the size and alignment of the image
 <br>
 <br></p>
 
@@ -475,7 +527,7 @@ For example:
 <br>
 <br></p>
 
-<h5 id="blank-line">Blank Line</h5>
+<h4 id="blank-line">Blank Line</h4>
 
 <p>As I mentioned before you can use some HTML in Markdown. To add blank line within texts, you can simply add <code>&lt;br&gt;</code> in your file.</p>
 
@@ -521,7 +573,7 @@ Let&rsquo;s take a look at our data.
 <br>
 <br></p>
 
-<h2 id="5-code-integration-tool-gist">5) Code Integration Tool: Gist</h2>
+<h2 id="5-code-integration-tool-gist-1">5) Code Integration Tool: Gist</h2>
 
 <p>Exporting the Jupyter Notebook into Gist involves following steps:</p>
 
@@ -532,25 +584,25 @@ Let&rsquo;s take a look at our data.
 <li>Paste the content into Gist (remember to include the .ipynb extension in the filename)</li>
 </ol>
 
-<p>You also can use <code>the Unofficial Jupyter Notebook Extensions</code> to create Gist automatically.
+<p>You also can use <b>the Unofficial Jupyter Notebook Extensions</b> to create Gist automatically.
 <br>
 <br>
 More details here:
 <a href="http://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions/gist_it/readme.html">jupyter-contrib-nbextensions</a></p>
 
 <p>The Gist can be embedded in the Markdown file as following:
-<br>
 <br></p>
 
 <pre><code>&lt;script src=&quot;https://gist.github.com/HsueanL/7356b55ef381ee05012c798be0c6ef2a.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 
 <p><br>
-<br>
 It looks like:
 <br>
 <br>
 <script src="https://gist.github.com/HsueanL/7356b55ef381ee05012c798be0c6ef2a.js"></script></p>
+
+<p>To better understand how the Markdown post works, you can further check the <a href="https://wisample.github.io/blog/research/instruction/00samplepost/">sample post</a>.</p>
 
                         </div>
                         
@@ -584,10 +636,10 @@ It looks like:
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
-            <li><a href="https://wisample.github.io/blog/categories/instruction">instruction (1)</a>
+            <li><a href="https://wisample.github.io/blog/categories/instruction">instruction (2)</a>
             </li>
             
-            <li><a href="https://wisample.github.io/blog/categories/seminar">seminar (9)</a>
+            <li><a href="https://wisample.github.io/blog/categories/seminar">seminar (8)</a>
             </li>
             
         </ul>
