@@ -5,7 +5,7 @@ tags = [ "Deep Learning", "Image Analysis", "Class17/18",]
 categories = ["seminar"]
 banner = "img/seminar/image_analysis/images.PNG"
 author = "Class of Winter Term 2017 / 2018"
-disqusShortname = "https-wisample-github-io-blog"
+disqusShortname = "https-humbodt-wi-github-io-blog"
 description = " "
 +++
 

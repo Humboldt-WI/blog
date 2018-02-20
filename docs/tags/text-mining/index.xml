@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Text Mining on Institute of Infomation Systems at HU-Berlin</title>
-    <link>https://wisample.github.io/blog/tags/text-mining/</link>
+    <link>https://humboldt-wi.github.io/blog/tags/text-mining/</link>
     <description>Recent content in Text Mining on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
     <lastBuildDate>Thu, 18 Jan 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://wisample.github.io/blog/tags/text-mining/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://humboldt-wi.github.io/blog/tags/text-mining/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Text Mining - Topic Models: Teaching an Algorithm Human Language</title>
-      <link>https://wisample.github.io/blog/research/seminar/04topicmodels/</link>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/04topicmodels/</link>
       <pubDate>Thu, 18 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/seminar/04topicmodels/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/04topicmodels/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Text Mining - Sentiment Analysis</title>
-      <link>https://wisample.github.io/blog/research/seminar/05sentimentanalysis/</link>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/05sentimentanalysis/</link>
       <pubDate>Mon, 15 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/seminar/05sentimentanalysis/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/05sentimentanalysis/</guid>
       <description></description>
     </item>
     

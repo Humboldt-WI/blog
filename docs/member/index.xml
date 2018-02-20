@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Members on Institute of Infomation Systems at HU-Berlin</title>
-    <link>https://wisample.github.io/blog/member/</link>
+    <link>https://humboldt-wi.github.io/blog/member/</link>
     <description>Recent content in Members on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0100</lastBuildDate>
     
-	<atom:link href="https://wisample.github.io/blog/member/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://humboldt-wi.github.io/blog/member/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Prof. Dr. Stefan Lessmann</title>
-      <link>https://wisample.github.io/blog/member/lessmann/</link>
+      <link>https://humboldt-wi.github.io/blog/member/lessmann/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
       
-      <guid>https://wisample.github.io/blog/member/lessmann/</guid>
+      <guid>https://humboldt-wi.github.io/blog/member/lessmann/</guid>
       <description>Short-bio Stefan received a diploma in business administration and a PhD from the University of Hamburg in 2002 and 2007, respectively. Stefan worked as a lecturer and senior lecture in business informatics at the Institute of Information Systems of the University of Hamburg. Since 2008, Stefan is a guest lecturer at the School of Management of University of Southampton, where he teaches under- and postgraduate courses on quantitative methods, electronic business, and web application development.</description>
     </item>
     
     <item>
       <title>Johannes Haupt, M.Sc.</title>
-      <link>https://wisample.github.io/blog/member/haupt/</link>
+      <link>https://humboldt-wi.github.io/blog/member/haupt/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
       
-      <guid>https://wisample.github.io/blog/member/haupt/</guid>
+      <guid>https://humboldt-wi.github.io/blog/member/haupt/</guid>
       <description>Short-bio Since April 2016, he has been working as a researcher at the Chair of Information Systems of the Business and Economics department. He implemented a machine learning framework to detect tracking objects in e-mails as part of his master&amp;rsquo;s thesis. In the course of his PhD, he researches applications for machine learning in e-commerce and unstructured data
 
 Research Interests  Customer behavior in e-Commerce
@@ -35,19 +35,19 @@ Research Interests  Customer behavior in e-Commerce
     
     <item>
       <title>Annika Baumann, M.Sc.</title>
-      <link>https://wisample.github.io/blog/member/baumann/</link>
+      <link>https://humboldt-wi.github.io/blog/member/baumann/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
       
-      <guid>https://wisample.github.io/blog/member/baumann/</guid>
+      <guid>https://humboldt-wi.github.io/blog/member/baumann/</guid>
       <description>Short-bio Annika Baumann, M.Sc., studied the Master in Information Systems at the Humboldt University in Berlin. Since June 2013 she works as a researcher at the Institute of information systems at the Humboldt University in Berlin. As part of her master&amp;rsquo;s thesis she investigated the robustness of the Internet graph based on a current dataset. In the course of her PhD she investigates the Internet topology, the readability of privacy policies as well as the social news aggregator Reddit.</description>
     </item>
     
     <item>
       <title>Class of 2017 / 2018 </title>
-      <link>https://wisample.github.io/blog/member/class1718/</link>
+      <link>https://humboldt-wi.github.io/blog/member/class1718/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
       
-      <guid>https://wisample.github.io/blog/member/class1718/</guid>
+      <guid>https://humboldt-wi.github.io/blog/member/class1718/</guid>
       <description> Website: www.phorminx.de/ben_fabian.html
 Contact Telephone: +49 30 2093-5662 Email: bfabian[at]wiwi.hu-berlin.de Website: www.phorminx.de/ben_fabian.html Office Hours: By Appointment Room: SPA1, 335  </description>
     </item>

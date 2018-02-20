@@ -5,7 +5,7 @@ tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
 categories = ["instruction"]
 banner = "img/seminar/sample/hu-logo.jpg"
 author = "Class of Winter Term 2017 / 2018"
-disqusShortname = "https-wisample-github-io-blog"
+disqusShortname = "https-humbodt-wi-github-io-blog"
 description = " A Sample Post"
 +++
 

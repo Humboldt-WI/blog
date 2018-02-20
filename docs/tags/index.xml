@@ -2,139 +2,139 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Institute of Infomation Systems at HU-Berlin</title>
-    <link>https://wisample.github.io/blog/tags/</link>
+    <link>https://humboldt-wi.github.io/blog/tags/</link>
     <description>Recent content in Tags on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
     <lastBuildDate>Fri, 02 Feb 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://wisample.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://humboldt-wi.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Blockchain</title>
-      <link>https://wisample.github.io/blog/tags/blockchain/</link>
+      <link>https://humboldt-wi.github.io/blog/tags/blockchain/</link>
       <pubDate>Fri, 02 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/blockchain/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/blockchain/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Class17/18</title>
-      <link>https://wisample.github.io/blog/tags/class17/18/</link>
+      <link>https://humboldt-wi.github.io/blog/tags/class17/18/</link>
       <pubDate>Mon, 19 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/class17/18/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/class17/18/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Convulutional Neural Networks</title>
-      <link>https://wisample.github.io/blog/tags/convulutional-neural-networks/</link>
+      <link>https://humboldt-wi.github.io/blog/tags/convulutional-neural-networks/</link>
       <pubDate>Thu, 21 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/convulutional-neural-networks/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/convulutional-neural-networks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Deep Learning</title>
-      <link>https://wisample.github.io/blog/tags/deep-learning/</link>
+      <link>https://humboldt-wi.github.io/blog/tags/deep-learning/</link>
       <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/deep-learning/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/deep-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Image Analysis</title>
-      <link>https://wisample.github.io/blog/tags/image-analysis/</link>
+      <link>https://humboldt-wi.github.io/blog/tags/image-analysis/</link>
       <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/image-analysis/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/image-analysis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Image Captioning</title>
-      <link>https://wisample.github.io/blog/tags/image-captioning/</link>
+      <link>https://humboldt-wi.github.io/blog/tags/image-captioning/</link>
       <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/image-captioning/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/image-captioning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Long Short Term Memory</title>
-      <link>https://wisample.github.io/blog/tags/long-short-term-memory/</link>
+      <link>https://humboldt-wi.github.io/blog/tags/long-short-term-memory/</link>
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/long-short-term-memory/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/long-short-term-memory/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Lstm</title>
-      <link>https://wisample.github.io/blog/tags/lstm/</link>
+      <link>https://humboldt-wi.github.io/blog/tags/lstm/</link>
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/lstm/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/lstm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Neural Networks</title>
-      <link>https://wisample.github.io/blog/tags/neural-networks/</link>
+      <link>https://humboldt-wi.github.io/blog/tags/neural-networks/</link>
       <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/neural-networks/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/neural-networks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Recommendation</title>
-      <link>https://wisample.github.io/blog/tags/recommendation/</link>
+      <link>https://humboldt-wi.github.io/blog/tags/recommendation/</link>
       <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/recommendation/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/recommendation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Sentiment Analysis</title>
-      <link>https://wisample.github.io/blog/tags/sentiment-analysis/</link>
+      <link>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</link>
       <pubDate>Mon, 15 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/sentiment-analysis/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Text Mining</title>
-      <link>https://wisample.github.io/blog/tags/text-mining/</link>
+      <link>https://humboldt-wi.github.io/blog/tags/text-mining/</link>
       <pubDate>Thu, 18 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/text-mining/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/text-mining/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Time Series</title>
-      <link>https://wisample.github.io/blog/tags/time-series/</link>
+      <link>https://humboldt-wi.github.io/blog/tags/time-series/</link>
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/time-series/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/time-series/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Topic Modeling</title>
-      <link>https://wisample.github.io/blog/tags/topic-modeling/</link>
+      <link>https://humboldt-wi.github.io/blog/tags/topic-modeling/</link>
       <pubDate>Thu, 18 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/tags/topic-modeling/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/topic-modeling/</guid>
       <description></description>
     </item>
     

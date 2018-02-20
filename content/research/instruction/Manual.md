@@ -5,7 +5,7 @@ tags = ["Class17/18"]
 categories = ["instruction"]
 banner = "img/seminar/sample/hu-logo.jpg"
 author = "Class of Winter Term 2017 / 2018"
-disqusShortname = "https-wisample-github-io-blog"
+disqusShortname = "https-humbodt-wi-github-io-blog"
 description = " A Manual on How To Write a Blog Post"
 +++
 
@@ -19,7 +19,7 @@ The manual is composed of following sections:
 ##### 4. How to create a blog post with Markdown
 ##### 5. Code Integration Tool: Gist
 
-Besides this manual, we also created a [sample post](https://wisample.github.io/blog/research/instruction/00samplepost/) based on materials from group NN Fundamentals for your reference.
+Besides this manual, we also created a [sample post](https://humboldt-wi.github.io/blog/research/instruction/00samplepost/) based on materials from group NN Fundamentals for your reference.
 
 <br>
 ## 1) Getting Started: Installation of Hugo framework
@@ -394,4 +394,4 @@ It looks like:
 <br>
 <script src="https://gist.github.com/HsueanL/7356b55ef381ee05012c798be0c6ef2a.js"></script>
 
-To better understand how the Markdown post works, you can further check the [sample post](https://wisample.github.io/blog/research/instruction/00samplepost/).
+To better understand how the Markdown post works, you can further check the [sample post](https://humboldt-wi.github.io/blog/research/instruction/00samplepost/).

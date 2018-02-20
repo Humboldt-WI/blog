@@ -5,6 +5,6 @@ tags = [ "Deep Learning", "Time Series", "LSTM", "Long Short Term Memory", "Clas
 categories = ["seminar"]
 banner = "img/seminar/financial_time_series/timeseries.PNG"
 author = "Class of Winter Term 2017 / 2018"
-disqusShortname = "https-wisample-github-io-blog"
+disqusShortname = "https-humbodt-wi-github-io-blog"
 description = " "
 +++

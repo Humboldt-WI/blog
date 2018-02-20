@@ -5,6 +5,6 @@ tags = [ "Deep Learning", "Text Mining", "Topic Modeling", "Class17/18",]
 categories = ["seminar"]
 banner = "img/seminar/topic_models/textMininigKlein.png"
 author = "Class of Winter Term 2017 / 2018"
-disqusShortname = "https-wisample-github-io-blog"
+disqusShortname = "https-humbodt-wi-github-io-blog"
 description = " "
 +++

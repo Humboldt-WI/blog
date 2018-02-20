@@ -2,103 +2,103 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Class17/18 on Institute of Infomation Systems at HU-Berlin</title>
-    <link>https://wisample.github.io/blog/tags/class17/18/</link>
+    <link>https://humboldt-wi.github.io/blog/tags/class17/18/</link>
     <description>Recent content in Class17/18 on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
     <lastBuildDate>Mon, 19 Feb 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://wisample.github.io/blog/tags/class17/18/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://humboldt-wi.github.io/blog/tags/class17/18/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>A Manual on How To Write a Blog Post</title>
-      <link>https://wisample.github.io/blog/research/instruction/manual/</link>
+      <link>https://humboldt-wi.github.io/blog/research/instruction/manual/</link>
       <pubDate>Mon, 19 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/instruction/manual/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/instruction/manual/</guid>
       <description>The Website of the Institute of Information Systems is based on a framework called Hugo. Hugo is a static website generator, which allows us to easily present your content of your deep learning projects. In order to present results in the best way, we combine this tool with another tool called Gist. Within this documentation you will learn how to work with those tools. The manual is composed of following sections:</description>
     </item>
     
     <item>
       <title> Image Captioning</title>
-      <link>https://wisample.github.io/blog/research/seminar/07imagecaptioning/</link>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/07imagecaptioning/</link>
       <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/seminar/07imagecaptioning/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/07imagecaptioning/</guid>
       <description>test</description>
     </item>
     
     <item>
       <title>Recommendation Machines - The Magic behind Amazon telling us what to buy</title>
-      <link>https://wisample.github.io/blog/research/seminar/08recommendation/</link>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/08recommendation/</link>
       <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/seminar/08recommendation/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/08recommendation/</guid>
       <description>Recommendation Machines  Have you ever wondered how Amazon, Netflix and Co. are able to tell which products you should buy or which movies you should like? They are surprisingly precise and it is all due to the magic of recommentaion algorithms.</description>
     </item>
     
     <item>
       <title>LSTM and Financial Time Series - Predicting Stock Returns</title>
-      <link>https://wisample.github.io/blog/research/seminar/06financialtime-series/</link>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/06financialtime-series/</link>
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/seminar/06financialtime-series/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/06financialtime-series/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Text Mining - Topic Models: Teaching an Algorithm Human Language</title>
-      <link>https://wisample.github.io/blog/research/seminar/04topicmodels/</link>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/04topicmodels/</link>
       <pubDate>Thu, 18 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/seminar/04topicmodels/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/04topicmodels/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Text Mining - Sentiment Analysis</title>
-      <link>https://wisample.github.io/blog/research/seminar/05sentimentanalysis/</link>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/05sentimentanalysis/</link>
       <pubDate>Mon, 15 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/seminar/05sentimentanalysis/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/05sentimentanalysis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Image Analysis</title>
-      <link>https://wisample.github.io/blog/research/seminar/03imageanalysis/</link>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/03imageanalysis/</link>
       <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/seminar/03imageanalysis/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/03imageanalysis/</guid>
       <description>A nice tutorial on Image Analysis</description>
     </item>
     
     <item>
       <title>Convolutional Neural Networks (CNN)</title>
-      <link>https://wisample.github.io/blog/research/seminar/02convolutionalneuralnetworks/</link>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/02convolutionalneuralnetworks/</link>
       <pubDate>Thu, 21 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/seminar/02convolutionalneuralnetworks/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/02convolutionalneuralnetworks/</guid>
       <description>CNNs and some nice application</description>
     </item>
     
     <item>
       <title>Neural Network Fundamentals</title>
-      <link>https://wisample.github.io/blog/research/seminar/01neuralnetworkfundamentals/</link>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/01neuralnetworkfundamentals/</link>
       <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/seminar/01neuralnetworkfundamentals/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/01neuralnetworkfundamentals/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Sample Post</title>
-      <link>https://wisample.github.io/blog/research/instruction/00samplepost/</link>
+      <link>https://humboldt-wi.github.io/blog/research/instruction/00samplepost/</link>
       <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/instruction/00samplepost/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/instruction/00samplepost/</guid>
       <description>A Gentle Introduction to Neural Network Fundamentals 
 Imagine the following problem: There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.</description>
     </item>

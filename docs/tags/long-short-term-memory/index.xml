@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Long Short Term Memory on Institute of Infomation Systems at HU-Berlin</title>
-    <link>https://wisample.github.io/blog/tags/long-short-term-memory/</link>
+    <link>https://humboldt-wi.github.io/blog/tags/long-short-term-memory/</link>
     <description>Recent content in Long Short Term Memory on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
     <lastBuildDate>Thu, 01 Feb 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://wisample.github.io/blog/tags/long-short-term-memory/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://humboldt-wi.github.io/blog/tags/long-short-term-memory/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>LSTM and Financial Time Series - Predicting Stock Returns</title>
-      <link>https://wisample.github.io/blog/research/seminar/06financialtime-series/</link>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/06financialtime-series/</link>
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://wisample.github.io/blog/research/seminar/06financialtime-series/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/06financialtime-series/</guid>
       <description></description>
     </item>
     

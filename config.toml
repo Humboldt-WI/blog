@@ -1,4 +1,4 @@
-baseurl = "https://wisample.github.io/blog/"
+baseurl = "https://humboldt-wi.github.io/blog/"
 title = "Institute of Infomation Systems at HU-Berlin"
 theme = "hugo-universal-theme"
 themesDir = "themes"
@@ -81,9 +81,9 @@ paginate = 10
     # Style options: default (light-blue), blue, green, marsala, pink, red, turquoise, violet
     style = "blue"
 
-   
 
-    
+
+
 
     copyright = "Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved."
 
@@ -91,7 +91,7 @@ paginate = 10
     date_format = "January 2, 2006"
 
     logo = "img/logoGross.png"
-   
+
 
 
 [Permalinks]
