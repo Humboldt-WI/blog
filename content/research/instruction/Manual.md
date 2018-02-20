@@ -46,7 +46,7 @@ https://github.com/Humboldt-WI/blog
 <br>
 <br>
 
-You can upload your post following the similiar instruction from Johannes.
+You can upload your post following the similiar steps from the instruction by Johannes.
 
 
 Please
@@ -203,11 +203,14 @@ Website look:
 <br>
 <br>
 From an marketing point of view it is good to make use of the following features:
+
+
 * Visually appealing images that fit well to the content of the post
 * Catchy headlines that create curiosity about the subject
 * Adding tags to refer to certain topics (just like hashtags)
 
-<br>
+
+
 <br>
 ## 4) How to create a blog post with Markdown
 <br>
