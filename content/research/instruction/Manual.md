@@ -24,12 +24,15 @@ Besides this manual, we also created a [sample post](https://humboldt-wi.github.
 <br>
 ## 1) Getting Started: Installation of Hugo framework
 <br>
-Hugo offers a good manual on how to install all the necessary files depending on which operating system you use. Follow this link:
+Hugo offers a good manual on how to install all the necessary files depending on which operating system you use. Follow these links:
 <br>
 <br>
 https://gohugo.io/getting-started/installing/
+
+https://gohugo.io/getting-started/quick-start/
 <br>
 <br>
+
 After a successful installation, you can download the complete content of the website via Github in step 2).
 <br>
 <br>
@@ -39,13 +42,25 @@ After a successful installation, you can download the complete content of the we
 All of the data that is used by hugo to build the website is stored in our Github repository. Use the following link:
 <br>
 <br>
-https://github.com/wisample/blog
+https://github.com/Humboldt-WI/blog
 <br>
 <br>
+
+You can upload your post following the similiar instruction from Johannes.
+
+
+Please
+
+* Fork the repository (create a copy on your account)
+* Clone the repository (create a copy of the files on your computer)
+* Save all your post and images in the corresponding folders
+* Create a pull request
+<br>
+
 Clone the respository to your local device. This can easily be done through git. The short command for that is shown here:
 
 ```
-git clone git@github.com:wisample/blog.git
+git clone git@github.com:your_account/blog.git
 ```
 
 If you are in need of a more detailed explanation of how to clone this repository, please follow this link:
@@ -63,7 +78,7 @@ Open your git bash (if it isn’t already open) and make sure you are in the cor
 <br>
 <br>
 ```
-.
+blog
 ├── .git
 ├── archetypes
 ├── config.toml
@@ -169,7 +184,6 @@ Within the seminar folder you can find markdown files already created for your r
 research
 ├── _index.md
 ├── seminar
-│   ├── 00SamplePost.md
 │   ├── 01NeuralNetworkFundamentals.md
 │   ├── 02ConvolutionalNeuralNetworks.md
 │   ├── 03ImageAnalysis.md
