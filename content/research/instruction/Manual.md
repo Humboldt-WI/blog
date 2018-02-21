@@ -244,7 +244,7 @@ Although we have pre-defined some of the variables in the header, there are many
 <b>Varibles have to be modified:</b>
 
 * ``date``
-  The time you publish your post; should follow the format 'YYYY-MM-DD'
+  The time you publish your post; should follow the format ``'YYYY-MM-DD'``
 * ``description``
   One sentence description of your post
 * ``banner``A image represents your topic the most; will show up in the content list page; details see below
