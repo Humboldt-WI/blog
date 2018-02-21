@@ -411,4 +411,20 @@ It looks like:
 <br>
 <script src="https://gist.github.com/HsueanL/7356b55ef381ee05012c798be0c6ef2a.js"></script>
 
-To better understand how the Markdown post works, you can further check the [sample post](https://humboldt-wi.github.io/blog/research/instruction/00samplepost/).
+To better understand how Markdown and Gist work, you can further check the [sample post](https://humboldt-wi.github.io/blog/research/instruction/00samplepost/).
+The Markdown files for this post and the sample post are saved in the instrucion folder.
+<br>
+```
+content
+├── member
+├── news
+├── research
+│   ├── _index.md
+│   ├── seminar
+│   └── instruction
+│       ├──00SamplePost.md
+│       └──Manual.md
+├── contact.md
+└── contributors.md
+```
+<br>
