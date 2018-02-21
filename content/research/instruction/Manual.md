@@ -239,9 +239,9 @@ description = " A Sample Post"
 ```
 <br>
 <br>
-Although we have pre-defined some of the variables in the header, there are many variables you still need to modify.
+Although we have pre-defined some of the variables in the header, there are many variables you still need to customize.
 <br>
-<b>Varibles have to be modified:</b>
+<b>Varibles have to be customized:</b>
 
 * ``date``
   The time you publish your post; should follow the format ``'YYYY-MM-DD'``
@@ -254,7 +254,7 @@ Although we have pre-defined some of the variables in the header, there are many
 * ``title``
   The title of your post.
 * ``tags``
-  We have predined tags for each topic. You can add some, if you feel neccessary.
+  We have predined tags for each topic. You can add or change some, if you feel neccessary.
 
 <b>Varibles don't need to be modified:</b>
 
