@@ -20,16 +20,12 @@ The manual is composed of following sections:
 ##### 5. Code Integration Tool: Gist
 
 Besides this manual, we also created a [sample post](https://humboldt-wi.github.io/blog/research/instruction/00samplepost/) based on materials from group NN Fundamentals for your reference.
-
 <br>
 ## 1) Getting Started: Installation of Hugo framework
-<br>
 Hugo offers a good manual on how to install all the necessary files depending on which operating system you use. Follow these links:
-<br>
+
 <br>
 https://gohugo.io/getting-started/installing/
-
-https://gohugo.io/getting-started/quick-start/
 <br>
 <br>
 
@@ -46,30 +42,20 @@ https://github.com/Humboldt-WI/blog
 <br>
 <br>
 
-You can upload your post following the similiar steps from the instruction by Johannes.
-
-
-Please
-
+In order to contribute to the blog, we ask you to please:
+ 
 * Fork the repository (create a copy on your account)
 * Clone the repository (create a copy of the files on your computer)
 * Save all your post and images in the corresponding folders
 * Create a pull request
 <br>
+<br>
 
-Clone the respository to your local device. This can easily be done through git. The short command for that is shown here:
-
-```
-git clone git@github.com:your_account/blog.git
-```
-
-If you are in need of a more detailed explanation of how to clone this repository, please follow this link:
+If you need help forking the repository, follow this link:
+https://help.github.com/articles/fork-a-repo/
 <br>
 <br>
-https://git-scm.com/book/it/v2/Git-Basics-Getting-a-Git-Repository
-<br>
-<br>
-At this point, you should now have all the files of the website on you local device. In 3) you will learn, how to use Hugo to build, change and develop your blog post.
+Once you have all the files of the website on you local device, you will learn how to use Hugo to build, change and develop your blog post.
 <br>
 <br>
 ## 3) Hugo Basics
@@ -158,7 +144,11 @@ content
 Website Look:
 <br>
 <br>
-![](/blog/img/manual/website.png)
+
+<img style=" width:800px;display:block;margin:0 auto;"
+src="/blog/img/manual/website.png">
+
+
 <br>
 <br>
 Going deeper, within the folder ``research`` you can find corresponding pages that present results of the chair of information systems. We distinguish here between work that has been conducted within the seminar and work outside of the seminar, i.e. as a results of dissertations. At the current time the later folder is empty and is only a proposal.
@@ -199,7 +189,12 @@ research
 Website look:
 <br>
 <br>
-![](/blog/img/manual/seminar_folder.png)
+ 
+
+<img style=" width:800px;display:block;margin:0 auto;"
+src="/blog/img/manual/seminar_folder.png">
+
+
 <br>
 <br>
 From an marketing point of view it is good to make use of the following features:
@@ -307,14 +302,39 @@ banner = "img/seminar/your_group_folder/your_image.jpg"
 in the header.
 
 <br>
-<br>
+<br> 
 #### Some highlights of Markdown Syntax
-#### Image
+<br>
 
+#### Headlines
+
+Formatting headlines is very easy. By using '#' you can adjust the order of your headline. Check out the following example:
+``` 
+
+# H1 
+## H2
+### H3 
+#### H4
+##### H5
+###### H6
+```
+
+# H1 
+## H2
+### H3 
+#### H4
+##### H5
+###### H6
+
+<br>
+<br>
+
+#### Image
 In order to embed images in the markdown file, you should do the following:
 <br>
 ```
 ![](/blog/img/seminar/your_group_folder/your_image.jpg)
+
 ```
 Slightly different from the ``banner``, you also have to include ``/blog`` before the path ``/img``.
 <br>
@@ -334,18 +354,45 @@ You can use HTML to control the size and alignment of the image
 <br>
 <br>
 ```
-![hu logo]<img align="center" width="200" height="200"  src="/blog/img/seminar/sample/hu-logo.jpg">
+![hu logo]<img align="center" width="200" height="200" src="/blog/img/seminar/sample/hu-logo.jpg">
 ```
+
+
+<img style=" width:800px;display:block;margin:0 auto;" src="/blog/img/seminar/sample/hu-logo.jpg"
+
+
+
+
+
 <br>
 <br>
-<img align="center" width="200" height="200"  src="/blog/img/seminar/sample/hu-logo.jpg">
+<img align="center" width="200" height="200" src="/blog/img/seminar/sample/hu-logo.jpg">
 <br>
 <br>
 <br>
 <br>
+We also recommend to add some more style information:
+
+```
+<img align="center" width="200" height="200"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/sample/hu-logo.jpg">
+```
+
+<br>
+<br>
+<br>
+<img align="center" width="200" height="200"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/sample/hu-logo.jpg">
+
+
+
+
+
 #### Blank Line
 
-As I mentioned before you can use some HTML in Markdown. To add blank line within texts, you can simply add ``<br>`` in your file.
+To add blank line within texts, you can simply add ``<br>`` in your file.
 
 For example:
 <br>
@@ -375,7 +422,9 @@ Let's take a look at our data.
 >##### Fit draft of the NN to the Data
 
 
-For more about Markdown Syntax, please follow the links:
+
+There is a lot more syntax when it comes to markdown files. Our goal is to only give you some basics to start off.
+For more about markdown syntax, please follow the links:
 
  [Mastering Markdown](https://guides.github.com/features/mastering-markdown/
  )
@@ -387,7 +436,7 @@ https://en.wikipedia.org/wiki/Markdown
 <br>
 ## 5) Code Integration Tool: Gist
 
-Exporting the Jupyter Notebook into Gist involves following steps:
+Exporting the Jupyter Notebook into Gist involves the following steps:
 
 1. Download the ipynb file
 2. Open it with a text editor
@@ -400,7 +449,8 @@ You also can use <b>the Unofficial Jupyter Notebook Extensions</b> to create Gis
 More details here:
 [jupyter-contrib-nbextensions](http://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions/gist_it/readme.html)
 
-The Gist can be embedded in the Markdown file as following:
+The nice thing about Gist is its easy integration into the blog post. 
+The Gist can be embedded in the Markdown file by only one line of code:
 <br>
 ```
 <script src="https://gist.github.com/HsueanL/7356b55ef381ee05012c798be0c6ef2a.js"></script>
@@ -428,3 +478,17 @@ content
 └── contributors.md
 ```
 <br>
+### Finally
+##### Out best practice that we would like to recommend looks like this:
+Write a multiple theoretical parts. In between these parts use helpful images to underline your theory / formula and so on. 
+
+Create multiple Gist boxes instead of only one and fit them at the right places within you post. This way the reader will find a diversified and entertaining articles. 
+
+##### Note that there are no limits to create blog posts. Be creative, use whatever you like to make it as interesting as possible! 
+ 
+#### Let's Go!
+
+<br>
+<br>
+<iframe src="https://giphy.com/embed/5ntdy5Ban1dIY" width="480" height="463" frameBorder="0"      style="display:block;margin:0 auto;" 
+ class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/coding-5ntdy5Ban1dIY">via GIPHY</a></p>
