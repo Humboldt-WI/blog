@@ -20,8 +20,8 @@ description = " "
   - Model Structure
   - Training Data Generation
   - Train Model
-* [Evaluation](#evaluation)
 * [Caption Generation](#caption-generation)
+* [Evaluation](#evaluation)
 * [Summary](#summary)
 
 *Environment Requirements*
@@ -47,7 +47,13 @@ This tutorial bases on a similar one by [Jason Brownlee](https://machinelearning
 
 # Introduction
 
-Short introduction into image captioning and why it may be useful ...
+Image captioning aims for automatically generating a text that describes the present picture. In the last years it became a topic with growing interest in machine learning and the advances in this field lead to models that (depending on which evaluation) can score even higher than humans do. Image captioning can for instance help visually impaired people to grasp what is happening in a picture. Furthermore, it could enhance the image search of search engines, it could simplify SEO by automatically generating descriptions for the pictures or improve online marketing and customer segmentation by identifying customer interests through interpreting their shared images via social media platforms. Nevertheless image captioning is a very complex task as it goes beyond the sole classification of objects in pictures. The relation between the objects and the attributes have to be recognized. Finally, these information must be expressed in a natural language like English.
+
+The goal of this blog is an introduction to image captioning, an explanation of a comprehensible model structure and an implementation of that model. Out of the scope is a tutorial to develop a high end caption generation model that is fine tuned to compete with the state of the art models. We rather focus on the basic understanding of the topic and the application of a basic model.
+
+To help you to get started we collected all necessary import packages below. Paste them at the top of your project:
+
+<script src="https://gist.github.com/sim-o-n/67c532b1723c257f2aabbf8522eea491.js"></script>
 
 ## Dataset
 
@@ -93,7 +99,7 @@ As the variable name already indicates, we need to pre process the text data bef
 
 This will reduce the size of our vocabulary, which benefits the model performance later. Of cause this also has a downside, since we discard data but we will come back to this in the last part of the tutorial. Save the cleaned data to `cleaned_desc`.
 
-If we would talk about movies we had to add a big **spoiler mark** now, because we have to add something which may no make much sense so fare but will be very important later. Why, we will explain in the part "Training Data Generation". Long story short, we need to wrap each caption into an artificial start and end sequence.  
+If we would talk about movies we had to add a big **spoiler mark** now, because we have to add something which may no make much sense so far but will be very important later. We will explain this in the part ["Setup Caption Generation Model"](#setup-caption-generation-model) in more detail. Long story short, we need to wrap each caption into an artificial start and end sequence.  
 Let's define a function `wrap_descriptions()`, hand over the `cleaned_desc` and optional a `start` and `end` sequence. If you will not go with the default ones, be aware that these sequences must not already exist in the captions and do not contain spaces.
 The function iterates over the descriptions by the image identifier and wraps each description into the start and end sequence and returns the updated dictionary.
 
@@ -123,7 +129,7 @@ In the beginning each caption only contains the artificial start sequence (which
 As you noticed this is an iterative process, which will terminate in two ways. The first stopping criteria would be, that the model predicts the artificial end sequence as the next word. The second one is given by an upper bound of the caption length. We have to specify this bound in advance, which will also have an influence on the models structure later. Either ways, the model will terminate and output the generated caption. We illustrated the process in the flow-chart below.
 
 <center>
-  <img src="/blog/img/seminar/image_captioning/Flowchart.jpg" alt="generation-process">
+  <img src="/blog/img/seminar/image_captioning/Flowchart.jpg" alt="generation-process" height="70%">
   <p>Figure 1: Flow-chart of the caption generation process.</p>
 </center>
 
@@ -172,7 +178,7 @@ The first input takes the 4,096-element image feature vectors (which we generate
   <strong style="color:#2980B9;">Caption prefix input</strong>
 </p>
 
-The second input takes the caption prefix vector. The shape of this input may vary. Basically it acts as an upper bound of the caption length the model will be able to generate later (see again [here](#setup-caption-generation-model)). Intuitively it would not make sense to train the model to predict longer captions as in the dataset, which represents the ground truth. Use the `get_max_length()` function to get  number of words of the longest caption in the dataset later. The `flat_descriptions()` function is part of our helper package.
+The second input takes the caption prefix vector. The shape of this input may vary. Basically it acts as an upper bound of the caption length the model will be able to generate later (see again [here](#setup-caption-generation-model)). Intuitively it would not make sense to train the model to predict longer captions as in the dataset, which represents the ground truth. Use the `get_max_length()` function to get  number of words of the longest caption in the dataset later. The `flat_descriptions()` function is part of our helper package.  
 The next layer is an *embedding* layer. We need this to handle a zero padding we may need to add to the caption prefix later. This way we can tell the model to ignore the padding, because it does not contain any information for the model to learn. We also increase the dimension of the input vector to 256 elements and apply a *dropout* rate of 0.5 to the data. Finally we pass the data into the *LSTM* layer of the model.
 
 <p>
@@ -185,7 +191,7 @@ As suggested in literature, we use a categorical cross-entropy cost function, si
 
 <script src="https://gist.github.com/sim-o-n/1b564b79be04302bedea0b84b9bd4381.js"></script>
 
-The handy `plot_model()` function, which comes with Keras, plots any model structure and saves as a picture. This way you can quickly get an overview about a model. This is how our model looks like (we added the boxes):
+The handy `plot_model()` function, which comes with Keras, plots any model structure and saves it as a picture. This way you can quickly get an overview about a model. This is how our model looks like (we added the boxes):
 
 <center>
   <img src="/blog/img/seminar/image_captioning/keras_model.jpg" alt="theoretic_model_structure" width="60%">
@@ -217,15 +223,49 @@ Now let's take the following, pre-processed caption from the dataset. You can th
   <p style="font-size: 1.5em">"startword person climb up snowy mountain endword"</p>
 </p>
 
-| *X1* (image feature) | *X2* (caption prefix)                    | *Y* (next word) |
-|----------------------|------------------------------------------|-----------------|
-| vec(4,096)           | 0 0 0 0 0 startword                      | person          |
-| vec(4,096)           | 0 0 0 0 startword person                 | climb           |
-| vec(4,096)           | 0 0 0 startword person climb             | up              |
-| vec(4,096)           | 0 0 startword person climb up            | snowy           |
-| vec(4,096)           | 0 startword person climb up snowy        | mountain        |
-| vec(4,096)           | startword person climb up snowy mountain | endword         |
-
+  <style type="text/css">
+  .tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+  .tg td{padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+  .tg th{font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+  .tg .tg-yw4l{vertical-align:top}
+  </style>
+  <table class="tg">
+    <tr>
+      <th class="tg-yw4l"><strong>X1</strong> (image feature)</th>
+      <th class="tg-yw4l"><strong>X2</strong> (caption prefix)</th>
+      <th class="tg-yw4l"><strong>Y</strong> (next word)</th>
+    </tr>
+    <tr>
+      <td class="tg-yw4l">vec(4,096)</td>
+      <td class="tg-yw4l">0 0 0 0 0 startword</td>
+      <td class="tg-yw4l">person</td>
+    </tr>
+    <tr>
+      <td style="background-color: #f7f7f7;" class="tg-yw4l">vec(4,096)</td>
+      <td style="background-color: #f7f7f7;" class="tg-yw4l">0 0 0 0 startword person</td>
+      <td style="background-color: #f7f7f7;" class="tg-yw4l">climb</td>
+    </tr>
+    <tr>
+      <td class="tg-yw4l">vec(4,096)</td>
+      <td class="tg-yw4l">0 0 0 startword person climb</td>
+      <td class="tg-yw4l">up</td>
+    </tr>
+    <tr>
+      <td style="background-color: #f7f7f7;" class="tg-yw4l">vec(4,096)</td>
+      <td style="background-color: #f7f7f7;" class="tg-yw4l">0 0 startword person climb up</td>
+      <td style="background-color: #f7f7f7;" class="tg-yw4l">snowy</td>
+    </tr>
+    <tr>
+      <td class="tg-yw4l">vec(4,096)</td>
+      <td class="tg-yw4l">0 startword person climb up snowy</td>
+      <td class="tg-yw4l">mountain</td>
+    </tr>
+    <tr>
+      <td style="background-color: #f7f7f7;" class="tg-yw4l">vec(4,096)</td>
+      <td style="background-color: #f7f7f7;" class="tg-yw4l">startword person climb up snowy mountain</td>
+      <td style="background-color: #f7f7f7;" class="tg-yw4l">endword</td>
+    </tr>
+  </table>
 </center>
 
 You will noticed, that we add zeros to some of the caption prefixes. This is the padding we talked about when [setting up the caption prefix input](#caption-prefix-input) for the model. This is necessary, since each layer of a neural network has a fixed number of input nodes. Therefore any input sequence has to be of the same length.
@@ -235,14 +275,49 @@ To encode our target *Y* we will use one-hot encoding. This way we kind of simul
 
 <center>
 
-| *X1* (image feature) | *X2* (caption prefix)  | *Y* (next word) |
-|----------------------|------------------------|-----------------|
-| vec(4,096)           | [0 0 0 0 0 1]          | [0 1 0 0 0 0 0] |
-| vec(4,096)           | [0 0 0 0 1 2]          | [0 0 1 0 0 0 0] |
-| vec(4,096)           | [0 0 0 1 2 3]          | [0 0 0 1 0 0 0] |
-| vec(4,096)           | [0 0 1 2 3 4]          | [0 0 0 0 1 0 0] |
-| vec(4,096)           | [0 1 2 3 4 5]          | [0 0 0 0 0 1 0] |
-| vec(4,096)           | [1 2 3 4 5 6]          | [0 0 0 0 0 0 1] |
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;width: 70%;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-yw4l"><strong>X1</strong> (image feature)</th>
+    <th class="tg-yw4l"><strong>X2</strong> (caption prefix)</th>
+    <th class="tg-yw4l"><strong>Y</strong> (next word)</th>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">vec(4,096)</td>
+    <td class="tg-yw4l">[0 0 0 0 0 1]</td>
+    <td class="tg-yw4l">[0 1 0 0 0 0 0]</td>
+  </tr>
+  <tr>
+    <td style="background-color: #f7f7f7;" class="tg-yw4l">vec(4,096)</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">[0 0 0 0 1 2]</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">[0 0 1 0 0 0 0]</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">vec(4,096)</td>
+    <td class="tg-yw4l">[0 0 0 1 2 3]</td>
+    <td class="tg-yw4l">[0 0 0 1 0 0 0]</td>
+  </tr>
+  <tr>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">vec(4,096)</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">[0 0 1 2 3 4]</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">[0 0 0 0 1 0 0]</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">vec(4,096)</td>
+    <td class="tg-yw4l">[0 1 2 3 4 5]</td>
+    <td class="tg-yw4l">[0 0 0 0 0 1 0]</td>
+  </tr>
+  <tr>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">vec(4,096)</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">[1 2 3 4 5 6]</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">[0 0 0 0 0 0 1]</td>
+  </tr>
+</table>
 
 </center>
 
@@ -250,7 +325,7 @@ To encode our target *Y* we will use one-hot encoding. This way we kind of simul
 
 Let's see how we can code this in Python:
 
-To fit a tokenizer on our data implement the `fit_tokenizer()` function, which takes the pre-processed descriptions as input parameter:
+To fit a tokenizer on our data, implement the `fit_tokenizer()` function, which takes the pre-processed descriptions as input parameter. Once you fit the tokenizer, you may save to object for later use.
 
 <script src="https://gist.github.com/sim-o-n/1c78928c0910bf1d38565e5e4e198935.js"></script>
 
@@ -289,7 +364,43 @@ Keras provides a handy way to monitor the skill of the trained model. At the end
 
 # Caption Generation
 
+So far you have learned how to prepare image and text data, generate the required data format to train the model and to setup up the model itself. In this part you will learn how to finally predict a new caption for a new image.
 
+<center>
+  <img src="https://farm4.staticflickr.com/3610/3285180819_a9712fd2bc_b.jpg" alt="basketball_Jack_McClinton_by_jgirl4858 "width="40%">
+  <p>Figure 4: Photo of two basketballer tackeling the ball. Photo by [jgirl4858](https://www.flickr.com/photos/jgirl4858/3285180819), some rights reserved.</p>
+</center>
+
+Let's implement the `generate_caption()` function. It takes the following arguments: *the model, the tokenizer, an image feature vector and maximum length of the caption*. If you have chosen custom start and end sequences you also have to include them, otherwise go with the default ones.  
+We will track the probability of each word which was selected by the model to be next. This may give some interesting insides later. We will store this information in the variable `probabilities`, which is a list. The caption self will be stored in the variable `caption` as a string. In the beginning this is equal to the start sequence. Remember, we need this to kick of the generation process as described [here](#setup-caption-generation-model).  
+The following will be run in every iteration of the model until we meet one of the two stopping criteria as described in [this part](#setup-caption-generation-model).
+
+1. encode the current caption prefix with the `tokenizer`
+2. add a zero padding to the prefix
+3. pass the prefix and the image feature into the `model` and get a probability distribution vector `yhat` in return
+4. append the largest probability of `yhat` to the `probabilities` list
+5. save the index of the largest probability in `yhat`
+6. map this index to a word in the vocabulary using the `tokenizer`
+7. append the word to the caption
+
+At the end of each iteration we will print the current length of the caption. Putting it together, the function looks like below:
+
+<script src="https://gist.github.com/sim-o-n/93ac240b4e616237431b2c41f1f8f459.js"></script>
+
+Now, we can finally generate our first caption. You can download the image in Figure 4 and save it as `basketball.jpg` in your project folder. Next load the `model` which performed best in training and the `tokenize` if the object is no longer alive in your workspace. Otherwise skip this step. Before we can call the `generate_caption()` function we need to extract the image feature. Call `get_features()` and pass the path to the image. Finally call the `generate_caption()` function.
+
+<script src="https://gist.github.com/sim-o-n/0c069b6a6a2986ad9e8be65f879f9883.js"></script>
+
+Let's take a look at the result. We use the `matplotlib` package to plot the image.
+
+<script src="https://gist.github.com/sim-o-n/4bf5a859fb729860d4cd45b4d3dd98fd.js"></script>
+
+In the next step you could get rid of the start and end sequence, but that's just some syntactic sugar. That's it. Now you know how to generate a caption for any image out there. In the next part you will learn how to evaluate the models performance and what possible improvements would be.
+
+> ### Take away of this part:
+> In this part you learned ...
+>
+> * ... how to generate a caption for any new image
 
 # Evaluation
 
