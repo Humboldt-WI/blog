@@ -13,7 +13,7 @@ description = " "
 # Outline
 
 * [Introduction](#introduction)
-* [Data preparation](#data-preparation)
+* [Data Preparation](#data-preparation)
   - Image Features
   - Image Descriptions
 * [Set up Caption Generation Model](#set-up-caption-generation-model)
@@ -21,7 +21,7 @@ description = " "
   - Training Data Generation
   - Train Model
 * [Caption Generation](#caption-generation)
-  - WebApp
+  - Web App
 * [Evaluation](#evaluation)
 * [Summary](#summary)
 
@@ -95,7 +95,7 @@ The Flickr 8k dataset [[2]](#references), which is often used in image captionin
 The dataset has 8000 images from Flickr and contains people and animals (mostly dogs) performing some action. We used ¾ of the data for training and ¼ for evaluation.
 
 
-# Data preparation
+# Data Preparation
 
 In this part you will learn how to prepare the image and text data.
 
