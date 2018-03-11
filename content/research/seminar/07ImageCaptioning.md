@@ -25,6 +25,8 @@ description = " "
 * [Evaluation](#evaluation)
 * [Summary](#summary)
 
+This tutorial bases on a similar one by [Jason Brownlee](https://machinelearningmastery.com/develop-a-deep-learning-caption-generation-model-in-python/), published on his blog.
+
 *Environment Requirements*
 
 To follow this tutorial, we recommend to setup a development environment with Python 3 or higher and assume you to have the following packages installed:
@@ -36,15 +38,19 @@ To follow this tutorial, we recommend to setup a development environment with Py
 The last package was developed by ourselves and provides several helper functions to handle the Flickr8k dataset. That way, we can focus on the interesting parts of developing an image caption generation model. For further information, please take a look at the package [documentation](https://www.google.de). Install the package as following:
 
 ```
-pip install HU-flickr8k-helper
+pip install HUFlickrHelper
 ```
 And import it at the top of your project:
 
 ```python
-import HU-flickr8k-helper as huh
+import HUFlickrHelper as hfh
 ```
 
-This tutorial bases on a similar one by [Jason Brownlee](https://machinelearningmastery.com/develop-a-deep-learning-caption-generation-model-in-python/), published on his blog.
+We recommend to create a variable to store the path to your working directory. When ever you call a file, you don't need to type the complete path over and over again. This way your code will be less redundant and easier to read.
+
+```python
+wd = 'H:/Information Systems/'
+```
 
 # Introduction
 
@@ -160,18 +166,18 @@ As you noticed this is an iterative process, which will terminate in two ways. T
 
 <center>
   <img src="/blog/img/seminar/image_captioning/Flowchart.jpg" alt="generation-process" height="70%">
-  <p>Figure 1: Flow-chart of the caption generation process.</p>
+  <p>Figure 4: Flow-chart of the caption generation process.</p>
 </center>
 
 
 ## Model Structure
 
 *"What is the most suitable model structure?"*, this may be one of the most important questions whenever developing a neural net. This question is not an easy one and can not easily be answered. A model will always be developed for a specific task, therefore no general answer can be given.  
-However, there is some research about how to come up with a good model structure for a given task. In the field of image captioning Marc Tanti, et al. [[2]](#references) compared 16 different model architectures and determined the best one. In this tutorial we will follow their merge-add architecture, which is depicted in Figure XX below:
+However, there is some research about how to come up with a good model structure for a given task. In the field of image captioning Marc Tanti, et al. [[2]](#references) compared 16 different model architectures and determined the best one. In this tutorial we will follow their merge-add architecture, which is depicted in Figure 5 below:
 
 <center>
   <img src="/blog/img/seminar/image_captioning/theoretic_model_structure.png" alt="theoretic_model_structure" width="60%">
-  <p>Figure 2: Merge-add architecture by Marc Tanti, et al..</p>
+  <p>Figure 5: Merge-add architecture by Marc Tanti, et al..</p>
 </center>
 
 This model architecture takes tow vectors as inputs:
@@ -225,7 +231,7 @@ The handy `plot_model()` function, which comes with Keras, plots any model struc
 
 <center>
   <img src="/blog/img/seminar/image_captioning/keras_model.jpg" alt="theoretic_model_structure" width="60%">
-  <p>Figure 3: The model structure.</p>
+  <p>Figure 6: The model structure.</p>
 </center>
 
 > ### Take away from this part:
@@ -398,7 +404,7 @@ So far you have learned how to prepare the image and text data, generate the req
 
 <center>
   <img src="https://farm4.staticflickr.com/3610/3285180819_a9712fd2bc_b.jpg" alt="basketball_Jack_McClinton_by_jgirl4858 "width="40%">
-  <p>Figure 4: Photo of two basketballers tackling the ball. Photo by [jgirl4858](https://www.flickr.com/photos/jgirl4858/3285180819), some rights reserved.</p>
+  <p>Figure 7: Photo of two basketballers tackling the ball. Photo by [jgirl4858](https://www.flickr.com/photos/jgirl4858/3285180819), some rights reserved.</p>
 </center>
 
 Let's implement the `generate_caption()` function. It takes the following arguments: *the model, the tokenizer, an image feature vector and maximum length of the caption*. If you have chosen custom start and end sequences you also have to include them, otherwise, go with the default ones.  
@@ -410,14 +416,14 @@ The following will be run in every iteration of the model until we meet one of t
 3. pass the prefix and the image feature into the `model` and get a probability distribution vector `yhat` in return
 4. append the largest probability of `yhat` to the `probabilities` list
 5. save the index of the largest probability in `yhat`
-6. map this index to a word in the vocabulary using the `tokenizer`
+6. map this index to a word in the vocabulary using the `tokenizer` and the `map_id_to_word()` function from the helper package
 7. append the word to the caption
 
 At the end of each iteration, we will print the current length of the caption. Putting it together, the function looks like below:
 
 <script src="https://gist.github.com/sim-o-n/93ac240b4e616237431b2c41f1f8f459.js"></script>
 
-Now, we can finally generate our first caption. You can download the image in Figure 4 and save it as `basketball.jpg` in your project folder. Next load the `model` which performed best in training and the `tokenize` if the object is no longer alive in your workspace. Otherwise, skip this step. Before we can call the `generate_caption()` function we need to extract the image feature. Call `get_features()` and pass the path to the image. Finally call the `generate_caption()` function.
+Now, we can finally generate our first caption. You can download the image in Figure 7 and save it as `basketball.jpg` in your project folder. Next load the `model` which performed best in training and the `tokenize` if the object is no longer alive in your workspace. Otherwise, skip this step. Before we can call the `generate_caption()` function we need to extract the image feature. Call `get_features()` and pass the path to the image. Finally call the `generate_caption()` function.
 
 <script src="https://gist.github.com/sim-o-n/0c069b6a6a2986ad9e8be65f879f9883.js"></script>
 
@@ -436,7 +442,7 @@ In the next step, you could get rid of the start and end sequence, but that's ju
 For demonstration purposes we developed a web app for our image caption generation model with the [Dash framework](https://plot.ly/products/dash/) in Python. Just drag and drop or select a picture and the web app takes care of the rest. In [GitHub](https://github.com/severin1992/ImageCaptionApp) you find an instruction how to run the app.   
 <center>
   <img src="https://raw.githubusercontent.com/severin1992/ImageCaptionApp/master/captionwebapp1.png" alt="Frontend of image caption web app"width="80%">
-  <p>Figure 5: Image Caption Web App</p>
+  <p>Figure 8: Image Caption Web App</p>
 </center>
 
 # Evaluation
@@ -444,7 +450,7 @@ In order to evaluate the performance of our model we test it by means of the BLE
 By means of the [NLTK library](http://www.nltk.org/api/nltk.translate.html) in Python we calculated the BLEU scores for our model on the flickr 8k testset: <br>
 <script src="https://gist.github.com/severin1992/c14d9d70c5b7dd1396193db957cd9982.js"></script>
 
-So, the function takes the model, the descriptions of the test set, the features of the test set, the tokenizer and the max_length. The function generates the two lists predicted and actual and saves in them the generated caption by the model and the original captions and then calls the corpus_bleu functions. Before calling the function we need to load all files: 
+So, the function takes the model, the descriptions of the test set, the features of the test set, the tokenizer and the max_length. The function generates the two lists predicted and actual and saves in them the generated caption by the model and the original captions and then calls the corpus_bleu functions. Before calling the function we need to load all files:
 
 <script src="https://gist.github.com/severin1992/403b0bb9f830633aae54740f914b1a9f.js"></script>
 
@@ -452,7 +458,7 @@ Now we can call the function:
 <script src="https://gist.github.com/severin1992/c55de1d4af0ef9150653722195e82c01.js"></script>
 
 
-But what does that mean? As seen before in our example caption our model does not perfectly capture the image. Nevertheless, it grasps some key parts. And for a non opimized model it can reasonably keep up with the [state of the models](https://link.springer.com/article/10.1007/s11042-017-4593-1). These models reach a BLEU 1 score of 0.69 (respectiveley 0.48, 0.34 and 0.24 for BLEU 2, 3 and 4) on the Flickr8k dataset. 
+But what does that mean? As seen before in our example caption our model does not perfectly capture the image. Nevertheless, it grasps some key parts. And for a non opimized model it can reasonably keep up with the [state of the models](https://link.springer.com/article/10.1007/s11042-017-4593-1). These models reach a BLEU 1 score of 0.69 (respectiveley 0.48, 0.34 and 0.24 for BLEU 2, 3 and 4) on the Flickr8k dataset.
 
 # Summary
 
