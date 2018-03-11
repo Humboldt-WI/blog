@@ -21,7 +21,7 @@ description = " "
   - Training Data Generation
   - Train Model
 * [Caption Generation](#caption-generation)
-  - WebApp 
+  - WebApp
 * [Evaluation](#evaluation)
 * [Summary](#summary)
 
@@ -58,7 +58,36 @@ To help you to get started we collected all necessary import packages below. Pas
 
 ## Dataset
 
-Short introduction of the dataset. Description of its structure (dev/train/test), captions per image, how it was generated, etc. ...
+There is a wide variety of datasets to choose from but not all fulfill the requirements necessary for appropriate image captioning. There is a lot of problems with just scraping images with captions e.g. from Flickr, Facebook or from news sites. When people upload images, they don’t describe what is actually in the image but rather give information about what cannot be seen in the image. People make this to not annoy their friends or followers by stating the obvious. So therefore, if you aim to achieve a description, that states what is happening in the image, it is not ideal to train the model with such data.
+
+This is an example from the news site BBC. The description of the picture is a bad example because it doesn’t really describe what is going on in the picture and wouldn’t help at all. A good example in this case would be “People are sitting in an airplane”. But since this would be stating the obvious, you can’t really find this type of content widely on the internet. The description in this case presumes that we already understand what is going on and gives some additional information to it.
+
+<center>
+  <img src="/blog/img/seminar/image_captioning/bbc.jpg" alt="bbc" width="60%">
+  <p>Figure 1: A review is being launched into airlines' seating policies, the Civil Aviation Authority says. Source [BBC](http://www.bbc.com/news/uk-42931091).</p>
+</center>
+
+
+Another bad example is this description. This is from the IAPR-TC 12 dataset, which is described by actual people. They only have one description and they are usually too detailed and also describe things that don’t matter. As you can see in the figure the caption is very long and describes things that are irrelevant in order to understand what is going on in the picture. For example, the color of the roof of the houses in the background is not of matter neither are the “wooden mountains” in the background which, with bear eyes, is not identifiable if it is grass or trees from this distance. What would matter in order to understand the content of the image would be the grey truck driving on the street and maybe the little park on the side.
+
+<center>
+  <img src="/blog/img/seminar/image_captioning/bad_caption.jpg" alt="bad_caption" width="60%">
+  <p>Figure 2: "A grey, loaded pick-up truck is driving in a grey street in the foreground; a white church with a yellow roof, white houses with red roofs and dark green trees behind it; a dark green, wooded mountain and white clouds in a blue sky in the background." From the IAPR-TC12 dataset by Grubinger et al. [[1]](#references)</p>
+</center>
+
+So enough of the bad examples, let’s look how a “good” dataset should look like. An image caption after Hodosh et al. (2013) [[2]](#references) should do a conceptual image description. There are three different ways to describe images that are commonly distinguished: conceptual, non-visual and perceptual. While non-visual description explains itself, perceptual descriptions are such, that capture low-level visual properties of images. Since we are not interested in non-visual elements and since we use a pre-trained model and don’t need low-level properties,
+we need conceptual descriptions of images.  
+Conceptual descriptions identify what is depicted in the image. While things in the images may be abstract, image understanding is mostly interested in concrete descriptions of the depicted scenes and entities, their attributes and relations as well as the events they participate in. Also the conceptual image description should be generic and not too specific in order to be able to generally describe images.
+
+<center>
+  <img src="/blog/img/seminar/image_captioning/flickr_example.png" alt="flickr_example" width="80%">
+  <p>Figure 3: Picture and its five corresponding descriptions, from the Flickr8k dataset by Hodosh et al. [[2]](#references).</p>
+</center>
+
+The Flickr 8k dataset [[2]](#references), which is often used in image captioning competitions, have five different descriptions per image, that provide clear descriptions of the noticeable entities and events and are described by actual people. Different persons have different ways of describing things that are happening, therefore it is important to gather information from different perspectives. The average length of their descriptions is nearly half as long as the descriptions from the IAPR-TC12 dataset, which leads to only relevant element description. The people that described the images were told to describe the people, objects, scenes and activities that are shown in a picture without having any further information about the context in which it was taken. The result were conceptual descriptions that focus only on the information, that can be obtained from the image alone.
+
+The dataset has 8000 images from Flickr and contains people and animals (mostly dogs) performing some action. We used ¾ of the data for training and ¼ for evaluation.
+
 
 # Data preparation
 
@@ -412,5 +441,7 @@ In the next step, you could get rid of the start and end sequence, but that's ju
 
 ### References
 
-[1] Karen Simonyan and Andrew Zisserman  
-[2] Marc Tantie et al.  
+[1] IAPR-TC12 dataset by Grubinger et al.  
+[2] Hodosh et al.  
+[3] Karen Simonyan and Andrew Zisserman    
+[4] Marc Tantie et al.  
