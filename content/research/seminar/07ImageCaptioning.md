@@ -404,9 +404,26 @@ In the next step, you could get rid of the start and end sequence, but that's ju
 > * ... how to generate a caption for any new image
 
 ## Web App
-
+For demonstration purposes we developed a web app for our image caption generation model with the [Dash framework](https://plot.ly/products/dash/) in Python. Just drag and drop or select a picture and the web app takes care of the rest. In [GitHub](https://github.com/severin1992/ImageCaptionApp) you find an instruction how to run the app.   
+<center>
+  <img src="https://raw.githubusercontent.com/severin1992/ImageCaptionApp/master/captionwebapp1.png" alt="Frontend of image caption web app"width="80%">
+  <p>Figure 5: Image Caption Web App</p>
+</center>
 
 # Evaluation
+In order to evaluate the performance of our model we test it by means of the BLEU score. The BLEU score was developed to automatically evaluate the quality of machine translations [3]. The closer a automatically translated candidate sentence is to a human translated reference sentence the better it is. The score is calculated by comparing the matching n-grams. As the closeness of a candidate translation to a reference translation is measured this metric can also be used to evaluate the generation of image captions. Here, we compare the closeness of a generated image caption to the original caption. <br>
+By means of the [NLTK library](http://www.nltk.org/api/nltk.translate.html) in Python we calculated the BLEU scores for our model on the flickr 8k testset: <br>
+<script src="https://gist.github.com/severin1992/c14d9d70c5b7dd1396193db957cd9982.js"></script>
+
+So, the function takes the model, the descriptions of the test set, the features of the test set, the tokenizer and the max_length. The function generates the two lists predicted and actual and saves in them the generated caption by the model and the original captions and then calls the corpus_bleu functions. Before calling the function we need to load all files: 
+
+<script src="https://gist.github.com/severin1992/403b0bb9f830633aae54740f914b1a9f.js"></script>
+
+Now we can call the function:
+<script src="https://gist.github.com/severin1992/c55de1d4af0ef9150653722195e82c01.js"></script>
+
+
+But what does that mean? As seen before in our example caption our model does not perfectly capture the image. Nevertheless, it grasps some key parts. And for a non opimized model it can reasonably keep up with the [state of the models](https://link.springer.com/article/10.1007/s11042-017-4593-1). These models reach a BLEU 1 score of 0.69 (respectiveley 0.48, 0.34 and 0.24 for BLEU 2, 3 and 4) on the Flickr8k dataset. 
 
 # Summary
 
@@ -414,3 +431,4 @@ In the next step, you could get rid of the start and end sequence, but that's ju
 
 [1] Karen Simonyan and Andrew Zisserman  
 [2] Marc Tantie et al.  
+[3] Kishore Papineni, Salim Roukos,Todd Ward and Wei-Jing Zhu. BLEU: A method for automatic evaluation of machine translation. In Proceedings of the 40th Annual Meeting on Association for Computational Linguistics, pages 311–318. Association for Computational Linguistics, 2002.
