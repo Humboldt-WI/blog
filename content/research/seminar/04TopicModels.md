@@ -1,11 +1,6 @@
 +++
-<<<<<<< Updated upstream
 title = "Numeric representation of text documents: doc2vec how it works and how you implement it"
 date = '2018-01-18'
-=======
-title = "Natural Language Processing - topic Models: teaching an algorithm human language"
-date = '2018-03-14'
->>>>>>> Stashed changes
 tags = [ "Deep Learning", "Text Mining", "Topic Modeling", "Class17/18",]
 categories = ["seminar"]
 banner = "img/seminar/topic_models/textMininigKlein.png"
