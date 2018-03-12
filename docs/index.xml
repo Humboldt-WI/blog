@@ -185,6 +185,7 @@ Kennziffer: IAM-SDF&lt;/p&gt;
     </item>
     
     <item>
+<<<<<<< HEAD
       <title>LSTM and Financial Time Series - Predicting Stock Returns</title>
       <link>https://humboldt-wi.github.io/blog/research/seminar/06financialtime-series/</link>
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
@@ -202,6 +203,19 @@ Kennziffer: IAM-SDF&lt;/p&gt;
       <description>&lt;h4 id=&#34;we-seek-applications-for-a-three-year-phd-position-0-75-e13-in-bereich-credit-risk-analytics&#34;&gt;We seek applications for a three year PhD position (0.75 E13) in Bereich Credit Risk Analytics.&lt;/h4&gt;
 
 &lt;h5 id=&#34;please-send-your-application-by-email-to-prof-lessmann-deadline-09-02-2018&#34;&gt;Please send your application by email to Prof. Lessmann.(Deadline: 09.02.2018)&lt;/h5&gt;
+=======
+<<<<<<< HEAD
+      <title>A Static Jupyter Notebook Example</title>
+      <link>https://wisample.github.io/blog/research/seminar/staticjupyter_example_post/</link>
+=======
+      <title>A Jupyter Notebook Example Post</title>
+      <link>https://wisample.github.io/blog/research/seminar/jupyter_example_post/</link>
+>>>>>>> origin/master
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/research/seminar/staticjupyter_example_post/</guid>
+      <description>&lt;p&gt;This is an example of a jupyter notebook to give you an idea of how your blog post could look like.&lt;/p&gt;
+>>>>>>> Humboldt-WI/newestBranch
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
@@ -275,9 +289,20 @@ Imagine the following problem: There are handwritten numbers that you want compu
       <link>https://humboldt-wi.github.io/blog/contributors/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
       
+<<<<<<< HEAD
       <guid>https://humboldt-wi.github.io/blog/contributors/</guid>
       <description>Prof. Dr. Stefan Lessmann Prof. Lessmann is the head of the chair Information Systems at the Humboldt University of Berlin. In cooperation with his team, he initiated this website in oder to present, inform and discuss latest research results. For his more extensive bio click here. In research, he is most active in:
  Artificial neural networks, deep learning Big Data Analytics Credit risk modeling Ensemble models and forecast combination Marketing and E-Commerce analytics Non-standard paradigms to learn from data Sentiment and social network analysis Time series forecasting</description>
+=======
+      <guid>https://wisample.github.io/blog/research/seminar/dynamicjupyter_example_post/</guid>
+<<<<<<< HEAD
+      <description>&lt;p&gt;This is an example of a jupyter notebook to give you an idea of how your blog post could look like.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+=======
+      <description> This is an example of a jupyter notebook to give you an idea of how your blog post could look like.  </description>
+>>>>>>> origin/master
+>>>>>>> Humboldt-WI/newestBranch
     </item>
     
     <item>

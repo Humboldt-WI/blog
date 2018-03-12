@@ -1,15 +1,22 @@
 +++
+<<<<<<< Updated upstream
 title = "Numeric representation of text documents: doc2vec how it works and how you implement it"
 date = '2018-01-18'
+=======
+title = "Natural Language Processing - topic Models: teaching an algorithm human language"
+date = '2018-03-14'
+>>>>>>> Stashed changes
 tags = [ "Deep Learning", "Text Mining", "Topic Modeling", "Class17/18",]
 categories = ["seminar"]
 banner = "img/seminar/topic_models/textMininigKlein.png"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-humbodt-wi-github-io-blog"
-description = " "
+description = "Candidate2vec - deep dive into word embeddings"
 +++
 
 # Introduction
+
+Natural language processing received a lot of attention from academia and industry over the recent decade, benefiting from introduction of new efficient algorithms for processing the vast corpora of text, accumulated on-line. Embedding and sentiment analysis became two major tools for extraction of information from text corporae and its further analysis. Doc2vec is a new machine learning algorithm developed by \cite{le_distributed_2014} with the goal of obtaining numeric representations of text documents. It enriches the family of algorithms such as fastText, GloVe or LDA. Many of these algorithms were developed by teams from technology companies like Facebook or Google, indicating the importance of these techniques for  business. In general, the area of application is wide and encompasses online advertisment, automated translation, sentiment analysis, topic modeling and dialog agents like chat bots. Researchers may employ such techniques as well in order to tap into the large amount of text data available from i.e. social media or the digitalization of books and documents .
 
 # Descriptive Statistics
 
