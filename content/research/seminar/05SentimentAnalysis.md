@@ -12,6 +12,10 @@ description = " "
 ________________________________________________________________________________________
 ## Outline
 
+<script src="https://gist.github.com/KatMet/9928625987fb7f0dce84c2227a5da1b1.js"></script>
+
+<script src="https://gist.github.com/KatMet/3d3e5d758ebf10b1315f230e327bac72.js"></script>
+
 * Sentiment Analysis Introduction <br><br>
 
 * #### Case Study
