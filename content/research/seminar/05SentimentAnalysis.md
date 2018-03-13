@@ -72,7 +72,7 @@ ___
 
 ### Preprocessing
 
-<img src="images/Preprocessing.png" alt="IMDB" style="width: 900px;"/>
+![](/blog/img/seminar/sentiment_analysis/Preprocessing.png)
 ______________________________________________________________________________________
 
 ### Example
@@ -94,6 +94,12 @@ ____
     * To not bias the ratings between the movies, in the entire dataset, not more than 30 reviews for a specific movie were allowed.
 * The reviews have been preprocessed and encoded as a sequence of integer word indexes, where each word is indexed by its overall frequency (e.g. integer “5” encodes the 5th most frequent words in the dataset).
 
+
+<img align="center" width="500" height="500"
+     style="display:block;margin:0 auto;"
+     src="/blog/img/seminar/sentiment_analysis/Review.PNG">
+
+
 ### Tutorial:
 * The overall goal and focus is to evaluate whether sentiment expressed in movie reviews obtained from IMDB can effectively indicate public opinion
 * The underlying data mining question becomes whether we can devise a model that can measure the polarity of the text accurately <br><br>
@@ -114,9 +120,9 @@ The reviews consists of list of integers. Each integer represents one word in a 
 
 ### The top 10 most frequently used words across the dataset:
 
-To show the top 10 most frequentwords across the dataset we need to run the snippet below.
+To show the top 10 most frequent words across the dataset we need to run the snippet below.
 Our helperfunction-file includes a function to load the IMDB dataset that contains the original reviews with their text. You can also download the original files here (https://s3.amazonaws.com/text-datasets/imdb_full.pkl).
-However, the most frequent words in the reveiws are as expected the typical stopwords ("the", "and", "a", "of"...).
+However, the most frequent words in the reviews are as expected the typical stopwords ("the", "and", "a", "of"...).
 
 ____
 ### Wordcloud
@@ -170,25 +176,32 @@ A simple bag of words has for the same representation different meanings. Additi
 3. Words as atomic symbols
         * cat and dog would have the same distance as cat and apple
         * but cats and dogs are closer together (both are animals)
-        * semantic similarity and relations is all learned from the data<br><br>
-
-          <img src="images/WE1.png" alt="WE" style="width: 600px;"/><br><br>
+        * semantic similarity and relations is all learned from the data
 
 4. Very hard to find higher level features when using One Hot Encoding
+<br><br>
+<img align="center" width="450" height="120"
+     style="display:block;margin:0 auto;"
+     src="/blog/img/seminar/sentiment_analysis/Cat.PNG">
 
 ### Example
 
 Below we want to show you an example why using dense vectors has a computational benefit when working with deep learning models such as CNNs. First, imagine you have the sentence "deep learning is very deep". Next, you have to decide on how long the vector should be (usally a lenght of 32 or 50). For this example we assign a lenghth of 6 factors per index in this post to keep it readable.
 
 
-<img src="images/Emb.png" alt="Emb" style="width: 350px;"/>
+<img align="center" width="400" height="200"
+     style="display:block;margin:0 auto;"
+     src="/blog/img/seminar/sentiment_analysis/deep.PNG">
 
 
 Now instead of ending up with huge one-hot encoded vectors, an embedding matrix keeps the size of a vector much smaller. The embedded vectors are learned during the training process. This is computationally efficient when using very big datasets. Below you see an example for the embedding matrix for the word deep:
 
 ### deep = [.32, .02, .48, .21, .56, .15]<br><br>
 
-<img src="images/vectors.png" alt="vectors" style="width: 600px;"/><br><br>
+<img align="center" width="500" height="250"
+     style="display:block;margin:0 auto;"
+     src="/blog/img/seminar/sentiment_analysis/vector.PNG">
+
 * Also relationships are learned, for example the information of gender<br><br>
 * Subtraction of vector [woman - man] is the same as [queen - king]
 
@@ -245,6 +258,10 @@ Afterwards, the Flatten() operation takes the output and flattens the structure 
 In the end we used the binary_crossentropy loss function for our binary classification problem. Again, the Adam optimization algorithm is performed, since it is known to be very fast, efficient and had become very popular in recent deep learning model applications.
 
 After two rounds we achieved quick a satisfactory outcome of 88.75% accuracy. Besides, it is an improvement compared to the end result of the MLP model we conducted earlier. Now there are a lot of opportunities to optimize and configure the model. You can play with the different settings and try to boost the performance.
+
+<img align="center" width="500" height="500"
+     style="display:block;margin:0 auto;"
+     src="/blog/img/seminar/sentiment_analysis/Cnn.PNG">
 
 #### Confusion Matrix
 
