@@ -9,7 +9,7 @@ disqusShortname = "https-humbodt-wi-github-io-blog"
 description = " "
 +++
 # Sentiment Analysis using Deep Learning
-________________________________________________________________________________________
+
 ## Outline
 
 * Sentiment Analysis Introduction <br><br>
@@ -20,7 +20,7 @@ ________________________________________________________________________________
     * Word Embeddings<br><br>
     * Convolutional Neural Network<br><br>
     * Summary
-____________________________________________________________________________________
+
 # Introduction
 ## Sentiment Analysis
 ---
@@ -30,7 +30,7 @@ Sentiment analysis is a very beneficial approach to automate the classification 
 Now before we start with the our tutorial, let's first have a look on the basic sentiment analysis steps and characteristics.
 
 
-________________________________________________________________________________________
+
 ### Sentiment Analysis
 * Computational study of opinions, sentiments and emotions in text
 * Task: Classifying the expressed opinion of a text (positive, negative, neutral)
@@ -57,7 +57,7 @@ ________________________________________________________________________________
 * 97% of customer’s read online reviews for local business in 2017 (Local Consumer Review Survey 2017)
 * 85% of consumers trust online reviews as much as personal recommendations (Local Consumer Review Survey 2017)
 
-______________________________________________________________________________________
+
 
 ### Challenges of Sentiment Analysis
 
@@ -73,7 +73,7 @@ ___
 ### Preprocessing
 
 ![](/blog/img/seminar/sentiment_analysis/Preprocessing.png)
-______________________________________________________________________________________
+
 
 ### Example
 
@@ -93,7 +93,7 @@ ________________________________________________________________________________
 ## Keras IMDB Movie Review Dataset
 
 For this tutorial, we chose the so called Large Movie Review Dataset often referred to as Keras IMDB dataset. Starting with the procedure of the data exploration, we will further explain how to devise a model that can predict the sentiment of movie reviews as either negative or positive. Therefore, we will use Python and the Keras deep learning library. However, the overall goal of this tutorial is to focus on explaining how all the things work rather than achieving the best accuracies. Our models perfomed good but might have also achieved better accuracy results when using a bigger dataset. <br><br>
-____
+
 
 #### Keras IMDB Movie Review Dataset
 * The dataset has originally been used in Maas et al. (2011): Learning Word Vectors for Sentiment Analysis
@@ -116,7 +116,7 @@ Source: http://www.imdb.com/title/tt0120338/reviews
 ### Tutorial:
 * The overall goal and focus is to evaluate whether sentiment expressed in movie reviews obtained from IMDB can effectively indicate public opinion
 * The underlying data mining question becomes whether we can devise a model that can measure the polarity of the text accurately <br><br>
-____
+
 
 Before we will have look into the Keras IMDB dataset and its characteristics you should keep the following assumptions in mind:
 
@@ -140,7 +140,7 @@ Our helperfunction-file includes a function to load the IMDB dataset that contai
 However, the most frequent words in the reviews are as expected the typical stopwords ("the", "and", "a", "of"...).
 <script src="https://gist.github.com/aydinsa/a5d2e23a02809a525a65c85fec9a3c65.js"></script>
 
-____
+
 ### Wordcloud
 
 This wordclound illustration presents the most common words across the dataset but excludes the stopwords.<br>
@@ -159,7 +159,7 @@ As you can see the number of unique words in the dataset is given as 88.585. Thi
 
 As a result, we get to the information that most reviews have less than 500 words and the mass of the distribution can be covered with a length of 400 to 500 words. Further, the overall distribution review length is positively skewed.
 
-___
+
 ### Which words make a review positive or negative?
 
 In addition, to show how the combination of words can influence the polarity of a given text, we need to have a basic understanding of the concept of n-grams. N-grams are the result of fragmenting a text into N consecutive pieces.<br><br> For example: “Good” (unigram) is definitely positive and “very good” (bigram) even more. However, “not good” (bigram) seems to be less positive. <br><br> Therefore, you can use the NLTK library to remove the stopwords from the original dataset. Further, you can apply a simple logistic regression to get more insights to what important unigrams and bigrams make a review positive or negative.
@@ -175,8 +175,9 @@ In addition, to show how the combination of words can influence the polarity of 
 
 #### Which 2-grams make it negative?
 <script src="https://gist.github.com/aydinsa/88fd5e4e9c8f3493600810741d61b14a.js"></script>
-____________________________________________________________________________________
+
 <br>
+
 ## Word Embeddings
 
 The Keras definition says that word embeddings turn positive integers (indexes) into dense vectors of fixed size. Generally speaking, word embeddings is a technique in the field of NLP. It describes a technique where words are encoded as dense vectors in a high-dimensional space that carry a meaning. Each word has a specific position within the vector space. This position is learned from the text during the training and is premised on the surrounding words. Training the model will cause that semantically similar words will appear closer together also in the vector space.
@@ -264,7 +265,7 @@ The Embedding has a vocabulary of 20 words and an input length of 4 words. We wi
 The trained model shows that it learned the training dataset perfectly (which is not surprising).
 <script src="https://gist.github.com/aydinsa/30f74d872b439f2ccf4b64c8ad925d34.js"></script>
 <script src="https://gist.github.com/aydinsa/12b3405922dc7113cc99101ce7e5218a.js"></script>
-____________________________________________________________________________________
+
 ## Machine Learning Approach for Sentiment Classification
 
 In the following code section you will find our machine learning approach for the sentiment classification task on the Keras IMDB dataset.
@@ -332,7 +333,7 @@ Calculating a confusion matrix can give you a better idea of what your classific
     * You can also experiment with several convolutional layers and maxpooling layers, etc.<br><br>
     * Try to obtain higher accuracy
 
-    ___
+
 ### Limitations and further Topics
 
 * CNNs are not able to encode long-range dependencies, and therefore, for some language modeling tasks, where long-distance dependence matters, other  architectures are preferred:<br><br>
