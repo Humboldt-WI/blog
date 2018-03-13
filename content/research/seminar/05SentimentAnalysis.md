@@ -110,6 +110,7 @@ ____
 <img align="center" width="500" height="500"
      style="display:block;margin:0 auto;"
      src="/blog/img/seminar/sentiment_analysis/Review.PNG">
+Source: http://www.imdb.com/title/tt0120338/reviews
 
 
 ### Tutorial:
@@ -175,7 +176,9 @@ In addition, to show how the combination of words can influence the polarity of 
 #### Which 2-grams make it negative?
 <script src="https://gist.github.com/aydinsa/88fd5e4e9c8f3493600810741d61b14a.js"></script>
 ____________________________________________________________________________________
+<br>
 ## Word Embeddings
+
 The Keras definition says that word embeddings turn positive integers (indexes) into dense vectors of fixed size. Generally speaking, word embeddings is a technique in the field of NLP. It describes a technique where words are encoded as dense vectors in a high-dimensional space that carry a meaning. Each word has a specific position within the vector space. This position is learned from the text during the training and is premised on the surrounding words. Training the model will cause that semantically similar words will appear closer together also in the vector space.
 
 #### Bag of Words
@@ -296,6 +299,7 @@ In the end we used the binary_crossentropy loss function for our binary classifi
 <img align="center" width="500" height="500"
      style="display:block;margin:0 auto;"
      src="/blog/img/seminar/sentiment_analysis/Cnn.PNG">
+Source: https://infoscience.epfl.ch/record/221430/files/EPFL_TH7148.pdf
 
 <script src="https://gist.github.com/aydinsa/4a7e669d4026c7c926e95d073e24412f.js"></script>
 <script src="https://gist.github.com/aydinsa/80128eb66e7e676fe79798ed0f018678.js"></script>
