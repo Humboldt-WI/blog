@@ -20,9 +20,14 @@ description = " "
     * Word Embeddings<br><br>
     * Convolutional Neural Network<br><br>
     * Summary
+<<<<<<< HEAD
 
 # Introduction
 ## Sentiment Analysis
+=======
+____________________________________________________________________________________
+## Sentiment Analysis Introduction
+>>>>>>> 6dfe8eed9344ca8898523d8cef488a1445521843
 ---
 
 Sentiment analysis is a very beneficial approach to automate the classification of the polarity of a given text. A helpful indication to decide if the customers on amazon like a product or not is for example the star rating. The same applies to many other use cases. However, the underlying basis for the review rating is the raw text material containing the customer's opinion. Therefore, analyzing and categorizing the sentiment of reviews, emails, blog posts and other texts is undoubtedly useful for firms to evaluate the perception of their customers regarding their products, services or as well of the firm by itself. Analyzing the public opinion and brand awareness supports managing the strategy of a firm and the business decisions.
