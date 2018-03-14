@@ -452,7 +452,7 @@ By means of the [NLTK library](http://www.nltk.org/api/nltk.translate.html) in P
 
 So, the function takes the model, the descriptions of the test set, the features of the test set, the tokenizer and the max_length. The function generates the two lists predicted and actual and saves in them the generated caption by the model and the original captions and then calls the corpus_bleu functions. Before calling the function we need to load all files:
 
-<script src="https://gist.github.com/severin1992/403b0bb9f830633aae54740f914b1a9f.js"></script>
+<script src="https://gist.github.com/severin1992/193a1bfa47222af69273b0fa1fcdab3f.js"></script>
 
 Now we can call the function:
 <script src="https://gist.github.com/severin1992/c55de1d4af0ef9150653722195e82c01.js"></script>
