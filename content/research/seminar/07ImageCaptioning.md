@@ -9,8 +9,13 @@ disqusShortname = "https-humbodt-wi-github-io-blog"
 description = " "
 +++
 
+# Introduction
 
-# Outline
+Image captioning aims for automatically generating a text that describes the present picture. In the last years it became a topic with growing interest in machine learning and the advances in this field lead to models that (depending on which evaluation) can score even higher than humans do. Image captioning can for instance help visually impaired people to grasp what is happening in a picture. Furthermore, it could enhance the image search of search engines, it could simplify SEO by automatically generating descriptions for the pictures or improve online marketing and customer segmentation by identifying customer interests through interpreting their shared images via social media platforms. Nevertheless image captioning is a very complex task as it goes beyond the sole classification of objects in pictures. The relation between the objects and the attributes have to be recognized. Finally, these information must be expressed in a natural language like English.
+
+The goal of this blog is an introduction to image captioning, an explanation of a comprehensible model structure and an implementation of that model. Out of the scope is a tutorial to develop a high end caption generation model that is fine tuned to compete with the state of the art models. We rather focus on the basic understanding of the topic and the application of a basic model. Our tutorial orients itself on the one by [Jason Brownlee](https://machinelearningmastery.com/develop-a-deep-learning-caption-generation-model-in-python/), published on his blog.
+
+## Outline
 
 * [Introduction](#introduction)
 * [Data Preparation](#data-preparation)
@@ -24,8 +29,6 @@ description = " "
   - Web App
 * [Evaluation](#evaluation)
 * [Summary](#summary)
-
-This tutorial bases on a similar one by [Jason Brownlee](https://machinelearningmastery.com/develop-a-deep-learning-caption-generation-model-in-python/), published on his blog.
 
 *Environment Requirements*
 
@@ -51,12 +54,6 @@ We recommend to create a variable to store the path to your working directory. W
 ```python
 wd = 'H:/Information Systems/'
 ```
-
-# Introduction
-
-Image captioning aims for automatically generating a text that describes the present picture. In the last years it became a topic with growing interest in machine learning and the advances in this field lead to models that (depending on which evaluation) can score even higher than humans do. Image captioning can for instance help visually impaired people to grasp what is happening in a picture. Furthermore, it could enhance the image search of search engines, it could simplify SEO by automatically generating descriptions for the pictures or improve online marketing and customer segmentation by identifying customer interests through interpreting their shared images via social media platforms. Nevertheless image captioning is a very complex task as it goes beyond the sole classification of objects in pictures. The relation between the objects and the attributes have to be recognized. Finally, these information must be expressed in a natural language like English.
-
-The goal of this blog is an introduction to image captioning, an explanation of a comprehensible model structure and an implementation of that model. Out of the scope is a tutorial to develop a high end caption generation model that is fine tuned to compete with the state of the art models. We rather focus on the basic understanding of the topic and the application of a basic model.
 
 To help you to get started we collected all necessary import packages below. Paste them at the top of your project:
 
@@ -465,7 +462,7 @@ But what does that mean? As seen before in our example caption our model does no
 In this tutorial you learned about the challenge of automatically generating image captions. It is a topic of growing interest in the field of machine learning and in practice it can help for instance visually impaired people of grasping the content of an image.  
 You learned how to approach the right architecture and how to implement the model upon this architecture in *Keras*. To do so, you used the pre-trained VGG16, where you removed the last layer in order to obtain an image feature vector.
 To train the  model we introduced you to the Flickr8k dataset that fulfills the necessary criteria of human generated conceptual descriptions.
-Finally you learned how to evaluate the model by means of the BLUE score. Even though our model can not keep up with the state of the art models, it scores adequately for a non-optimized model on the BLEU score.
+Finally, you learned how to evaluate the model by means of the BLEU score. Even though our model can not keep up with the state of the art models, it scores adequately for a non-optimized model on the BLEU score.
 
 ### References
 
