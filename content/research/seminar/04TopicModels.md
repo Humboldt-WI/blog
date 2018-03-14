@@ -11,9 +11,9 @@ description = "Candidate2vec - deep dive into word embeddings"
 
 # Introduction
 
-Natural language processing (NLP) received a lot of attention from academia and industry over the recent decade, benefiting from introduction of new efficient algorithms for processing the vast corpora of text, accumulated on-line. Embedding and sentiment analysis became two major tools for extraction of information from text corporae and its further analysis. Doc2vec is a new machine learning algorithm developed by Mikolov and Le (2014) with the goal of obtaining numeric representations of text documents. It enriches the family of algorithms such as fastText, GloVe or LDA. Many of these algorithms were developed by teams from technology companies like Facebook or Google, indicating the importance of these techniques for  business. In general, the area of application is wide and encompasses online advertisment, automated translation, sentiment analysis, topic modeling and dialog agents like chat bots. 
+Natural language processing (NLP) received a lot of attention from academia and industry over the recent decade, benefiting from introduction of new efficient algorithms for processing the vast corpora of text, accumulated on-line. Embedding and sentiment analysis became two major tools for extraction of information from text corporae and its further analysis. Doc2vec is a new machine learning algorithm developed by Mikolov and Le (2014) with the goal of obtaining numeric representations of text documents. It enriches the family of algorithms such as fastText, GloVe or LDA. Many of these algorithms were developed by teams from technology companies like Facebook or Google, indicating the importance of these techniques for  business. In general, the area of application is wide and encompasses online advertisment, automated translation, sentiment analysis, topic modeling and dialog agents like chat bots.
 
-Regardless of the specific task at hand, the overarching goal of NLP is to obtain numeric representations of documents that preserves the semantic and syntactic relationships within them. This aim however is not easy to achieve, since human language is a complex issue with many latent components and intricate connections. Machine learning algorithms that only recently came into being are often not well documented or miss in-depth explanation of the processes under the hood. Doc2vec is no exception in this regard, although users depend on a comprehensive understanding in order to judge whether they correctly use the algorithm and whether the algorithm captures the subtle semantics in the text documents. 
+Regardless of the specific task at hand, the overarching goal of NLP is to obtain numeric representations of documents that preserves the semantic and syntactic relationships within them. This aim however is not easy to achieve, since human language is a complex issue with many latent components and intricate connections. Machine learning algorithms that only recently came into being are often not well documented or miss in-depth explanation of the processes under the hood. Doc2vec is no exception in this regard, although users depend on a comprehensive understanding in order to judge whether they correctly use the algorithm and whether the algorithm captures the subtle semantics in the text documents.
 
 This blog post is dedicated to explaining the underlying processes of doc2vec algorithm using an empirical example of facebook posts of German political candidates, gathered during the year before elections to Bundestag.
 
@@ -28,9 +28,9 @@ We took a dataset consisting of 177 307 Facebook posts of 1008 German politician
 
 # Theory
 
-The goal of the empirical case study is to generate a concept space for each candidate, thus offering a visual representation of German political landscape. For this purpose we need an algorithm to construct an embedding layer that will contain the numeric representation of the semantic content of each candidate's Facebook posts. 
+The goal of the empirical case study is to generate a concept space for each candidate, thus offering a visual representation of German political landscape. For this purpose we need an algorithm to construct an embedding layer that will contain the numeric representation of the semantic content of each candidate's Facebook posts.
 
-PV-DBOW is similar to the Skip-gram model for word vectors (mikolov et al 2013), we will revisit the word2vec algorithms to facilitate the methodological transition. 
+PV-DBOW is similar to the Skip-gram model for word vectors (mikolov et al 2013), we will revisit the word2vec algorithms to facilitate the methodological transition.
 
 (---skip gram picture)
 
@@ -45,9 +45,9 @@ Let's try to train embedding vectors for each candidate in our dataset, using hi
 **Some preparation**
 A few preparatory steps are required before the actual training: As a first step, a list of the $m$ unique words appearing in the set of documents has to be compiled. This is called the  vocabulary. Similarly, a list of of the documents is needed. In our case, these are the $n$ aggregated corpora of Facebook posts of every candidate and the political parties.
 
-For every training iteration, one document is sampled from the corpus and from that document, a word window or context is selected randomly. 
+For every training iteration, one document is sampled from the corpus and from that document, a word window or context is selected randomly.
 
-In order to explain the internal structure, we need to get a clear understanding of the PV-DBOW workflow: 
+In order to explain the internal structure, we need to get a clear understanding of the PV-DBOW workflow:
 
 (---matrix picture)
 
@@ -64,7 +64,7 @@ After the training, $D$ will constitute a lookup matrix for the candidates, cont
 In the output layer, the matrix $U$ projects the paragraph vector $e$ to the output activation vector $k$ which contains $m$ rows, representing the words in vocabulary. $U$ has dimension $m\times p$ and is initialized randomly similar to $D$.
 
 **Softmax**
-The process of predicting the words from the context given the supplied paragraph ID is done through a multiclass classifier called softmax, which provides a probability distribution over the words for an input document. 
+The process of predicting the words from the context given the supplied paragraph ID is done through a multiclass classifier called softmax, which provides a probability distribution over the words for an input document.
 
 $k$ is then passed to the softmax function in order to obtain $\hat{t}$, the vector of the predicted probabilities of each word in the vocabulary to appear in the document  
 
@@ -181,5 +181,29 @@ let's finally look at the candidate embeddings (vectors) mapped into two dimensi
 <script src="https://gist.github.com/panoptikum/ca40fcf7c0da73c829ce6b58f9ce161f.js"></script>
 
 <iframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~Stipe/122.embed"></iframe>
+
+The following analysis is based on the PV-DBOW with 20 epochs well, but was equally applied to the 11 models as well.
+
+#### Is a candidate most similiar to own or different party?
+
+We are interested in whether a candidate is most similar to her own party or not according to the model. In order to determine this, we compute the cosine similarity between a candidate with each party and consider the party sharing the highest similarity with the candidate most similar. Be aware that the embeddings of the model may not present the actual semantic relationships between candidates and parties:
+
+<script src="https://gist.github.com/panoptikum/342e67f72a0fa59c6dc8357d4b5bd6e9.js"></script>
+
+Now we have a pandas data frame that contains the similarities of one candidate with all parties and a column that indicates which party is most similar:
+
+<script src="https://gist.github.com/panoptikum/05d41932a8c71e888afa994e4482665f.js"></script>
+
+##### How many candidates are most similar to their own party?
+
+Let's do a quick crosstab in order to obtain a number of candidates for each possible pair:
+
+<script src="https://gist.github.com/panoptikum/a9b5ee047fce3588f785c65a4540b7d0.js"></script>
+
+##### What's the average similarity of candidates from one party?
+
+Another interesting way to examine the models is to compute the average similarity of all candidates from one party to the semantic of their own party and to the other parties. We calculate this part with the following code chunk:
+
+<script src="https://gist.github.com/panoptikum/7c6b893f1653d4730271c3c452219c4e.js"></script>
 
 # Playing around with the model
