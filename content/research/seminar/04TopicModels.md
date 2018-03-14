@@ -43,7 +43,8 @@ PV-DBOW performs a very similar task with the only difference of supplying a par
 Let's try to train embedding vectors for each candidate in our dataset, using his or her facebook posts as one big text document.
 
 **Some preparation**
-A few preparatory steps are required before the actual training: As a first step, a list of the $m$ unique words appearing in the set of documents has to be compiled. This is called the  vocabulary. Similarly, a list of of the documents is needed. In our case, these are the $n$ aggregated corpora of Facebook posts of every candidate and the political parties.
+
+A few preparatory steps are required before the actual training: As a first step, a list of the $m$ unique words appearing in the set of documents has to be compiled. This is called the  vocabulary. Similarly, a list of of the documents is needed. In our case, these are the __n__ aggregated corpora of Facebook posts of every candidate and the political parties.
 
 For every training iteration, one document is sampled from the corpus and from that document, a word window or context is selected randomly.
 
@@ -52,31 +53,38 @@ In order to explain the internal structure, we need to get a clear understanding
 (---matrix picture)
 
 
-** Input Layer**
-The input vector $d$ is a one-hot encoded list of paragraph IDs of length $n$, with a node turning into 1 when the supplied ID matches the selected document.
+**Input Layer**
+
+The input vector __d__ is a one-hot encoded list of paragraph IDs of length __n__, with a node turning into 1 when the supplied ID matches the selected document.
 
 **Hidden layer**
-The hidden layer consists of a dense matrix $D$ that projects the the document vector $d$ into the embedding space of dimension $p$, which we set to 100. $D$ thus has dimensions $p\times n$ and is initialized randomly in the the beginning before any training has taken place.
 
-After the training, $D$ will constitute a lookup matrix for the candidates, containing weights for the paragraph vector $e$ (standing for embeddings). The latter will contain the estimated features of every document.
+The hidden layer consists of a dense matrix $D$ that projects the the document vector $d$ into the embedding space of dimension $p$, which we set to 100. __D__ thus has dimensions __p__*__n__ and is initialized randomly in the the beginning before any training has taken place.
+
+After the training, __D__ will constitute a lookup matrix for the candidates, containing weights for the paragraph vector __e__ (standing for embeddings). The latter will contain the estimated features of every document.
 
 **Output layer**
-In the output layer, the matrix $U$ projects the paragraph vector $e$ to the output activation vector $k$ which contains $m$ rows, representing the words in vocabulary. $U$ has dimension $m\times p$ and is initialized randomly similar to $D$.
+
+In the output layer, the matrix $U$ projects the paragraph vector __e__ to the output activation vector __k__ which contains __m__ rows, representing the words in vocabulary. __U__ has dimension __m__x__p__ and is initialized randomly similar to __D__.
 
 **Softmax**
+
 The process of predicting the words from the context given the supplied paragraph ID is done through a multiclass classifier called softmax, which provides a probability distribution over the words for an input document.
 
-$k$ is then passed to the softmax function in order to obtain $\hat{t}$, the vector of the predicted probabilities of each word in the vocabulary to appear in the document  
+__k__ is then passed to the softmax function in order to obtain __t__^, the vector of the predicted probabilities of each word in the vocabulary to appear in the document  
 
 (--add formula)
 
 **Backpropagation and cross-entropy**
 
+
 **A note on efficiency**
 
-**Visualisation with t-SNE**
-The paragraph vectors contain 100 components, which makes them hard to visualize and compare. A t-Distributed Stochastic Neighbor Embedding (t-SNE)\cite{maaten_visualizing_2008} is a popular technique for dimensionality reduction that is used widely in NLP. The concept follows the paradigm of visualizing similarities as proximity by minimizing an objective function that signifies discrepancies in the initial multidimensional format and final visual representation. Retention of information remains an obvious challenge when reducing the dimensions. T-SNE manages to preserve the clustering of similar components (unlike Principal Component Analysis, which focuses on preserving dissimilar components far apart). The algorithm assigns a probability-based similarity score to every point in high dimensional space, then performs a similar measurement in low dimensional space. Discrepancies between the actual and simplified representations are reflected in different probability scores and get minimized by applying SGD to the Kullback-Leibler divergence function, containing both scores \cite{kullback_information_1951}. The "t" in the name refers to the student distribution that is used instead of the Gaussian distribution when estimating probability scores, as the thicker tails allow to maintain larger distance between the dissimilar points during the score assignment, thus allowing to preserve local structure.
+As running softmax on the whole vocabulary would be computationally inefficient, the following techniques are usually considered: hierarchical softmax (indexing the words in vocab) and negative sampling (output layer will contain correct words and only a bunch of incorrect ones to compare to).
 
+**Visualisation with t-SNE**
+
+The paragraph vectors contain 100 components, which makes them hard to visualize and compare. A t-Distributed Stochastic Neighbor Embedding (t-SNE)(Maaten, 2008) is a popular technique for dimensionality reduction that is used widely in NLP. The concept follows the paradigm of visualizing similarities as proximity by minimizing an objective function that signifies discrepancies in the initial multidimensional format and final visual representation. Retention of information remains an obvious challenge when reducing the dimensions. t-SNE manages to preserve the clustering of similar components (unlike Principal Component Analysis, which focuses on preserving dissimilar components far apart). The algorithm assigns a probability-based similarity score to every point in high dimensional space, then performs a similar measurement in low dimensional space. Discrepancies between the actual and simplified representations are reflected in different probability scores and get minimized by applying SGD to the Kullback-Leibler divergence function, containing both scores (Kullback, 1951). The "t" in the name refers to the student distribution that is used instead of the Gaussian distribution when estimating probability scores, as the thicker tails allow to maintain larger distance between the dissimilar points during the score assignment, thus allowing to preserve local structure.
 
 
 (add code?)
