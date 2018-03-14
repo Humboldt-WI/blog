@@ -11,7 +11,7 @@ description = "Candidate2vec - deep dive into word embeddings"
 
 # Introduction
 
-Natural language processing (NLP) received a lot of attention from academia and industry over the recent decade, benefiting from introduction of new efficient algorithms for processing the vast corpora of text, accumulated on-line. Embedding and sentiment analysis became two major tools for extraction of information from text corporae and its further analysis. Doc2vec is a new machine learning algorithm developed by \cite{le_distributed_2014} with the goal of obtaining numeric representations of text documents. It enriches the family of algorithms such as fastText, GloVe or LDA. Many of these algorithms were developed by teams from technology companies like Facebook or Google, indicating the importance of these techniques for  business. In general, the area of application is wide and encompasses online advertisment, automated translation, sentiment analysis, topic modeling and dialog agents like chat bots. 
+Natural language processing (NLP) received a lot of attention from academia and industry over the recent decade, benefiting from introduction of new efficient algorithms for processing the vast corpora of text, accumulated on-line. Embedding and sentiment analysis became two major tools for extraction of information from text corporae and its further analysis. Doc2vec is a new machine learning algorithm developed by Mikolov and Le (2014) with the goal of obtaining numeric representations of text documents. It enriches the family of algorithms such as fastText, GloVe or LDA. Many of these algorithms were developed by teams from technology companies like Facebook or Google, indicating the importance of these techniques for  business. In general, the area of application is wide and encompasses online advertisment, automated translation, sentiment analysis, topic modeling and dialog agents like chat bots. 
 
 Regardless of the specific task at hand, the overarching goal of NLP is to obtain numeric representations of documents that preserves the semantic and syntactic relationships within them. This aim however is not easy to achieve, since human language is a complex issue with many latent components and intricate connections. Machine learning algorithms that only recently came into being are often not well documented or miss in-depth explanation of the processes under the hood. Doc2vec is no exception in this regard, although users depend on a comprehensive understanding in order to judge whether they correctly use the algorithm and whether the algorithm captures the subtle semantics in the text documents. 
 
@@ -22,11 +22,64 @@ We will start with the __theoretical backgound__ to embedding algorithms, in par
 
 (----add picture?)
 
-# Theory
-
 # Data and descriptive Statistics
 
 We took a dataset consisting of 177 307 Facebook posts of 1008 German politicians and 7 major German parties. The posts are gathered from 1st of January to 24th of September 2017 in order to capture the online pre-election activities of the candidates. Every candidate/party then had his or her posts "glued together", so at the end our data looked like 1015 (1008 polititians + 7 parties) text bundles/paragraphs, each containing the Facebook rhetorics of 1 candidate over the mentioned period of time. These paragraphs became the "docs" in our implementation of doc2vec and led us to giving the project the "candidate2vec" nickname.
+
+# Theory
+
+The goal of the empirical case study is to generate a concept space for each candidate, thus offering a visual representation of German political landscape. For this purpose we need an algorithm to construct an embedding layer that will contain the numeric representation of the semantic content of each candidate's Facebook posts. 
+
+PV-DBOW is similar to the Skip-gram model for word vectors (mikolov et al 2013), we will revisit the word2vec algorithms to facilitate the methodological transition. 
+
+(---skip gram picture)
+
+Word2vec is built around the notions of "context" and "target". While CBOW predicts a target word from a given context, Skip-gram predicts the context around a given word. Using an example from our dataset, we would try to get "teilweise", "laute", "Gesetzentwurf" by giving "Diskussion" to the network (originally "teilweise laute Diskussion um den Gesetzentwurf").
+
+PV-DBOW performs a very similar task with the only difference of supplying a paragraph id instead of the target word and training a paragraph vector. Unlike PV-DM, PV-DBOW only derives embeddings for documents and does not store word embeddings.
+
+(---PV-DBOW picture)
+
+Let's try to train embedding vectors for each candidate in our dataset, using his or her facebook posts as one big text document.
+
+**Some preparation**
+A few preparatory steps are required before the actual training: As a first step, a list of the $m$ unique words appearing in the set of documents has to be compiled. This is called the  vocabulary. Similarly, a list of of the documents is needed. In our case, these are the $n$ aggregated corpora of Facebook posts of every candidate and the political parties.
+
+For every training iteration, one document is sampled from the corpus and from that document, a word window or context is selected randomly. 
+
+In order to explain the internal structure, we need to get a clear understanding of the PV-DBOW workflow: 
+
+(---matrix picture)
+
+
+** Input Layer**
+The input vector $d$ is a one-hot encoded list of paragraph IDs of length $n$, with a node turning into 1 when the supplied ID matches the selected document.
+
+**Hidden layer**
+The hidden layer consists of a dense matrix $D$ that projects the the document vector $d$ into the embedding space of dimension $p$, which we set to 100. $D$ thus has dimensions $p\times n$ and is initialized randomly in the the beginning before any training has taken place.
+
+After the training, $D$ will constitute a lookup matrix for the candidates, containing weights for the paragraph vector $e$ (standing for embeddings). The latter will contain the estimated features of every document.
+
+**Output layer**
+In the output layer, the matrix $U$ projects the paragraph vector $e$ to the output activation vector $k$ which contains $m$ rows, representing the words in vocabulary. $U$ has dimension $m\times p$ and is initialized randomly similar to $D$.
+
+**Softmax**
+The process of predicting the words from the context given the supplied paragraph ID is done through a multiclass classifier called softmax, which provides a probability distribution over the words for an input document. 
+
+$k$ is then passed to the softmax function in order to obtain $\hat{t}$, the vector of the predicted probabilities of each word in the vocabulary to appear in the document  
+
+(--add formula)
+
+**Backpropagation and cross-entropy**
+
+**A note on efficiency**
+
+**Visualisation with t-SNE**
+The paragraph vectors contain 100 components, which makes them hard to visualize and compare. A t-Distributed Stochastic Neighbor Embedding (t-SNE)\cite{maaten_visualizing_2008} is a popular technique for dimensionality reduction that is used widely in NLP. The concept follows the paradigm of visualizing similarities as proximity by minimizing an objective function that signifies discrepancies in the initial multidimensional format and final visual representation. Retention of information remains an obvious challenge when reducing the dimensions. T-SNE manages to preserve the clustering of similar components (unlike Principal Component Analysis, which focuses on preserving dissimilar components far apart). The algorithm assigns a probability-based similarity score to every point in high dimensional space, then performs a similar measurement in low dimensional space. Discrepancies between the actual and simplified representations are reflected in different probability scores and get minimized by applying SGD to the Kullback-Leibler divergence function, containing both scores \cite{kullback_information_1951}. The "t" in the name refers to the student distribution that is used instead of the Gaussian distribution when estimating probability scores, as the thicker tails allow to maintain larger distance between the dissimilar points during the score assignment, thus allowing to preserve local structure.
+
+
+
+(add code?)
 
 # Application of doc2vec in gensim
 
