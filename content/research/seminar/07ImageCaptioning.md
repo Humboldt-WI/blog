@@ -35,7 +35,7 @@ To follow this tutorial, we recommend to setup a development environment with Py
 * NumPy
 * HU-flickr8k-helper
 
-The last package was developed by ourselves and provides several helper functions to handle the Flickr8k dataset. That way, we can focus on the interesting parts of developing an image caption generation model. For further information, please take a look at the package [documentation](https://www.google.de). Install the package as following:
+The last package was developed by ourselves and provides several helper functions to handle the Flickr8k dataset. That way, we can focus on the interesting parts of developing an image caption generation model. For further information, please take a look at the package [documentation](https://scm.cms.hu-berlin.de/remysimo/HUFlickrHelper). Install the package as following:
 
 ```
 pip install HUFlickrHelper
@@ -462,10 +462,20 @@ But what does that mean? As seen before in our example caption our model does no
 
 # Summary
 
+In this tutorial you learned about the challenge of automatically generating image captions. It is a topic of growing interest in the field of machine learning and in practice it can help for instance visually impaired people of grasping the content of an image.  
+You learned how to approach the right architecture and how to implement the model upon this architecture in *Keras*. To do so, you used the pre-trained VGG16, where you removed the last layer in order to obtain an image feature vector.
+To train the  model we introduced you to the Flickr8k dataset that fulfills the necessary criteria of human generated conceptual descriptions.
+Finally you learned how to evaluate the model by means of the BLUE score. Even though our model can not keep up with the state of the art models, it scores adequately for a non-optimized model on the BLEU score.
+
 ### References
 
-[1] IAPR-TC12 dataset by Grubinger et al.  
-[2] Hodosh et al.  
-[3] Karen Simonyan and Andrew Zisserman    
-[4] Marc Tantie et al.  
+[1] Michael Grubinger, Paul Clough, Henning Müller, and Thomas Deselaers. The IAPR TC-12
+Benchmark – a New Evaluation Resource for Visual Information Systems. 2006.
+
+[2] Micah Hodosh, Peter Young, and Julia Hockenmaier. Framing image description as a ranking task: Data, models and evaluation metrics. Journal of Artificial Intelligence Research, 47:853– 899, 2013    
+
+[3] Karen Simonyan and Andrew Zisserman. Very deep convolutional networks for large-scale image recognition. arXiv preprint arXiv:1409.1556, 2014.  
+
+[4] Marc Tanti, Albert Gatt, and Kenneth P. Camilleri. Where to put the Image in an Image Caption Generator. arXiv preprint arXiv:1703.09137, 2017.  
+
 [5] Kishore Papineni, Salim Roukos,Todd Ward and Wei-Jing Zhu. BLEU: A method for automatic evaluation of machine translation. In Proceedings of the 40th Annual Meeting on Association for Computational Linguistics, pages 311–318. Association for Computational Linguistics, 2002.
