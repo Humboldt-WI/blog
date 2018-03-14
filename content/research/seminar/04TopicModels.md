@@ -91,7 +91,7 @@ we apply **doc2vec** on facebook posts from politicans in the German election 20
 
 - two models **PV-DBOW** and **PV-DM**
 - 100 dimensions
-- for 1, 5, 10, 50 and 100 epochs
+- for 1, 5, 10, 20, 50 and 100 epochs
 - ...
 
 *Remember:*
@@ -176,9 +176,11 @@ you can compare the models directly with each other, if you create a subplot. Th
 
 <script src="https://gist.github.com/panoptikum/c7e3db70799548b1c33e5daab8ddafc3.js"></script>
 
-let's finally look at the candidate embeddings (vectors) mapped into two dimension:
+let's finally look at the candidate embeddings (vectors) mapped into two dimensions:
 
 <script src="https://gist.github.com/panoptikum/ca40fcf7c0da73c829ce6b58f9ce161f.js"></script>
+
+In the graph below every point represents a candidate. You can hover over one to get the name of the candidate. Parties are drawn as squares and leader of parties as hexagons:
 
 <iframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~Stipe/122.embed"></iframe>
 
@@ -205,5 +207,19 @@ Let's do a quick crosstab in order to obtain a number of candidates for each pos
 Another interesting way to examine the models is to compute the average similarity of all candidates from one party to the semantic of their own party and to the other parties. We calculate this part with the following code chunk:
 
 <script src="https://gist.github.com/panoptikum/7c6b893f1653d4730271c3c452219c4e.js"></script>
+
+The resulting table looks as follows:
+
+<script src="https://gist.github.com/panoptikum/7b7dc5ce0a88a8092f2ef0a6448a7131.js"></script>
+
+##### Model comparison
+
+Yes, we do not know the actual semantics of the politicians' Facebook posts, but we may assume that candidates use similar rhetorics like their party as a whole and share less rhetorics with other parties. If we compute the average of the diagonal elements and the average of the off-diagonal elements, we capture these two dimensions. The different of the the two means tells us how good the model captures the two dimensions:
+
+<script src="https://gist.github.com/panoptikum/fca5cfbbfa8e5006c0c91633b36a63d4.js"></script>
+
+We calculated this difference for all 12 models and we received the following results. You see that an increase in epochs do not change this metric significantly beyond 20 epochs:
+
+<script src="https://gist.github.com/panoptikum/09c58895fdbf299f015c703776b5885c.js"></script>
 
 # Playing around with the model
