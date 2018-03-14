@@ -223,3 +223,16 @@ We calculated this difference for all 12 models and we received the following re
 <script src="https://gist.github.com/panoptikum/09c58895fdbf299f015c703776b5885c.js"></script>
 
 # Playing around with the model
+
+In reference to the famous king-queen example in the doc2vec literature, we test whether the models capture similar analogies. If we subtract 'Frau' from 'Bundskanzlerin' and add 'Mann' to it, we receive 'martinschulz' in the results. The similarity which the resulting vector shares with the word is rather weak:
+
+<script src="https://gist.github.com/panoptikum/b169f1984641b19c72f637bd8af0a5aa.js"></script>
+
+## similar words
+
+Another nice feature is the fact that you can obtain the most similar word vectors for a word vector. We queried the model for several words that are shown next:
+
+<script src="https://gist.github.com/panoptikum/0ff36e31f32d835131d909d37cbac09a.js"></script>
+
+
+If you made it till here, you have digested a lot of information We hope that our introduction to doc2vec gives you a better understanding of how PV-DBOW works. We would be happy, if you feel encouraged to apply doc2vec to some data on your own.
