@@ -234,5 +234,6 @@ Another nice feature is the fact that you can obtain the most similar word vecto
 
 <script src="https://gist.github.com/panoptikum/0ff36e31f32d835131d909d37cbac09a.js"></script>
 
+# The end
 
 If you made it till here, you have digested a lot of information We hope that our introduction to doc2vec gives you a better understanding of how PV-DBOW works. We would be happy, if you feel encouraged to apply doc2vec to some data on your own.
