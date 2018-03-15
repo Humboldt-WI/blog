@@ -39,7 +39,9 @@ As we will see during the process of building our own NN, its output is based al
 
 NNs are inspired by human brain only to certain extent. For instance the main element that makes them similar is a multilayer net structure of simple elements that are connected in some way, receiving and transmitting information. But the structure of the human brain is much more complicated, besides it is self-organizing and adaptive in contrast to the fixed manually designed architecture of a NN. Hence, there is a good reason to stop being afraid of neural networks and instead to create one ourselves.
 
-<img src="/blog/img/seminar/nn_fundamentals/pics/neurons_net3.png" alt="Drawing" style="width: 500px;"/> [Source: [Pixabay.com](https://pixabay.com/)]
+<img src="/blog/img/seminar/nn_fundamentals/pics/neurons_net3.png" alt="Drawing" style="width: 500px;"/> 
+
+[Source: [Pixabay.com](https://pixabay.com/)]
 
 ## Schematic Representation
 
@@ -101,7 +103,9 @@ w_i_h
 **Activation Function.** The remaining element of the NN's structure is an activation function - a function which transforms an input data point that it receives from the previous nodes to an output value which will be the input for the nodes in the next layer. The activation function plays an important role in the efficiency of the neural network as it accounts for non-linearity of data. 
 It is to certain extent inspired by the concept of "firing", which means that neurons "fire" or transmit information further only if the input surpasses certain threshold. The simplest activation function can be represented by a step function as on the picture below.
 
-<img src="/blog/img/seminar/nn_fundamentals/pics/step_function.png" alt="Drawing" style="width: 700px";/> [Source: [Research Gate](https://www.researchgate.net/figure/Three-different-types-of-transfer-function-step-sigmoid-and-linear-in-unipolar-and_306323136)]
+<img src="/blog/img/seminar/nn_fundamentals/pics/step_function.png" alt="Drawing" style="width: 700px";/> 
+
+[Source: [Research Gate](https://www.researchgate.net/figure/Three-different-types-of-transfer-function-step-sigmoid-and-linear-in-unipolar-and_306323136)]
 
 In our NN, we will use a slightly more elaborate activation function, the sigmoid function (logistic), which allows for more efficient use of the input data. Extended description of various activation functions, their benefits and disadvantages is given in sections below.
 
@@ -516,7 +520,7 @@ After calculation of how much error is associated with every weight we can obtai
 
 For instance error term for node 1 in the hidden layer will be equal to:
 
-the sum of errors associated with all the weights (w<sub>11</sub> and w<sub>12</sub> in our case) that link this node with the next layer. (see Picture above).
+the sum of errors associated with all the weights (w<sub>11</sub> and w<sub>12</sub> in our case) that link this node with the next layer (see Picture above).
 
 Once we repeat this procedure for all the nodes in all layers we can find out how much every node should be changed.
 
@@ -552,9 +556,11 @@ To change the output of any node we should change the weights that connect it wi
 Given multidimensionality of the function, which we need to differentiate, the search for its minimum can be a complicated task. This task is similar to some extent to the search of the path in the darkness from the top of a mountain to its valley. Because it is dark it is almost impossible to reach the valley immediately. The only way to achieve the goal is by exploring the neighbourhood (the radius you are able to see) and tacking small steps in the direction that leads downhill and constantly updating the path for the next steps. This process is illustrated below:
 
 <iframe src="https://giphy.com/embed/8tvzvXhB3wcmI" width="1000" height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-<p><a href="https://giphy.com/gifs/deep-learning-8tvzvXhB3wcmI">[Source: Giphy.com]</a></p>
+<p><a href="https://giphy.com/gifs/deep-learning-8tvzvXhB3wcmI">
 
-Mathematically the differentiation process can be illustrated on the example of weights between output and hidden layers (Who). The same process but with corresponding values should be applied for the weights between input and hidden layers (Wih).
+[Source: Giphy.com]</a></p>
+
+Mathematically the differentiation process can be illustrated on the example of weights between output and hidden layers (w<sub>ho</sub>). The same process but with corresponding values should be applied for the weights between input and hidden layers (w<sub>ih</sub>).
 
 As it can be seen from the formulas below the error we want to minimize (E) can be defined as the sum of squared differences between the target (t<sub>n</sub>) and output (o<sub>n</sub>) values of the NN. The sum of differences for all the nodes in the layer is relevant but when doing calculation for a particular node this sum can be omitted - only the difference between particular output (o<sub>o</sub>) and target (t<sub>o</sub>) matters.
 
@@ -585,7 +591,9 @@ w_i_h += np.dot((h_errors * h_output * (1.0 - h_output)), np.transpose(input))
 
 Now, there is something else, we should add in the weights updating procedure. If we completely change our weights with every new observation - our model learns to predict only the last input. Instead of updating weights 100 % every time we can change them only partially - this way every new observation will bring some new knowledge while the previous one will still be in memory even though updated to certain extent. The bigger the learning rate the more importance has the last observation, the smaller it is the more important is all the previous knowledge. The smaller the steps - the more accurate will be the prediction. At the same time it might take more time to learn.
 
-<img src="/blog/img/seminar/nn_fundamentals/pics/learning_rate.png" alt="Drawing" style="width: 600px;"/> [Source: "Business Analytics & Data Science Course by Professor S. Lessmann, Chapter 5:
+<img src="/blog/img/seminar/nn_fundamentals/pics/learning_rate.png" alt="Drawing" style="width: 400px;"/> 
+
+[Source: "Business Analytics & Data Science Course by Professor S. Lessmann, Chapter 5:
 Artificial Neural Networks"]
 
 Below is the code for weight's update procedure with learning rate included.
