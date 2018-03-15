@@ -27,7 +27,7 @@ This blog post is dedicated to explaining the underlying processes of doc2vec al
 <img style=" width:100%;display:block;margin:0 auto;"
 src="/blog/img/seminar/topic_models/oprah.png">
 
-We will start with the __theoretical backgound__ to embedding algorithms, in particular, word2vec's __SkipGram__ and doc2vec's __PV-DBOW__, moving on to step-by-step implemetation in python, followed by the same actions performed using the gensim package. We will finish this blog by showing the application of the discussed methods on the political data, also touching vizualisation techniques.
+We will start with the __theoretical backgound__ to embedding algorithms, in particular, word2vec's __SkipGram__ and doc2vec's __PV-DBOW__, moving on to step-by-step __implemetation__ in python, followed by the same actions performed using the gensim package. We will finish this blog by showing the __application__ of the discussed methods on the political data, also touching __vizualisation__ techniques.
 
 
 # Data and descriptive Statistics
