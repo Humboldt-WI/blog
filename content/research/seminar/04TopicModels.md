@@ -85,7 +85,7 @@ __k__ is then passed to the softmax function in order to obtain __t__^, the vect
 
 ![](/blog/content/research/seminar/04TopicModels/softmax.png)
 
-**Backpropagation and cross-entropy**s
+**Backpropagation and cross-entropy**
 
 
 ![](/blog/content/research/seminar/04TopicModels/lossfunction.png)
