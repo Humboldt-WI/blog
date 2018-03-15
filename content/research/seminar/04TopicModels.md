@@ -29,17 +29,15 @@ src="/blog/img/seminar/topic_models/oprah.png">
 
 We will start by providing some __desciptive statistics__ of the dataset, followed with some __theoretical backgound__ to embedding algorithms, in particular, word2vec's __SkipGram__ and doc2vec's __PV-DBOW__, moving on to step-by-step __implemetation__ in python, followed by the same actions performed using the gensim package. We will finish this blog by showing the __application__ of the discussed methods on the political data, also touching __vizualisation__ techniques.
 
-# Data preparation
+# Preparatory steps
 
-The dataset consists of 177.307 Facebook posts from 1008 candidates and 7 major political parties who ran for the German Bundestag in the 2017 election. We collected all messages posted between 1 January and the election date on 24 September 2017, covering the entire campaigning period. The parties are included in order to later compare the candidates to them, but computationally they are treated no different then the candidates. 
+In preparation for the following steps, we need to specify which packages to load and where we have stored the data:
 
-we set our working, data and model directory:
-
-<script src="https://gist.github.com/panoptikum/31d6fbf4ea29fd80c307812dcd7d041e.js"></script>
-
-We combined all the posts issued by the same candidate/party in order to obtain one document per candidate. By doing this, we ended up with 1015 text documents (1008 polititians and 7 parties) each containing the rhetorics of one candidate during campaigning.These paragraphs became the "docs" in our implementation of doc2vec and led us to giving the project the "candidate2vec" nickname. Each document is further tokenized in order to allow distinguishing individual words. Finally, we filter out stop words of the German language. 
+<script src="https://gist.github.com/jgmill/0dd8e0691df5622869c53c5da2f38159.js"></script>
 
 # Descriptive Statistics
+
+The dataset consists of 177.307 Facebook posts from 1008 candidates and 7 major political parties who ran for the German Bundestag in the 2017 election. We collected all messages posted between 1 January and the election date on 24 September 2017, covering the entire campaigning period. The parties are included in order to later compare the candidates to them, but computationally they are treated no different then the candidates.
 
 Sahra Wagenknecht, with a mean of 99.63 words per post, publishes quite long posts compared to Joachim Herrmann and Cem Özdemir who use on average less than half the amount of words in their posts.
 
@@ -75,7 +73,13 @@ Let's try to train embedding vectors for each candidate in our dataset, using hi
 
 **Some preparation**
 
-A few preparatory steps are required before the actual training: As a first step, a list of the __m__ unique words appearing in the set of documents has to be compiled. This is called the  vocabulary. Similarly, a list of of the documents is needed. In our case, these are the __n__ aggregated corpora of Facebook posts of every candidate and the political parties.
+We combined all the posts issued by the same candidate/party in order to obtain one document per candidate. By doing this, we ended up with 1015 text documents (1008 polititians and 7 parties) each containing the rhetorics of one candidate during campaigning.These paragraphs became the "docs" in our implementation of doc2vec and led us to giving the project the "candidate2vec" nickname. Each document is further tokenized in order to allow distinguishing individual words. Finally, we filter out stop words of the German language. 
+
+<script src="https://gist.github.com/jgmill/4ce0cab852d0e599a5f700af2a998c37.js"></script>
+
+**Some more preparation**
+
+A few more preparatory steps are required before the actual training: As a first step, a list of the __m__ unique words appearing in the set of documents has to be compiled. This is called the  vocabulary. Similarly, a list of of the documents is needed. In our case, these are the __n__ aggregated corpora of Facebook posts of every candidate and the political parties.
 
 For every training iteration, one document is sampled from the corpus and from that document, a word window or context is selected randomly.
 
@@ -131,13 +135,19 @@ The backpropagation concludes the training iteration for one document. Repeating
 
 As running softmax on the whole vocabulary would be computationally inefficient, the following techniques are usually considered: hierarchical softmax (indexing the words in vocab) and negative sampling (output layer will contain correct words and only a bunch of incorrect ones to compare to).
 
+**Putting everythin in one loop**
+
+Here, we combine all the steps previously explained in order to complete the training for 1 epoch (or more if you want)
+
+<script src="https://gist.github.com/jgmill/8aedbef371e7ae5d22881612a2f64140.js"></script>
+
 **Visualisation with t-SNE**
 
 The paragraph vectors contain 100 components, which makes them hard to visualize and compare. A t-Distributed Stochastic Neighbor Embedding (t-SNE)(Maaten, 2008) is a popular technique for dimensionality reduction that is used widely in NLP. The concept follows the paradigm of visualizing similarities as proximity by minimizing an objective function that signifies discrepancies in the initial multidimensional format and final visual representation. Retention of information remains an obvious challenge when reducing the dimensions. t-SNE manages to preserve the clustering of similar components (unlike Principal Component Analysis, which focuses on preserving dissimilar components far apart). The algorithm assigns a probability-based similarity score to every point in high dimensional space, then performs a similar measurement in low dimensional space. Discrepancies between the actual and simplified representations are reflected in different probability scores and get minimized by applying SGD to the Kullback-Leibler divergence function, containing both scores (Kullback, 1951). The "t" in the name refers to the student distribution that is used instead of the Gaussian distribution when estimating probability scores, as the thicker tails allow to maintain larger distance between the dissimilar points during the score assignment, thus allowing to preserve local structure.
 
-## Putting everythin in one loop
+<script src="https://gist.github.com/jgmill/43fecbedb42be8663f4e7a017656a75d.js"></script>
 
-<script src="https://gist.github.com/jgmill/8aedbef371e7ae5d22881612a2f64140.js"></script>
+As we see, the simple model does not show any pattern among the candidates yet. In the following section, we use the python package gensim which allows run many more trining iterations in less time.
 
 # Application of doc2vec in gensim
 
@@ -169,6 +179,10 @@ If you want to use the interactive plotly library in your jupyter notebook, you 
 Some other libraries are needed as well:
 
 <script src="https://gist.github.com/panoptikum/e3a6774155c2e93e64f253d5faf2e1ad.js"></script>
+
+we set our working, data and model directory:
+
+<script src="https://gist.github.com/panoptikum/31d6fbf4ea29fd80c307812dcd7d041e.js"></script>
 
 we load the data that we've cleaned a bit before (e.g. removal of facebook posts without text):
 
