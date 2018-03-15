@@ -290,4 +290,4 @@ Another nice feature is the fact that you can obtain the most similar word vecto
 
 # The end
 
-If you made it till here, you have digested a lot of information We hope that our introduction to doc2vec gives you a better understanding of how PV-DBOW works. We would be happy, if you feel encouraged to apply doc2vec to some data on your own.
+If you made it till here, you have digested a lot of information, well done! We hope that our introduction to doc2vec gives you a better understanding of how PV-DBOW works. We would be happy, if you feel encouraged to apply doc2vec to some data on your own.
