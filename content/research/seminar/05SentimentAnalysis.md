@@ -1,6 +1,6 @@
 +++
 title = "Text Mining - Sentiment Analysis"
-date = '2018-01-15'
+date = '2018-03-15'
 tags = [ "Deep Learning", "Text Mining", "Sentiment Analysis", "Class17/18",]
 categories = ["seminar"]
 banner = "img/seminar/sentiment_analysis/sentiment.PNG"
