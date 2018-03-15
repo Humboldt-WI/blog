@@ -11,30 +11,33 @@ description = "Candidate2vec - a deep dive into word embeddings"
 
 # Introduction
 
-Natural language processing (NLP) received a lot of attention from academia and industry over the recent decade, benefiting from introduction of new efficient algorithms for processing the vast corpora of text, accumulated on-line. Embedding and sentiment analysis became two major tools for extraction of information from text corporae and its further analysis. Doc2vec is a new machine learning algorithm developed by Mikolov and Le (2014) with the goal of obtaining numeric representations of text documents. It enriches the family of algorithms such as fastText, GloVe or LDA. Many of these algorithms were developed by teams from technology companies like Facebook or Google, indicating the importance of these techniques for  business. In general, the area of application is wide and encompasses online advertisment, automated translation, sentiment analysis, topic modeling and dialog agents like chat bots.
+Natural language processing (NLP) received a lot of attention from academia and industry over the recent decade, benefiting from the introduction of new algorithms for processing the vast corpora of digitized text. A set of language modeling and feature learning techniques called word embeddings became increasingly popular for NLP tasks. Word2vec (Mikolov et al, 2013) became one of the most famous algorithms for word embeddings, offering a numeric representations of any word, followed by doc2vec (Le, 2014), which performed the same task for a paragraph or document. 
+
+The area of application is wide and encompasses online advertisement, automated translation, voice recognition, sentiment analysis, topic modeling and dialog agents like chat bots. Academia also received an efficient tool allowing to tap into the vast corpus of digital texts, from Shakespeare works to social media.
 
 <img style=" width:100%;display:block;margin:0 auto;"
 src="/blog/img/seminar/topic_models/vectors.png">
 
 
-Regardless of the specific task at hand, the overarching goal of NLP is to obtain numeric representations of documents that preserves the semantic and syntactic relationships within them. This aim however is not easy to achieve, since human language is a complex issue with many latent components and intricate connections. Machine learning algorithms that only recently came into being are often not well documented or miss in-depth explanation of the processes under the hood. Doc2vec is no exception in this regard, although users depend on a comprehensive understanding in order to judge whether they correctly use the algorithm and whether the algorithm captures the subtle semantics in the text documents.
+Regardless of the specific task at hand, its overarching goal is to obtain numeric representation of a document that reflects its content and, possibly, some latent semantic relationships within.New machine learning algorithms are often not well documented or miss in-depth explanation of the processes under the hood. One of the possible explanations suggests that  many were developed by teams from technology companies like Facebook or Google, that would rather focus on application aspect. Doc2vec is no exception in this regard, however we believe that thorough understanding of the method is crucial for evaluation of results and comparison with other methods. 
 
 This blog post is dedicated to explaining the underlying processes of doc2vec algorithm using an empirical example of facebook posts of German political candidates, gathered during the year before elections to Bundestag.
 
-We will start with the __theoretical backgound__ to embedding algorithms, in particular, word2vec's __SkipGram__ and doc2vec's __PV-DBOW__, moving on to step-by-step implemetation in python, followed by the same actiones performed using the gensim package. We will finish this blog by showing the application of the discussed methods on the political data, also touching vizualisation techniques.
+
+<img style=" width:100%;display:block;margin:0 auto;"
+src="/blog/img/seminar/topic_models/oprah.png">
+
+We will start with the __theoretical backgound__ to embedding algorithms, in particular, word2vec's __SkipGram__ and doc2vec's __PV-DBOW__, moving on to step-by-step implemetation in python, followed by the same actions performed using the gensim package. We will finish this blog by showing the application of the discussed methods on the political data, also touching vizualisation techniques.
 
 
 # Data and descriptive Statistics
 
-We took a dataset consisting of 177 307 Facebook posts of 1008 German politicians and 7 major German parties. The posts are gathered from 1st of January to 24th of September 2017 in order to capture the online pre-election activities of the candidates. Every candidate/party then had his or her posts "glued together", so at the end our data looked like 1015 (1008 polititians + 7 parties) text bundles/paragraphs, each containing the Facebook rhetorics of 1 candidate over the mentioned period of time. These paragraphs became the "docs" in our implementation of doc2vec and led us to giving the project the "candidate2vec" nickname.
+The dataset consists of 177.307 Facebook posts from 1008 candidates and 7 major political parties who ran for the German Bundestag in the 2017 election. We collected all messages posted between 1 January and the election date on 24 September 2017, covering the entire campaigning period. The parties are included in order to later compare the candidates to them, but computationally they are treated no different then the candidates. We combined all the posts issued by the same candidate/party in order to obtain one document per candidate. By doing this, we ended up with 1015 text documents (1008 polititians and 7 parties) each containing the rhetorics of one candidate during campaigning.These paragraphs became the "docs" in our implementation of doc2vec and led us to giving the project the "candidate2vec" nickname. Each document is further tokenized in order to allow distinguishing individual words. Finally, we filter out stop words of the German language. 
 
 # Theory
 
 
 The goal of the empirical case study is to generate a concept space for each candidate, thus offering a visual representation of German political landscape. For this purpose we need an algorithm to construct an embedding layer that will contain the numeric representation of the semantic content of each candidate's Facebook posts.
-
-<img style=" width:100%;display:block;margin:0 auto;"
-src="/blog/img/seminar/topic_models/oprah.png">
 
 PV-DBOW is similar to the Skip-gram model for word vectors (Mikolov et al, 2013), we will revisit the word2vec algorithms to facilitate the methodological transition.
 
@@ -95,7 +98,7 @@ As running softmax on the whole vocabulary would be computationally inefficient,
 
 The paragraph vectors contain 100 components, which makes them hard to visualize and compare. A t-Distributed Stochastic Neighbor Embedding (t-SNE)(Maaten, 2008) is a popular technique for dimensionality reduction that is used widely in NLP. The concept follows the paradigm of visualizing similarities as proximity by minimizing an objective function that signifies discrepancies in the initial multidimensional format and final visual representation. Retention of information remains an obvious challenge when reducing the dimensions. t-SNE manages to preserve the clustering of similar components (unlike Principal Component Analysis, which focuses on preserving dissimilar components far apart). The algorithm assigns a probability-based similarity score to every point in high dimensional space, then performs a similar measurement in low dimensional space. Discrepancies between the actual and simplified representations are reflected in different probability scores and get minimized by applying SGD to the Kullback-Leibler divergence function, containing both scores (Kullback, 1951). The "t" in the name refers to the student distribution that is used instead of the Gaussian distribution when estimating probability scores, as the thicker tails allow to maintain larger distance between the dissimilar points during the score assignment, thus allowing to preserve local structure.
 
-The implementiation of t-SNE in python will be shown in the implementation section.
+
 
 # Application of doc2vec in gensim
 
