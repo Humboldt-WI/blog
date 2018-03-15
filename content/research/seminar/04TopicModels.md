@@ -13,8 +13,6 @@ description = "Candidate2vec - a deep dive into word embeddings"
 
 Natural language processing (NLP) received a lot of attention from academia and industry over the recent decade, benefiting from introduction of new efficient algorithms for processing the vast corpora of text, accumulated on-line. Embedding and sentiment analysis became two major tools for extraction of information from text corporae and its further analysis. Doc2vec is a new machine learning algorithm developed by Mikolov and Le (2014) with the goal of obtaining numeric representations of text documents. It enriches the family of algorithms such as fastText, GloVe or LDA. Many of these algorithms were developed by teams from technology companies like Facebook or Google, indicating the importance of these techniques for  business. In general, the area of application is wide and encompasses online advertisment, automated translation, sentiment analysis, topic modeling and dialog agents like chat bots.
 
-![vectors](/blog/content/research/seminar/04TopicModels/vectors.png)
-
 <img style=" width:100%;display:block;margin:0 auto;"
 src="/blog/img/seminar/topic_models/vectors.png">
 
@@ -35,14 +33,10 @@ We took a dataset consisting of 177 307 Facebook posts of 1008 German politician
 
 The goal of the empirical case study is to generate a concept space for each candidate, thus offering a visual representation of German political landscape. For this purpose we need an algorithm to construct an embedding layer that will contain the numeric representation of the semantic content of each candidate's Facebook posts.
 
-![oprah](/blog/content/research/seminar/04TopicModels/oprah.png)
-
 <img style=" width:100%;display:block;margin:0 auto;"
 src="/blog/img/seminar/topic_models/oprah.png">
 
 PV-DBOW is similar to the Skip-gram model for word vectors (Mikolov et al, 2013), we will revisit the word2vec algorithms to facilitate the methodological transition.
-
-![skipgram](/blog/content/research/seminar/04TopicModels/skipgram.png)
 
 <img style=" width:100%;display:block;margin:0 auto;"
 src="/blog/img/seminar/topic_models/skipgram.png">
@@ -50,9 +44,6 @@ src="/blog/img/seminar/topic_models/skipgram.png">
 Word2vec is built around the notions of "context" and "target". While CBOW predicts a target word from a given context, Skip-gram predicts the context around a given word. Using an example from our dataset, we would try to get "teilweise", "laute", "Gesetzentwurf" by giving "Diskussion" to the network (originally "teilweise laute Diskussion um den Gesetzentwurf").
 
 PV-DBOW performs a very similar task with the only difference of supplying a paragraph id instead of the target word and training a paragraph vector. Unlike PV-DM, PV-DBOW only derives embeddings for documents and does not store word embeddings.
-
-
-![pvdbow](/blog/content/research/seminar/04TopicModels/pvdbow.png)
 
 <img src="/blog/img/seminar/topic_models/pvdbow.png">
 
@@ -65,9 +56,6 @@ A few preparatory steps are required before the actual training: As a first step
 For every training iteration, one document is sampled from the corpus and from that document, a word window or context is selected randomly.
 
 In order to explain the internal structure, we need to get a clear understanding of the PV-DBOW workflow:
-
-
-![network](/blog/content/research/seminar/04TopicModels/networkstructure.png)
 
 <img src="/blog/img/seminar/topic_models/networkstructure.png">
 
@@ -92,15 +80,9 @@ The process of predicting the words from the context given the supplied paragrap
 
 __k__ is then passed to the softmax function in order to obtain __t__^, the vector of the predicted probabilities of each word in the vocabulary to appear in the document  
 
-
-![softmax](/blog/content/research/seminar/04TopicModels/softmax.png)
-
 <img style=" width:20%;display:block;margin:0 auto;" src="/blog/img/seminar/topic_models/softmax.png">
 
 **Backpropagation and cross-entropy**
-
-
-![lossfunction](/blog/content/research/seminar/04TopicModels/lossfunction.png)
 
 <img style=" width:20%;display:block;margin:0 auto;"
 src="/blog/img/seminar/topic_models/lossfunction.png">
