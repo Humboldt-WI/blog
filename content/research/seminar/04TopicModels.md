@@ -27,12 +27,32 @@ This blog post is dedicated to explaining the underlying processes of doc2vec al
 <img style=" width:100%;display:block;margin:0 auto;"
 src="/blog/img/seminar/topic_models/oprah.png">
 
-We will start with the __theoretical backgound__ to embedding algorithms, in particular, word2vec's __SkipGram__ and doc2vec's __PV-DBOW__, moving on to step-by-step __implemetation__ in python, followed by the same actions performed using the gensim package. We will finish this blog by showing the __application__ of the discussed methods on the political data, also touching __vizualisation__ techniques.
+We will start by providing some __desciptive statistics__ of the dataset, followed with some __theoretical backgound__ to embedding algorithms, in particular, word2vec's __SkipGram__ and doc2vec's __PV-DBOW__, moving on to step-by-step __implemetation__ in python, followed by the same actions performed using the gensim package. We will finish this blog by showing the __application__ of the discussed methods on the political data, also touching __vizualisation__ techniques.
 
+# Data preparation
 
-# Data and descriptive Statistics
+The dataset consists of 177.307 Facebook posts from 1008 candidates and 7 major political parties who ran for the German Bundestag in the 2017 election. We collected all messages posted between 1 January and the election date on 24 September 2017, covering the entire campaigning period. The parties are included in order to later compare the candidates to them, but computationally they are treated no different then the candidates. 
 
-The dataset consists of 177.307 Facebook posts from 1008 candidates and 7 major political parties who ran for the German Bundestag in the 2017 election. We collected all messages posted between 1 January and the election date on 24 September 2017, covering the entire campaigning period. The parties are included in order to later compare the candidates to them, but computationally they are treated no different then the candidates. We combined all the posts issued by the same candidate/party in order to obtain one document per candidate. By doing this, we ended up with 1015 text documents (1008 polititians and 7 parties) each containing the rhetorics of one candidate during campaigning.These paragraphs became the "docs" in our implementation of doc2vec and led us to giving the project the "candidate2vec" nickname. Each document is further tokenized in order to allow distinguishing individual words. Finally, we filter out stop words of the German language. 
+we set our working, data and model directory:
+
+<script src="https://gist.github.com/panoptikum/31d6fbf4ea29fd80c307812dcd7d041e.js"></script>
+
+We combined all the posts issued by the same candidate/party in order to obtain one document per candidate. By doing this, we ended up with 1015 text documents (1008 polititians and 7 parties) each containing the rhetorics of one candidate during campaigning.These paragraphs became the "docs" in our implementation of doc2vec and led us to giving the project the "candidate2vec" nickname. Each document is further tokenized in order to allow distinguishing individual words. Finally, we filter out stop words of the German language. 
+
+# Descriptive Statistics
+
+Sahra Wagenknecht, with a mean of 99.63 words per post, publishes quite long posts compared to Joachim Herrmann and Cem Özdemir who use on average less than half the amount of words in their posts.
+
+<script src="https://gist.github.com/jgmill/2cccc7c1752f862b7ce3cd3951e36464.js"></script>
+
+Words per post by party: AfD and Die Linke candidates write longer posts on average than the candidates from the other parties.
+
+<script src="https://gist.github.com/jgmill/1ef09fd002e985e494ccf04599234091.js"></script>
+
+A histogram of the words per post across all parties: A large majority of posts has less than 50 words
+
+<script src="https://gist.github.com/jgmill/d58de0607d4eed89f61af1f1059288ad.js"></script>
+
 
 # Theory
 
@@ -48,7 +68,8 @@ Word2vec is built around the notions of "context" and "target". While CBOW predi
 
 PV-DBOW performs a very similar task with the only difference of supplying a paragraph id instead of the target word and training a paragraph vector. Unlike PV-DM, PV-DBOW only derives embeddings for documents and does not store word embeddings.
 
-<img src="/blog/img/seminar/topic_models/pvdbow.png">
+<img style="display:block;margin:0 auto;"
+src="/blog/img/seminar/topic_models/pvdbow.png">
 
 Let's try to train embedding vectors for each candidate in our dataset, using his or her facebook posts as one big text document.
 
@@ -57,6 +78,8 @@ Let's try to train embedding vectors for each candidate in our dataset, using hi
 A few preparatory steps are required before the actual training: As a first step, a list of the __m__ unique words appearing in the set of documents has to be compiled. This is called the  vocabulary. Similarly, a list of of the documents is needed. In our case, these are the __n__ aggregated corpora of Facebook posts of every candidate and the political parties.
 
 For every training iteration, one document is sampled from the corpus and from that document, a word window or context is selected randomly.
+
+<script src="https://gist.github.com/jgmill/b84e33ac74de8bae4dc369b5ace27794.js"></script>
 
 In order to explain the internal structure, we need to get a clear understanding of the PV-DBOW workflow:
 
@@ -69,13 +92,15 @@ The input vector __d__ is a one-hot encoded list of paragraph IDs of length __n_
 
 **Hidden layer**
 
-The hidden layer consists of a dense matrix __D__ that projects the the document vector $d$ into the embedding space of dimension $p$, which we set to 100. __D__ thus has dimensions __p__x__n__ and is initialized randomly in the the beginning before any training has taken place.
+The hidden layer consists of a dense matrix __D__ that projects the the document vector __d__ into the embedding space of dimension __p__, which we set to 100. __D__ thus has dimensions __p__x__n__ and is initialized randomly in the the beginning before any training has taken place.
 
 After the training, __D__ will constitute a lookup matrix for the candidates, containing weights for the paragraph vector __e__ (standing for embeddings). The latter will contain the estimated features of every document.
 
 **Output layer**
 
 In the output layer, the matrix __U__ projects the paragraph vector __e__ to the output activation vector __k__ which contains __m__ rows, representing the words in vocabulary. __U__ has dimension __m__x__p__ and is initialized randomly similar to __D__.
+
+<script src="https://gist.github.com/jgmill/d5d8fdf62d350cc634fd87da7cd0bca3.js"></script>
 
 **Softmax**
 
@@ -87,8 +112,20 @@ __k__ is then passed to the softmax function in order to obtain __t__^, the vect
 
 **Backpropagation and cross-entropy**
 
-<img style=" width:20%;display:block;margin:0 auto;"
+In the last step, the softmax probabilities __t^__ are compared with the actual words from the selected context. We can compute the cross entropy loss function, which sums up the products of the component-wise logarithm of __t^__ and the actual one-hot encoded vectors __t__. Since __t__ is zero for the words outside the context, only the prediction error for the context word is taken into account.
+
+<img style=" width:25%;display:block;margin:0 auto;"
 src="/blog/img/seminar/topic_models/lossfunction.png">
+
+The goal of the SGD is then to gradually reduce the loss function, minimizing the resulting difference with every iteration.
+
+The gradients of the loss function on the  matrices __D__ and __U__ will tell us how we need to update the weights that connect the neurons in order to reduce the loss function. They are obtained by taking the derivative of __E__ with regard to the components of matrices __D__ and __U__. For Skip-gram, \textcite{rong_word2vec_2014} shows how we need to update the weights by passing the prediction error back through the network, which cab be adapted to PV-DBOW as well. We therefore compute the output prediction error __o__ of length __m__ by substracting __t__ from __t^__ and the error from the embedding layer __h__ by projecting __o__ into the embedding space by means of right-multiplying it onto __U'__.
+
+The errors are computed for each of the __c__ words in the given context and summed up before passing them back through the network. The sum of the output errors is right-multiplied with the transposed embedding vector __e'__ in order to obtain the update values for __U__, while the sum of the embedding-layer errors gets right-multiplied by __d'__. Before updating __U__ and __D__, the updates are multiplied with learning rate __alpha__ which limits how much the weights are adjusted at each step. A common choice is to start with __alpha=0.025__, gradually reducing it to __0.001__.
+
+The backpropagation concludes the training iteration for one document. Repeating these steps for all documents once would then constitute one epoch.
+
+<script src="https://gist.github.com/jgmill/e6296db5df46394a23c15f7e8426fd06.js"></script>
 
 **A note on efficiency**
 
@@ -98,7 +135,9 @@ As running softmax on the whole vocabulary would be computationally inefficient,
 
 The paragraph vectors contain 100 components, which makes them hard to visualize and compare. A t-Distributed Stochastic Neighbor Embedding (t-SNE)(Maaten, 2008) is a popular technique for dimensionality reduction that is used widely in NLP. The concept follows the paradigm of visualizing similarities as proximity by minimizing an objective function that signifies discrepancies in the initial multidimensional format and final visual representation. Retention of information remains an obvious challenge when reducing the dimensions. t-SNE manages to preserve the clustering of similar components (unlike Principal Component Analysis, which focuses on preserving dissimilar components far apart). The algorithm assigns a probability-based similarity score to every point in high dimensional space, then performs a similar measurement in low dimensional space. Discrepancies between the actual and simplified representations are reflected in different probability scores and get minimized by applying SGD to the Kullback-Leibler divergence function, containing both scores (Kullback, 1951). The "t" in the name refers to the student distribution that is used instead of the Gaussian distribution when estimating probability scores, as the thicker tails allow to maintain larger distance between the dissimilar points during the score assignment, thus allowing to preserve local structure.
 
+## Putting everythin in one loop
 
+<script src="https://gist.github.com/jgmill/8aedbef371e7ae5d22881612a2f64140.js"></script>
 
 # Application of doc2vec in gensim
 
@@ -130,10 +169,6 @@ If you want to use the interactive plotly library in your jupyter notebook, you 
 Some other libraries are needed as well:
 
 <script src="https://gist.github.com/panoptikum/e3a6774155c2e93e64f253d5faf2e1ad.js"></script>
-
-we set our working, data and model directory:
-
-<script src="https://gist.github.com/panoptikum/31d6fbf4ea29fd80c307812dcd7d041e.js"></script>
 
 we load the data that we've cleaned a bit before (e.g. removal of facebook posts without text):
 
