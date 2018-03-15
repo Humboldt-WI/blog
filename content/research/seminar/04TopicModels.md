@@ -1,12 +1,12 @@
 +++
 title = "Numeric representation of text documents: doc2vec how it works and how you implement it"
-date = '2018-01-18'
-tags = [ "Deep Learning", "Text Mining", "Topic Modeling", "Class17/18",]
+date = '2018-03-15'
+tags = [ "Deep Learning", "Text Mining", "doc2vec", "Document Embeddings", "Class17/18",]
 categories = ["seminar"]
 banner = "img/seminar/topic_models/textMininigKlein.png"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-humbodt-wi-github-io-blog"
-description = "Candidate2vec - deep dive into word embeddings"
+description = "Candidate2vec - a deep dive into word embeddings"
 +++
 
 # Introduction
@@ -15,11 +15,15 @@ Natural language processing (NLP) received a lot of attention from academia and 
 
 ![vectors](/blog/content/research/seminar/04TopicModels/vectors.png)
 
+<img style=" width:100%;display:block;margin:0 auto;"
+src="/blog/img/seminar/topic_models/vectors.png">
+
+
 Regardless of the specific task at hand, the overarching goal of NLP is to obtain numeric representations of documents that preserves the semantic and syntactic relationships within them. This aim however is not easy to achieve, since human language is a complex issue with many latent components and intricate connections. Machine learning algorithms that only recently came into being are often not well documented or miss in-depth explanation of the processes under the hood. Doc2vec is no exception in this regard, although users depend on a comprehensive understanding in order to judge whether they correctly use the algorithm and whether the algorithm captures the subtle semantics in the text documents.
 
 This blog post is dedicated to explaining the underlying processes of doc2vec algorithm using an empirical example of facebook posts of German political candidates, gathered during the year before elections to Bundestag.
 
-We will start with the __theoretical backgound__ to embedding algorithms, in particular, word2vec's __SkipGram__ and doc2vec's __PV-DBOW__, moving on to step-by-step implemetation in python, followed by the same actiones performed using the gensim package. We will finish this blog by showing the application of the discussed methods on the political data, also touching vizualisation technics.
+We will start with the __theoretical backgound__ to embedding algorithms, in particular, word2vec's __SkipGram__ and doc2vec's __PV-DBOW__, moving on to step-by-step implemetation in python, followed by the same actiones performed using the gensim package. We will finish this blog by showing the application of the discussed methods on the political data, also touching vizualisation techniques.
 
 
 # Data and descriptive Statistics
@@ -33,10 +37,15 @@ The goal of the empirical case study is to generate a concept space for each can
 
 ![oprah](/blog/content/research/seminar/04TopicModels/oprah.png)
 
+<img style=" width:100%;display:block;margin:0 auto;"
+src="/blog/img/seminar/topic_models/oprah.png">
 
 PV-DBOW is similar to the Skip-gram model for word vectors (Mikolov et al, 2013), we will revisit the word2vec algorithms to facilitate the methodological transition.
 
 ![skipgram](/blog/content/research/seminar/04TopicModels/skipgram.png)
+
+<img style=" width:100%;display:block;margin:0 auto;"
+src="/blog/img/seminar/topic_models/skipgram.png">
 
 Word2vec is built around the notions of "context" and "target". While CBOW predicts a target word from a given context, Skip-gram predicts the context around a given word. Using an example from our dataset, we would try to get "teilweise", "laute", "Gesetzentwurf" by giving "Diskussion" to the network (originally "teilweise laute Diskussion um den Gesetzentwurf").
 
@@ -44,6 +53,8 @@ PV-DBOW performs a very similar task with the only difference of supplying a par
 
 
 ![pvdbow](/blog/content/research/seminar/04TopicModels/pvdbow.png)
+
+<img src="/blog/img/seminar/topic_models/pvdbow.png">
 
 Let's try to train embedding vectors for each candidate in our dataset, using his or her facebook posts as one big text document.
 
@@ -58,6 +69,8 @@ In order to explain the internal structure, we need to get a clear understanding
 
 ![network](/blog/content/research/seminar/04TopicModels/networkstructure.png)
 
+<img src="/blog/img/seminar/topic_models/networkstructure.png">
+
 
 **Input Layer**
 
@@ -65,13 +78,13 @@ The input vector __d__ is a one-hot encoded list of paragraph IDs of length __n_
 
 **Hidden layer**
 
-The hidden layer consists of a dense matrix __D__ that projects the the document vector $d$ into the embedding space of dimension $p$, which we set to 100. __D__ thus has dimensions __p__*__n__ and is initialized randomly in the the beginning before any training has taken place.
+The hidden layer consists of a dense matrix __D__ that projects the the document vector $d$ into the embedding space of dimension $p$, which we set to 100. __D__ thus has dimensions __p__x__n__ and is initialized randomly in the the beginning before any training has taken place.
 
 After the training, __D__ will constitute a lookup matrix for the candidates, containing weights for the paragraph vector __e__ (standing for embeddings). The latter will contain the estimated features of every document.
 
 **Output layer**
 
-In the output layer, the matrix $U$ projects the paragraph vector __e__ to the output activation vector __k__ which contains __m__ rows, representing the words in vocabulary. __U__ has dimension __m__x__p__ and is initialized randomly similar to __D__.
+In the output layer, the matrix __U__ projects the paragraph vector __e__ to the output activation vector __k__ which contains __m__ rows, representing the words in vocabulary. __U__ has dimension __m__x__p__ and is initialized randomly similar to __D__.
 
 **Softmax**
 
@@ -82,10 +95,15 @@ __k__ is then passed to the softmax function in order to obtain __t__^, the vect
 
 ![softmax](/blog/content/research/seminar/04TopicModels/softmax.png)
 
+<img style=" width:20%;display:block;margin:0 auto;" src="/blog/img/seminar/topic_models/softmax.png">
+
 **Backpropagation and cross-entropy**
 
 
 ![lossfunction](/blog/content/research/seminar/04TopicModels/lossfunction.png)
+
+<img style=" width:20%;display:block;margin:0 auto;"
+src="/blog/img/seminar/topic_models/lossfunction.png">
 
 **A note on efficiency**
 
