@@ -19,7 +19,8 @@ description = " "
     * Data Analysis<br><br>
     * Word Embeddings<br><br>
     * Convolutional Neural Network<br><br>
-    * Summary
+
+* #### Summary
 
 
 ____________________________________________________________________________________
