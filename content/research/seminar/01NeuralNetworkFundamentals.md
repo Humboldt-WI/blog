@@ -16,9 +16,12 @@ This blog post is a guide to help readers build a neural network from the very b
 
 ## Neural Networks and its early development
 
-As the name tells, the idea of neural networks is inspired by how neurons work in the human brain. It is, however, crucial for the readers to know that despite the original motivation of neural networks, the NN models being used today have little resemblance to what a human brain does ???(Warner and Misra, 1996).  In its basic form, neural networks are composed of nodes interconnected to each other in several layers. The basic form of a NN would include an input, a hidden and an output layer. The number of nodes and layers can add to the complexity and efficiency of neural networks.  
+As the name tells, the idea of neural networks is inspired by how neurons work in the human brain. It is, however, crucial for the readers to know that despite the original motivation of neural networks, the NN models being used today have little resemblance to what a human brain does.  In its basic form, neural networks are composed of nodes interconnected to each other in several layers. The basic form of a NN would include an input, a hidden and an output layer. The number of nodes and layers can add to the complexity and efficiency of neural networks.  
 
-The McCulloch-Pitts model of neuron in 1943 was one of the earliest simplified version of neural networks. It consisted of a simple neuron which received a weighted sum of inputs and output either zero if the sum was smaller than a threshold or one when it was greater than the threshold. This idea is called firing and is an interesting analogy to what an actual neuron does. Later on, in the early 1960s, Rosenblatt introduced the simple perceptron model. This was a developed version of the McCulloch-Pitts with an input and output layer. However, the linear separablilty limitation (Minsky and Papert ,1969) of simple perceptron took away the research interest in neural networks for a while. In the early 1980s, the Hopfield model of content-addressable memory, however, motivated researchers in the area again and later on with the introduction of backpropagation learning algorithm, interest in neural networks research soared. Nowadays, neural nets are used in a variety of applications to tackle problems such as classification, speech and image recognition, control systems and predictions.
+The McCulloch-Pitts model of neuron in 1943 was one of the earliest simplified version of neural networks. It consisted of a simple neuron which received a weighted sum of inputs and output either zero if the sum was smaller than a threshold or one when it was greater than the threshold. This idea is called firing and is an interesting analogy to what an actual neuron does. Later on, in the early 1960s, Rosenblatt introduced the simple perceptron model. This was a developed version of the McCulloch-Pitts with an input and output layer. However, the linear separablilty limitation of simple perceptron took away the research interest in neural networks for a while. In the early 1980s, the Hopfield model of content-addressable memory, however, motivated researchers in the area again and later on with the introduction of backpropagation learning algorithm, interest in neural networks research soared. Nowadays, neural nets are used in a variety of applications to tackle problems such as classification, speech and image recognition, control systems and predictions.
+
+In what follows, the reader will find an easy step-by-step guide on how to implement all these processes from scratch, the coding part of which draws inspiration from the works of [Nielsen, 2017](http://neuralnetworksanddeeplearning.com/index.html), [Dima, 2016](http://www.cristiandima.com/neural-networks-from-scratch-in-python/) and [Rashid, 2016](https://ebook4expert.com/2016/07/12/make-your-own-neural-network-ebook-free-by-tariq-rashid-epubmobi/).
+
 # NN from scratch
 ## Problem Statement
 The best way to understand how neural networks work is to build one yourself from scratch.
@@ -42,7 +45,7 @@ NNs are inspired by human brain only to certain extent. For instance the main el
 
 A complex multilayer structure that all neural networks have in common in a simplified way can be depicted using the following picture.
 
-<img src="pi    cs/neural_network1.jpg" alt="Drawing" style="width: 800px;"/>
+<img src="/blog/img/seminar/nn_fundamentals/pics//neural_network1.jpg" alt="Drawing" style="width: 800px;"/>
 
 All we need in order to implement such a structure is base Python and numpy, a library for numerical computation, which we will be using to do linear algebra. 
 
@@ -96,7 +99,7 @@ w_i_h
            [ 0.94092134,  0.3455386 ,  0.83219342]])
 
 **Activation Function.** The remaining element of the NN's structure is an activation function - a function which transforms an input data point that it receives from the previous nodes to an output value which will be the input for the nodes in the next layer. The activation function plays an important role in the efficiency of the neural network as it accounts for non-linearity of data. 
-It is to certain extent inspired by the concept of "firing", which means that neurons "fire" or transmit information further only if the input surpasses certain threshold. The simplest activation function can be represented by a step function as on the picture below!!!.
+It is to certain extent inspired by the concept of "firing", which means that neurons "fire" or transmit information further only if the input surpasses certain threshold. The simplest activation function can be represented by a step function as on the picture below.
 
 <img src="/blog/img/seminar/nn_fundamentals/pics/step_function.png" alt="Drawing" style="width: 700px";/> [Source: [Research Gate](https://www.researchgate.net/figure/Three-different-types-of-transfer-function-step-sigmoid-and-linear-in-unipolar-and_306323136)]
 
@@ -296,7 +299,7 @@ To run the NN, i.e. to feed forward our input data in order to get some predicti
 
 A sequence of this steps should be repeated n-1 times (where n corresponds to the number of layers). The output of the previous layer will always be the input vector for the next layer. In our case the procedure will happen twice.
 
-In the picture bellow !!!, you can see the procedure necessary to obtain the output of the hidden layer. The result of matrix multiplication here is called "Hidden_Input". Result of the transformation of "Hidden_Input" through activation function is called "Hidden_Output".
+In the picture bellow, you can see the procedure necessary to obtain the output of the hidden layer. The result of matrix multiplication here is called "Hidden_Input". Result of the transformation of "Hidden_Input" through activation function is called "Hidden_Output".
 
 This output will be used as the input vector that should be multiplied by the next weight matrix and transformed through activation function in order to calculate the final output of the NN. If our NN would have more than one hidden layer, the procedure would be repeated more times.
 
@@ -553,13 +556,13 @@ Given multidimensionality of the function, which we need to differentiate, the s
 
 Mathematically the differentiation process can be illustrated on the example of weights between output and hidden layers (Who). The same process but with corresponding values should be applied for the weights between input and hidden layers (Wih).
 
-As it can be seen from the formulas !!! the error we want to minimize (E) can be defined as the sum of squared differences between the target (Tn) and output (On) values of the NN. The sum of differences for all the nodes in the layer is relevant but when doing calculation for a particular node this sum can be omitted - only the difference between particular output (Oo) and target (Oo) matters.
+As it can be seen from the formulas below the error we want to minimize (E) can be defined as the sum of squared differences between the target (t<sub>n</sub>) and output (o<sub>n</sub>) values of the NN. The sum of differences for all the nodes in the layer is relevant but when doing calculation for a particular node this sum can be omitted - only the difference between particular output (o<sub>o</sub>) and target (t<sub>o</sub>) matters.
 
-Target value is constant. Output value depends on weights and is obtained after applying sigmoid function to the sum of inputs (outputs of the previous layer - Oh) multiplied by corresponding weights (Who).
+Target value is constant. Output value depends on weights and is obtained after applying sigmoid function to the sum of inputs (outputs of the previous layer - o<sub>h</sub>) multiplied by corresponding weights (w<sub>ho</sub>).
 
 <img src="/blog/img/seminar/nn_fundamentals/pics/formula2.png"  alt="Drawing" style="width: 1000px;"/>
 
-The formula for derivative of the sigmoid function is provided below !!! It is necessary to keep in mind that the sum to which we apply sigmoid function also depends on the change of weights (Who). Therefore one should follow the chain rule for derivation.
+The formula for derivative of the sigmoid function is provided below. It is necessary to keep in mind that the sum to which we apply sigmoid function also depends on the change of weights (w<sub>ho</sub>). Therefore one should follow the chain rule for derivation.
 
 <img src="/blog/img/seminar/nn_fundamentals/pics/formula3.png"  alt="Drawing" style="width: 1000px;"/>
 
@@ -649,13 +652,7 @@ mpp.imshow(image, cmap='Blues', interpolation='None')
 
     7
 
-
-
-
-
     <matplotlib.image.AxesImage at 0x10f518828>
-
-
 
 
 ![png](/blog/img/seminar/nn_fundamentals/1_NN_from_scratch_files/1_NN_from_scratch_96_2.png)
@@ -798,7 +795,7 @@ score_array = np.asarray(score)
 print ("performance = ", score_array.sum() / score_array.size)
 ```
 
-    performance =  0.959
+    performance =  0.690
 
 
 **Training with other l_r**
@@ -1108,4 +1105,4 @@ We have shown how to implement a neural network in Python from scratch while exp
 
 You should now have a clear concept of how a neural network performs and what basic techniques can be applied to optimize it. Neural networks are nowadays very popular and there are a handful of literatures, some of which were discussed, on how to optimize them. They have a huge range of application in medicine, business, engineering and so forth. Although there was little room to discuss on a wide topic like neural network in a blog post, we tried our best to familiarize you with as many concepts as a blog post permits.
 
-Our discussion on the activation functions and optimizations were intentionally focused on the most common examples to provide reader with a better intuition. It should be noted that there are different types of neural nets and a variety of learning algorithms which were not covered in this blog post. We hope we managed to catch you attention to such a fascinating topic and served as a starting point for you to advance their knowledge on neural networks.
+Our discussion on the activation functions and optimizations were intentionally focused on the most common examples to provide reader with a better intuition. It should be noted that there are different types of neural nets and a variety of learning algorithms which were not covered in this blog post. We hope we managed to catch you attention to such a fascinating topic and served as a starting point for you to advance your knowledge on neural networks.
