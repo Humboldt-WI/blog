@@ -468,4 +468,4 @@ If you got lost somewhere along the way, you can find all the code used here in 
 
 - https://github.com/denismaciel/foundations-of-deep-learning
 
-We hope this tutorial has helped you to deploy your very own deep learning model! If anything's still unclear, don't hesitate to get in touch. Drop us a line at
+We hope this tutorial has helped you to deploy your very own deep learning model! If anything's still unclear, don't hesitate to get in touch. Drop us a line at denispmaciel@gmail.com.
