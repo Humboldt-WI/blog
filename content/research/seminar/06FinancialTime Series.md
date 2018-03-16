@@ -7,4 +7,5 @@ banner = "img/seminar/financial_time_series/timeseries.PNG"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description = " "
+draft = true
 +++

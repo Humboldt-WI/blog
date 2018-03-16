@@ -244,8 +244,7 @@
 <ol>
 <li><a href="#videos">Videos</a></li>
 <li><a href="#neural-language-processing">Neural language processing</a></li>
-<li><a href="#variant-calling">Variant calling</a>
-<br /></li>
+<li><a href="#variant-calling">Variant calling</a></li>
 </ol></li>
 </ol>
 
@@ -355,7 +354,6 @@ $ G_y = \begin{bmatrix} +1 & +2 & +1 \\ 0 & 0 & 0 \\ -1 & -2 & -1 \end{bmatrix} 
 <img border="0" alt="valve sobel" src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Valve_sobel_%283%29.PNG" width="350">
 </a></p>
 </th></tr></table>
-  
 
 <p>In the convolutional neural network, edges are only a part of all the features which could be important for an image. Furthermore, filters could instead of edges also detect colors and combinations of patterns and colors. To understand how a filter is applied to an entire image, we explain the convolution operation.</p>
 
@@ -544,7 +542,7 @@ A $2 \times 2$ filter with a stride of 2 cannot be applied to a $5 \times 5$ mat
 
 <p><img border="0" alt="max pooling" src="https://i.imgur.com/ccxu58n.png" width="800"></p>
 
-<script src="https://gist.github.com/BuzzWoll/66d25e59ad8e83f99b09ba67fae4e256.js"></script> 
+<script src="https://gist.github.com/BuzzWoll/66d25e59ad8e83f99b09ba67fae4e256.js"></script>
 
 <h3 id="average-pooling">Average Pooling</h3>
 
@@ -585,14 +583,12 @@ In general, the backpropagation works similar to the one from an artificial neur
 <li><div>$\frac{\partial \sigma(z)}{\partial z}= \frac{\partial max(0,z)}{\partial z} = \begin{cases}
                                                                         1 & , \text{if}\ z>0 \\
                                                                         0 & , \text{otherwise}
-                                                                       \end{cases}$</div>
-  </li>
+                                                                       \end{cases}$</div></li>
 
 <li><div>$\delta^L = \frac{\partial C}{\partial z^{L}} = \begin{cases}
                                      a^{L}-y & , \text{if}\ z^{L}>0 \\
                                      0 & , \text{otherwise}
-                                     \end{cases}$</div>
-  </li>
+                                     \end{cases}$</div></li>
 </ul></li>
 </ul>
 
@@ -614,7 +610,6 @@ In general, the backpropagation works similar to the one from an artificial neur
                                                                                                            1 & , \text{if}\ a_{1,1}\ge a\_{1,2},a\_{2,1},a\_{2,2} \\
                                                                                                            0 & , \text{otherwise}
                                                                                                            \end{cases}$$</div>
-                                                                                                          
 
 <h2 id="the-gradient-descent-algorithm">The gradient descent algorithm</h2>
 
@@ -681,8 +676,7 @@ where a $2 \times 2$ filter with weights $w_{1,1}, w_{1,2}, w_{2,1}, w_{2,2}$ sl
 
 <div>$$\frac{\partial ReLU(z^{L-1})}{\partial z^{L-1}} = \begin{cases}
      1 & , \text{if}\ z>0 \\                                                                                    0 & , \text{otherwise}                                                                                  \end{cases}$$
-</div>   
-   
+</div>
 
 <p>leading to higher gradients in deeper layers. The gradient still decreases when it is passed backwards through the net, but way less than with sigmoid activation functions. Plots of the derivatives of sigmoid and ReLU activation functions are shown in Figure 12. There exist other techniques to circumvent the vanishing gradient problem which are necessary for training really deep network architectures (10 layers+):</p>
 
@@ -788,7 +782,7 @@ It has to be noted, that variant calling algorithms which are not based on neura
             <li><a href="https://humboldt-wi.github.io/blog/categories/instruction">instruction (2)</a>
             </li>
             
-            <li><a href="https://humboldt-wi.github.io/blog/categories/seminar">seminar (9)</a>
+            <li><a href="https://humboldt-wi.github.io/blog/categories/seminar">seminar (8)</a>
             </li>
             
         </ul>
@@ -843,12 +837,6 @@ It has to be noted, that variant calling algorithms which are not based on neura
             <li><a href="https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset"><i class="fa fa-tags"></i> keras-imdb-dataset</a>
             </li>
             
-            <li><a href="https://humboldt-wi.github.io/blog/tags/long-short-term-memory"><i class="fa fa-tags"></i> long-short-term-memory</a>
-            </li>
-            
-            <li><a href="https://humboldt-wi.github.io/blog/tags/lstm"><i class="fa fa-tags"></i> lstm</a>
-            </li>
-            
             <li><a href="https://humboldt-wi.github.io/blog/tags/movie-reviews"><i class="fa fa-tags"></i> movie-reviews</a>
             </li>
             
@@ -865,9 +853,6 @@ It has to be noted, that variant calling algorithms which are not based on neura
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/text-mining"><i class="fa fa-tags"></i> text-mining</a>
-            </li>
-            
-            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series"><i class="fa fa-tags"></i> time-series</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/transfer-learning"><i class="fa fa-tags"></i> transfer-learning</a>

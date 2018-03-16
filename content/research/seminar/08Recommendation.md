@@ -112,7 +112,7 @@ The wide model memorizes the user-product interactions present in the data. So t
 Apart from the feature columns present in the data collected during user interactions with products, cross-column features are created as additional side information. Aggregate statistics are computed for each user by using the meta-data corresponding to that users interaction with different items. Similarly, product based features are generated as well. The deep model is a feed forward neural network as shown in figure (right).
 <script src="https://gist.github.com/brijda/8f644f5e4a4267ca0f0f7e2cd11a7187.js"></script>
 
-The combined wide and deep model, as shown in figure (middle), takes the weighted sum of the outputs from both components as the prediction value. This prediction is fed to one common logistic loss function for joint training.  
+The combined wide and deep model, as shown in figure (middle), takes the weighted sum of the outputs from both components as the prediction value. This prediction is fed to one common logistic loss function for joint training.
 <script src="https://gist.github.com/brijda/e75c8180114f36f572f29b959fb18dd0.js"></script>
 
 

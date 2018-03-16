@@ -19,7 +19,7 @@ The area of application is wide and encompasses online advertisement, automated 
 src="/blog/img/seminar/topic_models/vectors.png">
 
 
-Regardless of the specific task at hand, its overarching goal is to obtain numeric representation of a document that reflects its content and, possibly, some latent semantic relationships within.New machine learning algorithms are often not well documented or miss in-depth explanation of the processes under the hood. One of the possible explanations suggests that  many were developed by teams from technology companies like Facebook or Google, that would rather focus on application aspect. Doc2vec is no exception in this regard, however we believe that thorough understanding of the method is crucial for evaluation of results and comparison with other methods. 
+Regardless of the specific task at hand, its overarching goal is to obtain numeric representation of a document that reflects its content and, possibly, some latent semantic relationships within.New machine learning algorithms are often not well documented or miss in-depth explanation of the processes under the hood. One of the possible explanations suggests that  many were developed by teams from technology companies like Facebook or Google, that would rather focus on application aspect. Doc2vec is no exception in this regard, however we believe that thorough understanding of the method is crucial for evaluation of results and comparison with other methods.
 
 This blog post is dedicated to explaining the underlying processes of doc2vec algorithm using an empirical example of facebook posts of German political candidates, gathered during the year before elections to Bundestag.
 
@@ -73,7 +73,7 @@ Let's try to train embedding vectors for each candidate in our dataset, using hi
 
 **Some preparation**
 
-We combined all the posts issued by the same candidate/party in order to obtain one document per candidate. By doing this, we ended up with 1015 text documents (1008 polititians and 7 parties) each containing the rhetorics of one candidate during campaigning.These paragraphs became the "docs" in our implementation of doc2vec and led us to giving the project the "candidate2vec" nickname. Each document is further tokenized in order to allow distinguishing individual words. Finally, we filter out stop words of the German language. 
+We combined all the posts issued by the same candidate/party in order to obtain one document per candidate. By doing this, we ended up with 1015 text documents (1008 polititians and 7 parties) each containing the rhetorics of one candidate during campaigning.These paragraphs became the "docs" in our implementation of doc2vec and led us to giving the project the "candidate2vec" nickname. Each document is further tokenized in order to allow distinguishing individual words. Finally, we filter out stop words of the German language.
 
 <script src="https://gist.github.com/jgmill/4ce0cab852d0e599a5f700af2a998c37.js"></script>
 
@@ -110,7 +110,7 @@ In the output layer, the matrix __U__ projects the paragraph vector __e__ to the
 
 The process of predicting the words from the context given the supplied paragraph ID is done through a multiclass classifier called softmax, which provides a probability distribution over the words for an input document.
 
-__k__ is then passed to the softmax function in order to obtain __t__^, the vector of the predicted probabilities of each word in the vocabulary to appear in the document  
+__k__ is then passed to the softmax function in order to obtain __t__^, the vector of the predicted probabilities of each word in the vocabulary to appear in the document
 
 <img style=" width:20%;display:block;margin:0 auto;" src="/blog/img/seminar/topic_models/softmax.png">
 

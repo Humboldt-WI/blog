@@ -73,11 +73,6 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/research/seminar/06financialtime-series/</loc>
-    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://humboldt-wi.github.io/blog/news/phdposition/</loc>
     <lastmod>2018-01-20T00:00:00+00:00</lastmod>
   </url>
@@ -212,18 +207,6 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/long-short-term-memory/</loc>
-    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/lstm/</loc>
-    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://humboldt-wi.github.io/blog/member/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
     <priority>0</priority>
@@ -285,12 +268,6 @@
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/text-mining/</loc>
     <lastmod>2018-03-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/time-series/</loc>
-    <lastmod>2018-02-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

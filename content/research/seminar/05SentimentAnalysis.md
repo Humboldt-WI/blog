@@ -37,7 +37,7 @@ Now before we start with the our tutorial, let's first have a look on the basic 
 ### Sentiment Analysis
 * Computational study of opinions, sentiments and emotions in text
 * Task: Classifying the expressed opinion of a text (positive, negative, neutral)
-* Sentiment analysis uses:  
+* Sentiment analysis uses:
     * natural language processing (NLP)
     * text analysis
     * computational techniques

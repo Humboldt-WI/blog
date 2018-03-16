@@ -58,7 +58,7 @@ Contact Telephone: +49 30 2093-5662 Email: bfabian[at]wiwi.hu-berlin.de Website:
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/seminar/02convolutionalneuralnetworks/</guid>
-      <description>Convolutional Neural Networks Table of Content  Motivation Images Artificial Neural Networks Convolutional Neural Networks  Architecture Overview Layers Convolutional Layer  Filters Convolution for Functions Mathematical 2D convolution Back to 2D convolution Stride Padding Local receptive fields Parameter Sharing Weight Initialization im2col Convolution using im2col  Activation Function Layer  Why is a non-linear function needed? Logistic sigmoid function hyperbolic tangent function Rectified Linear Units  Pooling Layer  Max Pooling Average Pooling  Fully-connected Layer Forward pass in a convolutional neural network using im2col  The backpropagation algorithm  Backpropagation for Pooling layers The gradient descent algorithm The Vanishing Gradient Problem  Optimizing gradient descent  Stochastic gradient descent Mini-batch gradient descent Learning Rate  Transfer Learning Other interesting use cases for CNNs  Videos Neural language processing Variant calling    Motivation Within the last few years we observed a large increase of visual data.</description>
+      <description>Convolutional Neural Networks Table of Content  Motivation Images Artificial Neural Networks Convolutional Neural Networks  Architecture Overview Layers Convolutional Layer  Filters Convolution for Functions Mathematical 2D convolution Back to 2D convolution Stride Padding Local receptive fields Parameter Sharing Weight Initialization im2col Convolution using im2col  Activation Function Layer  Why is a non-linear function needed? Logistic sigmoid function hyperbolic tangent function Rectified Linear Units  Pooling Layer  Max Pooling Average Pooling  Fully-connected Layer Forward pass in a convolutional neural network using im2col  The backpropagation algorithm  Backpropagation for Pooling layers The gradient descent algorithm The Vanishing Gradient Problem  Optimizing gradient descent  Stochastic gradient descent Mini-batch gradient descent Learning Rate  Transfer Learning Other interesting use cases for CNNs  Videos Neural language processing Variant calling   Motivation Within the last few years we observed a large increase of visual data.</description>
     </item>
     
     <item>
@@ -223,15 +223,6 @@ Kennziffer: IAM-SDF&lt;/p&gt;
 &lt;p&gt;Because of the great demand, appointments will be given only with previous registration by sending an e-mail to bujarek@hu-berlin.de.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>LSTM and Financial Time Series - Predicting Stock Returns</title>
-      <link>https://humboldt-wi.github.io/blog/research/seminar/06financialtime-series/</link>
-      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/research/seminar/06financialtime-series/</guid>
-      <description></description>
     </item>
     
     <item>
