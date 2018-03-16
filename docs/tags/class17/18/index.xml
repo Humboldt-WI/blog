@@ -2,11 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Class17/18 on Institute of Infomation Systems at HU-Berlin</title>
+<<<<<<< HEAD
     <link>https://humboldt-wi.github.io/blog/tags/class17/18/</link>
+=======
+    <link>https://wisample.github.io/blog/tags/class17/18/</link>
+>>>>>>> Humboldt-WI/newestBranch
     <description>Recent content in Class17/18 on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
+<<<<<<< HEAD
     <lastBuildDate>Mon, 19 Feb 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/class17/18/index.xml" rel="self" type="application/rss+xml" />
@@ -101,6 +106,22 @@
       <guid>https://humboldt-wi.github.io/blog/research/instruction/00samplepost/</guid>
       <description>A Gentle Introduction to Neural Network Fundamentals 
 Imagine the following problem: There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.</description>
+=======
+    <lastBuildDate>Tue, 12 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://wisample.github.io/blog/tags/class17/18/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A Static Jupyter Notebook Example</title>
+      <link>https://wisample.github.io/blog/research/seminar/staticjupyter_example_post/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/research/seminar/staticjupyter_example_post/</guid>
+      <description>&lt;p&gt;This is an example of a jupyter notebook to give you an idea of how your blog post could look like.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+>>>>>>> Humboldt-WI/newestBranch
     </item>
     
   </channel>

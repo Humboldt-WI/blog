@@ -93,8 +93,17 @@
   </url>
   
   <url>
+<<<<<<< HEAD
     <loc>https://humboldt-wi.github.io/blog/research/seminar/01neuralnetworkfundamentals/</loc>
     <lastmod>2017-12-14T00:00:00+00:00</lastmod>
+=======
+<<<<<<< HEAD
+    <loc>https://wisample.github.io/blog/research/seminar/staticjupyter_example_post/</loc>
+=======
+    <loc>https://wisample.github.io/blog/research/seminar/jupyter_example_post/</loc>
+>>>>>>> origin/master
+    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+>>>>>>> Humboldt-WI/newestBranch
   </url>
   
   <url>
@@ -105,6 +114,13 @@
   <url>
     <loc>https://humboldt-wi.github.io/blog/contributors/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+<<<<<<< HEAD
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/tags/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+=======
   </url>
   
   <url>
@@ -122,10 +138,12 @@
   <url>
     <loc>https://humboldt-wi.github.io/blog/month/2018-03/</loc>
     <lastmod>2018-01-14T00:00:00+00:00</lastmod>
+>>>>>>> origin/master
     <priority>0</priority>
   </url>
   
   <url>
+<<<<<<< HEAD
     <loc>https://humboldt-wi.github.io/blog/tags/blockchain/</loc>
     <lastmod>2018-02-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -148,19 +166,35 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/convulutional-neural-networks/</loc>
+=======
+    <loc>https://wisample.github.io/blog/tags/blockchain/</loc>
+<<<<<<< HEAD
+    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
+=======
+>>>>>>> Humboldt-WI/newestBranch
     <lastmod>2017-12-21T00:00:00+00:00</lastmod>
+>>>>>>> origin/master
     <priority>0</priority>
   </url>
   
   <url>
+<<<<<<< HEAD
     <loc>https://humboldt-wi.github.io/blog/tags/deep-learning/</loc>
     <lastmod>2018-02-18T00:00:00+00:00</lastmod>
+=======
+    <loc>https://wisample.github.io/blog/categories/</loc>
+>>>>>>> Humboldt-WI/newestBranch
     <priority>0</priority>
   </url>
   
   <url>
+<<<<<<< HEAD
     <loc>https://humboldt-wi.github.io/blog/tags/image-analysis/</loc>
     <lastmod>2018-01-11T00:00:00+00:00</lastmod>
+=======
+    <loc>https://wisample.github.io/blog/tags/class17/18/</loc>
+    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+>>>>>>> Humboldt-WI/newestBranch
     <priority>0</priority>
   </url>
   
@@ -177,20 +211,47 @@
   </url>
   
   <url>
+<<<<<<< HEAD
     <loc>https://humboldt-wi.github.io/blog/categories/instruction/</loc>
     <lastmod>2018-02-19T00:00:00+00:00</lastmod>
+=======
+    <loc>https://wisample.github.io/blog/tags/deep-learning/</loc>
+    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+<<<<<<< HEAD
+>>>>>>> Humboldt-WI/newestBranch
     <priority>0</priority>
   </url>
   
   <url>
+<<<<<<< HEAD
     <loc>https://humboldt-wi.github.io/blog/tags/long-short-term-memory/</loc>
     <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+=======
+    <loc>https://wisample.github.io/blog/categories/events/</loc>
+    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
+=======
+>>>>>>> origin/master
+>>>>>>> Humboldt-WI/newestBranch
     <priority>0</priority>
   </url>
   
   <url>
+<<<<<<< HEAD
     <loc>https://humboldt-wi.github.io/blog/tags/lstm/</loc>
     <lastmod>2018-02-01T00:00:00+00:00</lastmod>
+=======
+<<<<<<< HEAD
+=======
+    <loc>https://wisample.github.io/blog/categories/events/</loc>
+    <lastmod>2018-01-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+>>>>>>> origin/master
+    <loc>https://wisample.github.io/blog/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+>>>>>>> Humboldt-WI/newestBranch
     <priority>0</priority>
   </url>
   
@@ -210,9 +271,12 @@
     <loc>https://humboldt-wi.github.io/blog/tags/neural-networks/</loc>
     <lastmod>2017-12-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
+<<<<<<< HEAD
+=======
   </url>
   
   <url>
+<<<<<<< HEAD
     <loc>https://humboldt-wi.github.io/blog/research/</loc>
     <lastmod>2018-02-19T00:00:00+00:00</lastmod>
   </url>
@@ -226,6 +290,21 @@
   <url>
     <loc>https://humboldt-wi.github.io/blog/categories/seminar/</loc>
     <lastmod>2018-02-18T00:00:00+00:00</lastmod>
+=======
+    <loc>https://wisample.github.io/blog/research/</loc>
+    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+>>>>>>> origin/master
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/research/</loc>
+    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://wisample.github.io/blog/categories/research/</loc>
+    <lastmod>2017-12-12T00:00:00+00:00</lastmod>
+>>>>>>> Humboldt-WI/newestBranch
     <priority>0</priority>
   </url>
   

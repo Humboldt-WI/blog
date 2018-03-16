@@ -6,8 +6,17 @@
     <description>Recent content in Tags on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+<<<<<<< HEAD
     <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
     <lastBuildDate>Fri, 02 Feb 2018 00:00:00 +0000</lastBuildDate>
+=======
+<<<<<<< HEAD
+    <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
+=======
+    <copyright>Copyright (c) 2017, Chari of Information System at HU-Berlin; all rights reserved.</copyright>
+>>>>>>> origin/master
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0100</lastBuildDate>
+>>>>>>> Humboldt-WI/newestBranch
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -22,9 +31,21 @@
     </item>
     
     <item>
+<<<<<<< HEAD
       <title>Class17/18</title>
       <link>https://humboldt-wi.github.io/blog/tags/class17/18/</link>
       <pubDate>Mon, 19 Feb 2018 00:00:00 +0000</pubDate>
+=======
+<<<<<<< HEAD
+      <title>Blockchain</title>
+      <link>https://wisample.github.io/blog/tags/blockchain/</link>
+      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
+      
+=======
+      <title>Blochain</title>
+      <link>https://wisample.github.io/blog/tags/blochain/</link>
+      <pubDate>Sun, 14 Jan 2018 00:00:00 +0000</pubDate>
+>>>>>>> Humboldt-WI/newestBranch
       
       <guid>https://humboldt-wi.github.io/blog/tags/class17/18/</guid>
       <description></description>
@@ -35,16 +56,29 @@
       <link>https://humboldt-wi.github.io/blog/tags/convulutional-neural-networks/</link>
       <pubDate>Thu, 21 Dec 2017 00:00:00 +0000</pubDate>
       
+<<<<<<< HEAD
       <guid>https://humboldt-wi.github.io/blog/tags/convulutional-neural-networks/</guid>
+=======
+>>>>>>> origin/master
+      <guid>https://wisample.github.io/blog/tags/blockchain/</guid>
+>>>>>>> Humboldt-WI/newestBranch
       <description></description>
     </item>
     
     <item>
+<<<<<<< HEAD
       <title>Deep Learning</title>
       <link>https://humboldt-wi.github.io/blog/tags/deep-learning/</link>
       <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/deep-learning/</guid>
+=======
+      <title>Class17/18</title>
+      <link>https://wisample.github.io/blog/tags/class17/18/</link>
+      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://wisample.github.io/blog/tags/class17/18/</guid>
+>>>>>>> Humboldt-WI/newestBranch
       <description></description>
     </item>
     
