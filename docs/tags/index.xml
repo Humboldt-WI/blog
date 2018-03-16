@@ -24,34 +24,61 @@
     <item>
       <title>Class17/18</title>
       <link>https://humboldt-wi.github.io/blog/tags/class17/18/</link>
-      <pubDate>Mon, 19 Feb 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/class17/18/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Convulutional Neural Networks</title>
-      <link>https://humboldt-wi.github.io/blog/tags/convulutional-neural-networks/</link>
-      <pubDate>Thu, 21 Dec 2017 00:00:00 +0000</pubDate>
+      <title>Convolutional Neural Networks</title>
+      <link>https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://humboldt-wi.github.io/blog/tags/convulutional-neural-networks/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Deep Learning</title>
       <link>https://humboldt-wi.github.io/blog/tags/deep-learning/</link>
-      <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/deep-learning/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Distant Transfer Learning</title>
+      <link>https://humboldt-wi.github.io/blog/tags/distant-transfer-learning/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/distant-transfer-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Doc2vec</title>
+      <link>https://humboldt-wi.github.io/blog/tags/doc2vec/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/doc2vec/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Document Embeddings</title>
+      <link>https://humboldt-wi.github.io/blog/tags/document-embeddings/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/document-embeddings/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Image Analysis</title>
       <link>https://humboldt-wi.github.io/blog/tags/image-analysis/</link>
-      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/image-analysis/</guid>
       <description></description>
@@ -67,20 +94,20 @@
     </item>
     
     <item>
-      <title>Long Short Term Memory</title>
-      <link>https://humboldt-wi.github.io/blog/tags/long-short-term-memory/</link>
-      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      <title>Keras Imdb Dataset</title>
+      <link>https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://humboldt-wi.github.io/blog/tags/long-short-term-memory/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Lstm</title>
-      <link>https://humboldt-wi.github.io/blog/tags/lstm/</link>
-      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      <title>Movie Reviews</title>
+      <link>https://humboldt-wi.github.io/blog/tags/movie-reviews/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://humboldt-wi.github.io/blog/tags/lstm/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/movie-reviews/</guid>
       <description></description>
     </item>
     
@@ -96,7 +123,7 @@
     <item>
       <title>Recommendation</title>
       <link>https://humboldt-wi.github.io/blog/tags/recommendation/</link>
-      <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/recommendation/</guid>
       <description></description>
@@ -105,36 +132,36 @@
     <item>
       <title>Sentiment Analysis</title>
       <link>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</link>
-      <pubDate>Mon, 15 Jan 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Sentiment Classification</title>
+      <link>https://humboldt-wi.github.io/blog/tags/sentiment-classification/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/sentiment-classification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Text Mining</title>
       <link>https://humboldt-wi.github.io/blog/tags/text-mining/</link>
-      <pubDate>Thu, 18 Jan 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/text-mining/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Time Series</title>
-      <link>https://humboldt-wi.github.io/blog/tags/time-series/</link>
-      <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
+      <title>Transfer Learning</title>
+      <link>https://humboldt-wi.github.io/blog/tags/transfer-learning/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://humboldt-wi.github.io/blog/tags/time-series/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Topic Modeling</title>
-      <link>https://humboldt-wi.github.io/blog/tags/topic-modeling/</link>
-      <pubDate>Thu, 18 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/topic-modeling/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/transfer-learning/</guid>
       <description></description>
     </item>
     

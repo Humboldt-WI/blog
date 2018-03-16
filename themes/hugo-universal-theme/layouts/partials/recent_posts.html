@@ -44,7 +44,13 @@
                             {{ end }}
                             {{ i18n "publishedOn" }} {{ .Date.Format .Site.Params.date_format }}
                             </p>
-                            <p class="intro">{{ .Summary }}</p>
+                            <p class="intro">
+                              <p class="intro">
+                               {{ if .Description }}
+                               {{ .Description }}
+                               {{ else }}
+                               {{ .Summary | plainify | safeHTML }}
+                               {{ end }}</p>
                             <p class="read-more">
                               <a href="{{ .Permalink }}" class="btn btn-template-main">{{ i18n "continueReading" }}</a>
                             </p>

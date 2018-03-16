@@ -18,7 +18,18 @@
       <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/seminar/01neuralnetworkfundamentals/</guid>
-      <description></description>
+      <description>Neural Network Fundamentals This blog post is a guide to help readers build a neural network from the very basics. It starts with an introduction to the concept of a neural networks concept and its early development. A step-by-step coding tutorial follows, through which relevant concepts are illustrated. Later in the post, there is also an introduction on how to build neural networks in Keras. Finally, the reader will find instructions on how to deploy the model via an API to make it accessible to anyone interested on it.</description>
+    </item>
+    
+    <item>
+      <title>Neural Networks into Production</title>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/09deeplearningintoproduction/</link>
+      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/09deeplearningintoproduction/</guid>
+      <description>Motivation Training and tuning machine learning model is a hard task. There are many variables involved that can make or break your results. However, also very important is, after fine tuning your model, to be able to deploy it, so it can be accessed by other researchers, developers and applications.
+A very common way to accomplish that is by using an API.
+Use Case As a data scientist, you will need to interact with other professionals that don&amp;rsquo;t have the same expertise that you have when it comes to quantitative models.</description>
     </item>
     
     <item>
