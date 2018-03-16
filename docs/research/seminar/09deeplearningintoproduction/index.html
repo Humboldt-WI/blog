@@ -14,7 +14,7 @@
   
 
   
-  <meta name="description" content=" ">
+  <meta name="description" content="Introduction to deploy the deep learning model">
   
 
   <meta name="generator" content="Hugo 0.31" />
@@ -400,25 +400,25 @@ library(tidyverse)
 test &lt;- read_csv(&quot;./data/mnist_test.csv&quot;, col_names = FALSE)
 
 # Rename the first column to name and add id
-test &lt;- test %&gt;% 
-  rename(labels = X1) %&gt;% 
-  mutate(ids = 1:nrow(.)) %&gt;% 
+test &lt;- test %&gt;%
+  rename(labels = X1) %&gt;%
+  mutate(ids = 1:nrow(.)) %&gt;%
   select(ids, labels, everything())
 
 # Pick one digit and sample n_samples of it to get prediction for
 digit &lt;- 2L
 n_samples &lt;- 500
 
-test_filtered &lt;- test %&gt;% 
-  filter(labels == digit) %&gt;% 
+test_filtered &lt;- test %&gt;%
+  filter(labels == digit) %&gt;%
   sample_n(n_samples)
 
 ids &lt;- test_filtered$ids
 labels &lt;- test_filtered$labels
 
-features &lt;- test_filtered %&gt;% 
-  select(matches(&quot;X\\d{1,3}&quot;)) %&gt;% 
-  as.matrix() 
+features &lt;- test_filtered %&gt;%
+  select(matches(&quot;X\\d{1,3}&quot;)) %&gt;%
+  as.matrix()
 
 body &lt;- list(input = features)
 r &lt;- httr::POST(&quot;http://localhost:5000/predict&quot;,
@@ -431,13 +431,13 @@ prediction_prob &lt;- r_content %&gt;%
   unlist()
 
 df &lt;- data_frame(
-  prediction_prob, 
+  prediction_prob,
   digit,
   ids = ids %&gt;%
     map(~ rep(.x, 10)) %&gt;%
     unlist()
-  ) %&gt;% 
-  group_by(ids) %&gt;% 
+  ) %&gt;%
+  group_by(ids) %&gt;%
   mutate(
     is_max_prob = prediction_prob == max(prediction_prob),
     pred_label = as.integer(row_number() - 1)
@@ -453,15 +453,15 @@ df &lt;- data_frame(
 digit &lt;- 2L
 n_samples &lt;- 500
 
-test_filtered &lt;- test %&gt;% 
-  filter(labels == digit) %&gt;% 
+test_filtered &lt;- test %&gt;%
+  filter(labels == digit) %&gt;%
   sample_n(n_samples)
 
 ids &lt;- test_filtered$ids
 labels &lt;- test_filtered$labels
 
-features &lt;- test_filtered %&gt;% 
-  select(matches(&quot;X\\d{1,3}&quot;)) %&gt;% 
+features &lt;- test_filtered %&gt;%
+  select(matches(&quot;X\\d{1,3}&quot;)) %&gt;%
   as.matrix()
 </code></pre>
 
@@ -486,13 +486,13 @@ prediction_prob &lt;- r_content %&gt;%
 all in one place.</p>
 
 <pre><code class="language-R">df &lt;- data_frame(
-  prediction_prob, 
+  prediction_prob,
   digit,
   ids = ids %&gt;%
     map(~ rep(.x, 10)) %&gt;%
     unlist()
-  ) %&gt;% 
-  group_by(ids) %&gt;% 
+  ) %&gt;%
+  group_by(ids) %&gt;%
   mutate(
     is_max_prob = prediction_prob == max(prediction_prob),
     pred_label = as.integer(row_number() - 1)
@@ -502,24 +502,24 @@ all in one place.</p>
 
 <p>We are finally able to inspect how good a predictor our deployed model is. From the 500 digits, 492 were correctly classified as 2.</p>
 
-<pre><code class="language-R">df %&gt;% 
-  filter(is_max_prob) %&gt;% 
-  mutate(is_correct_prediction = digit == pred_label) %&gt;% 
-  pull(is_correct_prediction) %&gt;% 
+<pre><code class="language-R">df %&gt;%
+  filter(is_max_prob) %&gt;%
+  mutate(is_correct_prediction = digit == pred_label) %&gt;%
+  pull(is_correct_prediction) %&gt;%
   table()
 </code></pre>
 
-<pre><code class="language-bash"># FALSE  TRUE 
-#     8   492 
+<pre><code class="language-bash"># FALSE  TRUE
+#     8   492
 </code></pre>
 
 <p>Three times has our model labelled a <code>2</code> as a <code>3</code> and twice as a <code>0</code>. The plot below shows <em>how</em> the <code>2</code>s were misclassified.</p>
 
-<pre><code class="language-R">p &lt;- df %&gt;% 
-  filter(is_max_prob) %&gt;% 
-  count(pred_label) %&gt;% 
-  filter(n != max(n)) %&gt;% 
-  mutate(pred_label = factor(pred_label, levels = 0:9)) %&gt;% 
+<pre><code class="language-R">p &lt;- df %&gt;%
+  filter(is_max_prob) %&gt;%
+  count(pred_label) %&gt;%
+  filter(n != max(n)) %&gt;%
+  mutate(pred_label = factor(pred_label, levels = 0:9)) %&gt;%
   ggplot(aes(x = pred_label, y = n)) +
   geom_col() +
   scale_x_discrete(drop = FALSE) +

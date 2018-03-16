@@ -14,7 +14,7 @@
   
 
   
-  <meta name="description" content=" ">
+  <meta name="description" content=" The goal of this blog is an introduction to image captioning, an explanation of a comprehensible model structure and an implementation of that model.">
   
 
   <meta name="generator" content="Hugo 0.31" />
@@ -259,7 +259,7 @@
 </center></p>
 
 <p>So enough of the bad examples, let’s look how a “good” dataset should look like. An image caption after Hodosh et al. (2013) <a href="#references">[2]</a> should do a conceptual image description. There are three different ways to describe images that are commonly distinguished: conceptual, non-visual and perceptual. While non-visual description explains itself, perceptual descriptions are such, that capture low-level visual properties of images. Since we are not interested in non-visual elements and since we use a pre-trained model and don’t need low-level properties,
-we need conceptual descriptions of images.<br />
+we need conceptual descriptions of images.
 Conceptual descriptions identify what is depicted in the image. While things in the images may be abstract, image understanding is mostly interested in concrete descriptions of the depicted scenes and entities, their attributes and relations as well as the events they participate in. Also the conceptual image description should be generic and not too specific in order to be able to generally describe images.</p>
 
 <p><center>
@@ -283,7 +283,7 @@ Conceptual descriptions identify what is depicted in the image. While things in 
 
 <p>The following <code>setup_vgg16()</code> function calls the VGG16 object from Keras, deletes the last layer and fixes the output. As a result, it returns the modified VGG16 model.</p>
 
-<p>By calling <code>extract_feature()</code> we can generate an image feature using the modified VGG16 model. To do so we have to pass the image to the model calling the <code>load_img()</code> function and make some image pre-processing which the VGG16 model requires.<br />
+<p>By calling <code>extract_feature()</code> we can generate an image feature using the modified VGG16 model. To do so we have to pass the image to the model calling the <code>load_img()</code> function and make some image pre-processing which the VGG16 model requires.
 In the end, the model returns a 4,096-element vector.</p>
 
 <script src="https://gist.github.com/sim-o-n/0d22dfec7ae2f2d6d7705e94f3035649.js"></script>
@@ -344,8 +344,8 @@ The function iterates over the descriptions by the image identifier and wraps ea
 
 <p>In this part of the tutorial, you will learn how to develop and implement a deep learning model to generate image captions. We will also take a look at how to modify the text data in order to train the model and finally train it.</p>
 
-<p>But first, let&rsquo;s think about how the caption generation process should work in the end. As our goal is not to map an image to a specific caption but rather learn the relationship between image features and word sequences and between word sequences and single words our target is not a complete caption in the dataset but a single word. In other words, the model generates a new caption word by word based on a given image feature and a caption prefix.<br />
-In the beginning, each caption only contains the artificial start sequence (which we introduced in the <a href="#text-data">previous part</a>). We also need the image feature of the image the model should describe in the end. Both, the caption and the image feature vector will be passed to the model. The model will predict the word from the vocabulary which has the highest probability to follow the given caption prefix in combination with the image feature. The predicted word will be appended to the caption and will pass to the model again.<br />
+<p>But first, let&rsquo;s think about how the caption generation process should work in the end. As our goal is not to map an image to a specific caption but rather learn the relationship between image features and word sequences and between word sequences and single words our target is not a complete caption in the dataset but a single word. In other words, the model generates a new caption word by word based on a given image feature and a caption prefix.
+In the beginning, each caption only contains the artificial start sequence (which we introduced in the <a href="#text-data">previous part</a>). We also need the image feature of the image the model should describe in the end. Both, the caption and the image feature vector will be passed to the model. The model will predict the word from the vocabulary which has the highest probability to follow the given caption prefix in combination with the image feature. The predicted word will be appended to the caption and will pass to the model again.
 As you noticed this is an iterative process, which will terminate in two ways. The first stopping criteria would be, that the model predicts the artificial end sequence as the next word. The second one is given by an upper bound of the caption length. We have to specify this bound in advance, which will also have an influence on the model&rsquo;s structure later. Either way, the model will terminate and output the generated caption. We illustrated the process in the flow-chart below.</p>
 
 <p><center>
@@ -355,7 +355,7 @@ As you noticed this is an iterative process, which will terminate in two ways. T
 
 <h2 id="model-structure">Model Structure</h2>
 
-<p><em>&ldquo;What is the most suitable model structure?&rdquo;</em>, this may be one of the most important questions whenever developing a neural net. This question is not an easy one and can not easily be answered. A model will always be developed for a specific task, therefore no general answer can be given.<br />
+<p><em>&ldquo;What is the most suitable model structure?&rdquo;</em>, this may be one of the most important questions whenever developing a neural net. This question is not an easy one and can not easily be answered. A model will always be developed for a specific task, therefore no general answer can be given.
 However, there is some research about how to come up with a good model structure for a given task. In the field of image captioning Marc Tanti, et al. <a href="#references">[2]</a> compared 16 different model architectures and determined the best one. In this tutorial we will follow their merge-add architecture, which is depicted in Figure 5 below:</p>
 
 <p><center>
@@ -400,7 +400,7 @@ However, there is some research about how to come up with a good model structure
   <strong style="color:#2980B9;">Caption prefix input</strong>
 </p>
 
-<p>The second input takes the caption prefix vector. The shape of this input may vary. Basically, it acts as an upper bound of the caption length the model will be able to generate later (see again <a href="#setup-caption-generation-model">here</a>). Intuitively it would not make sense to train the model to predict longer captions as in the dataset, which represents the ground truth. Use the <code>get_max_length()</code> function to get the number of words of the longest caption in the dataset later. The <code>flat_descriptions()</code> function is part of our helper package.<br />
+<p>The second input takes the caption prefix vector. The shape of this input may vary. Basically, it acts as an upper bound of the caption length the model will be able to generate later (see again <a href="#setup-caption-generation-model">here</a>). Intuitively it would not make sense to train the model to predict longer captions as in the dataset, which represents the ground truth. Use the <code>get_max_length()</code> function to get the number of words of the longest caption in the dataset later. The <code>flat_descriptions()</code> function is part of our helper package.
 The next layer is an <em>embedding</em> layer. We need this to handle a zero padding we may need to add to the caption prefix later. This way we can tell the model to ignore the padding because it does not contain any information for the model to learn. We also increase the dimension of the input vector to 256 elements and apply a <em>dropout</em> rate of 0.5 to the data. Finally, we pass the data into the <em>LSTM</em> layer of the model.</p>
 
 <p>
@@ -433,7 +433,7 @@ The next layer is an <em>embedding</em> layer. We need this to handle a zero pad
 
 <h2 id="training-data-generation">Training Data Generation</h2>
 
-<p>In the following, we will explain how to generate a training set from the given dataset for our model. In general, neural networks work that way, that they learn to map some data <em>X</em> to some target <em>Y</em>, e.g. a label (in case Y is known in the training data, this is known as supervised learning).<br />
+<p>In the following, we will explain how to generate a training set from the given dataset for our model. In general, neural networks work that way, that they learn to map some data <em>X</em> to some target <em>Y</em>, e.g. a label (in case Y is known in the training data, this is known as supervised learning).
 In our case <em>X</em> consists out of two parts, <em>X1</em> the image data and <em>X2</em> the captions aka caption prefixes. As our goal is not to map an image to a specific caption but rather learn the relationship between image features and caption prefixes and between caption prefixes and single words our target <em>Y</em> is not a complete caption in the dataset but a single word. In other words, the model generates a new caption word by word based on a given image feature and a caption prefix. Therefore the caption generation process is an iterative one. After a new word got predicted by the model it will be appended to the existing prefix and will feed into the model again as already explained in the <a href="#setup-caption-generation-model">Setup Caption Generation Model</a> part.</p>
 
 <p><em>What are X1, X2 and Y?</em></p>
@@ -499,7 +499,7 @@ In our case <em>X</em> consists out of two parts, <em>X1</em> the image data and
 
 <p>You will notice, that we add zeros to some of the caption prefixes. This is the padding we talked about when <a href="#caption-prefix-input">setting up the caption prefix input</a> for the model. This is necessary since each layer of a neural network has a fixed number of input nodes. Therefore any input sequence has to be of the same length.</p>
 
-<p>In the next step, we have to transform the caption prefixes and our target <em>Y</em> into a machine-readable format. For the caption prefixes, an easy way is to encode each unique word to an integer and replace the actual words by their numeric representation. To encode the words we will use a <code>Tokenizer</code> object from <em>Keras</em> in the following.<br />
+<p>In the next step, we have to transform the caption prefixes and our target <em>Y</em> into a machine-readable format. For the caption prefixes, an easy way is to encode each unique word to an integer and replace the actual words by their numeric representation. To encode the words we will use a <code>Tokenizer</code> object from <em>Keras</em> in the following.
 To encode our target <em>Y</em> we will use one-hot encoding. This way we kind of simulate a probability distribution for each word in the vocabulary at each step in the learning process where the probability for one word will be 1 and for all other words 0. After encoding our table may look like this:</p>
 
 <p><center></p>
@@ -580,7 +580,7 @@ To encode our target <em>Y</em> we will use one-hot encoding. This way we kind o
 <script src="https://gist.github.com/sim-o-n/ac6a5b2efb5a4dbcd2a67531a8da9892.js"></script>
 
 <p>After we generated the training and validation data we can now train the model.
-Call the <code>model.fit()</code> function and hand over the <em>training data, number of epochs, callback and validation data</em>.<br />
+Call the <code>model.fit()</code> function and hand over the <em>training data, number of epochs, callback and validation data</em>.
 <em>Keras</em> provides a handy way to monitor the skill of the trained model. At the end of every epoch, we will check the skill of the model with the validation set. If the skill improves we save the model. We will do this via the <code>callback</code> argument. But first, we need to specify where and what <em>Keras</em> should save. Use the <code>checkpoint</code> variable for this. We trained our model for 10 epochs, of cause you can choose a higher number. To train for one epoch takes between 30 and 40 minutes, depending on your hardware setting.</p>
 
 <script src="https://gist.github.com/sim-o-n/d4533dca306873bfa0fc845e2c30be93.js"></script>
@@ -606,8 +606,8 @@ Call the <code>model.fit()</code> function and hand over the <em>training data, 
   <p>Figure 7: Photo of two basketballers tackling the ball. Photo by <a href="https://www.flickr.com/photos/jgirl4858/3285180819">jgirl4858</a>, some rights reserved.</p>
 </center></p>
 
-<p>Let&rsquo;s implement the <code>generate_caption()</code> function. It takes the following arguments: <em>the model, the tokenizer, an image feature vector and maximum length of the caption</em>. If you have chosen custom start and end sequences you also have to include them, otherwise, go with the default ones.<br />
-We will track the probability of each word which was selected by the model to be next. This may give some interesting insides later. We will store this information in the variable <code>probabilities</code>, which is a list. The caption self will be stored in the variable <code>caption</code> as a string. In the beginning, this is equal to the start sequence. Remember, we need this to kick off the generation process as described <a href="#setup-caption-generation-model">here</a>.<br />
+<p>Let&rsquo;s implement the <code>generate_caption()</code> function. It takes the following arguments: <em>the model, the tokenizer, an image feature vector and maximum length of the caption</em>. If you have chosen custom start and end sequences you also have to include them, otherwise, go with the default ones.
+We will track the probability of each word which was selected by the model to be next. This may give some interesting insides later. We will store this information in the variable <code>probabilities</code>, which is a list. The caption self will be stored in the variable <code>caption</code> as a string. In the beginning, this is equal to the start sequence. Remember, we need this to kick off the generation process as described <a href="#setup-caption-generation-model">here</a>.
 The following will be run in every iteration of the model until we meet one of the two stopping criteria as described in <a href="#setup-caption-generation-model">this part</a>.</p>
 
 <ol>
@@ -646,7 +646,7 @@ The following will be run in every iteration of the model until we meet one of t
 
 <h2 id="web-app">Web App</h2>
 
-<p>For demonstration purposes we developed a web app for our image caption generation model with the <a href="https://plot.ly/products/dash/">Dash framework</a> in Python. Just drag and drop or select a picture and the web app takes care of the rest. In <a href="https://github.com/severin1992/ImageCaptionApp">GitHub</a> you find an instruction how to run the app.<br />
+<p>For demonstration purposes we developed a web app for our image caption generation model with the <a href="https://plot.ly/products/dash/">Dash framework</a> in Python. Just drag and drop or select a picture and the web app takes care of the rest. In <a href="https://github.com/severin1992/ImageCaptionApp">GitHub</a> you find an instruction how to run the app.
 <center>
   <img src="https://raw.githubusercontent.com/severin1992/ImageCaptionApp/master/captionwebapp1.png" alt="Frontend of image caption web app"width="80%">
   <p>Figure 8: Image Caption Web App</p>
@@ -669,7 +669,7 @@ By means of the <a href="http://www.nltk.org/api/nltk.translate.html">NLTK libra
 
 <h1 id="summary">Summary</h1>
 
-<p>In this tutorial you learned about the challenge of automatically generating image captions. It is a topic of growing interest in the field of machine learning and in practice it can help for instance visually impaired people of grasping the content of an image.<br />
+<p>In this tutorial you learned about the challenge of automatically generating image captions. It is a topic of growing interest in the field of machine learning and in practice it can help for instance visually impaired people of grasping the content of an image.
 You learned how to approach the right architecture and how to implement the model upon this architecture in <em>Keras</em>. To do so, you used the pre-trained VGG16, where you removed the last layer in order to obtain an image feature vector.
 To train the  model we introduced you to the Flickr8k dataset that fulfills the necessary criteria of human generated conceptual descriptions.
 Finally, you learned how to evaluate the model by means of the BLEU score. Even though our model can not keep up with the state of the art models, it scores adequately for a non-optimized model on the BLEU score.</p>

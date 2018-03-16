@@ -6,7 +6,7 @@ categories = ["seminar"]
 banner = "img/seminar/nn_fundamentals/neuralNetworkKlein.jpg"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-humbodt-wi-github-io-blog"
-description = " "
+description = "Introduction to deploy the deep learning model"
 +++
 
 ## Motivation
@@ -73,7 +73,7 @@ Not all packages must be installed at once. If you find out you need to install 
 conda install <package-name>
 ```
 
-In fact, there is one extra package, we need to install to be able to use our freshly installed version of Python from within a Jupyter notebook. The `nb_conda` package is very handy and makes possible to choose pick every single environment you have created from within a Jupyter notebook without having to leave it. 
+In fact, there is one extra package, we need to install to be able to use our freshly installed version of Python from within a Jupyter notebook. The `nb_conda` package is very handy and makes possible to choose pick every single environment you have created from within a Jupyter notebook without having to leave it.
 
 ``` bash
 conda install nb_conda
@@ -240,25 +240,25 @@ library(tidyverse)
 test <- read_csv("./data/mnist_test.csv", col_names = FALSE)
 
 # Rename the first column to name and add id
-test <- test %>% 
-  rename(labels = X1) %>% 
-  mutate(ids = 1:nrow(.)) %>% 
+test <- test %>%
+  rename(labels = X1) %>%
+  mutate(ids = 1:nrow(.)) %>%
   select(ids, labels, everything())
 
 # Pick one digit and sample n_samples of it to get prediction for
 digit <- 2L
 n_samples <- 500
 
-test_filtered <- test %>% 
-  filter(labels == digit) %>% 
+test_filtered <- test %>%
+  filter(labels == digit) %>%
   sample_n(n_samples)
 
 ids <- test_filtered$ids
 labels <- test_filtered$labels
 
-features <- test_filtered %>% 
-  select(matches("X\\d{1,3}")) %>% 
-  as.matrix() 
+features <- test_filtered %>%
+  select(matches("X\\d{1,3}")) %>%
+  as.matrix()
 
 body <- list(input = features)
 r <- httr::POST("http://localhost:5000/predict",
@@ -271,13 +271,13 @@ prediction_prob <- r_content %>%
   unlist()
 
 df <- data_frame(
-  prediction_prob, 
+  prediction_prob,
   digit,
   ids = ids %>%
     map(~ rep(.x, 10)) %>%
     unlist()
-  ) %>% 
-  group_by(ids) %>% 
+  ) %>%
+  group_by(ids) %>%
   mutate(
     is_max_prob = prediction_prob == max(prediction_prob),
     pred_label = as.integer(row_number() - 1)
@@ -294,15 +294,15 @@ Then we filter some observations to get predictions for. Here we chose 500 image
 digit <- 2L
 n_samples <- 500
 
-test_filtered <- test %>% 
-  filter(labels == digit) %>% 
+test_filtered <- test %>%
+  filter(labels == digit) %>%
   sample_n(n_samples)
 
 ids <- test_filtered$ids
 labels <- test_filtered$labels
 
-features <- test_filtered %>% 
-  select(matches("X\\d{1,3}")) %>% 
+features <- test_filtered %>%
+  select(matches("X\\d{1,3}")) %>%
   as.matrix()
 ```
 
@@ -329,13 +329,13 @@ all in one place.
 
 ``` R
 df <- data_frame(
-  prediction_prob, 
+  prediction_prob,
   digit,
   ids = ids %>%
     map(~ rep(.x, 10)) %>%
     unlist()
-  ) %>% 
-  group_by(ids) %>% 
+  ) %>%
+  group_by(ids) %>%
   mutate(
     is_max_prob = prediction_prob == max(prediction_prob),
     pred_label = as.integer(row_number() - 1)
@@ -346,26 +346,26 @@ df <- data_frame(
 We are finally able to inspect how good a predictor our deployed model is. From the 500 digits, 492 were correctly classified as 2.
 
 ``` R
-df %>% 
-  filter(is_max_prob) %>% 
-  mutate(is_correct_prediction = digit == pred_label) %>% 
-  pull(is_correct_prediction) %>% 
+df %>%
+  filter(is_max_prob) %>%
+  mutate(is_correct_prediction = digit == pred_label) %>%
+  pull(is_correct_prediction) %>%
   table()
 ```
 
 ``` bash
-# FALSE  TRUE 
-#     8   492 
+# FALSE  TRUE
+#     8   492
 ```
 
 Three times has our model labelled a `2` as a `3` and twice as a `0`. The plot below shows _how_ the `2`s were misclassified.
 
 ``` R
-p <- df %>% 
-  filter(is_max_prob) %>% 
-  count(pred_label) %>% 
-  filter(n != max(n)) %>% 
-  mutate(pred_label = factor(pred_label, levels = 0:9)) %>% 
+p <- df %>%
+  filter(is_max_prob) %>%
+  count(pred_label) %>%
+  filter(n != max(n)) %>%
+  mutate(pred_label = factor(pred_label, levels = 0:9)) %>%
   ggplot(aes(x = pred_label, y = n)) +
   geom_col() +
   scale_x_discrete(drop = FALSE) +

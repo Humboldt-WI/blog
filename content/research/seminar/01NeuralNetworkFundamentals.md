@@ -6,7 +6,7 @@ categories = ["seminar"]
 banner = "img/seminar/nn_fundamentals/neuralNetworkKlein.jpg"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-humbodt-wi-github-io-blog"
-description = " "
+description = "his blog post is a guide to help readers build a neural network from the very basics. "
 +++
 
 
@@ -16,7 +16,7 @@ This blog post is a guide to help readers build a neural network from the very b
 
 ## Neural Networks and its early development
 
-As the name tells, the idea of neural networks is inspired by how neurons work in the human brain. It is, however, crucial for the readers to know that despite the original motivation of neural networks, the NN models being used today have little resemblance to what a human brain does.  In its basic form, neural networks are composed of nodes interconnected to each other in several layers. The basic form of a NN would include an input, a hidden and an output layer. The number of nodes and layers can add to the complexity and efficiency of neural networks.  
+As the name tells, the idea of neural networks is inspired by how neurons work in the human brain. It is, however, crucial for the readers to know that despite the original motivation of neural networks, the NN models being used today have little resemblance to what a human brain does.  In its basic form, neural networks are composed of nodes interconnected to each other in several layers. The basic form of a NN would include an input, a hidden and an output layer. The number of nodes and layers can add to the complexity and efficiency of neural networks.
 
 The McCulloch-Pitts model of neuron in 1943 was one of the earliest simplified version of neural networks. It consisted of a simple neuron which received a weighted sum of inputs and output either zero if the sum was smaller than a threshold or one when it was greater than the threshold. This idea is called firing and is an interesting analogy to what an actual neuron does. Later on, in the early 1960s, Rosenblatt introduced the simple perceptron model. This was a developed version of the McCulloch-Pitts with an input and output layer. However, the linear separablilty limitation of simple perceptron took away the research interest in neural networks for a while. In the early 1980s, the Hopfield model of content-addressable memory, however, motivated researchers in the area again and later on with the introduction of backpropagation learning algorithm, interest in neural networks research soared. Nowadays, neural nets are used in a variety of applications to tackle problems such as classification, speech and image recognition, control systems and predictions.
 
@@ -29,17 +29,17 @@ The understanding becomes even more comprehensive if there is a particular probl
 
 <img src="/blog/img/seminar/nn_fundamentals/pics/problem.png" alt="Drawing" style="width: 600px;"/>
 
-There are handwritten numbers that you want computer to correctly classify. This would be an easy task for a person but at least for a long period of time was an extremely complicated one for a machine. 
+There are handwritten numbers that you want computer to correctly classify. This would be an easy task for a person but at least for a long period of time was an extremely complicated one for a machine.
 
 Even though the computer is faster than the human brain in numeric computations, the brain outperforms the computer in some other tasks. Many of those tasks are related to the human ability for sentience (which is a concept different from intelligence). The trick is to find a way, so that the computer could apply its numeric computation skills to solve these later tasks (at least to some degree).
 
 The first step would be to limit the scope of the task. In our particular case the broad task of image recognition will be addressed as a classification problem - a task of giving an object a label from a given set of labels.
 
-As we will see during the process of building our own NN, its output is based almost exclusively on application of linear algebra methods. Despite the name (which is sometimes related to the fear of artificial intelligence), neural networks in fact are much more related to statistical methods (like regression analysis or curve fitting) than to the way human brain works [[Stuart Reid, 2014](http://www.turingfinance.com/misconceptions-about-neural-networks/)]. 
+As we will see during the process of building our own NN, its output is based almost exclusively on application of linear algebra methods. Despite the name (which is sometimes related to the fear of artificial intelligence), neural networks in fact are much more related to statistical methods (like regression analysis or curve fitting) than to the way human brain works [[Stuart Reid, 2014](http://www.turingfinance.com/misconceptions-about-neural-networks/)].
 
 NNs are inspired by human brain only to certain extent. For instance the main element that makes them similar is a multilayer net structure of simple elements that are connected in some way, receiving and transmitting information. But the structure of the human brain is much more complicated, besides it is self-organizing and adaptive in contrast to the fixed manually designed architecture of a NN. Hence, there is a good reason to stop being afraid of neural networks and instead to create one ourselves.
 
-<img src="/blog/img/seminar/nn_fundamentals/pics/neurons_net3.png" alt="Drawing" style="width: 500px;"/> 
+<img src="/blog/img/seminar/nn_fundamentals/pics/neurons_net3.png" alt="Drawing" style="width: 500px;"/>
 
 [Source: [Pixabay.com](https://pixabay.com/)]
 
@@ -49,13 +49,13 @@ A complex multilayer structure that all neural networks have in common in a simp
 
 <img src="/blog/img/seminar/nn_fundamentals/pics//neural_network1.jpg" alt="Drawing" style="width: 800px;"/>
 
-All we need in order to implement such a structure is base Python and numpy, a library for numerical computation, which we will be using to do linear algebra. 
+All we need in order to implement such a structure is base Python and numpy, a library for numerical computation, which we will be using to do linear algebra.
 
 First let's determine the elements of a neural network depicted above: nodes, layers, weights across nodes and activation functions.
 
 **Nodes.** A node is basically a point where data points are received, processed and then transferred to the node. A node could be either an endpoint or a redistribution point or even both when iterations are done through the learning algorithm. The number of nodes to use is optional.
 
-**Layers.** A layer consists of one or several nodes. The initial layer in the network is called the input layer and it is the entry point through which the data is fed into the neural net. The middle layers are called hidden layer because the computation results of them are not directly visible to someone interacting with the neural net. In the hidden layers, which can range from one to thousands, the features are transformed and most of the structure (both linear and nonlinear) is captured. Finally, there is the final layer, from which results are output. The nodes in each layer are fully interconnected to the ones in the next and the previous layers. 
+**Layers.** A layer consists of one or several nodes. The initial layer in the network is called the input layer and it is the entry point through which the data is fed into the neural net. The middle layers are called hidden layer because the computation results of them are not directly visible to someone interacting with the neural net. In the hidden layers, which can range from one to thousands, the features are transformed and most of the structure (both linear and nonlinear) is captured. Finally, there is the final layer, from which results are output. The nodes in each layer are fully interconnected to the ones in the next and the previous layers.
 
 In our case we have a structure with 3 layers: input, output and one hidden layer. The number of nodes in the input  ("i_n"), hidden ("h_n") and output ("o_n") layers are 3, 5 and 2 respectively. In Python, such a structure can be represented in the following way:
 
@@ -86,7 +86,7 @@ Such a dimensions of matrices are necessary in order to accomplish matrix and ve
 ```python
 # Randomly define the weights between the layers:
 w_i_h = np.random.rand(h_n, i_n) # create an array of the given shape and populate it with random values.
-w_h_o = np.random.rand(o_n, h_n) 
+w_h_o = np.random.rand(o_n, h_n)
 
 # Show matrices of randomly assigned weights:
 w_i_h
@@ -100,10 +100,10 @@ w_i_h
            [ 0.96351366,  0.65874791,  0.06047322],
            [ 0.94092134,  0.3455386 ,  0.83219342]])
 
-**Activation Function.** The remaining element of the NN's structure is an activation function - a function which transforms an input data point that it receives from the previous nodes to an output value which will be the input for the nodes in the next layer. The activation function plays an important role in the efficiency of the neural network as it accounts for non-linearity of data. 
+**Activation Function.** The remaining element of the NN's structure is an activation function - a function which transforms an input data point that it receives from the previous nodes to an output value which will be the input for the nodes in the next layer. The activation function plays an important role in the efficiency of the neural network as it accounts for non-linearity of data.
 It is to certain extent inspired by the concept of "firing", which means that neurons "fire" or transmit information further only if the input surpasses certain threshold. The simplest activation function can be represented by a step function as on the picture below.
 
-<img src="/blog/img/seminar/nn_fundamentals/pics/step_function.png" alt="Drawing" style="width: 700px";/> 
+<img src="/blog/img/seminar/nn_fundamentals/pics/step_function.png" alt="Drawing" style="width: 700px";/>
 
 [Source: [Research Gate](https://www.researchgate.net/figure/Three-different-types-of-transfer-function-step-sigmoid-and-linear-in-unipolar-and_306323136)]
 
@@ -114,7 +114,7 @@ In our NN, we will use a slightly more elaborate activation function, the sigmoi
 def sigmoid(x):
     # np.exp() calculates the exponential
     # of all elements in the input array.
-    return 1 / (1 + np.exp(-x)) 
+    return 1 / (1 + np.exp(-x))
 
 ```
 
@@ -123,9 +123,9 @@ def sigmoid(x):
 import matplotlib.pyplot as plt
 
 # return 100 evenly spaced numbers over an interval from -10 to 10.
-x = np.linspace(-10, 10, 100) 
+x = np.linspace(-10, 10, 100)
 # plot sigmoid function for sampled values:
-plt.plot(x, sigmoid(x)) 
+plt.plot(x, sigmoid(x))
 plt.show()
 ```
 
@@ -133,9 +133,9 @@ plt.show()
 
 ## Data Inspection
 
-By now we have collected all the elements of the NN. Can we use this structure in order to solve the classification problem stated in the beginning? In order to answer this question we need first to get a better understanding of the data at our disposal. 
+By now we have collected all the elements of the NN. Can we use this structure in order to solve the classification problem stated in the beginning? In order to answer this question we need first to get a better understanding of the data at our disposal.
 
-We are trying to check whether NN is able to solve the classification problem using a collection of 70 000 handwritten numbers. Each of this handwritten number is represented as 28x28 image. 
+We are trying to check whether NN is able to solve the classification problem using a collection of 70 000 handwritten numbers. Each of this handwritten number is represented as 28x28 image.
 
 The original source of the data is "THE MNIST DATABASE". A detailed description of the dataset is available at
 http://yann.lecun.com/exdb/mnist/. There you can also find, for example, a summary of the performance results achieved by various classification algorithms.
@@ -179,7 +179,7 @@ data[0] # show observation number 0 from the list (remember that in Python numbe
 
 
 
-* A particular observation looks like a string of 785 elements (label of the image + 784 elements for each pixels of a 28x28 image). 
+* A particular observation looks like a string of 785 elements (label of the image + 784 elements for each pixels of a 28x28 image).
 * Each element representing a pixel is a number from 0 to 255 (from white to black color).
 * The first element in the line is the label of the image and therefore is a number from 0 to 9.
 
@@ -196,7 +196,7 @@ import matplotlib.pyplot as mpp
 ```python
 # Plot the data:
 observation = data[0].split(',') # break down observation number 0 (comma is used to identify each element).
-image = np.asfarray(observation[1:]).reshape((28,28)) # take all the elements starting from the element 1 
+image = np.asfarray(observation[1:]).reshape((28,28)) # take all the elements starting from the element 1
 # (exclude element number 0, that corresponds to the label) and reshape them as an array with dimension 28 by 28.
 mpp.imshow(image, cmap='Blues', interpolation='None') # show the plot of this array using blue pallete.
 ```
@@ -224,10 +224,10 @@ Let's take a look once again at the NN's structure we have created at the beginn
 
 <img src="/blog/img/seminar/nn_fundamentals/pics/neural_network1.jpg" alt="Drawing" style="width: 800px;"/>
 
-After inspecting the data, we can conclude that the structure with 3-5-2 nodes is probably not optimal and therefore should be updated in order to fit the data we have and peculiarities of the classification problem: 
+After inspecting the data, we can conclude that the structure with 3-5-2 nodes is probably not optimal and therefore should be updated in order to fit the data we have and peculiarities of the classification problem:
 
-* For each observation we have 784 elements as an input (label element is excluded). Accordingly, instead of 3 input nodes we should better have 784. 
-* Similarly, as we have 10 different options for the outcome (handwritten numbers are labeled from 0 to 9) the number of output nodes should be 10 instead of 2. 
+* For each observation we have 784 elements as an input (label element is excluded). Accordingly, instead of 3 input nodes we should better have 784.
+* Similarly, as we have 10 different options for the outcome (handwritten numbers are labeled from 0 to 9) the number of output nodes should be 10 instead of 2.
 * We also change the number of hidden nodes from 5 to 90. Such a number has been assigned based on some proportionality assumptions which will be checked later: 90 is 9 times higher than 10 and approximately 9 times smaller than 784.
 
 
@@ -365,7 +365,7 @@ plt.show()
 ![png](/blog/img/seminar/nn_fundamentals/1_NN_from_scratch_files/1_NN_from_scratch_50_0.png)
 
 
-As we can see the output of the sigmoid function will be almost identical once we feed a number bigger than 2. Similarly there is no significant difference between the outputs if numbers used are smaller than -2. Hence the application of sigmoid function to the original data leads to a loss of valuable information. The NN has problems learning something from the inputs, which are almost undifferentiable.  
+As we can see the output of the sigmoid function will be almost identical once we feed a number bigger than 2. Similarly there is no significant difference between the outputs if numbers used are smaller than -2. Hence the application of sigmoid function to the original data leads to a loss of valuable information. The NN has problems learning something from the inputs, which are almost undifferentiable.
 
 One solution is to transform the input we have. Ideally we should have our data in a range between 0 and 1. It is also desirable to avoid zeros as inputs, because the output of a zero input will always be zero, no matter how large the weights are, in which case the NN will not be able to use this input to learn.
 
@@ -374,8 +374,8 @@ We can perform a transformation of the original data as the one coded below:
 
 ```python
 # Good practice transformation of the input values:
-input = np.array((np.asfarray(observation[1:])/255.0*0.99) + 0.01, ndmin=2).T 
-# Our values in our input vector are in the range from 0 to 255. Therefore we should divide input vector by 255, 
+input = np.array((np.asfarray(observation[1:])/255.0*0.99) + 0.01, ndmin=2).T
+# Our values in our input vector are in the range from 0 to 255. Therefore we should divide input vector by 255,
 # multiply it by 0,99 and add 0,01 in order to get values in the range from 0,01 to 1.
 
 # Good practice transformation of the target value:
@@ -409,12 +409,12 @@ Below there are too alternatives how this can be implemented in Python.
 
 ```python
 # Good practice for initial weights assignment:
-    
-alternative1 = np.random.rand(3, 5) - 0.5 
+
+alternative1 = np.random.rand(3, 5) - 0.5
 # or
-alternative2 = np.random.normal(0.0, pow(3, -0.5), (3, 5)) 
+alternative2 = np.random.normal(0.0, pow(3, -0.5), (3, 5))
 # arguments: Mean of the distribution, Standard deviation of the distribution, Output shape.
-# Second approach is better as it takes in account the standard deviation 
+# Second approach is better as it takes in account the standard deviation
 # that is related to the number of incoming links into a node, 1/√(number of incoming links).
 
 # alternative1
@@ -490,7 +490,7 @@ o_errors
 
 
 
-The result we would like to achieve should look like as a vector of values where almost all values are negligibly small except for the one value that has the position in the vector corresponding to the index of the true label. 
+The result we would like to achieve should look like as a vector of values where almost all values are negligibly small except for the one value that has the position in the vector corresponding to the index of the true label.
 
 It is not the case now. Nevertheless one should remember that so far all the weights have been assigned randomly and no training has been performed yet. In any case, it is not a vector of ones anymore, which an improvement.
 
@@ -549,7 +549,7 @@ h_errors[0:10] # errors in the hidden layer - show the first 10 nodes out of 90.
 
 Gradient descent is one the most popular algorithms to optimize the neural networks. The name gradient descent is rooted in the procedure where the gradient is repeatedly evaluated to update the parameters. The objective of the gradient descent is to find weight parameters that will minimize the cost function.
 
-To understand the concept of gradient descent we should ask ourselves the following question: What can be done to improve the weights we have assigned randomly at the beginning, so that the overall result improves? 
+To understand the concept of gradient descent we should ask ourselves the following question: What can be done to improve the weights we have assigned randomly at the beginning, so that the overall result improves?
 
 To change the output of any node we should change the weights that connect it with the previous layer. Basically we want to find out how much error in every node changes once we change associated weights. Next we want to select the weights that would lead to a minimal error in the output layer. That can be achieved by differentiation of the cost function and search for its minimum.
 
@@ -591,7 +591,7 @@ w_i_h += np.dot((h_errors * h_output * (1.0 - h_output)), np.transpose(input))
 
 Now, there is something else, we should add in the weights updating procedure. If we completely change our weights with every new observation - our model learns to predict only the last input. Instead of updating weights 100 % every time we can change them only partially - this way every new observation will bring some new knowledge while the previous one will still be in memory even though updated to certain extent. The bigger the learning rate the more importance has the last observation, the smaller it is the more important is all the previous knowledge. The smaller the steps - the more accurate will be the prediction. At the same time it might take more time to learn.
 
-<img src="/blog/img/seminar/nn_fundamentals/pics/learning_rate.png" alt="Drawing" style="width: 400px;"/> 
+<img src="/blog/img/seminar/nn_fundamentals/pics/learning_rate.png" alt="Drawing" style="width: 400px;"/>
 
 [Source: "Business Analytics & Data Science Course by Professor S. Lessmann, Chapter 5:
 Artificial Neural Networks"]
@@ -628,7 +628,7 @@ for i in data:
 
     o_errors = target - o_output
     h_errors = np.dot(w_h_o.T, o_errors)
-    
+
     w_h_o += l_r * np.dot((o_errors * o_output * (1.0 - o_output)), np.transpose(h_output))
     w_i_h += l_r * np.dot((h_errors * h_output * (1.0 - h_output)), np.transpose(input))
 
@@ -637,7 +637,7 @@ for i in data:
 
 ## Second evaluation of the results
 
-Once we have trained the model with 100 observations we can test it with new data it has never seen. After loading the test set we can first work with a particular observation to get an intuition about how good our NN can solve considered classification problem. 
+Once we have trained the model with 100 observations we can test it with new data it has never seen. After loading the test set we can first work with a particular observation to get an intuition about how good our NN can solve considered classification problem.
 
 
 ```python
@@ -722,7 +722,7 @@ for i in data_test:
     else:
         score.append(0)
         pass
-    
+
     pass
 ```
 
@@ -794,7 +794,7 @@ for i in data_test:
     else:
         score.append(0)
         pass
-    
+
     pass
 
 
@@ -894,10 +894,10 @@ To load the data, we will use the very handy `panda`'s `read_csv` function. It f
 names = ["y"] + list(range(1,785))
 
 
-df = pd.read_csv("data/mnist_train.csv", 
+df = pd.read_csv("data/mnist_train.csv",
                  names=names)
 
-df_test = pd.read_csv("data/mnist_test.csv", 
+df_test = pd.read_csv("data/mnist_test.csv",
                      names=names)
 ```
 
@@ -969,7 +969,7 @@ We finally come to the most important part. We will accomplish the task of build
 
 ### Activation Functions and Gradient Descent
 
-The activation functions are compared to each other in terms of their efficient approximation (Schnitger & DasGupta, 1993). There are several types of them but the common ones are the sigmoid, tangent hyperbolic and the ReLU functions. The following is a short explanation on the advantages and disadvantages of each of these activation functions. 
+The activation functions are compared to each other in terms of their efficient approximation (Schnitger & DasGupta, 1993). There are several types of them but the common ones are the sigmoid, tangent hyperbolic and the ReLU functions. The following is a short explanation on the advantages and disadvantages of each of these activation functions.
 
 - **Sigmoid function:** This function squashes the input value into a value in the range of [0,1]. It is powerful to compute bolean functions and the smoothness of sigmoid allows for better approximation (Schnitger & DasGupta, 1993). However, there are two major drawbacks. First, the sigmoid outputs 0 for high negative values and 1 for high positive values and this result in no signal flows from the nodes because the gradient at these two tails are 0. Second, its output is not centered at 0. This would ultimately result in either all positive gradients on weights or all negative during the backpropogation.
 
@@ -977,9 +977,9 @@ The activation functions are compared to each other in terms of their efficient 
 
 - **ReLU:** This function is zero whenever input is negative and when the input is positive, its behaviour is linear with slope 1. According to Glorot et al. (2011), the ReLU activation functions outperform sigmoidal functions in Deep Neural Networks on text classification and image recognition tasks. ReLU also excels the sigmoid and tangent hyperbolic in accelerating the stochastic gradient descent convergence. However, the ReLU is not prone to the training process and the nodes can die. This means that if a large gradient runs through the nodes, it may update the weights in a way that the node will never be active for any inputs again and this will result in gradient of zero from that node onward.
 
-As we mentioned before gradient descent is one the most popular algorithms to optimize the neural networks. There are many variations of this algorithm. The most popular of them are Mini-batch Gradient Descent and the Stochastic Gradient Descent. 
+As we mentioned before gradient descent is one the most popular algorithms to optimize the neural networks. There are many variations of this algorithm. The most popular of them are Mini-batch Gradient Descent and the Stochastic Gradient Descent.
 
-- **The Mini-batch Gradient Descent (BGD)** is used when there is a large scale training data set where the computation of the cost function over the whole training data set is computationally expensive. Therefore, a batch of the training data set, say 250 observations, is randomly selected to compute the gradient with the assumption that the observations in the training dataset are correlated. 
+- **The Mini-batch Gradient Descent (BGD)** is used when there is a large scale training data set where the computation of the cost function over the whole training data set is computationally expensive. Therefore, a batch of the training data set, say 250 observations, is randomly selected to compute the gradient with the assumption that the observations in the training dataset are correlated.
 - If this procedure is done only one observation instead of 250, but with 250 iterations, then this procedure is called **Stochastic Gradient Descent (SGD)**. This approach is repeatedly sampling a training example, which is used to evaluate the gradient. Sometimes it is considered less efficient as the loss function calculated 250 times based on a single sampled training example can be noisy.
 
 You can learn more about different types of activation functions and optimizers using the official documentation of the keras package:
@@ -1002,9 +1002,9 @@ def baseline_model(num_hidden_n, num_pixels, num_classes, optimizer):
     model = Sequential()
     model.add(Dense(num_hidden_n, input_dim=num_pixels, kernel_initializer='normal', activation='relu'))
     model.add(Dense(num_classes, kernel_initializer='normal', activation='softmax'))
-    
+
     # Compile model
-    model.compile(loss='categorical_crossentropy', 
+    model.compile(loss='categorical_crossentropy',
                   optimizer=optimizer,
                   metrics=['accuracy'])
     return model
@@ -1014,7 +1014,7 @@ def baseline_model(num_hidden_n, num_pixels, num_classes, optimizer):
 
 Having defined the structure of the model, we can now instantiate a concrete version of it by picking the relevant parameters and calling the function that returns the model object.
 
-Here we have chosen the hidden layers to have 90 nodes, while input and output layers have 784 and 10 nodes respectively. 
+Here we have chosen the hidden layers to have 90 nodes, while input and output layers have 784 and 10 nodes respectively.
 
 ```python
 num_pixels, num_hidden_n, num_classes = 784, 90, 10
@@ -1031,7 +1031,7 @@ After training the model we evaluate its performance by looking at its accuracy.
 
 ```python
 model.fit(X_train,
-          y_train, 
+          y_train,
           epochs=5,
           batch_size=200,
           verbose=2)
@@ -1060,7 +1060,7 @@ model = baseline_model(num_hidden_n,
                        optimizer = "rmsprop")
 
 model.fit(X_train,
-          y_train, 
+          y_train,
           epochs=5,
           batch_size=200,
           verbose=2)
@@ -1092,7 +1092,7 @@ model.save("model.h5")
 del model
 ```
 
-Then we load the model from the file we just created and evaluate it again to make sure that during the saving process, the model hasn't been corrupted. The error rate is the same: the model has been successfully saved and can be shared with third-parties. 
+Then we load the model from the file we just created and evaluate it again to make sure that during the saving process, the model hasn't been corrupted. The error rate is the same: the model has been successfully saved and can be shared with third-parties.
 
 ```python
 from keras.models import load_model

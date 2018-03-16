@@ -14,7 +14,7 @@
   
 
   
-  <meta name="description" content=" ">
+  <meta name="description" content="his blog post is a guide to help readers build a neural network from the very basics. ">
   
 
   <meta name="generator" content="Hugo 0.31" />
@@ -253,7 +253,7 @@ o_n = 2
 
 <pre><code class="language-python"># Randomly define the weights between the layers:
 w_i_h = np.random.rand(h_n, i_n) # create an array of the given shape and populate it with random values.
-w_h_o = np.random.rand(o_n, h_n) 
+w_h_o = np.random.rand(o_n, h_n)
 
 # Show matrices of randomly assigned weights:
 w_i_h
@@ -281,7 +281,7 @@ It is to certain extent inspired by the concept of &ldquo;firing&rdquo;, which m
 def sigmoid(x):
     # np.exp() calculates the exponential
     # of all elements in the input array.
-    return 1 / (1 + np.exp(-x)) 
+    return 1 / (1 + np.exp(-x))
 
 </code></pre>
 
@@ -289,9 +289,9 @@ def sigmoid(x):
 import matplotlib.pyplot as plt
 
 # return 100 evenly spaced numbers over an interval from -10 to 10.
-x = np.linspace(-10, 10, 100) 
+x = np.linspace(-10, 10, 100)
 # plot sigmoid function for sampled values:
-plt.plot(x, sigmoid(x)) 
+plt.plot(x, sigmoid(x))
 plt.show()
 </code></pre>
 
@@ -346,7 +346,7 @@ import matplotlib.pyplot as mpp
 
 <pre><code class="language-python"># Plot the data:
 observation = data[0].split(',') # break down observation number 0 (comma is used to identify each element).
-image = np.asfarray(observation[1:]).reshape((28,28)) # take all the elements starting from the element 1 
+image = np.asfarray(observation[1:]).reshape((28,28)) # take all the elements starting from the element 1
 # (exclude element number 0, that corresponds to the label) and reshape them as an array with dimension 28 by 28.
 mpp.imshow(image, cmap='Blues', interpolation='None') # show the plot of this array using blue pallete.
 </code></pre>
@@ -488,8 +488,8 @@ plt.show()
 <p>We can perform a transformation of the original data as the one coded below:</p>
 
 <pre><code class="language-python"># Good practice transformation of the input values:
-input = np.array((np.asfarray(observation[1:])/255.0*0.99) + 0.01, ndmin=2).T 
-# Our values in our input vector are in the range from 0 to 255. Therefore we should divide input vector by 255, 
+input = np.array((np.asfarray(observation[1:])/255.0*0.99) + 0.01, ndmin=2).T
+# Our values in our input vector are in the range from 0 to 255. Therefore we should divide input vector by 255,
 # multiply it by 0,99 and add 0,01 in order to get values in the range from 0,01 to 1.
 
 # Good practice transformation of the target value:
@@ -514,12 +514,12 @@ target[int(observation[0])] = 0.99
 <p>Below there are too alternatives how this can be implemented in Python.</p>
 
 <pre><code class="language-python"># Good practice for initial weights assignment:
-    
-alternative1 = np.random.rand(3, 5) - 0.5 
+
+alternative1 = np.random.rand(3, 5) - 0.5
 # or
-alternative2 = np.random.normal(0.0, pow(3, -0.5), (3, 5)) 
+alternative2 = np.random.normal(0.0, pow(3, -0.5), (3, 5))
 # arguments: Mean of the distribution, Standard deviation of the distribution, Output shape.
-# Second approach is better as it takes in account the standard deviation 
+# Second approach is better as it takes in account the standard deviation
 # that is related to the number of incoming links into a node, 1/√(number of incoming links).
 
 # alternative1
@@ -712,7 +712,7 @@ w_i_h += l_r * np.dot((h_errors * h_output * (1.0 - h_output)), np.transpose(inp
 
     o_errors = target - o_output
     h_errors = np.dot(w_h_o.T, o_errors)
-    
+
     w_h_o += l_r * np.dot((o_errors * o_output * (1.0 - o_output)), np.transpose(h_output))
     w_i_h += l_r * np.dot((h_errors * h_output * (1.0 - h_output)), np.transpose(input))
 
@@ -799,7 +799,7 @@ for i in data_test:
     else:
         score.append(0)
         pass
-    
+
     pass
 </code></pre>
 
@@ -865,7 +865,7 @@ for i in data_test:
     else:
         score.append(0)
         pass
-    
+
     pass
 
 
@@ -957,10 +957,10 @@ import pandas as pd
 <pre><code class="language-python">names = [&quot;y&quot;] + list(range(1,785))
 
 
-df = pd.read_csv(&quot;data/mnist_train.csv&quot;, 
+df = pd.read_csv(&quot;data/mnist_train.csv&quot;,
                  names=names)
 
-df_test = pd.read_csv(&quot;data/mnist_test.csv&quot;, 
+df_test = pd.read_csv(&quot;data/mnist_test.csv&quot;,
                      names=names)
 </code></pre>
 
@@ -1065,9 +1065,9 @@ y_test = np_utils.to_categorical(y_test)
     model = Sequential()
     model.add(Dense(num_hidden_n, input_dim=num_pixels, kernel_initializer='normal', activation='relu'))
     model.add(Dense(num_classes, kernel_initializer='normal', activation='softmax'))
-    
+
     # Compile model
-    model.compile(loss='categorical_crossentropy', 
+    model.compile(loss='categorical_crossentropy',
                   optimizer=optimizer,
                   metrics=['accuracy'])
     return model
@@ -1092,7 +1092,7 @@ model = baseline_model(num_hidden_n, num_pixels, num_classes, optimizer)
 <p>After training the model we evaluate its performance by looking at its accuracy.</p>
 
 <pre><code class="language-python">model.fit(X_train,
-          y_train, 
+          y_train,
           epochs=5,
           batch_size=200,
           verbose=2)
@@ -1121,7 +1121,7 @@ Error Rate: 11.97%
                        optimizer = &quot;rmsprop&quot;)
 
 model.fit(X_train,
-          y_train, 
+          y_train,
           epochs=5,
           batch_size=200,
           verbose=2)
