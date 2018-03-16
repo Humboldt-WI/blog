@@ -125,6 +125,8 @@ We are using everything except `date`. We could also try to extract further feat
 dummies or a seasonal effect. We save that for next time. Our data should incorporate some 
 seasonal effects already. Nevertheless, be creative! 
 
+> <a href="/blog/img/seminar/financial_time_series/final_df_VW.csv">Download the data sheet (final_df_VW.CSV)</a>
+
 {{< highlight python "style=emacs" >}}
 # We read in the dataset 
 data = read_csv("final_df_VW.csv")
@@ -172,28 +174,27 @@ help!
 
 
 ### A little more preprocessing...
-The most confusing thing for people starting to work with Keras' recurrent layers is getting used to the shape of the input matrix. In contrast to a standard MLP, recurrent networks's input has an additional dimension. 
+The most confusing thing for people starting to work with Keras' recurrent layers is getting used to the shape of the input matrix. In contrast to a standard <a href="https://en.wikipedia.org/wiki/Multilayer_perceptron">Multilayer perceptron</a>, recurrent networks' input has an additional dimension. 
 
-* The input matrix is 3D, where the first dimension is the number of samples in you batch (normally denoted as  `batch_size`). You can think of it as the number 
-of rows of you input data after which you want your weights to be updated (careful: weights are not states). A higher `batch_size` reduces your computational time by reducing the number of updates. In many cases, especially if you are short on training data, you would set this to 
+* The input matrix is 3D, where the first dimension is the number of samples in your batch (denoted as  `batch_size`). You can think of it as the number 
+of rows of your input data after which you want your weights to be updated (careful: weights are not states). A higher `batch_size` reduces your computational time by reducing the number of updates. In many cases, especially if you are short on training data, you would set this to 
 one and just update your weights after every sample. We will do that for our stock prediction,
-since we only end up with about 1500 training days. If you had a different use case (i.e., Natural Language Processing) it could be beneficial to update weights only every 5 samples (i.e., `batch_size` = 5). 
+since we only end up with about 1500 training days. If you had a different use case (i.e., Natural Language Processing) it could be beneficial to update weights only every 5 samples (i.e., `batch_size = 5`). 
 
-* The second dimension represents the new time domain (`timesteps`). `Timesteps` define the number of steps in the past you are unfolding your recurrent layer. They define where the backpropagation is truncated to. It is important to understand that the longer your sequence per sample (more `timesteps`) is the more computational expensive your optimization gets, since the gradient is computated for every defined `timestep`. When you are used to auto-regressiv statistical modelling techniques, `timesteps` are difficult to understand. In a standard feed forward neural network (FFNN) or i.e. ARIMA setup, it would be natural to include your `timesteps` (lags) as `features`. Here is were many people struggle. In the LSTM, the right way to handle time dependencies is in the second dimensions. For stock market prediction it is crucial to find well defined time dependencies. If we set this to i.e. seven, every `features` would backpropate one week, with 30 one month etc. Technically, it is also possible to include different `features` with different `timesteps`. Missing steps would be padded with 0.
-Would that be a problem? Most likely not since the model should learn to ignore them. 
+* The second dimension represents the new time domain (`timesteps`). `Timesteps` define the number of steps in the past you are unfolding your recurrent layer. They define where the backpropagation is truncated to. It is important to understand that the longer your sequence per sample is (more `timesteps`) the more computationally expensive your optimization gets, since the gradient is computed for every defined `timestep`. If you are used to auto-regressive statistical modelling techniques, `timesteps` are difficult to understand. In a standard feed forward neural network (FFNN) or i.e. <a href="https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average">ARIMA</a> setup, it would be natural to include your `timesteps` (lags) as `features`. Here is where many people struggle. In LSTM, the right way to handle time dependencies is in the second dimension. For stock market prediction, it is crucial to find well defined time dependencies. If we set this to i.e. seven, every feature would backpropagate one week, with 30 - one month etc. Technically, it is also possible to include different `features` with different `timesteps`. Missing steps would be padded with `0`.
+Would that be a problem? Most likely not, since the model should learn to ignore them. 
 
-* The last dimension represent `features`. There are six in our stock price example if we 
-want to include the target variable also as a `feature`. This is the same as in FFNN.
+* The last dimension represents `features`. There are six in our stock price example if we want to include the target variable also as a `feature`.
 <br>
 
-Now that you understand the `batch_input_shape` (`batch_size`, `timesteps`, `features`) of a recurrent layer, you might have noticed that our dataset hardly has the correct dimensions to be fed into the model. Below you can see the function that changes that. The idea is simple: We shift the input and append it to the old dataset. We extend the dataset according to our specified `timesteps`.
+Now that you understand the `batch_input_shape` (`batch_size`, `timesteps`, `features`) of a recurrent layer, you might have noticed that our dataset does not really have the correct dimensions to be fed into the model. Below you can see the function which solves this. The idea is simple: We shift the input and append the new column to our dataset. Thus we extend the dataset according to our specified `timesteps`.
 
 {{< highlight python "style=emacs" >}}
 # Append with timesteps
 def createTimeSteps(df, lags=1):
     """ 
         creates the amount of timesteps from the target and appends to df. 
-        How many lags we use to predict the target.
+        How many lags do we use to predict the target.
         @param df: data frame with all features
         @param lags: number of lags from the target that are appended
     """
@@ -210,8 +211,7 @@ def createTimeSteps(df, lags=1):
 {{< /highlight >}}
 
 Now we're good to go. We are using our loaded dataset from above, apply `normalize`,
-extend by our `timesteps`, split into training and test set with `TRAINING_DAYS`,
-and choose our `features` and our `y`. It is good practive to define 
+extend by our `timesteps`, split into training and test set with `TRAINING_DAYS`, choose our `features` and our target `y`. It is good practive to define 
 CONSTANTS in capital letter in the beginning of your training. It helps you to keep eveything structured and is very convenient for testing different setups.
 
 {{< highlight python "style=emacs" >}}
@@ -238,13 +238,18 @@ X_train = X_train.reshape(TRAINING_DAYS, TS, FEATURES)
 X_test = X_test.reshape(X_test.shape[0], TS, FEATURES)
 {{< /highlight >}}
 
+### Model Design
+
 Similar to any Keras network we can design recurrent architectures.
 Just add an LSTM layer instead of a normal dense layer. If you call the function,
 make sure that your input dimensions fit our dataset. Otherwise you will not be 
-able to train your model. The code itself should be self-explanatory. 
-Our first model is very easy. If you do not know anything about Keras,
-please refer to the <a https://keras.io/#keras-the-python-deep-learning-library">30s guide</a>.
-This should just give us a starting point to explain different concepts and extentions.  
+able to train your model. 
+
+Our first model is kept simple, but in case you do not know anything about Keras,
+please refer to the <a href="https://keras.io/#keras-the-python-deep-learning-library">Keras in 30s guide</a>.
+This should give us a starting point to explain different concepts and extensions.  
+
+
 
 {{< highlight python "style=emacs" >}}
 # Our first very easy model
@@ -261,13 +266,13 @@ Our `helloModel` has only one layer with 16 hidden neurons. It passes its input 
 the dense layer which produces a one-step-ahead forecast. The first extention we would like to
 introduce is `return_sequence`:
 
-* In Keras when `return_sequence` = False:
+* In Keras when `return_sequence = False`:
 The input matrix of the first LSTM layer of dimension (`nb_samples`, `timesteps`, `features`) will produce an output of shape (`nb_samples`, 16),
 and only output the result of the last `timesteps` training.
 
-* In Keras when `return_sequence` = True:
-Also the output shape would be 3D (`nb_samples`, `timesteps`, `features`) for such a layer, since a output is saved after every `timesteps`. This gives us to extend our model in two different ways. First, we can start stacking LSTM layers together, since every previous LSTM layer also produces a 3D output. Additionally, we can make the model predict many-to-many.
-If we specify `return_sequence` = True for the last layer it will produce 3D predictions (Careful: If you would like to apply another layer to every `timesteps` and not only to the last one, you need to use a <a href="https://keras.io/layers/wrappers/">TimeDistributed wrapper</a>).
+* In Keras when `return_sequence = True`:
+The output shape for such a layer will also be 3D (`nb_samples`, `timesteps`, `features`) since an output is saved after every `timesteps`. This allows us to extend our model in two different ways. First, we can start stacking LSTM layers, since every previous LSTM layer also produces a 3D output. Additionally, we can also make the model predict many-to-many.
+If we specify `return_sequence = True` for the last layer it will produce 3D predictions (Careful: If you would like to apply another layer to every `timesteps` and not only to the last one, you need to use a <a href="https://keras.io/layers/wrappers/">TimeDistributed wrapper</a>).
 
 {{< highlight python "style=emacs" >}}
 # Our return model
@@ -286,11 +291,154 @@ def returnModel(timesteps, features, batch_size=1, return_sequence = False):
 {{< /highlight >}}
 
 We are stacking three different LSTM layers and included the option to predict 
-many-to-many, applying a Dense last layer to every `timesteps`. We have to be careful
-here since also our target `y` should be a matrix now. If we extend `y` by the same `timesteps` as our input matrix, you can think of the prediction as a many-to-many lagged by one each.
+many-to-many, applying a final Dense layer to every `timesteps`. We still have to be careful here since our target `y` should be a matrix now. If we extend `y` by the same `timesteps` as our input matrix, you can think of the prediction as a many-to-many lagged by one each.
+
+The last architecture we are presenting is inspired by a research paper of <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0180944">Bao et. al (2017)</a>.
+It is a simplified version but has similar perks. We use it to introduce three more concepts before we can release you into the wild world of sequence modelling:
+
+* A single Auto-Encoder precedes the three stacked LSTM layers. The auto-encoder is introduced in order to denoise the data and to extract the most common features from an unsupervised dataset. The sequence-to-sequence auto-encoder uses a bottle neck architecture, where four LSTM nodes are sandwiched by two eight node LSTM layers to reshuffle information in meaningful features. We can think of it as deep learning feature extraction.
+
+* Furthermore, we introduce the `stateful` and `shuffle` parameter. If `stateful` = False, the
+hidden states of the LSTM neurons are reset after every batch. After the reset, states are reinitated with 0. As an effect, batches are treated independently through time and not connected. If `stateful` = False, Keras does not require you to define `batch_size` within the first layer `Input_shape`= (`timesteps`, `features`). We can use that in training, when be believe that the `timesteps` we defined properly represent the length of time dependency and a indepent training is reasonable. If we believe in a longer time dependency we should use `stateful` = True.
+If `stateful` = True, states are propagated through batches and only reset if done manually (`model.reset_state`). In this case, `shuffle` = True does not make any sense
+since the output would destroy the ordering of the time series and produce be pure chaos, if used together with `stateful` = True. Careful: It is important to think about the timing of the state reset. Common practice is resetting after every `epoch`. Without it, the model would treat every new epoch as an extension of the origin time series and not as the same time series fed in again. In model training, Keras requires you to exactly define the inpute shape in the first layer only (`batch_input_shape`=(`batch_size`, `timesteps`, `features`)).
+
+{{< highlight python "style=emacs" >}}
+# create Bao Model
+def bao2017(timesteps, features, batch_size=1, 
+            state_config = False, return_config = False):
+    model = Sequential()
+    
+    #AUTOENCODER
+    model.add(LSTM(input_dim=features, output_dim=8, return_sequences=False))
+    model.add(RepeatVector(4))
+    model.add(LSTM(output_dim=8, return_sequences=True))
+    model.add(TimeDistributed(Dense(features)))
+    model.add(Activation('linear'))
+    
+    #STACKED MODEL
+    if state_config:
+        model.add(LSTM(128, batch_input_shape=(batch_size, timesteps, features), 
+                       return_sequences=True, stateful=True))
+    else:
+        model.add(LSTM(128, input_shape=(timesteps, features), 
+                       return_sequences=True, stateful=False))
+    model.add(LSTM(64, return_sequences=True, stateful=state_config))
+    model.add(LSTM(32, return_sequences=return_config, stateful=state_config))
+    #... add more layers
+    if return_config:
+        model.add(TimeDistributed(Dense(1)))
+    else: 
+        model.add(Dense(1)) #not 1 but 'features' if many-to-many   
+    model.compile(loss='mse', optimizer='adam', metrics=['mse'])  
+    return model
+    {{< /highlight >}}
+
+The number of hidden neurons is somehow arbitrary. We could also include different 
+ones but this setup is used by Bao et. al (2017). It is important for the auto-encoder to have
+the sandwich architecture (8 to 8 neurons). We haven't really touched on the `RepeatVector` layer, but it does essentially what it says <a href="https://keras.io/layers/core/#repeatvector">(Check here for more)</a>.
+
+What is left to do? We have the data, we have the models... let fit! Our last 
+function does that for us. We can specify the number of our `model`, `data`, `epochs`,
+`batch_size`,  if we want our states to be reset per batch by `state_config`, and decide 
+if we would like `shuffle` to the True. We set `model.reset_state` in a way that is 
+resets after every `epoch`, and saves the training results in two list.
+
+{{< highlight python "style=emacs" >}}
+# Fit the model
+def fitting(model, X, y, val_X, val_y, epochs, batch_size=1, state_config=False, sf=False):
+    """ 
+        fits the model to the data via keras API. 
+        @param model: before designed model setup
+        @param X: correctly reshaped input data
+        @param y: correctly reshaped target
+        @param val_X, val_y: correctly reshaped test data
+        @param epochs: number of epochs to repeat training
+        @param batch_size: number of rows after the weights of the network are updated
+        @param state_config: True/False - if true, model is trained with stateful mode and 
+        states are resetted every epoch
+        @param sf: True/False - shuffle mode. If stateless, this makes sense to increase 
+        generalizatiion of the model
+    """
+    if state_config:
+        training_mse = list()
+        val_mse = list()
+        for i in range(epochs):
+            model.reset_states()
+            result = model.fit(X, y, batch_size=batch_size, epochs=1, validation_data=(val_X, val_y), shuffle=sf)
+            training_mse.append(result.history['mean_squared_error'])
+            val_mse.append(result.history['val_mean_squared_error'])
+    else:
+        result = model.fit(X, y, batch_size=batch_size, 
+                        epochs=epochs, validation_data=(val_X, val_y), shuffle=sf)
+        training_mse = result.history['mean_squared_error']
+        val_mse = result.history['val_mean_squared_error']
+    
+        
+    return result, training_mse, val_mse
+{{< /highlight >}}
+
+### Sit through, we are almost there! Put it together and get your predictions:
+
+{{< highlight python "style=emacs" >}}
+# Almost forgot... your libraries
+import keras
+from keras import Sequential
+from keras.models import load_model
+from keras.models import Sequential
+from keras.layers import Dense, Activation, LSTM, Dropout, TimeDistributed, RepeatVector
+
+from sklearn.preprocessing import MinMaxScaler
+
+import pandas_datareader as pdr
+from pandas import read_csv, DataFrame
+import pandas as pd
+
+from datetime import datetime
+import numpy as np
+import matplotlib.pyplot as plt
+import os
+
+# Our new CONSTANTS
+EPOCHS = 30 # number of training Epochs
+STATEFUL = True # stateless/stateful
+SF = False # activate shuffle
+RETURN_SEQ = False # many to many prediction (outputs results of every TS)
+
+# Choose a model
+model =  bao2017(TS, FEATURES, batch_size=BATCH_SIZE, 
+                state_config = STATEFUL, return_config = RETURN_SEQ)
+# Fit the model
+result, training_mse, val_mse = fitting(model, X_train, y_train, X_test, y_test, EPOCHS, batch_size=BATCH_SIZE, 
+                state_config=STATEFUL, sf=SF)
+# Predict the model
+yhat = model.predict(X_test, batch_size = BATCH_SIZE)
+print(yhat.shape)
+print(y_test.shape)
+
+# Plot the model
+plt.plot(y_test, label='y')
+plt.plot(yhat1, label='yhat')
+plt.legend()
+plt.show()
+
+plt.plot(training_mse, label='Training: MSE')
+plt.plot(val_mse, label='Test: MSE')
+plt.legend()
+plt.show()
+{{< /highlight >}}
+
+### That was hard work! As a wise economist once said, ...
 
 
 
+<img align="center" width="60%" style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/financial_time_series/Blindfolded-Monkey.jpg">
+<div style="text-align: center;"><i>Figure from: <a href="http://www.azquotes.com/quote/894760">http://www.azquotes.com/quote/894760</a></i></div>
+
+<div style="clear: both;text-align: right">
+<h3> ...do better than that!</h3>
+</div>
 
 <script>
 setTimeout(function(){
