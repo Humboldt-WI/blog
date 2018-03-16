@@ -6,7 +6,7 @@ categories = ["seminar"]
 banner = "img/seminar/nn_fundamentals/neuralNetworkKlein.jpg"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-humbodt-wi-github-io-blog"
-description = "Introduction to deploy the deep learning model"
+description = "An introduction to deploy the deep learning model"
 +++
 
 ## Motivation
