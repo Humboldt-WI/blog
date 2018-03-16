@@ -41,9 +41,6 @@ Before we can start our journey we would like to introduce two useful APIs that 
 
 * `Pytrends` can access the <a href="https://medium.com/@pewresearch/using-google-trends-data-for-research-here-are-6-questions-to-ask-a7097f5fb526">reference</a>. In the second box you can find a more comprehensive example that collects data from Google, loops the code, and can even continue downloading at another day (your daily quota is unfortunately limited). Please have a look at the code. If you spend a moment, we are sure you can figure it out. For more information: Here is a good <a href="https://medium.com/@pewresearch/using-google-trends-data-for-research-here-are-6-questions-to-ask-a7097f5fb526">reference</a>. The details of the snipped are not to important for
 our modelling, but have a look!
-<br><br>
-
-
 
 {{< highlight python "style=emacs" >}}
 # Get Yahoo Data
@@ -140,6 +137,7 @@ We are left with our six variables including our target. Before we start with ou
 model training we need two more steps. First, we include a `MinMaxScaler` from the `sklearn` package. It always makes sense to think about proper preprocessing such as normalization.
 If we included the dataset without it, `volLVL` could completely dominate our traning and skew our model. It often makes sense if your features are on a similar scale. Please see below the function for the normalization. Notice that we also save the scaler, we are using! 
 You can use it for example to reverse the scaling after your predictions. 
+The second step is a little more involved but it is crucial for working with sequences in <a href="https://keras.io/layers/recurrent/">Keras</a>.
 
 {{< highlight python "style=emacs" >}}
 # function to normalize
@@ -157,8 +155,6 @@ def normalize(df):
     return scaler, norm
 {{< /highlight >}}
 
-The second step is a little more involved. Is it crucial for working with sequences
-in <a href="https://keras.io/layers/recurrent/">Keras</a>.
 
 ## Keras
 Before we get into the exciting part, a small introduction...
@@ -213,13 +209,13 @@ def createTimeSteps(df, lags=1):
     return output
 {{< /highlight >}}
 
-Now we good to go. We uses our loaded dataset from above, apply `normalize`,
+Now we're good to go. We are using our loaded dataset from above, apply `normalize`,
 extend by our `timesteps`, split into training and test set with `TRAINING_DAYS`,
 and choose our `features` and our `y`. It is good practive to define 
 CONSTANTS in capital letter in the beginning of your training. It helps you to keep eveything structured and is very convenient for testing different setups.
 
 {{< highlight python "style=emacs" >}}
-# Everything together
+# Everything prepared...
 scaler, normalized_data = normalize(data)
 
 BATCH_SIZE = 1 # batch size during training
@@ -241,13 +237,59 @@ X_test, y_test = test[:, :input_var], test[:, target]
 X_train = X_train.reshape(TRAINING_DAYS, TS, FEATURES) 
 X_test = X_test.reshape(X_test.shape[0], TS, FEATURES)
 {{< /highlight >}}
-<!--
-Markdown Github
-Hugo syntax highlighting
-https://gohugo.io/content-management/syntax-highlighting/
-normales HTML
--->
-<br>
+
+Similar to any Keras network we can design recurrent architectures.
+Just add an LSTM layer instead of a normal dense layer. If you call the function,
+make sure that your input dimensions fit our dataset. Otherwise you will not be 
+able to train your model. The code itself should be self-explanatory. 
+Our first model is very easy. If you do not know anything about Keras,
+please refer to the <a https://keras.io/#keras-the-python-deep-learning-library">30s guide</a>.
+This should just give us a starting point to explain different concepts and extentions.  
+
+{{< highlight python "style=emacs" >}}
+# Our first very easy model
+def helloModel(timesteps, features, batch_size=1):
+    model = Sequential()
+    model.add(LSTM(16, input_shape=(timesteps, features)))
+    model.add(Dense(1))
+    model.add(Activation('linear'))  
+    model.compile(loss='mse', optimizer='adam', metrics=['mse'])  
+    return model
+{{< /highlight >}}
+
+Our `helloModel` has only one layer with 16 hidden neurons. It passes its input to
+the dense layer which produces a one-step-ahead forecast. The first extention we would like to
+introduce is `return_sequence`:
+
+* In Keras when `return_sequence` = False:
+The input matrix of the first LSTM layer of dimension (`nb_samples`, `timesteps`, `features`) will produce an output of shape (`nb_samples`, 16),
+and only output the result of the last `timesteps` training.
+
+* In Keras when `return_sequence` = True:
+Also the output shape would be 3D (`nb_samples`, `timesteps`, `features`) for such a layer, since a output is saved after every `timesteps`. This gives us to extend our model in two different ways. First, we can start stacking LSTM layers together, since every previous LSTM layer also produces a 3D output. Additionally, we can make the model predict many-to-many.
+If we specify `return_sequence` = True for the last layer it will produce 3D predictions (Careful: If you would like to apply another layer to every `timesteps` and not only to the last one, you need to use a <a href="https://keras.io/layers/wrappers/">TimeDistributed wrapper</a>).
+
+{{< highlight python "style=emacs" >}}
+# Our return model
+def returnModel(timesteps, features, batch_size=1, return_sequence = False):
+    model = Sequential()
+    model.add(LSTM(32, input_shape=(timesteps, features), return_sequence = True ))
+    model.add(LSTM(16, input_shape=(timesteps, features), return_sequence = True ))
+    model.add(LSTM(8, input_shape=(timesteps, features), return_sequence = return_sequence ))
+    if return_sequence:
+        model.add(Dense(1))
+    else:
+        model.add(TimeDistributed(Dense(1)))
+    model.add(Activation('linear'))  
+    model.compile(loss='mse', optimizer='adam', metrics=['mse'])  
+    return model
+{{< /highlight >}}
+
+We are stacking three different LSTM layers and included the option to predict 
+many-to-many, applying a Dense last layer to every `timesteps`. We have to be careful
+here since also our target `y` should be a matrix now. If we extend `y` by the same `timesteps` as our input matrix, you can think of the prediction as a many-to-many lagged by one each.
+
+
 
 
 <script>
@@ -260,3 +302,9 @@ setTimeout(function(){
     });
 }, 0);
 </script>
+
+<style>
+div.highlight {
+margin: 25px 0 25px 0;
+}
+</style>
