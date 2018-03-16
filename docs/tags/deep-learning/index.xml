@@ -22,6 +22,15 @@
     </item>
     
     <item>
+      <title>Financial Time Series Predicting with Long Short-Term Memory</title>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/06financialtime-series/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/06financialtime-series/</guid>
+      <description>Introduction Failing to forecast the weather can get us wet in the rain, failing to predict stock prices can cause a loss of money and so can an incorrect prediction of a patient’s medical condition lead to health impairments or to decease. However, relying on multiple information sources, using powerful machines and complex algorithms brought us to a point where the prediction error is as little as it has ever been before.</description>
+    </item>
+    
+    <item>
       <title>Image Analysis: Introduction to deep learning for computer vision</title>
       <link>https://humboldt-wi.github.io/blog/research/seminar/03imageanalysis/</link>
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
