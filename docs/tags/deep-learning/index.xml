@@ -6,38 +6,69 @@
     <description>Recent content in Deep Learning on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-<<<<<<< HEAD
     <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 18 Feb 2018 00:00:00 +0000</lastBuildDate>
-=======
-<<<<<<< HEAD
-    <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
-=======
-    <copyright>Copyright (c) 2017, Chari of Information System at HU-Berlin; all rights reserved.</copyright>
->>>>>>> origin/master
-    <lastBuildDate>Tue, 12 Dec 2017 00:00:00 +0000</lastBuildDate>
->>>>>>> Humboldt-WI/newestBranch
+    <lastBuildDate>Thu, 15 Mar 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-<<<<<<< HEAD
+      <title>Convolutional Neural Networks (CNN)</title>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/02convolutionalneuralnetworks/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/02convolutionalneuralnetworks/</guid>
+      <description>Convolutional Neural Networks Table of Content  Motivation Images Artificial Neural Networks Convolutional Neural Networks  Architecture Overview Layers Convolutional Layer  Filters Convolution for Functions Mathematical 2D convolution Back to 2D convolution Stride Padding Local receptive fields Parameter Sharing Weight Initialization im2col Convolution using im2col  Activation Function Layer  Why is a non-linear function needed? Logistic sigmoid function hyperbolic tangent function Rectified Linear Units  Pooling Layer  Max Pooling Average Pooling  Fully-connected Layer Forward pass in a convolutional neural network using im2col  The backpropagation algorithm  Backpropagation for Pooling layers The gradient descent algorithm The Vanishing Gradient Problem  Optimizing gradient descent  Stochastic gradient descent Mini-batch gradient descent Learning Rate  Transfer Learning Other interesting use cases for CNNs  Videos Neural language processing Variant calling    Motivation Within the last few years we observed a large increase of visual data.</description>
+    </item>
+    
+    <item>
+      <title>Image Analysis: Introduction to deep learning for computer vision</title>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/03imageanalysis/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/03imageanalysis/</guid>
+      <description>Image Analysis: Introduction to deep learning for computer vision In this blog, we present the practical use of deep learning in computer vision. You will see how Convolutional Neural Networks are being applied to process the visual data, generating some valuable knowledge. In particular, we focused on the object recognition task, aiming to classify what kind of an object (a dog or a cat) is presented within a particular image by using the notion of Transfer Learning.</description>
+    </item>
+    
+    <item>
+      <title>Numeric representation of text documents: doc2vec how it works and how you implement it</title>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/04topicmodels/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/04topicmodels/</guid>
+      <description>Introduction Natural language processing (NLP) received a lot of attention from academia and industry over the recent decade, benefiting from the introduction of new algorithms for processing the vast corpora of digitized text. A set of language modeling and feature learning techniques called word embeddings became increasingly popular for NLP tasks. Word2vec (Mikolov et al, 2013) became one of the most famous algorithms for word embeddings, offering a numeric representations of any word, followed by doc2vec (Le et al, 2014), which performed the same task for a paragraph or document.</description>
+    </item>
+    
+    <item>
+      <title>Text Mining - Sentiment Analysis</title>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/05sentimentanalysis/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/05sentimentanalysis/</guid>
+      <description>Sentiment Analysis using Deep Learning Outline  Sentiment Analysis Introduction  Case Study  Keras IMDB Dataset
+ Data Analysis
+ Word Embeddings
+ Convolutional Neural Network
+  Summary  Sentiment Analysis Introduction Sentiment analysis is a very beneficial approach to automate the classification of the polarity of a given text. A helpful indication to decide if the customers on amazon like a product or not is for example the star rating.</description>
+    </item>
+    
+    <item>
+      <title>Wide and Deep Learning Model for Grocery Product Recommendations</title>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/08recommendation/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/08recommendation/</guid>
+      <description>Recommendation Systems 
+Introduction The explosion of information with the advent of the Internet and the multitude of choices available to customers introduces complexity in a customer’s decision processes. Recommender system is a useful information-filtering tool, which guides customers to a narrower selection of products and consequently helps them make better decisions. Matching users to the right products saves customers time and effort leading to increased user satisfaction, which in turn earns customer loyalty.</description>
+    </item>
+    
+    <item>
       <title> Image Captioning</title>
       <link>https://humboldt-wi.github.io/blog/research/seminar/07imagecaptioning/</link>
       <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/seminar/07imagecaptioning/</guid>
-      <description>test</description>
-    </item>
-    
-    <item>
-      <title>Recommendation Machines - The Magic behind Amazon telling us what to buy</title>
-      <link>https://humboldt-wi.github.io/blog/research/seminar/08recommendation/</link>
-      <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/research/seminar/08recommendation/</guid>
-      <description>Recommendation Machines  Have you ever wondered how Amazon, Netflix and Co. are able to tell which products you should buy or which movies you should like? They are surprisingly precise and it is all due to the magic of recommentaion algorithms.</description>
+      <description>Introduction Image captioning aims for automatically generating a text that describes the present picture. In the last years it became a topic with growing interest in machine learning and the advances in this field lead to models that (depending on which evaluation) can score even higher than humans do. Image captioning can for instance help visually impaired people to grasp what is happening in a picture. Furthermore, it could enhance the image search of search engines, it could simplify SEO by automatically generating descriptions for the pictures or improve online marketing and customer segmentation by identifying customer interests through interpreting their shared images via social media platforms.</description>
     </item>
     
     <item>
@@ -50,48 +81,23 @@
     </item>
     
     <item>
-      <title>Text Mining - Topic Models: Teaching an Algorithm Human Language</title>
-      <link>https://humboldt-wi.github.io/blog/research/seminar/04topicmodels/</link>
-      <pubDate>Thu, 18 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/research/seminar/04topicmodels/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Text Mining - Sentiment Analysis</title>
-      <link>https://humboldt-wi.github.io/blog/research/seminar/05sentimentanalysis/</link>
-      <pubDate>Mon, 15 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/research/seminar/05sentimentanalysis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Image Analysis</title>
-      <link>https://humboldt-wi.github.io/blog/research/seminar/03imageanalysis/</link>
-      <pubDate>Thu, 11 Jan 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/research/seminar/03imageanalysis/</guid>
-      <description>A nice tutorial on Image Analysis</description>
-    </item>
-    
-    <item>
-      <title>Convolutional Neural Networks (CNN)</title>
-      <link>https://humboldt-wi.github.io/blog/research/seminar/02convolutionalneuralnetworks/</link>
-      <pubDate>Thu, 21 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/research/seminar/02convolutionalneuralnetworks/</guid>
-      <description>CNNs and some nice application</description>
-    </item>
-    
-    <item>
       <title>Neural Network Fundamentals</title>
       <link>https://humboldt-wi.github.io/blog/research/seminar/01neuralnetworkfundamentals/</link>
       <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/seminar/01neuralnetworkfundamentals/</guid>
-      <description></description>
+      <description>Neural Network Fundamentals This blog post is a guide to help readers build a neural network from the very basics. It starts with an introduction to the concept of a neural networks concept and its early development. A step-by-step coding tutorial follows, through which relevant concepts are illustrated. Later in the post, there is also an introduction on how to build neural networks in Keras. Finally, the reader will find instructions on how to deploy the model via an API to make it accessible to anyone interested on it.</description>
+    </item>
+    
+    <item>
+      <title>Neural Networks into Production</title>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/09deeplearningintoproduction/</link>
+      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/09deeplearningintoproduction/</guid>
+      <description>Motivation Training and tuning machine learning model is a hard task. There are many variables involved that can make or break your results. However, also very important is, after fine tuning your model, to be able to deploy it, so it can be accessed by other researchers, developers and applications.
+A very common way to accomplish that is by using an API.
+Use Case As a data scientist, you will need to interact with other professionals that don&amp;rsquo;t have the same expertise that you have when it comes to quantitative models.</description>
     </item>
     
     <item>
@@ -102,34 +108,6 @@
       <guid>https://humboldt-wi.github.io/blog/research/instruction/00samplepost/</guid>
       <description>A Gentle Introduction to Neural Network Fundamentals 
 Imagine the following problem: There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.</description>
-=======
-<<<<<<< HEAD
-      <title>A Static Jupyter Notebook Example</title>
-      <link>https://wisample.github.io/blog/research/seminar/staticjupyter_example_post/</link>
-      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://wisample.github.io/blog/research/seminar/staticjupyter_example_post/</guid>
-      <description>&lt;p&gt;This is an example of a jupyter notebook to give you an idea of how your blog post could look like.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-=======
->>>>>>> origin/master
-      <title>A dynamic Jupyter Notebook Example</title>
-      <link>https://wisample.github.io/blog/research/seminar/dynamicjupyter_example_post/</link>
-      <pubDate>Tue, 12 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://wisample.github.io/blog/research/seminar/dynamicjupyter_example_post/</guid>
-<<<<<<< HEAD
-      <description>&lt;p&gt;This is an example of a jupyter notebook to give you an idea of how your blog post could look like.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-=======
-      <description> This is an example of a jupyter notebook to give you an idea of how your blog post could look like.  </description>
->>>>>>> origin/master
->>>>>>> Humboldt-WI/newestBranch
     </item>
     
   </channel>

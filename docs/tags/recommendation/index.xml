@@ -7,18 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
-    <lastBuildDate>Thu, 15 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Mar 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/recommendation/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Recommendation Machines - The Magic behind Amazon telling us what to buy</title>
+      <title>Wide and Deep Learning Model for Grocery Product Recommendations</title>
       <link>https://humboldt-wi.github.io/blog/research/seminar/08recommendation/</link>
-      <pubDate>Thu, 15 Feb 2018 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/seminar/08recommendation/</guid>
-      <description>Recommendation Machines  Have you ever wondered how Amazon, Netflix and Co. are able to tell which products you should buy or which movies you should like? They are surprisingly precise and it is all due to the magic of recommentaion algorithms.</description>
+      <description>Recommendation Systems 
+Introduction The explosion of information with the advent of the Internet and the multitude of choices available to customers introduces complexity in a customer’s decision processes. Recommender system is a useful information-filtering tool, which guides customers to a narrower selection of products and consequently helps them make better decisions. Matching users to the right products saves customers time and effort leading to increased user satisfaction, which in turn earns customer loyalty.</description>
     </item>
     
   </channel>
