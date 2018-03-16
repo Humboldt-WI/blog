@@ -299,9 +299,8 @@ It is a simplified version but has similar perks. We use it to introduce three m
 * A single Auto-Encoder precedes the three stacked LSTM layers. The auto-encoder is introduced in order to denoise the data and to extract the most common features from an unsupervised dataset. The sequence-to-sequence auto-encoder uses a bottle neck architecture, where four LSTM nodes are sandwiched by two eight node LSTM layers to reshuffle information in meaningful features. We can think of it as deep learning feature extraction.
 
 * Furthermore, we introduce the `stateful` and `shuffle` parameter. If `stateful` = False, the
-hidden states of the LSTM neurons are reset after every batch. After the reset, states are reinitated with 0. As an effect, batches are treated independently through time and not connected. If `stateful` = False, Keras does not require you to define `batch_size` within the first layer `Input_shape`= (`timesteps`, `features`). We can use that in training, when be believe that the `timesteps` we defined properly represent the length of time dependency and a indepent training is reasonable. If we believe in a longer time dependency we should use `stateful` = True.
-If `stateful` = True, states are propagated through batches and only reset if done manually (`model.reset_state`). In this case, `shuffle` = True does not make any sense
-since the output would destroy the ordering of the time series and produce be pure chaos, if used together with `stateful` = True. Careful: It is important to think about the timing of the state reset. Common practice is resetting after every `epoch`. Without it, the model would treat every new epoch as an extension of the origin time series and not as the same time series fed in again. In model training, Keras requires you to exactly define the inpute shape in the first layer only (`batch_input_shape`=(`batch_size`, `timesteps`, `features`)).
+hidden states of the LSTM neurons are reset after every batch. After the reset, states are reinitiated with 0. As an effect, batches are treated independently through time and not connected. If `stateful` = False, Keras does not require you to define `batch_size` within the first layer `Input_shape`= (`timesteps`, `features`). We can use that in training, when we believe that the `timesteps` we defined properly represents the length of time dependency and an independent training is reasonable. If we expect a longer time dependency to be useful we should use `stateful = True`.
+If `stateful = True`, states are propagated through batches and only reset manually (`model.reset_state()`). Using `shuffle` = True together with `stateful` = True will not make any sense, since the output destroys the ordering of the time series and produces pure chaos. Careful: It is important to think about the timing of the state reset. Common practice is resetting after every `epoch`. Without it, the model would treat every new epoch as an extension of the original time series and not as the same time series fed in again. In model training, Keras requires you to exactly define the input shape in the first layer only (`batch_input_shape`=(`batch_size`, `timesteps`, `features`)).
 
 {{< highlight python "style=emacs" >}}
 # create Bao Model
@@ -334,15 +333,9 @@ def bao2017(timesteps, features, batch_size=1,
     return model
     {{< /highlight >}}
 
-The number of hidden neurons is somehow arbitrary. We could also include different 
-ones but this setup is used by Bao et. al (2017). It is important for the auto-encoder to have
-the sandwich architecture (8 to 8 neurons). We haven't really touched on the `RepeatVector` layer, but it does essentially what it says <a href="https://keras.io/layers/core/#repeatvector">(Check here for more)</a>.
+The number of hidden neurons is somehow arbitrary. We could also include different ones but this is the setup used by Bao et. al (2017). It is important for the auto-encoder to have the sandwich architecture (8 to 8 neurons). We haven't really touched on the `RepeatVector` layer, but it does essentially what it says <a href="https://keras.io/layers/core/#repeatvector">(Check the Keras RepeatVector documentation for more)</a>.
 
-What is left to do? We have the data, we have the models... let fit! Our last 
-function does that for us. We can specify the number of our `model`, `data`, `epochs`,
-`batch_size`,  if we want our states to be reset per batch by `state_config`, and decide 
-if we would like `shuffle` to the True. We set `model.reset_state` in a way that is 
-resets after every `epoch`, and saves the training results in two list.
+What is left to do? We have the data, we have the models... let fit! Our last function does that for us. We can specify the number of our `model`, `data`, `epochs`, `batch_size`,  if we want our states to be reset per batch by `state_config`, and decide if we would like `shuffle` to the True. We set `model.reset_state` in a way that is resets after every `epoch`, and saves the training results in two list.
 
 {{< highlight python "style=emacs" >}}
 # Fit the model
@@ -358,7 +351,7 @@ def fitting(model, X, y, val_X, val_y, epochs, batch_size=1, state_config=False,
         @param state_config: True/False - if true, model is trained with stateful mode and 
         states are resetted every epoch
         @param sf: True/False - shuffle mode. If stateless, this makes sense to increase 
-        generalizatiion of the model
+        generalization of the model
     """
     if state_config:
         training_mse = list()
