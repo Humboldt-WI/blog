@@ -14,15 +14,13 @@ draft = false
 
 
 
+The students of the Seminar Information Systems contributed to this website to great extend. Groups of Master students from Humboldt University with backgrounds
+in Business, Economics, Statistics or Computer Science worked on analytical topics and created blog posts, presenting exciting insights into the following topis:
 
-Website: www.phorminx.de/ben_fabian.html
-
-
-###  Contact
-
-
-	Telephone: +49 30 2093-5662
-	Email: bfabian[at]wiwi.hu-berlin.de
-	Website: www.phorminx.de/ben_fabian.html
-	Office Hours: By Appointment
-	Room: SPA1, 335
+- Neural Networks and Convolutional Neural Networks
+- Image Analysis
+- Text Mining
+- Time Series Analysis with LSTMs
+- Survial Analysis
+- Image Captioning
+- Deep Learning and Recommender Systems
