@@ -4,7 +4,6 @@ date = "2018-01-14"
 Keywords = "news"
 banner = "img/news/books.PNG"
 month = "2018-03"
-description = " "
 +++
 
 

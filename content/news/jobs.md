@@ -4,9 +4,8 @@ date = "2018-02-05"
 Keywords = "news"
 banner = "img/news/jobs.PNG"
 month = "2018-02"
-description = " "
 +++
-
+<!--more-->
 
 
 ## Februar 2018

@@ -1,8 +1,9 @@
 {{ if .Site.Params.widgets.month }}
 {{ if isset .Site.Taxonomies "month" }}
 {{ if not (eq (len .Site.Taxonomies.month) 0) }}
+{{ if .Description }}
 
-
+{{else}}
 
 <div class="panel panel-default sidebar-menu">
 
@@ -20,9 +21,8 @@
     </div>
 </div>
 
-{{ else }}
 
-
+{{ end }}
 {{ end }}
 {{ end }}
 {{ end }}

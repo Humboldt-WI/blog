@@ -5,7 +5,6 @@ tags = ["blockchain"]
 Keywords = "news"
 month = "2018-02"
 banner = "img/news/block.png"
-description = " "
 +++
 
 
