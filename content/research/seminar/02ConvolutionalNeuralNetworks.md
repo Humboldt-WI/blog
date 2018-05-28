@@ -2,14 +2,16 @@
 title = "Convolutional Neural Networks (CNN)"
 date = '2018-03-15'
 tags = ["Deep Learning", "Convolutional Neural Networks", "Class17/18",]
-categories = ["seminar"]
+categories = ["Course projects"]
 banner = "img/seminar/CNN/CNN.PNG"
-author = "Class of Winter Term 2017 / 2018"
+author = "Seminar Information Systems (WS17/18)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description = "A simple introduction to convolutional neural networks"
 +++
 
 # Convolutional Neural Networks
+
+#### Authors: Elias Baumann, Franko Maximilian Hölzig, Josef Lorenz Rumberger
 
 ### Table of Content
 1. [Motivation](#motivation)
@@ -58,7 +60,7 @@ description = "A simple introduction to convolutional neural networks"
 
 # Motivation
 
-Within the last few years we observed a large increase of visual data. Most likely this increase is related to the growing number of sensors around the world. The number of smartphones and cameras has rocketed. These produce a stunning amount of visual data, videos and images. By 2018, every third person is in possession of a smartphone. Some forecasts even predict that by 2021 the global internet traffic will be more than 80% videos. Moreover, they predict that more than 27 billion devices and connections will exist. 
+Within the last few years we observed a large increase of visual data. Most likely this increase is related to the growing number of sensors around the world. The number of smartphones and cameras has rocketed. These produce a stunning amount of visual data, videos and images. By 2018, every third person is in possession of a smartphone. Some forecasts even predict that by 2021 the global internet traffic will be more than 80% videos. Moreover, they predict that more than 27 billion devices and connections will exist.
 
 These facts should make the huge demand of algorithms, that help us understand image and video data clear. Often videos and images are considered the dark matter of the internet. This is because we are able to obverse the mass of data, but have a hard time to process it. Analyzing this amount of data cannot be done by hand. To make it more tangible, every day 50 million images are shared on Instagram and every hour more than 300 hours of video are uploaded.
 

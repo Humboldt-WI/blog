@@ -2,12 +2,15 @@
 title = "Neural Networks into Production"
 date = '2017-12-14'
 tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
-categories = ["seminar"]
+categories = ["Course projects"]
 banner = "img/seminar/nn_fundamentals/neuralNetworkKlein.jpg"
-author = "Class of Winter Term 2017 / 2018"
+author = "Seminar Information Systems (WS17/18)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description = "An introduction to deploy the deep learning model"
 +++
+# Neural Networks into Production
+
+#### Authors: Mahdi Bayat, Denis Augusto Pinto Maciel, Roman Proskalovich
 
 ## Motivation
 

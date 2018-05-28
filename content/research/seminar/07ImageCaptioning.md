@@ -1,13 +1,16 @@
 +++
-title = " Image Captioning"
+title = "Image Captioning"
 date = '2018-02-18'
 tags = [ "Deep Learning", "Image Captioning", "Class17/18",]
-categories = ["seminar"]
+categories = ["Course projects"]
 banner = "img/seminar/image_captioning/imageCaptioningKlein.jpg"
-author = "Class of Winter Term 2017 / 2018"
+author = "Seminar Information Systems (WS17/18)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description = " The goal of this blog is an introduction to image captioning, an explanation of a comprehensible model structure and an implementation of that model."
 +++
+# Image Captioning
+
+#### Authors: Benjamin Jaidi, Simon Remy, Murat Gökhan Yigit
 
 # Introduction
 

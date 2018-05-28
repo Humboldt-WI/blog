@@ -2,13 +2,15 @@
 title = "Text Mining - Sentiment Analysis"
 date = '2018-03-15'
 tags = [ "Deep Learning", "Text Mining", "Sentiment Analysis", "Class17/18","Keras IMDB Dataset", "Sentiment Classification", "Movie Reviews"]
-categories = ["seminar"]
+categories = ["Course projects"]
 banner = "img/seminar/sentiment_analysis/sentiment.PNG"
-author = "Class of Winter Term 2017 / 2018"
+author = "Seminar Information Systems (WS17/18)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description = "Sentiment Analysis for IMDB Movie Reviews"
 +++
 # Sentiment Analysis using Deep Learning
+
+#### Authors: Katja Metzger, Aydin Sader Fosalaie, Ninos Yonan
 
 ## Outline
 

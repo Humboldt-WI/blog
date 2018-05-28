@@ -2,14 +2,16 @@
 title = "Image Analysis: Introduction to deep learning for computer vision"
 date = '2018-03-15'
 tags = [ "Deep Learning", "Image Analysis", "Class17/18","Transfer Learning", "Distant Transfer Learning"]
-categories = ["seminar"]
+categories = ["Course projects"]
 banner = "img/seminar/image_analysis/vision.jpg"
-author = "Class of Winter Term 2017 / 2018"
+author = "Seminar Information Systems (WS17/18)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description = "In this blog, we present the practical use of deep learning in computer vision. "
 +++
 
 # Image Analysis: <br>Introduction to deep learning for computer vision
+
+#### Authors: Nargiz Bakhshaliyeva, Severin Hußmann, Robert Kittel
 
 In this blog, we present the practical use of deep learning in <b><i>computer vision</i></b>. You will see how <b><i>Convolutional Neural Networks</i></b> are being applied to process the visual data, generating some valuable knowledge. In particular, we focused on the object recognition task, aiming to classify what kind of an object (a dog or a cat) is presented within a particular image by using the notion of Transfer Learning.
 <br><br>

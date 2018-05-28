@@ -2,9 +2,9 @@
 title = "Wide and Deep Learning Model for Grocery Product Recommendations"
 date = '2018-03-15'
 tags = [ "Deep Learning", "Recommendation", "Class17/18",]
-categories = ["seminar"]
+categories = ["Course projects"]
 banner = "img/seminar/recommendation/banner.jpg"
-author = "Class of Winter Term 2017 / 2018"
+author = "Seminar Information Systems (WS17/18)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description = "Exploring and applying current trends in machine learning to a large scale product recommendation based on implicit feedback."
 +++
@@ -14,7 +14,7 @@ description = "Exploring and applying current trends in machine learning to a la
 =============
 <img align="center" width="800" height="400" src="/blog/img/seminar/recommendation/banner.jpg">
 
-
+#### Authors: Jingyi Liu, Brijesh Nanavati, Bharathi Srinivasan
 
 <br>
 ## **Introduction**

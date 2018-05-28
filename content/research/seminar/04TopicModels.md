@@ -2,16 +2,20 @@
 title = "Numeric representation of text documents: doc2vec how it works and how you implement it"
 date = '2018-03-15'
 tags = [ "Deep Learning", "Text Mining", "doc2vec", "Document Embeddings", "Class17/18",]
-categories = ["seminar"]
+categories = ["Course projects"]
 banner = "img/seminar/topic_models/textMininigKlein.png"
-author = "Class of Winter Term 2017 / 2018"
+author = "Seminar Information Systems (WS17/18)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description = "Candidate2vec - a deep dive into word embeddings"
 +++
 
+# Numeric representation of text documents: doc2vec how it works and how you implement it
+
+#### Authors: Felix Idelberger, Alisa Kolesnikova, Jonathan Mühlenpfordt
+
 # Introduction
 
-Natural language processing (NLP) received a lot of attention from academia and industry over the recent decade, benefiting from the introduction of new algorithms for processing the vast corpora of digitized text. A set of language modeling and feature learning techniques called word embeddings became increasingly popular for NLP tasks. Word2vec (Mikolov et al, 2013) became one of the most famous algorithms for word embeddings, offering a numeric representations of any word, followed by doc2vec (Le et al, 2014), which performed the same task for a paragraph or document. 
+Natural language processing (NLP) received a lot of attention from academia and industry over the recent decade, benefiting from the introduction of new algorithms for processing the vast corpora of digitized text. A set of language modeling and feature learning techniques called word embeddings became increasingly popular for NLP tasks. Word2vec (Mikolov et al, 2013) became one of the most famous algorithms for word embeddings, offering a numeric representations of any word, followed by doc2vec (Le et al, 2014), which performed the same task for a paragraph or document.
 
 The area of application is wide and encompasses online advertisement, automated translation, voice recognition, sentiment analysis, topic modeling and dialog agents like chat bots. Academia also received an efficient tool allowing to tap into the vast corpus of digital texts, from Shakespeare works to social media.
 

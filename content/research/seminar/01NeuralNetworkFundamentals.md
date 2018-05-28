@@ -2,15 +2,17 @@
 title = "Neural Network Fundamentals"
 date = '2017-12-14'
 tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
-categories = ["seminar"]
+categories = ["Course projects"]
 banner = "img/seminar/nn_fundamentals/neuralNetworkKlein.jpg"
-author = "Class of Winter Term 2017 / 2018"
+author = "Seminar Information Systems (WS17/18)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description = "This blog post is a guide to help readers build a neural network from the very basics. "
 +++
 
 
 # Neural Network Fundamentals
+
+#### Authors: Mahdi Bayat, Denis Augusto Pinto Maciel, Roman Proskalovich
 
 This blog post is a guide to help readers build a neural network from the very basics. It starts with an introduction to the concept of a neural networks concept and its early development. A step-by-step coding tutorial follows, through which relevant concepts are illustrated. Later in the post, there is also an introduction on how to build neural networks in Keras. Finally, the reader will find instructions on how to deploy the model via an API to make it accessible to anyone interested on it.
 
