@@ -6,7 +6,6 @@
     <description>Recent content in Text Mining on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
     <lastBuildDate>Thu, 15 Mar 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/text-mining/index.xml" rel="self" type="application/rss+xml" />
@@ -18,7 +17,7 @@
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/seminar/04topicmodels/</guid>
-      <description>Introduction Natural language processing (NLP) received a lot of attention from academia and industry over the recent decade, benefiting from the introduction of new algorithms for processing the vast corpora of digitized text. A set of language modeling and feature learning techniques called word embeddings became increasingly popular for NLP tasks. Word2vec (Mikolov et al, 2013) became one of the most famous algorithms for word embeddings, offering a numeric representations of any word, followed by doc2vec (Le et al, 2014), which performed the same task for a paragraph or document.</description>
+      <description>Numeric representation of text documents: doc2vec how it works and how you implement it Authors: Felix Idelberger, Alisa Kolesnikova, Jonathan Mühlenpfordt Introduction Natural language processing (NLP) received a lot of attention from academia and industry over the recent decade, benefiting from the introduction of new algorithms for processing the vast corpora of digitized text. A set of language modeling and feature learning techniques called word embeddings became increasingly popular for NLP tasks.</description>
     </item>
     
     <item>
@@ -27,7 +26,7 @@
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/seminar/05sentimentanalysis/</guid>
-      <description>Sentiment Analysis using Deep Learning Outline  Sentiment Analysis Introduction  Case Study  Keras IMDB Dataset
+      <description>Sentiment Analysis using Deep Learning Authors: Katja Metzger, Aydin Sader Fosalaie, Ninos Yonan Outline  Sentiment Analysis Introduction  Case Study  Keras IMDB Dataset
  Data Analysis
  Word Embeddings
  Convolutional Neural Network

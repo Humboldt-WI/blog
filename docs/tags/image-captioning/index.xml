@@ -6,19 +6,18 @@
     <description>Recent content in Image Captioning on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</copyright>
     <lastBuildDate>Sun, 18 Feb 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/image-captioning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title> Image Captioning</title>
+      <title>Image Captioning</title>
       <link>https://humboldt-wi.github.io/blog/research/seminar/07imagecaptioning/</link>
       <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/seminar/07imagecaptioning/</guid>
-      <description>Introduction Image captioning aims for automatically generating a text that describes the present picture. In the last years it became a topic with growing interest in machine learning and the advances in this field lead to models that (depending on which evaluation) can score even higher than humans do. Image captioning can for instance help visually impaired people to grasp what is happening in a picture. Furthermore, it could enhance the image search of search engines, it could simplify SEO by automatically generating descriptions for the pictures or improve online marketing and customer segmentation by identifying customer interests through interpreting their shared images via social media platforms.</description>
+      <description>Image Captioning Authors: Benjamin Jaidi, Simon Remy, Murat Gökhan Yigit Introduction Image captioning aims for automatically generating a text that describes the present picture. In the last years it became a topic with growing interest in machine learning and the advances in this field lead to models that (depending on which evaluation) can score even higher than humans do. Image captioning can for instance help visually impaired people to grasp what is happening in a picture.</description>
     </item>
     
   </channel>

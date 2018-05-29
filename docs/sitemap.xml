@@ -158,6 +158,12 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/categories/course-projects/</loc>
+    <lastmod>2018-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/deep-learning/</loc>
     <lastmod>2018-03-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -254,12 +260,6 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/recommendation/</loc>
-    <lastmod>2018-03-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/categories/seminar/</loc>
     <lastmod>2018-03-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
