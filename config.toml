@@ -47,11 +47,6 @@ paginate = 10
     url  = "/contact/"
     weight = 7
 
-[[menu.main]]
-        name = "Test"
-        identifier = "/test/"
-        url  = "/test/"
-        weight = 8
 
 # Top bar social links menu
 
