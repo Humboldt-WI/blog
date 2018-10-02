@@ -23,6 +23,11 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/research/seminar/uplift_modeling_blogpost/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/research/seminar/02convolutionalneuralnetworks/</loc>
     <lastmod>2018-03-15T00:00:00+00:00</lastmod>
   </url>
@@ -152,6 +157,12 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/conversion/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks/</loc>
     <lastmod>2018-03-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -159,7 +170,7 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/categories/course-projects/</loc>
-    <lastmod>2018-03-15T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -255,7 +266,7 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/research/</loc>
-    <lastmod>2018-03-15T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -309,6 +320,12 @@
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/transfer-learning/</loc>
     <lastmod>2018-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/uplift/</loc>
+    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -52,6 +52,15 @@ Research Interests  Customer behavior in e-Commerce
     </item>
     
     <item>
+      <title>Uplift Modelling</title>
+      <link>https://humboldt-wi.github.io/blog/research/seminar/uplift_modeling_blogpost/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/seminar/uplift_modeling_blogpost/</guid>
+      <description>Uplift Modeling Blogcode{white-space: pre;}pre:not([class]) {background-color: white;}if (window.hljs) {hljs.configure({languages: []});hljs.initHighlightingOnLoad();if (document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) {window.setTimeout(function() { hljs.initHighlighting(); }, 0);}}h1 {font-size: 34px;}h1.title {font-size: 38px;}h2 {font-size: 30px;}h3 {font-size: 24px;}h4 {font-size: 18px;}h5 {font-size: 16px;}h6 {font-size: 12px;}.</description>
+    </item>
+    
+    <item>
       <title>Convolutional Neural Networks (CNN)</title>
       <link>https://humboldt-wi.github.io/blog/research/seminar/02convolutionalneuralnetworks/</link>
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
