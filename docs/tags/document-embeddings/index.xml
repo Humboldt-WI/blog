@@ -13,10 +13,10 @@
     
     <item>
       <title>Numeric representation of text documents: doc2vec how it works and how you implement it</title>
-      <link>https://humboldt-wi.github.io/blog/research/seminar/04topicmodels/</link>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1718/04topicmodels/</link>
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://humboldt-wi.github.io/blog/research/seminar/04topicmodels/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/04topicmodels/</guid>
       <description>Numeric representation of text documents: doc2vec how it works and how you implement it Authors: Felix Idelberger, Alisa Kolesnikova, Jonathan Mühlenpfordt Introduction Natural language processing (NLP) received a lot of attention from academia and industry over the recent decade, benefiting from the introduction of new algorithms for processing the vast corpora of digitized text. A set of language modeling and feature learning techniques called word embeddings became increasingly popular for NLP tasks.</description>
     </item>
     

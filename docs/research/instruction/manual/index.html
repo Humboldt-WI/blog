@@ -17,7 +17,7 @@
   <meta name="description" content=" A Manual on How To Write a Blog Post">
   
 
-  <meta name="generator" content="Hugo 0.41" />
+  <meta name="generator" content="Hugo 0.54.0" />
 
   <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
 
@@ -307,7 +307,7 @@ Quit this running process with <code>Ctrl + C</code>, if you are done or want to
 <a href="https://gohugo.io/getting-started/directory-structure/">https://gohugo.io/getting-started/directory-structure/</a>
 <br>
 <br>
- <code>content</code> as the name says is where the files are stored for each site of the overall website. Hugo works with markdown files, which you will learn in more detail in 4).</p>
+ <code>content</code> as the name says is where the files are stored for each site of the overall website. Hugo works with html code that can be exported from jupyter notebooks directly and with markdown files, which you will learn in more detail in 4).</p>
 
 <p>When working with Hugo it is essential to know where which information is stored. Within the content folder, you can see two folders and two markdown files. The folders represent a group of sites. The mardown files represent a single site of the website. From these files, Hugo is building the menu of the website.</p>
 
@@ -391,10 +391,11 @@ From an marketing point of view it is good to make use of the following features
 
 <p><br></p>
 
-<h2 id="4-how-to-create-a-blog-post-with-markdown-1">4) How to create a blog post with Markdown</h2>
+<h2 id="4-how-to-create-a-blog-post">4) How to create a blog post</h2>
 
 <p><br>
-You can use any text editor to edit your Markdown file.
+You can use any text editor to edit your html or Markdown file. If you create a html file, you will need to copy the Markdown header
+below to the beginning of your document.
 (I personally use Atom. Some packages, such as Markdown Writer and Markdown Preview, make it easier to write Markdown.)</p>
 
 <p>Here you can find a simple guide of Markdown syntax:
@@ -409,7 +410,7 @@ Once opening your draft, you will see the header as following:
 title = &quot;Sample Post&quot;
 date = '2017-12-14'
 tags = [ &quot;Deep Learning&quot;, &quot;Neural Networks&quot;, &quot;Class17/18&quot;,]
-categories = [&quot;instruction&quot;]
+categories = [&quot;Course projects&quot;]
 banner = &quot;img/seminar/sample/hu-logo.jpg&quot;
 author = &quot;Class of Winter Term 2017 / 2018&quot;
 disqusShortname = &quot;https-wisample-github-io-blog&quot;
@@ -421,9 +422,10 @@ description = &quot; A Sample Post&quot;
 <br>
 Although we have pre-defined some of the variables in the header, there are many variables you still need to customize.
 <br>
-<b>Varibles have to be customized:</b></p>
+<b>Varibles that have to be customized:</b></p>
 
 <ul>
+<li><code>author</code> Use the class description as the author here and state your individual names at the beginning of your blog post.</li>
 <li><code>date</code>
 The time you publish your post; should follow the format <code>'YYYY-MM-DD'</code></li>
 <li><code>description</code>
@@ -431,7 +433,7 @@ One sentence description of your post</li>
 <li><code>banner</code>A image represents your topic the most; will show up in the content list page; details see below</li>
 </ul>
 
-<p><b>Varibles can be modified:</b></p>
+<p><b>Varibles that can be modified:</b></p>
 
 <ul>
 <li><code>title</code>
@@ -444,7 +446,6 @@ We have predined tags for each topic. You can add or change some, if you feel ne
 
 <ul>
 <li><code>categories</code></li>
-<li><code>author</code></li>
 <li><code>disqusShortname</code></li>
 </ul>
 
@@ -457,7 +458,7 @@ We have predined tags for each topic. You can add or change some, if you feel ne
 <pre><code>banner = &quot;img/seminar/sample/hu-logo.jpg&quot;
 </code></pre>
 
-<p>In order to customize the banner, you should change the path <code>img/seminar/sample/hu-logo.jpg</code></p>
+<p>In order to customize the banner, you should change the path <code>img/seminar/hu-logo.jpg</code></p>
 
 <p>All images are saved under the <code>static</code> section.
 We have created image folders for each group in the <code>seminar</code> folder under <code>static</code>.</p>
@@ -968,7 +969,7 @@ MathJax.Hub.Config({
     
 
     
-<script>
+<script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

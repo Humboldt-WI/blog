@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neural Networks into Production</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="An introduction to deploy the deep learning model">
+  
+
+  <meta name="generator" content="Hugo 0.54.0" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="https://humboldt-wi.github.io/blog/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="https://humboldt-wi.github.io/blog/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="https://humboldt-wi.github.io/blog/img/apple-touch-icon.png" />
+  
+
+  <link href="https://humboldt-wi.github.io/blog/css/owl.carousel.css" rel="stylesheet">
+  <link href="https://humboldt-wi.github.io/blog/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://humboldt-wi.github.io/index.xml" type="application/rss+xml" title="Institute of Infomation Systems at HU-Berlin">
+
+  
+  <meta property="og:title" content="Neural Networks into Production" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/research/information_systems_1718/09deeplearningintoproduction//" />
+  <meta property="og:image" content="img/logoGross.png" />
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://humboldt-wi.github.io/blog/">
+                    <img src="https://humboldt-wi.github.io/blog/img/logo.png" alt="Neural Networks into Production logo" class="hidden-xs hidden-sm">
+                    <img src="https://humboldt-wi.github.io/blog/img/logo-small.png" alt="Neural Networks into Production logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Neural Networks into Production - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/news/">News</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/contributors/">Contributors</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/research/">research</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Neural Networks into Production</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Seminar Information Systems (WS17/18)</a> | December 14, 2017</p>
+
+                        <div id="post-content">
+                          
+
+<h1 id="neural-networks-into-production">Neural Networks into Production</h1>
+
+<h4 id="authors-mahdi-bayat-denis-augusto-pinto-maciel-roman-proskalovich">Authors: Mahdi Bayat, Denis Augusto Pinto Maciel, Roman Proskalovich</h4>
+
+<h2 id="motivation">Motivation</h2>
+
+<p>Training and tuning machine learning model is a hard task. There are many variables involved that can make or break your results. However, also very important is, after fine tuning your model, to be able to deploy it, so it can be accessed by other researchers, developers and applications.</p>
+
+<p>A very common way to accomplish that is by using an API.</p>
+
+<h2 id="use-case">Use Case</h2>
+
+<p>As a data scientist, you will need to interact with other professionals that don&rsquo;t have the same expertise that you have when it comes to quantitative models. They will be very interested in the predictions your models are able to deliver, but not so much in the technicalities it involves.</p>
+
+<p>Imagine you work for a fashion online shop and are faced with the task of creating a model to predict which clothes are likely to fit the customer&rsquo;s body. You get as input whole-body pictures of some customers and their purchase history. You decide to tackle the problem using deep learning and mange to create a very good model. After some discussion, the management level of your company decides that the results are good enough and that they want to offer this new feature on their online shop. The workflow of the app is simple: the customer uploads a picture of herself and receives a suggestions stemming from your algorithm.</p>
+
+<p>To you, this means the model, which has run so far on your machine, needs to be deployed to a server and be accessible to the whole application. Most likely the frontend part of the online shop will receive the image uploaded by the customer and send its pixels to your model. The frontend developer is not interested in how pixels turn into prediction. She merely wants to send the picture and get back the IDs of the suggested products, so they can be displayed.</p>
+
+<p>Considering everything, you decide to build an API. Here we will walk you through the process of deploying a deep learning model via an API. Instead of customer&rsquo;s pictures, we will use handwritten digits and employ the model to predict what digit it is. And instead of a frontend mobile application, an R session will be querying the API and consuming the predictions.</p>
+
+<h2 id="reproducibility-with-conda-environments">Reproducibility with Conda Environments</h2>
+
+<p>It&rsquo;s good practice to create a Conda environment to train and later deploy our model. By doing that, a fresh version of Python is installed. It will only have access to the packages you explicitly install while in the environment. This has some advantages:</p>
+
+<ul>
+<li>you won&rsquo;t fall into the <em>gotchas</em> of depending on a package you have previously installed and have forgotten to install on the server. With a simple command, you can get a snapshot of all the packages used in an environment.</li>
+<li>your results can easily be shared with and reproduced by other researchers.</li>
+<li>you have direct control over the versions of your package. Different environments can have different of packages. Often models require different versions of packages (or even of Python itself) to run properly. This way you are free from the burden of uninstalling and reinstalling specific versions of a package depending on the project you want to work on.</li>
+<li>it reduces the size of the application, when putting it to production. You will only install the strictly necessary packages to run the model. Packages you might have installed for other projects and are present in the global installation of Python, won&rsquo;t be installed.</li>
+</ul>
+
+<h3 id="creating-new-environments">Creating new environments</h3>
+
+<p>Our environment will be called <code>dl-in-production</code>. It will use Python version 3.6.4 and we install the packages <code>keras</code>, <code>pandas</code> and <code>flask</code>. To do that, run the following command:</p>
+
+<pre><code class="language-bash">conda create --name dl-in-production python=3.6.4 keras flask jupyter pandas
+</code></pre>
+
+<p>After doing that, you will be presented with the list of dependencies which need also to be installed. Agree to install them by typing <code>yes</code> and the installation will begin.</p>
+
+<p>After few minutes, our newly created environment should be ready to use. To enter it, run the command below if you are using macOS or Linux:</p>
+
+<pre><code class="language-bash">source activate dl-in-production
+</code></pre>
+
+<p>For Windows users, the command must be the:</p>
+
+<pre><code class="language-bash">activate dl-in-production
+</code></pre>
+
+<p>To make sure you are using a complete independent version of Python, run the commands:</p>
+
+<pre><code class="language-bash">which python
+python --version
+</code></pre>
+
+<p>You will see that Python&rsquo;s binary inside the <code>dl-in-production</code> environment is in a different path than the global installation. In my case, it&rsquo;s in <code>~/miniconda3/envs/dl-in-production/bin/python</code>. And the version is exactly the one we specified when creating the environment: <code>Python 3.6.4</code>.</p>
+
+<h3 id="installing-extra-packages">Installing extra packages</h3>
+
+<p>Not all packages must be installed at once. If you find out you need to install an extra package to your environment, make sure you have activated environment and run the command below. The package will be available to usage.</p>
+
+<pre><code class="language-bash">conda install &lt;package-name&gt;
+</code></pre>
+
+<p>In fact, there is one extra package, we need to install to be able to use our freshly installed version of Python from within a Jupyter notebook. The <code>nb_conda</code> package is very handy and makes possible to choose pick every single environment you have created from within a Jupyter notebook without having to leave it.</p>
+
+<pre><code class="language-bash">conda install nb_conda
+</code></pre>
+
+<p>After starting a notebook, go to <code>Kernel &gt; Change kernel</code> in the menu and choose the Kernel of your like.</p>
+
+<p><img src="img/seminar/nn_fundamentals/img/jupyter-change-env.png" alt="How to change environment in a Jupyter notebook" /></p>
+
+<p>Conda environments is a very rich utility. We have only scratched its surface so far. Further details on how to create and manage environments can be found <a href="https://conda.io/docs/user-guide/tasks/manage-environments.html">here</a>.</p>
+
+<h3 id="sharing-your-environment">Sharing your environment</h3>
+
+<p>Once you are done with your model and want to share it with others or want to install all the necessary packages to run it on a server, you can take a snapshot of the environment by running:</p>
+
+<pre><code class="language-bash">conda list --export &gt; requirements.txt
+</code></pre>
+
+<p>This will save the list of all the packages available in <code>dl-in-production</code> to <code>requirements.txt</code>. Now you can share the code together with <code>requirements.txt</code> and the only thing your audience needs to do to recreate your environment is to create a brand new environment on their machine by running the <code>conda create</code> command and passing the requirements file as an argument.</p>
+
+<pre><code class="language-bash">conda create --name dl-in-prodution --file requirements.txt
+</code></pre>
+
+<h2 id="training-the-model">Training the model</h2>
+
+<p>The model we will deploy was trained using <a href="https://keras.io/">Keras</a>. All the steps taken to build it are documented in <a href="!!!">this jupyter notebook</a>. It&rsquo;s important to know that we saved the model in the <code>model.h5</code> file.</p>
+
+<h2 id="building-an-api">Building an API</h2>
+
+<p>We will deploy our model with Flask. Flask is a lightweight web framework written in Python. But before deploying our real model, we will create a toy application, so the reader can have a quick glimpse at how Flask works.</p>
+
+<h3 id="toy-app">Toy App</h3>
+
+<p>To create our very first Flask app, copy and paste the following code into a file and name it <code>toy-app.py</code>.</p>
+
+<pre><code class="language-python">from flask import Flask
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def hello():
+    return 'Hello World!'
+
+
+@app.route('/another-greeting')
+def hi_there():
+    return 'Hi there!'
+
+
+@app.route('/square/&lt;number&gt;')
+def square(number):
+    number = float(number)
+    return f&quot;The square of {number} is {number**2}&quot;
+</code></pre>
+
+<p>Then got to the terminal and run:</p>
+
+<pre><code class="language-bash">FLASK_APP=toy-app.py flask run
+</code></pre>
+
+<p>The command will spin up a server on your machine and you will be able to access it though your browser by going to this URL <code>http://localhost:5000/</code>. That&rsquo;s it. We have implemented our first application. Our mini web application has three endpoints that can be accessed with any browser. You can go to:</p>
+
+<ul>
+<li><code>http://localhost:5000/</code> and receive a nice Hello World! or to</li>
+<li><code>http://localhost:5000/another-greeting</code> if you prefer a &ldquo;Hi there!&rdquo; instead or to</li>
+<li><code>http://localhost:5000/square/15</code> and discover that 15 squared equals 225.</li>
+</ul>
+
+<p>As you can see, our API not only renders static pages but can receive and process inputs from the client such as the number 15 we passed to the <code>square/&lt;number&gt;</code> endpoint. In fact, any client capable of sending HTTP requests can interact with our application. You can even do that via the command line using curl. Try running the following commands:</p>
+
+<pre><code class="language-bash">curl http://localhost:5000/square/99
+</code></pre>
+
+<h3 id="real-app">Real App</h3>
+
+<p>Awesome. Now that we have an app running and got a first grasp of how Flask works, we can adapt the structure of the code to make it serve our deep learning model.</p>
+
+<p>It takes around 30 lines of code to create an Flask app that serves our model:</p>
+
+<pre><code class="language-python">from flask import Flask, jsonify, request
+from keras.models import load_model
+import numpy as np
+
+app = Flask(__name__)
+
+model = load_model('model.h5')
+
+
+@app.route('/home', methods=['GET'])
+def home():
+    return &quot;&quot;&quot;
+    Hi! This is a Flask app.
+    You can get some predictions by hitting the /predictions endpoint.
+    &quot;&quot;&quot;
+
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    # get all the data passed by the client in the request
+    data_client = request.get_json()
+
+    input_data = data_client['input']
+
+    input_array = np.array(input_data, dtype=float)/255
+    out = model.predict(input_array)
+    out = np.ndarray.tolist(out)
+
+    return jsonify(out)
+
+
+if __name__ == 'main':
+    app.run(port=8080, debug=True)
+</code></pre>
+
+<p>First, the necessary packages are imported and a Flask app object is instantiated. Also, the trained model is loaded to memory. The model, which was saved in the <code>model.h5</code> file, is now available across the Flask application and can be called from anywhere to deliver its predictions.</p>
+
+<p>Our API has two endpoints:</p>
+
+<ul>
+<li><code>/home</code> tells you what the app is about. It is included there, so we can rapidly test if the most basically functionalities are working correctly once we try to deploy the model.</li>
+<li><code>/prediction</code> is where the magic really happens and we will go through it in detail.</li>
+</ul>
+
+<p>The first thing to notice is that the method for this endpoint is <code>POST</code> instead of <code>GET</code>. This is necessary since the <code>prediciton</code> endpoint is expecting to receive the image&rsquo;s pixels as JSON in the body of the request. The correct way to it is to make a <code>POST</code> request according to <a href="https://tools.ietf.org/html/rfc2616">HTTP</a>.</p>
+
+<p>Once the endpoint is activated by an incoming request, it calls the <code>get_json</code> function from Flask&rsquo;s <code>request</code> submodule and transforms the JSON body of the request into a Python dictionary. Our API was designed in such a way that it expects the data to be passed in a field called <code>input</code>. In case we were to make our API available to the public, this should definitely be documented, so other developers know <em>how</em> to pass the data. The next step is to isolate the input and transform it into a numpy array.</p>
+
+<pre><code class="language-python">    data_client = request.get_json()
+    input_data = data_client['input']
+    input_array = np.array(input_data, dtype=float)/255
+</code></pre>
+
+<p>Then, we run the predictions on the received data, transform it into a list, transform the list to JSON and finally send it back to the client in the response.</p>
+
+<pre><code class="language-python">    out = model.predict(input_array)
+    out = np.ndarray.tolist(out)
+
+    return jsonify(out)
+</code></pre>
+
+<p>That&rsquo;s it. We have just written a fully functioning API and we are ready to test it. First, let&rsquo;s spin it up by running:</p>
+
+<pre><code class="language-bash">export FLASK_APP=app.py
+flask run
+</code></pre>
+
+<p>Test if the app&rsquo;s basic functionalities by going to <code>http://localhost:5000/home</code>. Did you get the expected message? Does everything work fine?</p>
+
+<p>Let&rsquo;s then test the core function of our API, namely the prediction endpoint. To do that, we will use R. It doesn&rsquo;t matter which tool we use to test our API. It could as well be a React app written in JavaScript making the requests (which would likely be the case in the fashion online shop example above). What is important to notice is that our API is capable of communicating with any application that can send HTTP requests. We chose R here because it is likely that data scientist will have some familiarity with it.</p>
+
+<p>This is the code we will use to test the <code>prediction</code> endpoint of our API.</p>
+
+<pre><code class="language-R">library(httr)
+library(tidyverse)
+
+# Read in the MNIST test dataset
+test &lt;- read_csv(&quot;./data/mnist_test.csv&quot;, col_names = FALSE)
+
+# Rename the first column to name and add id
+test &lt;- test %&gt;%
+  rename(labels = X1) %&gt;%
+  mutate(ids = 1:nrow(.)) %&gt;%
+  select(ids, labels, everything())
+
+# Pick one digit and sample n_samples of it to get prediction for
+digit &lt;- 2L
+n_samples &lt;- 500
+
+test_filtered &lt;- test %&gt;%
+  filter(labels == digit) %&gt;%
+  sample_n(n_samples)
+
+ids &lt;- test_filtered$ids
+labels &lt;- test_filtered$labels
+
+features &lt;- test_filtered %&gt;%
+  select(matches(&quot;X\\d{1,3}&quot;)) %&gt;%
+  as.matrix()
+
+body &lt;- list(input = features)
+r &lt;- httr::POST(&quot;http://localhost:5000/predict&quot;,
+                body = body,
+                encode = &quot;json&quot;)
+r_content &lt;- content(r)
+
+prediction_prob &lt;- r_content %&gt;%
+  map(~ unlist(.x)) %&gt;%
+  unlist()
+
+df &lt;- data_frame(
+  prediction_prob,
+  digit,
+  ids = ids %&gt;%
+    map(~ rep(.x, 10)) %&gt;%
+    unlist()
+  ) %&gt;%
+  group_by(ids) %&gt;%
+  mutate(
+    is_max_prob = prediction_prob == max(prediction_prob),
+    pred_label = as.integer(row_number() - 1)
+  ) %&gt;%
+  ungroup()
+</code></pre>
+
+<p>Let&rsquo;s go through the code to understand what it is doing. First, we need to load the MNIST test dataset into R and slightly transform it. We add an <code>id</code> column and rename the label column from <code>X1</code> to <code>labels</code>.</p>
+
+<p>Then we filter some observations to get predictions for. Here we chose 500 images of the digit 2 to send to the API. We are sending only the pixel values for each picture. Labels and ids are kept out, since the model is neither allowed to see the digits &ndash; that&rsquo;s the whole point of the prediction &ndash; nor is it expecting to have a label or id column in the request body. The <code>features</code> matrix is the data we are going to send over.</p>
+
+<pre><code class="language-R"># Pick one digit and sample n_samples of it to get prediction for
+digit &lt;- 2L
+n_samples &lt;- 500
+
+test_filtered &lt;- test %&gt;%
+  filter(labels == digit) %&gt;%
+  sample_n(n_samples)
+
+ids &lt;- test_filtered$ids
+labels &lt;- test_filtered$labels
+
+features &lt;- test_filtered %&gt;%
+  select(matches(&quot;X\\d{1,3}&quot;)) %&gt;%
+  as.matrix()
+</code></pre>
+
+<p>The <code>httr</code> package makes it very simple to send HTTP requests. We wrap the <code>feature</code> matrix in a named list under the <code>input</code> field, which is the field in the request body our API is expecting to find the data. We use the <code>POST</code> function and pass &ldquo;json&rdquo; to the <code>encode</code> argument. <code>httr</code> converts out data automatically from a list to JSON and sends it over to the API.</p>
+
+<p>The API processes the request and send back a prediction, which is stored in a response object <code>r</code>. We can access the response sent by the API by applying the <code>content</code> function to it.</p>
+
+<p>The response came back as JSON and was automatically transformed into a hairy, nested R list. Some data wrangling is necessary to finally get to a vector of probabilities. The vector has 10 entries for each observation, each entry corresponds to the probability associated to one of the nine possible digits.</p>
+
+<pre><code class="language-R">body &lt;- list(input = features)
+r &lt;- httr::POST(&quot;http://localhost:5000/predict&quot;,
+                body = body,
+                encode = &quot;json&quot;)
+r_content &lt;- content(r)
+
+prediction_prob &lt;- r_content %&gt;%
+  map(~ unlist(.x)) %&gt;%
+  unlist()
+</code></pre>
+
+<p>We construct a dataframe to have predicted probabilities, ids and real digit label
+all in one place.</p>
+
+<pre><code class="language-R">df &lt;- data_frame(
+  prediction_prob,
+  digit,
+  ids = ids %&gt;%
+    map(~ rep(.x, 10)) %&gt;%
+    unlist()
+  ) %&gt;%
+  group_by(ids) %&gt;%
+  mutate(
+    is_max_prob = prediction_prob == max(prediction_prob),
+    pred_label = as.integer(row_number() - 1)
+  ) %&gt;%
+  ungroup()
+</code></pre>
+
+<p>We are finally able to inspect how good a predictor our deployed model is. From the 500 digits, 492 were correctly classified as 2.</p>
+
+<pre><code class="language-R">df %&gt;%
+  filter(is_max_prob) %&gt;%
+  mutate(is_correct_prediction = digit == pred_label) %&gt;%
+  pull(is_correct_prediction) %&gt;%
+  table()
+</code></pre>
+
+<pre><code class="language-bash"># FALSE  TRUE
+#     8   492
+</code></pre>
+
+<p>Three times has our model labelled a <code>2</code> as a <code>3</code> and twice as a <code>0</code>. The plot below shows <em>how</em> the <code>2</code>s were misclassified.</p>
+
+<pre><code class="language-R">p &lt;- df %&gt;%
+  filter(is_max_prob) %&gt;%
+  count(pred_label) %&gt;%
+  filter(n != max(n)) %&gt;%
+  mutate(pred_label = factor(pred_label, levels = 0:9)) %&gt;%
+  ggplot(aes(x = pred_label, y = n)) +
+  geom_col() +
+  scale_x_discrete(drop = FALSE) +
+  labs(title = glue::glue(&quot;Wrong predictions count for digit {digit}&quot;),
+       y = NULL,
+       x = &quot;Predicted Label&quot;) +
+  theme_minimal()
+p
+</code></pre>
+
+<p><img align="center" width="800" height="400" src="/blog/img/seminar/nn_fundamentals/img/wrong_predictions.jpeg"></p>
+
+<h2 id="deploy-to-heroku">Deploy to Heroku</h2>
+
+<p>We are finally ready for the last step: deploy our API on the web so anyone with an Internet connection can have access to it.</p>
+
+<p>There are many options on the market to accomplish that. We chose to use <a href="https://www.heroku.com/">Heroku</a> here because it is very simple and it allows us to deploy our API for free (at least until it reaches a certain limit of resource consumption).</p>
+
+<p>You will have to create a Heroku account if you still want to follow along. After creating the account, you will be able to log to your Heroku dashboard and from there you can create a new Heroku app. We have named our app <code>flask-digit-classifier</code>.</p>
+
+<p>The way the deployment will is the following:</p>
+
+<ul>
+<li>we will create a git repository in the folder we have our application</li>
+<li>set an upstream branch a link it to Heroku&rsquo;s CLI</li>
+<li>commit and push the necessary files to run the app to the upstream branch and let Heroku do the hard lifting.</li>
+</ul>
+
+<p>Thus, you will also need to install:</p>
+
+<ul>
+<li><a href="https://git-scm.com/">git</a></li>
+<li><a href="https://devcenter.heroku.com/articles/heroku-cli">Heroku Command Line Interface</a></li>
+</ul>
+
+<p>After installing Heroku CLI, login with the credentials of your newly created account by running:</p>
+
+<pre><code class="language-bash">heroku login
+</code></pre>
+
+<p>We also need to explicit tell Heroku what our dependencies are. Before creating <code>requeriments.txt</code>, there is one extra package we need to install in order to deploy our model. <code>gunicorn</code> will be our HTTP server, because its more suitable to production environment than Flask&rsquo;s builtin option.</p>
+
+<pre><code class="language-bash">pip install gunicorn
+pip freeze &gt; requirements.txt
+</code></pre>
+
+<p>We will use <code>pip</code> to replicate our local Python environment on the server. At the time of the writing, you cannot install via <code>pip</code> the <code>nb_conda</code> package that was used in order for us to have access via Jupyter notebook to the various conda environments. So we need to exclude them from our <code>requirements.txt</code>, otherwise we get an error. Remove from <code>requirements.txt</code> the following lines:</p>
+
+<pre><code class="language-bash">nb-conda==2.2.1
+nb-conda-kernels==2.1.0
+</code></pre>
+
+<p>We need now to create the <code>Procfile</code> file with instructions to Heroku on how to deploy our app. Create a new file called <code>Procfile</code> (make sure <strong>not</strong> to add any extensions such as <code>.txt</code> to it) and write the single line below in it:</p>
+
+<pre><code class="language-bash">web: gunicorn app:app
+</code></pre>
+
+<p>We are ready to transform our folder into a git repository and set Heroku as a remote repository.</p>
+
+<pre><code class="language-bash">git init
+heroku git:remote -a flask-digit-classifier
+</code></pre>
+
+<p>We can finally add and commit the necessary files to run our API. A refresher on the content and function of each file:</p>
+
+<ul>
+<li><code>app.py</code> contains our Flask API.</li>
+<li><code>model.h5</code> contains our trained model that will be loaded by the Flask app.</li>
+<li><code>requirements.txt</code> contains the list of the packages needed for our API to run.</li>
+<li><code>Procfile</code> contains instructions on how Heroku should deploy our app.</li>
+</ul>
+
+<p>That&rsquo;s it. Add and commit the files and push it to Heroku&rsquo;s remote branch.</p>
+
+<pre><code class="language-bash">git add Procfile app.py model.h5 requirements.txt
+git commit -m 'initial commit'
+git push --set-upstream heroku master
+</code></pre>
+
+<p>The files will be uploaded and the application deployed. You can follow the status of the deployment in the command line or in the browser with Heroku&rsquo;s dashboard.</p>
+
+<p>In our case, our app was deployed to <code>https://flask-digit-classifier.herokuapp.com/</code>. You can run all the test we implemented before (both with the browser and with R) simply by changing <code>http://localhost:5000/</code> for your newly deployed app&rsquo;s URL.</p>
+
+<h2 id="shiny-app">Shiny App</h2>
+
+<p>Whew! We hope you made thus far. As a surprise we have developed a slightly more sophisticated client for our API. We created a Shiny App to help you visualize how the model makes its predictions and where it falls short.</p>
+
+<p><img align="center" width="800" height="400" src="/blog/img/seminar/nn_fundamentals/img/shiny-app-digit-recognition.png"></p>
+
+<!-- ![Shiny App for Digit Recognition](/blog/img/seminar/nn_fundamentals/img/shiny-app-digit-recognition.png) -->
+
+<p>Here you have links for:</p>
+
+<ul>
+<li><strong>Shiny App</strong>: <a href="https://denismaciel.shinyapps.io/digit-classification">https://denismaciel.shinyapps.io/digit-classification</a></li>
+<li><strong>Flask API</strong>: <a href="https://flask-digit-classifier.herokuapp.com/home">https://flask-digit-classifier.herokuapp.com/home</a></li>
+</ul>
+
+<p>The API sending the predictions is exactly the same one we just built and deployed to Heroku. The Shiny App is deployed on a completely different platform and is communicating with the Flask API over the Internet. Quite neat, right?</p>
+
+<p>If you got lost somewhere along the way, you can find all the code used here in the following repository:</p>
+
+<ul>
+<li><a href="https://github.com/denismaciel/foundations-of-deep-learning">https://github.com/denismaciel/foundations-of-deep-learning</a></li>
+</ul>
+
+<p>We hope this tutorial has helped you to deploy your very own deep learning model! If anything&rsquo;s still unclear, don&rsquo;t hesitate to get in touch. Drop us a line at denispmaciel@gmail.com.</p>
+
+                        </div>
+                        
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (10)</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/instruction">instruction (2)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/blockchain"><i class="fa fa-tags"></i> blockchain</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class17/18"><i class="fa fa-tags"></i> class17/18</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/conversion"><i class="fa fa-tags"></i> conversion</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks"><i class="fa fa-tags"></i> convolutional-neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/deep-learning"><i class="fa fa-tags"></i> deep-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/distant-transfer-learning"><i class="fa fa-tags"></i> distant-transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/doc2vec"><i class="fa fa-tags"></i> doc2vec</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/document-embeddings"><i class="fa fa-tags"></i> document-embeddings</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-analysis"><i class="fa fa-tags"></i> image-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-captioning"><i class="fa fa-tags"></i> image-captioning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset"><i class="fa fa-tags"></i> keras-imdb-dataset</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/long-short-term-memory"><i class="fa fa-tags"></i> long-short-term-memory</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lstm"><i class="fa fa-tags"></i> lstm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/movie-reviews"><i class="fa fa-tags"></i> movie-reviews</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/neural-networks"><i class="fa fa-tags"></i> neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommendation"><i class="fa fa-tags"></i> recommendation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-analysis"><i class="fa fa-tags"></i> sentiment-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-classification"><i class="fa fa-tags"></i> sentiment-classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/share-price-prediction"><i class="fa fa-tags"></i> share-price-prediction</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-mining"><i class="fa fa-tags"></i> text-mining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series"><i class="fa fa-tags"></i> time-series</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series-forecasting"><i class="fa fa-tags"></i> time-series-forecasting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/transfer-learning"><i class="fa fa-tags"></i> transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift"><i class="fa fa-tags"></i> uplift</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<footer id="footer">
+    <div class="container">
+
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            
+
+            
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+            
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-112025566-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+
+<script src="//maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+<script src="https://humboldt-wi.github.io/blog/js/hpneo.gmaps.js"></script>
+<script src="https://humboldt-wi.github.io/blog/js/gmaps.init.js"></script>
+<script src="https://humboldt-wi.github.io/blog/js/front.js"></script>
+
+
+<script src="https://humboldt-wi.github.io/blog/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

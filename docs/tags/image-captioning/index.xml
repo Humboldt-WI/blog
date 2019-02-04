@@ -13,10 +13,10 @@
     
     <item>
       <title>Image Captioning</title>
-      <link>https://humboldt-wi.github.io/blog/research/seminar/07imagecaptioning/</link>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1718/07imagecaptioning/</link>
       <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://humboldt-wi.github.io/blog/research/seminar/07imagecaptioning/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/07imagecaptioning/</guid>
       <description>Image Captioning Authors: Benjamin Jaidi, Simon Remy, Murat Gökhan Yigit Introduction Image captioning aims for automatically generating a text that describes the present picture. In the last years it became a topic with growing interest in machine learning and the advances in this field lead to models that (depending on which evaluation) can score even higher than humans do. Image captioning can for instance help visually impaired people to grasp what is happening in a picture.</description>
     </item>
     

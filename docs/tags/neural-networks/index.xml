@@ -13,19 +13,19 @@
     
     <item>
       <title>Neural Network Fundamentals</title>
-      <link>https://humboldt-wi.github.io/blog/research/seminar/01neuralnetworkfundamentals/</link>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1718/01neuralnetworkfundamentals/</link>
       <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://humboldt-wi.github.io/blog/research/seminar/01neuralnetworkfundamentals/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/01neuralnetworkfundamentals/</guid>
       <description>Neural Network Fundamentals Authors: Mahdi Bayat, Denis Augusto Pinto Maciel, Roman Proskalovich This blog post is a guide to help readers build a neural network from the very basics. It starts with an introduction to the concept of a neural networks concept and its early development. A step-by-step coding tutorial follows, through which relevant concepts are illustrated. Later in the post, there is also an introduction on how to build neural networks in Keras.</description>
     </item>
     
     <item>
       <title>Neural Networks into Production</title>
-      <link>https://humboldt-wi.github.io/blog/research/seminar/09deeplearningintoproduction/</link>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1718/09deeplearningintoproduction/</link>
       <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>https://humboldt-wi.github.io/blog/research/seminar/09deeplearningintoproduction/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/09deeplearningintoproduction/</guid>
       <description>Neural Networks into Production Authors: Mahdi Bayat, Denis Augusto Pinto Maciel, Roman Proskalovich Motivation Training and tuning machine learning model is a hard task. There are many variables involved that can make or break your results. However, also very important is, after fine tuning your model, to be able to deploy it, so it can be accessed by other researchers, developers and applications.
 A very common way to accomplish that is by using an API.</description>
     </item>
