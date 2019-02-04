@@ -66,9 +66,9 @@ More information about his person can be found [here.][bioHaupt] In the course o
 [<img align="right" width="174" height="245"  src="/blog/img/team/class1718(2).PNG">](https://humboldt-wi.github.io/blog/member/class1718/)
 
 
-### Class of Winter Term 17 / 18
+### Class of Winter Term 17/18
 
-The students of the Seminar Information Systems contributed to this website to great extend. Groups of Master students from Humboldt University with backgrounds
+The students of the Seminar Information Systems contribute to this website to great extend. Groups of Master students from Humboldt University with backgrounds
 in Business, Economics, Statistics or Computer Science worked on analytical topics and created blog posts, presenting exciting insights into the following topis:
 
 - Neural Networks and Convolutional Neural Networks
@@ -78,7 +78,21 @@ in Business, Economics, Statistics or Computer Science worked on analytical topi
 - Survial Analysis
 - Image Captioning
 - Deep Learning and Recommender Systems
+-----
 
+### Class of Winter Term 18/19
+
+The students of the Seminar Information Systems contribute to this website to great extend. Groups of Master students from Humboldt University with backgrounds
+in Business, Economics, Statistics or Computer Science worked on analytical topics and created blog posts, presenting exciting insights into the following topis:
+
+- Unsupervised Neural Networks: GANs and Variational Autoencoders
+- DL for sequential data: GRU, LSTM, and beyond 
+- DL for sequential data: Temporal convolutional neural networks 
+- Embed, encode, attend, predict: state-of-the-art in text analysis 
+- Hierarchical Attention for text classification & sentiment analysis 
+- Bayesian text analysis and topic modeling 
+- Uncertainty and Bayesian Deep Learning 
+- Opening the black-box: state-of-the-art in explaining opaque ML/DL models
 
 <br />
 <br />

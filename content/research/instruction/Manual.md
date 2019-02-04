@@ -123,7 +123,7 @@ Not every folder is relevant for you as an editor (Hugo of course needs all of t
 https://gohugo.io/getting-started/directory-structure/
 <br>
 <br>
- ``content`` as the name says is where the files are stored for each site of the overall website. Hugo works with markdown files, which you will learn in more detail in 4).
+ ``content`` as the name says is where the files are stored for each site of the overall website. Hugo works with html code that can be exported from jupyter notebooks directly and with markdown files, which you will learn in more detail in 4).
 
 When working with Hugo it is essential to know where which information is stored. Within the content folder, you can see two folders and two markdown files. The folders represent a group of sites. The mardown files represent a single site of the website. From these files, Hugo is building the menu of the website.
 
@@ -207,9 +207,10 @@ From an marketing point of view it is good to make use of the following features
 
 
 <br>
-## 4) How to create a blog post with Markdown
+## 4) How to create a blog post
 <br>
-You can use any text editor to edit your Markdown file.
+You can use any text editor to edit your html or Markdown file. If you create a html file, you will need to copy the Markdown header
+below to the beginning of your document.
 (I personally use Atom. Some packages, such as Markdown Writer and Markdown Preview, make it easier to write Markdown.)
 
 Here you can find a simple guide of Markdown syntax:
@@ -225,7 +226,7 @@ Once opening your draft, you will see the header as following:
 title = "Sample Post"
 date = '2017-12-14'
 tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
-categories = ["instruction"]
+categories = ["Course projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-wisample-github-io-blog"
@@ -236,15 +237,16 @@ description = " A Sample Post"
 <br>
 Although we have pre-defined some of the variables in the header, there are many variables you still need to customize.
 <br>
-<b>Varibles have to be customized:</b>
+<b>Varibles that have to be customized:</b>
 
+* ``author`` Use the class description as the author here and state your individual names at the beginning of your blog post. 
 * ``date``
   The time you publish your post; should follow the format ``'YYYY-MM-DD'``
 * ``description``
   One sentence description of your post
 * ``banner``A image represents your topic the most; will show up in the content list page; details see below
 
-<b>Varibles can be modified:</b>
+<b>Varibles that can be modified:</b>
 
 * ``title``
   The title of your post.
@@ -254,7 +256,6 @@ Although we have pre-defined some of the variables in the header, there are many
 <b>Varibles don't need to be modified:</b>
 
 * ``categories``
-* ``author``
 * ``disqusShortname``
 
 <br>
@@ -264,7 +265,7 @@ You can see the variable ``banner`` displays as following in the header:
 ```
 banner = "img/seminar/sample/hu-logo.jpg"
 ```
-In order to customize the banner, you should change the path ``img/seminar/sample/hu-logo.jpg``
+In order to customize the banner, you should change the path ``img/seminar/hu-logo.jpg``
 
 All images are saved under the ``static`` section.
 We have created image folders for each group in the ``seminar`` folder under ``static``.
