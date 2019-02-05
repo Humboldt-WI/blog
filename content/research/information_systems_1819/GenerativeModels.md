@@ -1,10 +1,10 @@
 +++
 title = "Generative Models"
-date = '2019-01-10'
-tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
+date = '2019-02-08'
+tags = [ "Deep Learning", "Neural Networks", "Class18/19",]
 categories = ["Course projects"]
-banner = "img/seminar/nn_fundamentals/neuralNetworkKlein.jpg"
-author = "Seminar Information Systems (WS17/18)"
+banner = "img/seminar/sample/hu-logo.jpg"
+author = "Seminar Information Systems (WS18/19)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description = "This blog post deals with generative models applied to an imbalanced dataset of credit ratings. "
 +++
