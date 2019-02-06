@@ -35,7 +35,7 @@ model.compile(optimizer=Adam(lr = 0.0001), loss='binary_crossentropy', metrics=[
 model.fit(x = X_train, y = y_train, validation_data=[X_test, y_test], epochs = 4, batch_size=20)
 ```
 
-Throughout the blogpost, we will use the AUC as the performance measure. To have a natural benchmark, we first train this neural network on the original, imbalanced dataset. After implementing basic data cleaning steps and standardizing all feature variables, we observe the following performance of the model:
+Throughout the blog post, we will use the AUC as the performance measure. To have a natural benchmark, we first train this neural network on the original, imbalanced dataset. After implementing basic data cleaning steps and standardizing all feature variables, we observe the following performance of the model:
 
 <img align="center" width="300" height="200" style="display:block;margin:0 auto;" src="https://i.imgur.com/csx5cOD.png">
 
