@@ -182,7 +182,7 @@ decoder.predict(np.random.multivariate_normal(mean,cov,nd))
 
 This artificial data is then added to the original dataset. Training the neural network again using this augmented dataset leads to the following performance:
 
-<img align="center" width="300" height="200" style="display:block;margin:0 auto;" src="https://i.imgur.com/7TNfJCq.png">
+<img align="center" width="300" height="200" style="display:block;margin:0 auto;" src="https://i.imgur.com/jzfuJNI.png">
 
 Using the VAE, we managed to obtain a result that is competitive to the benchmark SMOTE-algorithm!
 
