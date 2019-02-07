@@ -18,10 +18,11 @@ description = "Hierarchical Attention Network - An Introduction"
 # Text Classification with Hierarchical Attention Network
 ## How to assign documents to classes or topics
 
-#### Authors: Maria Kränkel, Hee-Eun Lee - Seminar Information System 18/19
+#### Authors: Maria Kränkel, Hee-Eun Lee - Seminar Information System 18 / 19
 _____________________________________________________________________
 
 After reading this blog post you will know:
+
 * What text classification is and what it is used for
 * How to classify documents with a hierarchical attention neural network
 * How to implement a hierarchical attention network
@@ -62,21 +63,18 @@ Text classification finds a variety of application possibilities due to the larg
 <br>
 <br>
 
-### Topic Labeling
+By **topic labeling** every kind of assigning text to topics or categories is meant. This can also include unstructured texts. The main goal is to extract generic tags. Topic labeling is the most important and widest used application of text classification. It has a few sub applications.
 
-By topic labeling every kind of assigning text to topics or categories is meant. This can also include unstructured texts. The main goal is to extract generic tags. Topic labeling is the most important and widest used application of text classification. It has a few sub applications.
+* **Marketing**: The 'new' marketing has moved from search engines to social media platforms where real communication between brands and users take place. Users don not only review products but also discuss them with other users. With text classification, businesses can classify those products which have great consideration. Based on this, trends and customer types are examined.
 
-**Marketing**: The 'new' marketing has moved from search engines to social media platforms where real communication between brands and users take place. Users don not only review products but also discuss them with other users. With text classification, businesses can classify those products which have great consideration. Based on this, trends and customer types are examined.
-
-**Reviews**: With text classification businesses can easily find aspects on which customers disagree with their services or products. They do not have to go through low rating reviews by themselves but can detect categories in which their product did or did not satisfy.  
-
-**Tagging content**: Platforms like blogs live from publications of many people or pool products from other websites. So, if these are not tagged thoroughly in the first place, there might be the need to tag these texts or products in order to simplify navigation through the website. User experience is improved by this application too. In addition, good classified and tagged websites are more likely to appear in search engines like Google. <br>
+* **Reviews**: With text classification businesses can easily find aspects on which customers disagree with their services or products. They do not have to go through low rating reviews by themselves but can detect categories in which their product did or did not satisfy.  
+* **Tagging content**: Platforms like blogs live from publications of many people or pool products from other websites. So, if these are not tagged thoroughly in the first place, there might be the need to tag these texts or products in order to simplify navigation through the website. User experience is improved by this application too. In addition, good classified and tagged websites are more likely to appear in search engines like Google. <br>
 Mentioning Google: If you're using gmail, your mails are already automated filtered and labeled by Google's text classification algorithms. <br>
 
-Another application is **sentiment analysis**. Imagine again how differently customers might rate a product. Someone could be disappointed about one single feature that they rate it low although they liked the overall product. Or ratings might be low due to bad customer service whilst the product itself is satisfying. Text classification helps to identify those criteria.
+* Another application is **sentiment analysis**. Imagine again how differently customers might rate a product. Someone could be disappointed about one single feature that they rate it low although they liked the overall product. Or ratings might be low due to bad customer service whilst the product itself is satisfying. Text classification helps to identify those criteria.
 Now, sentiment analysis predicts the sentiment towards a specific characteristic on base of text classification. This not only finds economic application but especially in sentiment analysis for social and political debates. <br>
 
-Text classification is already used for simpler applications like **filtering spam**. Also, a team of Google invented a method called Smart Replies in 2016. This method takes emails as inputs, identifies the sentiment or topic of the mailed text and automatically generates short, complete responses.  
+* Text classification is already used for simpler applications like **filtering spam**. Also, a team of Google invented a method called Smart Replies in 2016. This method takes emails as inputs, identifies the sentiment or topic of the mailed text and automatically generates short, complete responses.  
 <br>
 <br>
 
@@ -161,6 +159,7 @@ Summarizing, HAN tries to find a solution to these problems, previous works did 
 
 In this way, HAN performs better in predicting the class of a given document. <br>
 To start from scratch, have a look at this example:
+<br>
 <center>
  <img width="50%" src="/blog/img/seminar/HAN_img/reviewyelp.png">
  Yang et al. 2016
