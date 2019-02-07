@@ -442,10 +442,6 @@ For a better comprehension of what those embeddings mean, have a closer a look a
 
 <script src="https://gist.github.com/leeh1234/4aebbe9f19d7be410e038c3656b8a0b4.js"></script>
 
-Now, we can already define our first layer with Keras's *Embedding*:
-
-<script src="https://gist.github.com/kraenkem/d36572287e2c9f41c5e44e854fc045af.js"></script>
-
 In a last step of data preprocessing, we want to set a train, validation and test data set. For that we define a function **split_df** which ensures that all sets are balanced hence they have the same ratio for each class as the full data set. Without this predefined grouping by star rating. it could happen that the model only trains on the most occurring rating.
 
 <script src="https://gist.github.com/kraenkem/1488dba443356fbeebcccc134f980daa.js"></script>
@@ -458,23 +454,30 @@ Before we can concatenate the layers of the network in Keras, we need to build t
 
 <script src="https://gist.github.com/kraenkem/827f39d18c24e43c44b55c8971dce3f2.js"></script>
 
-The figure shows attention on word level as well as the class **AttentionLayer**, however, the layer is applied successively on first word and then sentence level.
+Class **AttentionLayer** is applied successively on first word and then sentence level.
+
 * **init** initializes variables from a uniform distribution. Also, we set *supports_masking = True* because the network needs fixed input lengths. If some inputs are shorter than maximum input length a mask will be created initialized with 0. Then the mask will be 'filled up' with 1 to positions where the input has values in. This is further defined in the next functions.
+
 * **build** defines the weights. We set *len(input_shape) == 3* as we get a 3d tensor from the previous layers.
+
 * **call** builds the attention mechanism itself. As you can see, we have h_it, the context annotations, as input and get the sum of importance weights, hence sentence vector s_i, as output. In between, the current variable is reduced by the last dimension and expanded again because masking needs a binary tensor.
 <br>
 
 #### Model
 
 Congrats, you made it through a huge mass of theoretical input. Now, let's finally see how the model performs. Some last little hints:
+
 * The layers have to be combined on word and sentence level.
+
 * *TimeDistributed* applies all word level layers on each sentence.
+
 * We want to have an output dimensionality of GRU equal to 50, because running it forwards and backwards returns 100 dimensions - which is the dimensionality of our inputs.
+
 * *Dropout* is a regularizer to prevent overfitting by turning off a number of neurons in every layer - 0.5 gets a high variance, but you can play around with this as well as with other parameters.
 
-<script src="https://gist.github.com/kraenkem/a84e0ab8c14d98498276b479255e128b.js"></script>
+* *Dense* implements a last layer for actual document classification. The document vector runs again with outside weights and biases through a softmax function.
 
-**Dense** implements a last layer for actual document classification. The document vector runs again with outside weights and biases through a softmax function. Softmax makes the output readable by giving the probability of belonging to a predefined class. We end up with 505 dense parameters (5 units x 100 dimensions + 5 biases).
+<script src="https://gist.github.com/kraenkem/a84e0ab8c14d98498276b479255e128b.js"></script>
 
 **We train** the model throughout a relatively small number of epochs of 7 since our input data are already pre-trained and will overfit after too much epochs, also because the batch size of 32 works with a large number of inputs due to our large data set. Note that you have to train reviews **x** against labels **y** (in this case the 5-star ratings).
 
