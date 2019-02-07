@@ -61,17 +61,13 @@ Essentially, text classification can be used whenever there are certain tags to 
 
 Text classification finds a variety of application possibilities due to the large amount of data which can be interpreted.
 <br>
-<br>
 
-### Topic Labeling
+By **topic labeling** every kind of assigning text to topics or categories is meant. This can also include unstructured texts. The main goal is to extract generic tags. Topic labeling is the most important and widest used application of text classification. It has a few sub applications.
 
-By topic labeling every kind of assigning text to topics or categories is meant. This can also include unstructured texts. The main goal is to extract generic tags. Topic labeling is the most important and widest used application of text classification. It has a few sub applications.
+* **Marketing**: The 'new' marketing has moved from search engines to social media platforms where real communication between brands and users take place. Users don not only review products but also discuss them with other users. With text classification, businesses can classify those products which have great consideration. Based on this, trends and customer types are examined.
 
-**Marketing**: The 'new' marketing has moved from search engines to social media platforms where real communication between brands and users take place. Users don not only review products but also discuss them with other users. With text classification, businesses can classify those products which have great consideration. Based on this, trends and customer types are examined.
-
-**Reviews**: With text classification businesses can easily find aspects on which customers disagree with their services or products. They do not have to go through low rating reviews by themselves but can detect categories in which their product did or did not satisfy.  
-
-**Tagging content**: Platforms like blogs live from publications of many people or pool products from other websites. So, if these are not tagged thoroughly in the first place, there might be the need to tag these texts or products in order to simplify navigation through the website. User experience is improved by this application too. In addition, good classified and tagged websites are more likely to appear in search engines like Google. <br>
+* **Reviews**: With text classification businesses can easily find aspects on which customers disagree with their services or products. They do not have to go through low rating reviews by themselves but can detect categories in which their product did or did not satisfy.  
+* **Tagging content**: Platforms like blogs live from publications of many people or pool products from other websites. So, if these are not tagged thoroughly in the first place, there might be the need to tag these texts or products in order to simplify navigation through the website. User experience is improved by this application too. In addition, good classified and tagged websites are more likely to appear in search engines like Google. <br>
 Mentioning Google: If you're using gmail, your mails are already automated filtered and labeled by Google's text classification algorithms. <br>
 
 Another application is **sentiment analysis**. Imagine again how differently customers might rate a product. Someone could be disappointed about one single feature that they rate it low although they liked the overall product. Or ratings might be low due to bad customer service whilst the product itself is satisfying. Text classification helps to identify those criteria.
@@ -162,6 +158,7 @@ Summarizing, HAN tries to find a solution to these problems, previous works did 
 
 In this way, HAN performs better in predicting the class of a given document. <br>
 To start from scratch, have a look at this example:
+<br>
 <img align="center" width="350" height="120"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/reviewyelp.png">
@@ -190,14 +187,15 @@ The model consists of
 * the attention mechanism, which computes importance weights of these contexts as one vector.
 
 #### Word Level
-<img align="center" width="750" height="350"
+<img align="center" width="750" height="320"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/han_word.png">
 
 * As input we have structured tokens **w_it**, that is word i per sentence t. We do not keep all words in a sentence. Learn more about that in section [data preprocessing](data-preprocessing).
 * Since the model is not able to process plain text of data type *string*, the tokens run through an Embedding layer which 'assigns' multidimensional vectors **W_e*w_ij** to each token. In this way, words are represented numerically as **x_it** as a projection of the word in a continuous vector space. <br>
 	There are several embedding algorithms; the most popular are [word2vec](https://code.google.com/archive/p/word2vec/) and [GloVe](https://nlp.stanford.edu/projects/glove/). It is also possible to use pre-trained word embedding, so you can accelerate your model training. <br>
-<img align="center" width="180" height="30"
+	
+<img align="center" width="180" height="25"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/xit.png">
 
@@ -206,13 +204,14 @@ The model consists of
 * These vectorized tokens are the inputs for the next layer. Yang et al. use a Gated Recurrent Network (GRU) as encoding mechanism. As a short reminder: In a RNN, states are 'remembered' to ensure we can predict words depending on previous words. GRU has a so-called 'hidden state' which can be understood as a memory cell to transfer information. Two gates decide about whether to keep or forget information and with this knowledge, to update the information that should be kept. If you are interested in learning more about GRU, have a look at this nice [blog post](https://isaacchanghau.github.io/post/lstm-gru-formula/). <br>
 	The purpose of this layer is to extract relevant contexts of every sentence. We call these contexts *annotations* per word. <br>
 	Note that in this model, *bidirectional* GRU is applied to get annotations of words by summarizing information from both directions resulting in a summarized variable **h_it**.  <br>
-<img align="center" width="180" height="130"
+<img align="center" width="180" height="110"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/wordEncoder.png">
 
 ##### Word Attention
 
 * Those annotations h_it build the base for the attention mechanism which starts with another hidden layer, a one-layer Multilayer Perceptron. Goal is to let the model learn through training with randomly initialized weights and biases. Those 'improved' annotations are then represented by **u_it**. Furthermore, this layer ensures that the network does not falter with a tanh function. This function 'corrects' input values to being between -1 and 1 and also maps zeros to near-zeros. <br>
+
 <img align="center" width="180" height="25"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/u_it.png">
@@ -228,12 +227,14 @@ The model consists of
 
 #### Sentence Level
 
+<br>
 <img align="center" width="700" height="350"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/han_sent.png">
 
 
 * Then the whole network is run on sentence level with basically the same procedure as on word level but now we focus on the actual sentence i. Of course, there is no embedding layer as we already get sentence vectors **s_i** from word level as input.
+<br>
 
 ##### Sentence Encoder
 
@@ -249,6 +250,7 @@ The model consists of
 
 * Trainable weights and biases are again outside randomly initialized.
 * The final output is a document vector **v** which can be used as features for document classification.
+
 <img align="center" width="180" height="150"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/ualphav.png">
@@ -257,9 +259,7 @@ The model consists of
 
 ### Implementation
 
-#### Import libraries
-
-As the package [Keras](https://keras.io/) is 'a high-level neural networks API' extremely useful for deep learning problems, we recommend to install it in an own python environment.
+As the package [Keras](https://keras.io/) is 'a high-level neural networks API' extremely useful for deep learning problems, we recommend to install it in an own python environment. <br>
 
 #### Data Preprocessing
 
@@ -273,6 +273,9 @@ To demonstrate how to apply HAN we use a part of Amazon reviews for Electronic d
 **After that we can tokenize** the given sentences. We set the maximum number of words to keep equal to 200,000.
 
 <script src="https://gist.github.com/kraenkem/473a99e16b04052f28c132623673abe2.js"></script>
+
+
+
 <script src="https://gist.github.com/leeh1234/0d4ce05bef2111efcfaa45784973c366.js"></script>
 
 **For vectorization of our tokens** we use one of GloVe's pretrained embedding dictionaries with 100 dimensions, that is one word is represented by 100 values in a matrix. As mentioned [before](#word-level), this accelerates our training. We match our tokens with the pretrained dictionary and filter out words that appear rarely (mostly due to spelling mistakes). As you can see, reviewers for our chosen products do not pay attention to correct spelling. Unfortunately, we therefore can only remain 20,056 words to proceed. This will influence performance of our model. But we will come to this later.
@@ -292,19 +295,18 @@ In a last step of data preprocessing, we want to set a train, validation and tes
 <script src="https://gist.github.com/kraenkem/1488dba443356fbeebcccc134f980daa.js"></script>
 <script src="https://gist.github.com/kraenkem/d7f47ffcb767262d4cc88a1998a12c43.js"></script>
 
+<br>
 #### Attention Mechanism
 
-Before we can concatenate the layers of the network in Keras, we need to build the attention mechanism. Keras has a class '[Writing your own Keras layer](https://keras.io/layers/writing-your-own-keras-layers/)'. Here you are given some useful functions to implement attention. For better understanding, again have a look at the modeled attention mechanism.
+Before we can concatenate the layers of the network in Keras, we need to build the attention mechanism. Keras has a class '[Writing your own Keras layer](https://keras.io/layers/writing-your-own-keras-layers/)'. Here you are given some useful functions to implement attention. 
 
 <script src="https://gist.github.com/kraenkem/827f39d18c24e43c44b55c8971dce3f2.js"></script>
-<img align="center" width="700" height="450"
-     style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/only_att.png">
 
 The figure shows attention on word level as well as the class **AttentionLayer**, however, the layer is applied successively on first word and then sentence level.
 * **init** initializes variables from a uniform distribution. Also, we set *supports_masking = True* because the network needs fixed input lengths. If some inputs are shorter than maximum input length a mask will be created initialized with 0. Then the mask will be 'filled up' with 1 to positions where the input has values in. This is further defined in the next functions.
 * **build** defines the weights. We set *len(input_shape) == 3* as we get a 3d tensor from the previous layers.
 * **call** builds the attention mechanism itself. As you can see, we have h_it, the context annotations, as input and get the sum of importance weights, hence sentence vector s_i, as output. In between, the current variable is reduced by the last dimension and expanded again because masking needs a binary tensor.
+<br>
 
 #### Model
 
