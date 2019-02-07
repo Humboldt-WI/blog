@@ -276,8 +276,6 @@ To demonstrate how to apply HAN we use a part of Amazon reviews for Electronic d
 For a better comprehension of what those embeddings mean, have a closer a look at an example sentence and a single token. *Great* is described by 100 values in vector spaces computed by for instance nearest neighbors.
 
 <script src="https://gist.github.com/leeh1234/4aebbe9f19d7be410e038c3656b8a0b4.js"></script>
-<br>
-<script src="https://gist.github.com/kraenkem/f9849e2d4782f0ecb790b95c2ade3628.js"></script>
 
 Now, we can already define our first layer with Keras's *Embedding*:
 
