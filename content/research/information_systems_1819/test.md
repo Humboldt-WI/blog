@@ -262,42 +262,37 @@ To demonstrate how to apply HAN we use a part of Amazon reviews for Electronic d
 
 **Words have to be lemmatized** to ensure that not every single typo or related term is handled by itself. Additionally, so-called stop words are filtered out. In our case, that is mainly prepositions like *as* or *to* that do not contribute to the meaning of the text. Have a look at function **cleanString**.
 
-=================scr clean_string
+<script src="https://gist.github.com/kraenkem/fbcde89789b2f8a0d9fb094cb40a42fe.js"></script>
 
 **After that we can tokenize** the given sentences. We set the maximum number of words to keep equal to 200,000.
 
-================scr tokenization
-<script src="https://gist.github.com/leeh1234/d01d78c028b7c1ed0ae352a35735f7d0.js"></script>
+<script src="https://gist.github.com/kraenkem/473a99e16b04052f28c132623673abe2.js"></script>
+<script src="https://gist.github.com/leeh1234/0d4ce05bef2111efcfaa45784973c366.js"></script>
 
 **For vectorization of our tokens** we use one of GloVe's pretrained embedding dictionaries with 100 dimensions, that is one word is represented by 100 values in a matrix. As mentioned [before](#word-level), this accelerates our training. We match our tokens with the pretrained dictionary and filter out words that appear rarely (mostly due to spelling mistakes). As you can see, reviewers for our chosen products do not pay attention to correct spelling. Unfortunately, we therefore can only remain 20,056 words to proceed. This will influence performance of our model. But we will come to this later.
 
-============ scr embedding
-<script src="https://gist.github.com/leeh1234/037e73ae0abbf3c2d5550503c0812db2.js"></script>
+<script src="https://gist.github.com/kraenkem/24e7770761bb1924fc61ae01a9b29493.js"></script>
 
 For a better comprehension of what those embeddings mean, have a closer a look at an example sentence and a single token. *Great* is described by 100 values in vector spaces computed by for instance nearest neighbors.
 
-=============== display ----> in einem script stück
-===============0 scr example embedding_matrix
-<script src="https://gist.github.com/leeh1234/0d4ce05bef2111efcfaa45784973c366.js"></script>
-<br>
 <script src="https://gist.github.com/leeh1234/4aebbe9f19d7be410e038c3656b8a0b4.js"></script>
+<br>
+<script src="https://gist.github.com/kraenkem/f9849e2d4782f0ecb790b95c2ade3628.js"></script>
 
 Now, we can already define our first layer with Keras's *Embedding*:
 
-================= scr embedding_layer
+<script src="https://gist.github.com/kraenkem/d36572287e2c9f41c5e44e854fc045af.js"></script>
 
 In a last step of data preprocessing, we want to set a train, validation and test data set. For that we define a function **split_df** which ensures that all sets are balanced hence they have the same ratio for each class as the full data set. Without this predefined grouping by star rating. it could happen that the model only trains on the most occurring rating.
 
-================ scr split_df
-================= scr histogram full and train set
+<script src="https://gist.github.com/kraenkem/1488dba443356fbeebcccc134f980daa.js"></script>
+<script src="https://gist.github.com/kraenkem/d7f47ffcb767262d4cc88a1998a12c43.js"></script>
 
 #### Attention Mechanism
 
 Before we can concatenate the layers of the network in Keras, we need to build the attention mechanism. Keras has a class '[Writing your own Keras layer](https://keras.io/layers/writing-your-own-keras-layers/)'. Here you are given some useful functions to implement attention. For better understanding, again have a look at the modeled attention mechanism.
 
-======================= scr attlayer
-<script src="https://gist.github.com/leeh1234/5ed7573c47c90fa3b66c6194369ae801.js"></script>
-
+<script src="https://gist.github.com/kraenkem/827f39d18c24e43c44b55c8971dce3f2.js"></script>
 <img src="/blog/img/seminar/HAN_img/only_att.png" width="88%">
 
 The figure shows attention on word level as well as the class **AttentionLayer**, however, the layer is applied successively on first word and then sentence level.
@@ -313,16 +308,17 @@ Congrats, you made it through a huge mass of theoretical input. Now, let's final
 * We want to have an output dimensionality of GRU equal to 50, because running it forwards and backwards returns 100 dimensions - which is the dimensionality of our inputs.
 * *Dropout* is a regularizer to prevent overfitting by turning off a number of neurons in every layer - 0.5 gets a high variance, but you can play around with this as well as with other parameters.
 
-=============================scr model
+<script src="https://gist.github.com/kraenkem/a84e0ab8c14d98498276b479255e128b.js"></script>
 
 **Dense** implements a last layer for actual document classification. The document vector runs again with outside weights and biases through a softmax function. Softmax makes the output readable by giving the probability of belonging to a predefined class. We end up with 505 dense parameters (5 units x 100 dimensions + 5 biases).
 
 **We train** the model throughout a relatively small number of epochs of 7 since our input data are already pre-trained and will overfit after too much epochs, also because the batch size of 32 works with a large number of inputs due to our large data set. Note that you have to train reviews **x** against labels **y** (in this case the 5-star ratings).
 
-================00scr history
-======================= scr evaluation
-========================= scr plots
+<script src="https://gist.github.com/kraenkem/b0f0bfbb1efdeec7d808b69beb521d0e.js"></script>
+<script src="https://gist.github.com/kraenkem/e29cde258cb852f791516ef34cdc5775.js"></script>
+<script src="https://gist.github.com/kraenkem/f54e681b995cefce72b641a12c50a88c.js"></script>
 
+<br>
 **Model evaluation** is with 69 % quite high how a comparison with the results from Yang et al. themselves as well as from others shows (see table below).
 **Also history plots** show that the training data set perform pretty well. Still, this is unfortunately not supported by the validation data set. This might be because of the small number of words we could proceed after the embedding layer which filtered out almost 70 % of all tokens due to misspelling. This might be improved with an even smaller batch and epoch size, or with a better, less mistaken data set.
 
