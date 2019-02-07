@@ -85,6 +85,7 @@ But before going deeper into this, let's have a look at what others did:
 The basics of all text classification problems lie in so-called Information Retrieval (IR) methods which started to be developed in the early 1970s. These first methods were unsupervised, that is, they try to find information from a given text document without classifying it or assigning labels to it in any kind. <br>
 
 **Basic algorithms for IR** are:
+
   * Bag of Words: represents texts by frequency of appearing words
   * Term Frequency / Inverse Document Frequency: sets term frequency and inverse document frequency and in this way represents texts by relevance of appearing words
   * N-grams: a set of co-occurring words (e.g. names)
@@ -93,58 +94,213 @@ Here you can see the most important steps in unsupervised text classification:
 
 **Unsupervised**
 
-Year | Authors | Method Characteristics | Paper
------|---------|------------------------|-----------------------------
-1971 | Jardine, van Rijsbergen | Clustering keywords of similar texts | [The Use of Hierarchic Clustering in Information Retrieval](https://www.researchgate.net/publication/220229653_The_Use_of_Hierarchic_Clustering_in_Information_Retrieval)
-1974 | Salton et al. | Ranking words in accordance with how well they are able to discriminate the documents | [A Theory of Term Importance in Automatic Text Analysis.](https://eric.ed.gov/?id=ED096987)
-1983 | Salton, McGill | SMART - First text representations with vectors | [Introduction to Modern Information Retrieval](http://www.information-retrieval.de/irb/ir.part_1.chapter_3.section_6.topic_6.html)
-1992 | Cutting et al. | SG - Scattering text to few clusters, manual gathering to sub-collections | [Scatter/Gather: A Cluster-based Approach to Browsing Large Document Collections](https://www-users.cs.umn.edu/~hanxx023/dmclass/scatter.pdf)
-1998 | Zamir, Etzioni | Suffix Tree - Phrases shared between documents - First IR for web search engines | [Web Document Clustering: A Feasibility Demonstration](https://homes.cs.washington.edu/~etzioni/papers/sigir98.pdf)
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;width: 100%;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-yw4l"><strong>Year</strong></th>
+    <th class="tg-yw4l"><strong>Authors</strong></th>
+    <th class="tg-yw4l"><strong>Method Characteristics</strong></th>
+	<th class="tg-yw4l"><strong>Paper</strong></th>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">1971</td>
+    <td class="tg-yw4l">Jardine, van Rijsbergen</td>
+    <td class="tg-yw4l">Clustering keywords of similar texts</td>
+	<td class="tg-yw4l">[The Use of Hierarchic Clustering in Information Retrieval](https://www.researchgate.net/publication/220229653_The_Use_of_Hierarchic_Clustering_in_Information_Retrieval)</td>
+  </tr>
+  <tr>
+    <td style="background-color: #f7f7f7;" class="tg-yw4l">1974</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">Salton et al.</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">Ranking words in accordance with how well they are able to discriminate the documents</td>
+	<td style="background-color: #f7f7f7;"  class="tg-yw4l">[A Theory of Term Importance in Automatic Text Analysis.](https://eric.ed.gov/?id=ED096987)</td>
 
+  </tr>
+  <tr>
+    <td class="tg-yw4l">1983</td>
+    <td class="tg-yw4l">Salton, McGill</td>
+    <td class="tg-yw4l">SMART - First text representations with vectors</td>
+	<td class="tg-yw4l">[Introduction to Modern Information Retrieval](http://www.information-retrieval.de/irb/ir.part_1.chapter_3.section_6.topic_6.html)</td>
+  </tr>
+  <tr>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">1992</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">Cutting et al.</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">SG - Scattering text to few clusters, manual gathering to sub-collections</td>
+	<td style="background-color: #f7f7f7;"  class="tg-yw4l">[Scatter/Gather: A Cluster-based Approach to Browsing Large Document Collections](https://www-users.cs.umn.edu/~hanxx023/dmclass/scatter.pdf)</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">1998</td>
+    <td class="tg-yw4l">Zamir, Etzioni</td>
+    <td class="tg-yw4l">Suffix Tree - Phrases shared between documents - First IR for web search engines</td>
+	<td class="tg-yw4l">[Web Document Clustering: A Feasibility Demonstration](https://homes.cs.washington.edu/~etzioni/papers/sigir98.pdf)</td>
+  </tr>
+</table>
+<br>
+
+<br>
 Find all listed abbreviations in the following table:
 
-Abbr. | Explanation
-------|--------------------------------------------------------
-SMART | System for the Mechanical Analysis and Retrieval of Text
-SG | Scatter/Gather
+<img width="320" height="120"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/abbr_IR.JPG">
 
+<br>
 With the improvement of the user-friendliness and related spread of internet usage, automated classification of growing numbers of data became important. Several supervised respectively semi-supervised methods (where the class information are learned from labeled data) are shown in the next table. <br>
 Since we use a neural network, the comparison with other neural networks is prior for us. Of course, there are several different implementations of convolutional and recurrent neural networks, below are only mentioned the most 'innovative'.
 
+<br>
 **(Semi-) Supervised**
 
-Year | Network | Authors | Method Characteristics | Paper
------|---------|---------|------------------------|--------------------------
-1995 | PN | Makoto, Tokunaga | Clustering by maximum Bayesian posterior probability | [Hierarchical Bayesian Clustering for Automatic Text Classification](http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=BE17EC88A0C9DB576DA0E36C70F54EC3?doi=10.1.1.52.2417&rep=rep1&type=pdf)
-1999 | PN | Nigam et al. | Improving learned classifiers with Expectation Maximization and Naive Bayes | [Text Classification from Labeled and Unlabeled Documents using EM.](http://www.kamalnigam.com/papers/emcat-mlj99.pdf)
- | | | |
-1998 | SVM | Joachims | Binary classifying, represenation with support-vectors | [Text Categorization with Support Vector Machines: Learning with Many Relevant Features.](http://web.cs.iastate.edu/~jtian/cs573/Papers/Joachims-ECML-98.pdf)
-2004 | SVM | Mullen, Collier | Classifying with SVM and unigrams | [Sentiment analysis using support vector machines with diverse information sources](http://www.aclweb.org/anthology/W04-3253)
-2005 | SVM-H | Matsumoto et al. | SVM + Unigrams and Bigrams, Sentence dependancy sub-trees, word sub-sequences | [Sentiment Classification Using Word Sub-sequences and Dependancy Sub-trees](https://link.springer.com/content/pdf/10.1007%2F11430919_37.pdf)
- | | | |
-1994 | NN | Farkas | NN + Thesaurus -> First weighted, dictionairy-based relations | [Generating Document Clusters Using Thesauri and Neural Networks](https://vdocuments.site/ieee-proceedings-of-canadian-conference-on-electrical-and-computer-engineering-58e24c154d826.html)
-1996 | NN-SOM | Hyötyniemi | Competitive learning instead of error-correction (e.g. backpropagation), Mapping to reduced dimensions | [Text Document Classification with Self-Organizing Maps](http://lipas.uwasa.fi/stes/step96/step96/hyotyniemi3/)
-1998 | NN-SOM-H | Merkl | SOM on hierarchical document levels | [Text classification with self-organizing maps: Some lessons learned](https://www.sciencedirect.com/science/article/pii/S0925231298000320)
- | | | |
-2014 | CNN | Johnson, Zhang | CNN on word order instead of low-dimensional word vectors | [Effective Use of Word Order for Text Categorization with Convolutional Neural Networks](https://arxiv.org/pdf/1412.1058.pdf)
-2014 | CNN | Kim | Simple CNN with static vectors on top of pre-trained word vectors | [Convolutional Neural Networks for Sentence Classification](https://arxiv.org/pdf/1408.5882.pdf)
-2014 | CNN-char | dos Santos, Zadrozny | Semantic word informations with CNN on character level | [Learning Character-level Representations for Part-of-Speech Tagging](http://proceedings.mlr.press/v32/santos14.pdf)
-2015 | LSTM | Tai et al. | LSTM on tree-structured networks | [Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks](http://aclweb.org/anthology/P15-1150)
-2015 | C-LSTM | Zhou et al. | CNN for higher-level representations, LSTM for sentence representations | [A C-LSTM Neural Network for Text Classification](https://arxiv.org/pdf/1511.08630.pdf)
-2015 | CNN/LSTM-GRU | Tang et al. | CNN / LSTM for sentence representation, GRU for semantic information | [Document Modeling with Gated Recurrent Neural Network for Sentiment Classification](http://ir.hit.edu.cn/~dytang/paper/emnlp2015/emnlp2015.pdf)
-2016 | HAN | Yang et al. | NN and GRU on hierarchical document levels with attention on contexts | [Hierarchical Attention Networks for Document Classification](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;width: 100%;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-yw4l"><strong>Year</strong></th>
+	<th class="tg-yw4l"><strong>Method</strong></th>
+    <th class="tg-yw4l"><strong>Authors</strong></th>
+    <th class="tg-yw4l"><strong>Characteristics</strong></th>
+	<th class="tg-yw4l"><strong>Paper</strong></th>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">1995</td>
+	<td class="tg-yw4l">PN</td>
+    <td class="tg-yw4l">Makoto, Tokunaga</td>
+    <td class="tg-yw4l">Clustering by maximum Bayesian posterior probability</td>
+	<td class="tg-yw4l">[Hierarchical Bayesian Clustering for Automatic Text Classification](http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=BE17EC88A0C9DB576DA0E36C70F54EC3?doi=10.1.1.52.2417&rep=rep1&type=pdf)</td>
+  </tr>
+  <tr>
+    <td style="background-color: #f7f7f7;" class="tg-yw4l">1999</td>
+	<td style="background-color: #f7f7f7;" class="tg-yw4l">PN</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">Nigam et al.</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">Improving learned classifiers with Expectation Maximization and Naive Bayes</td>
+	<td style="background-color: #f7f7f7;"  class="tg-yw4l">[Text Classification from Labeled and Unlabeled Documents using EM.](http://www.kamalnigam.com/papers/emcat-mlj99.pdf)</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"> </td>
+	<td class="tg-yw4l"> </td>
+    <td class="tg-yw4l"> </td>
+    <td class="tg-yw4l"> </td>
+	<td class="tg-yw4l"> </td>
+  </tr>
+  <tr>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">1998</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">SVM</td>
+	<td style="background-color: #f7f7f7;"  class="tg-yw4l">Joachims</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">Binary classifying, representation with support-vectors</td>
+	<td style="background-color: #f7f7f7;"  class="tg-yw4l">[Text Categorization with Support Vector Machines: Learning with Many Relevant Features.](http://web.cs.iastate.edu/~jtian/cs573/Papers/Joachims-ECML-98.pdf)</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">2004</td>
+	<td class="tg-yw4l">SVM</td>
+    <td class="tg-yw4l">Mullen, Collier</td>
+    <td class="tg-yw4l">Classifying with SVM and unigrams</td>
+	<td class="tg-yw4l">[Sentiment analysis using support vector machines with diverse information sources](http://www.aclweb.org/anthology/W04-3253)</td>
+  </tr>
+  <tr>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">2005</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">SVM-H</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">Matsumoto et al.</td>	
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">SVM + unigrams and bigrams, Sentence dependancy sub-trees, word sub-sequences</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">[Sentiment Classification Using Word Sub-sequences and Dependancy Sub-trees](https://link.springer.com/content/pdf/10.1007%2F11430919_37.pdf)</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"> </td>
+	<td class="tg-yw4l"> </td>
+    <td class="tg-yw4l"> </td>
+    <td class="tg-yw4l"> </td>
+	<td class="tg-yw4l"> </td>
+  </tr>
+  <tr>
+    <td style="background-color: #f7f7f7;" class="tg-yw4l">1994</td>
+	<td style="background-color: #f7f7f7;" class="tg-yw4l">NN</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">Farkas</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">NN + Thesaurus -> First weighted, dictionary-based relations</td>
+	<td style="background-color: #f7f7f7;"  class="tg-yw4l">[Generating Document Clusters Using Thesauri and Neural Networks](https://vdocuments.site/ieee-proceedings-of-canadian-conference-on-electrical-and-computer-engineering-58e24c154d826.html)</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">1996</td>
+	<td class="tg-yw4l">NN-SOM</td>
+    <td class="tg-yw4l">Hyötyniemi</td>
+    <td class="tg-yw4l">Competitive learning instead of error-correction (e.g. backpropagation), Mapping to reduced dimensions</td>
+	<td class="tg-yw4l">[Text Document Classification with Self-Organizing Maps](http://lipas.uwasa.fi/stes/step96/step96/hyotyniemi3/)</td>
+  </tr>
+  <tr>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">1998</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">NN-SOM-H</td>
+	<td style="background-color: #f7f7f7;"  class="tg-yw4l">Merkl</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">SOM on hierarchical document levels</td>
+	<td style="background-color: #f7f7f7;"  class="tg-yw4l">[Text classification with self-organizing maps: Some lessons learned](https://www.sciencedirect.com/science/article/pii/S0925231298000320)</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"> </td>
+	<td class="tg-yw4l"> </td>
+    <td class="tg-yw4l"> </td>
+	<td class="tg-yw4l"> </td>
+	<td class="tg-yw4l"> </td>
+  </tr>
+  <tr>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">2014</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">CNN</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">Johnson, Zhang</td>	
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">CNN on word order instead of low-dimensional word vectors</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">[Effective Use of Word Order for Text Categorization with Convolutional Neural Networks](https://arxiv.org/pdf/1412.1058.pdf)</td>
+  </tr>
+<tr>
+    <td class="tg-yw4l">2014</td>
+	<td class="tg-yw4l">CNN</td>
+    <td class="tg-yw4l">Kim</td>
+    <td class="tg-yw4l">Simple CNN with static vectors on top of pre-trained word vectors</td>
+	<td class="tg-yw4l">[Convolutional Neural Networks for Sentence Classification](https://arxiv.org/pdf/1408.5882.pdf)</td>
+  </tr>
+  <tr>
+    <td style="background-color: #f7f7f7;" class="tg-yw4l">2014</td>
+	<td style="background-color: #f7f7f7;" class="tg-yw4l">CNN-char</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">dos Santos, Zadrozny</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">Semantic word information with CNN on character level</td>
+	<td style="background-color: #f7f7f7;"  class="tg-yw4l">[Learning Character-level Representations for Part-of-Speech Tagging](http://proceedings.mlr.press/v32/santos14.pdf)</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">2015</td>
+	<td class="tg-yw4l">LSTM</td>
+    <td class="tg-yw4l">Tai et al.</td>
+    <td class="tg-yw4l">LSTM on tree-structured networks</td>
+	<td class="tg-yw4l">[Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks](http://aclweb.org/anthology/P15-1150)</td>
+  </tr>
+  <tr>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">2015</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">C-LSTM</td>
+	<td style="background-color: #f7f7f7;"  class="tg-yw4l">Zhou et al.</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">CNN for higher-level representations, LSTM for sentence representations</td>
+	<td style="background-color: #f7f7f7;"  class="tg-yw4l">[A C-LSTM Neural Network for Text Classification](https://arxiv.org/pdf/1511.08630.pdf)</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">2015</td>
+	<td class="tg-yw4l">CNN/LSTM-GRU</td>
+    <td class="tg-yw4l">Tang et al.</td>
+    <td class="tg-yw4l">CNN / LSTM for sentence representation, GRU for semantic information</td>
+	<td class="tg-yw4l">[Document Modeling with Gated Recurrent Neural Network for Sentiment Classification](http://ir.hit.edu.cn/~dytang/paper/emnlp2015/emnlp2015.pdf)</td>
+  </tr>
+  <tr>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">2016</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">HAN</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">Yang et al.</td>	
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">GRU and attention on contexts on hierarchical document level</td>
+    <td style="background-color: #f7f7f7;"  class="tg-yw4l">[Hierarchical Attention Networks for Document Classification](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)</td>
+  </tr>
+</table>
+<br>
 
-Abbr. | Explanation
-------|-------------------
-PN | Probabilistic Network
-SVM | Support-vector Machine
-H | Hierarchical Document Structure
-NN | Neural Network
-SOM | Self-organizing Map
-CNN | Convolutional Neural Network
-LSTM | Long Short-term Memory
-GRU | Gated Recurrent Unit
-HAN | Hierarchical Attention Network
+<img width="320" height="340"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/abbr_sup.JPG">
 
 <br>
 <br>
