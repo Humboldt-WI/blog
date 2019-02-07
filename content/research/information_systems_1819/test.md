@@ -18,11 +18,10 @@ description = "Hierarchical Attention Network - An Introduction"
 # Text Classification with Hierarchical Attention Network
 ## How to assign documents to classes or topics
 
-#### Authors: Maria Kränkel, Hee-Eun Lee - Seminar Information System 18 / 19
+#### Authors: Maria Kränkel, Hee-Eun Lee - Seminar Information System 18/19
 _____________________________________________________________________
 
 After reading this blog post you will know:
-
 * What text classification is and what it is used for
 * How to classify documents with a hierarchical attention neural network
 * How to implement a hierarchical attention network
@@ -33,8 +32,9 @@ After reading this blog post you will know:
 
 <br>
 <br>
-![](/blog/img/seminar/HAN_img/intro1.png)
-![]<img align="center" width="800" height="400" src="/blog/img/seminar/HAN_img/intro1.png">
+<img align="center" width="700" height="450"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/intro1.png">
 
 ## Outline
 * [Introduction](#introduction)
@@ -63,18 +63,21 @@ Text classification finds a variety of application possibilities due to the larg
 <br>
 <br>
 
-By **topic labeling** every kind of assigning text to topics or categories is meant. This can also include unstructured texts. The main goal is to extract generic tags. Topic labeling is the most important and widest used application of text classification. It has a few sub applications.
+### Topic Labeling
 
-* **Marketing**: The 'new' marketing has moved from search engines to social media platforms where real communication between brands and users take place. Users don not only review products but also discuss them with other users. With text classification, businesses can classify those products which have great consideration. Based on this, trends and customer types are examined.
+By topic labeling every kind of assigning text to topics or categories is meant. This can also include unstructured texts. The main goal is to extract generic tags. Topic labeling is the most important and widest used application of text classification. It has a few sub applications.
 
-* **Reviews**: With text classification businesses can easily find aspects on which customers disagree with their services or products. They do not have to go through low rating reviews by themselves but can detect categories in which their product did or did not satisfy.  
-* **Tagging content**: Platforms like blogs live from publications of many people or pool products from other websites. So, if these are not tagged thoroughly in the first place, there might be the need to tag these texts or products in order to simplify navigation through the website. User experience is improved by this application too. In addition, good classified and tagged websites are more likely to appear in search engines like Google. <br>
+**Marketing**: The 'new' marketing has moved from search engines to social media platforms where real communication between brands and users take place. Users don not only review products but also discuss them with other users. With text classification, businesses can classify those products which have great consideration. Based on this, trends and customer types are examined.
+
+**Reviews**: With text classification businesses can easily find aspects on which customers disagree with their services or products. They do not have to go through low rating reviews by themselves but can detect categories in which their product did or did not satisfy.  
+
+**Tagging content**: Platforms like blogs live from publications of many people or pool products from other websites. So, if these are not tagged thoroughly in the first place, there might be the need to tag these texts or products in order to simplify navigation through the website. User experience is improved by this application too. In addition, good classified and tagged websites are more likely to appear in search engines like Google. <br>
 Mentioning Google: If you're using gmail, your mails are already automated filtered and labeled by Google's text classification algorithms. <br>
 
-* Another application is **sentiment analysis**. Imagine again how differently customers might rate a product. Someone could be disappointed about one single feature that they rate it low although they liked the overall product. Or ratings might be low due to bad customer service whilst the product itself is satisfying. Text classification helps to identify those criteria.
+Another application is **sentiment analysis**. Imagine again how differently customers might rate a product. Someone could be disappointed about one single feature that they rate it low although they liked the overall product. Or ratings might be low due to bad customer service whilst the product itself is satisfying. Text classification helps to identify those criteria.
 Now, sentiment analysis predicts the sentiment towards a specific characteristic on base of text classification. This not only finds economic application but especially in sentiment analysis for social and political debates. <br>
 
-* Text classification is already used for simpler applications like **filtering spam**. Also, a team of Google invented a method called Smart Replies in 2016. This method takes emails as inputs, identifies the sentiment or topic of the mailed text and automatically generates short, complete responses.  
+Text classification is already used for simpler applications like **filtering spam**. Also, a team of Google invented a method called Smart Replies in 2016. This method takes emails as inputs, identifies the sentiment or topic of the mailed text and automatically generates short, complete responses.  
 <br>
 <br>
 
@@ -159,11 +162,9 @@ Summarizing, HAN tries to find a solution to these problems, previous works did 
 
 In this way, HAN performs better in predicting the class of a given document. <br>
 To start from scratch, have a look at this example:
-<br>
-<center>
- <img width="50%" src="/blog/img/seminar/HAN_img/reviewyelp.png">
- Yang et al. 2016
-</center>
+<img align="center" width="350" height="120"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/reviewyelp.png">
 
 <br>
 <br>
@@ -173,10 +174,9 @@ Here we have a review from yelp that consists of five sentences. The highlighted
 ### Architecture of Hierarchical Attention Network
 
 **This is how the architecture** of HAN looks like:
-<center>
- <img width="60%" src="/blog/img/seminar/HAN_img/han_architecture.jpg">
- Yang et al. 2016
-</center>
+<img align="center" width="430" height="450"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/han_architecture.jpg">
 
 <br>
 First, the network considers the hierarchical structure of documents by constructing a document representation by building representations of sentences and then aggregating those into a document representation. <br>
@@ -190,61 +190,68 @@ The model consists of
 * the attention mechanism, which computes importance weights of these contexts as one vector.
 
 #### Word Level
-
-<img width="100%" src="/blog/img/seminar/HAN_img/han_word.png">
+<img align="center" width="750" height="350"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/han_word.png">
 
 * As input we have structured tokens **w_it**, that is word i per sentence t. We do not keep all words in a sentence. Learn more about that in section [data preprocessing](data-preprocessing).
 * Since the model is not able to process plain text of data type *string*, the tokens run through an Embedding layer which 'assigns' multidimensional vectors **W_e*w_ij** to each token. In this way, words are represented numerically as **x_it** as a projection of the word in a continuous vector space. <br>
 	There are several embedding algorithms; the most popular are [word2vec](https://code.google.com/archive/p/word2vec/) and [GloVe](https://nlp.stanford.edu/projects/glove/). It is also possible to use pre-trained word embedding, so you can accelerate your model training. <br>
-  <center>
-  <img width="21%" src="/blog/img/seminar/HAN_img/x_it.JPG">
-  </center>
+<img align="center" width="180" height="30"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/xit.png">
 
 ##### Word Encoder
 
 * These vectorized tokens are the inputs for the next layer. Yang et al. use a Gated Recurrent Network (GRU) as encoding mechanism. As a short reminder: In a RNN, states are 'remembered' to ensure we can predict words depending on previous words. GRU has a so-called 'hidden state' which can be understood as a memory cell to transfer information. Two gates decide about whether to keep or forget information and with this knowledge, to update the information that should be kept. If you are interested in learning more about GRU, have a look at this nice [blog post](https://isaacchanghau.github.io/post/lstm-gru-formula/). <br>
 	The purpose of this layer is to extract relevant contexts of every sentence. We call these contexts *annotations* per word. <br>
 	Note that in this model, *bidirectional* GRU is applied to get annotations of words by summarizing information from both directions resulting in a summarized variable **h_it**.  <br>
-  <center>
-  <img width="25%" src="/blog/img/seminar/HAN_img/h_it.JPG">
-  </center>
+<img align="center" width="180" height="130"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/wordEncoder.png">
 
 ##### Word Attention
 
 * Those annotations h_it build the base for the attention mechanism which starts with another hidden layer, a one-layer Multilayer Perceptron. Goal is to let the model learn through training with randomly initialized weights and biases. Those 'improved' annotations are then represented by **u_it**. Furthermore, this layer ensures that the network does not falter with a tanh function. This function 'corrects' input values to being between -1 and 1 and also maps zeros to near-zeros. <br>
-  <center>
-  <img width="25%" src="/blog/img/seminar/HAN_img/u_it.JPG">
-  </center>
+<img align="center" width="180" height="25"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/u_it.png">
 * Our new annotations are again multiplied with an outside trainable context vector **u_w** and normalized to an importance weight per word **alpha_it** by softmax function. <br>
-  <center>
-  <img width="19%" src="/blog/img/seminar/HAN_img/alpha_it.JPG">
-  </center>
+ <img align="center" width="180" height="70"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/a_it.png">
 * The sum of these importance weights concatenated with the previously calculated context annotations is called sentence vector **s_i** <br>
-  <center>
-  <img width="15%" src="/blog/img/seminar/HAN_img/s_i.JPG">
-  </center>
+<img align="center" width="130" height="50"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/s_i.png">
+
 
 #### Sentence Level
 
-<img width="100%" src="/blog/img/seminar/HAN_img/han_sent.png">
+<img align="center" width="700" height="350"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/han_sent.png">
+
 
 * Then the whole network is run on sentence level with basically the same procedure as on word level but now we focus on the actual sentence i. Of course, there is no embedding layer as we already get sentence vectors **s_i** from word level as input.
 
 ##### Sentence Encoder
 
 * Contexts of sentences are summarized with a bidirectional GRU by going through the document forwards and backwards.
-  <center>
-  <img width="27%" src="/blog/img/seminar/HAN_img/h_i.JPG">
-    <img width="15%" src=/blog/img/seminar/HAN_"img/h_i1.JPG">
-  </center>
-
+<img align="center" width="180" height="70"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/h_i.png">
+<img align="center" width="130" height="35"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/h_ii.png">
+	 
 ##### Sentence Attention
 
 * Trainable weights and biases are again outside randomly initialized.
 * The final output is a document vector **v** which can be used as features for document classification.
-<center>
-<img width="26%" src="img/ualphav.JPG">
-</center>
+<img align="center" width="180" height="150"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/ualphav.png">
 <br>
 <br>
 
@@ -290,7 +297,9 @@ In a last step of data preprocessing, we want to set a train, validation and tes
 Before we can concatenate the layers of the network in Keras, we need to build the attention mechanism. Keras has a class '[Writing your own Keras layer](https://keras.io/layers/writing-your-own-keras-layers/)'. Here you are given some useful functions to implement attention. For better understanding, again have a look at the modeled attention mechanism.
 
 <script src="https://gist.github.com/kraenkem/827f39d18c24e43c44b55c8971dce3f2.js"></script>
-<img src="/blog/img/seminar/HAN_img/only_att.png" width="88%">
+<img align="center" width="700" height="450"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/only_att.png">
 
 The figure shows attention on word level as well as the class **AttentionLayer**, however, the layer is applied successively on first word and then sentence level.
 * **init** initializes variables from a uniform distribution. Also, we set *supports_masking = True* because the network needs fixed input lengths. If some inputs are shorter than maximum input length a mask will be created initialized with 0. Then the mask will be 'filled up' with 1 to positions where the input has values in. This is further defined in the next functions.
@@ -319,40 +328,83 @@ Congrats, you made it through a huge mass of theoretical input. Now, let's final
 **Model evaluation** is with 69 % quite high how a comparison with the results from Yang et al. themselves as well as from others shows (see table below).
 **Also history plots** show that the training data set perform pretty well. Still, this is unfortunately not supported by the validation data set. This might be because of the small number of words we could proceed after the embedding layer which filtered out almost 70 % of all tokens due to misspelling. This might be improved with an even smaller batch and epoch size, or with a better, less mistaken data set.
 
-<center>
-<img src="/blog/img/seminar/HAN_img/doc_class_comp.JPG" width="85%">
-Document Classification, in percentage. Yang et al. 2016
-</center>
-
+<img align="center" width="700" height="500"
+     style="display:block;margin:0 auto;"  
+	 src="/blog/img/seminar/HAN_img/doc_class_comp.JPG">
 Note: HN-AVE and -MAX refers to hierarchical network with averaging and max-pooling methods, HN-ATT refers to hierarchical attention network described in this blog.
 <br>
 <br>
 
 ## News Classification
 
-To further display the attention mechanism, we also implemented the HAN on news articles to be able to classify them into categories, as well as to gain short summaries of articles by extracting the most important sentences using sentence attention weights. We used a publicly available dataset from the British Broadcasting Corporation (BBC) which contains 2225 news articles from the BBC news website from 2004-2005. The news articles are sorted after five different categories: business, entertainment, politics, sport, and tech.
+To further demonstrate the attention mechanism, we also implemented the HAN on news articles to be able to classify them into categories, as well as to gain short summaries of articles by extracting the most important sentences using sentence attention weights. News articles are particularly interesting within this context because the hierarchical architecture can fully exploit the length of the document, compared to shorter documents, such as tweets.
+We used a publicly available dataset from the British Broadcasting Corporation (BBC) which contains 2225 news articles from the BBC news website from 2004-2005. The news articles are sorted after five different categories: business, entertainment, politics, sport, and tech. 
 
 ### Parameters
-<script src="https://gist.github.com/leeh1234/1c7888cc8ca298ca0a2e071df8c761dc.js"></script>
-
 As news articles tend to be longer than product reviews on average, we adjusted the parameters and increased the maximum number of sentences in one document and the maximum number of words in each sentence.
 
- <script src="https://gist.github.com/leeh1234/1c7888cc8ca298ca0a2e071df8c761dc.js"></script>
+<script src="https://gist.github.com/leeh1234/1c7888cc8ca298ca0a2e071df8c761dc.js"></script>
 
- ### HAN Model
- <script src="https://gist.github.com/leeh1234/5b75b55aa6e5328a7ab996bf392ae689.js"></script>	<script src="https://gist.github.com/leeh1234/5b75b55aa6e5328a7ab996bf392ae689.js"></script>
+### HAN Model
 
+<script src="https://gist.github.com/leeh1234/5b75b55aa6e5328a7ab996bf392ae689.js"></script>
 
-  (show training plots? model accuracy and loss?)	(show training plots? model accuracy and loss?)
-
-
-Our test set shows the following results:
+<br>
+<br>
+Our testset shows the following results:
+<br>
 <script src="https://gist.github.com/leeh1234/0cbcce6a9cbdcaf3122951cd2d522b63.js"></script>
 
+
+<img align="left" width="340" height="280"
+     style="display:table;margin:0 auto;"  
+	 src="/blog/img/seminar/HAN_img/output_43_1.png">
+	 
+<img align="right" width="340" height="280"
+     style="display:table;margin:0 auto;"  
+	 src="/blog/img/seminar/HAN_img/output_43_2.png">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 Compared to the Amazon dataset, the BBC dataset exhibits a much higher accuracy rate. This is probably due to several facts: news articles are in general much longer than product reviews, and therefore the HAN can exploit this and gain more information. Also, news articles have no grammar and spelling mistakes, while product reviews written by users just burst from them. Grammar and spelling mistakes lead to misinterpretation of words and thus loss of information. Another aspect is that the categorization classes of the BBC dataset are much easier to distinguish, whereas the star rating categorization of Amazon are very subjective and it is quite hard to draw a straight line between different categories.   
 
 ### Input new articles
-To access newly released articles from BBC, we need to scrape the BBC website and save the title and text which is then cleaned, as described in the preprocessing, and subsequently converted to a sequence of numbers.
+To access newly released articles from BBC, we need to scrape the BBC website and save the title and text which is then cleaned, as described in the preprocessing, and subsequently converted to a sequence of numbers. 
+<script src="https://gist.github.com/leeh1234/3ecc73e0f3c2c163c8e0dea73f33981e.js"></script>
+
+### Sentence Attention Model
+Now, we need to build a new model to be able to extract the attention weights for each sentence. This is to identify the five most important sentences within a news article to put them together and create a short summary. 
+<script src="https://gist.github.com/leeh1234/98553337afe357407002c5a698ac8a46.js"></script>
+
+### Word Attention Model
+Additionally, we want to extract the usually hidden word attention weights as well for which we need to build another model. The words with the most attention serve as a good overview or framework for the article. 
+<script src="https://gist.github.com/leeh1234/6b5d21606a399d01fc1d5aca0d076469.js"></script>
+<script src="https://gist.github.com/leeh1234/ed879dc80e2d904c9cd7a33ae4c56a9f.js"></script>
+
+
+
+<script src="https://gist.github.com/leeh1234/07ac108692fe2afd5096a899e6ac4c25.js"></script>
+<br>
+<br>
+
+
+Words with the
+most attention are used as new tags database can be created with taggs, summarized news articles
+
+<script src="https://gist.github.com/leeh1234/13b13ff87bbc6f30e6c6669d3f9b063e.js"></script>
+
 <br>
 <br>
 
