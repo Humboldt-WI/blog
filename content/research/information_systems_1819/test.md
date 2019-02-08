@@ -375,10 +375,12 @@ The model consists of
 <img align="center" width="180" height="25"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/u_it.png">
+	 
 * Our new annotations are again multiplied with an outside trainable context vector **u_w** and normalized to an importance weight per word **alpha_it** by softmax function. <br>
  <img align="center" width="180" height="70"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/a_it.png">
+	 
 * The sum of these importance weights concatenated with the previously calculated context annotations is called sentence vector **s_i** <br>
 <img align="center" width="130" height="50"
      style="display:block;margin:0 auto;" 
@@ -435,7 +437,7 @@ To demonstrate how to apply HAN, we use a part of Amazon reviews for Electronic 
 <script src="https://gist.github.com/kraenkem/473a99e16b04052f28c132623673abe2.js"></script>
 
 <br>
-We remain 62,837 tokens. A cleaned and tokenized review looks like this:
+We keep 62,837 tokens. A cleaned and tokenized review looks like this:
 <br>
 
 <script src="https://gist.github.com/leeh1234/0d4ce05bef2111efcfaa45784973c366.js"></script>
