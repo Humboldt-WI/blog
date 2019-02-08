@@ -80,7 +80,7 @@ Text classification is already used for simpler applications, such as **filterin
 <br>
 
 ## Literature Review
-### How do different methods perform in text classification problems?
+
 **For our implementation of text classification**, we have applied a hierarchical attention network, a classification method from Yang et al. from 2016. The reason they developed it, although there are already well working neural networks for text classification, is because they wanted to pay attention to certain characteristics of document structures which have not been considered previously. <br>
 But before going deeper into this, let's have a look at what others did:
 
@@ -89,7 +89,7 @@ The basis of all text classification problems lies in the so-called Information 
 **Basic algorithms for IR** are:
 
   * Bag of Words (BoW): represents texts by frequency of appearing words
-  * Term Frequency / Inverse Document Frequency (tf-idf): sets term frequency and inverse document frequency and in this way represents texts by relevance of appearing words
+  * Term Frequency / Inverse Document Frequency (TF-IDF): sets term frequency and inverse document frequency in ratio and in this way represents texts by relevance of appearing words
   * N-grams: a set of co-occurring words (e.g. names)
 
 Here you can see the most important steps in unsupervised text classification:
@@ -326,7 +326,7 @@ To start from scratch, have a look at this example:
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/reviewyelp.png">
 <br>
-Here, we have a review from yelp that consists of five sentences. The highlighted sentences in red deliver stronger meaning compared to the others, and inside, the words *delicious* and *amazing* contribute the most in attributing the positive attitude contained in this review. This example reproduces our aforementioned statement about HANs, which we also intuitively know: not all parts of a document are equally relevant to gain the essential meaning from it.
+Here, we have a review from yelp that consists of five sentences. The highlighted sentences in red deliver stronger meaning compared to the others, and inside, the words *delicious* and *amazing* contribute the most in attributing the positive attitude contained in this review. This example reproduces our aforementioned statement about HAN, which we also intuitively know: not all parts of a document are equally relevant to gain the essential meaning from it.
 <br>
 <br>
 
@@ -481,7 +481,7 @@ The class **AttentionLayer** is successively applied on word level and then on s
 
 * **build** defines the weights. We set *len(input_shape) == 3* as we get a 3d tensor from the previous layers.
 
-* **call** builds the attention mechanism itself. As you can see, we have h_it, the context annotations, as input and get the sum of importance weights, hence, the sentence vector s_i, as output. In between, the current variable is reduced by the last dimension and expanded again because masking needs a binary tensor.
+* **call** builds the attention mechanism itself. As you can see, we have $h_{it}$, the context annotations, as input and get the sum of importance weights, hence, the sentence vector $s_{i}$, as output. In between, the current variable is reduced by the last dimension and expanded again because masking needs a binary tensor.
 <br>
 <br>
 
@@ -501,7 +501,7 @@ Congrats, you made it through a huge mass of theoretical input. Now, let's final
 
 <script src="https://gist.github.com/kraenkem/a84e0ab8c14d98498276b479255e128b.js"></script>
 
-**We train** the model throughout a relatively small number of epochs of 7 since our input data are already pre-trained and will overfit after too many epochs. Also, the batch size of 32 works with a large number of inputs due to our large data set. Note that you have to train reviews **x** against labels **y** (in this case the 5-star ratings).
+**We train** the model throughout a relatively small number of 7 epochs since our input data are already pre-trained and could overfit after too many epochs. Also, the batch size of 32 works with a large number of inputs due to our large data set. Note that you have to train reviews **$x$** against labels **$y$** (in this case the 5-star ratings).
 
 <script src="https://gist.github.com/kraenkem/b0f0bfbb1efdeec7d808b69beb521d0e.js"></script>
 <script src="https://gist.github.com/kraenkem/e29cde258cb852f791516ef34cdc5775.js"></script>
@@ -598,7 +598,7 @@ The information of the articles could then be saved in a new database. The words
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/eternity.png">
 <br>	 
-As you can see, the hierarchical attention network is a well performing instrument for text classification. We hope this blog post - regardless of its mass of information - gives you an understanding of how to use HAN. The most relevant points to remember are: 
+As you can see, the hierarchical attention network is a well performing instrument to create some pretty cool text classification solutions. We hope this blog post - regardless of its mass of information - gives you an understanding of how to use HAN. The most relevant points to remember are: 
 
 * the hierarchical structure of documents (document - sentence - word),
 * paying attention to contexts of sentences and words,
