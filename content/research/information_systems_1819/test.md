@@ -362,8 +362,8 @@ The model consists of
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/xit.png">
 	 
-* As input we have the structured tokens **w_it** which represent the word i per sentence t. We do not keep and process all words in a sentence. Learn more about that in the section [data preprocessing](data-preprocessing).
-* Since the model is not able to process plain text of the data type *string*, the tokens run through an Embedding layer which 'assigns' multidimensional vectors **W_e*w_ij** to each token. In this way, words are represented numerically as **x_it** as a projection of the word in a continuous vector space. <br>
+* As input we have the structured tokens **$w_{it}$** which represent the word i per sentence t. We do not keep and process all words in a sentence. Learn more about that in the section [data preprocessing](data-preprocessing).
+* Since the model is not able to process plain text of the data type *string*, the tokens run through an Embedding layer which 'assigns' multidimensional vectors **$W_{e}$** **$w_{it}$** to each token. In this way, words are represented numerically as **$x_{it}$** as a projection of the word in a continuous vector space. <br>
 * There are several embedding algorithms: the most popular ones are [word2vec](https://code.google.com/archive/p/word2vec/) and [GloVe](https://nlp.stanford.edu/projects/glove/). It is also possible to use pre-trained word embeddings, so you can accelerate your model training. <br>
 <br>
 
@@ -372,25 +372,25 @@ The model consists of
 * These vectorized tokens are the inputs for the next layer. Yang et al.(2016) use a Gated Recurrent Network (GRU) as an encoding mechanism. 
 * As a short reminder: In an RNN, states are 'remembered' to ensure we can predict words depending on previous words. A GRU has a so-called 'hidden state' which can be understood as a memory cell to transfer information. Two gates decide whether to keep or forget information and with this knowledge, to update the information that should be kept. If you are interested in learning more about GRU, have a look at this nice [blog post](https://isaacchanghau.github.io/post/lstm-gru-formula/). <br>
 * The purpose of this layer is to extract relevant contexts of every sentence. We call these contexts *annotations* per word. <br>
- Note that in this model, a *bidirectional* GRU is applied to get annotations of words by summarizing information from both directions resulting in a summarized variable **h_it**.  <br>
+ Note that in this model, a *bidirectional* GRU is applied to get annotations of words by summarizing information from both directions resulting in a summarized variable **$h_{it}$**.  <br>
 <img align="center" width="180" height="110"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/wordEncoder.png">
 
 ##### Word Attention
 
-* The annotations h_it build the base for the attention mechanism which starts with another hidden layer, a one-layer Multilayer Perceptron. The goal is to let the model learn through training with randomly initialized weights and biases. Those 'improved' annotations are then represented by **u_it**. Furthermore, this layer ensures that the network does not falter with a tanh function. This function 'corrects' input values to be between -1 and 1 and also maps zeros to near-zero. <br>
+* The annotations **$h_{it}$** build the base for the attention mechanism which starts with another hidden layer, a one-layer Multilayer Perceptron. The goal is to let the model learn through training with randomly initialized weights and biases. Those 'improved' annotations are then represented by **$u_{it}$**. Furthermore, this layer ensures that the network does not falter with a tanh function. This function 'corrects' input values to be between -1 and 1 and also maps zeros to near-zero. <br>
 
 <img align="center" width="180" height="25"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/u_it.png">
 	 
-* Our new annotations are again multiplied with an outside trainable context vector **u_w** and normalized to an importance weight per word **alpha_it** by a softmax function. <br>
+* Our new annotations are again multiplied with an outside trainable context vector **$u_{w}$** and normalized to an importance weight per word **$\alpha_{it}$** by a softmax function. <br>
  <img align="center" width="180" height="70"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/a_it.png">
 	 
-* The sum of these importance weights concatenated with the previously calculated context annotations is called sentence vector **s_i** <br>
+* The sum of these importance weights concatenated with the previously calculated context annotations is called sentence vector **$s_{i}$** <br>
 <img align="center" width="130" height="50"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/s_i.png">
@@ -404,7 +404,8 @@ The model consists of
 	 src="/blog/img/seminar/HAN_img/han_sent.png">
 
 <br>
-* Then the whole network is run on sentence level with basically the same procedure as on word level, but now we focus on the sentence i. Of course, there is no embedding layer as we already get sentence vectors **s_i** from word level as input.
+
+* Then the whole network is run on sentence level with basically the same procedure as on word level, but now we focus on the sentence i. Of course, there is no embedding layer as we already get sentence vectors **$s_{i}$** from word level as input.
 <br>
 
 ##### Sentence Encoder
@@ -418,12 +419,13 @@ The model consists of
 <img align="center" width="130" height="35"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/h_ii.png">
-	 
+
 ##### Sentence Attention
 
 * Trainable weights and biases are again outside randomly initialized.
-* The final output is a document vector **v** which can be used as features for document classification.
+* The final output is a document vector **$v$** which can be used as features for document classification.
 <br>
+
 <img align="center" width="180" height="150"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/ualphav.png">
@@ -536,7 +538,7 @@ Subsequently, we adjusted the parameters and increased the maximum number of sen
 
 ### HAN Model
 
-The data preprocessing steps are the same as for the Amazon data set. Hence, we skip right to our HAN Model. <br>
+The data preprocessing steps are the same as for the Amazon data set. Hence, we skip right to our HAN Model which looks as follows. Merely, the parameters have changed here. <br>
 <script src="https://gist.github.com/leeh1234/5b75b55aa6e5328a7ab996bf392ae689.js"></script>
 
 <br>
@@ -550,22 +552,27 @@ We get the following results for our training, validation, and test set:
 Compared to the Amazon data set, the BBC data set exhibits a much higher accuracy rate. This is probably due to several facts: news articles are in general much longer than product reviews, and therefore the HAN can exploit this and gain more information. Also, news articles have no grammar and spelling mistakes, while product reviews written by users just burst from them. Grammar and spelling mistakes lead to misinterpretation of words and thus loss of information. Another aspect is that the categorization classes of the BBC data set are much easier to distinguish, whereas the star rating categorization of Amazon is very subjective and it is quite hard to draw a straight line between different categories.   
 
 ### Input new articles
-To access newly released articles from BBC, we need to scrape the BBC website and save the title and text which is then cleaned, as described in the preprocessing, and subsequently converted to a sequence of numbers (see: embeddings). 
+To access newly released articles from BBC, we need to scrape the BBC website and save the title and text which is then cleaned, as described in the preprocessing, and subsequently converted to a sequence of numbers (see: [embeddings](#Implementation).)
 <script src="https://gist.github.com/leeh1234/3ecc73e0f3c2c163c8e0dea73f33981e.js"></script>
 
 ### Sentence Attention Model
-Now, we need to build a new model to be able to extract the attention weights for each sentence. This is to identify the five most important sentences within a news article to put them together and create a short summary. 
+Now, we need to build a new model to be able to extract the attention weights for each sentence. This is to identify the five most important sentences within a news article to put them together and create a short summary. <br>
+To extract the attention weights that lie within the hidden layer of the attention mechanism, we build a separate model instead of using the complete attention model of the HAN. The sentence attention model encompasses the processes from the input of the HAN to the output of the attention layer on sentence level which is where we basically cut it off. We constructed *sent_coeffs* so that we not only gain the attention output from our model but also the attention weights. Thus, we redefined the model in order to obtain the attention weights for each sentence which we use to create a summary of the news article. <br>
+
 <script src="https://gist.github.com/leeh1234/98553337afe357407002c5a698ac8a46.js"></script>
 
 ### Word Attention Model
 Additionally, we want to extract the usually hidden word attention weights as well for which we need to build another model. The words with the most attention serve as a good overview or framework for the article. 
+
 <script src="https://gist.github.com/leeh1234/6b5d21606a399d01fc1d5aca0d076469.js"></script>
-<script src="https://gist.github.com/leeh1234/ed879dc80e2d904c9cd7a33ae4c56a9f.js"></script>
 <br>
 
 ### Output
 
-Our output displays the title of the article, the category, the five most important words, and also a summary which consists of the five most important sentences. As a comparison, you can look at the full text below.
+This is how the final output for the BBC article that we scraped from the website looks like.
+Our HAN model has successfully predicted the category of the article as *entertainment*. Moreover, we were able to extract the attention weights with the sentence and word attention models. Hence, we gained the five most important words which actually provide a good overview of the article and could be used as additional tags. The summary of the article which we obtained through the sentence attention weights, also shows a quite well-working abstract. <br>  
+As a comparison, you can look at the full text below.
+
 <script src="https://gist.github.com/leeh1234/07ac108692fe2afd5096a899e6ac4c25.js"></script>
 <br>
 <br>
@@ -580,6 +587,10 @@ The information of the articles could then be saved in a new database. The words
 
 ## Take Away
 
+<img align="center" width="600" height="350"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/HAN_img/eternity.png">
+<br>	 
 As you can see, the hierarchical attention network is a well performing instrument for text classification. We hope this blog post - regardless of its mass of information - gives you an understanding of how to use HAN. The most relevant points to remember are: 
 
 * the hierarchical structure of documents (document - sentence - word),
