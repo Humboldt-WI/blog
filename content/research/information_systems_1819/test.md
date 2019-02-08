@@ -150,8 +150,7 @@ Find all listed abbreviations in the following table:
 	 src="/blog/img/seminar/HAN_img/Abb1.png">
 
 <br>
-With the improvement of the user-friendliness and related spread of internet usage, automated classification of growing numbers of data became important. Several supervised, respectively semi-supervised, methods (where the class information is learned from labeled data) are shown in the next table. <br>
-Since we use a neural network, the comparison with other neural networks is a priority for us. Of course, there are several different implementations of convolutional and recurrent neural networks, below only the most 'innovative' are mentioned.
+With the improvement of the user-friendliness and related spread of internet usage, automated classification of growing numbers of data became important. Several supervised respectively semi-supervised methods (where the class information are learned from labeled data) are shown in the next table. <br>
 
 <br>
 **(Semi-) Supervised**
@@ -301,6 +300,12 @@ Since we use a neural network, the comparison with other neural networks is a pr
 <img align="center" width="300" height="340"
      style="display:block;margin:0 auto;" 
 	 src="/blog/img/seminar/HAN_img/Abb2.png">
+<br>
+<br>
+(Nigam et al., 1999) show in their probabilistic method that text classification improves significantly when learning from labeled data. <br>
+Support Vector Machines (SVM) use support vectors as classifier. Here, (Matsumoto et al., 2005) involve hierarchical structure by creating sentence representations. <br>
+Since we use a neural network, the comparison with other neural networks is prior for us. Of course, there are several different implementations of convolutional and recurrent neural networks; in the table are mentioned selected steps during the development of NN for text classification. <br>
+It is already common use to combined layers of CNN and RNN. Several approaches successfully covered the hierarchical structure of documents (e.g. Zhou et al., 2015) and computed importance weights. Still, contexts of words and sentences, including the changing meanings in different documents, are new to text classification tasks and find a first solution with HAN. 
 <br>
 <br>
 
@@ -470,7 +475,7 @@ Before we can concatenate the layers of the network in Keras, we need to build t
 
 The class **AttentionLayer** is successively applied on word level and then on sentence level.
 
-* **init** initializes variables from a uniform distribution. Also, we set *supports_masking = True* because the network needs fixed input lengths. If some inputs are shorter than the maximum input length, a mask will be created and initialized with 0. Then, the mask will be 'filled up' with 1 to positions where the input has values in. This is further defined in the next functions.
+* **init** initializes variables from a uniform distribution. Also, we set *supports_masking = True* because the network needs fixed input lengths. Therefore, every input gets a mask with the length equal to the maximum input length initialized with 0. Then, the mask will be padded with "1" at each position where the input holds values. Both padded input sequence and appropriate mask run through the network; to avoid that the network will recognize every input with the same length because of padding, the mask is used to check whether the input is just padded or actually has maximum length. 
 
 * **build** defines the weights. We set *len(input_shape) == 3* as we get a 3d tensor from the previous layers.
 
