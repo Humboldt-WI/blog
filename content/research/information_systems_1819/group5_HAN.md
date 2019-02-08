@@ -30,14 +30,13 @@ After reading this blog post, you will know:
 ## Introduction
 
 **Imagine you work for a company** that sells cameras and you would like to find out what customers think about the latest release. Ratings might not be enough since users tend to rate products differently. Nowadays, you will be able to find a vast amount of reviews on your product or general opinion sharing from users on various platforms, such as facebook, twitter, instagram, or blog posts.
-
-One might consider a product they rate with 3 out of 5 stars very good, others always give full stars even if they dislike a few aspects. Text classification can give a clue, whether ratings actually describe the overall opinion towards the product.  As you can see, the number of platforms that need to be operated is quite big and therefore also the number of comments or reviews. So, how can you deal with all of this textual data and gain important insights from it?
+As you can see, the number of platforms that need to be operated is quite big and therefore also the number of comments or reviews. So, how can you deal with all of this textual data and gain important insights from it? 
 
 <br>
 <br>
 <img align="center" width="700" height="450"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/intro1.png">
+	 src="/blog/img/seminar/group5_HAN/intro1.png">
 
 ## Outline
 * [Introduction](#introduction)
@@ -54,7 +53,7 @@ One might consider a product they rate with 3 out of 5 stars very good, others a
 
 ## Text Classification
 
-**Evaluating all of the textual data manually** is very time consuming and strenuous. A more efficient way to extract important information from it is text classification. <br>
+**Evaluating all of the textual data manually** is very time consuming and strenuous. A more efficient way to extract important information is text classification. <br>
 Text classification is a fundamental task in natural language processing. The goal is to assign unstructured documents (e.g. reviews, emails, posts, website contents etc.) to one or multiple classes. Such classes can be review scores, like star ratings, spam vs. non-spam classification, or topic labeling. <br>
 Essentially, text classification can be used whenever there are certain tags to map to a large amount of textual data. To learn how to classify, we need to build classifiers which are obtained from labeled data. In this way, the process of examining information becomes automated and thus simpler.
 <br>
@@ -147,7 +146,7 @@ Find all listed abbreviations in the following table:
 
 <img align="center" width="350" height="100"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/Abb1.png">
+	 src="/blog/img/seminar/group5_HAN/Abb1.png">
 
 <br>
 With the improvement of the user-friendliness and related spread of internet usage, automated classification of growing numbers of data became important. Several supervised respectively semi-supervised methods (where the class information are learned from labeled data) are shown in the next table. <br>
@@ -299,7 +298,7 @@ With the improvement of the user-friendliness and related spread of internet usa
 
 <img align="center" width="300" height="340"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/Abb2.png">
+	 src="/blog/img/seminar/group5_HAN/Abb2.png">
 <br>
 <br>
 Nigam et al.(1999) show in their probabilistic method that text classification improves significantly when learning from labeled data. <br>
@@ -324,7 +323,7 @@ To start from scratch, have a look at this example:
 <br>
 <img align="center" width="350" height="100"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/reviewyelp.png">
+	 src="/blog/img/seminar/group5_HAN/reviewyelp.png">
 <br>
 Here, we have a review from yelp that consists of five sentences. The highlighted sentences in red deliver stronger meaning compared to the others, and inside, the words *delicious* and *amazing* contribute the most in attributing the positive attitude contained in this review. This example reproduces our aforementioned statement about HAN, which we also intuitively know: not all parts of a document are equally relevant to gain the essential meaning from it.
 <br>
@@ -335,7 +334,7 @@ Here, we have a review from yelp that consists of five sentences. The highlighte
 **This is how the architecture** of HANs looks like:
 <img align="center" width="430" height="450"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/han_architecture.jpg">
+	 src="/blog/img/seminar/group5_HAN/han_architecture.jpg">
 
 <br>
 First, the network considers the hierarchical structure of documents by constructing a document representation by building representations of sentences and then aggregating those into a document representation. <br>
@@ -346,7 +345,7 @@ To understand the different processes of the HAN architecture better, we took th
 The same algorithms are applied twice: First on word level and afterwards on sentence level. <br>
 The model consists of
 
-* the encoder, which returns relevant contexts, and
+* the encoder which returns relevant contexts, and
 
 * the attention mechanism, which computes importance weights of these contexts as one vector.
 <br>
@@ -355,12 +354,12 @@ The model consists of
 #### Word Level
 <img align="center" width="750" height="320"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/han_word.png">
+	 src="/blog/img/seminar/group5_HAN/han_word.png">
 <br>
 <br>
 <img align="center" width="180" height="25"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/xit.png">
+	 src="/blog/img/seminar/group5_HAN/xit.png">
 	 
 * As input we have the structured tokens **$w_{it}$** which represent the word i per sentence t. We do not keep and process all words in a sentence. Learn more about that in the section [data preprocessing](data-preprocessing).
 * Since the model is not able to process plain text of the data type *string*, the tokens run through an Embedding layer which 'assigns' multidimensional vectors **$W_{e}$** **$w_{it}$** to each token. In this way, words are represented numerically as **$x_{it}$** as a projection of the word in a continuous vector space. <br>
@@ -370,12 +369,12 @@ The model consists of
 ##### Word Encoder
 
 * These vectorized tokens are the inputs for the next layer. Yang et al.(2016) use a Gated Recurrent Network (GRU) as an encoding mechanism. 
-* As a short reminder: In an RNN, states are 'remembered' to ensure we can predict words depending on previous words. A GRU has a so-called 'hidden state' which can be understood as a memory cell to transfer information. Two gates decide whether to keep or forget information and with this knowledge, to update the information that should be kept. If you are interested in learning more about GRU, have a look at this nice [blog post](https://isaacchanghau.github.io/post/lstm-gru-formula/). <br>
+* As a short reminder: In an RNN, states are 'remembered' to ensure we can predict words depending on previous words. A GRU has a so-called 'hidden state' which can be understood as a memory cell to transfer information. Two gates decide whether to keep or forget information and with this knowledge, to update the information that should be kept. If you are interested in learning more about GRU, have a look at another blog post of this semester about LSTMs and GRUs. <br>
 * The purpose of this layer is to extract relevant contexts of every sentence. We call these contexts *annotations* per word. <br>
  Note that in this model, a *bidirectional* GRU is applied to get annotations of words by summarizing information from both directions resulting in a summarized variable **$h_{it}$**.  <br>
 <img align="center" width="180" height="110"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/wordEncoder.png">
+	 src="/blog/img/seminar/group5_HAN/wordEncoder.png">
 
 ##### Word Attention
 
@@ -383,17 +382,17 @@ The model consists of
 
 <img align="center" width="180" height="25"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/u_it.png">
+	 src="/blog/img/seminar/group5_HAN/u_it.png">
 	 
-* Our new annotations are again multiplied with an outside trainable context vector **$u_{w}$** and normalized to an importance weight per word **$\alpha_{it}$** by a softmax function. <br>
+* Our new annotations are again multiplied with a trainable context vector **$u_{w}$** and normalized to an importance weight per word **$\alpha_{it}$** by a softmax function. The word context vector **$u_{w}$** is randomly initialized and jointly learned during the training process. <br>
  <img align="center" width="180" height="70"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/a_it.png">
+	 src="/blog/img/seminar/group5_HAN/a_it.png">
 	 
 * The sum of these importance weights concatenated with the previously calculated context annotations is called sentence vector **$s_{i}$** <br>
 <img align="center" width="130" height="50"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/s_i.png">
+	 src="/blog/img/seminar/group5_HAN/s_i.png">
 <br>
 
 #### Sentence Level
@@ -401,7 +400,7 @@ The model consists of
 <br>
 <img align="center" width="700" height="350"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/han_sent.png">
+	 src="/blog/img/seminar/group5_HAN/han_sent.png">
 
 <br>
 
@@ -415,20 +414,20 @@ The model consists of
 <br>
 <img align="center" width="180" height="70"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/h_i.png">
+	 src="/blog/img/seminar/group5_HAN/h_i.png">
 <img align="center" width="130" height="35"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/h_ii.png">
+	 src="/blog/img/seminar/group5_HAN/h_ii.png">
 
 ##### Sentence Attention
 
-* Trainable weights and biases are again outside randomly initialized.
+* Trainable weights and biases are again randomly initialized and jointly learned during the training process.
 * The final output is a document vector **$v$** which can be used as features for document classification.
 <br>
 
 <img align="center" width="180" height="150"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/ualphav.png">
+	 src="/blog/img/seminar/group5_HAN/ualphav.png">
 <br>
 <br>
 
@@ -497,7 +496,7 @@ Congrats, you made it through a huge mass of theoretical input. Now, let's final
 
 * *Dropout* is a regularizer to prevent overfitting by turning off a number of neurons in every layer. 0.5 gets a high variance, but you can play around with this as well as with other parameters.
 
-* *Dense* implements another layer for document classification. The document vector runs again with outside weights and biases through a softmax function.
+* *Dense* implements another layer for document classification. The document vector runs again with the learned weights and biases through a softmax function.
 
 <script src="https://gist.github.com/kraenkem/a84e0ab8c14d98498276b479255e128b.js"></script>
 
@@ -516,12 +515,12 @@ Congrats, you made it through a huge mass of theoretical input. Now, let's final
 
 <img align="center" width="700" height="500"
      style="display:block;margin:0 auto;"  
-	 src="/blog/img/seminar/HAN_img/doc_class_comp_neu.JPG">
+	 src="/blog/img/seminar/group5_HAN/doc_class_comp_neu.JPG">
 Note: HN-AVE and HN-MAX refer to hierarchical networks with averaging and max-pooling methods. HN-ATT refers to hierarchical attention networks as described in this blog.
 <br>
 <br>
 
-This is how one of our 5-star reviews looks like that our model has predicted. The categorization of the review as a 5-star rating works quite well here: <br>
+This is how one of our 5-star reviews looks like that our model has predicted. The categorization of the review as a 5-star rating works quite well in this case: <br>
 <script src="https://gist.github.com/leeh1234/8b3cbe430843f6abae3d21ccc82f7a5e.js"></script>
 <br>
 <br>
@@ -559,7 +558,7 @@ Compared to the Amazon data set, the BBC data set exhibits a much higher accurac
 * Another aspect is that the categorization classes of the BBC data set are much easier to distinguish, whereas the star rating categorization of Amazon is very subjective and it is quite hard to draw a straight line between different categories.   
 
 ### Input new articles
-To access newly released articles from BBC, we need to scrape the BBC website and save the title and text which is then cleaned, as described in the preprocessing, and subsequently converted to a sequence of numbers (see: [embeddings](#Implementation).)
+To access newly released articles from BBC, we need to scrape the BBC website and save the title and text which is then cleaned, as described in the preprocessing, and subsequently converted to a sequence of numbers (see: [embeddings](#implementation).)
 <script src="https://gist.github.com/leeh1234/3ecc73e0f3c2c163c8e0dea73f33981e.js"></script>
 
 ### Sentence Attention Model
@@ -572,6 +571,7 @@ To extract the attention weights that lie within the hidden layer of the attenti
 Additionally, we want to extract the usually hidden word attention weights as well for which we need to build another model. The words with the most attention serve as a good overview or framework for the article. 
 
 <script src="https://gist.github.com/leeh1234/6b5d21606a399d01fc1d5aca0d076469.js"></script>
+
 <br>
 
 ### Output
@@ -596,7 +596,7 @@ The information of the articles could then be saved in a new database. The words
 
 <img align="center" width="600" height="350"
      style="display:block;margin:0 auto;" 
-	 src="/blog/img/seminar/HAN_img/eternity.png">
+	 src="/blog/img/seminar/group5_HAN/eternity.png">
 <br>	 
 As you can see, the hierarchical attention network is a well performing instrument to create some pretty cool text classification solutions. We hope this blog post - regardless of its mass of information - gives you an understanding of how to use HAN. The most relevant points to remember are: 
 
