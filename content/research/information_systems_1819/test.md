@@ -28,7 +28,7 @@ After reading this blog post you will know:
 
 ## Introduction
 
-**Imagine you work for a company** that sells cameras and you would like to find out what customers think about the latest release. Ratings might not be enough since users tend to rate products differently. One might consider a product they rates with 3 out of 5 stars very good, others always give full stars even if they dislike a few aspects. Text classification can give a clue, whether ratings actually describe the overall opinion towards the product. Additionally, the number of possibilities to get opinions from is rising: Nowadays, you will be able to find a vast amount of reviews on your product or general opinion sharing from users on various platforms, such as facebook, twitter, instagram, or blogposts. As you can see, the number of platforms that need to be operated is quite big and therefore also the amount of comments or reviews. So, how can you deal with all of this textual data and gain knowledge from it?
+**Imagine you work for a company** that sells cameras and you would like to find out what customers think about the latest release. Ratings might not be enough since users tend to rate products differently. One might consider a product they rates with 3 out of 5 stars very good, others always give full stars even if they dislike a few aspects. Text classification can give a clue, whether ratings actually describe the overall opinion towards the product. Additionally, the number of possibilities to get opinions from is rising: Nowadays, you will be able to find a vast amount of reviews on your product or general opinion sharing from users on various platforms, such as facebook, twitter, instagram, or blog posts. As you can see, the number of platforms that need to be operated is quite big and therefore also the number of comments or reviews. So, how can you deal with all of this textual data and gain knowledge from it?
 
 <br>
 <br>
@@ -59,18 +59,18 @@ Essentially, text classification can be used whenever there are certain tags to 
 
 ## Applications
 
-Text classification finds a variety of application possibilities due to the large amount of data which can be interpreted.
+Text classification finds a variety of application possibilities due to large amount of data which can be interpreted.
 <br>
 
-By **topic labeling** every kind of assigning text to topics or categories is meant. This can also include unstructured texts. The main goal is to extract generic tags. Topic labeling is the most important and widest used application of text classification. It has a few sub applications.
+By **topic labeling** every kind of assigning text to topics or categories is meant. This can also include unstructured texts. The main goal is to extract generic tags. Topic labeling is the most important and widest used application of text classification. It has a few sub-applications.
 
-* **Marketing**: The 'new' marketing has moved from search engines to social media platforms where real communication between brands and users take place. Users don not only review products but also discuss them with other users. With text classification, businesses can classify those products which have great consideration. Based on this, trends and customer types are examined.
+* **Marketing**: The 'new' marketing has moved from search engines to social media platforms where real communication between brands and users take place. Users do not only review products but also discuss them with other users. With text classification, businesses can classify those products which have great consideration. Based on this, trends and customer types are examined.
 
 * **Reviews**: With text classification businesses can easily find aspects on which customers disagree with their services or products. They do not have to go through low rating reviews by themselves but can detect categories in which their product did or did not satisfy.  
 * **Tagging content**: Platforms like blogs live from publications of many people or pool products from other websites. So, if these are not tagged thoroughly in the first place, there might be the need to tag these texts or products in order to simplify navigation through the website. User experience is improved by this application too. In addition, good classified and tagged websites are more likely to appear in search engines like Google. <br>
-Mentioning Google: If you're using gmail, your mails are already automated filtered and labeled by Google's text classification algorithms. <br>
+Mentioning Google: If you're using Gmail, your emails are already automated filtered and labeled by Google's text classification algorithms. <br>
 
-Another application is **sentiment analysis**. Imagine again how differently customers might rate a product. Someone could be disappointed about one single feature that they rate it low although they liked the overall product. Or ratings might be low due to bad customer service whilst the product itself is satisfying. Text classification helps to identify those criteria.
+Another application is **sentiment analysis**. Imagine again how different customers might rate a product. Someone could be disappointed about one single feature that they rate it low although they liked the overall product. Or ratings might be low due to bad customer service whilst the product itself is satisfying. Text classification helps to identify those criteria.
 Now, sentiment analysis predicts the sentiment towards a specific characteristic on base of text classification. This not only finds economic application but especially in sentiment analysis for social and political debates. <br>
 
 Text classification is already used for simpler applications like **filtering spam**. Also, a team of Google invented a method called Smart Replies in 2016. This method takes emails as inputs, identifies the sentiment or topic of the mailed text and automatically generates short, complete responses.  
@@ -307,9 +307,11 @@ Since we use a neural network, the comparison with other neural networks is prio
 
 ## Text Classification with Hierarchical Attention Network
 
-Contrary to the most text classification implementations, HAN also considers the hierarchical structure of documents (document - sentences - words) and includes an attention mechanism that's able to find the most important words and sentences given the whole contexts, whereas other methods only return importance weights resulting from previous words. <br>
-Summarizing, HAN tries to find a solution to these problems, previous works did not consider:
+Contrary to the most text classification implementations, HAN also considers the hierarchical structure of documents (document - sentences - words) and includes an attention mechanism that's able to find the most important words and sentences given the whole contexts. whereas other methods only return importance weights resulting from previous words. <br>
+Summarizing, HAN tries to find a solution to these problems previous works did not consider:
+
 * Not every word in a sentence and every sentence in a document is equally important to extract the main information from the document.
+
 * To extract the main information in changing contexts, it is not enough to work with the single information of each word, but to get the context of all sentences and word interactions.
 
 In this way, HAN performs better in predicting the class of a given document. <br>
@@ -321,7 +323,7 @@ To start from scratch, have a look at this example:
 
 <br>
 <br>
-Here we have a review from yelp that consists of five sentences. The highlighted sentences in red deliver stronger meaning compared to the others and inside, the words *delicious* and *amazing* contribute the most in attributing the positive attitude contained in this review. HAN predicts pretty well the most relevant information as it assorts with what we would intuitively gain from this review. <br>
+Here we have a review from yelp that consists of five sentences. The highlighted sentences in red deliver stronger meaning compared to the others and inside, the words *delicious* and *amazing* contribute the most in attributing the positive attitude contained in this review. HAN predicts pretty well the most relevant information as it asserts with what we would intuitively gain from this review. <br>
 <br>
 
 ### Architecture of Hierarchical Attention Network
@@ -337,9 +339,11 @@ First, the network considers the hierarchical structure of documents by construc
 **Document representation** is built in the same way, only having the sentence vector of each sentence of the document as input. <br>
 
 Now, have a different view on the architecture of the model to understand how it works. <br>
-The same algorithms are applied two times: First on word level and afterwards on sentence level. <br>
+The same algorithms are applied two times: First on word level and afterward on sentence level. <br>
 The model consists of
+
 * the encoder, which returns relevant contexts, and
+
 * the attention mechanism, which computes importance weights of these contexts as one vector.
 
 #### Word Level
@@ -357,7 +361,7 @@ The model consists of
 
 ##### Word Encoder
 
-* These vectorized tokens are the inputs for the next layer. Yang et al. use a Gated Recurrent Network (GRU) as encoding mechanism. As a short reminder: In a RNN, states are 'remembered' to ensure we can predict words depending on previous words. GRU has a so-called 'hidden state' which can be understood as a memory cell to transfer information. Two gates decide about whether to keep or forget information and with this knowledge, to update the information that should be kept. If you are interested in learning more about GRU, have a look at this nice [blog post](https://isaacchanghau.github.io/post/lstm-gru-formula/). <br>
+* These vectorized tokens are the inputs for the next layer. Yang et al. use a Gated Recurrent Network (GRU) as an encoding mechanism. As a short reminder: In an RNN, states are 'remembered' to ensure we can predict words depending on previous words. GRU has a so-called 'hidden state' which can be understood as a memory cell to transfer information. Two gates decide about whether to keep or forget information and with this knowledge, to update the information that should be kept. If you are interested in learning more about GRU, have a look at this nice [blog post](https://isaacchanghau.github.io/post/lstm-gru-formula/). <br>
 	The purpose of this layer is to extract relevant contexts of every sentence. We call these contexts *annotations* per word. <br>
 	Note that in this model, *bidirectional* GRU is applied to get annotations of words by summarizing information from both directions resulting in a summarized variable **h_it**.  <br>
 <img align="center" width="180" height="110"
@@ -366,7 +370,7 @@ The model consists of
 
 ##### Word Attention
 
-* Those annotations h_it build the base for the attention mechanism which starts with another hidden layer, a one-layer Multilayer Perceptron. Goal is to let the model learn through training with randomly initialized weights and biases. Those 'improved' annotations are then represented by **u_it**. Furthermore, this layer ensures that the network does not falter with a tanh function. This function 'corrects' input values to being between -1 and 1 and also maps zeros to near-zeros. <br>
+* Those annotations h_it build the base for the attention mechanism which starts with another hidden layer, a one-layer Multilayer Perceptron. The goal is to let the model learn through training with randomly initialized weights and biases. Those 'improved' annotations are then represented by **u_it**. Furthermore, this layer ensures that the network does not falter with a tanh function. This function 'corrects' input values to be between -1 and 1 and also maps zeros to near-zero. <br>
 
 <img align="center" width="180" height="25"
      style="display:block;margin:0 auto;" 
@@ -389,7 +393,7 @@ The model consists of
 	 src="/blog/img/seminar/HAN_img/han_sent.png">
 
 
-* Then the whole network is run on sentence level with basically the same procedure as on word level but now we focus on the actual sentence i. Of course, there is no embedding layer as we already get sentence vectors **s_i** from word level as input.
+* Then the whole network is run on sentence level with basically the same procedure as on word level, but now we focus on the actual sentence i. Of course, there is no embedding layer as we already get sentence vectors **s_i** from word level as input.
 <br>
 
 ##### Sentence Encoder
@@ -415,18 +419,18 @@ The model consists of
 
 ### Implementation
 
-As the package [Keras](https://keras.io/) is 'a high-level neural networks API' extremely useful for deep learning problems, we recommend to install it in an own python environment. <br>
+We use the 'high-level neural networks API' [Keras](https://keras.io/) which is extremely useful for deep learning problems. We recommend to install it in an own python environment. <br>
 
 #### Data Preprocessing
 
-To demonstrate how to apply HAN we use a part of Amazon reviews for Electronic data which are public available [here](http://jmcauley.ucsd.edu/data/amazon/). This data set consists of nearly 1.7 million reviews. As the model learns through training it is highly important to have data sets with a large number of observations. Nevertheless, a million reviews would take us **days** to train on, so we set the number of reviews to keep equal to 100,000.
+To demonstrate how to apply HAN, we use a part of Amazon reviews for Electronic data which are publicly available [here](http://jmcauley.ucsd.edu/data/amazon/). This data set consists of nearly 1.7 million reviews. As the model learns through training, it is highly important to have data sets with a large number of observations. Nevertheless, a million reviews would take us **days** to train on, so we set the number of reviews to keep equal to 100,000.
 <br>
 
 **Words have to be lemmatized** to ensure that not every single typo or related term is handled by itself. Additionally, so-called stop words are filtered out. In our case, that is mainly prepositions like *as* or *to* that do not contribute to the meaning of the text. Have a look at function **cleanString**.
 
 <script src="https://gist.github.com/kraenkem/fbcde89789b2f8a0d9fb094cb40a42fe.js"></script>
 
-**After that we can tokenize** the given sentences. We set the maximum number of words to keep equal to 200,000.
+**After that, we can tokenize** the given sentences. We set the maximum number of words to keep equal to 200,000.
 
 <script src="https://gist.github.com/kraenkem/473a99e16b04052f28c132623673abe2.js"></script>
 
@@ -436,7 +440,7 @@ We remain 62,837 tokens. A cleaned and tokenized review looks like this:
 
 <script src="https://gist.github.com/leeh1234/0d4ce05bef2111efcfaa45784973c366.js"></script>
 
-**For vectorization of our tokens** we use one of GloVe's pretrained embedding dictionaries with 100 dimensions, that is one word is represented by 100 values in a matrix. As mentioned [before](#word-level), this accelerates our training. We match our tokens with the pretrained dictionary and filter out words that appear rarely (mostly due to spelling mistakes). As you can see, reviewers for our chosen products do not pay attention to correct spelling. Unfortunately, we therefore can only remain 20,056 words to proceed. This will influence performance of our model. But we will come to this later.
+**For vectorization of our tokens** we use one of GloVe's pre-trained embedding dictionaries with 100 dimensions, that is one word will be represented by 100 values in a matrix. As mentioned [before](#word-level), this accelerates our training. We match our tokens with the pre-trained dictionary and filter out words that appear rarely (mostly due to spelling mistakes). As you can see, reviewers for our chosen products do not pay attention to correct spelling. Therefore, we can only remain 20,056 words to proceed. This will influence the performance of our model. But we will come to this later.
 
 <script src="https://gist.github.com/kraenkem/24e7770761bb1924fc61ae01a9b29493.js"></script>
 
@@ -444,7 +448,7 @@ For a better comprehension of what those embeddings mean, have a closer a look a
 
 <script src="https://gist.github.com/leeh1234/4aebbe9f19d7be410e038c3656b8a0b4.js"></script>
 
-In a last step of data preprocessing, we want to set a train, validation and test data set. For that, we define a function **split_df** which ensures that all sets are balanced hence they have the same ratio for each class as the full data set. Without this predefined grouping by star rating. it could happen that the model only trains on the most occurring rating.
+In the last step of data preprocessing, we want to set a train, validation and test data set. For that, we define a function **split_df** which ensures that all sets are balanced, hence they have the same ratio for each class as the full data set. Without this predefined grouping by star rating. it could happen that the model only trains on the most occurring rating.
 
 <script src="https://gist.github.com/kraenkem/1488dba443356fbeebcccc134f980daa.js"></script>
 
@@ -455,9 +459,9 @@ Before we can concatenate the layers of the network in Keras, we need to build t
 
 <script src="https://gist.github.com/kraenkem/827f39d18c24e43c44b55c8971dce3f2.js"></script>
 
-Class **AttentionLayer** is applied successively on first word and then sentence level.
+Class **AttentionLayer** is applied successively on firstly word and then sentence level.
 
-* **init** initializes variables from a uniform distribution. Also, we set *supports_masking = True* because the network needs fixed input lengths. If some inputs are shorter than maximum input length a mask will be created initialized with 0. Then the mask will be 'filled up' with 1 to positions where the input has values in. This is further defined in the next functions.
+* **init** initializes variables from a uniform distribution. Also, we set *supports_masking = True* because the network needs fixed input lengths. If some inputs are shorter than maximum input length, a mask will be created initialized with 0. Then the mask will be 'filled up' with 1 to positions where the input has values in. This is further defined in the next functions.
 
 * **build** defines the weights. We set *len(input_shape) == 3* as we get a 3d tensor from the previous layers.
 
@@ -472,15 +476,15 @@ Congrats, you made it through a huge mass of theoretical input. Now, let's final
 
 * *TimeDistributed* applies all word level layers on each sentence.
 
-* We want to have an output dimensionality of GRU equal to 50, because running it forwards and backwards returns 100 dimensions - which is the dimensionality of our inputs.
+* We want to have an output dimensionality of GRU equal to 50 because running it forwards and backwards returns 100 dimensions - which is the dimensionality of our inputs.
 
 * *Dropout* is a regularizer to prevent overfitting by turning off a number of neurons in every layer - 0.5 gets a high variance, but you can play around with this as well as with other parameters.
 
-* *Dense* implements a last layer for actual document classification. The document vector runs again with outside weights and biases through a softmax function.
+* *Dense* implements another layer for document classification. The document vector runs again with outside weights and biases through a softmax function.
 
 <script src="https://gist.github.com/kraenkem/a84e0ab8c14d98498276b479255e128b.js"></script>
 
-**We train** the model throughout a relatively small number of epochs of 7 since our input data are already pre-trained and will overfit after too much epochs, also because the batch size of 32 works with a large number of inputs due to our large data set. Note that you have to train reviews **x** against labels **y** (in this case the 5-star ratings).
+**We train** the model throughout a relatively small number of epochs of 7 since our input data are already pre-trained and will overfit after too many epochs, also because the batch size of 32 works with a large number of inputs due to our large data set. Note that you have to train reviews **x** against labels **y** (in this case the 5-star ratings).
 
 <script src="https://gist.github.com/kraenkem/b0f0bfbb1efdeec7d808b69beb521d0e.js"></script>
 <script src="https://gist.github.com/kraenkem/e29cde258cb852f791516ef34cdc5775.js"></script>
@@ -488,7 +492,7 @@ Congrats, you made it through a huge mass of theoretical input. Now, let's final
 
 <br>
 **Model evaluation** is with 69 % quite high how a comparison with the results from Yang et al. as well as from others shows (see table below).
-**Also, history plots** show that the training data set perform pretty well. Still, this is unfortunately not supported by the validation data set. This might be because of the small number of words we could proceed after the embedding layer which filtered out almost 70 % of all tokens due to misspelling. This might be improved with an even smaller batch and epoch size, or with a better, less mistaken data set.
+**Also, history plots** show that the training data set perform pretty well. Still, this is unfortunately not supported by the validation data set. This might be because of the small number of words we could proceed after the embedding layer which filtered out almost 70 % of all tokens due to misspelling. An improvement could be created with an even smaller batch and epoch size, or with a better, less mistaken data set.
 
 <img align="center" width="700" height="500"
      style="display:block;margin:0 auto;"  
@@ -540,7 +544,7 @@ Our testset shows the following results:
 <br>
 <br>
 <br>
-Compared to the Amazon dataset, the BBC dataset exhibits a much higher accuracy rate. This is probably due to several facts: news articles are in general much longer than product reviews, and therefore the HAN can exploit this and gain more information. Also, news articles have no grammar and spelling mistakes, while product reviews written by users just burst from them. Grammar and spelling mistakes lead to misinterpretation of words and thus loss of information. Another aspect is that the categorization classes of the BBC dataset are much easier to distinguish, whereas the star rating categorization of Amazon are very subjective and it is quite hard to draw a straight line between different categories.   
+Compared to the Amazon dataset, the BBC dataset exhibits a much higher accuracy rate. This is probably due to several facts: news articles are in general much longer than product reviews, and therefore the HAN can exploit this and gain more information. Also, news articles have no grammar and spelling mistakes, while product reviews written by users just burst from them. Grammar and spelling mistakes lead to misinterpretation of words and thus loss of information. Another aspect is that the categorization classes of the BBC dataset are much easier to distinguish, whereas the star rating categorization of Amazon is very subjective and it is quite hard to draw a straight line between different categories.   
 
 ### Input new articles
 To access newly released articles from BBC, we need to scrape the BBC website and save the title and text which is then cleaned, as described in the preprocessing, and subsequently converted to a sequence of numbers. 
@@ -572,8 +576,8 @@ most attention are used as new tags database can be created with taggs, summariz
 
 ## Take Away
 
-As you can see, hierarchical attention network is a well performing instrument for text classification. We hope this blog post - regardless of its mass of information - gives you understanding of how to use HAN. The most relevant points to remember are: 
+As you can see, the hierarchical attention network is a well performing instrument for text classification. We hope this blog post - regardless of its mass of information - gives you an understanding of how to use HAN. The most relevant points to remember are: 
 
 * the hierarchical structure of documents (document - sentence - word),
-* paying attention on contexts of sentences and words,
+* paying attention to contexts of sentences and words,
 * by considering changing contexts, HAN performs better for classification problems.
