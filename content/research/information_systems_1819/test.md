@@ -430,7 +430,9 @@ To demonstrate how to apply HAN we use a part of Amazon reviews for Electronic d
 
 <script src="https://gist.github.com/kraenkem/473a99e16b04052f28c132623673abe2.js"></script>
 
-
+<br>
+We remain 62,837 tokens. A cleaned and tokenized review looks like this:
+<br>
 
 <script src="https://gist.github.com/leeh1234/0d4ce05bef2111efcfaa45784973c366.js"></script>
 
@@ -442,10 +444,9 @@ For a better comprehension of what those embeddings mean, have a closer a look a
 
 <script src="https://gist.github.com/leeh1234/4aebbe9f19d7be410e038c3656b8a0b4.js"></script>
 
-In a last step of data preprocessing, we want to set a train, validation and test data set. For that we define a function **split_df** which ensures that all sets are balanced hence they have the same ratio for each class as the full data set. Without this predefined grouping by star rating. it could happen that the model only trains on the most occurring rating.
+In a last step of data preprocessing, we want to set a train, validation and test data set. For that, we define a function **split_df** which ensures that all sets are balanced hence they have the same ratio for each class as the full data set. Without this predefined grouping by star rating. it could happen that the model only trains on the most occurring rating.
 
 <script src="https://gist.github.com/kraenkem/1488dba443356fbeebcccc134f980daa.js"></script>
-<script src="https://gist.github.com/kraenkem/d7f47ffcb767262d4cc88a1998a12c43.js"></script>
 
 <br>
 #### Attention Mechanism
@@ -486,8 +487,8 @@ Congrats, you made it through a huge mass of theoretical input. Now, let's final
 <script src="https://gist.github.com/kraenkem/f54e681b995cefce72b641a12c50a88c.js"></script>
 
 <br>
-**Model evaluation** is with 69 % quite high how a comparison with the results from Yang et al. themselves as well as from others shows (see table below).
-**Also history plots** show that the training data set perform pretty well. Still, this is unfortunately not supported by the validation data set. This might be because of the small number of words we could proceed after the embedding layer which filtered out almost 70 % of all tokens due to misspelling. This might be improved with an even smaller batch and epoch size, or with a better, less mistaken data set.
+**Model evaluation** is with 69 % quite high how a comparison with the results from Yang et al. as well as from others shows (see table below).
+**Also, history plots** show that the training data set perform pretty well. Still, this is unfortunately not supported by the validation data set. This might be because of the small number of words we could proceed after the embedding layer which filtered out almost 70 % of all tokens due to misspelling. This might be improved with an even smaller batch and epoch size, or with a better, less mistaken data set.
 
 <img align="center" width="700" height="500"
      style="display:block;margin:0 auto;"  
@@ -571,8 +572,8 @@ most attention are used as new tags database can be created with taggs, summariz
 
 ## Take Away
 
-#### What is relevant to remember about text classification with hierarchical attention network?
+As you can see, hierarchical attention network is a well performing instrument for text classification. We hope this blog post - regardless of its mass of information - gives you understanding of how to use HAN. The most relevant points to remember are: 
 
-* hierarchical structure of documents (document - sentence - word)
-* attention on contexts of sentences and words
-* by considering changing contexts, HAN performs better for classification problems
+* the hierarchical structure of documents (document - sentence - word),
+* paying attention on contexts of sentences and words,
+* by considering changing contexts, HAN performs better for classification problems.
