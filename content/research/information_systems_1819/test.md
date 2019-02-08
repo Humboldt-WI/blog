@@ -508,8 +508,6 @@ Congrats, you made it through a huge mass of theoretical input. Now, let's final
 <script src="https://gist.github.com/kraenkem/f54e681b995cefce72b641a12c50a88c.js"></script>
 
 <br>
-This is how one of our 5-star reviews looks like: <br>
-<script src="https://gist.github.com/leeh1234/8b3cbe430843f6abae3d21ccc82f7a5e.js"></script>
 <br>
 
 **Model evaluation** is with 69 % quite high how a comparison with the results from Yang et al.(2016) as well as from others shows (see table below).
@@ -520,6 +518,11 @@ This is how one of our 5-star reviews looks like: <br>
      style="display:block;margin:0 auto;"  
 	 src="/blog/img/seminar/HAN_img/doc_class_comp_neu.JPG">
 Note: HN-AVE and HN-MAX refer to hierarchical networks with averaging and max-pooling methods. HN-ATT refers to hierarchical attention networks as described in this blog.
+<br>
+<br>
+
+This is how one of our 5-star reviews looks like that our model has predicted. The categorization of the review as a 5-star rating works quite well here: <br>
+<script src="https://gist.github.com/leeh1234/8b3cbe430843f6abae3d21ccc82f7a5e.js"></script>
 <br>
 <br>
 
@@ -549,7 +552,11 @@ We get the following results for our training, validation, and test set:
 <br>
 <script src="https://gist.github.com/leeh1234/0cbcce6a9cbdcaf3122951cd2d522b63.js"></script>
 
-Compared to the Amazon data set, the BBC data set exhibits a much higher accuracy rate. This is probably due to several facts: news articles are in general much longer than product reviews, and therefore the HAN can exploit this and gain more information. Also, news articles have no grammar and spelling mistakes, while product reviews written by users just burst from them. Grammar and spelling mistakes lead to misinterpretation of words and thus loss of information. Another aspect is that the categorization classes of the BBC data set are much easier to distinguish, whereas the star rating categorization of Amazon is very subjective and it is quite hard to draw a straight line between different categories.   
+Compared to the Amazon data set, the BBC data set exhibits a much higher accuracy rate. This is probably due to several facts: 
+
+* News articles are in general much longer than product reviews, and therefore the HAN can exploit this and gain more information. 
+* Also, news articles have no grammar and spelling mistakes, while product reviews written by users just burst from them. Grammar and spelling mistakes lead to misinterpretation of words and thus loss of information. 
+* Another aspect is that the categorization classes of the BBC data set are much easier to distinguish, whereas the star rating categorization of Amazon is very subjective and it is quite hard to draw a straight line between different categories.   
 
 ### Input new articles
 To access newly released articles from BBC, we need to scrape the BBC website and save the title and text which is then cleaned, as described in the preprocessing, and subsequently converted to a sequence of numbers (see: [embeddings](#Implementation).)
