@@ -481,7 +481,7 @@ The class **AttentionLayer** is successively applied on word level and then on s
 
 * **build** defines the weights. We set *len(input_shape) == 3* as we get a 3d tensor from the previous layers.
 
-* **call** builds the attention mechanism itself. As you can see, we have $h_{it}$, the context annotations, as input and get the sum of importance weights, hence, the sentence vector $s_{i}$, as output. In between, the current variable is reduced by the last dimension and expanded again because masking needs a binary tensor.
+* **call** builds the attention mechanism itself. As you can see, we have *$h_{it}$*, the context annotations, as input and get the sum of importance weights, hence, the sentence vector *$s_{i}$*, as output. In between, the current variable is reduced by the last dimension and expanded again because masking needs a binary tensor.
 <br>
 <br>
 
