@@ -302,10 +302,10 @@ With the improvement of the user-friendliness and related spread of internet usa
 	 src="/blog/img/seminar/HAN_img/Abb2.png">
 <br>
 <br>
-(Nigam et al., 1999) show in their probabilistic method that text classification improves significantly when learning from labeled data. <br>
-Support Vector Machines (SVM) use support vectors as classifier. Here, (Matsumoto et al., 2005) involve hierarchical structure by creating sentence representations. <br>
-Since we use a neural network, the comparison with other neural networks is prior for us. Of course, there are several different implementations of convolutional and recurrent neural networks; in the table are mentioned selected steps during the development of NN for text classification. <br>
-It is already common use to combined layers of CNN and RNN. Several approaches successfully covered the hierarchical structure of documents (e.g. Zhou et al., 2015) and computed importance weights. Still, contexts of words and sentences, including the changing meanings in different documents, are new to text classification tasks and find a first solution with HAN. 
+Nigam et al.(1999) show in their probabilistic method that text classification improves significantly when learning from labeled data. <br>
+Support Vector Machines (SVM) use support vectors as classifier. Here, Matsumoto et al.(2005) involve hierarchical structure by creating sentence representations. <br>
+Since we use a neural network, the comparison with other neural networks is a priority to us. Of course, there are several different implementations of convolutional and recurrent neural networks;  selected steps during the development of NN for text classification are mentioned in the table. <br>
+It is already common use to combine layers of CNN and RNN. Several approaches successfully covered the hierarchical structure of documents (e.g. Zhou et al., 2015) and computed importance weights. Still, contexts of words and sentences, including the changing meanings in different documents, are new to text classification tasks and find a first solution with HAN. 
 <br>
 <br>
 
