@@ -1,9 +1,3 @@
----
-title: "Test"
-date: 2019-02-07T17:06:29+01:00
-draft: true
----
-
 +++
 title = "Text Classification with Hierarchical Attention Network"
 date = '2019-02-08'
