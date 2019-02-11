@@ -23,6 +23,31 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1819/generativemodels/</loc>
+    <lastmod>2019-02-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1819/group5_han/</loc>
+    <lastmod>2019-02-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1819/02lstmgruandbeyond/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1819/00samplepost/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1819/group4_ulmfit/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/research/theses/uplift_modeling_blogpost/</loc>
     <lastmod>2018-09-20T00:00:00+00:00</lastmod>
   </url>
@@ -108,11 +133,6 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1819/00samplepost/</loc>
-    <lastmod>2017-12-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://humboldt-wi.github.io/blog/research/instruction/00samplepost/</loc>
     <lastmod>2017-12-14T00:00:00+00:00</lastmod>
   </url>
@@ -120,6 +140,14 @@
   <url>
     <loc>https://humboldt-wi.github.io/blog/contributors/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1819/group7_bayesiannn_uncertainty/</loc>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1819/~oup7_bayesiannn_uncertainty/</loc>
   </url>
   
   <url>
@@ -141,6 +169,18 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/attention/</loc>
+    <lastmod>2019-02-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/awd-lstm/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/blockchain/</loc>
     <lastmod>2018-02-02T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -154,6 +194,18 @@
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/class17/18/</loc>
     <lastmod>2018-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/class18/19/</loc>
+    <lastmod>2019-02-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/classification/</loc>
+    <lastmod>2019-02-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -175,13 +227,13 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/categories/course-projects/</loc>
-    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/deep-learning/</loc>
-    <lastmod>2018-03-15T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -200,6 +252,24 @@
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/document-embeddings/</loc>
     <lastmod>2018-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/fine-tuning/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/gru/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/hierarchical-network/</loc>
+    <lastmod>2019-02-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -234,6 +304,12 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/language-modelling/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/long-short-term-memory/</loc>
     <lastmod>2018-03-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -241,7 +317,7 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/lstm/</loc>
-    <lastmod>2018-03-15T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -264,19 +340,43 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/neural-network/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/neural-networks/</loc>
-    <lastmod>2017-12-14T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/nlp/</loc>
+    <lastmod>2019-02-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/pretraining/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/research/</loc>
-    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-08T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/recommendation/</loc>
     <lastmod>2018-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/rnn/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -288,7 +388,7 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/sentiment-classification/</loc>
-    <lastmod>2018-03-15T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -300,7 +400,13 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/</loc>
-    <lastmod>2018-02-02T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-08T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/text-analysis/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -324,13 +430,37 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/transfer-learning/</loc>
-    <lastmod>2018-03-15T00:00:00+00:00</lastmod>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/twitter/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/ulmfit/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/uplift/</loc>
     <lastmod>2018-09-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/wikitext-103/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/word-embeddings/</loc>
+    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -6,10 +6,59 @@
     <description>Recent content in RESEARCH on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/research/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Generative Models</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/generativemodels/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/generativemodels/</guid>
+      <description>Authors: Gabriel Blumenstock, Yu Fan, Yang Tian Introduction What are generative models? In machine learning, generative models are used to generate new samples following the same distribution of the original data using unsupervised learning algorithms. Such methods provide a powerful way to detect and analyze enormous information of data, which has been applied to various domains, e.g. images and texts. By learning the statistical latent space of images or stories, the models are able to obtain human experiences and then â€œcreateâ€ similar meaningful outputs.</description>
+    </item>
+    
+    <item>
+      <title>Text Classification with Hierarchical Attention Network</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/group5_han/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/group5_han/</guid>
+      <description>Text Classification with Hierarchical Attention Networks How to assign documents to classes or topics Authors: Maria KrÃ¤nkel, Hee-Eun Lee - Seminar Information System 18&amp;frasl;19 After reading this blog post, you will know:
+ What text classification is and what it is used for What hierarchical attention networks are and how their architecture looks like How to classify documents by implementing a hierarchical attention network  Introduction Imagine you work for a company that sells cameras and you would like to find out what customers think about the latest release.</description>
+    </item>
+    
+    <item>
+      <title>Crime and Neural Nets</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/02lstmgruandbeyond/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/02lstmgruandbeyond/</guid>
+      <description>Crime and Neural Nets&amp;#182;Introducing Recurrent Neural Networks with Long-Short-Term Memory and Gated Recurrent Unit to predict reported Crime Incidents&amp;#182;Carolin Kunze, Marc Scheu, Thomas Siskos&amp;#182;Several police departments across the Unites States have been experimenting with software for crime prdiction. This started a controversial debate: Critics are questioning the predictiv power of the underlying machine learning models and point out biases towards certain crime typs and neighborhoods. We took this as occacion to look into the publicly available crime records of the city of chicago.</description>
+    </item>
+    
+    <item>
+      <title>Sample Post 2019</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/00samplepost/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/00samplepost/</guid>
+      <description>TEST #hugo
+import numpy as np import pandas as pd 2+3  A Gentle Introduction to Neural Network Fundamentals 
+Imagine the following problem: There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.</description>
+    </item>
+    
+    <item>
+      <title>ULMFiT: State-of-the-Art in Text Analysis</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/group4_ulmfit/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/group4_ulmfit/</guid>
+      <description>Universal Language Model Fine-Tuning (ULMFiT) State-of-the-Art in Text Analysis Authors: Sandra Faltl, Michael Schimpke &amp;amp; Constantin Hackober 
+Table of Contents  Introduction  Literature Review and Motivation Inductive Transfer Learning Our Datasets Overview ULMFiT   General-Domain Language Model Pretraining  Word Embeddings Example of a Forward Pass through the LM Preparations for Fine-Tuning  Matching Process for the Embedding Matrix Variable Length Backpropagation Sequences Adam Optimizer Dropout    Target Task Language Model Fine-Tuning  Freezing Learning Rate Schedule Discriminative Fine-Tuning   Target Task Classifier  Concat Pooling Linear Decoder Gradual Unfreezing Benchmarks Example of a Forward Pass through the Classifier   Our Model Extension  Results Without Vocabulary Reduction   Conclusion  Reference List  1.</description>
+    </item>
     
     <item>
       <title>Uplift Modelling</title>
@@ -118,17 +167,6 @@ A very common way to accomplish that is by using an API.</description>
     
     <item>
       <title>Sample Post</title>
-      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/00samplepost/</link>
-      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/00samplepost/</guid>
-      <description>TEST #hugo
-import numpy as np import pandas as pd 2+3  A Gentle Introduction to Neural Network Fundamentals 
-Imagine the following problem: There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.</description>
-    </item>
-    
-    <item>
-      <title>Sample Post</title>
       <link>https://humboldt-wi.github.io/blog/research/instruction/00samplepost/</link>
       <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
       
@@ -136,6 +174,24 @@ Imagine the following problem: There are handwritten numbers that you want compu
       <description>TEST #hugo
 import numpy as np import pandas as pd 2+3  A Gentle Introduction to Neural Network Fundamentals 
 Imagine the following problem: There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/group7_bayesiannn_uncertainty/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/group7_bayesiannn_uncertainty/</guid>
+      <description>group7_BayesianNN_Uncertainty   /*! * * Twitter Bootstrap * */ /*! * Bootstrap v3.3.7 (http://getbootstrap.com) * Copyright 2011-2016 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */ /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */ html { font-family: sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; } body { margin: 0; } article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; } audio, canvas, progress, video { display: inline-block; vertical-align: baseline; } audio:not([controls]) { display: none; height: 0; } [hidden], template { display: none; } a { background-color: transparent; } a:active, a:hover { outline: 0; } abbr[title] { border-bottom: 1px dotted; } b, strong { font-weight: bold; } dfn { font-style: italic; } h1 { font-size: 2em; margin: 0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/~oup7_bayesiannn_uncertainty/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/~oup7_bayesiannn_uncertainty/</guid>
+      <description>Wiebkeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½iï¿½eï¿½bï¿½kï¿½eï¿½ï¿½ï¿½ï¿½Mï¿½iï¿½nï¿½gï¿½Lï¿½iï¿½Uï¿½ï¿½Sï¿½iï¿½mï¿½Sï¿½uï¿½nï¿½ï¿½ï¿½ï¿½Dï¿½oï¿½tï¿½uï¿½mï¿½ï¿½ï¿½ï¿½ï¿½@•&#39;ï¿½ïï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ËSï¿½ï¿½ï¿½ï¿½”ÛõRï¿½ï¿½ï¿½ï¿½0D%S¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</description>
     </item>
     
   </channel>

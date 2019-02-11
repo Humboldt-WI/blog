@@ -1,7 +1,7 @@
 +++
-title = "Sample Post"
-date = '2019-12-14'
-tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
+title = "Sample Post 2019"
+date = '2019-02-07'
+tags = [ "Deep Learning", "Neural Networks", "Class18/19",]
 categories = ["course projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
 author = "Class of Winter Term 2018 / 2019"
