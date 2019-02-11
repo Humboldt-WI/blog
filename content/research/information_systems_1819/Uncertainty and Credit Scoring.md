@@ -5,7 +5,7 @@ date = '2019-02-09'
 tags = ["Bayesian Deep Learning","Variational Inference","Monte Carlo Dropout","Class18/19"]
 categories = ["Course projects"]
 banner = "img/seminar/banners/hu-logo.jpg"
-author = "Class of Winter Term 2018 / 2019"
+author = "Seminar Information Systems (WS18/19)"
 disqusShortname = "https-wisample-github-io-blog"
 description = "Application of Bayesian Deep Learning to Profit Scoring"
 +++

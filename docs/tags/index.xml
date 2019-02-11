@@ -30,6 +30,15 @@
     </item>
     
     <item>
+      <title>Bayesian Deep Learning</title>
+      <link>https://humboldt-wi.github.io/blog/tags/bayesian-deep-learning/</link>
+      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/bayesian-deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Blockchain</title>
       <link>https://humboldt-wi.github.io/blog/tags/blockchain/</link>
       <pubDate>Fri, 02 Feb 2018 00:00:00 +0000</pubDate>
@@ -50,7 +59,7 @@
     <item>
       <title>Class18/19</title>
       <link>https://humboldt-wi.github.io/blog/tags/class18/19/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/class18/19/</guid>
       <description></description>
@@ -197,6 +206,15 @@
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/lstm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Monte Carlo Dropout</title>
+      <link>https://humboldt-wi.github.io/blog/tags/monte-carlo-dropout/</link>
+      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/monte-carlo-dropout/</guid>
       <description></description>
     </item>
     
@@ -359,6 +377,15 @@
       <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/uplift/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Variational Inference</title>
+      <link>https://humboldt-wi.github.io/blog/tags/variational-inference/</link>
+      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/variational-inference/</guid>
       <description></description>
     </item>
     
