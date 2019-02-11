@@ -9,11 +9,10 @@ disqusShortname = "https-wisample-github-io-blog"
 description = "Introducing Recurrent Neural Networks with Long-Short-Term Memory and Gated Recurrent Unit to predict reported Crime Incident"
 +++
 
-
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Crime-and-Neural-Nets">Crime and Neural Nets<a class="anchor-link" href="#Crime-and-Neural-Nets">&#182;</a></h1><h2 id="Or:-Introducing-Recurrent-Neural-Networks-with-Long-Short-Term-Memory-and-Gated-Recurrent-Unit-to-predict-reported-Crime-Incidents">Or: Introducing Recurrent Neural Networks with Long-Short-Term Memory and Gated Recurrent Unit to predict reported Crime Incidents<a class="anchor-link" href="#Or:-Introducing-Recurrent-Neural-Networks-with-Long-Short-Term-Memory-and-Gated-Recurrent-Unit-to-predict-reported-Crime-Incidents">&#182;</a></h2><h4 id="Carolin-Kunze,-Marc-Scheu,-Thomas-Siskos"><em>Carolin Kunze, Marc Scheu, Thomas Siskos</em><a class="anchor-link" href="#Carolin-Kunze,-Marc-Scheu,-Thomas-Siskos">&#182;</a></h4><p><img align="right" src="/blog/img/seminar/lstm_gru_1819/crime_intro.png" alt="NN" style="width: 500px;"/>
+<h1 id="Crime-and-Neural-Nets">Crime and Neural Nets<a class="anchor-link" href="#Crime-and-Neural-Nets">&#182;</a></h1><h2 id="Introducing-Recurrent-Neural-Networks-with-Long-Short-Term-Memory-and-Gated-Recurrent-Unit-to-predict-reported-Crime-Incidents">Introducing Recurrent Neural Networks with Long-Short-Term Memory and Gated Recurrent Unit to predict reported Crime Incidents<a class="anchor-link" href="#Introducing-Recurrent-Neural-Networks-with-Long-Short-Term-Memory-and-Gated-Recurrent-Unit-to-predict-reported-Crime-Incidents">&#182;</a></h2><h4 id="Carolin-Kunze,-Marc-Scheu,-Thomas-Siskos"><em>Carolin Kunze, Marc Scheu, Thomas Siskos</em><a class="anchor-link" href="#Carolin-Kunze,-Marc-Scheu,-Thomas-Siskos">&#182;</a></h4><p><img align="right" src="/blog/img/seminar/lstm_gru_1819/crime_intro.png" alt="NN" style="width: 500px;"/>
 Several police departments across the Unites States have been experimenting with software for crime prdiction. This  started a controversial debate: Critics are questioning the predictiv power of the underlying machine learning models and point out biases towards certain crime typs and neighborhoods. We took this as occacion to look into the publicly available <a href="https://catalog.data.gov/dataset/crimes-2001-to-present-398a4">crime records of the city of chicago</a>. The data set contains close to 7 milliom reported crime incidences starting from 2001 until the precceding week of the data download. It includes 22 columns with detailed information, such as type of the offence,  geo location,  district and the time of crime occurence. We will focus on temporal patterns in the data by predicting crime frequencies per day on the district level. Such a model may be used in practice to faciliate personel planning across the districts for the chigaco police force. We generate the input data for model building by counting the reported crimes by day and district. This results in a table with three columns containing date, district and the respective counts.</p>
 
 </div>
@@ -3189,10 +3188,10 @@ h_t = \color{red}{1-\Z} * h_{t-1} + \Z * \Htil
 
 
 
-<div id="b3e98e9f-ff2e-4dd4-9216-be8f8af4072e"></div>
+<div id="89c6b5e2-440d-4b12-bd5e-d5ac2d560efe"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b3e98e9f-ff2e-4dd4-9216-be8f8af4072e');
+var element = $('#89c6b5e2-440d-4b12-bd5e-d5ac2d560efe');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "855ba9167bb64727bea92e98c8159619", "version_minor": 0, "version_major": 2}
@@ -3222,10 +3221,10 @@ var element = $('#b3e98e9f-ff2e-4dd4-9216-be8f8af4072e');
 
 
 
-<div id="a19c7710-b76a-4bcf-bdf6-3cd115fa0054"></div>
+<div id="e85be4cd-ad24-4b95-8f7b-56e5aa4016ef"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a19c7710-b76a-4bcf-bdf6-3cd115fa0054');
+var element = $('#e85be4cd-ad24-4b95-8f7b-56e5aa4016ef');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "5eae0e52b965416795ca91eb2c0c9f85", "version_minor": 0, "version_major": 2}
@@ -3255,10 +3254,10 @@ var element = $('#a19c7710-b76a-4bcf-bdf6-3cd115fa0054');
 
 
 
-<div id="8d5d9318-7d83-438d-8c0c-aae753566452"></div>
+<div id="d2a6bea5-e770-4b7c-8a4e-222a6957e203"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#8d5d9318-7d83-438d-8c0c-aae753566452');
+var element = $('#d2a6bea5-e770-4b7c-8a4e-222a6957e203');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "c4aaccebcf7e4d56bccbc2ae6954cc11", "version_minor": 0, "version_major": 2}
@@ -3452,10 +3451,10 @@ var element = $('#8d5d9318-7d83-438d-8c0c-aae753566452');
 
 
 
-<div id="56ec6838-ad00-40ab-849e-fac0f0ddfe55"></div>
+<div id="6ab8793f-d696-46e5-bd74-d4c8a161e70c"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#56ec6838-ad00-40ab-849e-fac0f0ddfe55');
+var element = $('#6ab8793f-d696-46e5-bd74-d4c8a161e70c');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "ccc7c14d541c4615a0c96992dfce1ec2", "version_minor": 0, "version_major": 2}
