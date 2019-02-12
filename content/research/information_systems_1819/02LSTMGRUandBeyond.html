@@ -12,7 +12,7 @@ description = "Introducing Recurrent Neural Networks with Long-Short-Term Memory
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Crime-and-Neural-Nets">Crime and Neural Nets<a class="anchor-link" href="#Crime-and-Neural-Nets">&#182;</a></h1><h2 id="Introducing-Recurrent-Neural-Networks-with-Long-Short-Term-Memory-and-Gated-Recurrent-Unit-to-predict-reported-Crime-Incidents">Introducing Recurrent Neural Networks with Long-Short-Term Memory and Gated Recurrent Unit to predict reported Crime Incidents<a class="anchor-link" href="#Introducing-Recurrent-Neural-Networks-with-Long-Short-Term-Memory-and-Gated-Recurrent-Unit-to-predict-reported-Crime-Incidents">&#182;</a></h2><h4 id="Carolin-Kunze,-Marc-Scheu,-Thomas-Siskos"><em>Carolin Kunze, Marc Scheu, Thomas Siskos</em><a class="anchor-link" href="#Carolin-Kunze,-Marc-Scheu,-Thomas-Siskos">&#182;</a></h4><p><img align="right" src="/blog/img/seminar/lstm_gru_1819/crime_intro.png" alt="NN" style="width: 500px;"/>
+<h1 id="Crime-and-Neural-Nets">Crime and Neural Nets<a class="anchor-link" href="#Crime-and-Neural-Nets">&#182;</a></h1><h2 id="Introducing-Recurrent-Neural-Networks-with-Long-Short-Term-Memory-and-Gated-Recurrent-Unit-to-predict-reported-Crime-Incidents">Introducing Recurrent Neural Networks with Long-Short-Term Memory and Gated Recurrent Unit to predict reported Crime Incidents<a class="anchor-link" href="#Introducing-Recurrent-Neural-Networks-with-Long-Short-Term-Memory-and-Gated-Recurrent-Unit-to-predict-reported-Crime-Incidents">&#182;</a></h2><h4 id="Carolin-Kunze,-Marc-Scheu,-Thomas-Siskos"><em>Carolin Kunze, Marc Scheu, Thomas Siskos</em><a class="anchor-link" href="#Carolin-Kunze,-Marc-Scheu,-Thomas-Siskos">&#182;</a></h4><p><img align="right" src="/blog/img/seminar/lstm_gru_1819/crime_intro.png" alt="crime intro" style="width: 500px;"/>
 Several police departments across the Unites States have been experimenting with software for crime prdiction. This  started a controversial debate: Critics are questioning the predictiv power of the underlying machine learning models and point out biases towards certain crime typs and neighborhoods. We took this as occacion to look into the publicly available <a href="https://catalog.data.gov/dataset/crimes-2001-to-present-398a4">crime records of the city of chicago</a>. The data set contains close to 7 milliom reported crime incidences starting from 2001 until the precceding week of the data download. It includes 22 columns with detailed information, such as type of the offence,  geo location,  district and the time of crime occurence. We will focus on temporal patterns in the data by predicting crime frequencies per day on the district level. Such a model may be used in practice to faciliate personel planning across the districts for the chigaco police force. We generate the input data for model building by counting the reported crimes by day and district. This results in a table with three columns containing date, district and the respective counts.</p>
 
 </div>
@@ -123,8 +123,8 @@ Several police departments across the Unites States have been experimenting with
 <h3 id="Introduction-to-Recurrent-Neural-Networks">Introduction to Recurrent Neural Networks<a class="anchor-link" href="#Introduction-to-Recurrent-Neural-Networks">&#182;</a></h3><p>Many machine learning tasks are based on the assumption of identically independent distributed (i.i.d.) samples. Thus a prediction for a label $y_i$ only depends on the corresponding feature vector $\vec{x_i}$, where $i$ denotes the index of the sample. When working with sequential data, one typically wants to predict a future outcome $\vec{y_{t+1}}$, which often equals the following observable vector $\vec{x_{t+1}}$, from a sequence of previously observed vectors $\vec{x_t}$, …, $\vec{x_{t-T}}$. $t$ denotes the last observed point of time and $T$  the number of observations since the start of the sequence.
 While the vectors within a sequence are assumed to be dependent, we might still work with multiple mutually independent time series in a dataset. In this case one could use de notation $\vec{x_{ti}}$, corresponding to the observed vector at time $t$ from the sample sequence $i$. For simplicity we omit the sample index below. Note that many sequential prediction tasks are based on one dimensional time series, in that case one may also omit the vector notation. However, we stick to the more general form. <br>
 A simple feedforward network may be used to make predictions under the i.i.d assumption by passing one feature vector $\vec{x_i}$ at a time through the network. However, if one wants to account for temporal dependencies between the observed vectors $\vec{x_t}$, …, $\vec{x_{t-T}}$ the network needs some kind of memory. That’s the concept behind recurrent neural networks: They use hidden activations, referred to as hidden state, to carry information within the network from one observation to the following one.</p>
-<p><img align="center" src="/blog/img/seminar/lstm_gru_1819/RNN_t2.png" alt="NN" style="width: 500px;"/></p>
-<p style='text-align: center;'>Image 1: Recurrent Neural Network with a sequence length of two.</p><p>Image 1 illustrates how a simple RNN may be used to predict $\vec{y_{t+1}} (:= \vec{x_{t+1})} $ given a sequence of two observed vectors $\vec{x_t}$ and $\vec{x_{t-1}}$. The rectangles represent the input vectors. Each circle represents a vector of hidden activations and the triangle represents the output i.e. the predicted label. The arrows illustrate layer operations, i.e. the multiplication of the previous vector with one of the weight matrices $W_{in}$, $W_h$, or $W_{out}$, denoted by different colours. To make a prediction for $\vec{y_{t+1}}$, the first vector in the sequence $\vec{x_{t-1}}$ gets multiplied with the input weights $W_{in}$ and the activation function is applied to produce the first hidden state $\vec{h_{t-1}}$. Since $\vec{x_{t-1}}$ is the first observation in the sequence, $\vec{h_{t-1}}$ represents all available information at the time step $t-1$. To carry this information to the next hidden state $\vec{h_t}$, $\vec{h_{t-1}}$ gets multiplied with the hidden weight matrix $W_h$. Consecutively the new input $\vec{x_t}$ is multiplied with the input matrix $W_{in}$. The resulting vector carries the new information extracted from $\vec{x_t}$. This newly available information needs to be combined with the knowledge about previous observations to create $\vec{h_t}$. This can be done by summing up the two outputs from the matrix products and the bias $b_h$ and applying the  hyperbolic tangents as activation function to the vector sum (Equation 1). This is illustrated by the intersect of the green and the orange arrow. Conceptually the weights in $W_h$ represent the importance of previous observations and the weights in $W_{in}$ represent the importance of new information for the prediction task.
+<p style='text-align: center;'><img align="center" src="/blog/img/seminar/lstm_gru_1819/RNN_t2.png" alt="RNN lag 2" style="width: 400px;"/><br>
+Image 1: Recurrent Neural Network with a sequence length of two.</p><p>Image 1 illustrates how a simple RNN may be used to predict $\vec{y_{t+1}} (:= \vec{x_{t+1})} $ given a sequence of two observed vectors $\vec{x_t}$ and $\vec{x_{t-1}}$. The rectangles represent the input vectors. Each circle represents a vector of hidden activations and the triangle represents the output i.e. the predicted label. The arrows illustrate layer operations, i.e. the multiplication of the previous vector with one of the weight matrices $W_{in}$, $W_h$, or $W_{out}$, denoted by different colours. To make a prediction for $\vec{y_{t+1}}$, the first vector in the sequence $\vec{x_{t-1}}$ gets multiplied with the input weights $W_{in}$ and the activation function is applied to produce the first hidden state $\vec{h_{t-1}}$. Since $\vec{x_{t-1}}$ is the first observation in the sequence, $\vec{h_{t-1}}$ represents all available information at the time step $t-1$. To carry this information to the next hidden state $\vec{h_t}$, $\vec{h_{t-1}}$ gets multiplied with the hidden weight matrix $W_h$. Consecutively the new input $\vec{x_t}$ is multiplied with the input matrix $W_{in}$. The resulting vector carries the new information extracted from $\vec{x_t}$. This newly available information needs to be combined with the knowledge about previous observations to create $\vec{h_t}$. This can be done by summing up the two outputs from the matrix products and the bias $b_h$ and applying the  hyperbolic tangents as activation function to the vector sum (Equation 1). This is illustrated by the intersect of the green and the orange arrow. Conceptually the weights in $W_h$ represent the importance of previous observations and the weights in $W_{in}$ represent the importance of new information for the prediction task.
 All available information at the time step $t$ is now aggregated in $\vec{h_t}$. To make a prediction for $\vec{y_{t+1}}$ it gets multiplied with the output weight matrix $W_{out}$ (Eqation 2). The size of $W_{out}$ and the corresponding activation function are, as usually, defined by the prediction task (regression or classification). This steps cover the forward pass in a simple RNN.
 <br>
 <br>
@@ -134,10 +134,10 @@ $\vec{y_{t+1}} = ReLu(W_{out} * \vec{h_t} + \vec{b_{out}} )$ (Eqation 2)
 <br>
 <br>
 If we want to look back more time steps when making a prediction for $\vec{y_{t+1}}$, we just need to add another hidden state and another input for every additional time step. Image 3 illustrates how this may look for a sequence of length three. Interestingly, even though RNNs can get quite deep along the time dimension, they have relatively few parameters. This is the case because all inputs or hidden states represent the same thing, another time step in the series or another aggregation of past observations. Thus, we only have to train three different weight matrices, one for the input, one for the hidden state and one for the output.<br></p>
-<p><img  src="/blog/img/seminar/lstm_gru_1819/RNN_t3.png" alt="NN" style="width: 550px;"/></p>
-<p style='text-align: center;'>Image 2: Recurrent neural network with a sequence length of three.</p><p>Drawing RNNs with more time steps becomes cumbersome. We have to keep adding inputs and hidden states. The same holds true if we would like to construct them in in python. A more elegant and flexible representation is given in Image 4. Compared to Image 3 the repetitive elements have been put into a loop. For every time step in the sequence length $T$, the new input is feed into the network and combined with the previous hidden state. The new hidden state is passed back to the start of the loop as input to the next iteration. The loop stops at the end of the sequence and the last hidden state is put through the output layer. To include the first timestep within the loop representation, an initial hidden state $\vec{h_0}$ is defined as a vector of zeros.</p>
-<p><img  src="/blog/img/seminar/lstm_gru_1819/RNN_Loop.png" alt="NN" style="width: 350px;"/></p>
-<p style='text-align: center;'>Image 3: Recurrent neural network with a loop and a sequence length of $T$.</p>
+<p style='text-align: center;'><img  src="/blog/img/seminar/lstm_gru_1819/RNN_t3.png" alt="RNN lag 3" style="width: 500px;"/><br>
+Image 2: Recurrent neural network with a sequence length of three.</p><p>Drawing RNNs with more time steps becomes cumbersome. We have to keep adding inputs and hidden states. The same holds true if we would like to construct them in in python. A more elegant and flexible representation is given in Image 4. Compared to Image 3 the repetitive elements have been put into a loop. For every time step in the sequence length $T$, the new input is feed into the network and combined with the previous hidden state. The new hidden state is passed back to the start of the loop as input to the next iteration. The loop stops at the end of the sequence and the last hidden state is put through the output layer. To include the first timestep within the loop representation, an initial hidden state $\vec{h_0}$ is defined as a vector of zeros.</p>
+<p style='text-align: center;'><img  src="/blog/img/seminar/lstm_gru_1819/RNN_Loop.png" alt="NN" style="width: 350px;"/><br>
+Image 3: Recurrent neural network with a loop and a sequence length of $T$.</p>
 </div>
 </div>
 </div>
@@ -284,9 +284,10 @@ By training one model on the time series from all districts, we assume each seri
 Before further formatting we split the data into a train and a validation set. The validation set should resemble the data, the model would see in production. We therefore use the data from 2015 - 2017 as validation set. We will later use the most resent crime counts from 2017 as test set.
 One can not simply train a neural network on 24 long time series.
 It is common practice to split long time series into sub-sequences, treating them as independent samples. The simplest way to do this is, to slide a window of length <code>SEQ_LEN</code> through each series and treat each subseries contained in the window as one sample. The direct successor after the window defines the respective label for the sub-series (Image 4).
-Note that we will use the terms sample sequence and sub-sequence to a certain degree interchangable. Sample is used refering to the sequential counts in a row of the data matrix used for model training. Sub-sequence also refers to such a row, but it shall emphasis the row beeing a sub-sequence of a longer time series over the whole observation period.
-<img align="center" src="/blog/img/seminar/lstm_gru_1819/Format1.png" alt="NN" style="width: 500px;"/></p>
-<p style='text-align: center;'>Image 4: Formatting data input for recurrent neural networks.</p>
+Note that we will use the terms sample sequence and sub-sequence to a certain degree interchangable. Sample is used refering to the sequential counts in a row of the data matrix used for model training. Sub-sequence also refers to such a row, but it shall emphasis the row beeing a sub-sequence of a longer time series over the whole observation period.</p>
+<p style='text-align: center;'>
+<img align="center" src="/blog/img/seminar/lstm_gru_1819/Format1.png" alt="RNN input format" style="width: 450px;"/><br>
+Image 4: Formatting data input for recurrent neural networks.</p>
 </div>
 </div>
 </div>
@@ -295,7 +296,9 @@ Note that we will use the terms sample sequence and sub-sequence to a certain de
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">full_seqs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;District&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Incidents&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># changing long into wide format</span>
+<span class="n">full_seqs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;District&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Incidents&#39;</span><span class="p">)</span>
+
 </pre></div>
 
     </div>
@@ -308,7 +311,8 @@ Note that we will use the terms sample sequence and sub-sequence to a certain de
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">full_seqs</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span><span class="c1"># split data on date into train and validation set</span>
+</span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">full_seqs</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 
 <span class="n">lower</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2015-01-01&quot;</span><span class="p">)</span>
 <span class="n">upper</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2017-01-01&quot;</span><span class="p">)</span>
@@ -345,6 +349,7 @@ Note that we will use the terms sample sequence and sub-sequence to a certain de
 <div class="output_area">
 
     <div class="prompt output_prompt">Out[8]:</div>
+
 
 
 
@@ -517,9 +522,9 @@ We then train <code>myRNN</code>on the described input format. Subsequently we d
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Alternative-formatting-with-prediction-sequence">Alternative formatting with prediction sequence<a class="anchor-link" href="#Alternative-formatting-with-prediction-sequence">&#182;</a></h3><p>The way we created sample sequences so far, seems quite inefficient in terms of data usage: By sliding a window one step at time through the sequences we create mostly redundant sample sequences. A more efficient way of presenting data to the model is illustrated in Image 6. Instead of changing one value in each sample sequence, they are now defined by disjunct sub-sequences of lenght <code>SEQ_LEN</code>. Instead of predicting one label after observing a complete sub-sequence, we assigne a corresponding label sequences of the same length to each sample sequence. Each label sequence starts one time step ahead of the sample sequence.
-The remaining values, i.e. the remainder of the full sequence length divided by <code>SEQ_LEN</code>, are dropped. This reduced the size of the data set by a factor of <code>SEQ_LEN</code>, without losing any information compared to the previous formatting.
-<img align="center" src="/blog/img/seminar/lstm_gru_1819/Format2.png" alt="NN" style="width: 500px;"/></p>
-<p style='text-align: center;'> Image 5: Input format with prediction sequence.</p>
+The remaining values, i.e. the remainder of the full sequence length divided by <code>SEQ_LEN</code>, are dropped. This reduced the size of the data set by a factor of <code>SEQ_LEN</code>, without losing any information compared to the previous formatting.</p>
+<p style='text-align: center;'><img align="center" src="/blog/img/seminar/lstm_gru_1819/Format2.png" alt="RNN format return sequences" style="width: 450px;"/><br>
+Image 5: Input format with prediction sequence.</p>
 </div>
 </div>
 </div>
@@ -529,6 +534,10 @@ The remaining values, i.e. the remainder of the full sequence length divided by 
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">cut_sequence_return_state</span><span class="p">(</span><span class="n">long_seqs</span><span class="p">,</span> <span class="n">SEQ_LEN</span><span class="p">,</span> <span class="n">cut_seq_start</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+  <span class="c1"># input matrix of long sequences [sequences, timesteps]</span>
+  <span class="c1"># returns matrix of disjunct subsequences X [subsequences, SEQ_LEN, 1], and labels y[subsequences,SEQ_LEN,1]</span>
+  <span class="c1"># output is ordered first by time step then by district</span>
+
   <span class="n">long_seqs_X</span> <span class="o">=</span> <span class="n">long_seqs</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
   <span class="n">long_seqs_y</span> <span class="o">=</span> <span class="n">long_seqs</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
   <span class="k">if</span><span class="p">(</span><span class="n">cut_seq_start</span><span class="p">):</span>
@@ -559,9 +568,9 @@ The remaining values, i.e. the remainder of the full sequence length divided by 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We now replace <code>myRNN</code> by the keras <code>SimpleRNN()</code> layer in combination with a <code>Dense()</code> output layer. While this implements the same behaviour as <code>myRNN</code> it allows for additional functionality. By setting the <code>return_sequence</code> parameter to true it passes all hidden states, not only the last one, to the following layer. In the <code>myRRN</code> code above, this could have been implemented, by appending all hidden states to a list instead of updating the variable <code>ht</code>. The hidden states within the list are then passed through the output layer. The outputlayer returns for every time step in this hidden state sequence a prediction for the following time step in the label sequence. To implement this above, the output layer may be included in de loop (Image 3). The predictions then need to be save in a new output list. In keras this can be done more conviniently, by wrapping the output layer in the <code>TimeDistributed()</code> Wrapper. Image 9 shows the unrolled illustration of an RNN predicting sequences.
-<img align="center" src="/blog/img/seminar/lstm_gru_1819/RNN_Ret_Seq.png" alt="NN" style="width: 500px;"/></p>
-<p style='text-align: center;'> Image 6: Recurrent neural network with return sequence</p>
+<p>We now replace <code>myRNN</code> by the keras <code>SimpleRNN()</code> layer in combination with a <code>Dense()</code> output layer. While this implements the same behaviour as <code>myRNN</code> it allows for additional functionality. By setting the <code>return_sequence</code> parameter to true it passes all hidden states, not only the last one, to the following layer. In the <code>myRRN</code> code above, this could have been implemented, by appending all hidden states to a list instead of updating the variable <code>ht</code>. The hidden states within the list are then passed through the output layer. The outputlayer returns for every time step in this hidden state sequence a prediction for the following time step in the label sequence. To implement this above, the output layer may be included in de loop (Image 3). The predictions then need to be save in a new output list. In keras this can be done more conviniently, by wrapping the output layer in the <code>TimeDistributed()</code> Wrapper. Image 6 shows the unrolled illustration of an RNN predicting sequences.</p>
+<p style='text-align: center;'><img align="center" src="/blog/img/seminar/lstm_gru_1819/RNN_Ret_Seq.png" alt="RNN return sequences" style="width: 450px;"/><br>
+Image 6: Recurrent neural network with return sequence</p>
 </div>
 </div>
 </div>
@@ -570,7 +579,7 @@ The remaining values, i.e. the remainder of the full sequence length divided by 
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># simple RNN with return sequence</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># construct and train SimpleRNN with return sequences</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">SimpleRNN</span><span class="p">(</span><span class="n">H_SZ</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ_LEN</span><span class="p">,</span><span class="n">FEAT_SZ</span><span class="p">),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TimeDistributed</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">FEAT_SZ</span><span class="p">)))</span>
@@ -596,7 +605,7 @@ The remaining values, i.e. the remainder of the full sequence length divided by 
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># stateful RNN</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># construct stateful RNN</span>
 <span class="n">B_SZ</span> <span class="o">=</span> <span class="mi">24</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
@@ -615,7 +624,8 @@ The remaining values, i.e. the remainder of the full sequence length divided by 
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stateful_val_mae</span> <span class="o">=</span> <span class="p">[]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># train stateful RNN append epoch metrics and loss to list</span>
+<span class="n">stateful_val_mae</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">stateful_loss</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">stateful_val_loss</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -653,7 +663,8 @@ The remaining values, i.e. the remainder of the full sequence length divided by 
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># plot MAE over epochs for different models</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">MAE_last_val</span><span class="p">,</span><span class="mi">50</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">myRNN_hist</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_mean_absolute_error&#39;</span><span class="p">])</span>
