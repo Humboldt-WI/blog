@@ -1,5 +1,4 @@
-﻿
-+++
+﻿+++
 title = "Uncertainty in Profit Scoring (Bayesian Deep Learning)"
 date = '2019-02-09'
 tags = ["Bayesian Deep Learning","Variational Inference","Monte Carlo Dropout","Class18/19"]
