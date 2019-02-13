@@ -1,4 +1,4 @@
-
+﻿
 +++
 title = "Uncertainty in Profit Scoring (Bayesian Deep Learning)"
 date = '2019-02-09'
@@ -105,11 +105,6 @@ warnings.filterwarnings('ignore')
 ```
 
 
-```python
-from IPython.display import Image
-from IPython.core.display import HTML 
-HTML('<img src=https://i.imgur.com/WY3Elcf.png width=800>')
-```
 
 
 
@@ -161,13 +156,6 @@ ELBO(\theta)=\mathop{\mathbb{E}}[logp(x,\omega)-logq(\omega;\theta)]
 As we see, $logp(x)$ does not depend on $\theta$. That means minimizing $KL(q(\omega ; \theta) || p(\omega | x))$ is the same thing as maximizing ELBO($\theta$) which we call the evidence lower bound. That means, it is something that makes sense to maximize. We can prove that ELBO($\theta$) is a lower bound to the evidence P(x) easily by using Jensen's Inequality. If you are interested, you can check out the full derivations in the documentation page of the python library Edward, http://edwardlib.org/tutorials/klqp.
 
 
-```python
-from IPython.display import Image
-from IPython.core.display import HTML 
-HTML('<img src=https://i.imgur.com/UZBvbq1.png>')
-
-
-```
 
 
 
@@ -184,14 +172,6 @@ As you'll wonder, the ELBO($\theta$) is a non-convex optimization objective and 
 
 
 Scared by all those mathematical derivations of the variational inference? Good news to you: An interesting finding in deep learning research suggests that you can apply variational inference without even knowing all those derivations. And it is going to be much faster and applicable. Yarin Gal (2016) suggests that we are doing something very close to a type of variational inference each time we regularize our deterministic neural network with dropout technique. According to his PhD thesis, all we need is to apply dropout during both training and test time, as opposed to the usual application of dropout only during model training (Gal, 2016). Let's review what the usual dropout is:
-
-
-```python
-from IPython.core.display import HTML 
-HTML('<img src=https://cdn-images-1.medium.com/max/1200/1*iWQzxhVlvadk6VAJjsgXgg.png width=600>')
-```
-
-
 
 
 <img src=https://cdn-images-1.medium.com/max/1200/1*iWQzxhVlvadk6VAJjsgXgg.png width=600>
@@ -591,7 +571,7 @@ fig.tight_layout()
 ```
 
 
-![png](output_81_0.png)
+![png](/blog/img/seminar/group7_BayesianNN_Uncertainty/output_81_0.png)
 
 
 The above plots show the distributions of loan amount, interest rate and profit frequency. The majority of loans amount to 5.000 - 15.000$ each. Interest rates are mostly distributed between 0.10 - .20 \%. The distribution of profit rates shows that there are only a few loans in the negative range. The profit distribution spikes between 0.00 - 0.25 \%.
@@ -608,7 +588,7 @@ plt.title('Distribution of Principal Received to Date',fontsize=20);
 ```
 
 
-![png](output_83_0.png)
+![png](/blog/img/seminar/group7_BayesianNN_Uncertainty/output_83_0.png)
 
 
 The distribution of principal received to date shows that most instances with negative profits appear in the range of 0 - 10,000$, whereas instances with positive profits are more widely distributed. Next, we will see if there are any borrowers who have taken more than one loan to see if their member ID could be an indicator of the profit rate.
@@ -652,7 +632,7 @@ L.get_texts()[1].set_text('negative profit')
 ```
 
 
-![png](output_87_0.png)
+![png](/blog/img/seminar/group7_BayesianNN_Uncertainty/output_87_0.png)
 
 
 The barplot shows the number of loans issued per purpose category. Most loans are issued for debt consolidation and credit cards - these are also the categories with the highest amount of loans with negative profit. There is no category where the amount of loans with negative profits exceeds loans with positive profits. However, there certainly are categories where the share of negative profits is very small, such as house, car or wedding.
