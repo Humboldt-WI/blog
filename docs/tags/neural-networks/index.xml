@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Convolutional Neural Networks - sales forecast</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/cnn_sales_forecast/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/cnn_sales_forecast/</guid>
+      <description>Authors: Jakub Kondek, Karim Chennoufi, Kevin Noessler Introduction Motivation The increasing popularity of websites such as Instagram, Facebook or Youtube has lead to an increase in visual data over the last few years. These websites have become part of everyday life for many people and are therefore used excessively. The use of such websites has contributed among other things to enormously increasing amount of visual data in the process. Every day thousands of images and videos are uploaded, making it virtually impossible to analyze them by hand, as the sheer mass of content does not allow it.</description>
+    </item>
+    
+    <item>
       <title>Generative Models</title>
       <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/generativemodels/</link>
       <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>

@@ -39,6 +39,24 @@
     </item>
     
     <item>
+      <title>Bayesian Topic Modelling</title>
+      <link>https://humboldt-wi.github.io/blog/tags/bayesian-topic-modelling/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/bayesian-topic-modelling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Black Box</title>
+      <link>https://humboldt-wi.github.io/blog/tags/black-box/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/black-box/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Blockchain</title>
       <link>https://humboldt-wi.github.io/blog/tags/blockchain/</link>
       <pubDate>Fri, 02 Feb 2018 00:00:00 +0000</pubDate>
@@ -50,7 +68,7 @@
     <item>
       <title>Class17/18</title>
       <link>https://humboldt-wi.github.io/blog/tags/class17/18/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/class17/18/</guid>
       <description></description>
@@ -129,6 +147,15 @@
     </item>
     
     <item>
+      <title>Explanation</title>
+      <link>https://humboldt-wi.github.io/blog/tags/explanation/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/explanation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Fine Tuning</title>
       <link>https://humboldt-wi.github.io/blog/tags/fine-tuning/</link>
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
@@ -156,6 +183,15 @@
     </item>
     
     <item>
+      <title>Ice</title>
+      <link>https://humboldt-wi.github.io/blog/tags/ice/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/ice/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Image Analysis</title>
       <link>https://humboldt-wi.github.io/blog/tags/image-analysis/</link>
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
@@ -174,6 +210,15 @@
     </item>
     
     <item>
+      <title>Inference</title>
+      <link>https://humboldt-wi.github.io/blog/tags/inference/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/inference/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Keras Imdb Dataset</title>
       <link>https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset/</link>
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
@@ -188,6 +233,24 @@
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/language-modelling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lda</title>
+      <link>https://humboldt-wi.github.io/blog/tags/lda/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/lda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lime</title>
+      <link>https://humboldt-wi.github.io/blog/tags/lime/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/lime/</guid>
       <description></description>
     </item>
     
@@ -255,6 +318,15 @@
     </item>
     
     <item>
+      <title>Pdp</title>
+      <link>https://humboldt-wi.github.io/blog/tags/pdp/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/pdp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Pretraining</title>
       <link>https://humboldt-wi.github.io/blog/tags/pretraining/</link>
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
@@ -269,6 +341,15 @@
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/recommendation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recommender System</title>
+      <link>https://humboldt-wi.github.io/blog/tags/recommender-system/</link>
+      <pubDate>Thu, 08 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/recommender-system/</guid>
       <description></description>
     </item>
     

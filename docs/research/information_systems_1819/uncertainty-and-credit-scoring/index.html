@@ -262,11 +262,6 @@ p(X) = \int p(X,\omega)d\omega
 warnings.filterwarnings('ignore')
 </code></pre>
 
-<pre><code class="language-python">from IPython.display import Image
-from IPython.core.display import HTML 
-HTML('&lt;img src=https://i.imgur.com/WY3Elcf.png width=800&gt;')
-</code></pre>
-
 <p><img src=https://i.imgur.com/WY3Elcf.png width=800></p>
 
 <p>Observe that for each point in the graph, we have a number of fits. The variance of fitted functions are the highest at the region where we don&rsquo;t have data and it is the lowest where we have a concentration of data. We can also interpret it during prediction in a way that we have the
@@ -308,13 +303,6 @@ ELBO(\theta)=\mathop{\mathbb{E}}[logp(x,\omega)-logq(\omega;\theta)]
 
 <p>As we see, $logp(x)$ does not depend on $\theta$. That means minimizing $KL(q(\omega ; \theta) || p(\omega | x))$ is the same thing as maximizing ELBO($\theta$) which we call the evidence lower bound. That means, it is something that makes sense to maximize. We can prove that ELBO($\theta$) is a lower bound to the evidence P(x) easily by using Jensen&rsquo;s Inequality. If you are interested, you can check out the full derivations in the documentation page of the python library Edward, <a href="http://edwardlib.org/tutorials/klqp">http://edwardlib.org/tutorials/klqp</a>.</p>
 
-<pre><code class="language-python">from IPython.display import Image
-from IPython.core.display import HTML 
-HTML('&lt;img src=https://i.imgur.com/UZBvbq1.png&gt;')
-
-
-</code></pre>
-
 <p><img src=https://i.imgur.com/UZBvbq1.png></p>
 
 <p>We have a graphical explanation above. We maximize the evidence lower bound as to attain the closest function to the posterior as we can. There are still some KL divergence of $q(\omega ; \theta)$ from the real posterior $p(\omega | x)$. We are not guaranteed to reduce this difference completely. It is the drawback of implementing this approach. We cannot make this KL-divergence zero in general and might not really attain the real posterior, regardless of how ambitious we are in optimization.</p>
@@ -324,10 +312,6 @@ HTML('&lt;img src=https://i.imgur.com/UZBvbq1.png&gt;')
 <h3 id="monte-carlo-dropout-a-class-anchor-id-mc-dropout-a">Monte Carlo Dropout <a class="anchor" id="mc-dropout"></a></h3>
 
 <p>Scared by all those mathematical derivations of the variational inference? Good news to you: An interesting finding in deep learning research suggests that you can apply variational inference without even knowing all those derivations. And it is going to be much faster and applicable. Yarin Gal (2016) suggests that we are doing something very close to a type of variational inference each time we regularize our deterministic neural network with dropout technique. According to his PhD thesis, all we need is to apply dropout during both training and test time, as opposed to the usual application of dropout only during model training (Gal, 2016). Let&rsquo;s review what the usual dropout is:</p>
-
-<pre><code class="language-python">from IPython.core.display import HTML 
-HTML('&lt;img src=https://cdn-images-1.medium.com/max/1200/1*iWQzxhVlvadk6VAJjsgXgg.png width=600&gt;')
-</code></pre>
 
 <p><img src=https://cdn-images-1.medium.com/max/1200/1*iWQzxhVlvadk6VAJjsgXgg.png width=600></p>
 
@@ -675,7 +659,7 @@ fig.tight_layout()
 
 </code></pre>
 
-<p><img src="output_81_0.png" alt="png" /></p>
+<p><img src="/blog/img/seminar/group7_BayesianNN_Uncertainty/output_81_0.png" alt="png" /></p>
 
 <p>The above plots show the distributions of loan amount, interest rate and profit frequency. The majority of loans amount to 5.000 - 15.000$ each. Interest rates are mostly distributed between 0.10 - .20 \%. The distribution of profit rates shows that there are only a few loans in the negative range. The profit distribution spikes between 0.00 - 0.25 \%.</p>
 
@@ -687,7 +671,7 @@ plt.ylabel('Density',fontsize=15)
 plt.title('Distribution of Principal Received to Date',fontsize=20);
 </code></pre>
 
-<p><img src="output_83_0.png" alt="png" /></p>
+<p><img src="/blog/img/seminar/group7_BayesianNN_Uncertainty/output_83_0.png" alt="png" /></p>
 
 <p>The distribution of principal received to date shows that most instances with negative profits appear in the range of 0 - 10,000$, whereas instances with positive profits are more widely distributed. Next, we will see if there are any borrowers who have taken more than one loan to see if their member ID could be an indicator of the profit rate.</p>
 
@@ -719,7 +703,7 @@ L.get_texts()[1].set_text('negative profit')
 
 </code></pre>
 
-<p><img src="output_87_0.png" alt="png" /></p>
+<p><img src="/blog/img/seminar/group7_BayesianNN_Uncertainty/output_87_0.png" alt="png" /></p>
 
 <p>The barplot shows the number of loans issued per purpose category. Most loans are issued for debt consolidation and credit cards - these are also the categories with the highest amount of loans with negative profit. There is no category where the amount of loans with negative profits exceeds loans with positive profits. However, there certainly are categories where the share of negative profits is very small, such as house, car or wedding.</p>
 
@@ -1209,7 +1193,7 @@ stacked_res.append(df_test.loc[df_test['Returns'] &gt; 0, 'Returns'].sum())
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
-            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (15)</a>
+            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (18)</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/categories/instruction">instruction (2)</a>
@@ -1246,6 +1230,12 @@ stacked_res.append(df_test.loc[df_test['Returns'] &gt; 0, 'Returns'].sum())
             <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-deep-learning"><i class="fa fa-tags"></i> bayesian-deep-learning</a>
             </li>
             
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-topic-modelling"><i class="fa fa-tags"></i> bayesian-topic-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/black-box"><i class="fa fa-tags"></i> black-box</a>
+            </li>
+            
             <li><a href="https://humboldt-wi.github.io/blog/tags/blockchain"><i class="fa fa-tags"></i> blockchain</a>
             </li>
             
@@ -1276,6 +1266,9 @@ stacked_res.append(df_test.loc[df_test['Returns'] &gt; 0, 'Returns'].sum())
             <li><a href="https://humboldt-wi.github.io/blog/tags/document-embeddings"><i class="fa fa-tags"></i> document-embeddings</a>
             </li>
             
+            <li><a href="https://humboldt-wi.github.io/blog/tags/explanation"><i class="fa fa-tags"></i> explanation</a>
+            </li>
+            
             <li><a href="https://humboldt-wi.github.io/blog/tags/fine-tuning"><i class="fa fa-tags"></i> fine-tuning</a>
             </li>
             
@@ -1285,16 +1278,28 @@ stacked_res.append(df_test.loc[df_test['Returns'] &gt; 0, 'Returns'].sum())
             <li><a href="https://humboldt-wi.github.io/blog/tags/hierarchical-network"><i class="fa fa-tags"></i> hierarchical-network</a>
             </li>
             
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ice"><i class="fa fa-tags"></i> ice</a>
+            </li>
+            
             <li><a href="https://humboldt-wi.github.io/blog/tags/image-analysis"><i class="fa fa-tags"></i> image-analysis</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/image-captioning"><i class="fa fa-tags"></i> image-captioning</a>
             </li>
             
+            <li><a href="https://humboldt-wi.github.io/blog/tags/inference"><i class="fa fa-tags"></i> inference</a>
+            </li>
+            
             <li><a href="https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset"><i class="fa fa-tags"></i> keras-imdb-dataset</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/language-modelling"><i class="fa fa-tags"></i> language-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lda"><i class="fa fa-tags"></i> lda</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lime"><i class="fa fa-tags"></i> lime</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/long-short-term-memory"><i class="fa fa-tags"></i> long-short-term-memory</a>
@@ -1318,10 +1323,16 @@ stacked_res.append(df_test.loc[df_test['Returns'] &gt; 0, 'Returns'].sum())
             <li><a href="https://humboldt-wi.github.io/blog/tags/nlp"><i class="fa fa-tags"></i> nlp</a>
             </li>
             
+            <li><a href="https://humboldt-wi.github.io/blog/tags/pdp"><i class="fa fa-tags"></i> pdp</a>
+            </li>
+            
             <li><a href="https://humboldt-wi.github.io/blog/tags/pretraining"><i class="fa fa-tags"></i> pretraining</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/recommendation"><i class="fa fa-tags"></i> recommendation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-system"><i class="fa fa-tags"></i> recommender-system</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/rnn"><i class="fa fa-tags"></i> rnn</a>
