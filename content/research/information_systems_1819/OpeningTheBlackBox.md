@@ -68,9 +68,9 @@ src="/blog/img/seminar/black_box_1819/P4.png">
 ### 2.5 The explanators
 Here we support the reader with a listing of the explanators used in explanation systems and some descriptions. These explanators in general are interpretable or offering a textual or visual description of a black-box. The main idea is to find an explanation model, which is an interpretable approximation of the original complex black-box or to reveal some inner workings. If this interpretable model gives a valuation or shows behaviors which one expected to be comprehensible compared to the black-box, it might be increasing trust. In general, the explanators has many different variations in functionality and/or for different uses. Therefore, we again want to refer to [4] because a short description of all methods is given.
 
-***Partial Dependence Plot (PDP)*** - **for detailed explanation see *Example 1***
+***Features Importance (FI)*** - **for detailed explanation see *Example 1***
 
-***Features Importance (FI)*** - **for detailed explanation see *Example 2***
+***Partial Dependence Plot (PDP)*** - **for detailed explanation see *Example 2***
 
 ***Decision Tree (DT)*** and ***Decision Rules (DR)*** are known in general as interpretable representations and the main problem solver for the model explanation problem for tabular data and any kind of black-box. They are able to give an approximation of the behavior on a global scope. But when it comes to very complex black-box system, the danger is that the explanations from these explanators indeed mimic the black-box very good, but the results are so complex that they are no more interpretable, e.g. an output of many sites full of decision rules or a too deep tree [4]. Some of these methods offer an evaluation of the interpretable predictor, which compares the accuracy of the original black-box with the accuracy of the understandable method. For a detailed description how to interpret black-box models with single tree approximation we refer to [9].
 
@@ -144,10 +144,8 @@ From the aforementioned basics, it is now possible to display an overview of imp
 In the paper of *Guidotti, R. et al.* [4], a fourth category is presented, the transparent box design, which has a high focus in research. This will not be discussed in here because of our actual task to open a black-box. But this approach shows a solution offside an explanation of black-boxes. It gives an alternative way, to design a predictive system, which is interpretable on its own and initially offers full transparency by trying to be accurate as a black-box.
 
 As closing part for this section, we want to give an answer the question of an existing state-of-the-art model. Unfortunately, there is not a unique solution. With regard to all problems mentioned in this section, to have an agnostic model, which gives a first overview of every black-box can be satisfying. On the other hand, in very sensitive applications or for practitioners, the use of more than one explanation method is absolutely necessary, especially for very complex models. How much time i can sacrifice for a explanation, what exactly are my questions to understand a black-box or what is my foreknowledge are important questions too. Furthermore, the availability of programming code for self-use can be the driving part of real usage.
-## 3. Application - The dataset
-From now on, we want to apply the learned theoretical basic concepts with two different explanator models which are established in literature and data-science community. Both methods addressing different explanation problems and we use one dataset what makes it possible to compare the results. Furthermore, we offer a theoretical overview and giving programming code in python for self-use.
-
-To illustrate the following two examples to open a black-box, we used the dataset...
+## 3. Application
+From now on, we want to apply the learned theoretical basic concepts with two different explanator models which are established in literature and data-science community. Both methods addressing different explanation problems and we use one dataset what makes it possible to compare the results. Furthermore, we offer a theoretical overview and giving programming code in python for self-use. A description of the data set can be found in Section 3.1.4.
 
 3.1 Local interpretable model-agnostic explanations (LIME)
 =============
