@@ -1,13 +1,13 @@
 +++
 title = "Consultation Hours"
-date = "2018-02-01"
+date = "2019-03-02"
 Keywords = "news"
 banner = "img/news/open.PNG"
-month = "2018-01"
+month = "2019-03"
 +++
 <!--more-->
 
- As of 19th October 2017 (WS 2017 / 18) consultation hours with Prof. Lessmann will take place as follows:
+ As of the 4th of March 2019 (SS 2019) consultation hours with Prof. Lessmann will take place as follows:
 
 ##### all students on Thursday 10 - 11 am.
 
