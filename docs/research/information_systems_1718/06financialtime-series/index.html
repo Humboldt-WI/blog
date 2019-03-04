@@ -220,27 +220,27 @@ API does normally not provide returns, which are commonly used in practice. We a
 our modelling, but have a look!</p></li>
 </ul>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Get Yahoo Data</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Get Yahoo Data</span>
 <span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">pandas_datareader</span> <span style="color:#a2f;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">pdr</span>
 
 stock <span style="color:#666">=</span> pdr<span style="color:#666">.</span>get_data_yahoo(symbols<span style="color:#666">=</span><span style="color:#b44">&#39;#your stock ticker&#39;</span>, start<span style="color:#666">=</span>datetime(<span style="color:#666">2012</span>, <span style="color:#666">1</span>, <span style="color:#666">1</span>), end<span style="color:#666">=</span>datetime(<span style="color:#666">2017</span>, <span style="color:#666">12</span>, <span style="color:#666">31</span>))
-stock <span style="color:#666">=</span> stock[<span style="color:#b44">&#39;Adj Close&#39;</span>] <span style="color:#080;font-style:italic"># or one of the other columns (i.e., opening prices, Volumes)</span>
+stock <span style="color:#666">=</span> stock[<span style="color:#b44">&#39;Adj Close&#39;</span>] <span style="color:#080;font-style:italic"># or one of the other columns (i.e., opening prices, Volumes)</span>
 stock_returns <span style="color:#666">=</span> np<span style="color:#666">.</span>log(stock<span style="color:#666">/</span>stock<span style="color:#666">.</span>shift())[<span style="color:#666">1</span>:] <span style="color:#080;font-style:italic">#calculate log returns</span></code></pre></div>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Download Data from google Trends</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Download Data from google Trends</span>
 <span style="color:#a2f;font-weight:bold">from</span> <span style="color:#00f;font-weight:bold">pytrends.request</span> <span style="color:#a2f;font-weight:bold">import</span> TrendReq
 <span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">datetime</span>
 <span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">os</span>
-google_username <span style="color:#666">=</span> <span style="color:#080;font-style:italic">#(...) #INCLUDE YOUR GOOGLE ACCOUNT</span>
-google_password <span style="color:#666">=</span> <span style="color:#080;font-style:italic">#(...)</span>
+google_username <span style="color:#666">=</span> <span style="color:#080;font-style:italic">#(...) #INCLUDE YOUR GOOGLE ACCOUNT</span>
+google_password <span style="color:#666">=</span> <span style="color:#080;font-style:italic">#(...)</span>
 pytrend <span style="color:#666">=</span> TrendReq(google_username, google_password, custom_useragent<span style="color:#666">=</span><span style="color:#b44">&#34;My Pytrends Script&#34;</span>)
 
 formatter <span style="color:#666">=</span> <span style="color:#b44">&#34;{:02d}&#34;</span><span style="color:#666">.</span>format
 
-databegin <span style="color:#666">=</span> <span style="color:#a2f">list</span>(<span style="color:#a2f">map</span>(formatter, <span style="color:#a2f">range</span>(<span style="color:#666">0</span>, <span style="color:#666">19</span>, <span style="color:#666">3</span>))) <span style="color:#080;font-style:italic">#change TIME here.</span>
-dataend   <span style="color:#666">=</span> <span style="color:#a2f">list</span>(<span style="color:#a2f">map</span>(formatter, <span style="color:#a2f">range</span>(<span style="color:#666">4</span>, <span style="color:#666">25</span>, <span style="color:#666">3</span>))) <span style="color:#080;font-style:italic">#downloads for hourly data atm</span>
+databegin <span style="color:#666">=</span> <span style="color:#a2f">list</span>(<span style="color:#a2f">map</span>(formatter, <span style="color:#a2f">range</span>(<span style="color:#666">0</span>, <span style="color:#666">19</span>, <span style="color:#666">3</span>))) <span style="color:#080;font-style:italic">#change TIME here.</span>
+dataend   <span style="color:#666">=</span> <span style="color:#a2f">list</span>(<span style="color:#a2f">map</span>(formatter, <span style="color:#a2f">range</span>(<span style="color:#666">4</span>, <span style="color:#666">25</span>, <span style="color:#666">3</span>))) <span style="color:#080;font-style:italic">#downloads for hourly data atm</span>
 
-lastdate <span style="color:#666">=</span> datetime<span style="color:#666">.</span>date(<span style="color:#666">2018</span>, <span style="color:#666">3</span>, <span style="color:#666">12</span>) <span style="color:#080;font-style:italic"># Until when do you want to download</span>
+lastdate <span style="color:#666">=</span> datetime<span style="color:#666">.</span>date(<span style="color:#666">2018</span>, <span style="color:#666">3</span>, <span style="color:#666">12</span>) <span style="color:#080;font-style:italic"># Until when do you want to download</span>
 
 <span style="color:#a2f">file</span> <span style="color:#666">=</span> <span style="color:#a2f">open</span>(<span style="color:#b44">&#34;daysleft.txt&#34;</span>)
 daysprior <span style="color:#666">=</span> <span style="color:#a2f">int</span>(<span style="color:#a2f">file</span><span style="color:#666">.</span>read())
@@ -254,7 +254,7 @@ daysprior <span style="color:#666">=</span> <span style="color:#a2f">int</span>(
 
     daysbefore <span style="color:#666">=</span> lastdate <span style="color:#666">-</span> datetime<span style="color:#666">.</span>timedelta(days<span style="color:#666">=</span>daysprior)
 
-    keywords <span style="color:#666">=</span> [<span style="color:#b44">&#34;Volkswagen&#34;</span>] <span style="color:#080;font-style:italic">#INCLUDE KEYWORDS HERE!</span>
+    keywords <span style="color:#666">=</span> [<span style="color:#b44">&#34;Volkswagen&#34;</span>] <span style="color:#080;font-style:italic">#INCLUDE KEYWORDS HERE!</span>
     <span style="color:#a2f;font-weight:bold">for</span> i <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#a2f">range</span>(<span style="color:#666">0</span>, <span style="color:#a2f">len</span>(databegin)):
         begin <span style="color:#666">=</span> daysbefore<span style="color:#666">.</span>strftime(<span style="color:#b44">&#34;%Y-%m-</span><span style="color:#b68;font-weight:bold">%d</span><span style="color:#b44">&#34;</span>) <span style="color:#666">+</span> <span style="color:#b44">&#34;T&#34;</span> <span style="color:#666">+</span> databegin[i]
         end   <span style="color:#666">=</span> daysbefore<span style="color:#666">.</span>strftime(<span style="color:#b44">&#34;%Y-%m-</span><span style="color:#b68;font-weight:bold">%d</span><span style="color:#b44">&#34;</span>) <span style="color:#666">+</span> <span style="color:#b44">&#34;T&#34;</span> <span style="color:#666">+</span> dataend[i]
@@ -303,9 +303,9 @@ seasonal effects already. Nevertheless, be creative!</p>
 <p><a href="/blog/img/seminar/financial_time_series/final_df_VW.csv">Download the data sheet (final_df_VW.CSV)</a></p>
 </blockquote>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># We read in the dataset</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># We read in the dataset</span>
 data <span style="color:#666">=</span> read_csv(<span style="color:#b44">&#34;final_df_VW.csv&#34;</span>)
-data <span style="color:#666">=</span> data<span style="color:#666">.</span>iloc[:,<span style="color:#666">1</span>] <span style="color:#080;font-style:italic"># delete column you dont want to use for training here!</span>
+data <span style="color:#666">=</span> data<span style="color:#666">.</span>iloc[:,<span style="color:#666">1</span>] <span style="color:#080;font-style:italic"># delete column you dont want to use for training here!</span>
                       <span style="color:#080;font-style:italic"># We are deleteting date here.</span></code></pre></div>
 
 <h3 id="data-preprocessing">Data Preprocessing</h3>
@@ -316,7 +316,7 @@ If we included the dataset without it, <code>volLVL</code> could completely domi
 You can use it for example to reverse the scaling after your predictions.
 The second step is a little more involved but it is crucial for working with sequences in <a href="https://keras.io/layers/recurrent/">Keras</a>.</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># function to normalize</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># function to normalize</span>
 <span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">normalize</span>(df):
     <span style="color:#b44">&#34;&#34;&#34;
 </span><span style="color:#b44">        Uses minMax scaler on data to normalize. Important especially for Volume and google_lvl
@@ -366,7 +366,7 @@ Would that be a problem? Most likely not, since the model should learn to ignore
 
 <p>Now that you understand the <code>batch_input_shape</code> (<code>batch_size</code>, <code>timesteps</code>, <code>features</code>) of a recurrent layer, you might have noticed that our dataset does not really have the correct dimensions to be fed into the model. Below you can see the function which solves this. The idea is simple: We shift the input and append the new column to our dataset. Thus we extend the dataset according to our specified <code>timesteps</code>.</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Append with timesteps</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Append with timesteps</span>
 <span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">createTimeSteps</span>(df, lags<span style="color:#666">=</span><span style="color:#666">1</span>):
     <span style="color:#b44">&#34;&#34;&#34;
 </span><span style="color:#b44">        creates the amount of timesteps from the target and appends to df.
@@ -378,10 +378,10 @@ Would that be a problem? Most likely not, since the model should learn to ignore
     columns <span style="color:#666">=</span> <span style="color:#a2f">list</span>()
     <span style="color:#a2f;font-weight:bold">for</span> i <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#a2f">range</span>(lags, <span style="color:#666">0</span>, <span style="color:#666">-</span><span style="color:#666">1</span>):
         columns<span style="color:#666">.</span>append(df<span style="color:#666">.</span>shift(i))
-    columns<span style="color:#666">.</span>append(df) <span style="color:#080;font-style:italic">#add original</span>
-    <span style="color:#080;font-style:italic"># combine</span>
+    columns<span style="color:#666">.</span>append(df) <span style="color:#080;font-style:italic">#add original</span>
+    <span style="color:#080;font-style:italic"># combine</span>
     output <span style="color:#666">=</span> pd<span style="color:#666">.</span>concat(columns, axis<span style="color:#666">=</span><span style="color:#666">1</span>)
-    <span style="color:#080;font-style:italic"># replace rows with NaN values</span>
+    <span style="color:#080;font-style:italic"># replace rows with NaN values</span>
     output<span style="color:#666">.</span>fillna(<span style="color:#666">0</span>, inplace <span style="color:#666">=</span> True)
     <span style="color:#a2f;font-weight:bold">return</span> output</code></pre></div>
 
@@ -389,22 +389,22 @@ Would that be a problem? Most likely not, since the model should learn to ignore
 extend by our <code>timesteps</code>, split into training and test set with <code>TRAINING_DAYS</code>, choose our <code>features</code> and our target <code>y</code>. It is good practive to define
 CONSTANTS in capital letter in the beginning of your training. It helps you to keep eveything structured and is very convenient for testing different setups.</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Everything prepared...</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Everything prepared...</span>
 scaler, normalized_data <span style="color:#666">=</span> normalize(data)
 
-BATCH_SIZE <span style="color:#666">=</span> <span style="color:#666">1</span> <span style="color:#080;font-style:italic"># batch size during training</span>
-TS <span style="color:#666">=</span> <span style="color:#666">14</span> <span style="color:#080;font-style:italic"># length of Sequence we use for our samples (7 = week, 30 = month)</span>
-FEATURES <span style="color:#666">=</span> <span style="color:#666">6</span> <span style="color:#080;font-style:italic"># number of features in data set</span>
-TRAINING_DAYS <span style="color:#666">=</span> <span style="color:#666">1250</span> <span style="color:#080;font-style:italic"># Training/Test split for data</span>
+BATCH_SIZE <span style="color:#666">=</span> <span style="color:#666">1</span> <span style="color:#080;font-style:italic"># batch size during training</span>
+TS <span style="color:#666">=</span> <span style="color:#666">14</span> <span style="color:#080;font-style:italic"># length of Sequence we use for our samples (7 = week, 30 = month)</span>
+FEATURES <span style="color:#666">=</span> <span style="color:#666">6</span> <span style="color:#080;font-style:italic"># number of features in data set</span>
+TRAINING_DAYS <span style="color:#666">=</span> <span style="color:#666">1250</span> <span style="color:#080;font-style:italic"># Training/Test split for data</span>
 
 full_df <span style="color:#666">=</span> createTimeSteps(normalized_data, TS)
-full_df <span style="color:#666">=</span> full_df<span style="color:#666">.</span>values <span style="color:#080;font-style:italic"># Training vs Test</span>
+full_df <span style="color:#666">=</span> full_df<span style="color:#666">.</span>values <span style="color:#080;font-style:italic"># Training vs Test</span>
 
 train <span style="color:#666">=</span> full_df[:TRAINING_DAYS, :]
 test <span style="color:#666">=</span> full_df[TRAINING_DAYS:, :]
 
-input_var <span style="color:#666">=</span> <span style="color:#a2f">int</span>(TS<span style="color:#666">*</span>FEATURES) <span style="color:#080;font-style:italic"># Every feature has as many columns as defined timestep</span>
-target <span style="color:#666">=</span> <span style="color:#666">-</span><span style="color:#666">1</span> <span style="color:#080;font-style:italic"># Our Volkswagen AG stock price is the last column of our dataset</span>
+input_var <span style="color:#666">=</span> <span style="color:#a2f">int</span>(TS<span style="color:#666">*</span>FEATURES) <span style="color:#080;font-style:italic"># Every feature has as many columns as defined timestep</span>
+target <span style="color:#666">=</span> <span style="color:#666">-</span><span style="color:#666">1</span> <span style="color:#080;font-style:italic"># Our Volkswagen AG stock price is the last column of our dataset</span>
 X_train, y_train <span style="color:#666">=</span> train[:, :input_var], train[:, target]
 X_test, y_test <span style="color:#666">=</span> test[:, :input_var], test[:, target]
 
@@ -422,7 +422,7 @@ able to train your model.</p>
 please refer to the <a href="https://keras.io/#keras-the-python-deep-learning-library">Keras in 30s guide</a>.
 This should give us a starting point to explain different concepts and extensions.</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Our first very easy model</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Our first very easy model</span>
 <span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">helloModel</span>(timesteps, features, batch_size<span style="color:#666">=</span><span style="color:#666">1</span>):
     model <span style="color:#666">=</span> Sequential()
     model<span style="color:#666">.</span>add(LSTM(<span style="color:#666">16</span>, input_shape<span style="color:#666">=</span>(timesteps, features)))
@@ -445,7 +445,7 @@ The output shape for such a layer will also be 3D (<code>nb_samples</code>, <cod
 If we specify <code>return_sequence = True</code> for the last layer it will produce 3D predictions (Careful: If you would like to apply another layer to every <code>timesteps</code> and not only to the last one, you need to use a <a href="https://keras.io/layers/wrappers/">TimeDistributed wrapper</a>).</p></li>
 </ul>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Our return model</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Our return model</span>
 <span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">returnModel</span>(timesteps, features, batch_size<span style="color:#666">=</span><span style="color:#666">1</span>, return_sequence <span style="color:#666">=</span> False):
     model <span style="color:#666">=</span> Sequential()
     model<span style="color:#666">.</span>add(LSTM(<span style="color:#666">32</span>, input_shape<span style="color:#666">=</span>(timesteps, features), return_sequence <span style="color:#666">=</span> True ))
@@ -473,19 +473,19 @@ hidden states of the LSTM neurons are reset after every batch. After the reset, 
 If <code>stateful = True</code>, states are propagated through batches and only reset manually (<code>model.reset_state()</code>). Using <code>shuffle</code> = True together with <code>stateful</code> = True will not make any sense, since the output destroys the ordering of the time series and produces pure chaos. Careful: It is important to think about the timing of the state reset. Common practice is resetting after every <code>epoch</code>. Without it, the model would treat every new epoch as an extension of the original time series and not as the same time series fed in again. In model training, Keras requires you to exactly define the input shape in the first layer only (<code>batch_input_shape</code>=(<code>batch_size</code>, <code>timesteps</code>, <code>features</code>)).</p></li>
 </ul>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># create Bao Model</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># create Bao Model</span>
 <span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">bao2017</span>(timesteps, features, batch_size<span style="color:#666">=</span><span style="color:#666">1</span>,
             state_config <span style="color:#666">=</span> False, return_config <span style="color:#666">=</span> False):
     model <span style="color:#666">=</span> Sequential()
 
-    <span style="color:#080;font-style:italic">#AUTOENCODER</span>
+    <span style="color:#080;font-style:italic">#AUTOENCODER</span>
     model<span style="color:#666">.</span>add(LSTM(input_dim<span style="color:#666">=</span>features, output_dim<span style="color:#666">=</span><span style="color:#666">8</span>, return_sequences<span style="color:#666">=</span>False))
     model<span style="color:#666">.</span>add(RepeatVector(<span style="color:#666">4</span>))
     model<span style="color:#666">.</span>add(LSTM(output_dim<span style="color:#666">=</span><span style="color:#666">8</span>, return_sequences<span style="color:#666">=</span>True))
     model<span style="color:#666">.</span>add(TimeDistributed(Dense(features)))
     model<span style="color:#666">.</span>add(Activation(<span style="color:#b44">&#39;linear&#39;</span>))
 
-    <span style="color:#080;font-style:italic">#STACKED MODEL</span>
+    <span style="color:#080;font-style:italic">#STACKED MODEL</span>
     <span style="color:#a2f;font-weight:bold">if</span> state_config:
         model<span style="color:#666">.</span>add(LSTM(<span style="color:#666">128</span>, batch_input_shape<span style="color:#666">=</span>(batch_size, timesteps, features),
                        return_sequences<span style="color:#666">=</span>True, stateful<span style="color:#666">=</span>True))
@@ -494,11 +494,11 @@ If <code>stateful = True</code>, states are propagated through batches and only 
                        return_sequences<span style="color:#666">=</span>True, stateful<span style="color:#666">=</span>False))
     model<span style="color:#666">.</span>add(LSTM(<span style="color:#666">64</span>, return_sequences<span style="color:#666">=</span>True, stateful<span style="color:#666">=</span>state_config))
     model<span style="color:#666">.</span>add(LSTM(<span style="color:#666">32</span>, return_sequences<span style="color:#666">=</span>return_config, stateful<span style="color:#666">=</span>state_config))
-    <span style="color:#080;font-style:italic">#... add more layers</span>
+    <span style="color:#080;font-style:italic">#... add more layers</span>
     <span style="color:#a2f;font-weight:bold">if</span> return_config:
         model<span style="color:#666">.</span>add(TimeDistributed(Dense(<span style="color:#666">1</span>)))
     <span style="color:#a2f;font-weight:bold">else</span>:
-        model<span style="color:#666">.</span>add(Dense(<span style="color:#666">1</span>)) <span style="color:#080;font-style:italic">#not 1 but &#39;features&#39; if many-to-many   </span>
+        model<span style="color:#666">.</span>add(Dense(<span style="color:#666">1</span>)) <span style="color:#080;font-style:italic">#not 1 but &#39;features&#39; if many-to-many   </span>
     model<span style="color:#666">.</span><span style="color:#a2f">compile</span>(loss<span style="color:#666">=</span><span style="color:#b44">&#39;mse&#39;</span>, optimizer<span style="color:#666">=</span><span style="color:#b44">&#39;adam&#39;</span>, metrics<span style="color:#666">=</span>[<span style="color:#b44">&#39;mse&#39;</span>])  
     <span style="color:#a2f;font-weight:bold">return</span> model
     </code></pre></div>
@@ -507,7 +507,7 @@ If <code>stateful = True</code>, states are propagated through batches and only 
 
 <p>What is left to do? We have the data, we have the models&hellip; let fit! Our last function does that for us. We can specify the number of our <code>model</code>, <code>data</code>, <code>epochs</code>, <code>batch_size</code>,  if we want our states to be reset per batch by <code>state_config</code>, and decide if we would like <code>shuffle</code> to the True. We set <code>model.reset_state</code> in a way that is resets after every <code>epoch</code>, and saves the training results in two list.</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Fit the model</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Fit the model</span>
 <span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">fitting</span>(model, X, y, val_X, val_y, epochs, batch_size<span style="color:#666">=</span><span style="color:#666">1</span>, state_config<span style="color:#666">=</span>False, sf<span style="color:#666">=</span>False):
     <span style="color:#b44">&#34;&#34;&#34;
 </span><span style="color:#b44">        fits the model to the data via keras API.
@@ -541,7 +541,7 @@ If <code>stateful = True</code>, states are propagated through batches and only 
 
 <h3 id="sit-through-we-are-almost-there-put-it-together-and-get-your-predictions">Sit through, we are almost there! Put it together and get your predictions:</h3>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Almost forgot... your libraries</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Almost forgot... your libraries</span>
 <span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">keras</span>
 <span style="color:#a2f;font-weight:bold">from</span> <span style="color:#00f;font-weight:bold">keras</span> <span style="color:#a2f;font-weight:bold">import</span> Sequential
 <span style="color:#a2f;font-weight:bold">from</span> <span style="color:#00f;font-weight:bold">keras.models</span> <span style="color:#a2f;font-weight:bold">import</span> load_model
@@ -559,24 +559,24 @@ If <code>stateful = True</code>, states are propagated through batches and only 
 <span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">matplotlib.pyplot</span> <span style="color:#a2f;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">plt</span>
 <span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">os</span>
 
-<span style="color:#080;font-style:italic"># Our new CONSTANTS</span>
-EPOCHS <span style="color:#666">=</span> <span style="color:#666">30</span> <span style="color:#080;font-style:italic"># number of training Epochs</span>
-STATEFUL <span style="color:#666">=</span> True <span style="color:#080;font-style:italic"># stateless/stateful</span>
-SF <span style="color:#666">=</span> False <span style="color:#080;font-style:italic"># activate shuffle</span>
-RETURN_SEQ <span style="color:#666">=</span> False <span style="color:#080;font-style:italic"># many to many prediction (outputs results of every TS)</span>
+<span style="color:#080;font-style:italic"># Our new CONSTANTS</span>
+EPOCHS <span style="color:#666">=</span> <span style="color:#666">30</span> <span style="color:#080;font-style:italic"># number of training Epochs</span>
+STATEFUL <span style="color:#666">=</span> True <span style="color:#080;font-style:italic"># stateless/stateful</span>
+SF <span style="color:#666">=</span> False <span style="color:#080;font-style:italic"># activate shuffle</span>
+RETURN_SEQ <span style="color:#666">=</span> False <span style="color:#080;font-style:italic"># many to many prediction (outputs results of every TS)</span>
 
-<span style="color:#080;font-style:italic"># Choose a model</span>
+<span style="color:#080;font-style:italic"># Choose a model</span>
 model <span style="color:#666">=</span>  bao2017(TS, FEATURES, batch_size<span style="color:#666">=</span>BATCH_SIZE,
                 state_config <span style="color:#666">=</span> STATEFUL, return_config <span style="color:#666">=</span> RETURN_SEQ)
-<span style="color:#080;font-style:italic"># Fit the model</span>
+<span style="color:#080;font-style:italic"># Fit the model</span>
 result, training_mse, val_mse <span style="color:#666">=</span> fitting(model, X_train, y_train, X_test, y_test, EPOCHS, batch_size<span style="color:#666">=</span>BATCH_SIZE,
                 state_config<span style="color:#666">=</span>STATEFUL, sf<span style="color:#666">=</span>SF)
-<span style="color:#080;font-style:italic"># Predict the model</span>
+<span style="color:#080;font-style:italic"># Predict the model</span>
 yhat <span style="color:#666">=</span> model<span style="color:#666">.</span>predict(X_test, batch_size <span style="color:#666">=</span> BATCH_SIZE)
 <span style="color:#a2f;font-weight:bold">print</span>(yhat<span style="color:#666">.</span>shape)
 <span style="color:#a2f;font-weight:bold">print</span>(y_test<span style="color:#666">.</span>shape)
 
-<span style="color:#080;font-style:italic"># Plot the model</span>
+<span style="color:#080;font-style:italic"># Plot the model</span>
 plt<span style="color:#666">.</span>plot(y_test, label<span style="color:#666">=</span><span style="color:#b44">&#39;y&#39;</span>)
 plt<span style="color:#666">.</span>plot(yhat1, label<span style="color:#666">=</span><span style="color:#b44">&#39;yhat&#39;</span>)
 plt<span style="color:#666">.</span>legend()
