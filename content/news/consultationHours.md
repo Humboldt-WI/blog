@@ -7,7 +7,7 @@ month = "2019-03"
 +++
 <!--more-->
 
- As of the 4th of March 2019 (SS 2019) consultation hours with Prof. Lessmann will take place as follows:
+ As of March 2019 (SS 2019) consultation hours with Prof. Lessmann will take place as follows:
 
 ##### all students on Thursday 10 - 11 am.
 
