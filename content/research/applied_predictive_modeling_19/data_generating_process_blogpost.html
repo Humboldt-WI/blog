@@ -1,0 +1,97 @@
++++
+title = "Data Generating Process Simulation: The opossum package"
+date = '2019-07-24'
+tags = [ "Causal Inference", "Class19", "Data Simulation"]
+categories = ["Course projects"]
+banner = "img/seminar/data_generating_process/opossum.jpg"
+author = "Julian Winkel, Tobias Krebs"
+disqusShortname = "https-humbodt-wi-github-io-blog"
+description = "Generating datasets with observed treatment effects for model evaluation"
++++
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Data-Generating-Process-Simulation">Data Generating Process Simulation<a class="anchor-link" href="#Data-Generating-Process-Simulation">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h1>Table of Contents<span class="tocSkip"></span></h1></p>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Introduction" data-toc-modified-id="Introduction-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Introduction</a></span></li><li><span><a href="#Literature" data-toc-modified-id="Literature-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Literature</a></span></li><li><span><a href="#Package-Content" data-toc-modified-id="Package-Content-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Package Content</a></span><ul class="toc-item"><li><span><a href="#Covariates-generation" data-toc-modified-id="Covariates-generation-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Covariates generation</a></span><ul class="toc-item"><li><span><a href="#Continuous-covariates" data-toc-modified-id="Continuous-covariates-3.1.1"><span class="toc-item-num">3.1.1&nbsp;&nbsp;</span>Continuous covariates</a></span></li><li><span><a href="#Binary-and-categorical-covariates" data-toc-modified-id="Binary-and-categorical-covariates-3.1.2"><span class="toc-item-num">3.1.2&nbsp;&nbsp;</span>Binary and categorical covariates</a></span></li></ul></li><li><span><a href="#Treatment-assignment" data-toc-modified-id="Treatment-assignment-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>Treatment assignment</a></span><ul class="toc-item"><li><span><a href="#Random" data-toc-modified-id="Random-3.2.1"><span class="toc-item-num">3.2.1&nbsp;&nbsp;</span>Random</a></span></li><li><span><a href="#Dependent-on-covariates" data-toc-modified-id="Dependent-on-covariates-3.2.2"><span class="toc-item-num">3.2.2&nbsp;&nbsp;</span>Dependent on covariates</a></span></li></ul></li><li><span><a href="#Treatment-effects" data-toc-modified-id="Treatment-effects-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Treatment effects</a></span></li><li><span><a href="#Output-variable" data-toc-modified-id="Output-variable-3.4"><span class="toc-item-num">3.4&nbsp;&nbsp;</span>Output variable</a></span></li></ul></li></ul></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Literature">Literature<a class="anchor-link" href="#Literature">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Package-Content">Package Content<a class="anchor-link" href="#Package-Content">&#182;</a></h2><p>In the following sections you will find a step by step explanation of how our data simulation package works internally, accompanied by the corresponding formulas, code snippets and explanatory graphs.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Covariates-generation">Covariates generation<a class="anchor-link" href="#Covariates-generation">&#182;</a></h3><h4 id="Continuous-covariates">Continuous covariates<a class="anchor-link" href="#Continuous-covariates">&#182;</a></h4><p>The covariate matrix <strong>X</strong> in our simulation is drawn from a multivariate normal distribution with an expected value of 0 and a specified covariance matrix Sigma. Sigma is constructed the following way. First, values for Matrix A are drawn from a uniform distribution. In a second step, to make sure that there exist negative correlations and that not all variables are highly correlated with each other, we create an overlay matrix B. This overlay matrix B consists of values 1 and -1. Third, we multiply the two matrices element-wise and adjust the result with a correction term to assure that values in Sigma are not increasing in k. This result is represented by the matrix $\Lambda$. In a final step, we calculate Sigma by multiplying $\Lambda$ with its transposed to assure that it is positive definite.</p>
+<p><br></p>
+$$ X_{n*k} \sim N_k(0,\Sigma)$$<p>Where,</p>
+<p>$n = Number \; of \; Observations, \quad k =  Number \; of \; Covariates$</p>
+<p>$\Sigma = \Lambda*\Lambda^T, \quad \Lambda = \frac{10}{k} (A \circ B), \quad A \sim U(0,1), \quad B \sim Bernoulli(0.5)\;,B \in \{-1,1\}$</p>
+<p>$Matrices \; A, \; B, \; and \; \Lambda \; are \; all \; of \; dimension \; k*k$</p>
+<p><br></p>
+<script src="https://gist.github.com/Tobias-K93/f550c942f3ceea379271c9d89913fac7.js"></script><p>The following heat-map shows an example of Sigma with k=10 covariates. Depending on the chosen random seed, typically correlations range between -0.7 and 0.7 with slightly varying minimum and maximum values.</p>
+<p><img align="center" width="660" height="500" style="display:block;margin:0 auto;" src="/blog/img/seminar/data_generating_process/covariates_correlation.png"></p>
+<h4 id="Binary-and-categorical-covariates">Binary and categorical covariates<a class="anchor-link" href="#Binary-and-categorical-covariates">&#182;</a></h4><p>Binary and categorical covariates are created from the continuous covariates in X.</p>
+$$ p_{binary} = \textrm{min-max-standardize}(X) $$$$ X_{binary} = Bernoulli\left( p_{binary} \right) $$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Treatment-assignment">Treatment assignment<a class="anchor-link" href="#Treatment-assignment">&#182;</a></h3><p>There are two ways treatment can be assigned. The first one is to simulate a random control trial where all observations are assigned treatment with the same probability $m_0$. The second one is assigning treatment in the fashion of an observational study where assignment of treatment depends on covariates X and probability $m_0$ differs between observations. Either way, the assignment vector D is drawn from a Bernoulli distribution with probability $m_0$.</p>
+$$ D_{n*1} \sim Bernoulli(m_0) $$<h4 id="Random">Random<a class="anchor-link" href="#Random">&#182;</a></h4><p>In the random assignment case, only an assignment probability $m_0$ has to be chosen which is then used to draw realizations from a Bernoulli distribution to create the assignment vector D.</p>
+$$ m_0 \in [0,1] $$<h4 id="Dependent-on-covariates">Dependent on covariates<a class="anchor-link" href="#Dependent-on-covariates">&#182;</a></h4><p>To obtain the individual probabilities, as a first step, a subset $Z \subseteq X$  with dimensions $n$ times $l$ is chosen. Then, $Z$ is multiplied with a weight vector $b$, which is made up of values drawn from a uniform distribution, resulting in vector $a$. The standardized version of vector $a$ is then used to draw values from a Normal CDF which eventually serve as assignment probabilities in vector $m_0$. To include some randomness, random noise, drawn from a uniform distribution and labeled as $\eta$, is added to $a$ before the standardization.</p>
+<p><br/></p>
+$$ m_{0, n*1} = \Phi\left(\frac{a-\hat{\mu}(a)}{\hat{\sigma}(a)}\right) $$<p>Where,</p>
+<p>$ a_{n*1} = Z * b + \eta, \quad Z \subseteq X, \quad b_{l*1} \sim U(0,1), \quad  \eta_{n*1} \sim U(0,0.25)$</p>
+<p><br/></p>
+<script src="https://gist.github.com/Tobias-K93/4b94f744158ec4ee2411075c2cf66e06.js"></script><p>The following histograms show the distributions of propensity scores ($m_0$) in the case of non-random assignment with low, medium, and high average assignment probability. In the trivial case of random assignment, propensity scores are all the same for each observation.<p><br/></p>
+<p><img align="center" width="800" height="350" style="display:block;margin:0 auto;" src="/blog/img/seminar/data_generating_process/propensity_score_plot.png"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Treatment-effects">Treatment effects<a class="anchor-link" href="#Treatment-effects">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Output-variable">Output variable<a class="anchor-link" href="#Output-variable">&#182;</a></h3>
+</div>
+</div>
+</div>
+ 
+
