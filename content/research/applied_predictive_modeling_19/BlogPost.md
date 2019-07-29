@@ -18,11 +18,10 @@ description = "One sentence description of your work"
 
 1. [Introduction](#introduction)
 2. [Common Marketing Challenges](#challenges)
-2. [Common Marketing Challenges] (#challenges)
-3. [Motivation for Multiple Treatments] (#motivation)
-4. [Models] (#models)
-5. [Evaluation] (#evaluation)
-6. [Outlook] (#outlook)
+3. [Motivation for Multiple Treatments](#motivation)
+4. [Models](#models)
+5. [Evaluation](#evaluation)
+6. [Outlook](#outlook)
 
 # 1. Introduction <a class="anchor" id="introduction"></a>
 # 2. Common Marketing Challenges <a class="anchor" id="challenges"></a>
