@@ -17,6 +17,7 @@ description = "One sentence description of your work"
 # Table of Contents
 
 1. [Introduction](#introduction)
+2. [Common Marketing Challenges](#challenges)
 2. [Common Marketing Challenges] (#challenges)
 3. [Motivation for Multiple Treatments] (#motivation)
 4. [Models] (#models)
