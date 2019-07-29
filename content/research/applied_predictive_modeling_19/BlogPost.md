@@ -14,8 +14,18 @@ description = "One sentence description of your work"
 
 #### Authors: Jan Krol and Matthias Becher
 
-Text
+# Table of Contents
 
-## Neural Networks and its early development
+1. [Introduction](#introduction)
+2. [Common Marketing Challenges] (#challenges)
+3. [Motivation for Multiple Treatments] (#motivation)
+4. [Models] (#models)
+5. [Evaluation] (#evaluation)
+6. [Outlook] (#outlook)
 
-Text
+# 1. Introduction <a class="anchor" id="introduction"></a>
+# 2. Common Marketing Challenges <a class="anchor" id="challenges"></a>
+# 3. Motivation for Multiple Treatments <a class="anchor" id="motivation"></a>
+# 4. Models <a class="anchor" id="models"></a>
+# 5. Evaluation <a class="anchor" id="evaluation"></a>
+# 6. Outlook <a class="anchor" id="outlook"></a>
