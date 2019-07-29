@@ -22,8 +22,10 @@ description = "One sentence description of your work"
 4. [Models](#models)
 5. [Evaluation](#evaluation)
 6. [Outlook](#outlook)
+6. [References](#references)
 
 # 1. Introduction <a class="anchor" id="introduction"></a>
+Nowadays
 # 2. Common Marketing Challenges <a class="anchor" id="challenges"></a>
 # 3. Motivation for Multiple Treatments <a class="anchor" id="motivation"></a>
 # 4. Models <a class="anchor" id="models"></a>
