@@ -1,5 +1,5 @@
 +++
-title = "APA Template"
+title = "Blog Post Check"
 date = '2019-08-15'
 tags = [ "Causal Inference", "Class19",]
 categories = ["Course projects"]
@@ -14,8 +14,8 @@ description = "One sentence description of your work"
 
 #### Authors: A, B and C
 
-Text
+CHeck
 
 ## Neural Networks and its early development
 
-Text
+Test 123
