@@ -60,8 +60,8 @@ In their paper <a href = "https://www.researchgate.net/publication/4753376_Time-
 <img
 align="center"
 width="300"
-height="200"
-style="display:block;margin:0 auto;" src="https://i.imgur.com/JI8xIQR.png">
+height="450"
+style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/docs/img/seminar/BilderAPABlog/TimeSeries.PNG">
 
   
 # 4. Models <a class="anchor" id="models"></a>
