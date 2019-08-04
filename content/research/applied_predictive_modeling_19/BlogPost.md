@@ -49,20 +49,23 @@ Some of the most commonly cited challenges we found were:
 Since those challenges were all related to marketing activity we decided to focus on how data anlysis could be used to improve the performance of marketing activities. More specificly there are 3 questions with regards to marketing activity we focused on.
 ### When to start the marketing activity?
 When it comes to selecting the time of a marketing activity there is not much research out there with regards to treatment effects.
-Most advice for marketing pratitioners focuses on social media marketing and on what time are best for publishing new posts. These guideline mostly look at single performance measures like engagement to see at which times the performance measure are maximized.
-### Who to target?
-### Which treatment should be used for which target?
-
-
-# 3. Motivation for Multiple Treatments <a class="anchor" id="motivation"></a>
-We decided to focus on multiple treatments for several reasons. Today there are many ways to reach your potential customers and picking the right one is crucial for succesfull marketing activity. Additionally, we found that there has not been much research on this topic and there is no comprehensive comparison of the research that does exist. Therefore, we decided to look at the models that have been proposed so far and compare them. Furthermore, we want to identify potential new directions for futher research as it was done in the blog post <a  href="https://sproutsocial.com/insights/best-times-to-post-on-social-media/"> Best times to post on social media for 2019 </a>. </br>
+Most advice for marketing pratitioners focuses on social media marketing and on what time are best for publishing new posts. These guideline mostly look at single performance measures like engagement to see at which times the performance measure are maximized. 
+<a  href="https://sproutsocial.com/insights/best-times-to-post-on-social-media/"> Best times to post on social media for 2019 </a>. </br>
 In their paper <a href = "https://www.researchgate.net/publication/4753376_Time-Series_Models_in_Marketing"> Time Series Models in Marketing </a> The authors look at the application of time series models for marketing. For example they use persistance modeling in order to estimate  the longterm effect of marketing activities.
 <img
 align="center"
 width="300"
 height="360"
 style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/docs/img/seminar/BilderAPABlog/TimeSeries.PNG"> </br> 
-Figure 1: Estimation of long term effects</img>
+Figure 1: Estimation of long term effects</img> </br>
+Being able to estimate the long term effect of ones marketing activity allows the practicioner to select the appropriate starting point in order to maximize the return.
+### Who to target?
+The importance of this question varies greatly depending on the kind of marketing that is being done. 
+### Which treatment should be used for which target?
+
+
+# 3. Motivation for Multiple Treatments <a class="anchor" id="motivation"></a>
+We decided to focus on multiple treatments for several reasons. Today there are many ways to reach your potential customers and picking the right one is crucial for succesfull marketing activity. Additionally, we found that there has not been much research on this topic and there is no comprehensive comparison of the research that does exist. Therefore, we decided to look at the models that have been proposed so far and compare them. Furthermore, we want to identify potential new directions for futher research as it was done in the blog post 
 
   
 # 4. Models <a class="anchor" id="models"></a>
