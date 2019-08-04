@@ -61,12 +61,22 @@ Figure 1: Estimation of long term effects</img> </br>
 Being able to estimate the long term effect of ones marketing activity allows the practicioner to select the appropriate starting point in order to maximize the return.
 ### Who to target?
 The importance of this question varies greatly depending on the kind of marketing that is being done. 
+
 <img
 align="center"
-width="300"
-height="360"
+width="500"
+height="350"
+style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/docs/img/seminar/BilderAPABlog/Market-Targeting-Strategies.png"> </br> 
+Figure 2: Marketing Activities by Differentiability</img> </br>
+
+
+<img
+align="center"
+width="400"
+height="350"
 style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/docs/img/seminar/BilderAPABlog/Mike-Thurber-Graphic-2.png"> </br> 
-Figure 2: 4 Types of customers</img> </br>
+Figure 3: 4 Types of customers</img> </br>
+
 
 ### Which treatment should be used for which target?
 
