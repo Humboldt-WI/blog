@@ -60,8 +60,9 @@ In their paper <a href = "https://www.researchgate.net/publication/4753376_Time-
 <img
 align="center"
 width="300"
-height="450"
-style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/docs/img/seminar/BilderAPABlog/TimeSeries.PNG">
+height="360"
+style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/docs/img/seminar/BilderAPABlog/TimeSeries.PNG"> </br> 
+Figure 1: Estimation of long term effects</img>
 
   
 # 4. Models <a class="anchor" id="models"></a>
