@@ -56,7 +56,7 @@ In their paper <a href = "https://www.researchgate.net/publication/4753376_Time-
 align="center"
 width="300"
 height="360"
-style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/docs/img/seminar/BilderAPABlog/TimeSeries.PNG"> </br> 
+style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/TimeSeries.PNG"> </br> 
 Figure 1: Estimation of long term effects</img> </br>
 Being able to estimate the long term effect of ones marketing activity allows the practicioner to select the appropriate starting point in order to maximize the return.
 ### Who to target?
@@ -65,7 +65,7 @@ The importance of this question varies greatly depending on the kind of marketin
 align="center"
 width="500"
 height="350"
-style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/docs/img/seminar/BilderAPABlog/Market-Targeting-Strategies.png"> </br> 
+style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Market-Targeting-Strategies.png"> </br> 
 Figure 2: Marketing Activities by Narrowness</img> </br>
 
 Our focus lies on the most narrow kind of marketing activities. Here we can decide on an individual basis whether we target a given potential customer. Historically practicioners would target the people who they thought would be most likely to do a purchase. This approach is suboptimal since it is solely based on the overall purchase possibility and not the effect of the treatment. </br>
@@ -74,7 +74,7 @@ In general we can separate our customers in 4 groups (Figure 3). </br>
 align="center"
 width="400"
 height="350"
-style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/docs/img/seminar/BilderAPABlog/Mike-Thurber-Graphic-2.png"> </br> 
+style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Mike-Thurber-Graphic-2.png"> </br> 
 Figure 3: 4 Types of customers</img> </br>
 
 With the historical approach we will target mostly the 'Sure Things' and maybe the 'Do-Not-Disturbs'. For those groups we at best get no return and at worst actually lose customers. Ideally we want to target the 'Persuadables'. This is commonly done by estimating the conditional average treatment effect (CATE) or uplift of the proposed marketing activity and the target the customers where the activity is estimated to have the highest effect. </br>
