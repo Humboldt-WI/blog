@@ -95,7 +95,9 @@ We decided to focus on multiple treatments for several reasons. Today there are 
 
 In their paper <a  href="https://core.ac.uk/download/pdf/81899141.pdf/"> Decision trees for uplift modeling with single and multiple treatments</a> Rzepakowski and Jaroszewicz propose the usage of a decision tree for uplift modeling. The goal of their tree is to maximize the divergence of outcome distribution between the treatment(s) and control and between treatments.
 To that end they developed a splitting criterion used to evaluate the possible splits. For each possible split they calculate the associated gain. To put it simply the gain is the divergence of outcome distribution after the split, minus the diveregence prior to it.
-The aim is to find the split, which maximizes the gain.
+The aim is to find the split, which maximizes the gain. </br>
+The formula for calculating the gain ins given in Figure 6. The 'D' represents a divergence function. In their paper they looked at KL-divergence, Euclidean distance and the chi-squared divergence. However, any other divergence measure could also be implemented. </br>
+It is important to not here, that they only considere discrete outcome distributions in the paper. 
 
 <img
 align="center"
@@ -121,6 +123,10 @@ As one can see there are 3 parameters which can be set by the user to adjust the
 $\alpha$: This parameter determines how much the treatment-control and between treatment divergence are measured. An $\alpha$ of 0.5 means both are valued equally </br>
 $\lambda$: Allows to put an emphasis on certain treatmens. For example one might put more emphasis on cheaper treatments. </br>
 $\gamma$: Allows to further emphasize selected between treatment divergences. 
+
+In addition to the gain, they also added a normalization factor which has two functions. Firstly, it is supposed to prevent bias towards test with high number of outcomes. Secondly, it punishes uneven splits. 
+
+
 
 ### 4.1.2 Simple Splitting Criterion <a class="anchor" id="simple"></a>
 
