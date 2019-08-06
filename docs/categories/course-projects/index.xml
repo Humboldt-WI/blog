@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Course Projects on Institute of Infomation Systems at HU-Berlin</title>
+    <title>Course projects on Institute of Infomation Systems at HU-Berlin</title>
     <link>https://humboldt-wi.github.io/blog/categories/course-projects/</link>
-    <description>Recent content in Course Projects on Institute of Infomation Systems at HU-Berlin</description>
+    <description>Recent content in Course projects on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 09 Feb 2019 00:00:00 +0000</lastBuildDate>
@@ -46,10 +46,10 @@ C. Monte Carlo Dropout
     
     <item>
       <title>Generative Models</title>
-      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/generativemodels/</link>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/generativemodels1/</link>
       <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/generativemodels/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/generativemodels1/</guid>
       <description>Authors: Gabriel Blumenstock, Yu Fan, Yang Tian Introduction What are generative models? In machine learning, generative models are used to generate new samples following the same distribution of the original data using unsupervised learning algorithms. Such methods provide a powerful way to detect and analyze enormous information of data, which has been applied to various domains, e.g. images and texts. By learning the statistical latent space of images or stories, the models are able to obtain human experiences and then “create” similar meaningful outputs.</description>
     </item>
     
