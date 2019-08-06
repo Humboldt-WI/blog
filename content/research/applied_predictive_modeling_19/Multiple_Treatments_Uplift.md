@@ -1,12 +1,12 @@
 +++
-title = "APA Template"
-date = '2019-08-15'
-tags = [ "Causal Inference", "Class19",]
+title = "Uplift Modelling with Multiple Treatments"
+date = '2019-08-12'
+tags = ["Causal Inference", "Class19","Uplift"]
 categories = ["Course projects"]
-banner = "img/seminar/nn_fundamentals/neuralNetworkKlein.jpg"
+banner = "img/seminar/sample/hu-logo.jpg"
 author = "Seminar Applied Predictive Modeling (SS19)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
-description = "One sentence description of your work"
+description = "Evaluation and discussion of Uplift Models for multiple possible treatments in the area of Marketing Analytics."
 +++
 
 
@@ -99,4 +99,7 @@ We decided to focus on multiple treatments for several reasons. Today there are 
 ## 4.4 Separate Model <a class="anchor" id="separate"></a>
 # 5. Evaluation <a class="anchor" id="evaluation"></a>
 # 6. Outlook <a class="anchor" id="outlook"></a>
-# 6. References <a class="anchor" id="references"></a>
+
+![](/blog/img/seminar/multiple_treatment_uplift/result1.png)
+
+# 7. References <a class="anchor" id="references"></a>
