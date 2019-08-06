@@ -91,18 +91,38 @@ We decided to focus on multiple treatments for several reasons. Today there are 
   
 # 4. Models <a class="anchor" id="models"></a>
 ## 4.1 Decision Trees Rzepakowski & Jaroszewicz <a class="anchor" id="decisiontree"></a>
+### 4.1.1 Rzepakowski & Jaroszewicz Tree and Forest<a class="anchor" id="basic"></a>
+
 In their paper <a  href="https://core.ac.uk/download/pdf/81899141.pdf/"> Decision trees for uplift modeling with single and multiple treatments</a> Rzepakowski and Jaroszewicz propose the usage of a decision tree for uplift modeling. The goal of their tree is to maximize the divergence of outcome distribution between the treatment(s) and control and between treatments.
 To that end they developed a splitting criterion used to evaluate the possible splits. For each possible split they calculate the associated gain (Figure 5)
 
 <img
 align="center"
-width="300"
-height="200"
-style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Mike-Thurber-Graphic-2.png">
+width="400"
+height="150"
+style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Gain.PNG">
 
+<img
+align="center"
+width="400"
+height="150"
+style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Multiple.PNG">
 
-### 4.1.1 Rzepakowski & Jaroszewicz Tree and Forest<a class="anchor" id="basic"></a>
+<img
+align="center"
+width="400"
+height="150"
+style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Conditional.PNG">
+
 ### 4.1.2 Simple Splitting Criterion <a class="anchor" id="simple"></a>
+
+<img
+align="center"
+width="400"
+height="150"
+style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/SimpleCriterionCategorical.PNG">
+
+
 ## 4.2 Causal Tree <a class="anchor" id="causaltree"></a>
 ## 4.3 Causal Forest <a class="anchor" id="causalforest"></a>
 ## 4.4 Separate Model <a class="anchor" id="separate"></a>
