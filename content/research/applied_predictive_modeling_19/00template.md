@@ -1,6 +1,6 @@
 +++
 title = "APA Template"
-date = '2019-08-15'
+date = '2019-08-01'
 tags = [ "Causal Inference", "Class19",]
 categories = ["Course projects"]
 banner = "img/seminar/nn_fundamentals/neuralNetworkKlein.jpg"
@@ -19,3 +19,4 @@ Text
 ## Neural Networks and its early development
 
 Text
+
