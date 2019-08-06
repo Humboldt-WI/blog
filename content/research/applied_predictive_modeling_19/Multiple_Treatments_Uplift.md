@@ -94,13 +94,16 @@ We decided to focus on multiple treatments for several reasons. Today there are 
 ### 4.1.1 Rzepakowski & Jaroszewicz Tree and Forest<a class="anchor" id="basic"></a>
 
 In their paper <a  href="https://core.ac.uk/download/pdf/81899141.pdf/"> Decision trees for uplift modeling with single and multiple treatments</a> Rzepakowski and Jaroszewicz propose the usage of a decision tree for uplift modeling. The goal of their tree is to maximize the divergence of outcome distribution between the treatment(s) and control and between treatments.
-To that end they developed a splitting criterion used to evaluate the possible splits. For each possible split they calculate the associated gain (Figure 5)
+To that end they developed a splitting criterion used to evaluate the possible splits. For each possible split they calculate the associated gain. To put it simply the gain is the divergence of outcome distribution after the split, minus the diveregence prior to it.
+The aim is to find the split, which maximizes the gain.
 
 <img
 align="center"
 width="600"
 height="100"
 style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Gain.PNG">
+
+
 
 <img
 align="center"
@@ -113,6 +116,11 @@ align="center"
 width="600"
 height="100"
 style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Conditional.PNG">
+
+As one can see there are 3 parameters which can be set by the user to adjust the model.
+$\alpha$: This parameter determines how much the treatment-control and between treatment divergence are measured. An $\alpha$ of 0.5 means both are valued equally </br>
+$\lambda$: Allows to put an emphasis on certain treatmens. For example one might put more emphasis on cheaper treatments. </br>
+$\gamma$: Allows to further emphasize selected between treatment divergences. 
 
 ### 4.1.2 Simple Splitting Criterion <a class="anchor" id="simple"></a>
 
