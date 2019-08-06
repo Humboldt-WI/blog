@@ -122,11 +122,13 @@ style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/m
 As one can see there are 3 parameters which can be set by the user to adjust the model.
 $\alpha$: This parameter determines how much the treatment-control and between treatment divergence are measured. An $\alpha$ of 0.5 means both are valued equally </br>
 $\lambda$: Allows to put an emphasis on certain treatmens. For example one might put more emphasis on cheaper treatments. </br>
-$\gamma$: Allows to further emphasize selected between treatment divergences. 
+$\gamma$: Allows to further emphasize selected between treatment divergences. </br>
 
-In addition to the gain, they also added a normalization factor which has two functions. Firstly, it is supposed to prevent bias towards test with high number of outcomes. Secondly, it punishes uneven splits. 
+In addition to the gain, they also added a normalization factor which has two functions. Firstly, it is supposed to prevent bias towards test with high number of outcomes. Secondly, it punishes uneven splits. </br>
 
+Lastly, pruning based on a validation set is also implemented. The pruning algorithm goes through the entire tree starting at the bottom. For each subtree the algorithm checks of the outcome divergence in the leafs is greater than in the root for the validation set. If yes, than the algorithm continues, if no the subtree is pruned and the root becomes a new leaf. </br>
 
+On the basis of this tree, we also implemented a function which allows to build a forest instead of just one tree.
 
 ### 4.1.2 Simple Splitting Criterion <a class="anchor" id="simple"></a>
 
