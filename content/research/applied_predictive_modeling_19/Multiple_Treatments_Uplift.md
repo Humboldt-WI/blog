@@ -98,28 +98,28 @@ To that end they developed a splitting criterion used to evaluate the possible s
 
 <img
 align="center"
-width="400"
-height="150"
+width="600"
+height="100"
 style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Gain.PNG">
 
 <img
 align="center"
-width="400"
-height="150"
+width="600"
+height="100"
 style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Multiple.PNG">
 
 <img
 align="center"
-width="400"
-height="150"
+width="600"
+height="100"
 style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Conditional.PNG">
 
 ### 4.1.2 Simple Splitting Criterion <a class="anchor" id="simple"></a>
 
 <img
 align="center"
-width="400"
-height="150"
+width="600"
+height="100"
 style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/SimpleCriterionCategorical.PNG">
 
 
