@@ -70,6 +70,7 @@ Figure 2: Marketing Activities by Narrowness</img> </br>
 
 Our focus lies on the most narrow kind of marketing activities. Here we can decide on an individual basis whether we target a given potential customer. Historically practicioners would target the people who they thought would be most likely to do a purchase. This approach is suboptimal since it is solely based on the overall purchase possibility and not the effect of the treatment. </br>
 In general we can separate our customers in 4 groups (Figure 3). </br>
+![Figure 3: 4 Types of Customers](/blog/img/seminar/multiple_treatment_uplift/multiple_treatment_uplift/Mike-Thurber-Graphic-2.png)
 <img
 align="center"
 width="400"
