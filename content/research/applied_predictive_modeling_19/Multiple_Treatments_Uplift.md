@@ -52,7 +52,7 @@ Most advice for marketing pratitioners focuses on social media marketing and on 
 <a  href="https://sproutsocial.com/insights/best-times-to-post-on-social-media/"> Best times to post on social media for 2019</a>. </br>
 In their paper <a href = "https://www.researchgate.net/publication/4753376_Time-Series_Models_in_Marketing"> Time Series Models in Marketing </a> the authors look at the application of time series models for marketing. For example they use persistance modeling in order to estimate  the longterm effect of marketing activities.
 
-![Figure 1: Estimation of long term effects](/blog/img/seminar/multiple_treatment_uplift/TimeSeries.PNG)
+![Figure 1: Estimation of long term effects](/blog/img/seminar/multiple_treatment_uplift/TimeSeries.PNG =250x)
 Being able to estimate the long term effect of ones marketing activity allows the practicioner to select the appropriate starting point in order to maximize the return.
 ### Who to target?
 The importance of this question varies greatly depending on the kind of marketing that is being done. Figure 2 shows various types of marketing from broad to narrow. The narrower the more potential there is for the usage of treatment effects. For the broadest possible marketing activity the average treatment effect (ATE) is important but no selection cade be made in terms of who we target. Narrower activities might allow us to select certain subgroups of our potential customers. Here we would be interested in the group average treatment effects (GATES) of those subgroups. Then we could determine which group to target based on those treatment effects.
