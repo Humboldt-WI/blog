@@ -27,6 +27,8 @@ description = "Evaluation and discussion of Uplift Models for multiple possible 
 4.3 [Causal Forest](#causalforest) </br>
 4.4 [Separate Model](#separate) </br>
 5. [Evaluation](#evaluation)
+5.1 [Methods](#evaluationmethods)
+5.2 [Results](#evaluationresults)
 6. [Outlook](#outlook)
 7. [References](#references)
 
@@ -119,7 +121,7 @@ width="600"
 height="100"
 style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Conditional.PNG">
 
-As one can see there are 3 parameters which can be set by the user to adjust the model.
+As one can see there are 3 parameters which can be set by the user to adjust the model. </br>
 $\alpha$: This parameter determines how much the treatment-control and between treatment divergence are measured. An $\alpha$ of 0.5 means both are valued equally </br>
 $\lambda$: Allows to put an emphasis on certain treatmens. For example one might put more emphasis on cheaper treatments. </br>
 $\gamma$: Allows to further emphasize selected between treatment divergences. </br>
@@ -132,6 +134,10 @@ On the basis of this tree, we also implemented a function which allows to build 
 
 ### 4.1.2 Simple Splitting Criterion <a class="anchor" id="simple"></a>
 
+In addition to the tree proposed by Rzepakowski & Jaroszewicz we also implemented another splitting criterion as a benchmark. Unlike the previously discussed cruterion, ours aim to maximize the difference in mean outcome between treatment and control and between different treatments. This also allows for continuous outcomes without any adjustments.</br>
+There is no pruning implemented as we wanted to keep it as simple as possible. For that reason we also only compare the difference in outcome of the left side of a new split to the root in order to get the gain of a give split. </br>
+Despite our effort to keep this criterion simple we implemented a normalization factor which main use is to guarantee that we have at least one observation of each treatment and control in every leaft. In addition, it also punishes uneven splits.
+
 <img
 align="center"
 width="600"
@@ -143,6 +149,9 @@ style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/m
 ## 4.3 Causal Forest <a class="anchor" id="causalforest"></a>
 ## 4.4 Separate Model <a class="anchor" id="separate"></a>
 # 5. Evaluation <a class="anchor" id="evaluation"></a>
+# 5.1 Methods <a class="anchor" id="evaluationmethods"></a>
+# 5.2 Results <a class="anchor" id="evaluationresults"></a>
+
 # 6. Outlook <a class="anchor" id="outlook"></a>
 
 ![](/blog/img/seminar/multiple_treatment_uplift/result1.png)
