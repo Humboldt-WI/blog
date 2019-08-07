@@ -21,13 +21,13 @@ description = "Evaluation and discussion of Uplift Models for multiple possible 
 3. [Motivation for Multiple Treatments](#motivation)
 4. [Models](#models) </br>
 4.1 [Decision Trees Rzepakowski & Jaroszewicz](#decisiontree) </br> 
-4.1.1 [Basic Rzepakowski & Jaroszewicz](#basic) </br>  
+4.1.1 [Basic Rzepakowski & Jaroszewicz](#basic) 
 4.1.2 [Simple Splitting Criterion](#simple) </br>
 4.2 [Causal Tree](#causaltree) </br>
 4.3 [Causal Forest](#causalforest) </br>
 4.4 [Separate Model](#separate) </br>
-5. [Evaluation](#evaluation)
-5.1 [Methods](#evaluationmethods)
+5. [Evaluation](#evaluation)</br>
+5.1 [Methods](#evaluationmethods)</br>
 5.2 [Results](#evaluationresults)
 6. [Outlook](#outlook)
 7. [References](#references)
@@ -149,9 +149,27 @@ style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/m
 ## 4.3 Causal Forest <a class="anchor" id="causalforest"></a>
 ## 4.4 Separate Model <a class="anchor" id="separate"></a>
 # 5. Evaluation <a class="anchor" id="evaluation"></a>
-# 5.1 Methods <a class="anchor" id="evaluationmethods"></a>
-# 5.2 Results <a class="anchor" id="evaluationresults"></a>
-
+## 5.1 Methods <a class="anchor" id="evaluationmethods"></a>
+## 5.2 Results <a class="anchor" id="evaluationresults"></a>
+### Predictive Results
+### Training Duration
+Even though predictive performance is the focus of this evaluation we also wanted to look at how well our approaches scaled in terms of training time. The are 3 factors we looked at which will influence performance time: number of observations, number of covariates and number of treatments.</br>
+The figures below show a comparisson of our methods.</br>
+<img
+align="center"
+width="225"
+height="150"
+style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/2Treatments.png">
+<img
+align="center"
+width="225"
+height="150"
+style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/3Treatments.png">
+<img
+align="center"
+width="225"
+height="150"
+style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/4Treatments.png">
 # 6. Outlook <a class="anchor" id="outlook"></a>
 
 ![](/blog/img/seminar/multiple_treatment_uplift/result1.png)
