@@ -21,7 +21,7 @@ description = "Evaluation and discussion of Uplift Models for multiple possible 
 3. [Motivation for Multiple Treatments](#motivation)
 4. [Models](#models) </br>
 4.1 [Decision Trees Rzepakowski & Jaroszewicz](#decisiontree) </br> 
-4.1.1 [Basic Rzepakowski & Jaroszewicz](#basic) 
+4.1.1 [Basic Rzepakowski & Jaroszewicz](#basic) </br>
 4.1.2 [Simple Splitting Criterion](#simple) </br>
 4.2 [Causal Tree](#causaltree) </br>
 4.3 [Causal Forest](#causalforest) </br>
