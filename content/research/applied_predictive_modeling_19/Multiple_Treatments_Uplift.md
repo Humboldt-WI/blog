@@ -49,8 +49,8 @@ Some of the most commonly cited challenges we found were:
 Since those challenges were all related to marketing activity we decided to focus on how data anlysis could be used to improve the performance of marketing activities. More specificly there are 3 questions with regards to marketing activity we focused on.
 ### When?
 When it comes to selecting the time of a marketing activity there is not much research out there with regards to treatment effects.
-Most advice for marketing pratitioners focuses on social media marketing and on what time are best for publishing new posts. These guideline mostly look at single performance measures like engagement to see at which times the performance measure are maximized. 
-<a  href="https://sproutsocial.com/insights/best-times-to-post-on-social-media/"> Best times to post on social media for 2019</a>. </br>
+Most advice for marketing pratitioners focuses on social media marketing and on what time are best for publishing new posts. These guideline mostly look at single performance measures like engagement to see at which times the performance measure are maximized. An example of this can be seen in the blog post 
+<a  href="https://sproutsocial.com/insights/best-times-to-post-on-social-media/"> "Best times to post on social media for 2019"</a>. </br>
 In their paper <a href = "https://www.researchgate.net/publication/4753376_Time-Series_Models_in_Marketing"> Time Series Models in Marketing </a> the authors look at the application of time series models for marketing. For example they use persistance modeling in order to estimate  the longterm effect of marketing activities.
 
 <img
