@@ -58,7 +58,7 @@ In their paper <a href = "https://www.researchgate.net/publication/4753376_Time-
 align="center"
 width="300"
 height="200"
-style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/TimeSeries.PNG">
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/TimeSeries.PNG">
 
 Being able to estimate the long term effect of ones marketing activity allows the practicioner to select the appropriate starting point in order to maximize the return.
 ### Who to target?
@@ -68,7 +68,7 @@ The importance of this question varies greatly depending on the kind of marketin
 align="center"
 width="300"
 height="200"
-style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Market-Targeting-Strategies.png">
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Market-Targeting-Strategies.png">
 
 Our focus lies on the most narrow kind of marketing activities. Here we can decide on an individual basis whether we target a given potential customer. Historically practicioners would target the people who they thought would be most likely to do a purchase. This approach is suboptimal since it is solely based on the overall purchase possibility and not the effect of the treatment. </br>
 In general we can separate our customers in 4 groups (Figure 3). </br>
@@ -77,7 +77,7 @@ In general we can separate our customers in 4 groups (Figure 3). </br>
 align="center"
 width="300"
 height="200"
-style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Mike-Thurber-Graphic-2.png">
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Mike-Thurber-Graphic-2.png">
 
 With the historical approach we will target mostly the 'Sure Things' and maybe the 'Do-Not-Disturbs'. For those groups we at best get no return and at worst actually lose customers. Ideally we want to target the 'Persuadables'. This is commonly done by estimating the conditional average treatment effect (CATE) or uplift of the proposed marketing activity and the target the customers where the activity is estimated to have the highest effect. </br>
 Several approaches have been proposed to estimate uplift. Gubela et. al give an overview in their paper <a href = "https://www.researchgate.net/publication/331791032_Conversion_uplift_in_E-commerce_A_systematic_benchmark_of_modeling_strategies"> Conversion uplift in E-commerce: A systematic benchmark of modeling strategies</a>. In their evaluation they find that the two model uplift method and interaction term method (ITM) performed best. </br>
@@ -106,7 +106,7 @@ It is important to not here, that they only considere discrete outcome distribut
 align="center"
 width="600"
 height="100"
-style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Gain.PNG">
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Gain.PNG">
 
 
 
@@ -114,13 +114,13 @@ style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/m
 align="center"
 width="600"
 height="100"
-style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Multiple.PNG">
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Multiple.PNG">
 
 <img
 align="center"
 width="600"
 height="100"
-style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/Conditional.PNG">
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Conditional.PNG">
 
 As one can see there are 3 parameters which can be set by the user to adjust the model. </br>
 $\alpha$: This parameter determines how much the treatment-control and between treatment divergence are measured. An $\alpha$ of 0.5 means both are valued equally </br>
@@ -143,7 +143,7 @@ Despite our effort to keep this criterion simple we implemented a normalization 
 align="center"
 width="600"
 height="100"
-style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/SimpleCriterionCategorical.PNG">
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/SimpleCriterionCategorical.PNG">
 
 
 ## 4.2 Causal Tree <a class="anchor" id="causaltree"></a>
@@ -160,19 +160,26 @@ The figures below show a comparisson of our methods.</br>
 align="center"
 width="225"
 height="150"
-style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/2Treatments.png">
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/2Treatments.png">
 <img
 align="center"
 width="225"
 height="150"
-style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/3Treatments.png">
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/3Treatments.png">
 <img
 align="center"
 width="225"
 height="150"
-style="display:block;margin:0 auto;" src="https://github.com/jkrol21/blog/blob/master/static/img/seminar/multiple_treatment_uplift/4Treatments.png">
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/4Treatments.png">
 # 6. Outlook <a class="anchor" id="outlook"></a>
 
-![](/blog/img/seminar/multiple_treatment_uplift/result1.png)
+
 
 # 7. References <a class="anchor" id="references"></a>
+
+* Devriendt, F., Moldovan, D. and Verbeke, W., 2018. A literature survey and experimental evaluation of the state-of-the-art in uplift modeling: A stepping stone toward the development of prescriptive analytics. Big data, 6(1), pp.13-41.
+* Gubela, R., Bequé, A., Lessmann, S. and Gebert, F., 2019. Conversion uplift in e-commerce: A systematic benchmark of modeling strategies. International Journal of Information Technology & Decision Making (IJITDM), 18(03), pp.747-791.
+* Lai, Y.T., Wang, K., Ling, D., Shi, H. and Zhang, J., 2006, December. Direct marketing when there are voluntary buyers. In Sixth International Conference on Data Mining (ICDM'06) (pp. 922-927). IEEE.
+* Lo, V.S. and Pachamanova, D.A., 2015. From predictive uplift modeling to prescriptive uplift analytics: A practical approach to treatment optimization while accounting for estimation risk. Journal of Marketing Analytics, 3(2), pp.79-95.
+* Rzepakowski, P. and Jaroszewicz, S., 2012. Decision trees for uplift modeling with single and multiple treatments. Knowledge and Information Systems, 32(2), pp.303-327.
+* Zhao, Y., Fang, X. and Simchi-Levi, D., 2017, June. Uplift modeling with multiple treatments and general response types. In Proceedings of the 2017 SIAM International Conference on Data Mining (pp. 588-596). Society for Industrial and Applied Mathematics.
