@@ -99,15 +99,15 @@ In their paper <a  href="https://core.ac.uk/download/pdf/81899141.pdf/"> Decisio
 To that end they developed a splitting criterion used to evaluate the possible splits. For each possible split they calculate the associated gain. To put it simply the gain is the divergence of outcome distribution after the split, minus the diveregence prior to it.
 The aim is to find the split, which maximizes the gain. </br>
 The formula for calculating the gain is given in Figure 6. The 'D' represents a divergence function. In their paper they looked at KL-divergence, Euclidean distance and the chi-squared divergence. However, any other divergence measure could also be implemented. </br>
-It is important to note here, that they only considere discrete outcome distributions in the paper. 
-
+It is important to note here, that they only considere discrete outcome distributions in the paper. </br>
+The gain:
 <img
 align="center"
 width="600"
 height="100"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Gain.PNG">
 
-
+Multiple Divergence:
 
 <img
 align="center"
@@ -115,6 +115,7 @@ width="600"
 height="100"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Multiple.PNG">
 
+Conditional Divergence:
 <img
 align="center"
 width="600"
@@ -140,7 +141,7 @@ Despite our effort to keep this criterion simple we implemented a normalization 
 
 <img
 align="center"
-width="600"
+width="700"
 height="100"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/SimpleCriterionCategorical.PNG">
 
