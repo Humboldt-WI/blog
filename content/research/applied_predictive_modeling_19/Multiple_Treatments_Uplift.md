@@ -98,8 +98,8 @@ We decided to focus on multiple treatments for several reasons. Today there are 
 In their paper <a  href="https://core.ac.uk/download/pdf/81899141.pdf/"> Decision trees for uplift modeling with single and multiple treatments</a> Rzepakowski and Jaroszewicz propose the usage of a decision tree for uplift modeling. The goal of their tree is to maximize the divergence of outcome distribution between the treatment(s) and control and between treatments.
 To that end they developed a splitting criterion used to evaluate the possible splits. For each possible split they calculate the associated gain. To put it simply the gain is the divergence of outcome distribution after the split, minus the diveregence prior to it.
 The aim is to find the split, which maximizes the gain. </br>
-The formula for calculating the gain ins given in Figure 6. The 'D' represents a divergence function. In their paper they looked at KL-divergence, Euclidean distance and the chi-squared divergence. However, any other divergence measure could also be implemented. </br>
-It is important to not here, that they only considere discrete outcome distributions in the paper. 
+The formula for calculating the gain is given in Figure 6. The 'D' represents a divergence function. In their paper they looked at KL-divergence, Euclidean distance and the chi-squared divergence. However, any other divergence measure could also be implemented. </br>
+It is important to note here, that they only considere discrete outcome distributions in the paper. 
 
 <img
 align="center"
