@@ -106,7 +106,7 @@ align="center"
 width="600"
 height="100"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Gain.PNG">
-
+</br>
 Multiple Divergence:
 
 <img
