@@ -23,9 +23,8 @@ description = "Evaluation and discussion of Uplift Models for multiple possible 
 4.1 [Decision Trees Rzepakowski & Jaroszewicz](#decisiontree) </br> 
 4.1.1 [Basic Rzepakowski & Jaroszewicz](#basic) </br>
 4.1.2 [Simple Splitting Criterion](#simple) </br>
-4.2 [Causal Tree](#causaltree) </br>
-4.3 [Causal Forest](#causalforest) </br>
-4.4 [Separate Model](#separate) </br>
+4.2 [Causal Tree and Causal Forest](#causaltree) </br>
+4.3 [Separate Model](#separate) </br>
 5. [Evaluation](#evaluation)</br>
 5.1 [Methods](#evaluationmethods)</br>
 5.2 [Results](#evaluationresults)
@@ -146,11 +145,11 @@ height="100"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/SimpleCriterionCategorical.PNG">
 
 
-## 4.2 Causal Tree <a class="anchor" id="causaltree"></a>
-The causal tree, introduced by Susan Athey et. al in their paper <a href = "https://github.com/susanathey/causalTree/blob/master/briefintro.pdf">An Introduction to Recursive Partitioning for Heterogeneous Causal Effect Estimation Using causalTree package</a> is a tree based classifier which directly estiamtes the treatment effect. It is based on the rpart package and implements many in the CART (Classification and Regression Trees). By default it only supports single treatment. Therefore, we train one tree for each of the multiple treatments and then compare the predicted uplifts. 
+## 4.2 Causal Tree and Causal Forest <a class="anchor" id="causaltree"></a>
+The causal tree, introduced by Susan Athey et. al in their paper <a href = "https://github.com/susanathey/causalTree/blob/master/briefintro.pdf">An Introduction to Recursive Partitioning for Heterogeneous Causal Effect Estimation Using causalTree package</a> is a tree based classifier which directly estiamtes the treatment effect. It is based on the rpart package and implements many in the CART (Classification and Regression Trees). By default it only supports single treatment. Therefore, we train one tree for each of the multiple treatments and then compare the predicted uplifts. </br>
+They also implemented a function which allows the user to build forests based on the causal tree. These forests are in the form of a list of rpart objects.
 
-## 4.3 Causal Forest <a class="anchor" id="causalforest"></a>
-## 4.4 Separate Model <a class="anchor" id="separate"></a>
+## 4.3 Separate Model <a class="anchor" id="separate"></a>
 # 5. Evaluation <a class="anchor" id="evaluation"></a>
 ## 5.1 Methods <a class="anchor" id="evaluationmethods"></a>
 ## 5.2 Results <a class="anchor" id="evaluationresults"></a>
