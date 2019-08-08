@@ -47,7 +47,7 @@ Some of the most commonly cited challenges we found were:
 - Select marketing channel/method
 
 Since those challenges were all related to marketing activity we decided to focus on how data anlysis could be used to improve the performance of marketing activities. More specificly there are 3 questions with regards to marketing activity we focused on.
-### When to start the marketing activity?
+### When?
 When it comes to selecting the time of a marketing activity there is not much research out there with regards to treatment effects.
 Most advice for marketing pratitioners focuses on social media marketing and on what time are best for publishing new posts. These guideline mostly look at single performance measures like engagement to see at which times the performance measure are maximized. 
 <a  href="https://sproutsocial.com/insights/best-times-to-post-on-social-media/"> Best times to post on social media for 2019</a>. </br>
@@ -60,7 +60,7 @@ height="200"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/TimeSeries.PNG">
 
 Being able to estimate the long term effect of ones marketing activity allows the practicioner to select the appropriate starting point in order to maximize the return.
-### Who to target?
+### Who?
 The importance of this question varies greatly depending on the kind of marketing that is being done. Figure 2 shows various types of marketing from broad to narrow. The narrower the more potential there is for the usage of treatment effects. For the broadest possible marketing activity the average treatment effect (ATE) is important but no selection cade be made in terms of who we target. Narrower activities might allow us to select certain subgroups of our potential customers. Here we would be interested in the group average treatment effects (GATES) of those subgroups. Then we could determine which group to target based on those treatment effects.
 
 <img
@@ -84,7 +84,7 @@ The two model approach as the name suggests uses two separate models. The traini
 The interaction term method (ITM) was proposed by Lo in his 2002 paper <a href="https://www.researchgate.net/publication/220520042_The_True_Lift_Model_-_A_Novel_Data_Mining_Approach_to_Response_Modeling_in_Database_Marketing">The True Lift Model - A Novel Data Mining Approach to Response Modeling in Database Marketing</a>. Unlike double machine learning, ITM only uses a single model. However, ITM also works with two predictions. One with treatment and one without. Both predictions are obtained from the same model which has been trained on both treatment and control data. Whether a treatment is given or not is indicated by a binary variable D. A new observation is evaluated twice. Once with D=1 (treatment given) and once with D=0. Again the difference between the two predictions is the estimated uplift.
 
 
-### Which treatment should be used for which target?
+### What?
 
 
 # 3. Motivation for Multiple Treatments <a class="anchor" id="motivation"></a>
