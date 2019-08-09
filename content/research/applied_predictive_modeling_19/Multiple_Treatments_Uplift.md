@@ -18,7 +18,7 @@ description = "Evaluation and discussion of Uplift Models for multiple possible 
 
 1. [Introduction](#introduction)
 2. [Common Marketing Challenges](#challenges)
-3. [Motivation for Multiple Treatments](#motivation)
+3. [Structure of the Analysis](#structure)
 4. [Models](#models) </br>
 4.1 [Decision Trees Rzepakowski & Jaroszewicz](#decisiontree) </br> 
 4.1.1 [Basic Rzepakowski & Jaroszewicz](#basic) </br>
@@ -34,7 +34,7 @@ description = "Evaluation and discussion of Uplift Models for multiple possible 
 # 1. Introduction <a class="anchor" id="introduction"></a>
 Nowadays marketing practitioners face a multitude of challenges. 
 
-In the first part of this analysis we will look at which challenges exist and how data analysis might be employed to tackle these problems.
+In the first part of this analysis we will look at which challenges exist and how treatment effect analysis might be employed to tackle these problems.
 
 In the second part we will look more closely on one specific problem and give a summary and an evaluation of proposed methods to solve that problem.
 # 2. Common Marketing Challenges <a class="anchor" id="challenges"></a>
@@ -45,12 +45,12 @@ Some of the most commonly cited challenges we found were:
 - Reach people at the right time
 - Target content to the right audience
 - Select marketing channel/method
+Since those challenges were all related to marketing activity we decided to focus on how treatment effect anlysis could be used to improve the performance of marketing activities. More specificly there are 3 questions with regards to marketing activity we focused on.
 
-Since those challenges were all related to marketing activity we decided to focus on how data anlysis could be used to improve the performance of marketing activities. More specificly there are 3 questions with regards to marketing activity we focused on.
 ### When?
 When it comes to selecting the time of a marketing activity there is not much research out there with regards to treatment effects.
-Most advice for marketing pratitioners focuses on social media marketing and on what time are best for publishing new posts. These guideline mostly look at single performance measures like engagement to see at which times the performance measure are maximized. An example of this can be seen in the blog post 
-<a  href="https://sproutsocial.com/insights/best-times-to-post-on-social-media/"> "Best times to post on social media for 2019"</a>. </br>
+Most advice for marketing pratitioners focuses on social media marketing and on what time are best for publishing new posts. These guidelines mostly look at single performance measures like engagement to see at which times the performance measure are maximized. An example of this can be seen in the blog post 
+<a  href="https://sproutsocial.com/insights/best-times-to-post-on-social-media/"> "Best times to post on social media for 2019"</a>. Generally these approaches only attempt to maximize the average treatment effect. Since social media usually works in a broadcast style in which each post reaches all users it is not possible to adjust the content or publishing time of a post for specific users or groups of users.</br>
 In their paper <a href = "https://www.researchgate.net/publication/4753376_Time-Series_Models_in_Marketing"> Time Series Models in Marketing </a> the authors look at the application of time series models for marketing. For example they use persistance modeling in order to estimate  the longterm effect of marketing activities.
 
 <img
@@ -61,10 +61,10 @@ style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_u
 
 Being able to estimate the long term effect of ones marketing activity allows the practicioner to select the appropriate starting point in order to maximize the ROI. </br>
 
-Another approach to find seasonal effects might be to look at past marketing activities which have been similar in terms of the activity performed, but have been done at different times. Then one could estimate the treatment effects of each of these campaigns to get an idea at which time during the year the campaign works better. However, the activities should not be to far apart. Ootherwise global factors like the state of the economy could have changed. This would also have an impact on the purchasing behavior of customers and could lead to false conclusions. </br>
+Another approach to find seasonal effects might be to look at past marketing activities which have been similar in terms of the activity performed, but have been done at different times. Then one could estimate the treatment effects of each of these campaigns to get an idea at which time during the year the campaign works better. However, the activities should not be to far apart. Otherwise global factors like the state of the economy could have changed. This would also have an impact on the purchasing behavior of customers and could lead to false conclusions. </br>
 
 ### Who?
-The importance of this question varies greatly depending on the kind of marketing that is being done. Figure 2 shows various types of marketing from broad to narrow. The narrower the more potential there is for the usage of treatment effects. For the broadest possible marketing activity the average treatment effect (ATE) is important but no selection cade be made in terms of who we target. Narrower activities might allow us to select certain subgroups of our potential customers. Here we would be interested in the group average treatment effects (GATES) of those subgroups. Then we could determine which group to target based on those treatment effects.
+The importance of this question varies greatly depending on the kind of marketing that is being done. Figure 2 shows various types of marketing from broad to narrow. The narrower the more potential there is for the usage of treatment effects. For the broadest possible marketing activity (like the social media marketing mentioned before) the average treatment effect (ATE) is important but no selection cade be made in terms of who we target. Narrower activities might allow us to select certain subgroups of our potential customers. Here we would be interested in the group average treatment effects (GATES) of those subgroups. Then we could determine which group to target based on those treatment effects.
 
 <img
 align="center"
@@ -81,18 +81,19 @@ width="300"
 height="200"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Mike-Thurber-Graphic-2.png">
 
-With the historical approach we will target mostly the 'Sure Things' and maybe the 'Do-Not-Disturbs'. For those groups we at best get no return and at worst actually lose customers. Ideally we want to target the 'Persuadables'. This is commonly done by estimating the conditional average treatment effect (CATE) or uplift of the proposed marketing activity and the target the customers where the activity is estimated to have the highest effect. </br>
+With the historical approach we will target mostly the 'Sure Things' and maybe the 'Do-Not-Disturbs'. For those groups we at best get no return and at worst actually lose customers. Ideally we want to target the 'Persuadables'. This is commonly done by estimating the conditional average treatment effect (CATE) or uplift of the proposed marketing activity and then target the customers where the activity is estimated to have the highest effect. </br>
 Several approaches have been proposed to estimate uplift. Gubela et. al give an overview in their paper <a href = "https://www.researchgate.net/publication/331791032_Conversion_uplift_in_E-commerce_A_systematic_benchmark_of_modeling_strategies"> Conversion uplift in E-commerce: A systematic benchmark of modeling strategies</a>. In their evaluation they find that the two model uplift method and interaction term method (ITM) performed best. </br>
 The two model approach as the name suggests uses two separate models. The training set is split into two with one set contained all the treated observations and the other all control observations. Then for each traning set one model is built to predict the outcome. To estimate the uplift of the treatment for a new person, we generate the predicted outcome with both models. One predicted outcome with treatment and one without. The difference between these two estimates is the expected uplift. The two model is very simple and works with virtually every possible base model (e.g. random forest, linear regression, svm, ...). Since it is so simple it is often considered a good benchmark to test new approaches against.</br>
 The interaction term method (ITM) was proposed by Lo in his 2002 paper <a href="https://www.researchgate.net/publication/220520042_The_True_Lift_Model_-_A_Novel_Data_Mining_Approach_to_Response_Modeling_in_Database_Marketing">The True Lift Model - A Novel Data Mining Approach to Response Modeling in Database Marketing</a>. Unlike double machine learning, ITM only uses a single model. However, ITM also works with two predictions. One with treatment and one without. Both predictions are obtained from the same model which has been trained on both treatment and control data. Whether a treatment is given or not is indicated by a binary variable D. A new observation is evaluated twice. Once with D=1 (treatment given) and once with D=0. Again the difference between the two predictions is the estimated uplift.
 
 
 ### What?
+The last question we look at is "What marketing activity to choose?". There are many ways one could approach one customers (e.g. coupons, newsletters, ...). Finding the right method on an individual level is important, because different approaches might not only have different effects on potential customers but are also associated with different costs. For example it would be better to send a customer a newsletter which costs virtually nothing, rather then a coupon which would reduce the profit, if the newsletter has a similar effect on purchase probability. Since there isn't much research on this area and the selection of the proper marketing channel is crucial, we decided to lay the focus of our blog post on this issue.
 
-
-# 3. Motivation for Multiple Treatments <a class="anchor" id="motivation"></a>
-We decided to focus on multiple treatments for several reasons. Today there are many ways to reach your potential customers and picking the right one is crucial for succesfull marketing activity. Additionally, we found that there has not been much research on this topic and there is no comprehensive comparison of the research that does exist. Therefore, we decided to look at the models that have been proposed so far and compare them. Furthermore, we want to identify potential new directions for further research as it was done in the blog post 
-
+# 3. Structure of the Analysis  <a class="anchor" id="structure"></a>
+In the second part if this blog post we will look at methods which have been proposed so far to deal with multiple treatments.</br> In the first section we will give an overview and brief explanation of the methods we look at.</br>
+In the second section we evaluation their performance both in terms of their predictions and in terms of the duration it takes to train the models. </br>
+Finally, we will give a short summary of our results and a short outlook over possible future research.
   
 # 4. Models <a class="anchor" id="models"></a>
 ## 4.1 Decision Trees Rzepakowski & Jaroszewicz <a class="anchor" id="decisiontree"></a>
@@ -131,7 +132,7 @@ $\gamma$: Allows to further emphasize selected between treatment divergences. </
 
 In addition to the gain, they also added a normalization factor which has two functions. Firstly, it is supposed to prevent bias towards test with high number of outcomes. Secondly, it punishes uneven splits. </br>
 
-Lastly, pruning based on a validation set is also implemented. The pruning algorithm goes through the entire tree starting at the bottom. For each subtree the algorithm checks of the outcome divergence in the leafs is greater than in the root for the validation set. If yes, than the algorithm continues, if no the subtree is pruned and the root becomes a new leaf. </br>
+Lastly, pruning based on a validation set is also implemented. The pruning algorithm goes through the entire tree starting at the bottom. For each subtree the algorithm checks if the outcome divergence in the leafs is greater than in the root for the validation set. If yes, than the algorithm continues, if no the subtree is pruned and the root becomes a new leaf. </br>
 
 On the basis of this tree, we also implemented a function which allows to build a forest instead of just one tree. The implementation is loosely based on the random forest. There are two main parameters which can be set when building a tree. The number of trees and the number of covariates considered in each tree. For each tree a random subset of the covariates with the specified number of covariates is used.
 
