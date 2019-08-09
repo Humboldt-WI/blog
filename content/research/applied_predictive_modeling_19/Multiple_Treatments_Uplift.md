@@ -40,12 +40,14 @@ In the first part of this analysis we will look at which challenges exist and ho
 In the second part we will look more closely on one specific problem and give a summary and an evaluation of proposed methods to solve that problem.
 # 2. Common Marketing Challenges <a class="anchor" id="challenges"></a>
 Some of the most commonly cited challenges we found were:
-- Drive Traffic to the website
-- Increase/Prove ROI of marketing campaigns
-- Turn website visitors into buyers
-- Reach people at the right time
-- Target content to the right audience
-- Select marketing channel/method
+<ul>
+  <li>Drive Traffic to the website</li>
+  <li>Increase/Prove ROI of marketing campaigns</li>
+  <li>Turn website visitors into buyers</li>
+  <li>Reach people at the right time</li>
+  <li>Target content to the right audience</li>
+  <li>Select marketing channel/method</li>
+</ul>
 Since those challenges were all related to marketing activity we decided to focus on how treatment effect anlysis could be used to improve the performance of marketing activities. More specificly there are 3 questions with regards to marketing activity we focused on.
 
 ### When?
