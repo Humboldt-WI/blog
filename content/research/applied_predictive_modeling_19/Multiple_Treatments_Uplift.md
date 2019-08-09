@@ -165,18 +165,18 @@ Even though predictive performance is the focus of this evaluation we also wante
 The figures below show a comparisson of our methods.</br>
 <img
 align="center"
-width="775"
-height="540"
+width="550"
+height="360"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison3Features.png">
 <img
 align="center"
-width="775"
-height="540"
+width="550"
+height="360"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison4Features.png">
 <img
 align="center"
-width="775"
-height="540"
+width="550"
+height="360"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison5Features.png">
 # 6. Outlook <a class="anchor" id="outlook"></a>
 
