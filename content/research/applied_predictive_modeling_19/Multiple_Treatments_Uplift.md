@@ -26,8 +26,9 @@ description = "Evaluation and discussion of Uplift Models for multiple possible 
 4.2 [Causal Tree and Causal Forest](#causaltree) </br>
 4.3 [Separate Model](#separate) </br>
 5. [Evaluation](#evaluation)</br>
-5.1 [Methods](#evaluationmethods)</br>
-5.2 [Results](#evaluationresults)
+5.1 [Data Sets](#datasets)</br>
+5.2 [Methods](#evaluationmethods)</br>
+5.3 [Results](#evaluationresults)
 6. [Outlook](#outlook)
 7. [References](#references)
 
@@ -155,8 +156,9 @@ They also implemented a function which allows the user to build forests based on
 
 ## 4.3 Separate Model <a class="anchor" id="separate"></a>
 # 5. Evaluation <a class="anchor" id="evaluation"></a>
-## 5.1 Methods <a class="anchor" id="evaluationmethods"></a>
-## 5.2 Results <a class="anchor" id="evaluationresults"></a>
+## 5.1 Data Sets <a class="anchor" id="datasets"></a>
+## 5.2 Methods <a class="anchor" id="evaluationmethods"></a>
+## 5.3 Results <a class="anchor" id="evaluationresults"></a>
 ### Predictive Results
 ### Training Duration
 Even though predictive performance is the focus of this evaluation we also wanted to look at how well our approaches scaled in terms of training time. The are 3 factors we looked at which will influence performance time: number of observations, number of covariates and number of treatments.</br>
