@@ -162,17 +162,20 @@ They also implemented a function which allows the user to build forests based on
 ### Predictive Results
 ### Training Duration
 Even though predictive performance is the focus of this evaluation we also wanted to look at how well our approaches scaled in terms of training time. The are 3 factors we looked at which will influence performance time: number of observations, number of covariates and number of treatments.</br>
-The figures below show a comparisson of our methods.</br>
+The figures below show a comparisson of our models.</br>
+3 Covariates: </br>
 <img
 align="center"
 width="550"
 height="360"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison3Features.png">
+5 Covariates: </br>
 <img
 align="center"
 width="550"
 height="360"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison4Features.png">
+5 Covariates: </br>
 <img
 align="center"
 width="550"
