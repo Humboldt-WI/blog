@@ -168,19 +168,19 @@ The figures below show a comparisson of our models.</br>
 align="center"
 width="550"
 height="360"
-style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison3Features.png">
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison3Features.png"> </br>
+4 Covariates: </br>
+<img
+align="center"
+width="550"
+height="360"
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison4Features.png"> </br>
 5 Covariates: </br>
 <img
 align="center"
 width="550"
 height="360"
-style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison4Features.png">
-5 Covariates: </br>
-<img
-align="center"
-width="550"
-height="360"
-style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison5Features.png">
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison5Features.png"></br>
 # 6. Outlook <a class="anchor" id="outlook"></a>
 
 
