@@ -158,9 +158,48 @@ The causal tree, introduced by Susan Athey et. al in their paper <a href = "http
 They also implemented a function which allows the user to build forests based on the causal tree. These forests are in the form of a list of rpart objects.
 
 ## 4.3 Separate Model <a class="anchor" id="separate"></a>
+
+An early idea to model the uplift of a treated subject is known as the two-model approach. 
+This approach creates a separate train and test dataset for the treated and control subjects. 
+Using the two training datasets, two separate response models are fitted. 
+By training a model only with treated subjects, it should incorporate the distinct features of the treatment in its outcomes (and vice versa when training it on control subjects).
+Therefore, when predicting a subject with each model, the response of the models is expected to be its outcome when treated and when not treated. 
+Using those two predictions the uplift can be calculated as the difference between the predicted outcome from the treatement and control model.
+<br />
+This approach extends naturally for the case of multiple treatments. For each treatment and the control group a separete response model is fitted. 
+The expected uplift of a treatment, for a given individual is the difference between the outcome of the treatment's response model and the control model.
+<br />
+
+Uplift = P(Y_T|X) - P(Y_C|X)
+
+<br />
+We adapt the naming convention from Zhao (**) and will refer to the two-model approach for multiple treatments as the separate model approach (SMA).
+<br />
+This approach can be used with any response model as a base learner. 
+Therefore, its overall performance depends on the choice of the used model and the model specific parameter tuning.
+
+
+<br />
+The SMA represents an indirect uplift modelling approach, as the objective of the base learners is not to model the class difference, but the class specific outcomes.
+
+
+Other related approaches which also extend naturally for multiple treatments are described in **Lo, Lai, but are not discussed in this work.
+
+
+
 # 5. Evaluation <a class="anchor" id="evaluation"></a>
 ## 5.1 Data Sets <a class="anchor" id="datasets"></a>
 ## 5.2 Methods <a class="anchor" id="evaluationmethods"></a>
+
+### 5.2.1 Uplift Curves <a class="anchor" id="uplift_curves"></a>
+
+Method from Rzepakowski
+
+### 5.2.2 Expected Outcome <a class="anchor" id="uplift_curves"></a>
+
+Method from Zhao
+
+
 ## 5.3 Results <a class="anchor" id="evaluationresults"></a>
 ### Predictive Results
 ### Training Duration
