@@ -137,7 +137,7 @@ In addition to the gain, they also added a normalization factor which has two fu
 
 Lastly, pruning based on a validation set is also implemented. The pruning algorithm goes through the entire tree starting at the bottom. For each subtree the algorithm checks if the outcome divergence in the leafs is greater than in the root for the validation set. If yes, than the algorithm continues, if no the subtree is pruned and the root becomes a new leaf. </br>
 
-On the basis of this tree, we also implemented a function which allows to build a forest instead of just one tree. The implementation is loosely based on the random forest. There are two main parameters which can be set when building a tree. The number of trees and the number of covariates considered in each tree. For each tree a random subset of the covariates with the specified number of covariates is used.
+On the basis of this tree, we also implemented a function which allows to build a forest instead of just one tree. The implementation is loosely based on the random forest. There are two main parameters which can be set when building a forest. The number of trees and the number of covariates considered in each tree. For each tree a random subset of the covariates with the specified number of covariates is used.
 
 ### 4.1.2 Simple Splitting Criterion <a class="anchor" id="simple"></a>
 
@@ -145,7 +145,7 @@ In addition to the tree proposed by Rzepakowski & Jaroszewicz we also implemente
 There is no pruning implemented as we wanted to keep it as simple as possible. For that reason we also only compare the difference in outcome of the left side of a new split to the root in order to get the gain of a give split. </br>
 Despite our effort to keep this criterion simple we implemented a normalization factor which main use is to guarantee that we have at least one observation of each treatment and control in every leaf. In addition, it also punishes uneven splits.</br>
 Here is the formula used to evaluate the possible splits. The "S = l" indicates, that we are only looking at the left side of the split.
-n<sub>il</sub> and n<sub>ir</sub> are the number of samples with treatment i in the left and right leaf respectively.
+n<sub>il</sub> and n<sub>ir</sub> are the number of samples with treatment i in the left and right leaf respectively. As one can see if either becomes 0 the whole equation is 0. 
 <img
 align="center"
 width="700"
