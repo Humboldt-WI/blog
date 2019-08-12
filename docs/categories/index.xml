@@ -6,6 +6,7 @@
     <description>Recent content in Categories on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 09 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -20,7 +21,7 @@
     </item>
     
     <item>
-      <title>Instruction</title>
+      <title>instruction</title>
       <link>https://humboldt-wi.github.io/blog/categories/instruction/</link>
       <pubDate>Mon, 19 Feb 2018 00:00:00 +0000</pubDate>
       

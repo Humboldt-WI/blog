@@ -1,4 +1,4 @@
-+++
+﻿+++
 title = "Image Analysis: Introduction to deep learning for computer vision"
 date = '2018-03-15'
 tags = [ "Deep Learning", "Image Analysis", "Class17/18","Transfer Learning", "Distant Transfer Learning"]
