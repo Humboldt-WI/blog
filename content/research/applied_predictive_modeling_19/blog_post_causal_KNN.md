@@ -2,10 +2,10 @@
 title = "Causal KNN"
 date = '2019-08-01'
 tags = [ "Causal Inference", "Class19", "Causal Inference", "Uplift Modelling", "KNN Algorithm",]
-categories = ["Course Projects"]
+categories = ["Course projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
 author = "Maximilian Kricke, Tim Peschenz"
-disqusShortname = "https-humbodt-wi-github-io-blog"
+disqusShortname = "https-wisample-github-io-blog"
 description = "Blog Post for Seminar Applied Predictive Analytics"
 +++
 
@@ -31,23 +31,10 @@ This blogpost has strong relations to the work of Hitsch & Misra (2018). A key g
 Causal Inference is done in the potential outcome framework. This framework will be briefly explained in the following. Assume a company is about to run an E-Mail campaign. Therefore, the company needs to decide on the amount of people that will receive an E-Mail. This decision depends on the cost of the campaign compared to the expected revenue. On a customer level, this decision boils down from the comparison of the targeting effort cost to the incremental profit contribution of each customer. The fundamental problem of treatment effect analysis is, that it can not be observed, whether the customers action was influenced by the received targeting or not. It can not be observed how a treated customer would have acted when he or she would not have received such an E-Mail. Therefore we aim at identifying the underlying factors of the customers behaviour, to eliminate these effects for the calculation of the treatment effect estimation. A given targeting policy cannot be directly evaluated in a randomized sample, because for many customers the proposed treatment assignment by the targeting policy will differ from the realized treatment assignment. However, for units where both, the proposed and realized treatment assignment agree, we can scale the realized profit contribution by the inverse of the propensity score to account for the percentage of similar units that are "missing", in the sense that the proposed and realized treatment assignment are different. This problem can be described via the following graphic:
 
 
-
-
-![Classification of Customers according to Treatment and Reaction](../../../docs/img/seminar/causal_knn/cate_channel.png)
-
-
-![Test](C:/Users/timpe_000/Desktop/blog/img/seminar/causal_knn/cate_channel.png)
-
-<img align="center"
-     style="display:block;margin:0 auto;"
-     src="/blog/img/seminar/causal_knn/treatmentmatrix.png">
-
-<img align="center"
-     style="display:block;margin:0 auto;"
-     src="/blog/img/seminar/image_analysis/bagOfWords.png">
-
-C:\Users\timpe_000\Desktop\blog\docs\img\seminar\causal_knn
-
+<img align="center" width="800"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/causal_knn/treatment_matrix.PNG"
+alt = "Classification of customer base along two dimensions: Targeting and Reaction">
 
 
 The aim of this paper is to explain estimation methods that directly predict the individual incremental effect of targeting. 
@@ -116,16 +103,138 @@ data = read_csv("../Data/mail_data.csv")
 
 head(data)
 ```
-
-recency | history_segment | history | mens | womens | zip_code  | newbie | channel | segment       | visit | conversion | spend | idx | treatment
+<!--
+recency | history_segment | history | mens | womens | zip_code  | newbie | channel | segment       | visit | conversion | spend | idx   | treatment
 ------- | --------------- | ------- | ---- | ------ | --------- | ------ | ------- | ------------- | ----- | ---------- | ----- | ----- | ---------
-10      | 2) $100 - $200  | 142.44  |  1   |   0    | Surburban |  0     | Phone   | Womens E-Mail | 0     | 0          | 0     | 1 | 1
-6       | 3) $200 - $350  | 329.08  |  1   |   1    | Rural     |  1     | Web     | No E-Mail     | 0     | 0          | 0     | 2 | 0
-7       | 2) $100 - $200  | 180.65  |  0   |   1    | Surburban |  1     | Web     | Womens E-Mail | 0     | 0          | 0     | 3 | 1
-9       | 5) $500 - $750  | 675.83  |  1   |   0    | Rural     |  1     | Web     | Mens E-Mail   | 0     | 0          | 0     | 4 | 1
-2       | 1) $0 - $100    | 45.34   |  1   |   0    | Urban     |  0     | Web     | Womens E-Mail | 0     | 0          | 0     | 5 | 1
-6       | 2) $100 - $200  | 134.83  |  0   |   1    | Surburban |  0     | Phone   | Womens E-Mail | 1     | 0          | 0     | 6 | 1
+10      | 2) $100 - $200  | 142.44  |  1   |   0    | Surburban |  0     | Phone   | Womens E-Mail | 0     | 0          | 0     | 1     | 1
+6       | 3) $200 - $350  | 329.08  |  1   |   1    | Rural     |  1     | Web     | No E-Mail     | 0     | 0          | 0     | 2     | 0
+7       | 2) $100 - $200  | 180.65  |  0   |   1    | Surburban |  1     | Web     | Womens E-Mail | 0     | 0          | 0     | 3     | 1
+9       | 5) $500 - $750  | 675.83  |  1   |   0    | Rural     |  1     | Web     | Mens E-Mail   | 0     | 0          | 0     | 4     | 1
+2       | 1) $0   - $100  | 45.34   |  1   |   0    | Urban     |  0     | Web     | Womens E-Mail | 0     | 0          | 0     | 5     | 1
+6       | 2) $100 - $200  | 134.83  |  0   |   1    | Surburban |  0     | Phone   | Womens E-Mail | 1     | 0          | 0     | 6     | 1
+-->
 
+<style type="text/css" style="width:110%">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-zci2{font-weight:bold;background-color:#dae8fc;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-zci2">recency</th>
+    <th class="tg-zci2">history_segment</th>
+    <th class="tg-zci2">history</th>
+    <th class="tg-zci2">mens</th>
+    <th class="tg-zci2">womens</th>
+    <th class="tg-zci2">zip_code</th>
+    <th class="tg-zci2">newbie</th>
+    <th class="tg-zci2">channel</th>
+    <th class="tg-zci2">segment</th>
+    <th class="tg-zci2">visit</th>
+    <th class="tg-zci2">conversion</th>
+    <th class="tg-zci2">spend</th>
+    <th class="tg-zci2">idx</th>
+    <th class="tg-zci2">treatment</th>
+  </tr>
+  <tr>
+    <td class="tg-0lax">10</td>
+    <td class="tg-0lax">2) 100-100-200</td>
+    <td class="tg-0lax">142.44</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">Surburban</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">Phone</td>
+    <td class="tg-0lax">Womens E-Mail</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">1</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">6</td>
+    <td class="tg-0lax">3) 200-200-350</td>
+    <td class="tg-0lax">329.08</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">Rural</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">Web</td>
+    <td class="tg-0lax">No E-Mail</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">0</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">7</td>
+    <td class="tg-0lax">2) 100-100-200</td>
+    <td class="tg-0lax">180.65</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">Surburban</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">Web</td>
+    <td class="tg-0lax">Womens E-Mail</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">1</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">9</td>
+    <td class="tg-0lax">5) 500-500-750</td>
+    <td class="tg-0lax">675.83</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">Rural</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">Web</td>
+    <td class="tg-0lax">Mens E-Mail</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">1</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">1) 0-0-100</td>
+    <td class="tg-0lax">45.34</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">Urban</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">Web</td>
+    <td class="tg-0lax">Womens E-Mail</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">5</td>
+    <td class="tg-0lax">1</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">6</td>
+    <td class="tg-0lax">2) 100-100-200</td>
+    <td class="tg-0lax">134.83</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">Surburban</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">Phone</td>
+    <td class="tg-0lax">Womens E-Mail</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">6</td>
+    <td class="tg-0lax">1</td>
+  </tr>
+</table>
 
 
 ### Data Preparation
@@ -426,7 +535,10 @@ k_plot = ggplot(data = outcome_loss) +
 k_plot
 ```
 
-![Outcome Loss for Different Values of K](Results/k_plot.png)
+<img align="center" width="800"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/causal_knn/k_plot.png"
+alt = "Outcome Loss for Different Values of K">
 
 After finding the most accurate estimation of the CATE, it is possible to extract valuable insights from the data. This information kann be used to plan targeting policies for future campaigns. Since the Causal KNN algorithm delivers treatment effect estimation on an individual level, it is easily possible to extract several other treatemnt effect measures. The average treatment effect (ATE) and the average treatment effect on the treated(ATT) can be derived. Furthermore, different CATE estimations based on different dimensions of the data can be calculated by grouping the observations.
 
@@ -478,8 +590,16 @@ ggplot(data = cate_channel, aes(x = Group.1, y = x)) +
   geom_text(aes(label = round(x, digits = 4)), vjust = 1.6, color = "black", size = 3.5)
 ```
 
-![CATE for History Segments](Results/cate_hist_seg.png)
-![CATE for Channels](Results/cate_channel.png)
+<img align="center" width="800"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/causal_knn/cate_hist_seg.png"
+alt = "CATE for History Segments">
+
+<img align="center" width="800"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/causal_knn/cate_channel.png"
+alt = "CATE for different contacting Channels">
+
 
 Another advantage of the causal KNN method is the high flexibility with regard to the target variable. As already shown, the algorithm works with a binary outcome variables, e.g. visit in this case. By simply exchanging the target variable with a numeric one (spend), the algorithm can be executed similarily, without further modifications to the code. The CATE estimations represent an approximation of the total uplift that is expected in the case of a treatment. Therefore, the CATE for the target variable spend indicates the expected absolute increase or deacrease of spendings for each individual, when a treatment would be assigned. The application of the Causal KNN algorithm for numeric target variables does not need further changes to the implementation, instead of changing the outcome variable from visit to spend. Therefore, the code is not provided here in the blogpost. A possible implementation can be seen here (LINK!). Although the data theoretically allow for an estimation of the CATE for the variable spend, the insights of that estimation are not that valuable, because the number of converted observations is very low. Therefore, the dataset is extremely unbalanced with regard to the variable spend. 
 
@@ -655,7 +775,12 @@ cp_plot = ggplot(data = outcome_loss) +
 
 cp_plot
 ```
-![Outcome Loss for Different Complexity Parameters of the Causal Tree Model](Results/cp_plot.png)
+
+<img align="center" width="800"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/causal_knn/cp_plot.png"
+alt = "Outcome Loss for Different Complexity Parameters of the Causal Tree Model">
+
 
 To compare the results of the causal KNN model with the estimations of another uplift model, a causal tree was learned, using the implementation of Susan Athey. The optimal complexity parameter (cp) from the tuning part is used for the CATE predictions of the causal tree.
 
@@ -862,20 +987,51 @@ max(qini_plot_data$visit_model)
 qini_plot_ct
 ```
 
-![Qini Curves for the Causal KNN Targeting Policy](Results/qini_plot_cknn.png)
+<img align="center" width="800"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/causal_knn/qini_plot_cknn.png"
+alt = "Qini Curves for the Causal KNN Targeting Policy">
 
-![Qini Curves for the Causal Tree Targeting Policy](Results/qini_plot_ct.png)
+<img align="center" width="800"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/causal_knn/qini_plot_ct.png"
+alt = "Qini Curves for the Causal Tree Targeting Policy">
+
   
 ### AUUC
 
 This measure is defined by the area under the uplift curve. We can compare the resulting uplift curve to the optimal curve. Therefore it has strong relations to the Qini-Curve, but this measure does not take the incremental effect of random targeting into account. 
     
-
+<!--
 Model                | MSE    | AUUC
 -------------------- | ------ | ----
-Causal KNN (K = 250) | 0.5914 |
-Causal Tree          | 0.5803 |
+Causal KNN (K = 250) | 0.5914 | x
+Causal Tree          | 0.5803 | x
+-->
 
-
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-cly1{text-align:left;vertical-align:middle}
+.tg .tg-hjhm{font-weight:bold;background-color:#dae8fc;text-align:left;vertical-align:middle}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-hjhm">Model</th>
+    <th class="tg-hjhm">MSE</th>
+    <th class="tg-hjhm">AUUC</th>
+  </tr>
+  <tr>
+    <td class="tg-cly1">Causal KNN (K = 250)</td>
+    <td class="tg-cly1">0.5914</td>
+    <td class="tg-cly1">x</td>
+  </tr>
+  <tr>
+    <td class="tg-cly1">Causal Tree</td>
+    <td class="tg-cly1">0.5803</td>
+    <td class="tg-cly1">x</td>
+  </tr>
+</table>
 
 ## Conclusion

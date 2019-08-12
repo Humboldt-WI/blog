@@ -6,7 +6,7 @@
     <description>Recent content on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -49,6 +49,15 @@ Research Interests  Customer behavior in e-Commerce
       <guid>https://humboldt-wi.github.io/blog/member/class1718/</guid>
       <description>The students of the Seminar Information Systems contributed to this website to great extend. Groups of Master students from Humboldt University with backgrounds in Business, Economics, Statistics or Computer Science worked on analytical topics and created blog posts, presenting exciting insights into the following topis:
  Neural Networks and Convolutional Neural Networks Image Analysis Text Mining Time Series Analysis with LSTMs Survial Analysis Image Captioning Deep Learning and Recommender Systems  </description>
+    </item>
+    
+    <item>
+      <title>Causal KNN</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</guid>
+      <description>Applied Predictive Analytics Seminar - Causal KNN Abstract Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where an uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbor algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
     </item>
     
     <item>
@@ -260,15 +269,6 @@ Introduction The explosion of information with the advent of the Internet and th
       
       <guid>https://humboldt-wi.github.io/blog/news/bcn/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Causal KNN</title>
-      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</link>
-      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</guid>
-      <description>Applied Predictive Analytics Seminar - Causal KNN Abstract Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where an uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbor algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
     </item>
     
     <item>

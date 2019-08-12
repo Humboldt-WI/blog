@@ -6,10 +6,46 @@
     <description>Recent content in Tags on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Causal Inference</title>
+      <link>https://humboldt-wi.github.io/blog/tags/causal-inference/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/causal-inference/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Class19</title>
+      <link>https://humboldt-wi.github.io/blog/tags/class19/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/class19/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>KNN Algorithm</title>
+      <link>https://humboldt-wi.github.io/blog/tags/knn-algorithm/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/knn-algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Uplift Modelling</title>
+      <link>https://humboldt-wi.github.io/blog/tags/uplift-modelling/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/uplift-modelling/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Bayesian Deep Learning</title>
@@ -485,33 +521,6 @@
       <pubDate>Fri, 02 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/blockchain/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Causal Inference</title>
-      <link>https://humboldt-wi.github.io/blog/tags/causal-inference/</link>
-      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/causal-inference/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>KNN Algorithm</title>
-      <link>https://humboldt-wi.github.io/blog/tags/knn-algorithm/</link>
-      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/knn-algorithm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Uplift Modelling</title>
-      <link>https://humboldt-wi.github.io/blog/tags/uplift-modelling/</link>
-      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/uplift-modelling/</guid>
       <description></description>
     </item>
     
