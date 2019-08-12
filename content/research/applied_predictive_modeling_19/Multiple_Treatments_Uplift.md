@@ -16,28 +16,40 @@ description = "Evaluation and discussion of Uplift Models for multiple possible 
 
 # Table of Contents
 
-1. [Introduction](#introduction)
-2. [Common Marketing Challenges](#challenges)
-3. [Structure of the Analysis](#structure)
-4. [Models](#models) </br>
-4.1 [Decision Trees Rzepakowski & Jaroszewicz](#decisiontree) </br> 
-4.1.1 [Basic Rzepakowski & Jaroszewicz](#basic) </br>
-4.1.2 [Simple Splitting Criterion](#simple) </br>
-4.2 [Causal Tree and Causal Forest](#causaltree) </br>
-4.3 [Separate Model](#separate) </br>
-5. [Evaluation](#evaluation)</br>
-5.1 [Data Sets](#datasets)</br>
-5.2 [Methods](#evaluationmethods)</br>
-5.3 [Results](#evaluationresults)
-6. [Outlook](#outlook)
-7. [References](#references)
+1. [Introduction](#introduction)<br />
+2. [Common Marketing Challenges](#challenges)<br />
+3. [Models](#models) </br>
+3.1 [Decision Trees Rzepakowski & Jaroszewicz](#decisiontree) </br> 
+3.1.1 [Basic Rzepakowski & Jaroszewicz](#basic) </br>
+3.1.2 [Simple Splitting Criterion](#simple) </br>
+3.2 [Causal Tree and Causal Forest](#causaltree) </br>
+3.3 [Separate Model](#separate) </br>
+4. [Evaluation](#evaluation)</br>
+4.1 [Data Sets](#datasets)</br>
+4.2 [Evaluation Methods](#evaluationmethods)</br>
+4.3 [Results](#evaluationresults)
+5. [Outlook](#outlook)
+6. [References](#references)
 
 # 1. Introduction <a class="anchor" id="introduction"></a>
 Nowadays marketing practitioners face a multitude of challenges. 
 
-In the first part of this analysis we will look at which challenges exist and how treatment effect analysis might be employed to tackle these problems.
+### TODO muss noch angepasst werden nach finaler Struktur
+The following work is structured as follows.
+In the first part of this analysis we examine existing challenges and how treatment effect analysis can be employed to tackle those challenges.
 
-In the second part we will look more closely on one specific problem and give a summary and an evaluation of proposed methods to solve that problem.
+In the second part we look more closely at one specific problem and give a summary and an evaluation of proposed methods to solve that problem.
+
+<br />
+
+In the second part of this blog post we will look at methods which have been proposed so far to deal with multiple treatments.</br> 
+In the first section we will give an overview and brief explanation of the methods we look at.</br>
+In the second section we evaluation their performance both in terms of their predictions and in terms of the duration it takes to train the models. </br>
+Finally, we will give a short summary of our results and a short outlook over possible future research.
+
+
+
+
 # 2. Common Marketing Challenges <a class="anchor" id="challenges"></a>
 Some of the most commonly cited challenges we found were:
 <ul>
@@ -93,14 +105,9 @@ The interaction term method (ITM) was proposed by Lo in his 2002 paper <a href="
 ### What?
 The last question we look at is "What marketing activity to choose?". There are many ways one could approach one customers (e.g. coupons, newsletters, ...). Finding the right method on an individual level is important, because different approaches might not only have different effects on potential customers but are also associated with different costs. For example it would be better to send a customer a newsletter which costs virtually nothing, rather then a coupon which would reduce the profit, if the newsletter has a similar effect on purchase probability. Since there isn't much research on this area and the selection of the proper marketing channel is crucial, we decided to lay the focus of our blog post on this issue.
 
-# 3. Structure of the Analysis  <a class="anchor" id="structure"></a>
-In the second part if this blog post we will look at methods which have been proposed so far to deal with multiple treatments.</br> In the first section we will give an overview and brief explanation of the methods we look at.</br>
-In the second section we evaluation their performance both in terms of their predictions and in terms of the duration it takes to train the models. </br>
-Finally, we will give a short summary of our results and a short outlook over possible future research.
-  
-# 4. Models <a class="anchor" id="models"></a>
-## 4.1 Decision Trees Rzepakowski & Jaroszewicz <a class="anchor" id="decisiontree"></a>
-### 4.1.1 Rzepakowski & Jaroszewicz Tree and Forest<a class="anchor" id="basic"></a>
+# 3. Models <a class="anchor" id="models"></a>
+## 3.1 Decision Trees Rzepakowski & Jaroszewicz <a class="anchor" id="decisiontree"></a>
+### 3.1.1 Rzepakowski & Jaroszewicz Tree and Forest<a class="anchor" id="basic"></a>
 
 In their paper <a  href="https://core.ac.uk/download/pdf/81899141.pdf/"> Decision trees for uplift modeling with single and multiple treatments</a> Rzepakowski and Jaroszewicz propose the usage of a decision tree for uplift modeling. The goal of their tree is to maximize the divergence of outcome distribution between the treatment(s) and control and between treatments.
 To that end they developed a splitting criterion used to evaluate the possible splits. For each possible split they calculate the associated gain. To put it simply the gain is the divergence of outcome distribution after the split (conditional divergence), minus the diveregence prior to it (multiple divergence).
@@ -139,7 +146,7 @@ Lastly, pruning based on a validation set is also implemented. The pruning algor
 
 On the basis of this tree, we also implemented a function which allows to build a forest instead of just one tree. The implementation is loosely based on the random forest. There are two main parameters which can be set when building a forest. The number of trees and the number of covariates considered in each tree. For each tree a random subset of the covariates with the specified number of covariates is used.
 
-### 4.1.2 Simple Splitting Criterion <a class="anchor" id="simple"></a>
+### 3.1.2 Simple Splitting Criterion <a class="anchor" id="simple"></a>
 
 In addition to the tree proposed by Rzepakowski & Jaroszewicz we also implemented another splitting criterion as a benchmark. Unlike the previously discussed cruterion, ours aim to maximize the difference in mean outcome between treatment and control and between different treatments. This also allows for continuous outcomes without any adjustments.</br>
 There is no pruning implemented as we wanted to keep it as simple as possible. For that reason we also only compare the difference in outcome of the left side of a new split to the root in order to get the gain of a give split. </br>
@@ -153,11 +160,11 @@ height="100"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/SimpleCriterionCategorical.PNG">
 
 
-## 4.2 Causal Tree and Causal Forest <a class="anchor" id="causaltree"></a>
+## 3.2 Causal Tree and Causal Forest <a class="anchor" id="causaltree"></a>
 The causal tree, introduced by Susan Athey et. al in their paper <a href = "https://github.com/susanathey/causalTree/blob/master/briefintro.pdf">An Introduction to Recursive Partitioning for Heterogeneous Causal Effect Estimation Using causalTree package</a> is a tree based classifier which directly estiamtes the treatment effect. It is based on the rpart package and implements many in the CART (Classification and Regression Trees). By default it only supports single treatment. Therefore, we train one tree for each of the multiple treatments and then compare the predicted uplifts. </br>
 They also implemented a function which allows the user to build forests based on the causal tree. These forests are in the form of a list of rpart objects.
 
-## 4.3 Separate Model <a class="anchor" id="separate"></a>
+## 3.3 Separate Model <a class="anchor" id="separate"></a>
 
 An early idea to model the uplift of a treated subject is known as the two-model approach. 
 This approach creates a separate train and test dataset for the treated and control subjects. 
@@ -187,20 +194,20 @@ Other related approaches which also extend naturally for multiple treatments are
 
 
 
-# 5. Evaluation <a class="anchor" id="evaluation"></a>
-## 5.1 Data Sets <a class="anchor" id="datasets"></a>
-## 5.2 Methods <a class="anchor" id="evaluationmethods"></a>
+# 4. Evaluation <a class="anchor" id="evaluation"></a>
+## 4.1 Data Sets <a class="anchor" id="datasets"></a>
+## 4.2 Evaluation Methods <a class="anchor" id="evaluationmethods"></a>
 
-### 5.2.1 Uplift Curves <a class="anchor" id="uplift_curves"></a>
+### 4.2.1 Uplift Curves <a class="anchor" id="uplift_curves"></a>
 
 Method from Rzepakowski
 
-### 5.2.2 Expected Outcome <a class="anchor" id="uplift_curves"></a>
+### 4.2.2 Expected Outcome <a class="anchor" id="expected_outcome"></a>
 
 Method from Zhao
 
 
-## 5.3 Results <a class="anchor" id="evaluationresults"></a>
+## 4.3 Results <a class="anchor" id="evaluationresults"></a>
 ### Predictive Results
 ### Training Duration
 Even though predictive performance is the focus of this evaluation we also wanted to look at how well our approaches scaled in terms of training time. The are 3 factors we looked at which will influence performance time: number of observations, number of covariates and number of treatments.</br>
@@ -223,11 +230,11 @@ align="center"
 width="550"
 height="360"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison5Features.png"></br>
-# 6. Outlook <a class="anchor" id="outlook"></a>
+# 5. Outlook <a class="anchor" id="outlook"></a>
 
 
 
-# 7. References <a class="anchor" id="references"></a>
+# 6. References <a class="anchor" id="references"></a>
 
 * Devriendt, F., Moldovan, D. and Verbeke, W., 2018. A literature survey and experimental evaluation of the state-of-the-art in uplift modeling: A stepping stone toward the development of prescriptive analytics. Big data, 6(1), pp.13-41.
 * Gubela, R., Bequé, A., Lessmann, S. and Gebert, F., 2019. Conversion uplift in e-commerce: A systematic benchmark of modeling strategies. International Journal of Information Technology & Decision Making (IJITDM), 18(03), pp.747-791.
