@@ -833,7 +833,7 @@ To find the most promising observations to target, the uplift data frame is sort
 
 ```{r, eval = FALSE, include = TRUE}
 #sorting observations according to uplift values
-uplift_sorted = uplift[order(uplift$uplift_301, decreasing = TRUE), ]
+uplift_sorted = uplift[order(uplift[, 3], decreasing = TRUE), ]
 
 #targeting the top fixed percentage of customers(50%)
 top_obs = uplift_sorted$idx[1:(0.5*nrow(uplift_sorted))]
@@ -844,11 +844,10 @@ evaluation$treatment_cknn = 0
 evaluation$treatment_cknn[top_obs] = 1
 
 #calculate mean squared error (Hitsch - page 27)
-mse = mean((transformed_outcome(e_x = e_x, test_set$treatment, test_set$visit) - uplift$uplift_301)^2)
+mse = mean((transformed_outcome(e_x = e_x, test_set$treatment, test_set$visit) - uplift[, 3])^2)
 mse
-```
 
-```{r, eval = FALSE, include = TRUE}
+
 ###calculating the mse of the causal tree model
 #sorting observations according to uplift values
 uplift_ct_sorted = uplift_ct[order(uplift_ct$uplift, decreasing = TRUE), ]
@@ -868,15 +867,9 @@ mse_ct
 #comparing both mse values
 mse
 mse_ct
-```
 
-### Qini Coefficient for evaluation of the causal KNN model
 
-The Gini-Coefficient is a widely used metric to compare the fit of different modeling approaches on a particular data set. The metric is intuitive and applicable, since it provides a single value for the evaluation. The value of the Gini Coefficient is defined between 0 and 1, where 1 represents a perfect model and 0 indicates a fit that is not performing any better than a random ranking of customers. Devriendt states that the Gini-Coefficient, however, is not readily applicable in uplift modeling context, since, for every class, we have individuals from treatment and control group. Therefore in this context, the so called "Qini-Coefficient" is preferred. The Qini Coefficient is mathematically equal to the difference of the Gini-Curve for the treatment group and the control group. 
-The qini coefficient provides an opportunity to evaluate uplift models, according to the treatment effect estmations. Since the qini is a common indicator for the quality of uplift models, it is used here to further evaluate the causal KNN model results.
-
-```{r, eval = FALSE, include = TRUE}
-###qini coefficient
+###qini plot
 #random assignment of treatments
 uplift[1:10, ]
 qini_data_rnd = data.frame(uplift)
@@ -908,7 +901,7 @@ as_random = incremental_gain$cumsum
 
 
 #model assignment of treatments
-qini_data_model = qini_data_rnd[order(qini_data_rnd$uplift_301, decreasing = TRUE), ]
+qini_data_model = qini_data_rnd[order(qini_data_rnd[, 3], decreasing = TRUE), ]
 
 plot(cumsum(qini_data_model$visit))
 
@@ -951,19 +944,34 @@ library(ggplot2)
 qini_plot = ggplot(data = qini_plot_data, aes(x = idx)) +
   geom_smooth(aes(y = visit_rnd), method = "lm", se = FALSE) +
   geom_smooth(aes(y = visit_model), method = "loess", se = FALSE, span = 2, color = "red") + 
-labs(title = "Qini-Curves of Treatment Assignment", x = "Observations", y = "Cumulative Visitations of the Website") +
+  labs(title = "Qini-Curves of Treatment Assignment", x = "Observations", y = "Cumulative Visitations of the Website") +
   theme_light()
-  
+
 max(qini_plot_data$visit_rnd)
 max(qini_plot_data$visit_model)
-  
+
 qini_plot
+
+
+#AUUC
+qini_plot_data$rnd_cumsum = cumsum(qini_plot_data$visit_rnd)
+qini_plot_data$model_cumsum = cumsum(qini_plot_data$visit_model)
+head(qini_plot_data)
+
+auuc_cknn = 0
+
+for(i in 1:(nrow(qini_plot_data)-1)){
+  
+  x = qini_plot_data$model_cumsum[i] + 0.5*(qini_plot_data$model_cumsum[i+1]-qini_plot_data$model_cumsum[i])
+  auuc_cknn = auuc_cknn + x
+}
+auuc_cknn
 
 
 #plotting qini curves of the causal tree predictions
 #random assignment of treatments
 uplift[1:10, ]
-qini_data_rnd$uplift_301 = NULL
+qini_data_rnd[, 3] = NULL
 qini_data_rnd$uplift = uplift_ct$uplift
 
 qini_data_model = qini_data_rnd[order(qini_data_rnd$uplift, decreasing = TRUE), ]
@@ -973,18 +981,31 @@ qini_data_model[1:10, ]
 
 qini_plot_data = data.frame("visit_rnd" = cumsum(qini_data_rnd$visit), "visit_model" = cumsum(qini_data_model$visit), "idx" = 1:nrow(qini_data_rnd))
 
-library(ggplot2)
-
 qini_plot_ct = ggplot(data = qini_plot_data, aes(x = idx)) +
   geom_smooth(aes(y = visit_rnd), method = "lm", se = FALSE) +
   geom_smooth(aes(y = visit_model), method = "loess", se = FALSE, span = 2, color = "red") + 
-labs(title = "Qini-Curves of Treatment Assignment", x = "Observations", y = "Cumulative Visitations of the Website") +
+  labs(title = "Qini-Curves of Treatment Assignment", x = "Observations", y = "Cumulative Visitations of the Website") +
   theme_light()
-  
+
 max(qini_plot_data$visit_rnd)
 max(qini_plot_data$visit_model)
-  
+
 qini_plot_ct
+  
+#AUUC
+qini_plot_data$rnd_cumsum = cumsum(qini_plot_data$visit_rnd)
+qini_plot_data$model_cumsum = cumsum(qini_plot_data$visit_model)
+head(qini_plot_data)
+
+auuc_ct = 0
+
+for(i in 1:(nrow(qini_plot_data)-1)){
+  
+  x = qini_plot_data$model_cumsum[i] + 0.5*(qini_plot_data$model_cumsum[i+1]-qini_plot_data$model_cumsum[i])
+  auuc_ct = auuc_ct + x
+}
+auuc_ct
+auuc_cknn
 ```
 
 <img align="center" width="800"
@@ -1009,6 +1030,8 @@ Causal KNN (K = 250) | 0.5914 | x
 Causal Tree          | 0.5803 | x
 -->
 
+## Results
+
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
@@ -1025,13 +1048,55 @@ Causal Tree          | 0.5803 | x
   <tr>
     <td class="tg-cly1">Causal KNN (K = 250)</td>
     <td class="tg-cly1">0.5914</td>
-    <td class="tg-cly1">x</td>
+    <td class="tg-cly1">26470055012</td>
   </tr>
   <tr>
     <td class="tg-cly1">Causal Tree</td>
     <td class="tg-cly1">0.5803</td>
-    <td class="tg-cly1">x</td>
+    <td class="tg-cly1">30718837480</td>
   </tr>
 </table>
 
+<br>
+
+When comparing both, the causal knn an the causal tree model, it can be observed that the causal tree performs better than the causal KNN. This holds true for evaluating both models in terms of the MSE as well as for the area under the uplift curves. 
+
 ## Conclusion
+
+In this blogpost, we presented a method for estimating the conditional average treatment effect on an individual basis. This apprach is called causal KNN. The causal KNN algorithm was implemented in R an applied to a real world data set from a randomized E-Mail marketing campaign. Furthermore, the transformed outcome was introduced, which represents the value of the "true" CATE in expectation, if several required assumptions are fulfilled. The transformed outcome approach could be used for finding the optimal k value for the causal KNN model and also for the parameter tuning of other uplift modelling techniques. We tuned a causal tree model to compare the results of our causal KNN estimations. The transformed outcome allowed for a evaluation of uplift models in terms of the MSE. The causal tree performed better than the the causal knn model in terms of the MSE, as well as of the AUUC. Therefore, the causal KNN approach is a simple algorithm that delivers estimations of the CATE in uplift applications. Howver, the accuracy of the estimations is worse than those of comparable uplift models.
+
+## References
+
+Devriendt, F., Moldovan, D., & Verbeke, W. (2018). A literature survey and experimental evaluation of the state-of-the-art in uplift modeling: A stepping stone toward the development of prescriptive analytics. Big data, 6(1), 13-41.
+
+Gutierrez, P., & Gerardy, J. Y. (2017, July). Causal inference and uplift modelling: A review of the literature. In International Conference on Predictive Applications and APIs (pp. 1-13).
+
+Pearl, J. (2009). Causal inference in statistics: An overview. Statistics surveys, 3, 96-146.
+
+Zhou, X., & Kosorok, M. R. (2017). Causal nearest neighbor rules for optimal treatment regimes. arXiv preprint arXiv:1711.08451.
+
+Dudik, M., Langford, J., & Li, L. (2011). Doubly robust policy evaluation and learning. arXiv preprint arXiv:1103.4601.
+
+Angrist, J. D. (2016). Treatment effect. The new Palgrave dictionary of economics, 1-8.
+
+Jaskowski, M., & Jaroszewicz, S. (2012, June). Uplift modeling for clinical trial data. In ICML Workshop on Clinical Data Analysis.
+
+Gubela, R. M., Lessmann, S., Haupt, J., Baumann, A., Radmer, T., & Gebert, F. (2017). Revenue Uplift Modeling.
+
+Lo, V. S. (2002). The true lift model: a novel data mining approach to response modeling in database marketing. ACM SIGKDD Explorations Newsletter, 4(2), 78-86.
+
+Athey, S., & Imbens, G. (2016). Recursive partitioning for heterogeneous causal effects. Proceedings of the National Academy of Sciences, 113(27), 7353-7360.
+
+Coussement, K., Harrigan, P., & Benoit, D. F. (2015). Improving direct mail targeting through customer response modeling. Expert Systems with Applications, 42(22), 8403-8412.
+
+Hitsch, G. J., & Misra, S. (2018). Heterogeneous treatment effects and optimal targeting policy evaluation. Available at SSRN 3111957.
+
+Ascarza, E., Fader, P. S., & Hardie, B. G. (2017). Marketing models for the customer-centric firm. In Handbook of marketing decision models (pp. 297-329). Springer, Cham.
+
+Rzepakowski, P., & Jaroszewicz, S. (2012). Uplift modeling in direct marketing. Journal of Telecommunications and Information Technology, 43-50.
+
+Athey, S., & Imbens, G. W. (2015). Machine learning methods for estimating heterogeneous causal effects. stat, 1050(5), 1-26.
+
+Powers, S., Qian, J., Jung, K., Schuler, A., Shah, N. H., Hastie, T., & Tibshirani, R. (2017). Some methods for heterogeneous treatment effect estimation in high-dimensions. arXiv preprint arXiv:1707.00102.
+
+Breiman, L. (1996). Bagging predictors. Machine learning, 24(2), 123-140.
