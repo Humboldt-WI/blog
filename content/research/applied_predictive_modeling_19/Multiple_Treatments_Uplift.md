@@ -7,6 +7,7 @@ banner = "img/seminar/sample/hu-logo.jpg"
 author = "Seminar Applied Predictive Modeling (SS19)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description = "Evaluation and discussion of Uplift Models for multiple possible treatments in the area of Marketing Analytics."
+
 +++
 
 
@@ -25,8 +26,10 @@ description = "Evaluation and discussion of Uplift Models for multiple possible 
 3.2 [Causal Tree and Causal Forest](#causaltree) </br>
 3.3 [Separate Model](#separate) </br>
 4. [Evaluation](#evaluation)</br>
-4.1 [Data Sets](#datasets)</br>
-4.2 [Evaluation Methods](#evaluationmethods)</br>
+4.1 [Evaluation Methods](#evaluationmethods)</br>
+4.1.1 [Uplift Curves](#uplift_curves)</br>
+4.1.2 [Expected Outcome](#expected_outcome)</br>
+4.2 [Data Sets](#datasets)</br>
 4.3 [Results](#evaluationresults)
 5. [Outlook](#outlook)
 6. [References](#references)
@@ -46,8 +49,6 @@ In the second part of this blog post we will look at methods which have been pro
 In the first section we will give an overview and brief explanation of the methods we look at.</br>
 In the second section we evaluation their performance both in terms of their predictions and in terms of the duration it takes to train the models. </br>
 Finally, we will give a short summary of our results and a short outlook over possible future research.
-
-
 
 
 # 2. Common Marketing Challenges <a class="anchor" id="challenges"></a>
@@ -97,7 +98,7 @@ height="200"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Mike-Thurber-Graphic-2.png">
 
 With the historical approach we will target mostly the 'Sure Things' and maybe the 'Do-Not-Disturbs'. For those groups we at best get no return and at worst actually lose customers. Ideally we want to target the 'Persuadables'. This is commonly done by estimating the conditional average treatment effect (CATE) or uplift of the proposed marketing activity and then target the customers where the activity is estimated to have the highest effect. </br>
-Several approaches have been proposed to estimate uplift. Gubela et. al give an overview in their paper <a href = "https://www.researchgate.net/publication/331791032_Conversion_uplift_in_E-commerce_A_systematic_benchmark_of_modeling_strategies"> Conversion uplift in E-commerce: A systematic benchmark of modeling strategies</a>. In their evaluation they find that the two model uplift method and interaction term method (ITM) performed best. </br>
+Several approaches have been proposed to estimate uplift. Gubela et. al (2019) give an overview in their paper <a href = "https://www.researchgate.net/publication/331791032_Conversion_uplift_in_E-commerce_A_systematic_benchmark_of_modeling_strategies"> Conversion uplift in E-commerce: A systematic benchmark of modeling strategies</a>. In their evaluation they find that the two model uplift method and interaction term method (ITM) performed best. </br>
 The two model approach as the name suggests uses two separate models. The training set is split into two with one set contained all the treated observations and the other all control observations. Then for each traning set one model is built to predict the outcome. To estimate the uplift of the treatment for a new person, we generate the predicted outcome with both models. One predicted outcome with treatment and one without. The difference between these two estimates is the expected uplift. The two model is very simple and works with virtually every possible base model (e.g. random forest, linear regression, svm, ...). Since it is so simple it is often considered a good benchmark to test new approaches against.</br>
 The interaction term method (ITM) was proposed by Lo in his 2002 paper <a href="https://www.researchgate.net/publication/220520042_The_True_Lift_Model_-_A_Novel_Data_Mining_Approach_to_Response_Modeling_in_Database_Marketing">The True Lift Model - A Novel Data Mining Approach to Response Modeling in Database Marketing</a>. Unlike double machine learning, ITM only uses a single model. However, ITM also works with two predictions. One with treatment and one without. Both predictions are obtained from the same model which has been trained on both treatment and control data. Whether a treatment is given or not is indicated by a binary variable D. A new observation is evaluated twice. Once with D=1 (treatment given) and once with D=0. Again the difference between the two predictions is the estimated uplift.
 
@@ -167,44 +168,176 @@ They also implemented a function which allows the user to build forests based on
 ## 3.3 Separate Model <a class="anchor" id="separate"></a>
 
 An early idea to model the uplift of a treated subject is known as the two-model approach. 
-This approach creates a separate train and test dataset for the treated and control subjects. 
-Using the two training datasets, two separate response models are fitted. 
+The name results from the fact that in the case of a single treatement assignment, a separate model is fitted for the treatment and control group.
+<br />
 By training a model only with treated subjects, it should incorporate the distinct features of the treatment in its outcomes (and vice versa when training it on control subjects).
 Therefore, when predicting a subject with each model, the response of the models is expected to be its outcome when treated and when not treated. 
 Using those two predictions the uplift can be calculated as the difference between the predicted outcome from the treatement and control model.
 <br />
 This approach extends naturally for the case of multiple treatments. For each treatment and the control group a separete response model is fitted. 
 The expected uplift of a treatment, for a given individual is the difference between the outcome of the treatment's response model and the control model.
-<br />
 
-Uplift = P(Y_T|X) - P(Y_C|X)
+\begin{equation}
+Uplift = P(Y^T | X) - P(Y^C | X)
+\end{equation}
 
-<br />
-We adapt the naming convention from Zhao (**) and will refer to the two-model approach for multiple treatments as the separate model approach (SMA).
+We adapt the naming convention from Zhao et al.(2017) and will refer to the two-model approach for multiple treatments as the separate model approach (SMA).
 <br />
 This approach can be used with any response model as a base learner. 
 Therefore, its overall performance depends on the choice of the used model and the model specific parameter tuning.
 
+<br />
+Following we show our implementation the training of the SMA using Random Forests (RFs) as base learners. 
+```r
+# For each treatment and control in train data fit a model 
+# and return list of trainedmodels
+rf_models <- function(train_data, response, prediction_method){  
+  treatments <- names(train_data)
+  
+  models <- list()
+  for(i in c(1: length(treatments))){
+    train <- train_data[[i]]
+    
+    # In case binary prediction, response needed as factor
+    if(prediction_method == "class"){
+      train[, response] <- as.factor(train[, response])
+    }
+    
+    # Fit RF
+    rf <- randomForest(as.formula(paste(response, "~.")), data = train, mtry=3, ntree = 300)
+    
+    models <- append(models, list(x= rf))
+  }
+  # Name list item with name of treatment / control
+  names(models) <- treatments
+  
+  # Named list with fitted models for each treatment and control
+  return(models)
+}
+```
+
+Given the resulting list of trained models, the uplift can be calculated for a test dataset as follows.
+```r
+tree_sma_uplift <- function(models_dt, test_data, response, treatment, control_level, prediction_class){
+  assignment <- test_data[ , treatment]
+  outcome <- test_data[, response]
+  
+  test_data[ , treatment] <- NULL
+  
+  # Check whether regression or class prediction due to different dim of predict() result
+  if(prediction_class == "class"){
+    for (i in c(1 : length(models_dt))) {
+      
+      # Add all predictions to data frame
+      if(i == 1){
+        predictions <- data.frame(predict(models_dt[[i]], test_data, type = "prob")[ , 2])
+      } else{
+        predictions[ , paste0(i)] <- as.numeric(predict(models_dt[[i]], test_data, type = "prob")[ , 2] )
+      }
+    }
+  # Regression prediction
+  } else if(prediction_class == "anova"){
+    for (i in c(1 : length(models_dt))) {
+      
+      # Add all predictions to data frame
+      if(i == 1){
+        predictions <- data.frame(predict(models_dt[[i]], test_data))
+      } else{
+        predictions[ , paste0(i)] <- as.numeric(predict(models_dt[[i]], test_data) )
+      }
+    }
+  }
+  
+  # Rename columns to treatment names
+  colnames(predictions) <- names(models_dt)
+  
+  k <- ncol(predictions)
+  # For each treatment calculate the Uplift as T_i - Control
+  for (i in c(1: k - 1)) {
+    predictions[ , paste0("uplift_", names(models_dt)[i])] <- predictions[ , i] - predictions[ , k]
+  }
+  
+  # Choose predicted treatment by the model
+  predictions$T_index <- apply(predictions[, 1:3], 1, which.max)
+  predictions$Treatment <- colnames(predictions)[predictions$T_index]
+  
+  # Add actual treatment assignment & outcome from test data
+  predictions$Outcome <- outcome
+  predictions$Assignment <- assignment
+  predictions$Assignment <- ifelse(predictions$Assignment == control_level, "Control", as.character(predictions$Assignment))
+  
+  return(predictions)
+}
+```
 
 <br />
 The SMA represents an indirect uplift modelling approach, as the objective of the base learners is not to model the class difference, but the class specific outcomes.
 
 
-Other related approaches which also extend naturally for multiple treatments are described in **Lo, Lai, but are not discussed in this work.
+<!--
+#####
+do they ???
 
+Other related approaches which also extend naturally for multiple treatments are described in **Lo, Lai, but are not discussed in this work.
+--> 
 
 
 # 4. Evaluation <a class="anchor" id="evaluation"></a>
-## 4.1 Data Sets <a class="anchor" id="datasets"></a>
-## 4.2 Evaluation Methods <a class="anchor" id="evaluationmethods"></a>
+## 4.1 Evaluation Methods <a class="anchor" id="evaluationmethods"></a>
 
-### 4.2.1 Uplift Curves <a class="anchor" id="uplift_curves"></a>
+Evaluating an uplift model proves more difficult, when compared to standard machine learning models.
+Usually the test set contains the actual response for each subject. In the case of treatment assignments, however, for each group a separate test set exists.
+Therefore, no information about the outcome of a subject in the case of a different treatment assignment exists.
+<br />
+We describe two evaluation methods for uplift models from the literature, which can be used in the case of multiple treatments modelling.
 
-Method from Rzepakowski
 
-### 4.2.2 Expected Outcome <a class="anchor" id="expected_outcome"></a>
+### 4.1.1 Uplift Curves <a class="anchor" id="uplift_curves"></a>
 
-Method from Zhao
+The idea of Uplift Curves is to look at the response to draw a lift curve for each treatment and subtract the lift curve for control group. 
+This results in an incremental uplift curve for each treatment.
+
+Difference to Qini Curves proposed in Radcliffe (2007)
+
+Described in Rzepakowski (2012).
+
+Given the treatments and control test sets, each subject can be ranked by their maximal predicted uplift for any treatment. 
+We will derive this score as the maximal treatment assignment. 
+The scores represent the difference between an estimated outcome given a treatment assessinment and no treatment (control). 
+Therefore, in case not treating a subject yields the highest expected response, the score can also be negative.
+
+References to figures in results.
+
+<!--
+ plotting combined treatment curve...
+ --> 
+
+ 
+### 4.1.2 Expected Outcome <a class="anchor" id="expected_outcome"></a>
+
+Method from (Zhao et al. 2017)
+
+
+\begin{equation}
+Z = \sum_{t=0}^{K}\frac{1}{p_t}Y I \{ h(X)=t \} I \{ T=t \}
+\end{equation}
+
+\begin{equation}
+E[Z] = E[Y|T=h(X)]
+\end{equation}
+
+\begin{equation}
+\bar{z}=\frac{1}{N} \sum_{i=1}^{N}z^{(i)} 
+\end{equation}
+
+The expected response can also be used to draw uplift curves. In Zhao et al. (2017) those curves are named <i>modified uplift curves</i>.
+Once again the subjects are ranked by their score (expected uplift). Now for the top x-percent the optimal treatment is assigned and the remaining subject are assigned to the control group.
+Now the expected value for treating x-percent of the subjects are given as $\bar{z}$.
+
+
+## 4.2 Data Sets <a class="anchor" id="datasets"></a>
+
+<a href="https://blog.minethatdata.com/2008/03/minethatdata-e-mail-analytics-and-data.html">Kevin Hillstrom’s MineThatData</a>
 
 
 ## 4.3 Results <a class="anchor" id="evaluationresults"></a>
@@ -240,5 +373,6 @@ style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_u
 * Gubela, R., Bequé, A., Lessmann, S. and Gebert, F., 2019. Conversion uplift in e-commerce: A systematic benchmark of modeling strategies. International Journal of Information Technology & Decision Making (IJITDM), 18(03), pp.747-791.
 * Lai, Y.T., Wang, K., Ling, D., Shi, H. and Zhang, J., 2006, December. Direct marketing when there are voluntary buyers. In Sixth International Conference on Data Mining (ICDM'06) (pp. 922-927). IEEE.
 * Lo, V.S. and Pachamanova, D.A., 2015. From predictive uplift modeling to prescriptive uplift analytics: A practical approach to treatment optimization while accounting for estimation risk. Journal of Marketing Analytics, 3(2), pp.79-95.
+* Radcliffe, N.J., 2007. Using control groups to target on predicted lift: Building and assessing uplift models. Direct Marketing Analytics Journal, 1, p.1421.
 * Rzepakowski, P. and Jaroszewicz, S., 2012. Decision trees for uplift modeling with single and multiple treatments. Knowledge and Information Systems, 32(2), pp.303-327.
 * Zhao, Y., Fang, X. and Simchi-Levi, D., 2017, June. Uplift modeling with multiple treatments and general response types. In Proceedings of the 2017 SIAM International Conference on Data Mining (pp. 588-596). Society for Industrial and Applied Mathematics.
