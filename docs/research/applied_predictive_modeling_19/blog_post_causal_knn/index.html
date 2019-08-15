@@ -179,6 +179,13 @@
                         <div id="post-content">
                           
 
+<p><head>
+<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+<script type="text/javascript">
+LatexIT.add(&lsquo;p&rsquo;,true);
+</script>
+</head></p>
+
 <h1 id="applied-predictive-analytics-seminar-causal-knn">Applied Predictive Analytics Seminar - Causal KNN</h1>
 
 <h2 id="abstract">Abstract</h2>
@@ -204,51 +211,42 @@
 
 <p>Causal Inference is done in the potential outcome framework. This framework will be briefly explained in the following. Assume a company is about to run an E-Mail campaign. Therefore, the company needs to decide on the amount of people that will receive an E-Mail. This decision depends on the cost of the campaign compared to the expected revenue. On a customer level, this decision boils down from the comparison of the targeting effort cost to the incremental profit contribution of each customer. The fundamental problem of treatment effect analysis is, that it can not be observed, whether the customers action was influenced by the received targeting or not. It can not be observed how a treated customer would have acted when he or she would not have received such an E-Mail. Therefore we aim at identifying the underlying factors of the customers behaviour, to eliminate these effects for the calculation of the treatment effect estimation. A given targeting policy cannot be directly evaluated in a randomized sample, because for many customers the proposed treatment assignment by the targeting policy will differ from the realized treatment assignment. However, for units where both, the proposed and realized treatment assignment agree, we can scale the realized profit contribution by the inverse of the propensity score to account for the percentage of similar units that are &ldquo;missing&rdquo;, in the sense that the proposed and realized treatment assignment are different. This problem can be described via the following graphic:</p>
 
-<p><img src="../../../docs/img/seminar/causal_knn/cate_channel.png" alt="Classification of Customers according to Treatment and Reaction" /></p>
-
-<p><img src="C:/Users/timpe_000/Desktop/blog/img/seminar/causal_knn/cate_channel.png" alt="Test" /></p>
-
-<p><img align="center"
-     style="display:block;margin:0 auto;"
-     src="/blog/img/seminar/causal_knn/treatment_matrix.png"></p>
-
-<p><img align="center"
-     style="display:block;margin:0 auto;"
-     src="/blog/img/seminar/image_analysis/bagOfWords.png"></p>
-
-<p>C:\Users\timpe_000\Desktop\blog\docs\img\seminar\causal_knn</p>
+<p><img align="center" width="800"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/causal_knn/treatment_matrix.PNG"
+alt = "Classification of customer base along two dimensions: Targeting and Reaction"></p>
 
 <p>The aim of this paper is to explain estimation methods that directly predict the individual incremental effect of targeting.</p>
 
-<p>To evaluate the treatment effect estimations, there are multiple approaches in the marketing literature (cite!). The observed data set consists of the observations <img src="http://chart.googleapis.com/chart?cht=tx&chl=$D = (Y_i, X_i, W_i)^N$" style="border:none;">, where <img src="http://chart.googleapis.com/chart?cht=tx&chl=$N$" style="border:none;"> is the number of customers, <img src="http://chart.googleapis.com/chart?cht=tx&chl=$Y_i$" style="border:none;"> is the target variable, <img src="http://chart.googleapis.com/chart?cht=tx&chl=$W_i$" style="border:none;"> the binary treatment variable (0,1) and <img src="http://chart.googleapis.com/chart?cht=tx&chl=$X_i$" style="border:none;"> represents the covariates vor each unit.</p>
+<p>To evaluate the treatment effect estimations, there are multiple approaches in the marketing literature (cite!). The observed data set consists of the observations $D = (Y_i, X_i, W_i)^N$, where $N$ is the number of customers, $Y_i$ is the target variable, $W_i$ the binary treatment variable (0,1) and $X_i$ represents the covariates vor each unit.</p>
 
 <ul>
-<li>Average Treatment effect: <img src="http://chart.googleapis.com/chart?cht=tx&chl=$E(Y_i(1)-Y_i(0)$" style="border:none;"></li>
-<li>Average Treatment effect on the treated: <img src="http://chart.googleapis.com/chart?cht=tx&chl=$E(Y_i(1)-Y_i(0) | W_i = 1)$" style="border:none;"></li>
-<li>Conditional Average Treatment effect: <img src="http://chart.googleapis.com/chart?cht=tx&chl=$E(Y_i(1)-Y_i(0) | X_i=x)$" style="border:none;"></li>
+<li>Average Treatment effect: $E(Y_i(1)-Y_i(0)$</li>
+<li>Average Treatment effect on the treated: $E(Y_i(1)-Y_i(0) | W_i = 1)$</li>
+<li>Conditional Average Treatment effect: $E(Y_i(1)-Y_i(0) | X_i=x)$</li>
 </ul>
 
-<p>where <img src="http://chart.googleapis.com/chart?cht=tx&chl=$Y_i(1)$" style="border:none;"> and <img src="http://chart.googleapis.com/chart?cht=tx&chl=$Y_i(0)$" style="border:none;"> is the observed outcome for the treated (<img src="http://chart.googleapis.com/chart?cht=tx&chl=$W_i=1$" style="border:none;">) and the untreated (<img src="http://chart.googleapis.com/chart?cht=tx&chl=$W_i=0$" style="border:none;">) customers and <img src="http://chart.googleapis.com/chart?cht=tx&chl=$X_i$" style="border:none;"> is the vector of observed customer features. According to Hitsch and Misra (2018) an optimal policy targets a customer if and only if <img src="http://chart.googleapis.com/chart?cht=tx&chl=$\mathbb{E}[\pi(1)|X_i]>\mathbb{E}[\pi(0)|X_i]$&rdquo; style=&ldquo;border:none;&ldquo;&gt;, which means that the expected profit in case of targeting exceeds the expected profit in case the customer i is not targeted. This expression can be reformulated to:</p>
+<p>where $Y_i(1)$ and $Y_i(0)$ is the observed outcome for the treated ($W_i=1$) and the untreated ($W_i=0$) customers and $X_i$ is the vector of observed customer features. According to Hitsch and Misra (2018) an optimal policy targets a customer if and only if $\mathbb{E}[\pi(1)|X_i]&gt;\mathbb{E}[\pi(0)|X_i]$, which means that the expected profit in case of targeting exceeds the expected profit in case the customer i is not targeted. This expression can be reformulated to:</p>
 
-<p><img src="http://chart.googleapis.com/chart?cht=tx&chl=$\mathbb{E}[\pi(1)-\pi(0)|X_i] > 0$&rdquo; style=&ldquo;border:none;&ldquo;&gt;</p>
+<p>$\mathbb{E}[\pi(1)-\pi(0)|X_i] &gt; 0$</p>
 
-<p><img src="http://chart.googleapis.com/chart?cht=tx&chl=$\Longleftrightarrow \mathbb{E}[(mY_i(1))-c)-Y_i(0)|X_i]$" style="border:none;"></p>
+<p>$\Longleftrightarrow \mathbb{E}[(mY_i(1))-c)-Y_i(0)|X_i]$</p>
 
-<p><img src="http://chart.googleapis.com/chart?cht=tx&chl=$\Longleftrightarrow \mathbb{E}[Y_i(1)-Y_i(0)|X_i]-c >0$&rdquo; style=&ldquo;border:none;&ldquo;&gt;</p>
+<p>$\Longleftrightarrow \mathbb{E}[Y_i(1)-Y_i(0)|X_i]-c &gt;0$</p>
 
-<p><img src="http://chart.googleapis.com/chart?cht=tx&chl=$\Longleftrightarrow$" style="border:none;"><img src="http://chart.googleapis.com/chart?cht=tx&chl=$m\tau(x) < c$" style="border:none;"></p>
+<p>$\Longleftrightarrow m\tau(x) &lt; c$</p>
 
-<p>Here, <img src="http://chart.googleapis.com/chart?cht=tx&chl=$\tau(x)$" style="border:none;"> is the conditional average treatment effect (CATE): <img src="http://chart.googleapis.com/chart?cht=tx&chl=$\tau(x)=E(Y_i(1)-Y_i(0) | X_i=x)$" style="border:none;">. The CATE describes the average causal effect of targeting for a sub-population of customers, with identical features. It is shown in Hitsch, Misra (2018), that the CATE is sufficient to identify an optimal targeting policy, but generally the CATE can not be inferred from the data. To account for the fundamental problem of unobservable individual treatment effects, Hitsch and Misra (2018) introduced three assumptions to the data, to be able to identify the CATE. If the data satisfies the following assumptions, the conditional average treatment effect is identifiable from the data.</p>
+<p>Here, $\tau(x)$ is the conditional average treatment effect (CATE): $\tau(x)=E(Y_i(1)-Y_i(0) | X_i=x)$. The CATE describes the average causal effect of targeting for a sub-population of customers, with identical features. It is shown in Hitsch, Misra (2018), that the CATE is sufficient to identify an optimal targeting policy, but generally the CATE can not be inferred from the data. To account for the fundamental problem of unobservable individual treatment effects, Hitsch and Misra (2018) introduced three assumptions to the data, to be able to identify the CATE. If the data satisfies the following assumptions, the conditional average treatment effect is identifiable from the data.</p>
 
 <ol>
-<li>Unconfoundedness: <img src="http://chart.googleapis.com/chart?cht=tx&chl=$Y_i(0), Y_i(1)$" style="border:none;"><img src="http://chart.googleapis.com/chart?cht=tx&chl=$\bot$" style="border:none;"><img src="http://chart.googleapis.com/chart?cht=tx&chl=$W_i | X_i$" style="border:none;">
+<li>Unconfoundedness: $Y_i(0), Y_i(1) \bot W_i | X_i$
 It means, that ones individuals outcome does not depend on the treatment conditional on X. &lsquo;The treatment effect is identical within a subset of customers with identical features.&rsquo; This condition can be fulfilled by using a randomized sample set. In marketing, it is often possible to address campaigns randomized, therefore this condition should be satisfied in general.</li>
-<li>The Overlap Assumption: <img src="http://chart.googleapis.com/chart?cht=tx&chl=$0 < e(x) < 1$" style="border:none;">. The propensity score <img src="http://chart.googleapis.com/chart?cht=tx&chl=$e(x)$" style="border:none;"> is the probability of being targeted, conditional on the customers features and can be translated as the &lsquo;Targeting Probability&rsquo; for each unit. This targeting probabilty has to be defined strictly between zero and one.</li>
-<li>Stable Unit Treatment Value Assumption (SUTVA): The treatment received by customer i, <img src="http://chart.googleapis.com/chart?cht=tx&chl=$W_i$" style="border:none;">, has no impact on the behavior of any other customer. There are no social interaction or equilibrium effects among the observed units. According to Hitsch (2018), the SUTVA assumption should be satisfied in general. It appears implausible to observe economically significant social effects due to the receipt of e.g. a catalog.<br /></li>
+<li>The Overlap Assumption: $0 &lt; e(x) &lt; 1$. The propensity score $e(x)$ is the probability of being targeted, conditional on the customers features and can be translated as the &lsquo;Targeting Probability&rsquo; for each unit. This targeting probabilty has to be defined strictly between zero and one.</li>
+<li>Stable Unit Treatment Value Assumption (SUTVA): The treatment received by customer i, $W_i$, has no impact on the behavior of any other customer. There are no social interaction or equilibrium effects among the observed units. According to Hitsch (2018), the SUTVA assumption should be satisfied in general. It appears implausible to observe economically significant social effects due to the receipt of e.g. a catalog.<br /></li>
 </ol>
 
 <p>If those three assumptions are satisfied, we obtain the following formula to calculate the &lsquo;true&rsquo; conditional average treatment effect:
-<img src="http://chart.googleapis.com/chart?cht=tx&chl=$\tau(x) = \mathbb{E}[Y_i|X_i,W_i = 1] - \mathbb{E}[Y_i|X_i,W_i = 0]$" style="border:none;"></p>
+$\tau(x) = \mathbb{E}[Y_i|X_i,W_i = 1] - \mathbb{E}[Y_i|X_i,W_i = 0]$</p>
 
 <h3 id="identification-of-conditional-average-treatment-effects">Identification of conditional average treatment effects</h3>
 
@@ -256,7 +254,7 @@ It means, that ones individuals outcome does not depend on the treatment conditi
 
 <p>To estimate the conditional average treatment effect, we will use a direct approach. Such methods appear to be infeasible since we are restricted by the fundamental problem of causal inference. Having the fundamental problem in mind, we will discuss an estimation method to approximate the unobservable CATE. It is genrally considered, that the conditional average treatment effect cannot be inferred from the data. Nevertheless, using a combination of knn-Clustering and the transformed outcome approach, we are able to build an estimate that is asymptotically equivalent and unbiased to the &ldquo;true&rdquo; CATE.</p>
 
-<p>The proposed approach from Hitsch and Misra (2018) allows to evaluate the profit of several different targeting policies, by using only one single randomized sample. This offers the opportunity to compare various targeting policies, without the need for multiple field experiments. According to Hitsch and Misra (2018), an optimal targeting policy has to concentrate on the binary treatment case, where every unit is either treated or not and that a unit is only treated, if the incremental value of the treatment exceeds the targeting costs. Hitsch and Misra (2018) introduce their approach as a direct estimation method. Direct estimation methods focus on measuring and predicting the treatment effect of certain actions. This is based on the squared difference between the true and the estimated treatment effect for each unit i: <img src="http://chart.googleapis.com/chart?cht=tx&chl=$\mathbb{E}[(\tau(X_i)-\hat{\tau}(X_i))^2]$" style="border:none;">. Opposed to direct estimation approaches, where the focus lies on estimating the treatment effect itself, indirect estimation methods concentrate on the observed and the predicted outcome levels. To dicide for an optimal targeting policy, the squared error loss between the two outcome levels are minimized: <img src="http://chart.googleapis.com/chart?cht=tx&chl=$\mathbb{E}[(Y_i-\hat{\mu}(X_i,W_i))^2]$" style="border:none;">. Therefore the indirect approaches focus on the outcome levels instead on the treatment effect itself. Hitsch and Misra (2018) describe the indirect approaches as conceptually wrong in the field of uplift estimation. They recommend the usage of direct estimation methods, since they yield at more accurate estimations of the treatment effect. The Causal KNN estimation, combined with the transfomed outcome, can be used to derive an approximation of the CATE for each observation in a data set.</p>
+<p>The proposed approach from Hitsch and Misra (2018) allows to evaluate the profit of several different targeting policies, by using only one single randomized sample. This offers the opportunity to compare various targeting policies, without the need for multiple field experiments. According to Hitsch and Misra (2018), an optimal targeting policy has to concentrate on the binary treatment case, where every unit is either treated or not and that a unit is only treated, if the incremental value of the treatment exceeds the targeting costs. Hitsch and Misra (2018) introduce their approach as a direct estimation method. Direct estimation methods focus on measuring and predicting the treatment effect of certain actions. This is based on the squared difference between the true and the estimated treatment effect for each unit i: =$\mathbb{E}[(\tau(X_i)-\hat{\tau}(X_i))^2]$. Opposed to direct estimation approaches, where the focus lies on estimating the treatment effect itself, indirect estimation methods concentrate on the observed and the predicted outcome levels. To dicide for an optimal targeting policy, the squared error loss between the two outcome levels are minimized: $\mathbb{E}[(Y_i-\hat{\mu}(X_i,W_i))^2]$. Therefore the indirect approaches focus on the outcome levels instead on the treatment effect itself. Hitsch and Misra (2018) describe the indirect approaches as conceptually wrong in the field of uplift estimation. They recommend the usage of direct estimation methods, since they yield at more accurate estimations of the treatment effect. The Causal KNN estimation, combined with the transfomed outcome, can be used to derive an approximation of the CATE for each observation in a data set.</p>
 
 <h2 id="the-causal-knn-algorithm-tim">The Causal KNN Algorithm(Tim)</h2>
 
@@ -264,17 +262,29 @@ It means, that ones individuals outcome does not depend on the treatment conditi
 <li>Algorithm</li>
 <li>Application: Visit (Spend auch möglich, aber zu unbalanced Data)</li>
 <li>Implementation (Vorstellung &ldquo;FNN-Package&rdquo;)</li>
-<li>Einordnung als Two-Model-Approach &amp; Direct Estimation Method (vgl. Hitsch)
-<br /></li>
+<li>Einordnung als Two-Model-Approach &amp; Direct Estimation Method (vgl. Hitsch)</li>
 </ul>
+
+<!--
+$\hat{\tau}_K(x) =$ $\frac{1}{K}$ $\sum\limits_{i \in N_K(x,1)}$
+
+$\widehat{\tau_K}(x) = \frac{1}{K} \sum_{i \in N_K(x,1)} Y_i - \frac{1}{K}  \sum_{i \in N_K(x,0)} Y_i$
+
+$\sum\limits_{i \in N_K(x,1)}$
+
+$\hat{\tau}_K(x)=\frac{1}{K} \sum\limits_{i \in N_K(x,1)} Y_i$
+
+$\hat{\tau}_K(x)=\frac{1}{K}$ $\sum_{i \in N_K(x,1)} Y_i$ - $\frac{1}{K}$  $\sum_{i \in N_K(x,0)} Y_i$, where $Y_i$
+-->
 
 <h3 id="causal-knn-estimation">Causal KNN Estimation</h3>
 
 <p>As mentioned before, the true CATE is not observable. Hitsch and Misra use a method to approximate the actual treatment effect via the transformed outcome Y*. To overcome the fundamental problem of treatment effect estimation, the Causal KNN algorithm is used. This approach allows to derive an estimation of the CATE on an individual unit level. The Causal KNN approach is described as a direct estimation method.
-The algorithm first starts with selecting the k treated and untreated nearest neighbours for each observation. The nearest neighbours are selected, based on the covariates, using the euclidean distance measure. However, every other distnce measure would be similarily feasible, depending on the application framework. Afterwards, the individual treatemnt effects are derived by computing the differences between the mean outcome values of the treated and the untreated nearest neighbours for all units. This yields at an estimation of the CATE for each observation in the data set. This procedure is represented in the following equation: <img src="http://chart.googleapis.com/chart?cht=tx&chl=$\hat{\tau}_K(x)= \frac{1}{K} \sum_{i \in N_K(x,1)} Y_i - \frac{1}{K}  \sum_{i \in N_K(x,0)} Y_i$" style="border:none;">, where <img src="http://chart.googleapis.com/chart?cht=tx&chl=$Y_i$" style="border:none;"> represents the outcome values of the target variable and <img src="http://chart.googleapis.com/chart?cht=tx&chl=$N_K(x,0)$" style="border:none;"> and <img src="http://chart.googleapis.com/chart?cht=tx&chl=$N_K(x,1)$" style="border:none;"> denote the nearest neighbour units with treatment status <img src="http://chart.googleapis.com/chart?cht=tx&chl=$W_i = 1$" style="border:none;"> and <img src="http://chart.googleapis.com/chart?cht=tx&chl=$W_i = 0$" style="border:none;"> respectively. Since the Causal KNN algorithm takes the number of nearest neighbours k as a freely selectable parameter, it is necessary to find a way to choose the optimal k value.
+The algorithm first starts with selecting the k treated and untreated nearest neighbours for each observation. The nearest neighbours are selected, based on the covariates, using the euclidean distance measure. However, every other distnce measure would be similarily feasible, depending on the application framework. Afterwards, the individual treatemnt effects are derived by computing the differences between the mean outcome values of the treated and the untreated nearest neighbours for all units. This yields at an estimation of the CATE for each observation in the data set. This procedure is represented in the following equation: $\hat{\tau}<em>K(x)=\frac{1}{K} \sum</em>{i \in N_K(x,1)} Y<em>i - \frac{1}{K}  \sum</em>{i \in N_K(x,0)} Y_i$, where $Y_i$ represents the outcome values of the target variable and $N_K(x,0)$ and $N_K(x,1)$ denote the nearest neighbour units with treatment status $W_i = 1$ and $W_i = 0$ respectively. Since the Causal KNN algorithm takes the number of nearest neighbours k as a freely selectable parameter, it is necessary to find a way to choose the optimal k value.</p>
+
 <!-- These methods select the tuning parameter K using a feasible loss that, in expectation, attains its minimum at the same K value as the infeasible loss based on the treatment effect. 
 For any vector x, we find the K nearest *treated* neighbors and separately the K nearest *untreated* neighbors. We then estimate the CATE using the difference between the nearest treated and untreated units:
-$\widehat{\tau_K}(x)= \frac{1}{K} \sum_{i \in N_K(x,1)} Y_i - \frac{1}{K}  \sum_{i \in N_K(x,0)} Y_i$.--></p>
+$\widehat{\tau_K}(x)= \frac{1}{K} \sum_{i \in N_K(x,1)} Y_i - \frac{1}{K}  \sum_{i \in N_K(x,0)} Y_i$.-->
 
 <h3 id="comparison-of-causal-knn-and-the-two-model-approach">Comparison of Causal KNN and the Two-Model-Approach</h3>
 
@@ -293,130 +303,138 @@ data = read_csv(&quot;../Data/mail_data.csv&quot;)
 head(data)
 </code></pre>
 
-<table>
-<thead>
-<tr>
-<th>recency</th>
-<th>history_segment</th>
-<th>history</th>
-<th>mens</th>
-<th>womens</th>
-<th>zip_code</th>
-<th>newbie</th>
-<th>channel</th>
-<th>segment</th>
-<th>visit</th>
-<th>conversion</th>
-<th>spend</th>
-<th>idx</th>
-<th>treatment</th>
-</tr>
-</thead>
+<!--
+recency | history_segment | history | mens | womens | zip_code  | newbie | channel | segment       | visit | conversion | spend | idx   | treatment
+------- | --------------- | ------- | ---- | ------ | --------- | ------ | ------- | ------------- | ----- | ---------- | ----- | ----- | ---------
+10      | 2) $100 - $200  | 142.44  |  1   |   0    | Surburban |  0     | Phone   | Womens E-Mail | 0     | 0          | 0     | 1     | 1
+6       | 3) $200 - $350  | 329.08  |  1   |   1    | Rural     |  1     | Web     | No E-Mail     | 0     | 0          | 0     | 2     | 0
+7       | 2) $100 - $200  | 180.65  |  0   |   1    | Surburban |  1     | Web     | Womens E-Mail | 0     | 0          | 0     | 3     | 1
+9       | 5) $500 - $750  | 675.83  |  1   |   0    | Rural     |  1     | Web     | Mens E-Mail   | 0     | 0          | 0     | 4     | 1
+2       | 1) $0   - $100  | 45.34   |  1   |   0    | Urban     |  0     | Web     | Womens E-Mail | 0     | 0          | 0     | 5     | 1
+6       | 2) $100 - $200  | 134.83  |  0   |   1    | Surburban |  0     | Phone   | Womens E-Mail | 1     | 0          | 0     | 6     | 1
+-->
 
-<tbody>
-<tr>
-<td>10</td>
-<td>2) $100 - $200</td>
-<td>142.44</td>
-<td>1</td>
-<td>0</td>
-<td>Surburban</td>
-<td>0</td>
-<td>Phone</td>
-<td>Womens E-Mail</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-
-<tr>
-<td>6</td>
-<td>3) $200 - $350</td>
-<td>329.08</td>
-<td>1</td>
-<td>1</td>
-<td>Rural</td>
-<td>1</td>
-<td>Web</td>
-<td>No E-Mail</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>2</td>
-<td>0</td>
-</tr>
-
-<tr>
-<td>7</td>
-<td>2) $100 - $200</td>
-<td>180.65</td>
-<td>0</td>
-<td>1</td>
-<td>Surburban</td>
-<td>1</td>
-<td>Web</td>
-<td>Womens E-Mail</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>3</td>
-<td>1</td>
-</tr>
-
-<tr>
-<td>9</td>
-<td>5) $500 - $750</td>
-<td>675.83</td>
-<td>1</td>
-<td>0</td>
-<td>Rural</td>
-<td>1</td>
-<td>Web</td>
-<td>Mens E-Mail</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>4</td>
-<td>1</td>
-</tr>
-
-<tr>
-<td>2</td>
-<td>1) $0 - $100</td>
-<td>45.34</td>
-<td>1</td>
-<td>0</td>
-<td>Urban</td>
-<td>0</td>
-<td>Web</td>
-<td>Womens E-Mail</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>5</td>
-<td>1</td>
-</tr>
-
-<tr>
-<td>6</td>
-<td>2) $100 - $200</td>
-<td>134.83</td>
-<td>0</td>
-<td>1</td>
-<td>Surburban</td>
-<td>0</td>
-<td>Phone</td>
-<td>Womens E-Mail</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>6</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
+<p><style type="text/css" style="width:110%">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-zci2{font-weight:bold;background-color:#dae8fc;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-zci2">recency</th>
+    <th class="tg-zci2">history_segment</th>
+    <th class="tg-zci2">history</th>
+    <th class="tg-zci2">mens</th>
+    <th class="tg-zci2">womens</th>
+    <th class="tg-zci2">zip_code</th>
+    <th class="tg-zci2">newbie</th>
+    <th class="tg-zci2">channel</th>
+    <th class="tg-zci2">segment</th>
+    <th class="tg-zci2">visit</th>
+    <th class="tg-zci2">conversion</th>
+    <th class="tg-zci2">spend</th>
+    <th class="tg-zci2">idx</th>
+    <th class="tg-zci2">treatment</th>
+  </tr>
+  <tr>
+    <td class="tg-0lax">10</td>
+    <td class="tg-0lax">2) 100-100-200</td>
+    <td class="tg-0lax">142.44</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">Surburban</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">Phone</td>
+    <td class="tg-0lax">Womens E-Mail</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">1</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">6</td>
+    <td class="tg-0lax">3) 200-200-350</td>
+    <td class="tg-0lax">329.08</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">Rural</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">Web</td>
+    <td class="tg-0lax">No E-Mail</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">0</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">7</td>
+    <td class="tg-0lax">2) 100-100-200</td>
+    <td class="tg-0lax">180.65</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">Surburban</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">Web</td>
+    <td class="tg-0lax">Womens E-Mail</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">3</td>
+    <td class="tg-0lax">1</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">9</td>
+    <td class="tg-0lax">5) 500-500-750</td>
+    <td class="tg-0lax">675.83</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">Rural</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">Web</td>
+    <td class="tg-0lax">Mens E-Mail</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">4</td>
+    <td class="tg-0lax">1</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">2</td>
+    <td class="tg-0lax">1) 0-0-100</td>
+    <td class="tg-0lax">45.34</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">Urban</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">Web</td>
+    <td class="tg-0lax">Womens E-Mail</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">5</td>
+    <td class="tg-0lax">1</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">6</td>
+    <td class="tg-0lax">2) 100-100-200</td>
+    <td class="tg-0lax">134.83</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">Surburban</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">Phone</td>
+    <td class="tg-0lax">Womens E-Mail</td>
+    <td class="tg-0lax">1</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">0</td>
+    <td class="tg-0lax">6</td>
+    <td class="tg-0lax">1</td>
+  </tr>
+</table></p>
 
 <h3 id="data-preparation">Data Preparation</h3>
 
@@ -567,7 +585,7 @@ treated_nn = t(treated_nn)
 untreated_nn = t(untreated_nn)
 </code></pre>
 
-<p>To estimate a robust CATE, we would likely use all customers in the neighborhood. A high value for K increases the accounted neighborhood, while it decreases the similarity between the customers. Therefore, the estimation depends on the choice of K. To find an optimal value of K, we want to minimize the squared difference between <img src="http://chart.googleapis.com/chart?cht=tx&chl=$\widehat{\tau_K}(x)$" style="border:none;"> and the transformed outcome Y*. This is called the &lsquo;Transformed Outcome Approach&rsquo;, which will be described in the following.</p>
+<p>To estimate a robust CATE, we would likely use all customers in the neighborhood. A high value for K increases the accounted neighborhood, while it decreases the similarity between the customers. Therefore, the estimation depends on the choice of K. To find an optimal value of K, we want to minimize the squared difference between $\widehat{\tau_K}(x)$ and the transformed outcome $Y*$. This is called the &lsquo;Transformed Outcome Approach&rsquo;, which will be described in the following.</p>
 
 <h2 id="transformed-outcome-approach">Transformed Outcome Approach</h2>
 
@@ -584,14 +602,14 @@ Rechtfertigung (Mathematisch + Intuitiv)</p>
 
 <p>In order to tune the parameter k, we are using the transformed outcome loss, which is a proxy for the true conditional treatment effect. The transformed outcome is defined as:</p>
 
-<p><img src="http://chart.googleapis.com/chart?cht=tx&chl=$Y_i^*=W_i*\frac{Y_i(1)}{e(X_i)}-(1-W_i)*\frac{Y_i(0)}{1-e(X_i)}$" style="border:none;"></p>
+<p>$Y_i^<em>=W_i</em>\frac{Y_i(1)}{e(X_i)}-(1-W_i)*\frac{Y_i(0)}{1-e(X_i)}$</p>
 
-<p>Since it only depends on the potential outcome that corresponds to the realized treatment level, the transformed outcome can be calculated from the observed outcome <img src="http://chart.googleapis.com/chart?cht=tx&chl=$Y_i$" style="border:none;">:</p>
+<p>Since it only depends on the potential outcome that corresponds to the realized treatment level, the transformed outcome can be calculated from the observed outcome $Y_i$:</p>
 
-<p><img src="http://chart.googleapis.com/chart?cht=tx&chl=$Y_i^*=\frac{W_i - e(X_i)}{e(X_i)(1-e(X_i))}Y_i$" style="border:none;"></p>
+<p>$Y_i*=\frac{W_i - e(X_i)}{e(X_i)(1-e(X_i))}Y_i$&gt;</p>
 
 <p>Since we are having a formula for the predicted outcome, we still need to decide on the actual outcome.
-For a randomized sample, the propensity score <img src="http://chart.googleapis.com/chart?cht=tx&chl=$e(x)$" style="border:none;"> is not relevant, since it is accounted in every individuals treatment effect in the same manner.
+For a randomized sample, the propensity score $e(x)$ is not relevant, since it is accounted in every individuals treatment effect in the same manner.
 It can be shown that, under unconfoundedness, the transformed outcome is an unbiased estimator for the actual treatment effect.</p>
 
 <h3 id="intuitive-interpretation-of-the-transformed-outcome">Intuitive Interpretation of the transformed Outcome</h3>
@@ -711,7 +729,10 @@ k_plot = ggplot(data = outcome_loss) +
 k_plot
 </code></pre>
 
-<p><img src="Results/k_plot.png" alt="Outcome Loss for Different Values of K" /></p>
+<p><img align="center" width="800"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/causal_knn/k_plot.png"
+alt = "Outcome Loss for Different Values of K"></p>
 
 <p>After finding the most accurate estimation of the CATE, it is possible to extract valuable insights from the data. This information kann be used to plan targeting policies for future campaigns. Since the Causal KNN algorithm delivers treatment effect estimation on an individual level, it is easily possible to extract several other treatemnt effect measures. The average treatment effect (ATE) and the average treatment effect on the treated(ATT) can be derived. Furthermore, different CATE estimations based on different dimensions of the data can be calculated by grouping the observations.</p>
 
@@ -762,8 +783,15 @@ ggplot(data = cate_channel, aes(x = Group.1, y = x)) +
   geom_text(aes(label = round(x, digits = 4)), vjust = 1.6, color = &quot;black&quot;, size = 3.5)
 </code></pre>
 
-<p><img src="Results/cate_hist_seg.png" alt="CATE for History Segments" />
-<img src="Results/cate_channel.png" alt="CATE for Channels" /></p>
+<p><img align="center" width="800"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/causal_knn/cate_hist_seg.png"
+alt = "CATE for History Segments"></p>
+
+<p><img align="center" width="800"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/causal_knn/cate_channel.png"
+alt = "CATE for different contacting Channels"></p>
 
 <p>Another advantage of the causal KNN method is the high flexibility with regard to the target variable. As already shown, the algorithm works with a binary outcome variables, e.g. visit in this case. By simply exchanging the target variable with a numeric one (spend), the algorithm can be executed similarily, without further modifications to the code. The CATE estimations represent an approximation of the total uplift that is expected in the case of a treatment. Therefore, the CATE for the target variable spend indicates the expected absolute increase or deacrease of spendings for each individual, when a treatment would be assigned. The application of the Causal KNN algorithm for numeric target variables does not need further changes to the implementation, instead of changing the outcome variable from visit to spend. Therefore, the code is not provided here in the blogpost. A possible implementation can be seen here (LINK!). Although the data theoretically allow for an estimation of the CATE for the variable spend, the insights of that estimation are not that valuable, because the number of converted observations is very low. Therefore, the dataset is extremely unbalanced with regard to the variable spend.</p>
 
@@ -940,7 +968,10 @@ cp_plot = ggplot(data = outcome_loss) +
 cp_plot
 </code></pre>
 
-<p><img src="Results/cp_plot.png" alt="Outcome Loss for Different Complexity Parameters of the Causal Tree Model" /></p>
+<p><img align="center" width="800"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/causal_knn/cp_plot.png"
+alt = "Outcome Loss for Different Complexity Parameters of the Causal Tree Model"></p>
 
 <p>To compare the results of the causal KNN model with the estimations of another uplift model, a causal tree was learned, using the implementation of Susan Athey. The optimal complexity parameter (cp) from the tuning part is used for the CATE predictions of the causal tree.</p>
 
@@ -970,7 +1001,7 @@ causal_tree$frame$yval[causal_tree$where[1:10]]
 head(uplift_ct)
 </code></pre>
 
-<h2 id="modell-evaluation">Modell Evaluation</h2>
+<h2 id="model-evaluation">Model Evaluation</h2>
 
 <p>Vorstellung: Qini-Koeffizient (Max)
 Similarities (Qini: vgl. Devriend p.29ff.)
@@ -985,7 +1016,7 @@ Uplift Metric (vgl. Gutierrez p. 9 ff.)</p>
 <p>To find the most promising observations to target, the uplift data frame is sorted, according to the the individual CATE estimations. After specifying the percentage of individuals to receive a treatment, it is possible to select the first x% observations from the sorted data frame. For these individuals, a treatment is expected to have the highest impact on the outcome variable. To evaluate the model, Hitsch and Misra (2018) propose the mean squared error as indicator of the model quality. This measure also allows to compare the model with the proposed treatment assignment of other uplift models. Since we have seen that the transformed outcome is an unbiased estimate for the CATE, we can also use this metric to evaluate the model fit. It is shown in Gutierrez and Hitsch, that, under unconfoundedness, the mean squared error based on the transformed outcome is applicable for the comparison of different model fit on a particular data set.</p>
 
 <pre><code class="language-r,">#sorting observations according to uplift values
-uplift_sorted = uplift[order(uplift$uplift_301, decreasing = TRUE), ]
+uplift_sorted = uplift[order(uplift[, 3], decreasing = TRUE), ]
 
 #targeting the top fixed percentage of customers(50%)
 top_obs = uplift_sorted$idx[1:(0.5*nrow(uplift_sorted))]
@@ -996,11 +1027,11 @@ evaluation$treatment_cknn = 0
 evaluation$treatment_cknn[top_obs] = 1
 
 #calculate mean squared error (Hitsch - page 27)
-mse = mean((transformed_outcome(e_x = e_x, test_set$treatment, test_set$visit) - uplift$uplift_301)^2)
+mse = mean((transformed_outcome(e_x = e_x, test_set$treatment, test_set$visit) - uplift[, 3])^2)
 mse
-</code></pre>
 
-<pre><code class="language-r,">###calculating the mse of the causal tree model
+
+###calculating the mse of the causal tree model
 #sorting observations according to uplift values
 uplift_ct_sorted = uplift_ct[order(uplift_ct$uplift, decreasing = TRUE), ]
 
@@ -1019,14 +1050,14 @@ mse_ct
 #comparing both mse values
 mse
 mse_ct
-</code></pre>
+´´´
+## Qini Coefficient for evaluation of the causal KNN model
 
-<h3 id="qini-coefficient-for-evaluation-of-the-causal-knn-model">Qini Coefficient for evaluation of the causal KNN model</h3>
+The Gini-Coefficient is a widely used metric to compare the fit of different modeling approaches on a particular data set. The metric is intuitive and applicable, since it provides a single value for the evaluation. The value of the Gini Coefficient is defined between 0 and 1, where 1 represents a perfect model and 0 indicates a fit that is not performing any better than a random ranking of customers. Devriendt states that the Gini-Coefficient, however, is not readily applicable in uplift modeling context, since, for every class, we have individuals from treatment and control group. Therefore in this context, the so called &quot;Qini-Coefficient&quot; is preferred. The Qini Coefficient is mathematically equal to the difference of the Gini-Curve for the treatment group and the control group. 
+The qini coefficient provides an opportunity to evaluate uplift models, according to the treatment effect estmations. Since the qini is a common indicator for the quality of uplift models, it is used here to further evaluate the causal KNN model results.
 
-<p>The Gini-Coefficient is a widely used metric to compare the fit of different modeling approaches on a particular data set. The metric is intuitive and applicable, since it provides a single value for the evaluation. The value of the Gini Coefficient is defined between 0 and 1, where 1 represents a perfect model and 0 indicates a fit that is not performing any better than a random ranking of customers. Devriendt states that the Gini-Coefficient, however, is not readily applicable in uplift modeling context, since, for every class, we have individuals from treatment and control group. Therefore in this context, the so called &ldquo;Qini-Coefficient&rdquo; is preferred. The Qini Coefficient is mathematically equal to the difference of the Gini-Curve for the treatment group and the control group.
-The qini coefficient provides an opportunity to evaluate uplift models, according to the treatment effect estmations. Since the qini is a common indicator for the quality of uplift models, it is used here to further evaluate the causal KNN model results.</p>
-
-<pre><code class="language-r,">###qini coefficient
+´´´{r, eval = FALSE, include = TRUE}
+###qini plot
 #random assignment of treatments
 uplift[1:10, ]
 qini_data_rnd = data.frame(uplift)
@@ -1058,7 +1089,7 @@ as_random = incremental_gain$cumsum
 
 
 #model assignment of treatments
-qini_data_model = qini_data_rnd[order(qini_data_rnd$uplift_301, decreasing = TRUE), ]
+qini_data_model = qini_data_rnd[order(qini_data_rnd[, 3], decreasing = TRUE), ]
 
 plot(cumsum(qini_data_model$visit))
 
@@ -1101,19 +1132,34 @@ library(ggplot2)
 qini_plot = ggplot(data = qini_plot_data, aes(x = idx)) +
   geom_smooth(aes(y = visit_rnd), method = &quot;lm&quot;, se = FALSE) +
   geom_smooth(aes(y = visit_model), method = &quot;loess&quot;, se = FALSE, span = 2, color = &quot;red&quot;) + 
-labs(title = &quot;Qini-Curves of Treatment Assignment&quot;, x = &quot;Observations&quot;, y = &quot;Cumulative Visitations of the Website&quot;) +
+  labs(title = &quot;Qini-Curves of Treatment Assignment&quot;, x = &quot;Observations&quot;, y = &quot;Cumulative Visitations of the Website&quot;) +
   theme_light()
-  
+
 max(qini_plot_data$visit_rnd)
 max(qini_plot_data$visit_model)
-  
+
 qini_plot
+
+
+#AUUC
+qini_plot_data$rnd_cumsum = cumsum(qini_plot_data$visit_rnd)
+qini_plot_data$model_cumsum = cumsum(qini_plot_data$visit_model)
+head(qini_plot_data)
+
+auuc_cknn = 0
+
+for(i in 1:(nrow(qini_plot_data)-1)){
+  
+  x = qini_plot_data$model_cumsum[i] + 0.5*(qini_plot_data$model_cumsum[i+1]-qini_plot_data$model_cumsum[i])
+  auuc_cknn = auuc_cknn + x
+}
+auuc_cknn
 
 
 #plotting qini curves of the causal tree predictions
 #random assignment of treatments
 uplift[1:10, ]
-qini_data_rnd$uplift_301 = NULL
+qini_data_rnd[, 3] = NULL
 qini_data_rnd$uplift = uplift_ct$uplift
 
 qini_data_model = qini_data_rnd[order(qini_data_rnd$uplift, decreasing = TRUE), ]
@@ -1123,53 +1169,124 @@ qini_data_model[1:10, ]
 
 qini_plot_data = data.frame(&quot;visit_rnd&quot; = cumsum(qini_data_rnd$visit), &quot;visit_model&quot; = cumsum(qini_data_model$visit), &quot;idx&quot; = 1:nrow(qini_data_rnd))
 
-library(ggplot2)
-
 qini_plot_ct = ggplot(data = qini_plot_data, aes(x = idx)) +
   geom_smooth(aes(y = visit_rnd), method = &quot;lm&quot;, se = FALSE) +
   geom_smooth(aes(y = visit_model), method = &quot;loess&quot;, se = FALSE, span = 2, color = &quot;red&quot;) + 
-labs(title = &quot;Qini-Curves of Treatment Assignment&quot;, x = &quot;Observations&quot;, y = &quot;Cumulative Visitations of the Website&quot;) +
+  labs(title = &quot;Qini-Curves of Treatment Assignment&quot;, x = &quot;Observations&quot;, y = &quot;Cumulative Visitations of the Website&quot;) +
   theme_light()
-  
+
 max(qini_plot_data$visit_rnd)
 max(qini_plot_data$visit_model)
-  
+
 qini_plot_ct
+  
+#AUUC
+qini_plot_data$rnd_cumsum = cumsum(qini_plot_data$visit_rnd)
+qini_plot_data$model_cumsum = cumsum(qini_plot_data$visit_model)
+head(qini_plot_data)
+
+auuc_ct = 0
+
+for(i in 1:(nrow(qini_plot_data)-1)){
+  
+  x = qini_plot_data$model_cumsum[i] + 0.5*(qini_plot_data$model_cumsum[i+1]-qini_plot_data$model_cumsum[i])
+  auuc_ct = auuc_ct + x
+}
+auuc_ct
+auuc_cknn
 </code></pre>
 
-<p><img src="Results/qini_plot_cknn.png" alt="Qini Curves for the Causal KNN Targeting Policy" /></p>
+<p><img align="center" width="800"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/causal_knn/qini_plot_cknn.png"
+alt = "Qini Curves for the Causal KNN Targeting Policy"></p>
 
-<p><img src="Results/qini_plot_ct.png" alt="Qini Curves for the Causal Tree Targeting Policy" /></p>
+<p><img align="center" width="800"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/causal_knn/qini_plot_ct.png"
+alt = "Qini Curves for the Causal Tree Targeting Policy"></p>
 
 <h3 id="auuc">AUUC</h3>
 
 <p>This measure is defined by the area under the uplift curve. We can compare the resulting uplift curve to the optimal curve. Therefore it has strong relations to the Qini-Curve, but this measure does not take the incremental effect of random targeting into account.</p>
 
-<table>
-<thead>
-<tr>
-<th>Model</th>
-<th>MSE</th>
-<th>AUUC</th>
-</tr>
-</thead>
+<!--
+Model                | MSE    | AUUC
+-------------------- | ------ | -----------
+Causal KNN (K = 250) | 0.5914 | 26470055012
+Causal Tree          | 0.5803 | 30718837480
+-->
 
-<tbody>
-<tr>
-<td>Causal KNN (K = 250)</td>
-<td>0.5914</td>
-<td></td>
-</tr>
+<h2 id="results">Results</h2>
 
-<tr>
-<td>Causal Tree</td>
-<td>0.5803</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p><style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-cly1{text-align:left;vertical-align:middle}
+.tg .tg-hjhm{font-weight:bold;background-color:#dae8fc;text-align:left;vertical-align:middle}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-hjhm">Model</th>
+    <th class="tg-hjhm">MSE</th>
+    <th class="tg-hjhm">AUUC</th>
+  </tr>
+  <tr>
+    <td class="tg-cly1">Causal KNN (K = 250)</td>
+    <td class="tg-cly1">0.5914</td>
+    <td class="tg-cly1">26470055012</td>
+  </tr>
+  <tr>
+    <td class="tg-cly1">Causal Tree</td>
+    <td class="tg-cly1">0.5803</td>
+    <td class="tg-cly1">30718837480</td>
+  </tr>
+</table></p>
+
+<p><br></p>
+
+<p>When comparing both, the causal knn an the causal tree model, it can be observed that the causal tree performs better than the causal KNN. This holds true for evaluating both models in terms of the MSE as well as for the area under the uplift curves.</p>
 
 <h2 id="conclusion">Conclusion</h2>
+
+<p>In this blogpost, we presented a method for estimating the conditional average treatment effect on an individual basis. This apprach is called causal KNN. The causal KNN algorithm was implemented in R an applied to a real world data set from a randomized E-Mail marketing campaign. Furthermore, the transformed outcome was introduced, which represents the value of the &ldquo;true&rdquo; CATE in expectation, if several required assumptions are fulfilled. The transformed outcome approach could be used for finding the optimal k value for the causal KNN model and also for the parameter tuning of other uplift modelling techniques. We tuned a causal tree model to compare the results of our causal KNN estimations. The transformed outcome allowed for a evaluation of uplift models in terms of the MSE. The causal tree performed better than the the causal knn model in terms of the MSE, as well as of the AUUC. Therefore, the causal KNN approach is a simple algorithm that delivers estimations of the CATE in uplift applications. Howver, the accuracy of the estimations is worse than those of comparable uplift models.</p>
+
+<h2 id="references">References</h2>
+
+<p>Devriendt, F., Moldovan, D., &amp; Verbeke, W. (2018). A literature survey and experimental evaluation of the state-of-the-art in uplift modeling: A stepping stone toward the development of prescriptive analytics. Big data, 6(1), 13-41.</p>
+
+<p>Gutierrez, P., &amp; Gerardy, J. Y. (2017, July). Causal inference and uplift modelling: A review of the literature. In International Conference on Predictive Applications and APIs (pp. 1-13).</p>
+
+<p>Pearl, J. (2009). Causal inference in statistics: An overview. Statistics surveys, 3, 96-146.</p>
+
+<p>Zhou, X., &amp; Kosorok, M. R. (2017). Causal nearest neighbor rules for optimal treatment regimes. arXiv preprint arXiv:1711.08451.</p>
+
+<p>Dudik, M., Langford, J., &amp; Li, L. (2011). Doubly robust policy evaluation and learning. arXiv preprint arXiv:1103.4601.</p>
+
+<p>Angrist, J. D. (2016). Treatment effect. The new Palgrave dictionary of economics, 1-8.</p>
+
+<p>Jaskowski, M., &amp; Jaroszewicz, S. (2012, June). Uplift modeling for clinical trial data. In ICML Workshop on Clinical Data Analysis.</p>
+
+<p>Gubela, R. M., Lessmann, S., Haupt, J., Baumann, A., Radmer, T., &amp; Gebert, F. (2017). Revenue Uplift Modeling.</p>
+
+<p>Lo, V. S. (2002). The true lift model: a novel data mining approach to response modeling in database marketing. ACM SIGKDD Explorations Newsletter, 4(2), 78-86.</p>
+
+<p>Athey, S., &amp; Imbens, G. (2016). Recursive partitioning for heterogeneous causal effects. Proceedings of the National Academy of Sciences, 113(27), 7353-7360.</p>
+
+<p>Coussement, K., Harrigan, P., &amp; Benoit, D. F. (2015). Improving direct mail targeting through customer response modeling. Expert Systems with Applications, 42(22), 8403-8412.</p>
+
+<p>Hitsch, G. J., &amp; Misra, S. (2018). Heterogeneous treatment effects and optimal targeting policy evaluation. Available at SSRN 3111957.</p>
+
+<p>Ascarza, E., Fader, P. S., &amp; Hardie, B. G. (2017). Marketing models for the customer-centric firm. In Handbook of marketing decision models (pp. 297-329). Springer, Cham.</p>
+
+<p>Rzepakowski, P., &amp; Jaroszewicz, S. (2012). Uplift modeling in direct marketing. Journal of Telecommunications and Information Technology, 43-50.</p>
+
+<p>Athey, S., &amp; Imbens, G. W. (2015). Machine learning methods for estimating heterogeneous causal effects. stat, 1050(5), 1-26.</p>
+
+<p>Powers, S., Qian, J., Jung, K., Schuler, A., Shah, N. H., Hastie, T., &amp; Tibshirani, R. (2017). Some methods for heterogeneous treatment effect estimation in high-dimensions. arXiv preprint arXiv:1707.00102.</p>
+
+<p>Breiman, L. (1996). Bagging predictors. Machine learning, 24(2), 123-140.</p>
 
                         </div>
                         
@@ -1203,7 +1320,7 @@ qini_plot_ct
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
-            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (19)</a>
+            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (20)</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/categories/instruction">instruction (2)</a>
