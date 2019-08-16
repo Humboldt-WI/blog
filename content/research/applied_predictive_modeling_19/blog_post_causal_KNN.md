@@ -1018,6 +1018,12 @@ When comparing both, the causal knn an the causal tree model, it can be observed
 
 In this blogpost, we presented a method for estimating the conditional average treatment effect on an individual basis. This apprach is called causal KNN. The causal KNN algorithm was implemented in R and applied to a real world data set from a randomized E-Mail marketing campaign. Furthermore, the transformed outcome was introduced, which represents the value of the "true" CATE in expectation, if several required assumptions to the data are fulfilled. The transformed outcome approach could be used for finding the optimal k value for the causal KNN model and also for the parameter tuning of other uplift modelling techniques. We trained a causal tree model to compare the results of our causal KNN estimations. The transformed outcome allowed for a evaluation of uplift models in terms of the MSE. The causal tree performed better than the the causal knn model in terms of the MSE, as well as of the AUUC. Therefore, the causal KNN approach is a simple algorithm that delivers estimations of the CATE in uplift applications. However, the accuracy of the estimations is worse than those of comparable uplift models.
 
+
+## Code distribution
+
+The full source Code can be found here: https://github.com/mkrcke/APA
+
+
 ## References
 
 Devriendt, F., Moldovan, D., & Verbeke, W. (2018). A literature survey and experimental evaluation of the state-of-the-art in uplift modeling: A stepping stone toward the development of prescriptive analytics. Big data, 6(1), 13-41.
