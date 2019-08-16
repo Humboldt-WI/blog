@@ -98,8 +98,12 @@ $\hat{\tau}_K(x)=\frac{1}{K}$ $\sum_{i \in N_K(x,1)} Y_i$ - $\frac{1}{K}$  $\sum
 -->
 
 ### Causal KNN Estimation
-As mentioned before, the true CATE is not observable. Hitsch and Misra use a method to approximate the actual treatment effect via the transformed outcome Y\*. To overcome the fundamental problem of treatment effect estimation, the Causal KNN algorithm is used. This approach allows to derive an estimation of the CATE on an individual unit level. The Causal KNN approach is described as a direct estimation method. 
-The algorithm first starts with selecting the k treated and untreated nearest neighbours for each observation. The nearest neighbours are selected, based on the covariates, using the euclidean distance measure. However, every other distnce measure would be similarily feasible, depending on the application framework. Afterwards, the individual treatemnt effects are derived by computing the differences between the mean outcome values of the treated and the untreated nearest neighbours for all units. This yields at an estimation of the CATE for each observation in the data set. This procedure is represented in the following equation: $\hat{\tau}_K(x)=\frac{1}{K} \sum_{i \in N_K(x,1)} Y_i - \frac{1}{K}  \sum_{i \in N_K(x,0)} Y_i$, where $Y_i$ represents the outcome values of the target variable and $N_K(x,0)$ and $N_K(x,1)$ denote the nearest neighbour units with treatment status $W_i = 1$ and $W_i = 0$ respectively. Since the Causal KNN algorithm takes the number of nearest neighbours k as a freely selectable parameter, it is necessary to find a way to choose the optimal k value.
+As mentioned before, the true CATE is not observable. Hitsch and Misra use a method to approximate the actual treatment effect via the transformed outcome $Y^*$. To overcome the fundamental problem of treatment effect estimation, the Causal KNN algorithm is used. This approach allows to derive an estimation of the CATE on an individual unit level. The Causal KNN approach is described as a direct estimation method. 
+The algorithm first starts with selecting the k treated and untreated nearest neighbours for each observation. The nearest neighbours are selected, based on the covariates, using the euclidean distance measure. However, every other distnce measure would be similarily feasible, depending on the application framework. Afterwards, the individual treatemnt effects are derived by computing the differences between the mean outcome values of the treated and the untreated nearest neighbours for all units. This yields at an estimation of the CATE for each observation in the data set. This procedure is represented in the following equation: <img src="http://chart.googleapis.com/chart?cht=tx&chl=$\hat{\tau}_K(x)=\frac{1}{K} \sum_{i \in N_K(x,1)} Y_i - \frac{1}{K}  \sum_{i \in N_K(x,0)} Y_i$" style="border:none;"> where $Y_i$ represents the outcome values of the target variable and $N_K(x,0)$ and $N_K(x,1)$ denote the nearest neighbour units with treatment status $W_i = 1$ and $W_i = 0$ respectively. Since the Causal KNN algorithm takes the number of nearest neighbours k as a freely selectable parameter, it is necessary to find a way to choose the optimal k value.
+
+<!--
+$\hat{\tau}_K(x)=\frac{1}{K} \sum_{i \in N_K(x,1)} Y_i - \frac{1}{K}  \sum_{i \in N_K(x,0)} Y_i$
+-->
 
 <!-- These methods select the tuning parameter K using a feasible loss that, in expectation, attains its minimum at the same K value as the infeasible loss based on the treatment effect. 
 For any vector x, we find the K nearest *treated* neighbors and separately the K nearest *untreated* neighbors. We then estimate the CATE using the difference between the nearest treated and untreated units:
@@ -395,7 +399,7 @@ treated_nn = t(treated_nn)
 untreated_nn = t(untreated_nn)
 ```
 
-To estimate a robust CATE, we would likely use all customers in the neighborhood. A high value for K increases the accounted neighborhood, while it decreases the similarity between the customers. Therefore, the estimation depends on the choice of K. To find an optimal value of K, we want to minimize the squared difference between $\widehat{\tau_K}(x)$ and the transformed outcome $Y*$. This is called the 'Transformed Outcome Approach', which will be described in the following.
+To estimate a robust CATE, we would likely use all customers in the neighborhood. A high value for K increases the accounted neighborhood, while it decreases the similarity between the customers. Therefore, the estimation depends on the choice of K. To find an optimal value of K, we want to minimize the squared difference between $\hat{\tau}_K(x)$ and the transformed outcome $Y^*$. This is called the 'Transformed Outcome Approach', which will be described in the following.
 
 
 ## Transformed Outcome Approach
@@ -413,7 +417,7 @@ $Y_i^*=W_i*\frac{Y_i(1)}{e(X_i)}-(1-W_i)*\frac{Y_i(0)}{1-e(X_i)}$
 
 Since it only depends on the potential outcome that corresponds to the realized treatment level, the transformed outcome can be calculated from the observed outcome $Y_i$: 
 
-$Y_i*=\frac{W_i - e(X_i)}{e(X_i)(1-e(X_i))}Y_i$>
+$Y_i^*=\frac{W_i - e(X_i)}{e(X_i)(1-e(X_i))}Y_i$>
 
 Since we are having a formula for the predicted outcome, we still need to decide on the actual outcome. 
 For a randomized sample, the propensity score $e(x)$ is not relevant, since it is accounted in every individuals treatment effect in the same manner. 
@@ -830,7 +834,7 @@ mse_ct
 #comparing both mse values
 mse
 mse_ct
-´´´
+```
 
 ## Qini Coefficient for evaluation of the causal KNN model
 
@@ -946,7 +950,7 @@ for(i in 1:(nrow(qini_plot_data)-1)){
 #compare AUUC for both models
 auuc_ct
 auuc_cknn
-´´´
+```
 
 <img align="center" width="800"
 style="display:block;margin:0 auto;" 
