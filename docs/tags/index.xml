@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 01 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Causal Inference</title>
       <link>https://humboldt-wi.github.io/blog/tags/causal-inference/</link>
-      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/causal-inference/</guid>
       <description></description>
@@ -23,7 +23,7 @@
     <item>
       <title>Class19</title>
       <link>https://humboldt-wi.github.io/blog/tags/class19/</link>
-      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/class19/</guid>
       <description></description>
@@ -192,20 +192,20 @@
     </item>
     
     <item>
-      <title>NLP</title>
-      <link>https://humboldt-wi.github.io/blog/tags/nlp/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/nlp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Neural Networks</title>
       <link>https://humboldt-wi.github.io/blog/tags/neural-networks/</link>
       <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/neural-networks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NLP</title>
+      <link>https://humboldt-wi.github.io/blog/tags/nlp/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/nlp/</guid>
       <description></description>
     </item>
     
@@ -255,20 +255,20 @@
     </item>
     
     <item>
-      <title>LSTM</title>
-      <link>https://humboldt-wi.github.io/blog/tags/lstm/</link>
-      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/lstm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Language Modelling</title>
       <link>https://humboldt-wi.github.io/blog/tags/language-modelling/</link>
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/language-modelling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LSTM</title>
+      <link>https://humboldt-wi.github.io/blog/tags/lstm/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/lstm/</guid>
       <description></description>
     </item>
     
@@ -399,6 +399,15 @@
     </item>
     
     <item>
+      <title>doc2vec</title>
+      <link>https://humboldt-wi.github.io/blog/tags/doc2vec/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/doc2vec/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Document Embeddings</title>
       <link>https://humboldt-wi.github.io/blog/tags/document-embeddings/</link>
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
@@ -494,15 +503,6 @@
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/time-series-forecasting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>doc2vec</title>
-      <link>https://humboldt-wi.github.io/blog/tags/doc2vec/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/doc2vec/</guid>
       <description></description>
     </item>
     
