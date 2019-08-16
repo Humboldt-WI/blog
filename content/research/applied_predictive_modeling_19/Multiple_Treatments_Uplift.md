@@ -24,15 +24,15 @@ description = "Evaluation and discussion of Uplift Models for multiple possible 
 3.1.1 [Basic Rzepakowski & Jaroszewicz](#basic) </br>
 3.1.2 [Simple Splitting Criterion](#simple) </br>
 3.2 [Causal Tree and Causal Forest](#causaltree) </br>
-3.3 [Separate Model](#separate) </br>
-4. [Evaluation](#evaluation)</br>
-4.1 [Evaluation Methods](#evaluationmethods)</br>
-4.1.1 [Uplift Curves](#uplift_curves)</br>
-4.1.2 [Expected Outcome](#expected_outcome)</br>
-4.2 [Data Sets](#datasets)</br>
-4.3 [Results](#evaluationresults)
-5. [Outlook](#outlook)
-6. [References](#references)
+3.3 [Separate Model](#separate) <br />
+4. [Evaluation Methods](#evaluationmethods)<br />
+4.1 [Uplift Curves](#uplift_curves)</br>
+4.2 [Expected Outcome](#expected_outcome)</br>
+5. [Experimental Setup](#experiment) <br />
+5.1 [Data Sets](#datasets)</br>
+5.2 [Results](#evaluationresults)
+6. [Outlook](#outlook)
+7. [References](#references)
 
 # 1. Introduction <a class="anchor" id="introduction"></a>
 Nowadays marketing practitioners face a multitude of challenges. 
@@ -66,8 +66,8 @@ Since those challenges were all related to marketing activity we decided to focu
 ### When?
 When it comes to selecting the time of a marketing activity there is not much research out there with regards to treatment effects.
 Most advice for marketing pratitioners focuses on social media marketing and on what time are best for publishing new posts. These guidelines mostly look at single performance measures like engagement to see at which times the performance measure are maximized. An example of this can be seen in the blog post 
-<a  href="https://sproutsocial.com/insights/best-times-to-post-on-social-media/"> "Best times to post on social media for 2019"</a>. Generally these approaches only attempt to maximize the average treatment effect. Since social media usually works in a broadcast style in which each post reaches all users it is not possible to adjust the content or publishing time of a post for specific users or groups of users.</br>
-In their paper <a href = "https://www.researchgate.net/publication/4753376_Time-Series_Models_in_Marketing"> Time Series Models in Marketing </a> the authors look at the application of time series models for marketing. For example they use persistance modeling in order to estimate  the longterm effect of marketing activities.
+<a  href="https://sproutsocial.com/insights/best-times-to-post-on-social-media/" target="_blank"> "Best times to post on social media for 2019"</a>. Generally these approaches only attempt to maximize the average treatment effect. Since social media usually works in a broadcast style in which each post reaches all users it is not possible to adjust the content or publishing time of a post for specific users or groups of users.</br>
+In their paper <a href = "https://www.researchgate.net/publication/4753376_Time-Series_Models_in_Marketing" target="_blank"> Time Series Models in Marketing </a> the authors look at the application of time series models for marketing. For example they use persistance modeling in order to estimate  the longterm effect of marketing activities.
 
 <img
 align="center"
@@ -98,9 +98,9 @@ height="200"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Mike-Thurber-Graphic-2.png">
 
 With the historical approach we will target mostly the 'Sure Things' and maybe the 'Do-Not-Disturbs'. For those groups we at best get no return and at worst actually lose customers. Ideally we want to target the 'Persuadables'. This is commonly done by estimating the conditional average treatment effect (CATE) or uplift of the proposed marketing activity and then target the customers where the activity is estimated to have the highest effect. </br>
-Several approaches have been proposed to estimate uplift. Gubela et. al (2019) give an overview in their paper <a href = "https://www.researchgate.net/publication/331791032_Conversion_uplift_in_E-commerce_A_systematic_benchmark_of_modeling_strategies"> Conversion uplift in E-commerce: A systematic benchmark of modeling strategies</a>. In their evaluation they find that the two model uplift method and interaction term method (ITM) performed best. </br>
+Several approaches have been proposed to estimate uplift. Gubela et. al (2019) give an overview in their paper <a href = "https://www.researchgate.net/publication/331791032_Conversion_uplift_in_E-commerce_A_systematic_benchmark_of_modeling_strategies" target="_blank"> Conversion uplift in E-commerce: A systematic benchmark of modeling strategies</a>. In their evaluation they find that the two model uplift method and interaction term method (ITM) performed best. </br>
 The two model approach as the name suggests uses two separate models. The training set is split into two with one set contained all the treated observations and the other all control observations. Then for each traning set one model is built to predict the outcome. To estimate the uplift of the treatment for a new person, we generate the predicted outcome with both models. One predicted outcome with treatment and one without. The difference between these two estimates is the expected uplift. The two model is very simple and works with virtually every possible base model (e.g. random forest, linear regression, svm, ...). Since it is so simple it is often considered a good benchmark to test new approaches against.</br>
-The interaction term method (ITM) was proposed by Lo in his 2002 paper <a href="https://www.researchgate.net/publication/220520042_The_True_Lift_Model_-_A_Novel_Data_Mining_Approach_to_Response_Modeling_in_Database_Marketing">The True Lift Model - A Novel Data Mining Approach to Response Modeling in Database Marketing</a>. Unlike double machine learning, ITM only uses a single model. However, ITM also works with two predictions. One with treatment and one without. Both predictions are obtained from the same model which has been trained on both treatment and control data. Whether a treatment is given or not is indicated by a binary variable D. A new observation is evaluated twice. Once with D=1 (treatment given) and once with D=0. Again the difference between the two predictions is the estimated uplift.
+The interaction term method (ITM) was proposed by Lo in his 2002 paper <a href="https://www.researchgate.net/publication/220520042_The_True_Lift_Model_-_A_Novel_Data_Mining_Approach_to_Response_Modeling_in_Database_Marketing" target="_blank">The True Lift Model - A Novel Data Mining Approach to Response Modeling in Database Marketing</a>. Unlike double machine learning, ITM only uses a single model. However, ITM also works with two predictions. One with treatment and one without. Both predictions are obtained from the same model which has been trained on both treatment and control data. Whether a treatment is given or not is indicated by a binary variable D. A new observation is evaluated twice. Once with D=1 (treatment given) and once with D=0. Again the difference between the two predictions is the estimated uplift.
 
 
 ### What?
@@ -162,7 +162,7 @@ style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_u
 
 
 ## 3.2 Causal Tree and Causal Forest <a class="anchor" id="causaltree"></a>
-The causal tree, introduced by Susan Athey et. al in their paper <a href = "https://github.com/susanathey/causalTree/blob/master/briefintro.pdf">An Introduction to Recursive Partitioning for Heterogeneous Causal Effect Estimation Using causalTree package</a> is a tree based classifier which directly estiamtes the treatment effect. It is based on the rpart package and implements many in the CART (Classification and Regression Trees). By default it only supports single treatment. Therefore, we train one tree for each of the multiple treatments and then compare the predicted uplifts. </br>
+The causal tree, introduced by Susan Athey et. al in their paper <a href = "https://github.com/susanathey/causalTree/blob/master/briefintro.pdf" target="_blank">An Introduction to Recursive Partitioning for Heterogeneous Causal Effect Estimation Using causalTree package</a> is a tree based classifier which directly estiamtes the treatment effect. It is based on the rpart package and implements many in the CART (Classification and Regression Trees). By default it only supports single treatment. Therefore, we train one tree for each of the multiple treatments and then compare the predicted uplifts. </br>
 They also implemented a function which allows the user to build forests based on the causal tree. These forests are in the form of a list of rpart objects.
 
 ## 3.3 Separate Model <a class="anchor" id="separate"></a>
@@ -282,38 +282,73 @@ Other related approaches which also extend naturally for multiple treatments are
 --> 
 
 
-# 4. Evaluation <a class="anchor" id="evaluation"></a>
-## 4.1 Evaluation Methods <a class="anchor" id="evaluationmethods"></a>
+# 4 Evaluation Methods <a class="anchor" id="evaluationmethods"></a>
 
-Evaluating an uplift model proves more difficult, when compared to standard machine learning models.
-Usually the test set contains the actual response for each subject. In the case of treatment assignments, however, for each group a separate test set exists.
-Therefore, no information about the outcome of a subject in the case of a different treatment assignment exists.
+In contrast to a usual prediction task, it is not possible to observe the actual outome of a subject for all possible treatment assignments (including no treatment assignment).
+Therefore, standard machine learning measures are not applicable to evaluate the performance of an uplift model.
+In order to approximate the actual gains of using the predictions from an uplift model, some assumptions need to be made.
 <br />
-We describe two evaluation methods for uplift models from the literature, which can be used in the case of multiple treatments modelling.
+We describe two approaches from the literature which can be used to compare the performance of different uplift models. 
+
+## 4.1 Uplift and Qini Curves<a class="anchor" id="uplift_curves"></a>
+
+Both uplift curves and qini curves build upon the idea of cumulative gain charts.
+Those require all targets to be ranked in descending order by their score. 
+For the single treatment case the score represents the uplift when assigning the treatment to the subject.
+In the case of multiple treatments the uplift model predicts the uplift for each treatment. The score then corresponds to the maximal uplift of all possible treatment assignments.
+In case the uplift for all treatments is negative, the score can also be negative. This corresponds to the behavior of the 'Do-Not-Disturbs' group.
+<br />
+Given the ranked outcomes for each treatment and the control group, a cumulative lift curve can be drawn. 
+The x axis represents the number of treated subjects and the y axis the cumulative outcome.
+The uplift curve represents the lift curve for a treatment, subtracted by the lift curve of the control group.
+The main assumption of this approach is that similarly scored groups inhibit similar features and are therefore comparable.
+However, Rzepakowski et al. (2012) mention that this property is not necessarly satisfied, but currently no better alternatives exist.
+<br />
+In the case of multiple possible treatment assignments, naturally for each treatment a separate uplift curve can be drawn. 
+In order to combine those curves it is possible to use the maximal uplift curve for each decile, under the assumption that this corresponds to always assigning the highest predicted treatment to a subject.
+<br />
+As the treatments and control groups in the testing dataset can have different sizes, their outcomes need to be scaled in order to represent a meaningfull subtration of the treatment and control outcomes.
+Here the difference between the qini and uplift curves becomes apparent.
+The qini curve as described by Radcliffe et al. (2007) scales the outcomes to the sample sizes of the treatment group.
 
 
-### 4.1.1 Uplift Curves <a class="anchor" id="uplift_curves"></a>
+\begin{equation}
+f(t) = Y_t^T - \frac{Y_t^C N_t^T}{N_t^C}
+\end{equation}
 
-The idea of Uplift Curves is to look at the response to draw a lift curve for each treatment and subtract the lift curve for control group. 
-This results in an incremental uplift curve for each treatment.
+Where $t$ represents the decile of each group.
 
-Difference to Qini Curves proposed in Radcliffe (2007)
+<br />
+On the other hand the the uplift curve as described in Gutierrez et al. (2017) uses the sample mean of each group and scales it to the full sample size.
 
-Described in Rzepakowski (2012).
 
-Given the treatments and control test sets, each subject can be ranked by their maximal predicted uplift for any treatment. 
-We will derive this score as the maximal treatment assignment. 
-The scores represent the difference between an estimated outcome given a treatment assessinment and no treatment (control). 
-Therefore, in case not treating a subject yields the highest expected response, the score can also be negative.
+\begin{equation}
+g(t) = ( \frac{Y_t^T }{N_t^T} - \frac{Y_t^C }{N_t^C} ) (N_t)
+\end{equation}
 
-References to figures in results.
+We have adjusted the formula for the uplift curve for multiple treatments.
+
+Both metrics are defined for the single treatment case. The uplift curves can be extended for multiple treatments by, upscaling with the decile of the full experiment sample, not only the specific treatment and control group.
+
+<br />
+As the qini curves are scaling towards the treatment sample size, a combination of multiple treatment groups with different sizes becomes more cumbersome. 
+Therefore, we see the uplift curves more applicable for multiple treatments uplift evaluation and will omit the qini curves in our experimental evaluations.
+
 
 <!--
  plotting combined treatment curve...
  --> 
 
  
-### 4.1.2 Expected Outcome <a class="anchor" id="expected_outcome"></a>
+<!--
+
+DOWNSIDES OF THOSE APPROACHES ???
+
+ --> 
+
+
+ 
+## 4.2 Expected Outcome <a class="anchor" id="expected_outcome"></a>
 
 Method from (Zhao et al. 2017)
 
@@ -333,15 +368,31 @@ E[Z] = E[Y|T=h(X)]
 The expected response can also be used to draw uplift curves. In Zhao et al. (2017) those curves are named <i>modified uplift curves</i>.
 Once again the subjects are ranked by their score (expected uplift). Now for the top x-percent the optimal treatment is assigned and the remaining subject are assigned to the control group.
 Now the expected value for treating x-percent of the subjects are given as $\bar{z}$.
+<br />
+In contrast to the qini and uplift curves, the modified uplift curve is not cumulative, as the outcomes of the not treated subjects are also taken into account. 
+Also the expected outcome is defined per customer and therefore indipendent from the size of the testing data.
 
 
-## 4.2 Data Sets <a class="anchor" id="datasets"></a>
-
-<a href="https://blog.minethatdata.com/2008/03/minethatdata-e-mail-analytics-and-data.html">Kevin Hillstrom’s MineThatData</a>
 
 
-## 4.3 Results <a class="anchor" id="evaluationresults"></a>
+# 5. Experimental Setup <a class="anchor" id="outlook"></a>
+## 5.1 Data Sets <a class="anchor" id="datasets"></a>
+
+<!--
+Describe Dataset with different outcome variables
+-->
+
+<a href="https://blog.minethatdata.com/2008/03/minethatdata-e-mail-analytics-and-data.html" target="_blank">Kevin Hillstrom’s MineThatData</a>
+
+
+## 5.2 Results <a class="anchor" id="evaluationresults"></a>
+
+Models evaluated using 5-fold cross validation.
+
+
 ### Predictive Results
+
+
 ### Training Duration
 Even though predictive performance is the focus of this evaluation we also wanted to look at how well our approaches scaled in terms of training time. The are 3 factors we looked at which will influence performance time: number of observations, number of covariates and number of treatments.</br>
 The figures below show a comparisson of our models.</br>
@@ -363,14 +414,20 @@ align="center"
 width="550"
 height="360"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison5Features.png"></br>
-# 5. Outlook <a class="anchor" id="outlook"></a>
 
 
+# 6. Outlook <a class="anchor" id="outlook"></a>
 
-# 6. References <a class="anchor" id="references"></a>
+The described evaluation metrics for uplift models all represent approximative approaches under specific assumptions. 
+The expected response metric from Zhao et al. (2017) is the only metric defined under the assumptions of multiple treatements.
+A standarized evaluation procedure in the uplift field could increase the comparability of models throughout different works.
+
+
+# 7. References <a class="anchor" id="references"></a>
 
 * Devriendt, F., Moldovan, D. and Verbeke, W., 2018. A literature survey and experimental evaluation of the state-of-the-art in uplift modeling: A stepping stone toward the development of prescriptive analytics. Big data, 6(1), pp.13-41.
 * Gubela, R., Bequé, A., Lessmann, S. and Gebert, F., 2019. Conversion uplift in e-commerce: A systematic benchmark of modeling strategies. International Journal of Information Technology & Decision Making (IJITDM), 18(03), pp.747-791.
+* Gutierrez, P. and Gérardy, J.Y., 2017, July. Causal inference and uplift modelling: A review of the literature. In International Conference on Predictive Applications and APIs (pp. 1-13).
 * Lai, Y.T., Wang, K., Ling, D., Shi, H. and Zhang, J., 2006, December. Direct marketing when there are voluntary buyers. In Sixth International Conference on Data Mining (ICDM'06) (pp. 922-927). IEEE.
 * Lo, V.S. and Pachamanova, D.A., 2015. From predictive uplift modeling to prescriptive uplift analytics: A practical approach to treatment optimization while accounting for estimation risk. Journal of Marketing Analytics, 3(2), pp.79-95.
 * Radcliffe, N.J., 2007. Using control groups to target on predicted lift: Building and assessing uplift models. Direct Marketing Analytics Journal, 1, p.1421.
