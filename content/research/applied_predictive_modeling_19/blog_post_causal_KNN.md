@@ -1053,3 +1053,30 @@ Athey, S., & Imbens, G. W. (2015). Machine learning methods for estimating heter
 Powers, S., Qian, J., Jung, K., Schuler, A., Shah, N. H., Hastie, T., & Tibshirani, R. (2017). Some methods for heterogeneous treatment effect estimation in high-dimensions. arXiv preprint arXiv:1707.00102.
 
 Breiman, L. (1996). Bagging predictors. Machine learning, 24(2), 123-140.
+
+
+
+## Package References
+
+H. Wickham. ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New
+  York, 2016.
+  
+Hadley Wickham, Jim Hester and Romain Francois (2018). readr: Read
+  Rectangular Text Data. R package version 1.3.0.
+  https://CRAN.R-project.org/package=readr
+  
+Bischl B, Lang M, Kotthoff L, Schiffner J, Richter J, Studerus E, Casalicchio
+  G, Jones Z (2016). mlr: Machine Learning in R. _Journal of Machine Learning
+  Research_, *17*(170), 1-5. <URL: http://jmlr.org/papers/v17/15-066.html>
+
+Alina Beygelzimer, Sham Kakadet, John Langford, Sunil Arya, David Mount and
+  Shengqiao Li (2019). FNN: Fast Nearest Neighbor Search Algorithms and
+  Applications. R package version 1.1.3. https://CRAN.R-project.org/package=FNN
+  
+Hadley Wickham, Jim Hester and Winston Chang (2019). devtools: Tools to Make
+  Developing R Packages Easier. R package version 2.0.2.
+  https://CRAN.R-project.org/package=devtools
+  
+Susan Athey, Guido Imbens and Yanyang Kong (2016). causalTree: Recursive
+  Partitioning Causal Trees. R package version 0.0.
+
