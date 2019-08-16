@@ -118,10 +118,10 @@ There are various covariates that characterize customers according to their pers
 ```r
 ###load data
 library(readr)
-data = read_csv("../Data/mail_data.csv")
-
+data = read_csv("Data/mail_data.csv")
 head(data)
 ```
+
 <!--
 recency | history_segment | history | mens | womens | zip_code  | newbie | channel | segment       | visit | conversion | spend | idx   | treatment
 ------- | --------------- | ------- | ---- | ------ | --------- | ------ | ------- | ------------- | ----- | ---------- | ----- | ----- | ---------
@@ -331,7 +331,7 @@ data_nt = data_d[which(data_d$segment.No.E.Mail == 1),]
 #2 treatment
 data_t = data_d[which(data_d$segment.No.E.Mail == 0),]
 
-#checking target variables
+#count non-zero observations of the target variables
 sum(data_d$visit != 0)
 sum(data_d$conversion != 0)
 sum(data_d$spend != 0)
@@ -344,7 +344,7 @@ The KNN search is realized by using the FNN package in R. This package allows to
 #install.packages("FNN")
 library(FNN)
 
-#setting parameter k for number of nearest neighbours
+#setting parameter k for the maximum number of nearest neighbours to test for
 k = 3000
 k = k + 1
 
@@ -361,12 +361,6 @@ drop_cols = c("visit",
 #garbage collection to maximize available main memory
 gc()
 
-#available memory im Mb
-memory.limit()
-
-#set memory limit
-#memory.limit(size = 50000)
-
 #calculate indices of k treated nearest neighbours
 treated_nn = get.knnx(data_t[, !(names(data_t) %in% drop_cols)], 
                       query = data_d[, !(names(data_d) %in% drop_cols)], 
@@ -376,7 +370,6 @@ treated_nn = data.frame(treated_nn$nn.index)
 #deleting first column
 treated_nn = treated_nn[, 2:ncol(treated_nn)]
 
-treated_nn[1:10, 1:10]
 
 #calculate indices of k untreated nearest neighbours
 untreated_nn = get.knnx(data_nt[, !(names(data_nt) %in% drop_cols)], 
@@ -387,12 +380,6 @@ untreated_nn = data.frame(untreated_nn$nn.index)
 #deleting first column
 untreated_nn = untreated_nn[, 2:ncol(untreated_nn)]
 
-untreated_nn[1:10, 1:10]
-
-#checking results
-data_d$treatment[data_t$idx[unlist(treated_nn[1,][1:30])]]
-data_d$treatment[data_nt$idx[unlist(untreated_nn[1,][1:30])]]
-
 
 #replacing index values
 treated_nn = sapply(treated_nn, FUN = function(x){
@@ -402,9 +389,6 @@ treated_nn = sapply(treated_nn, FUN = function(x){
 untreated_nn = sapply(untreated_nn, FUN = function(x){
   data_nt$idx[x]
 }) 
-
-treated_nn[1:10, 1:10]
-untreated_nn[1:10, 1:10]
 
 #transpose data frames
 treated_nn = t(treated_nn)
@@ -448,13 +432,12 @@ An essential part of the causal KNN algorithm is the parameter tuning to specify
 ```{r, eval = FALSE, include = TRUE}
 ###parameter tuning to find optimal k value
 #setting parameters for the number of neigbours
-k_start = 100
+k_start = 50
 k_end = 3000
-steps = 100
+steps = 50
 
 #creating sequence of k values to test for
 k_values = seq(from = k_start, to = k_end, by = steps)
-length(k_values)
 
 #preparing uplift data frame
 uplift = data.frame("idx" = data_d$idx,
@@ -465,22 +448,19 @@ for (k in k_values) {
   reaction_nt = apply(untreated_nn, MARGIN = 2, 
                       FUN = function(x){
                         mean(data_d$visit[x[1:k]])
-                        }
-                      )
+                      }
+  )
   
   reaction_t = apply(treated_nn, MARGIN = 2, 
                      FUN = function(x){
                        mean(data_d$visit[x[1:k]])
-                       }
-                     )
+                     }
+  )
   
   uplift[paste("uplift_",k, sep = "")] = reaction_t - reaction_nt
   
   print(paste("k = ", k))
 }
-
-#check result
-uplift[1:10, ]
 ```
 
 ## Transformed Outcome Loss Calculation
@@ -504,10 +484,6 @@ trans_out = sapply(uplift$idx, FUN = function(x){
                       w_i = data$treatment[x], 
                       target = data$visit[x])
 })
-
-trans_out[1:50]
-data$treatment[1:20]
-data$visit[1:20]
 
 uplift$trans_out = trans_out
 rm(trans_out)
@@ -651,7 +627,6 @@ drop_cols = c("visit",
               "segment.No.E.Mail",
               "uplift")
 
-
 #setting optimal k value from the parameter tuning above
 k = outcome_loss$k[which.min(outcome_loss$loss)] + 1
 
@@ -665,8 +640,6 @@ treated_nn = data.frame(treated_nn$nn.index)
 #deleting first column
 treated_nn = treated_nn[, 2:ncol(treated_nn)]
 
-treated_nn[1:10, 1:10]
-
 
 #calculate indices of k untreated nearest neighbours
 untreated_nn = get.knnx(data_nt[, !(names(data_nt) %in% drop_cols)], 
@@ -677,12 +650,6 @@ untreated_nn = data.frame(untreated_nn$nn.index)
 #deleting first column
 untreated_nn = untreated_nn[, 2:ncol(untreated_nn)]
 
-untreated_nn[1:10, 1:10]
-
-#checking results
-data_d$treatment[data_t$idx[unlist(treated_nn[1,][1:30])]]
-data_d$treatment[data_nt$idx[unlist(untreated_nn[1,][1:30])]]
-
 #replacing index values
 treated_nn = sapply(treated_nn, FUN = function(x){
   data_t$idx[x]
@@ -692,9 +659,6 @@ untreated_nn = sapply(untreated_nn, FUN = function(x){
   data_nt$idx[x]
 }) 
 
-treated_nn[1:10, 1:10]
-untreated_nn[1:10, 1:10]
-
 #transpose data frames
 treated_nn = t(treated_nn)
 untreated_nn = t(untreated_nn)
@@ -702,9 +666,6 @@ untreated_nn = t(untreated_nn)
 #preparing uplift data frame
 uplift = data.frame("idx" = test_set$idx,
                     "treatment" = test_set$treatment)
-
-#rownames(test_set) = 1:nrow(test_set)
-#calculating uplift for specified k values
 
 reaction_nt = apply(untreated_nn, MARGIN = 2, FUN = function(x){
   mean(data_d$visit[x[1:k-1]])
@@ -715,10 +676,6 @@ reaction_t = apply(treated_nn, MARGIN = 2, FUN = function(x){
 })
 
 uplift[paste("uplift_", k, sep = "")] = reaction_t - reaction_nt
-
-
-#check result
-uplift[1:10, ]
 ```
 
 ## Application of Transformed Outcome Approach for general Uplift Models
@@ -726,7 +683,7 @@ uplift[1:10, ]
 The parameter tuning using the transformed outcome loss is also useful for other uplift applications. To show this, the same methodology that was applied to determine the optimal k value for the causal KNN model is here used to find optimal parameters for a causal tree. Different values for parameters are tested and evaluated by using the transformed outcome loss. The minimal outcome loss value again indicates the most favorable parameter value for the model estimation.
 
 ```{r, eval = FALSE, include = TRUE}
-#using transformed outcome for tuning parameters of other models
+#using transformed outcome for tuning parameters of other uplift models
 #different cp for causal tree
 
 #install.packages("devtools")
@@ -752,11 +709,9 @@ for (cp in cp_values) {
   
   uplift_ct[paste("uplift_",cp, sep = "")] = sapply(causal_tree$where, FUN = function(x){causal_tree$frame$yval[x]})
   
-  print(paste("cp = ", cp))
+  print(paste("cp =", cp))
 }
 
-#check result
-uplift_ct[1:30, ]
 
 #calculate the transformed outcome
 uplift_ct$trans_out = sapply(uplift_ct$idx, FUN = function(x){
@@ -804,30 +759,19 @@ alt = "Outcome Loss for Different Complexity Parameters of the Causal Tree Model
 To compare the results of the causal KNN model with the estimations of another uplift model, a causal tree was learned, using the implementation of Susan Athey. The optimal complexity parameter (cp) from the tuning part is used for the CATE predictions of the causal tree.
 
 ```{r, eval = FALSE, include = TRUE}
-library(causalTree)
-
+### building causal tree model for test set
 #extracting optimal vlaue for complexity parameter (cp) from tuning
 optimal_cp = outcome_loss$cp[which.min(outcome_loss$loss)]
 
 #learning causal tree model for the test set
-causal_tree = causalTree(visit~.-spend -conversion -idx -segment.Mens.E.Mail -segment.Womens.E.Mail -segment.No.E.Mail, data = test_set, treatment = test_set$treatment, split.Rule = "CT", cv.option = "CT", split.Honest = T, cv.Honest = T, split.Bucket = F, xval = 5, cp = optimal_cp, minsize = 20, propensity = e_x)
-
-
-causal_tree$frame$yval[1:10]
-causal_tree$where[1:10]
-
-max(causal_tree$where)
-length(causal_tree$frame$yval)
+causal_tree = causalTree(visit~.-spend -conversion -idx -segment.Mens.E.Mail -segment.Womens.E.Mail -segment.No.E.Mail, 
+                         data = test_set, treatment = test_set$treatment, split.Rule = "CT", cv.option = "CT", 
+                         split.Honest = T, cv.Honest = T, split.Bucket = F, xval = 5, cp = optimal_cp, minsize = 20, 
+                         propensity = e_x)
 
 uplift_ct = data.frame("idx" = test_set$idx, "treatment" = test_set$treatment, "visit" = test_set$visit) 
 
 uplift_ct$uplift = sapply(causal_tree$where, FUN = function(x){causal_tree$frame$yval[x]})
-
-uplift_ct$uplift[1:10]
-causal_tree$where[1:10]
-causal_tree$frame$yval[causal_tree$where[1:10]]
-
-head(uplift_ct)
 ```
 
 
@@ -887,19 +831,17 @@ mse_ct
 mse
 mse_ct
 ´´´
+
 ## Qini Coefficient for evaluation of the causal KNN model
 
 The Gini-Coefficient is a widely used metric to compare the fit of different modeling approaches on a particular data set. The metric is intuitive and applicable, since it provides a single value for the evaluation. The value of the Gini Coefficient is defined between 0 and 1, where 1 represents a perfect model and 0 indicates a fit that is not performing any better than a random ranking of customers. Devriendt states that the Gini-Coefficient, however, is not readily applicable in uplift modeling context, since, for every class, we have individuals from treatment and control group. Therefore in this context, the so called "Qini-Coefficient" is preferred. The Qini Coefficient is mathematically equal to the difference of the Gini-Curve for the treatment group and the control group. 
 The qini coefficient provides an opportunity to evaluate uplift models, according to the treatment effect estmations. Since the qini is a common indicator for the quality of uplift models, it is used here to further evaluate the causal KNN model results.
 
-´´´{r, eval = FALSE, include = TRUE}
+```{r, eval = FALSE, include = TRUE}
 ###qini plot
 #random assignment of treatments
-uplift[1:10, ]
 qini_data_rnd = data.frame(uplift)
 qini_data_rnd$visit = test_set$visit
-
-plot(cumsum(qini_data_rnd$visit))
 
 #incremental gain
 segments = seq(0, nrow(qini_data_rnd), by = 100)
@@ -919,15 +861,9 @@ incremental_gain[1:10,]
 sum(qini_data_rnd$visit[1:100])
 sum(qini_data_rnd$visit)
 
-plot(incremental_gain$cumsum)
-
-as_random = incremental_gain$cumsum
-
 
 #model assignment of treatments
 qini_data_model = qini_data_rnd[order(qini_data_rnd[, 3], decreasing = TRUE), ]
-
-plot(cumsum(qini_data_model$visit))
 
 #incremental gain
 segments = seq(0, nrow(qini_data_model), by = 100)
@@ -942,37 +878,20 @@ for (i in 1:(nrow(incremental_gain))){
 
 #cumulative reactions
 incremental_gain$cumsum = cumsum(incremental_gain$sum)
-incremental_gain[1:10,]
 
-sum(qini_data_model$visit[1:100])
-sum(qini_data_model$visit)
-
-plot(incremental_gain$cumsum)
-
-as_model = incremental_gain$cumsum
-
-test_set$visit[1:50]
-qini_data_model$visit[1:50]
-
-sum(test_set$visit[1:5000])
-sum(qini_data_model$visit[1:5000])
 
 #plotting qini curves of the causal knn predictions
-qini_data_rnd[1:10, ]
-qini_data_model[1:10, ]
-
-qini_plot_data = data.frame("visit_rnd" = cumsum(qini_data_rnd$visit), "visit_model" = cumsum(qini_data_model$visit), "idx" = 1:nrow(qini_data_rnd))
+qini_plot_data = data.frame("visit_rnd" = cumsum(qini_data_rnd$visit), 
+                            "visit_model" = cumsum(qini_data_model$visit), 
+                            "idx" = 1:nrow(qini_data_rnd))
 
 library(ggplot2)
 
 qini_plot = ggplot(data = qini_plot_data, aes(x = idx)) +
   geom_smooth(aes(y = visit_rnd), method = "lm", se = FALSE) +
   geom_smooth(aes(y = visit_model), method = "loess", se = FALSE, span = 2, color = "red") + 
-  labs(title = "Qini-Curves of Treatment Assignment", x = "Observations", y = "Cumulative Visitations of the Website") +
+  labs(title = "Qini-Curves of Treatment Assignment for Causal KNN Model", x = "Observations", y = "Cumulative Visitations of the Website") +
   theme_light()
-
-max(qini_plot_data$visit_rnd)
-max(qini_plot_data$visit_model)
 
 qini_plot
 
@@ -994,25 +913,20 @@ auuc_cknn
 
 #plotting qini curves of the causal tree predictions
 #random assignment of treatments
-uplift[1:10, ]
 qini_data_rnd[, 3] = NULL
 qini_data_rnd$uplift = uplift_ct$uplift
 
 qini_data_model = qini_data_rnd[order(qini_data_rnd$uplift, decreasing = TRUE), ]
 
-qini_data_rnd[1:10, ]
-qini_data_model[1:10, ]
-
-qini_plot_data = data.frame("visit_rnd" = cumsum(qini_data_rnd$visit), "visit_model" = cumsum(qini_data_model$visit), "idx" = 1:nrow(qini_data_rnd))
+qini_plot_data = data.frame("visit_rnd" = cumsum(qini_data_rnd$visit), 
+                            "visit_model" = cumsum(qini_data_model$visit), 
+                            "idx" = 1:nrow(qini_data_rnd))
 
 qini_plot_ct = ggplot(data = qini_plot_data, aes(x = idx)) +
   geom_smooth(aes(y = visit_rnd), method = "lm", se = FALSE) +
   geom_smooth(aes(y = visit_model), method = "loess", se = FALSE, span = 2, color = "red") + 
-  labs(title = "Qini-Curves of Treatment Assignment", x = "Observations", y = "Cumulative Visitations of the Website") +
+  labs(title = "Qini-Curves of Treatment Assignment for Causal Tree Model", x = "Observations", y = "Cumulative Visitations of the Website") +
   theme_light()
-
-max(qini_plot_data$visit_rnd)
-max(qini_plot_data$visit_model)
 
 qini_plot_ct
   
@@ -1028,9 +942,11 @@ for(i in 1:(nrow(qini_plot_data)-1)){
   x = qini_plot_data$model_cumsum[i] + 0.5*(qini_plot_data$model_cumsum[i+1]-qini_plot_data$model_cumsum[i])
   auuc_ct = auuc_ct + x
 }
+
+#compare AUUC for both models
 auuc_ct
 auuc_cknn
-```
+´´´
 
 <img align="center" width="800"
 style="display:block;margin:0 auto;" 
