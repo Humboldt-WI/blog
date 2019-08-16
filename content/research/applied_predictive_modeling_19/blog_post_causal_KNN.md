@@ -122,6 +122,7 @@ There are various covariates that characterize customers according to their pers
 ```r
 ###load data
 library(readr)
+
 data = read_csv("Data/mail_data.csv")
 head(data)
 ```
@@ -333,7 +334,7 @@ data_d = data_d[1:10000, ]
 data_nt = data_d[which(data_d$segment.No.E.Mail == 1),]
 
 #2 treatment
-data_t = data_d[which(data_d$segment.No.E.Mail == 0),]
+data_t  = data_d[which(data_d$segment.No.E.Mail == 0),]
 
 #count non-zero observations of the target variables
 sum(data_d$visit != 0)
@@ -395,7 +396,7 @@ untreated_nn = sapply(untreated_nn, FUN = function(x){
 }) 
 
 #transpose data frames
-treated_nn = t(treated_nn)
+treated_nn   = t(treated_nn)
 untreated_nn = t(untreated_nn)
 ```
 
@@ -437,8 +438,8 @@ An essential part of the causal KNN algorithm is the parameter tuning to specify
 ###parameter tuning to find optimal k value
 #setting parameters for the number of neigbours
 k_start = 50
-k_end = 3000
-steps = 50
+k_end   = 3000
+steps   = 50
 
 #creating sequence of k values to test for
 k_values = seq(from = k_start, to = k_end, by = steps)
@@ -608,7 +609,7 @@ The next section presents the causal KNN method in an application case, where a 
 
 ```{r, eval = FALSE, include = TRUE}
 ###using causal knn as predictive model
-test_set = createDummyFeatures(data[10001:20000, ])
+test_set     = createDummyFeatures(data[10001:20000, ])
 test_set$idx = 1:nrow(test_set)
 
 #splitting data set
@@ -664,7 +665,7 @@ untreated_nn = sapply(untreated_nn, FUN = function(x){
 }) 
 
 #transpose data frames
-treated_nn = t(treated_nn)
+treated_nn   = t(treated_nn)
 untreated_nn = t(untreated_nn)
 
 #preparing uplift data frame
@@ -698,7 +699,7 @@ library(causalTree)
 
 #setting parameters for the complexity parameters to test for
 cp_start = 0
-cp_end = 0.0001
+cp_end   = 0.0001
 cp_steps = 0.00001
 
 #creating sequence of k values to test for
