@@ -128,8 +128,9 @@ style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_u
 Multiple Divergence:
 
 \begin{equation}
-D(P^{T_1}(Y),...P^{T_k}(Y):P^C(Y)|A) = \sum_{a}\frac{N(a)}{N}D(P^{T_1}(Y|a),...,P^{T_k}(Y|a):P^{C}(Y|a))
+D(P^{T_1}(Y),...P^{T_k}(Y):P^C(Y)|A)
 \end{equation}
+ = \sum_{a}\frac{N(a)}{N}D(P^{T_1}(Y|a),...,P^{T_k}(Y|a):P^{C}(Y|a))
 f(t) = Y_t^T - \frac{Y_t^C N_t^T}{N_t^C}
 
 Z = \sum_{t=0}^{K}\frac{1}{p_t}Y I \{ h(X)=t \} I \{ T=t \}
