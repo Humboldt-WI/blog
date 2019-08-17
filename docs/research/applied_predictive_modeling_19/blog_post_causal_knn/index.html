@@ -190,8 +190,7 @@ LatexIT.add(&lsquo;p&rsquo;,true);
 
 <h2 id="abstract">Abstract</h2>
 
-<p>a
-Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp; Misra (2018), where an uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbor algorithm provides an interesting opportunity for the estimation of treatment effects in small groups. <!--Additional tweaks to the parameter tuning procedure make the approach to an interesting case study in the extension of machine learning concepts to causal modeling in general.--> The Causal KNN algorithm provides a simple and effective framework for the direct estimation of the Conditional Average Treatment Effect (CATE). Furthermore, the Transformed Outcome, described in Athey and Imbens (2015b), is used for the parameter tuning and evaluation of Uplift Models. The Causal KNN Algorithm is presented in an application framework, using a real world data set from an E-Mail marketing campaign.</p>
+<p>Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp; Misra (2018), where an uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbor algorithm provides an interesting opportunity for the estimation of treatment effects in small groups. <!--Additional tweaks to the parameter tuning procedure make the approach to an interesting case study in the extension of machine learning concepts to causal modeling in general.--> The Causal KNN algorithm provides a simple and effective framework for the direct estimation of the Conditional Average Treatment Effect (CATE). Furthermore, the Transformed Outcome, described in Athey and Imbens (2015b), is used for the parameter tuning and evaluation of Uplift Models. The Causal KNN Algorithm is presented in an application framework, using a real world data set from an E-Mail marketing campaign.</p>
 
 <h2 id="motivation-max">Motivation(Max):</h2>
 
@@ -200,11 +199,14 @@ Beyond estimating the overall effect of a treatment, the uplift, econometric and
 <li>Use Case: &ldquo;Business Evaluation&rdquo;:
 
 <ul>
-<li>Potential Outcome Framework (Rubin 2015)</li>
+<li>Potential Outcome Framework (Rubin 1974, 1977,1978)</li>
 <li>Targeting Cost Discussion: Klare Abgrenzung von der Diskussion der Targeting Cost (-&gt; Verweis auf entsprechende Literatur)</li>
 <li>Micro-Marketing Context (due to computational restrictions)</li>
 </ul></li>
 </ul>
+
+<p>Why Causal?
+Causal Inference is based on the potential outcome framework developed by Rubin. In this framework, causal effects are comparisons of potential outcomes defined on the same unit. This blogpost deals with the Causal KNN Method. Since we are calculating average differences between potential outcomes based on the neighbourhood of one individual, the term &ldquo;causal&rdquo; is justified with the explanation just given.</p>
 
 <h2 id="summary-of-the-literature-foundation-tim">Summary of the Literature Foundation (Tim)</h2>
 
@@ -219,7 +221,7 @@ alt = "Classification of customer base along two dimensions: Targeting and React
 
 <p>The aim of this paper is to explain estimation methods that directly predict the individual incremental effect of targeting.</p>
 
-<p>To evaluate the treatment effect estimations, there are multiple approaches in the marketing literature (see e.g. Gutierrez and Gérardy, 2016). An observed uplift data set has to consists of the observations $D = (Y_i, X_i, W_i)^N$, where $N$ is the number of customers, $Y_i$ is the target variable, $W_i$ the binary treatment variable (0,1) and $X_i$ represents the covariates vor each unit.</p>
+<p>To evaluate the treatment effect estimations, there are multiple approaches in the marketing literature (see e.g. Gutierrez and Gï¿½rardy, 2016). An observed uplift data set has to consists of the observations $D = (Y_i, X_i, W_i)^N$, where $N$ is the number of customers, $Y_i$ is the target variable, $W_i$ the binary treatment variable (0,1) and $X_i$ represents the covariates vor each unit.</p>
 
 <ul>
 <li>Average Treatment effect: $E(Y_i(1)-Y_i(0)$</li>
@@ -240,10 +242,21 @@ alt = "Classification of customer base along two dimensions: Targeting and React
 <p>Here, $\tau(x)$ is the conditional average treatment effect (CATE): $\tau(x)=E(Y_i(1)-Y_i(0) | X_i=x)$. The CATE describes the average causal effect of targeting for a sub-population of customers, with identical features. It is shown in Hitsch, Misra (2018), that the CATE is sufficient to identify an optimal targeting policy. But generally the CATE can not be inferred from the data. To account for the fundamental problem of unobservable, individual treatment effects, Hitsch and Misra (2018) introduced three assumptions to the data, to be able to identify the CATE. If the data satisfies the following assumptions, the conditional average treatment effect is identifiable.</p>
 
 <ol>
-<li>Unconfoundedness: $Y_i(0), Y_i(1) \bot W_i | X_i$
-It means, that ones individuals outcome does not depend on the treatment conditional on X. &lsquo;The treatment effect is identical within a subset of customers with identical features.&rsquo; This condition can be fulfilled by using a randomized sample set. In marketing, it is often possible to address campaigns randomized, therefore this condition should be satisfied in general.</li>
-<li>The Overlap Assumption: $0 &lt; e(x) &lt; 1$. The propensity score $e(x)$ is the probability of being targeted, conditional on the customers features and can be translated as the &lsquo;Targeting Probability&rsquo; for each unit. This targeting probabilty has to be defined strictly between zero and one.</li>
-<li>Stable Unit Treatment Value Assumption (SUTVA): The treatment received by customer i, $W_i$, has no impact on the behavior of any other customer. There are no social interaction or equilibrium effects among the observed units. According to Hitsch (2018), the SUTVA assumption should be satisfied in general. It appears implausible to observe economically significant social effects due to the receipt of e.g. a catalog.<br /></li>
+<li>Unconfoundedness: $Y_i(0), Y_i(1) \bot W_i | X_i$.</li>
+</ol>
+
+<p>It means, that ones individuals outcome does not depend on the treatment conditional on the covariates (Rubin, 1990). &lsquo;The treatment assignment is random within a subset of customers with identical features.&rsquo; (Hitsch &amp; Misra, 2018) This condition can be fulfilled by using a randomized sample set. In marketing, it is often possible to address campaigns randomized, therefore this condition should be satisfied in general.</p>
+
+<ol>
+<li>The Overlap Assumption: $0 &lt; e(x) &lt; 1$,</li>
+</ol>
+
+<p>where $e(X)$ is the so called propensity score (Rosenbaum and Rubin, 1983). The propensity score is the probability of being targeted, conditional on the customers features and can be translated as the &lsquo;Targeting Probability&rsquo; for each unit. Mathematically, it is defined as $e(x)=P(W_i=1|X_i=x)=\mathbb{E}[W_i=1|X_i=x]$
+This targeting probabilty has to be defined strictly between zero and one.</p>
+
+<ol>
+<li>Stable Unit Treatment Value Assumption (SUTVA):
+The treatment received by customer i, $W_i$, has no impact on the behavior of any other customer. There are no social interaction or equilibrium effects among the observed units. According to Hitsch (2018), the SUTVA assumption should be satisfied in general. It appears implausible to observe economically significant social effects due to the receipt of e.g. a catalog.<br /></li>
 </ol>
 
 <p>If those three assumptions are satisfied, we obtain the following formula to calculate the &lsquo;true&rsquo; conditional average treatment effect:
@@ -258,13 +271,6 @@ $\tau(x) = \mathbb{E}[Y_i|X_i,W_i = 1] - \mathbb{E}[Y_i|X_i,W_i = 0]$</p>
 <p>The proposed approach from Hitsch and Misra (2018) allows to evaluate the profit of several different targeting policies, by using only one single randomized sample. This offers the opportunity to compare various targeting policies, without the need for multiple field experiments. According to Hitsch and Misra (2018), an optimal targeting policy has to concentrate on the binary treatment case, where every unit is either treated or not and that a unit is only treated, if the incremental value of the treatment exceeds the targeting costs. Hitsch and Misra (2018) introduce their approach as a direct estimation method. Direct estimation methods focus on measuring and predicting the treatment effect of certain actions. This is based on the squared difference between the true and the estimated treatment effect for each unit i: =$\mathbb{E}[(\tau(X_i)-\hat{\tau}(X_i))^2]$. Opposed to direct estimation approaches, where the focus lies on estimating the treatment effect itself, indirect estimation methods concentrate on the observed and the predicted outcome levels. To dicide for an optimal targeting policy, the squared error loss between the two outcome levels is minimized: $\mathbb{E}[(Y_i-\hat{\mu}(X_i,W_i))^2]$. Therefore the indirect approaches focus on the outcome levels, instead on the treatment effect itself. Hitsch and Misra (2018) describe the indirect approaches as conceptually wrong in the field of uplift estimation. They recommend the usage of direct estimation methods, since they yield at more accurate estimations of the treatment effect. The Causal KNN estimation, combined with the transfomed outcome, can be used to derive an approximation of the CATE for each observation in an uplift data set.</p>
 
 <h2 id="the-causal-knn-algorithm-tim">The Causal KNN Algorithm(Tim)</h2>
-
-<ul>
-<li>Algorithm</li>
-<li>Application: Visit (Spend auch möglich, aber zu unbalanced Data)</li>
-<li>Implementation (Vorstellung &ldquo;FNN-Package&rdquo;)</li>
-<li>Einordnung als Two-Model-Approach &amp; Direct Estimation Method (vgl. Hitsch)</li>
-</ul>
 
 <!--
 $\hat{\tau}_K(x) =$ $\frac{1}{K}$ $\sum\limits_{i \in N_K(x,1)}$
@@ -583,36 +589,63 @@ untreated_nn = t(untreated_nn)
 
 <h2 id="transformed-outcome-approach">Transformed Outcome Approach</h2>
 
-<p>Vorstellung &ldquo;Transformed Outcome Approach&rdquo; (Max)
-Rechtfertigung (Mathematisch + Intuitiv)</p>
+<p>Naturally, the optimal value of k is given for the minimum of the squared outcome loss:</p>
 
-<ul>
-<li>&ldquo;Transformed Outcome Approach&rdquo; (Max)
+<p>$\mathbb{E}[(\tau_k(X_i)-\widehat{\tau_k}(X_i))^2]$</p>
 
-<ul>
-<li>Justification</li>
-</ul></li>
-</ul>
+<p>Unfortunately, as mentioned before, this criterion is infeasible, since the true CATE $\tau_K(X_i)$ is not observable. The transformed outcome approach is a method to somehow overcome the described fundamental problem of causal inference by estimating the true CATE. In the literature, we find multiple approaches to do so. Gutierrez (2017) presents three different methods. First, he mentions the two-model approach that trains two models, one for the treatment group and one for the control group. Second, he mentions the class transformation method that was first introduced by Jaskowski and Jaroszewicz (2012). Their approach works for binary outcome variables (i.e. $Y_i^{obs.}=\text{{0,1}}$) and a balanced dataset (i.e. $e(X_i)=\frac{1}{2}$). A general formulation for the class transformation, which is even applicable for numeric outcome variables and an unbalanced dataset is given by Athey and Imbens (2015b). The transformed outcome is defined as follows:</p>
 
-<p>In order to tune the parameter k, we are using the transformed outcome loss, which is a proxy for the true conditional treatment effect. The transformed outcome is defined as:</p>
+<p>$Y_i^*=W_i\cdot\frac{Y_i(1)}{e(X_i)}-(1-W_i)\cdot\frac{Y_i(0)}{1-e(X_i)}$</p>
 
-<p>$Y_i^<em>=W_i</em>\frac{Y_i(1)}{e(X_i)}-(1-W_i)*\frac{Y_i(0)}{1-e(X_i)}$</p>
+<p>We can rewrite this formula:</p>
 
-<p>Since it only depends on the potential outcome that corresponds to the realized treatment level, the transformed outcome can be calculated from the observed outcome $Y_i$:</p>
+<p>$Y_i^*=\frac{W_i - e(X_i)}{e(X_i)(1-e(X_i))}\cdot Y_i^{obs.}$</p>
 
-<p>$Y_i^*=\frac{W_i - e(X_i)}{e(X_i)(1-e(X_i))}Y_i$&gt;</p>
+<p>The latter formula allows us to calculate the transformed outcome with the observed outcome. In case the propensity score is constant for every individual, i.e. complete randomization, the formula simplifies to $Y_i^*=Y_i^{obs}/p$ (c.f. Athey and Imbens 2015b).</p>
 
-<p>Since we are having a formula for the predicted outcome, we still need to decide on the actual outcome.
-For a randomized sample, the propensity score $e(x)$ is not relevant, since it is accounted in every individuals treatment effect in the same manner.
-It can be shown that, under unconfoundedness, the transformed outcome is an unbiased estimator for the actual treatment effect.</p>
+<p>Now, why is the transformed outcome helpful? In the following, we will present two appealing properties of the transformed outcome.</p>
 
-<h3 id="intuitive-interpretation-of-the-transformed-outcome">Intuitive Interpretation of the transformed Outcome</h3>
+<p>First, with the required assumption of unconfoundedness and no overlap, it can be shown that the transformed outcome is an unbiased estimator for the CATE:</p>
+
+<p>$Y_i^*=W_i\cdot\frac{Y_i(1)}{e(X_i)}-(1-W_i)\cdot\frac{Y_i(0)}{1-e(X_i)}\quad|\quad\mathbb{E}[\cdot|W_i,X_i=x]$</p>
+
+<p>$\Longrightarrow\mathbb{E}[Y_i^*]=\mathbb{E}[W_i|X_i=x]\cdot\frac{\mathbb{E}[Y_i|W_i=1,X_i=x]}{e(X_i)}-\mathbb{E}[1-W_i|X_i=x]\cdot\frac{\mathbb{E}[Y_i|W_i=0,X_i=x]}{1-e(X_i)}$</p>
+
+<p>$=e(X_i)\cdot\frac{\mathbb{E}[Y_i|W_i=1,X_i=x]}{e(X_i)}-(1-e(X_i))\cdot\frac{\mathbb{E}[Y_i|W_i=0,X_i=x]}{1-e(X_i)}$</p>
+
+<p>$=\mathbb{E}[Y_i|W_i=1,X_i=x]-\mathbb{E}[Y_i|W_i=0,X_i=x]\quad|\quad\textbf{Unconfoundedness: $Y_i(0), Y_i(1) \bot W_i | X_i$ }$</p>
+
+<p>$=\mathbb{E}[Y_i(1)-Y_i(0)|X_i=x]$</p>
+
+<p>$=\tau(X)$</p>
+
+<p>If the overlap assumption is violated, it would not be possible to determine $\mathbb{E}[Y_i|W_i=1, X_i=x]$ and $\mathbb{E}[Y_i|W_i=0, X_i=x]$, because there would be only treated or untreated individuals for specific values of $x$. Since the estimator $Y_i^*=\tau_K(X_i)+\nu_i$ is unbiased, the error term $\nu_i$ is orthogonal to any function of $X_i$ (i.e. exogeneity assumption $\mathbb{E}[\nu_i|X_i]=0$).</p>
+
+<p>The second appealing property of the transformed outcome is then demonstrated by Hitsch and Misra (2018):</p>
+
+<p>$\mathbb{E}[(Y_i^*-\widehat{\tau_K}(X_i))^2|X_i] = \mathbb{E}[({\tau_K}(X_i)+\nu_i-\widehat{\tau_K}(X_i))^2|X_i]$</p>
+
+<p>$=\mathbb{E}[({\tau_K}(X_i)-\widehat{\tau_K}(X_i))^2+2\cdot({\tau_K}(X_i)-\widehat{\tau_K}(X_i))\cdot\nu_i+\nu_i^2|X_i]$</p>
+
+<p>$=\mathbb{E}[({\tau_K}(X_i)-\widehat{\tau_K}(X_i))^2|X_i]+\mathbb{E}[\nu_i^2|X_i]$.</p>
+
+<p>$\Longrightarrow\mathbb{E}[(Y_i^*-\widehat{\tau_K}(X_i))^2]=\mathbb{E}[({\tau_K}(X_i)+\nu_i-\widehat{\tau_K}(X_i))^2)]=\mathbb{E}[({\tau_K}(X_i)-\widehat{\tau_K}(X_i))^2]+\mathbb{E}[\nu_i^2]$</p>
+
+<p>Where we used the exogeneity assumption as well as the linearity of the expected value operator in equation three.
+As we can see,  $\mathbb{E}[\nu_i^2]$ does not depend on the value of K, so minimization of the transformed outcome loss also minimizes the infeasible outcome loss.
+Therefore the transformed outcome allows us to estimate the true CATE and with this, we can find an optimal value for the parameter k.</p>
 
 <h3 id="intuitive-interpretation-of-the-mean-squared-error-loss">Intuitive Interpretation of the mean squared error loss</h3>
 
-<h3 id="explanation-why-an-optimal-choice-of-k-is-sufficient">Explanation, why an optimal choice of K is sufficient</h3>
+<p>$MSE_b$=$\frac{1}{|\tau_b|}$</p>
 
-<h3 id="parameter-tuning-using-the-transformed-outcome">Parameter Tuning using the Transformed Outcome</h3>
+<p>$\sum_\limits{i \in {\tau_b}}$</p>
+
+<p>$(Y_i^*-\widehat{\tau_b}(X_i))^2$</p>
+
+<p>where $b$ is a bootstrap sample.</p>
+
+<h2 id="parameter-tuning-using-the-transformed-outcome">Parameter Tuning using the Transformed Outcome</h2>
 
 <p>An essential part of the causal KNN algorithm is the parameter tuning to specify the k value, that leads to the most accurate treatment effect estimations. For the parameter tuning, several values for k are tested and different CATE estimations are stored in a separate data frame. To derive estimations for all observations in the data set, the differences of the mean outcome variable values, of the k treated and untreated nearest neigbours, are calculated. Several iterations of this precedure yield at a data frame, containing the individual uplift estimations for different values of k. To select the most accurate estimation, the transformed outcome is used to decide for a preferable k value.</p>
 
@@ -969,7 +1002,9 @@ Uplift Metric (vgl. Gutierrez p. 9 ff.)</p>
 
 <h3 id="mse">MSE</h3>
 
-<p>To find the most promising observations to target, the uplift data frame is sorted, according to the individual CATE estimations. After specifying the percentage of individuals to receive a treatment, it is possible to select the first x% observations from the sorted data frame. For these individuals, a treatment is expected to have the highest impact on the outcome variable. To evaluate the model, Hitsch and Misra (2018) propose the mean squared error as indicator of the model quality. This measure also allows to compare the model with the proposed treatment assignment of other uplift models. Since we have seen that the transformed outcome is an unbiased estimator for the CATE, we can also use this metric to evaluate the model fit. It is shown in Gutierrez and Gérardy (2016) and Hitsch and Misra (2018) that, under unconfoundedness, the mean squared error, based on the transformed outcome, is applicable for the comparison of different model fits on a particular data set.</p>
+<p>To find the most promising observations to target, the uplift data frame is sorted, according to the individual CATE estimations. After specifying the percentage of individuals to receive a treatment, it is possible to select the first x% observations from the sorted data frame. For these individuals, a treatment is expected to have the highest impact on the outcome variable. To evaluate the model, Hitsch and Misra (2018) propose the mean squared error as indicator of the model quality. This measure also allows to compare the model with the proposed treatment assignment of other uplift models. Since we have seen that the transformed outcome is an unbiased estimator for the CATE, we can also use this metric to evaluate the model fit. It is shown in Gutierrez and Gerardy (2016) and Hitsch and Misra (2018) that, under unconfoundedness, the mean squared error, based on the transformed outcome, is applicable for the comparison of different model fits on a particular data set. In the last paragraph, we have summarized how to use the transformed outcome in order to determine an optimal value for the parameter K in the Causal-KNN model. However, the transformed outcome can be used for model evaluation as well (c.f. Hitsch &amp; Misra, p.27, 2018). We can use the transformed outcome in the same manner as we used it when we wanted to find an optimal k value. The criterion to minimize is therefore given by:</p>
+
+<p>$MSE_b=\frac{1}{|\tau<em>b|}\sum\limits</em>{i\in{\tau_b}}(Y_i^*-\widehat{\tau_b}(X_i))^2$</p>
 
 <pre><code class="language-r,">#sorting observations according to uplift values
 uplift_sorted = uplift[order(uplift[, 3], decreasing = TRUE), ]
@@ -1210,6 +1245,9 @@ Causal Tree          | 0.5803 | 30718837480
 <p>Hitsch, G. J., &amp; Misra, S. (2018). Heterogeneous treatment effects and optimal targeting policy evaluation. Available at SSRN 3111957.</p>
 
 <p>Ascarza, E., Fader, P. S., &amp; Hardie, B. G. (2017). Marketing models for the customer-centric firm. In Handbook of marketing decision models (pp. 297-329). Springer, Cham.</p>
+
+<p>Paul R. Rosenbaum; Donald B. Rubin, The Central Role of the Propensity Score in Observational Studies for Causal
+Effects, Biometrika, Vol. 70, No. 1. (Apr., 1983), pp. 41-55.</p>
 
 <p>Rzepakowski, P., &amp; Jaroszewicz, S. (2012). Uplift modeling in direct marketing. Journal of Telecommunications and Information Technology, 43-50.</p>
 

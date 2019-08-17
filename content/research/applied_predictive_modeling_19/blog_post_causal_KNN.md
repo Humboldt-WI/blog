@@ -27,9 +27,12 @@ Beyond estimating the overall effect of a treatment, the uplift, econometric and
 ## Motivation(Max):
   - Anwendungsbereiche "Treatment Effect"
   - Use Case: "Business Evaluation":
-    - Potential Outcome Framework (Rubin 2015) 
+    - Potential Outcome Framework (Rubin 1974, 1977,1978) 
     - Targeting Cost Discussion: Klare Abgrenzung von der Diskussion der Targeting Cost (-> Verweis auf entsprechende Literatur) 
     - Micro-Marketing Context (due to computational restrictions) 
+
+Why Causal? 
+Causal Inference is based on the potential outcome framework developed by Rubin. In this framework, causal effects are comparisons of potential outcomes defined on the same unit. This blogpost deals with the Causal KNN Method. Since we are calculating average differences between potential outcomes based on the neighbourhood of one individual, the term "causal" is justified with the explanation just given. 
 
 ## Summary of the Literature Foundation (Tim)
 This blogpost has strong relations to the work of Hitsch & Misra (2018). A key goal of their paper is to compare many different estimates of different optimal targeting policies, using the inverse probability weighted profit estimator. 
@@ -415,17 +418,25 @@ To estimate a robust CATE, we would likely use all customers in the neighborhood
 
 ## Transformed Outcome Approach
 
-The transformed outcome approach is a method to somehow overcome the described fundamental problem of causal inference by estimating the true CATE. In the literature, we find multiple approaches to do so. Gutierrez (2017) presents three different methods. First, he mentions the two-model approach that trains two models, one for the treatment group and one for the control group. Second, he mentions the class transformation method that was first introduced by Jaskowski and Jaroszewicz (2012). Their approach works for binary outcome variables (i.e. $Y_i^{obs.}=\text{{0,1}}$) and a balanced dataset(i.e. $e(X_i)=\frac{1}{2}$). A general formulation for the class transformation, which is applicable for numeric outcome variables and an unbalanced dataset is given by Athey and Imbens (2015b). The transformed outcome is defined as follows: 
+Naturally, the optimal value of k is given for the minimum of the transformed outcome loss: 
+
+$\mathbb{E}[(\tau_k(X_i)-\widehat{\tau_k}(X_i))^2]$
+
+Unfortunately, as mentioned before, this criterion is infeasible, since the true CATE $\tau_K(X_i)$ is not observable. The transformed outcome approach is a method to somehow overcome the described fundamental problem of causal inference by estimating the true CATE. In the literature, we find multiple approaches to do so. Gutierrez (2017) presents three different methods. First, he mentions the two-model approach that trains two models, one for the treatment group and one for the control group. Second, he mentions the class transformation method that was first introduced by Jaskowski and Jaroszewicz (2012). Their approach works for binary outcome variables (i.e. $Y_i^{obs.}=\text{{0,1}}$) and a balanced dataset (i.e. $e(X_i)=\frac{1}{2}$). A general formulation for the class transformation, which is even applicable for numeric outcome variables and an unbalanced dataset is given by Athey and Imbens (2015b). The transformed outcome is defined as follows: 
 
 $Y_i^*=W_i\cdot\frac{Y_i(1)}{e(X_i)}-(1-W_i)\cdot\frac{Y_i(0)}{1-e(X_i)}$
 
-We can rewrite this formula as follows:
+We can rewrite this formula:
 
 $Y_i^*=\frac{W_i - e(X_i)}{e(X_i)(1-e(X_i))}\cdot Y_i^{obs.}$
 
-The latter formula allows us to calculate the transformed outcome with the observed outcome. With the required assumption of unconfoundedness, the transformed outcome is an unbiased estimator for the CATE: 
+The latter formula allows us to calculate the transformed outcome with the observed outcome. In case the propensity score is constant for every individual, i.e. complete randomization, the formula simplifies to $Y_i^*=Y_i^{obs}/e(x)$ for the treated individuals and $-Y_i^{obs}/(1-e(x))$ for the individuals that were not treated (c.f. Athey and Imbens 2015b).
 
-$Y_i^*=W_i\cdot\frac{Y_i(1)}{e(X_i)}-(1-W_i)\cdot\frac{Y_i(0)}{1-e(X_i)}\quad|\quad\mathbb{E}[\cdot|X_i=x]$
+ Now, why is the transformed outcome helpful? In the following, we will present two appealing properties of the transformed outcome.
+
+First, with the required assumption of unconfoundedness and no overlap, it can be shown that the transformed outcome is an unbiased estimator for the CATE: 
+
+$Y_i^*=W_i\cdot\frac{Y_i(1)}{e(X_i)}-(1-W_i)\cdot\frac{Y_i(0)}{1-e(X_i)}\quad|\quad\mathbb{E}[\cdot|W_i,X_i=x]$
 
 $\Longrightarrow\mathbb{E}[Y_i^*]=\mathbb{E}[W_i|X_i=x]\cdot\frac{\mathbb{E}[Y_i|W_i=1,X_i=x]}{e(X_i)}-\mathbb{E}[1-W_i|X_i=x]\cdot\frac{\mathbb{E}[Y_i|W_i=0,X_i=x]}{1-e(X_i)}$
 
@@ -437,7 +448,9 @@ $=\mathbb{E}[Y_i(1)-Y_i(0)|X_i=x]$
 
 $=\tau(X)$
 
-Where we used the assumption of no overlap as well. Consequently, for the transformed outcome we have to allow for an error term: $Y_i^*=\tau(X_i)+\nu_i$. Another appealing property of the transformed outcome is demonstrated in the following equations (Hitsch & Misra, 2018): 
+If the overlap assumption is violated, it would not be possible to determine $\mathbb{E}[Y_i|W_i=1, X_i=x]$ and $\mathbb{E}[Y_i|W_i=0, X_i=x]$, because there would be only treated or untreated individuals for specific values of $x$. Since the estimator $Y_i^*=\tau_K(X_i)+\nu_i$ is unbiased, the error term $\nu_i$ is orthogonal to any function of $X_i$ (i.e. exogeneity assumption $\mathbb{E}[\nu_i|X_i]=0$). 
+
+The second appealing property of the transformed outcome is then demonstrated by Hitsch and Misra (2018): 
 
 $\mathbb{E}[(Y_i^*-\widehat{\tau_K}(X_i))^2|X_i] = \mathbb{E}[({\tau_K}(X_i)+\nu_i-\widehat{\tau_K}(X_i))^2|X_i]$
 
@@ -445,20 +458,13 @@ $=\mathbb{E}[({\tau_K}(X_i)-\widehat{\tau_K}(X_i))^2+2\cdot({\tau_K}(X_i)-\wideh
 
 $=\mathbb{E}[({\tau_K}(X_i)-\widehat{\tau_K}(X_i))^2|X_i]+\mathbb{E}[\nu_i^2|X_i]$. 
 
-As we can see, the last equation does not depend on the value of k. Since the error term is independent on k, minimization of the expected transformed outcome loss minimizes the value of k. 
+$\Longrightarrow\mathbb{E}[(Y_i^*-\widehat{\tau_K}(X_i))^2]=\mathbb{E}[({\tau_K}(X_i)+\nu_i-\widehat{\tau_K}(X_i))^2)]=\mathbb{E}[({\tau_K}(X_i)-\widehat{\tau_K}(X_i))^2]+\mathbb{E}[\nu_i^2]$
 
-
-Since we are having a formula for the predicted outcome, we still need to decide on the actual outcome. 
-For a randomized sample, the propensity score $e(x)$ is not relevant, since it is accounted in every individuals treatment effect in the same manner. 
-
-
-### Intuitive Interpretation of the transformed Outcome
-
-### Intuitive Interpretation of the mean squared error loss
-
-### Explanation, why an optimal choice of K is sufficient
-
-### Parameter Tuning using the Transformed Outcome
+In equation three we used the exogeneity assumption as well as the linearity of the expected value operator. 
+As we can see,  $\mathbb{E}[\nu_i^2]$ does not depend on the value of K, so minimization of the transformed outcome loss also minimizes the infeasible outcome loss. 
+Therefore the transformed outcome allows us to estimate the true CATE and with this, we can find an optimal value for the parameter k. 
+ 
+## Parameter Tuning using the Transformed Outcome
 
 An essential part of the causal KNN algorithm is the parameter tuning to specify the k value, that leads to the most accurate treatment effect estimations. For the parameter tuning, several values for k are tested and different CATE estimations are stored in a separate data frame. To derive estimations for all observations in the data set, the differences of the mean outcome variable values, of the k treated and untreated nearest neigbours, are calculated. Several iterations of this precedure yield at a data frame, containing the individual uplift estimations for different values of k. To select the most accurate estimation, the transformed outcome is used to decide for a preferable k value.
 
@@ -828,7 +834,9 @@ Uplift Metric (vgl. Gutierrez p. 9 ff.)
 
 ### MSE
 
-To find the most promising observations to target, the uplift data frame is sorted, according to the individual CATE estimations. After specifying the percentage of individuals to receive a treatment, it is possible to select the first x% observations from the sorted data frame. For these individuals, a treatment is expected to have the highest impact on the outcome variable. To evaluate the model, Hitsch and Misra (2018) propose the mean squared error as indicator of the model quality. This measure also allows to compare the model with the proposed treatment assignment of other uplift models. Since we have seen that the transformed outcome is an unbiased estimator for the CATE, we can also use this metric to evaluate the model fit. It is shown in Gutierrez and G�rardy (2016) and Hitsch and Misra (2018) that, under unconfoundedness, the mean squared error, based on the transformed outcome, is applicable for the comparison of different model fits on a particular data set.
+To find the most promising individuals to target, the uplift data frame is sorted, according to the individual CATE estimations. After specifying the percentage of individuals to receive a treatment, it is possible to select the first x% observations from the sorted data frame. For these individuals, a treatment is expected to have the highest impact on the outcome variable. To evaluate the model, Hitsch and Misra (2018) propose the mean squared error as indicator of the model quality. This measure also allows to compare the model with the proposed treatment assignment of other uplift models. Since we have seen that the transformed outcome is an unbiased estimator for the CATE, we can also use this metric to evaluate the model fit. It is shown in Gutierrez and Gerardy (2016) and Hitsch and Misra (2018) that, under unconfoundedness, the mean squared error, based on the transformed outcome, is applicable for the comparison of different model fits on a particular data set. In the last paragraph, we have summarized how to use the transformed outcome in order to determine an optimal value for the parameter K in the Causal-KNN model. However, the transformed outcome can be used for model evaluation as well (c.f. Hitsch & Misra, p.27, 2018). We can use the transformed outcome in the same manner as we used it when we wanted to find an optimal k value. The criterion to minimize is therefore given by:
+
+$MSE_b=\frac{1}{|\tau_b|}\sum\limits_{i\in{\tau_b}}(Y_i^*-\widehat{\tau_b}(X_i))^2$
 
 ```{r, eval = FALSE, include = TRUE}
 #sorting observations according to uplift values
