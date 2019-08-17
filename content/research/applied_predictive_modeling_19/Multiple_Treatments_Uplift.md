@@ -30,7 +30,7 @@ description = "Evaluation and discussion of Uplift Models for multiple possible 
 4.2 [Expected Outcome](#expected_outcome)</br>
 5. [Experimental Setup](#experiment) <br />
 5.1 [Data Sets](#datasets)</br>
-6 [Results](#evaluationresults)
+6. [Results](#evaluationresults)
 7. [Outlook](#outlook)
 8. [References](#references)
 
@@ -69,33 +69,48 @@ Most advice for marketing pratitioners focuses on social media marketing and on 
 <a  href="https://sproutsocial.com/insights/best-times-to-post-on-social-media/" target="_blank"> "Best times to post on social media for 2019"</a>. Generally these approaches only attempt to maximize the average treatment effect. Since social media usually works in a broadcast style in which each post reaches all users it is not possible to adjust the content or publishing time of a post for specific users or groups of users.</br>
 In their paper <a href = "https://www.researchgate.net/publication/4753376_Time-Series_Models_in_Marketing" target="_blank"> Time Series Models in Marketing </a> the authors look at the application of time series models for marketing. For example they use persistance modeling in order to estimate  the longterm effect of marketing activities. The image below shows the long term impact of an activity on the price promotion elasticity. For detergent there is an immidiate effect, which levels off and reaches the original level after some time. For dairy creamer we also see some recution over time but it remains stable at an elevated level.
 
+<figure>
 <img
 align="center"
 width="305"
 height="362"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/TimeSeries.PNG">
-
+<figcaption align="center">
+<a href="https://www.researchgate.net/publication/4753376_Time-Series_Models_in_Marketing">Source: Time-Series Models in Marketing</a>
+</figcaption>
+</figure>
+</br>
 Being able to estimate the long term effect of ones marketing activity allows the practicioner to select the appropriate starting point in order to maximize the ROI. </br>
 
-Another approach to find seasonal effects might be to look at past marketing activities which have been similar in terms of the activity performed, but have been done at different times. Then one could estimate the treatment effects of each of these campaigns to get an idea at which time during the year the campaign works better. However, the activities should not be to far apart. Otherwise global factors like the state of the economy could have changed. This would also have an impact on the purchasing behavior of customers and could lead to false conclusions. </br>
+Another approach to find seasonal effects might be to look at past marketing activities which have been similar in terms of the activity performed, but have been done at different times. Then one could estimate the treatment effects of each of these campaigns to get an idea at which time during the year the campaign works better. However, the activities should not be to far apart. Otherwise global factors like the state of the economy could have changed. This would also have an impact on the purchasing behavior of customers and could lead to false conclusions.</br>
 
 ### Who?
 The importance of this question varies greatly depending on the kind of marketing that is being done. Figure 2 shows various types of marketing from broad to narrow. The narrower the more potential there is for the usage of treatment effects. For the broadest possible marketing activity (like the social media marketing mentioned before) the average treatment effect (ATE) is important but no selection cade be made in terms of who we target. Narrower activities might allow us to select certain subgroups of our potential customers. Here we would be interested in the group average treatment effects (GATES) of those subgroups. Then we could determine which group to target based on those treatment effects.
 
+<figure>
 <img
 align="center"
 width="300"
 height="200"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Market-Targeting-Strategies.png">
+<figcaption align="center">
+<a href="https://marketing-insider.eu/wp-content/uploads/2015/04/Market-Targeting-Strategies.png">Source: https://www.marketing-insider.eu</a>
+</figcaption>
+</figure>
 
 Our focus lies on the most narrow kind of marketing activities. This means activities like emails, coupons etc. which are specifically targeted towards the receiving person. Here we can decide on an individual basis whether we target a given potential customer and what treatment we use. This is in contrast to the broadest form, like social media posts, which reach all followers and not just specific ones. Historically practicioners would target the people who they thought would be most likely to do a purchase. This approach is suboptimal since it is solely based on the overall purchase possibility and not the effect of the treatment. </br>
 In general we can separate our customers in 4 groups (Figure 3). </br>
 
+<figcaption>
 <img
 align="center"
 width="300"
 height="200"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Mike-Thurber-Graphic-2.png">
+<figcaption align="center">
+<a href="https://www.predictiveanalyticsworld.com/patimes/wp-content/uploads/2017/03/Mike-Thurber-Graphic-2.png">Source: https://www.predictiveanalyticsworld.com</a>
+</figcaption>
+</figure>
 
 With the historical approach we will target mostly the 'Sure Things' and maybe the 'Do-Not-Disturbs'. For those groups we at best get no return and at worst actually lose customers. Ideally we want to target the 'Persuadables'. This is commonly done by estimating the conditional average treatment effect (CATE) or uplift of the proposed marketing activity and then target the customers where the activity is estimated to have the highest effect. </br>
 Several approaches have been proposed to estimate uplift. Gubela et. al (2019) give an overview in their paper <a href = "https://www.researchgate.net/publication/331791032_Conversion_uplift_in_E-commerce_A_systematic_benchmark_of_modeling_strategies" target="_blank"> Conversion uplift in E-commerce: A systematic benchmark of modeling strategies</a>. In their evaluation they find that the two model uplift method and interaction term method (ITM) performed best. </br>
@@ -143,12 +158,17 @@ $\gamma_{ij}$: Allows to put individual weights on the divergence between treatm
 
 In addition to the gain, they also added a normalization factor. In the equation below it is given for KL-divergence and entropy. It is supposed to prevent bias towards test with high number of outcomes. Additionaly, it punishes uneven splits. </br>
 
+
 \begin{equation}
-\begin{split}
 I(A) =\alpha H(\frac{N^T}{N},\frac{N^C}{N})KL(P^T(A):P^C(A)) 
-+ (1 - \alpha)\sum_{i=1}^kH(\frac{N^{T_i}}{N^{T_i}+N^C},\frac{N^{C}}{N^{T_i}+N^C})KL(P^{T_i}(A):P^C(A))+\sum\_{i=1}^k\frac{N^{T_i}}{N}H(P^{T_i}(A))+\frac{N^{C}}{N}H(P^{C}(A))+\frac{1}{2}
-\end{split}
 \end{equation}
+\begin{equation}
++ (1 - \alpha)\sum_{i=1}^kH(\frac{N^{T_i}}{N^{T_i}+N^C},\frac{N^{C}}{N^{T_i}+N^C})KL(P^{T_i}(A):P^C(A))
+\end{equation}
+\begin{equation}
++\sum\_{i=1}^k\frac{N^{T_i}}{N}H(P^{T_i}(A))+\frac{N^{C}}{N}H(P^{C}(A))+\frac{1}{2}
+\end{equation}
+
 
 The first term measures the imbalance of the split between all the treatments combined and the control set. The second term measures the imbalance of the split for each treatment separately. The parameter $\alpha$ allows for setting the relative importance of those terms. The following two terms
 penalize attributes with large numbers of values by summing the test entropy over all the
@@ -467,3 +487,4 @@ A standarized evaluation procedure in the uplift field could increase the compar
 * Radcliffe, N.J., 2007. Using control groups to target on predicted lift: Building and assessing uplift models. Direct Marketing Analytics Journal, 1, p.1421.
 * Rzepakowski, P. and Jaroszewicz, S., 2012. Decision trees for uplift modeling with single and multiple treatments. Knowledge and Information Systems, 32(2), pp.303-327.
 * Zhao, Y., Fang, X. and Simchi-Levi, D., 2017, June. Uplift modeling with multiple treatments and general response types. In Proceedings of the 2017 SIAM International Conference on Data Mining (pp. 588-596). Society for Industrial and Applied Mathematics.
+* Dekimpe, Marnik & Franses, Ph.H.B.F. & Hanssens, Dominique & Naik, Prasad. (2006). Time-Series Models in Marketing. 
