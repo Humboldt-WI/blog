@@ -383,14 +383,14 @@ This formulation
 The uplift curve, as described in Gutierrez et al. (2017), uses the sample mean of each group and scales it to the full sample size. 
 
 \begin{equation}
-g(t) = ( \frac{Y_t^T }{N_t^T} - \frac{Y_t^C }{N_t^C} ) (N_t^T + N_t^C)
+g(t) = \Bigg( \frac{Y_t^T }{N_t^T} - \frac{Y_t^C }{N_t^C} \Bigg) \big( N_t^T + N_t^C \big)
 \end{equation}
 
 Both the Qini and Uplift curve return a separate curve for each treatment.
 For multiple treatments we have adjusted the uplift curve as follows:
 
 \begin{equation}
-g(t) = ( \frac{Y_t^{T^\prime} }{N_t^{T^\prime}} - \frac{Y_t^C }{N_t^C} ) (N_t)
+g(t) = \Bigg( \frac{Y_t^{T^\prime} }{N_t^{T^\prime}} - \frac{Y_t^C }{N_t^C} \Bigg) N_t
 \end{equation}
 
 We denote the combined group of all possible treatments with $T^\prime$. This group is than scored and ranked as a whole by their maximal uplift value. 
@@ -416,12 +416,20 @@ DOWNSIDES OF THOSE APPROACHES ???
  
 ## 4.2 Expected Outcome <a class="anchor" id="expected_outcome"></a>
 
-Method from (Zhao et al. 2017)
-
+Another evaluation method for uplift models with multiple treatments is the expected outcome metric propose by Zhao et al. (2017).
+It estimates the expected outcome, given that each subject is assigned the treatment with the highest outcome, predicted by the uplift model (including choosing no treatment).
+The authors define a random variable $Z$ as follows:
 
 \begin{equation}
-Z = \sum_{t=0}^{K}\frac{1}{p_t}Y I \{ h(X)=t \} I \{ T=t \}
+Z = \sum_{t=0}^{K} \frac{1}{p_t} Y I \{ h(X)=t \} I { T=t }
 \end{equation}
+
+In case the treatment predicted by the uplift model is equal to the actual assigned treatment to the subject during the experiment, the weighted outcome of this subject is summed.
+In other words, the subjects where the predicted and assignmed treatments match, form the group of reprentatives for those with this treatment assigned.
+As the number of matched subjects can vary, their group outcomes are weighted.
+<br />
+The expected value of $Z$ is than equal to the expected outcome, given that each subject is assigned the best predicted treatment, as shown by the authors.
+Furhermore, the sample average $\bar{z}$ represents an unbiased estimate of $E[Z]$
 
 \begin{equation}
 E[Z] = E[Y|T=h(X)]
@@ -436,9 +444,8 @@ Once again the subjects are ranked by their score (expected uplift). Now for the
 Now the expected value for treating x-percent of the subjects are given as $\bar{z}$.
 <br />
 In contrast to the qini and uplift curves, the modified uplift curve is not cumulative, as the outcomes of the not treated subjects are also taken into account. 
-Also the expected outcome is defined per customer and therefore indipendent from the size of the testing data.
-
-
+Also the expected outcome is defined per customer and therefore independent from the size of the testing data. 
+This can make it easier to draw decision in a business setting, as the expected per customer returns can be easily scaled to the planned marketing campaign sizes.
 
 
 # 5. Experimental Setup <a class="anchor" id="outlook"></a>
