@@ -119,14 +119,9 @@ The gain:
 \begin{equation}
 D_{gain}(A) = D(P^{T_1}(Y),...,P^{T_k}(Y):P^C(Y)|A) - D(P^{T_1}(Y),...,P^{T_k}(Y):P^C(Y))
 \end{equation}
-<img
-align="center"
-width="600"
-height="100"
-style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Gain.PNG">
+
 
 Multiple Divergence:
-
 \begin{equation}
 {D(P^{T_1}(Y),...,P^{T_k}(Y):P^C(Y)|A) = \sum_a\frac{N(a)}{N}D(P^{T_1}(Y|a),...,P^{T_k}(Y|a):P^C(Y|a))}
 \end{equation}
@@ -136,20 +131,10 @@ With $a$ being one outcome of a given test and $N(a)$ the number of samples with
 Conditional Divergence:
 
 \begin{equation} 
-D(P^{T}(Y),...,P^{T}(Y):P^{C}(Y))=\alpha\sum_{i=1}^{k}\lambda_iD(P^{T_i}(Y):P^{C_i}(Y))+(1-\alpha)\sum_i^k
+D(P^{T\_1}(Y),...,P^{T\_k}(Y):P^{C}(Y))=\alpha\sum_{i=1}^{k}\lambda_iD(P^{T_i}(Y):P^{C}(Y))+(1-\alpha)\sum\_{i=1}^k\sum\_{j=1}^k\gamma\_{ij}D(P^{T_i}(Y):P^{T_j}(Y))
 \end{equation}
 
-\begin{equation} 
- \mathop{\mathbb{\hat{E}}}(y^{T}y) = \tau^{-1}I + \frac{1}{T}\sum_{t=1}^{T}f^{\hat{\omega_t}}(x)^{T}f^{\hat{\omega_t}}(x) - \mathop{\mathbb{\hat{E}}}(y)^{T} \mathop{\mathbb{\hat{E}}}(y)
-\end{equation}
-
-<img
-align="center"
-width="600"
-height="100"
-style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Conditional.PNG">
-
-As one can see there are 3 parameters which can be set by the user to adjust the model. </br>
+There are 3 parameters which can be set by the user to adjust the model. </br>
 $\alpha$: This parameter determines how much the treatment-control and between treatment divergence are measured. An $\alpha$ of 0.5 means both are valued equally. </br>
 
 $\lambda_{i}$: Allows to put an emphasis on certain treatmens. For example one might put more emphasis on cheaper treatments. </br>
@@ -158,6 +143,12 @@ $\gamma_{ij}$: Allows to put individual weights on the divergence between treatm
 
 In addition to the gain, they also added a normalization factor which has two functions. Firstly, it is supposed to prevent bias towards test with high number of outcomes. Secondly, it punishes uneven splits. </br>
 
+\begin{equation}
+\begin{split}
+I(A) =\alpha H(\frac{N^T}{N},\frac{N^C}{N})KL(P^T(A):P^C(A)) 
++ (1 - \alpha)\sum_{i=1}^kH(\frac{N^{T_i}}{N^{T_i}+N^C},\frac{N^{C}}{N^{T_i}+N^C})KL(P^{T_i}(A):P^C(A))+\sum\_{i=1}^k\frac{N^{T_i}}{N}H(P^{T_i}(A))+\frac{N^{C}}{N}H(P^{C}(A))+\frac{1}{2}
+\end{split}
+\end{equation}
 Lastly, pruning based on a validation set is also implemented. The pruning algorithm goes through the entire tree starting at the bottom. For each subtree the algorithm checks if the outcome divergence in the leafs is greater than in the root for the validation set. If yes, than the algorithm continues, if no the subtree is pruned and the root becomes a new leaf. </br>
 
 On the basis of this tree, we also implemented a function which allows to build a forest instead of just one tree. The implementation is loosely based on the random forest. There are two main parameters which can be set when building a forest. The number of trees and the number of covariates considered in each tree. For each tree a random subset of the covariates with the specified number of covariates is used.
@@ -191,15 +182,11 @@ In addition to the tree proposed by Rzepakowski & Jaroszewicz we also implemente
 There is no pruning implemented as we wanted to keep it as simple as possible. For that reason we also only compare the difference in outcome of the left side of a new split to the root in order to get the gain of a give split. </br>
 Despite our effort to keep this criterion simple we implemented a normalization factor which main use is to guarantee that we have at least one observation of each treatment and control in every leaf. In addition, it also punishes uneven splits.</br>
 Here is the formula used to evaluate the possible splits. The "S = l" indicates, that we are only looking at the left side of the split.
-n<sub>il</sub> and n<sub>ir</sub> are the number of samples with treatment i in the left and right leaf respectively. As one can see if either becomes 0 the whole equation is 0. 
+$n\_{il}$ and $n\_{ir}$  are the number of samples with treatment i in the left and right leaf respectively. As one can see if either becomes 0 the whole equation is 0. 
 \begin{equation}
-\sum_{j=1}^{\infty}
+\sum_{i=1}^{I}\sum\_{j=1}^{I}[Mean(Y|T_i=1,S=l)-Mean(Y|T_j=1,S=l)]^2*\prod\_{i=1}^I\frac{n\_{il}}{n}\*\frac{n\_{ir}}{n}
 \end{equation}
-<img
-align="center"
-width="700"
-height="100"
-style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/SimpleCriterionCategorical.PNG">
+
 
 
 ## 3.2 Causal Tree and Causal Forest <a class="anchor" id="causaltree"></a>
