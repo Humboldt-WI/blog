@@ -67,12 +67,12 @@ Since those challenges were all related to marketing activity we decided to focu
 When it comes to selecting the time of a marketing activity there is not much research out there with regards to treatment effects.
 Most advice for marketing pratitioners focuses on social media marketing and on what time are best for publishing new posts. These guidelines mostly look at single performance measures like engagement to see at which times the performance measure are maximized. An example of this can be seen in the blog post 
 <a  href="https://sproutsocial.com/insights/best-times-to-post-on-social-media/" target="_blank"> "Best times to post on social media for 2019"</a>. Generally these approaches only attempt to maximize the average treatment effect. Since social media usually works in a broadcast style in which each post reaches all users it is not possible to adjust the content or publishing time of a post for specific users or groups of users.</br>
-In their paper <a href = "https://www.researchgate.net/publication/4753376_Time-Series_Models_in_Marketing" target="_blank"> Time Series Models in Marketing </a> the authors look at the application of time series models for marketing. For example they use persistance modeling in order to estimate  the longterm effect of marketing activities.
+In their paper <a href = "https://www.researchgate.net/publication/4753376_Time-Series_Models_in_Marketing" target="_blank"> Time Series Models in Marketing </a> the authors look at the application of time series models for marketing. For example they use persistance modeling in order to estimate  the longterm effect of marketing activities. The image below shows the long term impact of an activity on the price promotion elasticity. For detergent there is an immidiate effect, which levels off and reaches the original level after some time. For dairy creamer we also see some recution over time but it remains stable at an elevated level.
 
 <img
 align="center"
-width="300"
-height="200"
+width="305"
+height="362"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/TimeSeries.PNG">
 
 Being able to estimate the long term effect of ones marketing activity allows the practicioner to select the appropriate starting point in order to maximize the ROI. </br>
@@ -88,7 +88,7 @@ width="300"
 height="200"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Market-Targeting-Strategies.png">
 
-Our focus lies on the most narrow kind of marketing activities. Here we can decide on an individual basis whether we target a given potential customer. Historically practicioners would target the people who they thought would be most likely to do a purchase. This approach is suboptimal since it is solely based on the overall purchase possibility and not the effect of the treatment. </br>
+Our focus lies on the most narrow kind of marketing activities. This means activities like emails, coupons etc. which are specifically targeted towards the receiving person. Here we can decide on an individual basis whether we target a given potential customer and what treatment we use. This is in contrast to the broadest form, like social media posts, which reach all followers and not just specific ones. Historically practicioners would target the people who they thought would be most likely to do a purchase. This approach is suboptimal since it is solely based on the overall purchase possibility and not the effect of the treatment. </br>
 In general we can separate our customers in 4 groups (Figure 3). </br>
 
 <img
@@ -113,11 +113,11 @@ The last question we look at is "What marketing activity to choose?". There are 
 In their paper <a  href="https://core.ac.uk/download/pdf/81899141.pdf/"> Decision trees for uplift modeling with single and multiple treatments</a> Rzepakowski and Jaroszewicz propose the usage of a decision tree for uplift modeling. The goal of their tree is to maximize the divergence of outcome distribution between the treatment(s) and control and between treatments.
 To that end they developed a splitting criterion used to evaluate the possible splits. For each possible split they calculate the associated gain. To put it simply the gain is the divergence of outcome distribution after the split (conditional divergence), minus the diveregence prior to it (multiple divergence).
 The aim is to find the split, which maximizes the gain. </br>
-The formula for calculating the gain is given in Figure 6. The 'D' represents a divergence function. In their paper they looked at KL-divergence, Euclidean distance and the chi-squared divergence. However, any other divergence measure could also be implemented. </br>
+The formula for calculating the gain is given in Figure 6. $D$ represents a divergence function. In their paper they looked at KL-divergence, Euclidean distance and the chi-squared divergence. However, any other divergence measure could also be implemented. </br>
 It is important to note here, that they only considere discrete outcome distributions in the paper. </br>
 The gain:
 \begin{equation}
-D_{gain}(A) = D(P^{T_1}(Y),...P^{T_k}(Y):P^C(Y)|A) - D(P^{T_1}(Y),...P^{T_k}(Y):P^C(Y))
+D_{gain}(A) = D(P^{T_1}(Y),...,P^{T_k}(Y):P^C(Y)|A) - D(P^{T_1}(Y),...,P^{T_k}(Y):P^C(Y))
 \end{equation}
 <img
 align="center"
@@ -128,16 +128,21 @@ style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_u
 Multiple Divergence:
 
 \begin{equation}
-D(P^{T_1}(Y),...P^{T_k}(Y):P^C(Y)|A) = \sum_{t=0}^{K}\frac{1}{p_t}Y I \{ h(X)=t \} I \{ T=t \}
+{D(P^{T_1}(Y),...,P^{T_k}(Y):P^C(Y)|A) = \sum_a\frac{N(a)}{N}D(P^{T_1}(Y|a),...,P^{T_k}(Y|a):P^C(Y|a))}
 \end{equation}
- 
-<img
-align="center"
-width="600"
-height="100"
-style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Multiple.PNG">
+
+With $a$ being one outcome of a given test and $N(a)$ the number of samples with outcome $a$ of that test. Let's say we have $N = 1000$ people and we test for age below or above 25. Then $a_1$ would be $\leq25$ and $a_2$ would be $>25$. $N(a_1)$ are the number of people who are 25 or younger.
 
 Conditional Divergence:
+
+\begin{equation} 
+D(P^{T}(Y),...,P^{T}(Y):P^{C}(Y))=\alpha\sum_{i=1}^{k}\lambda_iD(P^{T_i}(Y):P^{C_i}(Y))+(1-\alpha)\sum_i^k
+\end{equation}
+
+\begin{equation} 
+ \mathop{\mathbb{\hat{E}}}(y^{T}y) = \tau^{-1}I + \frac{1}{T}\sum_{t=1}^{T}f^{\hat{\omega_t}}(x)^{T}f^{\hat{\omega_t}}(x) - \mathop{\mathbb{\hat{E}}}(y)^{T} \mathop{\mathbb{\hat{E}}}(y)
+\end{equation}
+
 <img
 align="center"
 width="600"
@@ -146,14 +151,39 @@ style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_u
 
 As one can see there are 3 parameters which can be set by the user to adjust the model. </br>
 $\alpha$: This parameter determines how much the treatment-control and between treatment divergence are measured. An $\alpha$ of 0.5 means both are valued equally. </br>
-$\lambda$: Allows to put an emphasis on certain treatmens. For example one might put more emphasis on cheaper treatments. </br>
-$\gamma$: Allows to further emphasize selected between treatment divergences. </br>
+
+$\lambda_{i}$: Allows to put an emphasis on certain treatmens. For example one might put more emphasis on cheaper treatments. </br>
+
+$\gamma_{ij}$: Allows to put individual weights on the divergence between treatments i and j. </br>
 
 In addition to the gain, they also added a normalization factor which has two functions. Firstly, it is supposed to prevent bias towards test with high number of outcomes. Secondly, it punishes uneven splits. </br>
 
 Lastly, pruning based on a validation set is also implemented. The pruning algorithm goes through the entire tree starting at the bottom. For each subtree the algorithm checks if the outcome divergence in the leafs is greater than in the root for the validation set. If yes, than the algorithm continues, if no the subtree is pruned and the root becomes a new leaf. </br>
 
 On the basis of this tree, we also implemented a function which allows to build a forest instead of just one tree. The implementation is loosely based on the random forest. There are two main parameters which can be set when building a forest. The number of trees and the number of covariates considered in each tree. For each tree a random subset of the covariates with the specified number of covariates is used.
+
+```r
+Forest building:
+
+n_tree = 100 #The number of trees in the forest
+n_features = 3 #The number of covariates used in each tree
+forest = list()
+
+Repeat #n_tree times:
+  Randomly select #n_features of the covariates in the data and create a new subset of the data with those covariates
+  Build a tree based on this subset
+  Add the tree to the list of trees
+
+For predictions:
+
+predictions = list()
+
+For each tree in forest:
+  Make a prediction for the new sample and add it to the list
+
+Return the average of all predictions
+
+```
 
 ### 3.1.2 Simple Splitting Criterion <a class="anchor" id="simple"></a>
 
@@ -162,6 +192,9 @@ There is no pruning implemented as we wanted to keep it as simple as possible. F
 Despite our effort to keep this criterion simple we implemented a normalization factor which main use is to guarantee that we have at least one observation of each treatment and control in every leaf. In addition, it also punishes uneven splits.</br>
 Here is the formula used to evaluate the possible splits. The "S = l" indicates, that we are only looking at the left side of the split.
 n<sub>il</sub> and n<sub>ir</sub> are the number of samples with treatment i in the left and right leaf respectively. As one can see if either becomes 0 the whole equation is 0. 
+\begin{equation}
+\sum_{j=1}^{\infty}
+\end{equation}
 <img
 align="center"
 width="700"
