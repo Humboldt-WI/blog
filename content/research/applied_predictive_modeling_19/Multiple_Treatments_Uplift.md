@@ -30,9 +30,9 @@ description = "Evaluation and discussion of Uplift Models for multiple possible 
 4.2 [Expected Outcome](#expected_outcome)</br>
 5. [Experimental Setup](#experiment) <br />
 5.1 [Data Sets](#datasets)</br>
-5.2 [Results](#evaluationresults)
-6. [Outlook](#outlook)
-7. [References](#references)
+6 [Results](#evaluationresults)
+7. [Outlook](#outlook)
+8. [References](#references)
 
 # 1. Introduction <a class="anchor" id="introduction"></a>
 Nowadays marketing practitioners face a multitude of challenges. 
@@ -141,7 +141,7 @@ $\lambda_{i}$: Allows to put an emphasis on certain treatmens. For example one m
 
 $\gamma_{ij}$: Allows to put individual weights on the divergence between treatments i and j. </br>
 
-In addition to the gain, they also added a normalization factor which has two functions. Firstly, it is supposed to prevent bias towards test with high number of outcomes. Secondly, it punishes uneven splits. </br>
+In addition to the gain, they also added a normalization factor. In the equation below it is given for KL-divergence and entropy. It is supposed to prevent bias towards test with high number of outcomes. Additionaly, it punishes uneven splits. </br>
 
 \begin{equation}
 \begin{split}
@@ -149,6 +149,12 @@ I(A) =\alpha H(\frac{N^T}{N},\frac{N^C}{N})KL(P^T(A):P^C(A))
 + (1 - \alpha)\sum_{i=1}^kH(\frac{N^{T_i}}{N^{T_i}+N^C},\frac{N^{C}}{N^{T_i}+N^C})KL(P^{T_i}(A):P^C(A))+\sum\_{i=1}^k\frac{N^{T_i}}{N}H(P^{T_i}(A))+\frac{N^{C}}{N}H(P^{C}(A))+\frac{1}{2}
 \end{split}
 \end{equation}
+
+The first term measures the imbalance of the split between all the treatments combined and the control set. The second term measures the imbalance of the split for each treatment separately. The parameter $\alpha$ allows for setting the relative importance of those terms. The following two terms
+penalize attributes with large numbers of values by summing the test entropy over all the
+treatment and control datasets.</br>
+
+
 Lastly, pruning based on a validation set is also implemented. The pruning algorithm goes through the entire tree starting at the bottom. For each subtree the algorithm checks if the outcome divergence in the leafs is greater than in the root for the validation set. If yes, than the algorithm continues, if no the subtree is pruned and the root becomes a new leaf. </br>
 
 On the basis of this tree, we also implemented a function which allows to build a forest instead of just one tree. The implementation is loosely based on the random forest. There are two main parameters which can be set when building a forest. The number of trees and the number of covariates considered in each tree. For each tree a random subset of the covariates with the specified number of covariates is used.
@@ -413,15 +419,15 @@ Describe Dataset with different outcome variables
 <a href="https://blog.minethatdata.com/2008/03/minethatdata-e-mail-analytics-and-data.html" target="_blank">Kevin Hillstrom’s MineThatData</a>
 
 
-## 5.2 Results <a class="anchor" id="evaluationresults"></a>
+# 6. Results <a class="anchor" id="evaluationresults"></a>
 
 Models evaluated using 5-fold cross validation.
 
 
-### Predictive Results
+## Predictive Results
 
 
-### Training Duration
+## Training Duration
 Even though predictive performance is the focus of this evaluation we also wanted to look at how well our approaches scaled in terms of training time. The are 3 factors we looked at which will influence performance time: number of observations, number of covariates and number of treatments.</br>
 The figures below show a comparisson of our models.</br>
 3 Covariates: </br>
@@ -444,14 +450,14 @@ height="360"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison5Features.png"></br>
 
 
-# 6. Outlook <a class="anchor" id="outlook"></a>
+# 7. Outlook <a class="anchor" id="outlook"></a>
 
 The described evaluation metrics for uplift models all represent approximative approaches under specific assumptions. 
 The expected response metric from Zhao et al. (2017) is the only metric defined under the assumptions of multiple treatements.
 A standarized evaluation procedure in the uplift field could increase the comparability of models throughout different works.
 
 
-# 7. References <a class="anchor" id="references"></a>
+# 8. References <a class="anchor" id="references"></a>
 
 * Devriendt, F., Moldovan, D. and Verbeke, W., 2018. A literature survey and experimental evaluation of the state-of-the-art in uplift modeling: A stepping stone toward the development of prescriptive analytics. Big data, 6(1), pp.13-41.
 * Gubela, R., Bequé, A., Lessmann, S. and Gebert, F., 2019. Conversion uplift in e-commerce: A systematic benchmark of modeling strategies. International Journal of Information Technology & Decision Making (IJITDM), 18(03), pp.747-791.
