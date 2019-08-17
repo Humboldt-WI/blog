@@ -117,7 +117,7 @@ The formula for calculating the gain is given in Figure 6. The 'D' represents a 
 It is important to note here, that they only considere discrete outcome distributions in the paper. </br>
 The gain:
 \begin{equation}
-D_{gain}(A) = D(P^{T_i}(Y),...P^{T_k}(Y):P^C(Y)|A) - D(P^{T_i}(Y),...P^{T_k}(Y):P^C(Y))
+D_{gain}(A) = D(P^{T_1}(Y),...P^{T_k}(Y):P^C(Y)|A) - D(P^{T_1}(Y),...P^{T_k}(Y):P^C(Y))</br>
 f(t) = Y_t^T - \frac{Y_t^C N_t^T}{N_t^C}
 \end{equation}
 <img
@@ -127,10 +127,11 @@ height="100"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Gain.PNG">
 
 Multiple Divergence:
-Z = \sum_{t=0}^{K}\frac{1}{p_t}Y I \{ h(X)=t \} I \{ T=t \}
+
 \begin{equation}
-D(P^{T_i}(Y),...P^{T_k}(Y):P^C(Y)|A) = \sum_{a}\frac{N(a)}{N}D(P^{T_i}(Y|a),...,P^{T_k}(Y|a):P^{C}(Y|a))
-f(t) = Y_t^T - \frac{Y_t^C N_t^T}{N_t^C}
+D(P^{T_1}(Y),...P^{T_k}(Y):P^C(Y)|A) = \sum_{a}\frac{N(a)}{N}D(P^{T_1}(Y|a),...,P^{T_k}(Y|a):P^{C}(Y|a))</br>
+f(t) = Y_t^T - \frac{Y_t^C N_t^T}{N_t^C}</br>
+Z = \sum_{t=0}^{K}\frac{1}{p_t}Y I \{ h(X)=t \} I \{ T=t \}
 \end{equation}
 <img
 align="center"
