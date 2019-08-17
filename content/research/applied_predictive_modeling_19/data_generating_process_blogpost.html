@@ -8,7 +8,6 @@ author = "Julian Winkel, Tobias Krebs"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description = "Generating datasets with observed treatment effects for model evaluation"
 +++
-
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -19,7 +18,7 @@ description = "Generating datasets with observed treatment effects for model eva
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div class="toc"><ul class="toc-item"><li><span><a href="#Introduction" data-toc-modified-id="Introduction-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Introduction</a></span><ul class="toc-item"><li><span><a href="#Topic" data-toc-modified-id="Topic-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Topic</a></span></li><li><span><a href="#Motivation" data-toc-modified-id="Motivation-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Motivation</a></span></li><li><span><a href="#Properties" data-toc-modified-id="Properties-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Properties</a></span></li></ul></li><li><span><a href="#Literature" data-toc-modified-id="Literature-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Literature</a></span></li><li><span><a href="#Package-Content" data-toc-modified-id="Package-Content-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Package Content</a></span><ul class="toc-item"><li><span><a href="#General-Model:-Partial-Linear-Regression" data-toc-modified-id="General-Model:-Partial-Linear-Regression-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>General Model: Partial Linear Regression</a></span></li><li><span><a href="#Covariates-generation" data-toc-modified-id="Covariates-generation-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>Covariates generation</a></span><ul class="toc-item"><li><span><a href="#Continuous-covariates" data-toc-modified-id="Continuous-covariates-3.2.1"><span class="toc-item-num">3.2.1&nbsp;&nbsp;</span>Continuous covariates</a></span></li><li><span><a href="#Binary-and-categorical-covariates" data-toc-modified-id="Binary-and-categorical-covariates-3.2.2"><span class="toc-item-num">3.2.2&nbsp;&nbsp;</span>Binary and categorical covariates</a></span></li></ul></li><li><span><a href="#Treatment-assignment" data-toc-modified-id="Treatment-assignment-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Treatment assignment</a></span><ul class="toc-item"><li><span><a href="#Random" data-toc-modified-id="Random-3.3.1"><span class="toc-item-num">3.3.1&nbsp;&nbsp;</span>Random</a></span></li><li><span><a href="#Dependent-on-covariates" data-toc-modified-id="Dependent-on-covariates-3.3.2"><span class="toc-item-num">3.3.2&nbsp;&nbsp;</span>Dependent on covariates</a></span></li></ul></li><li><span><a href="#Treatment-effects" data-toc-modified-id="Treatment-effects-3.4"><span class="toc-item-num">3.4&nbsp;&nbsp;</span>Treatment effects</a></span><ul class="toc-item"><li><span><a href="#Positive-&amp;-negative-constant-effect" data-toc-modified-id="Positive-&amp;-negative-constant-effect-3.4.1"><span class="toc-item-num">3.4.1&nbsp;&nbsp;</span>Positive &amp; negative constant effect</a></span></li><li><span><a href="#Positive-&amp;-negative-continuous-heterogeneous-effect" data-toc-modified-id="Positive-&amp;-negative-continuous-heterogeneous-effect-3.4.2"><span class="toc-item-num">3.4.2&nbsp;&nbsp;</span>Positive &amp; negative continuous heterogeneous effect</a></span></li><li><span><a href="#No-effect" data-toc-modified-id="No-effect-3.4.3"><span class="toc-item-num">3.4.3&nbsp;&nbsp;</span>No effect</a></span></li><li><span><a href="#Discrete-heterogeneous-treatment-effect" data-toc-modified-id="Discrete-heterogeneous-treatment-effect-3.4.4"><span class="toc-item-num">3.4.4&nbsp;&nbsp;</span>Discrete heterogeneous treatment effect</a></span></li></ul></li><li><span><a href="#Output-variable" data-toc-modified-id="Output-variable-3.5"><span class="toc-item-num">3.5&nbsp;&nbsp;</span>Output variable</a></span><ul class="toc-item"><li><span><a href="#Continuous" data-toc-modified-id="Continuous-3.5.1"><span class="toc-item-num">3.5.1&nbsp;&nbsp;</span>Continuous</a></span></li><li><span><a href="#Binary" data-toc-modified-id="Binary-3.5.2"><span class="toc-item-num">3.5.2&nbsp;&nbsp;</span>Binary</a></span></li></ul></li></ul></li><li><span><a href="#Package-application" data-toc-modified-id="Package-application-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Package application</a></span><ul class="toc-item"><li><span><a href="#Choosing-covariates" data-toc-modified-id="Choosing-covariates-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>Choosing covariates</a></span></li><li><span><a href="#Creating-treatment-effects" data-toc-modified-id="Creating-treatment-effects-4.2"><span class="toc-item-num">4.2&nbsp;&nbsp;</span>Creating treatment effects</a></span></li><li><span><a href="#Creating-output" data-toc-modified-id="Creating-output-4.3"><span class="toc-item-num">4.3&nbsp;&nbsp;</span>Creating output</a></span></li><li><span><a href="#Other-functions" data-toc-modified-id="Other-functions-4.4"><span class="toc-item-num">4.4&nbsp;&nbsp;</span>Other functions</a></span></li></ul></li><li><span><a href="#Example:-Applying-double-machine-learning" data-toc-modified-id="Example:-Applying-double-machine-learning-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Example: Applying double machine learning</a></span></li><li><span><a href="#Discussion" data-toc-modified-id="Discussion-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Discussion</a></span></li><li><span><a href="#References" data-toc-modified-id="References-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>References</a></span></li></ul></div>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Introduction" data-toc-modified-id="Introduction-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Introduction</a></span><ul class="toc-item"><li><span><a href="#Topic" data-toc-modified-id="Topic-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Topic</a></span></li><li><span><a href="#Motivation" data-toc-modified-id="Motivation-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Motivation</a></span></li><li><span><a href="#Properties" data-toc-modified-id="Properties-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Properties</a></span></li></ul></li><li><span><a href="#Literature" data-toc-modified-id="Literature-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Literature</a></span></li><li><span><a href="#Theory-behind-the-package" data-toc-modified-id="Theory-behind-the-package-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Theory behind the package</a></span><ul class="toc-item"><li><span><a href="#General-Model:-Partial-Linear-Regression" data-toc-modified-id="General-Model:-Partial-Linear-Regression-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>General Model: Partial Linear Regression</a></span></li><li><span><a href="#Covariates-generation" data-toc-modified-id="Covariates-generation-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>Covariates generation</a></span><ul class="toc-item"><li><span><a href="#Continuous-covariates" data-toc-modified-id="Continuous-covariates-3.2.1"><span class="toc-item-num">3.2.1&nbsp;&nbsp;</span>Continuous covariates</a></span></li><li><span><a href="#Binary-and-categorical-covariates" data-toc-modified-id="Binary-and-categorical-covariates-3.2.2"><span class="toc-item-num">3.2.2&nbsp;&nbsp;</span>Binary and categorical covariates</a></span></li></ul></li><li><span><a href="#Treatment-assignment" data-toc-modified-id="Treatment-assignment-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Treatment assignment</a></span><ul class="toc-item"><li><span><a href="#Random" data-toc-modified-id="Random-3.3.1"><span class="toc-item-num">3.3.1&nbsp;&nbsp;</span>Random</a></span></li><li><span><a href="#Dependent-on-covariates" data-toc-modified-id="Dependent-on-covariates-3.3.2"><span class="toc-item-num">3.3.2&nbsp;&nbsp;</span>Dependent on covariates</a></span></li></ul></li><li><span><a href="#Treatment-effects" data-toc-modified-id="Treatment-effects-3.4"><span class="toc-item-num">3.4&nbsp;&nbsp;</span>Treatment effects</a></span><ul class="toc-item"><li><span><a href="#Positive-&amp;-negative-constant-effect" data-toc-modified-id="Positive-&amp;-negative-constant-effect-3.4.1"><span class="toc-item-num">3.4.1&nbsp;&nbsp;</span>Positive &amp; negative constant effect</a></span></li><li><span><a href="#Positive-&amp;-negative-continuous-heterogeneous-effect" data-toc-modified-id="Positive-&amp;-negative-continuous-heterogeneous-effect-3.4.2"><span class="toc-item-num">3.4.2&nbsp;&nbsp;</span>Positive &amp; negative continuous heterogeneous effect</a></span></li><li><span><a href="#No-effect" data-toc-modified-id="No-effect-3.4.3"><span class="toc-item-num">3.4.3&nbsp;&nbsp;</span>No effect</a></span></li><li><span><a href="#Discrete-heterogeneous-treatment-effect" data-toc-modified-id="Discrete-heterogeneous-treatment-effect-3.4.4"><span class="toc-item-num">3.4.4&nbsp;&nbsp;</span>Discrete heterogeneous treatment effect</a></span></li></ul></li><li><span><a href="#Output-variable" data-toc-modified-id="Output-variable-3.5"><span class="toc-item-num">3.5&nbsp;&nbsp;</span>Output variable</a></span><ul class="toc-item"><li><span><a href="#Continuous" data-toc-modified-id="Continuous-3.5.1"><span class="toc-item-num">3.5.1&nbsp;&nbsp;</span>Continuous</a></span></li><li><span><a href="#Binary" data-toc-modified-id="Binary-3.5.2"><span class="toc-item-num">3.5.2&nbsp;&nbsp;</span>Binary</a></span></li></ul></li></ul></li><li><span><a href="#Package-application" data-toc-modified-id="Package-application-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Package application</a></span><ul class="toc-item"><li><span><a href="#Choosing-covariates" data-toc-modified-id="Choosing-covariates-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>Choosing covariates</a></span></li><li><span><a href="#Creating-treatment-effects" data-toc-modified-id="Creating-treatment-effects-4.2"><span class="toc-item-num">4.2&nbsp;&nbsp;</span>Creating treatment effects</a></span></li><li><span><a href="#Creating-output" data-toc-modified-id="Creating-output-4.3"><span class="toc-item-num">4.3&nbsp;&nbsp;</span>Creating output</a></span></li><li><span><a href="#Other-functions" data-toc-modified-id="Other-functions-4.4"><span class="toc-item-num">4.4&nbsp;&nbsp;</span>Other functions</a></span></li></ul></li><li><span><a href="#Example:-Applying-double-machine-learning" data-toc-modified-id="Example:-Applying-double-machine-learning-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Example: Applying double machine learning</a></span></li><li><span><a href="#Discussion" data-toc-modified-id="Discussion-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Discussion</a></span></li><li><span><a href="#References" data-toc-modified-id="References-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>References</a></span></li></ul></div>
 </div>
 </div>
 </div>
@@ -85,7 +84,7 @@ scientific approaches.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Package-Content">Package Content<a class="anchor-link" href="#Package-Content">&#182;</a></h2><p>In the following sections you will find a step by step explanation of how our data simulation package works internally, accompanied by the corresponding formulas, code snippets and explanatory graphs.</p>
+<h2 id="Theory-behind-the-package">Theory behind the package<a class="anchor-link" href="#Theory-behind-the-package">&#182;</a></h2><p>In the following sections you will find a step by step explanation of how our data simulation package works internally, accompanied by the corresponding formulas, code snippets and explanatory graphs.</p>
 
 </div>
 </div>
@@ -201,21 +200,11 @@ $$ p_{n*1} = \frac{\delta - min(\delta)}{max(\delta) - min(\delta)}*0.8 + 0.1 + 
 <li>$heterogeneous: \; [0, intensity*0.4]$, </li>
 <li>$discrete\_heterogeneous: \{intensity*0.1, intensity*0.2\}$</li>
 </ul>
-<p>The interactive plot bellow shows different resulting magnitudes of the treatment effect as part of the outcome variable y in form of a kernal density estimation. Press the show widgets button, wait a few seconds, and change the intensity value to see how it affects the outcome distributions of treated and not treated observations!</p>
+<p>The interactive plot bellow shows different resulting magnitudes of the treatment effect as part of the outcome variable y in form of a kernal density estimation. Change the intensity value to see how it affects the outcome distributions of treated and not treated observations!</p>
 
-
-
-
-
-
-
- 
-
-
-
-  
-
-  <div class="
+</div>
+</div>
+</div>  <div class="
       cell border-box-sizing code_cell rendered">
     <div class="hidden">
 
@@ -300,15 +289,90 @@ $$ p_{n*1} = \frac{\delta - min(\delta)}{max(\delta) - min(\delta)}*0.8 + 0.1 + 
     window.interact = interact
   })()
 </script>
-
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Creating-output">Creating output<a class="anchor-link" href="#Creating-output">&#182;</a></h3><h3 id="Other-functions">Other functions<a class="anchor-link" href="#Other-functions">&#182;</a></h3>
+<h3 id="Creating-output">Creating output<a class="anchor-link" href="#Creating-output">&#182;</a></h3><p>The second main functions is <code>output_data()</code> which internally creates the output variable y and returns a tuple including the 4 numpy arrays of interest. In the sample code below denoted as <code>y</code> is the array of size N with the output variable values, <code>X</code> is an array of size N*k consisting of the simulated covariates, <code>assignment</code> is an array of length N consisting of zeros and ones, and <code>treatment</code> is an array of length N consisting of the realized treatment effect values.</p>
+<p>The function provides two parameters that can be adjusted. <code>binary</code> simply allows to change the output variable y from continuous to binary while the default is <code>False</code> which makes y continuous. <code>x_y_relation</code> defines the relationship of y and X that is used offering 6 different options one can choose: <code>'linear_simple'</code>, <code>'linear_interaction'</code>, <code>'partial_nonlinear_simple'</code>, <code>'partial_nonlinear_interaction'</code>, <code>'nonlinear_simple'</code>, <code>'nonlinear_interaction'</code>. For more information about the implications of each option see part <em>3.5 Output variable</em>.</p>
+<script src="https://gist.github.com/Tobias-K93/a9e602687253fa3c3e60810b9810ffa4.js"></script><p>In the drop down menu below you can choose between the different options of <code>x_y_relation</code> and get a scatter plot of the combined X and, if the interaction version is chosen, interaction terms of X plotted on the y values. The underlying dataset is created with N=10000 observations and k=50 covariates.</p>
+
+</div>
+</div>
+</div>
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="hidden">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">interactive</span>
+<span class="kn">from</span> <span class="nn">interactive_plots_functions</span> <span class="k">import</span> <span class="n">x_y_relation_plot</span>
+<span class="kn">from</span> <span class="nn">opossum</span> <span class="k">import</span> <span class="n">UserInterface</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">scatter_output_fct</span><span class="p">(</span><span class="n">x_y_relation</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">UserInterface</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">categorical_covariates</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">u</span><span class="o">.</span><span class="n">generate_treatment</span><span class="p">()</span>
+    <span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">assignment</span><span class="p">,</span> <span class="n">treatment</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">output_data</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">x_y_relation</span> <span class="o">=</span> <span class="n">x_y_relation</span><span class="p">)</span>
+    
+    <span class="k">if</span>  <span class="s1">&#39;interaction&#39;</span> <span class="ow">in</span> <span class="n">x_y_relation</span><span class="p">:</span>
+        <span class="n">g_0_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">u</span><span class="o">.</span><span class="n">get_weigths_covariates_to_outputs</span><span class="p">())</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">X_interaction</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">weights_interaction</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">g_0_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">u</span><span class="o">.</span><span class="n">get_weigths_covariates_to_outputs</span><span class="p">())</span>
+
+    <span class="n">x_y_relation_plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">g_0_X</span><span class="p">)</span>
+    
+<span class="n">sco_plot</span> <span class="o">=</span> <span class="n">interactive</span><span class="p">(</span><span class="n">scatter_output_fct</span><span class="p">,</span> <span class="n">x_y_relation</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;linear_simple&#39;</span><span class="p">,</span> <span class="s1">&#39;linear_interaction&#39;</span><span class="p">,</span>
+                                                           <span class="s1">&#39;partial_nonlinear_simple&#39;</span><span class="p">,</span> 
+                                                           <span class="s1">&#39;partial_nonlinear_interaction&#39;</span><span class="p">,</span> 
+                                                           <span class="s1">&#39;nonlinear_simple&#39;</span><span class="p">,</span> <span class="s1">&#39;nonlinear_interaction&#39;</span><span class="p">])</span>
+<span class="n">sco_plot</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    
+
+
+
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
+
+</div>
+
+</div>
+</div>
+
+  </div>
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Other-functions">Other functions<a class="anchor-link" href="#Other-functions">&#182;</a></h3><p>While the two main functions are enough to produce a dataset, it can be necessary to make use of other functions to adjust some specific attributes or use other features of the package. Most of the functions' names should be self-explanatory and under the <code>help()</code> command there is a documentation for each function in case it is not clear how it should be used or what its purpose is. The functions are:</p>
+<p><code>plot_covariates_correlation()</code></p>
+<p><code>get_propensity_scores()</code></p>
+<p><code>get_weights_treatment_assignment()</code></p>
+<p><code>get_weights_covariates_to_outputs()</code></p>
+<p><code>get_treatment_effect_type()</code></p>
+<p><code>set_weights_treatment_assignment(new_weight_vector)</code></p>
+<p><code>set_weights_covariates_to_outputs(new_weight_vector)</code></p>
+<p><code>set_subset_z_size_assignment(new_size)</code></p>
+<p><code>set_subset_z_size_treatment</code></p>
+<p><code>set_interaction_num(new_num)</code></p>
+
 </div>
 </div>
 </div>
