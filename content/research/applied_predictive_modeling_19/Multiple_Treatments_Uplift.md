@@ -117,7 +117,7 @@ The formula for calculating the gain is given in Figure 6. The 'D' represents a 
 It is important to note here, that they only considere discrete outcome distributions in the paper. </br>
 The gain:
 \begin{equation}
-D_gain(A) = D(P^(T_i)(Y),...P^(T_k)(Y):P^C(Y)|A)
+D_{gain}(A) = D(P^{T_i}(Y),...P^{T_k}(Y):P^C(Y)|A) - D(P^{T_i}(Y),...P^{T_k}(Y):P^C(Y))
 f(t) = Y_t^T - \frac{Y_t^C N_t^T}{N_t^C}
 \end{equation}
 <img
