@@ -116,6 +116,10 @@ The aim is to find the split, which maximizes the gain. </br>
 The formula for calculating the gain is given in Figure 6. The 'D' represents a divergence function. In their paper they looked at KL-divergence, Euclidean distance and the chi-squared divergence. However, any other divergence measure could also be implemented. </br>
 It is important to note here, that they only considere discrete outcome distributions in the paper. </br>
 The gain:
+\begin{equation}
+D_gain(A) = D(P^(T_i)(Y),...P^(T_k)(Y):P^C(Y)|A)
+f(t) = Y_t^T - \frac{Y_t^C N_t^T}{N_t^C}
+\end{equation}
 <img
 align="center"
 width="600"
