@@ -346,6 +346,10 @@ We describe two approaches from the literature which can be used to compare the 
 
 ## 4.1 Uplift and Qini Curves<a class="anchor" id="uplift_curves"></a>
 
+<!--
+Shorten only for Uplift Curves ???
+-->
+
 Both uplift curves and qini curves build upon the idea of cumulative gain charts.
 Those require all targets to be ranked in descending order by their score. 
 For the single treatment case the score represents the uplift when assigning the treatment to the subject.
@@ -370,19 +374,27 @@ The qini curve as described by Radcliffe et al. (2007) scales the outcomes to th
 f(t) = Y_t^T - \frac{Y_t^C N_t^T}{N_t^C}
 \end{equation}
 
-Where $t$ represents the decile of each group.
+With $t$ as the quantile for the amount of the treated population, $T$ as the treatment assigned and $C$ as the Control group.
+$N_t^T$ and $N_t^C$ depict the number of subjects in the according treatment anf contol group, within the top quantile. 
+$Y_t^T$ and $Y_t^C$ stand for the total response in the treated group within the top quantile.
+This formulation 
 
 <br />
-On the other hand the the uplift curve as described in Gutierrez et al. (2017) uses the sample mean of each group and scales it to the full sample size.
-
+The uplift curve, as described in Gutierrez et al. (2017), uses the sample mean of each group and scales it to the full sample size. 
 
 \begin{equation}
-g(t) = ( \frac{Y_t^T }{N_t^T} - \frac{Y_t^C }{N_t^C} ) (N_t)
+g(t) = ( \frac{Y_t^T }{N_t^T} - \frac{Y_t^C }{N_t^C} ) (N_t^T + N_t^C)
 \end{equation}
 
-We have adjusted the formula for the uplift curve for multiple treatments.
+Both the Qini and Uplift curve return a separate curve for each treatment.
+For multiple treatments we have adjusted the uplift curve as follows:
 
-Both metrics are defined for the single treatment case. The uplift curves can be extended for multiple treatments by, upscaling with the decile of the full experiment sample, not only the specific treatment and control group.
+\begin{equation}
+g(t) = ( \frac{Y_t^{T^\prime} }{N_t^{T^\prime}} - \frac{Y_t^C }{N_t^C} ) (N_t)
+\end{equation}
+
+We denote the combined group of all possible treatments with $T^\prime$. This group is than scored and ranked as a whole by their maximal uplift value. 
+Additionaly, the uplift per subject is than upscaled for the whole testing group $N_t$.
 
 <br />
 As the qini curves are scaling towards the treatment sample size, a combination of multiple treatment groups with different sizes becomes more cumbersome. 
