@@ -1,6 +1,6 @@
 +++
 title = "Uplift Modelling with Multiple Treatments"
-date = '2019-07-12'
+date = '2019-08-18'
 tags = ["Causal Inference", "Class19","Uplift"]
 categories = ["Course projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
