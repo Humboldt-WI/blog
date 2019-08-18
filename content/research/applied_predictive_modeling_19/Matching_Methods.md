@@ -240,16 +240,16 @@ With every member having a BIN Signature, each is matched to other members with 
 
 The formula being:<br/>
 <center>**Weight = (Treatnment_N / Control_N) / ( Total_Control_N / otal_Treatment_N)**</center> <br/>
-Now the matched & weighted Treatment and Control members can be compared by using theweights to evaluate the presence & extent of the Treatment Effect.
+Now the matched & weighted Treatment and Control members can be compared by using the weights to evaluate the presence & extent of the Treatment Effect.
 
 **Problems that can be encountered:**
 
 * Matching can be completely off if the wrong variables are chosen. <br/>
   Example: There may be dramatic differences between male / female members, if matching does not consider gender, then the matching may never work.
 * If the right variables are chosen, but the coarsening is too loose.<br/>
-  Example: Age could be binned into 1 or 0 depending on if a member is ≥ 50 years old or < 50 yearsold — for some studies that might be appropriate, but working on a geriatric study, almost everyone will be≥ 50 years old, and this coarsening strategy is inappropriate and too lose.
+  Example: Age could be binned into 1 or 0 depending on if a member is ≥ 50 years old or < 50 years old — for some studies that might be appropriate, but working on a geriatric study, almost everyone will be≥ 50 years old, and this coarsening strategy is inappropriate and too lose.
 
-We can perform CEM macthing using MatchIt package in R, by passing the name of the method to MatchIt as "cem" which load the cem package automatically.
+We can perform CEM matching using MatchIt package in R, by passing the name of the method to MatchIt as "cem" which load the cem package automatically.
 ```{r}
   #Perform One-to-One greedy matching with replacement and with caliper to estimate the ATT
   calc_cem = function(data, psFormula){
@@ -266,7 +266,7 @@ https://lists.gking.harvard.edu/pipermail/matchit/2009-April/000271.html <br/>
 https://lists.gking.harvard.edu/pipermail/cem/2013-August/000120.html <br/>
 And even after we have tried to apply some of the proposed solutions, we kept getting the same error.
 
-### 2. Nearest-Neighbor Matching with different estimations of propensity score:
+### 2. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Logistic Regression:
 Greedy nearest neighbor is a version of the algorithm that works by choosing a treatment group member and then choosing a control group member that is the closest match. It works as follows:
 
   1. randomly order the treated and untreated individuals
@@ -274,9 +274,9 @@ Greedy nearest neighbor is a version of the algorithm that works by choosing a t
   3. if matching without replacement, remove *j* from the pool.
   4. Repeat the above process until matches are found for all participants.
 
-there are some important parameter to consider:
+There are some important parameter to consider:
 
-* with or withour replacement: with replacement an untreated individual can be used more than once as a match, whereas in the latter case it is considered only once.
+* with or with our replacement: with replacement an untreated individual can be used more than once as a match, whereas in the latter case it is considered only once.
 * one-to-one or one-to-k: in first case each treated is matched to a single control whereas in the latter case each treated is matched to K controls.
 * Caliper matching: a maximum caliper distance is set for the matches. A caliper distance is the absolute difference in propensity scores for the matches. As a maximum value is being set, this may result in some participants not being matched \(Rosembaum and Rubin \(1985\) [60] suggest a caliper of .25 standard deviations\).
 
@@ -296,14 +296,14 @@ greedyMatching <- matchit(psFormula, distance = Ps_scores,
 **Disadvantages:**
 Greedy nearest neighbor matching may result in poor quality matches overall. The first few matches might be good matches, and the rest poor matches. This is because one match at a time is optimized, instead of the whole system. An alternative is optimal matching, which takes into account the entire system before making any matches (Rosenbaum, 2002). When there is a lot of competition for controls, greedy matching performs poorly and optimal matching performs well. Which method you use may depend on your goal; greedy matching will create well-matched groups, while optimal matching created well-matched pairs \(Stuart, 2010\)[4].
 
-In oder to perform nearest neighbor maching or any other propensity score based methods, first propensity scores must be estimated. In our study we perform gready nearest neighbor matching using propensity scores estimated using three different models:
+In order to perform nearest neighbor matching or any other propensity score based methods, first propensity scores must be estimated. In our study we perform greedy nearest neighbor matching using propensity scores estimated using three different models:
 
 * Logistic Regression
 * Random Forest
 * Generalized Gradient Boosting
 
-#### Propesity Score Estimation
-The idea with propensity score matching is that we use a logit model to estimate the probability that each observation in our dataset was in the treatment or control group.Then we use the predicted probabilities to prune out dataset such that, forevery treated unit, there’s a control unit that can serve as a viable counterfactual.
+#### Propensity Score Estimation
+The idea with propensity score matching is that we use a logit model to estimate the probability that each observation in our dataset was in the treatment or control group.Then we use the predicted probabilities to prune out dataset such that, for every treated unit, there’s a control unit that can serve as a viable counterfactual.
 
 The estimation of propensity scores could be done using:
 
@@ -311,7 +311,7 @@ The estimation of propensity scores could be done using:
   - Mostly widely used
   - relay on functional form assumption
 * Machine learning algorithms: classification trees, boosting, bagging, random Forests
-  - do not rely on fuctional form Assumptions
+  - do not rely on functional  form Assumptions
   - it is not clear whether these methods on average better than binomial models
 
 **Logistic Regression:**
@@ -344,9 +344,9 @@ The fundamental concept behind random forest is a simple but powerful one — th
 
 A large number of relatively uncorrelated models (trees) operating as a committee will outperform any of the individual constituent models.<br/>
 
-The low correlation between models is the key.uncorrelated models can produce ensemble predictions that are more accurate than any of the individual predictions. The reason for this wonderful effect is that the trees protect each other from their individual errors (as long as they don’t constantly all err in the same direction). While some trees may be wrong, many other trees will be right, so as a group the trees are able to move in the correct direction.
+The low correlation between models is the key. Uncorrelated models can produce ensemble predictions that are more accurate than any of the individual predictions. The reason for this wonderful effect is that the trees protect each other from their individual errors (as long as they don’t constantly all err in the same direction). While some trees may be wrong, many other trees will be right, so as a group the trees are able to move in the correct direction.
 
-we estimate the propensity secore using random forest with the R package party using the function cforest().
+we estimate the propensity score using random forest with the R package party using the function cforest().
 ```{r}
 rf_ps <- function(dataset, psFormula){
     #estimate propensity scores with random forests
@@ -371,16 +371,16 @@ rf_ps <- function(dataset, psFormula){
 ### 4. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with XGBoost
 
 * Boosting is a general method to improve a predictor by reducing prediction error.This technique employs the logic in which the subsequent predictors learn from the mistakes of the previous predictors. Therefore, the observations have an unequal probability of appearing in subsequent models and ones with the highest error appear most. (So the observations are not chosen based on the bootstrap process, but based on the error).
-* GNB for propensity score estimation impoves prediction of the logit of treatment assignment: <br/>
+* GNB for propensity score estimation improves prediction of the logit of treatment assignment: <br/>
     * logit(Z<sub>*i*</sub> = 1 | X)
 * Starting value:
     * log[$\bar{Z}$ / (1 - $\bar{Z}$)]
-* Regression trees are used to minimize the within-node sum of sequared residual:
+* Regression trees are used to minimize the within-node sum of squared residual:
     * Z<sub>*i*</sub> - *e*<sub>*i*</sub>(X) <br/>
 
 **Stopping GMB:** There is no defined stopping criterion, so errors decline up to a point and then increase, for propensity score estimation, McCaffrey [62] recommended using a measure of covariate balance, to stop the GMB algorithm the first time that a minimum covariate balance is achieved, but there is no guarantee that better covariate balance would not be achieved if the algorithm runs additional iteration.
 
-We use the twang package in R [63] to produce porpensity score estimation using GMB, which contains a set of functions and procedures to support causal modeling of observational data through the estimation and evaluation of propensity scores and associated weights. The main workhorse of twang is the ps() function which implements generalized boosted regression modeling to estimate the propensity scores.
+We use the twang package in R [63] to produce propensity  score estimation using GMB, which contains a set of functions and procedures to support causal modeling of observational data through the estimation and evaluation of propensity scores and associated weights. The main workhorse of twang is the ps() function which implements generalized boosted regression modeling to estimate the propensity scores.
 
 ```{r}
 # library for ps() function
@@ -421,16 +421,16 @@ Below the Flowchart describes how the Genetic Matching algorithm works [13]:
 
 <img style="  width:300px;display:block;margin:0 auto;" src="/blog/img/seminar/mathcing_methods_1819/SN22.png">
 
-In order to perform GenMatch, we have to make the following decisions:
+In order to perform Genetic matching, we have to make the following decisions:
 
 1. what variables to match on
 2. how to measure post-matching covariate balance
 3. how exactly to perform the matching.
 
 
-Gentic Matching may or may not decrease the bias in the conditional estimates. However, by construction the algorithm will improve covariate balance, if possible, as measured by the particular loss function chosen to measure balance.
+Genetic Matching may or may not decrease the bias in the conditional estimates. However, by construction the algorithm will improve covariate balance, if possible, as measured by the particular loss function chosen to measure balance.
 
-We can perform the genetic matching in R, by calling the Matchit package, in our study we performed gentic matcing on the covariates and the propensity scores estimated by the generalized boosted model
+We can perform the genetic matching in R, by calling the MatchIt package, in our study we performed genetic matcing on the covariates and the propensity scores estimated by the generalized boosted model
  ```{r}
  # perform genetic matching based on all the covariates and the propensity score estimated from GMB
  calc_geneticMatchin_with_gmb = function(data, psFormula, zeFormula, Ps_scores){
@@ -441,7 +441,7 @@ We can perform the genetic matching in R, by calling the Matchit package, in our
 }
  ```
 * pop.size: the number of individuals genoud uses to solve the optimization problem, i.e. the number of the weight matrixes that will be generated in order to have a perfect balance.
-* fit.func: The balance metric gentic matching should optimize, here we have choosen "pvals" and that maximize the p.values from (paired) t-tests and Kolmogorov-Smirnov tests conducted for each column in BalanceMatrix
+* fit.func: The balance metric genetic matching should optimize, here we have chosen "pvals" and that maximize the p.values from (paired) t-tests and Kolmogorov-Smirnov tests conducted for each column in BalanceMatrix
 * estimated = "ATT": the type of the estimated treatment effect, which here is specified as estimated treatment effect on the treated.
 * ties = T: A logical flag for whether ties should be handled deterministically. If, for example, one treated observation matches more than one control observation, the matched dataset will include the multiple matched control observations and the matched data will be weighted to reflect the multiple matches. The sum of the weighted observations will still equal the original number of observations. If ties = FALSE, ties will be randomly broken.
 * discarded = "both": a vector of length n that displays whether the units were ineligible for matching due to common support restrictions. In case discarded = both, then both treatment and control unit that are not in the common support will not be matched on.
@@ -449,7 +449,7 @@ We can perform the genetic matching in R, by calling the Matchit package, in our
 #### After Matching Analysis and Estimating ATT:
 There are different ways of estimating ATT. We decide to follow the approach suggested by (Ho, D., Imai, K., King, G. & Stuart) [42] using Zelig [64], Which is an R package that implements a large variety of statistical models (using numerous existing R packages) with a single easy-to-use interface, gives easily interpretable results by simulating quantities of interest, provides numerical and graphical summaries, and is easily extensible to include new methods.
 We estimate the average treatment effect on the treated in a way that is quite robust. We do this by estimating the coefficients in the control group alone.
-After conducting matching method on our date we go to Zelig, and in this case choose to fit a linear least squares model to the control group only:
+After conducting matching method on our data we go to Zelig, and in this case choose to fit a linear least squares model to the control group only:
 ```{r}
 # Estimating ATT
 get_estimated_treatment <- function(matching_output, zeFormula){
@@ -484,11 +484,11 @@ We hope that this has been a helpful exploration into the statistical assumption
 
 <img style=" width:800px;display:block;margin:0 auto;" src="/blog/img/seminar/mathcing_methods_1819/SN18.png">
 
-Looking at the results in section 9 from our comparative of matching methods, which they are the mean absolute error in the ATT in our data after applying four different mathcing methods, namely:
+Looking at the results in section 9 from our comparative of matching methods, which they are the mean absolute error in the ATT in our data after applying four different matching methods, namely:
 * Nearest Neighbor propensity score estimated with Logistic Regression
 * Nearest Neighbor propensity score estimated with Random Forest
 * Nearest Neighbor propensity score estimated with Generalized Boosting model
-* Genetic matching on coviarates and ropensity score estimated with Generalized Boosting model
+* Genetic matching on covariates and propensity score estimated with Generalized Boosting model
 
 which were applied on six different simulated datasets each with different characteristics.
 
