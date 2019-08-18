@@ -311,24 +311,24 @@ Therefore, we see the uplift curves more applicable for multiple treatments and 
 Another evaluation method for uplift models with multiple treatments is the expected outcome metric propose by Zhao et al. (2017).
 It estimates the expected outcome, given that each subject is assigned the treatment with the highest outcome, predicted by the uplift model (including choosing no treatment).
 
-The authors define a random variable $Z$ as follows:
+The authors define a random variable $Z$ as
 
 \begin{equation}
-Z = \sum_{t=0}^{K} \frac{1}{p_t} Y  [h(X)=t] I { T=t }
+Z = \sum_{t=0}^{K} \frac{1}{p_t} Y I [h(X)=t] I [ T=t ]
 \end{equation}
 
+where $I$ depicts the indicator function, $p_t$ the probability that the assigned and predicted treatments have been matched and $h(X)$ the predicted treatment by the uplift model.
 
 In case the treatment predicted by the uplift model is equal to the actual assigned treatment to the subject during the experiment, the weighted outcome of this subject is summed.
 In other words, the subjects where the predicted and assigned treatments match, form the group of representatives for those with this treatment assigned.
 As the number of matched subjects can vary, their group outcomes are then weighted.
 <br />
 The expected value of $Z$ is than equal to the expected outcome, given that each subject is assigned the best predicted treatment, as shown by the authors.
-Furthermore, the sample average $\bar{z}$ represents an unbiased estimate of $E[Z]$
+Furthermore, the sample average $\bar{z}$ represents an unbiased estimate of $E[Z]$.
 
 \begin{equation}
 E[Z] = E[Y|T=h(X)]
 \end{equation}
-
 
 
 \begin{equation}
