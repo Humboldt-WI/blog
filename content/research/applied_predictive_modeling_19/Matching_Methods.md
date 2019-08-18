@@ -1,12 +1,12 @@
 +++
 title = "Matching Methods for Causal Inference: A Machine Learning Update"
-date = '2019-08-02'
-tags = [ "Matching Methods", "Genetic Matching", "Coarsened Exact Matching", "Propensity Score", "Machine Learning", "Causal Inference"]
+date = '2019-08-18'
+tags = [ "Matching Methods", "Genetic Matching", "Coarsened Exact Matching", "Propensity Score", "Machine Learning", "Causal Inference", "MatchIt", "Nearest Neighbor", "Optimal MAtching"]
 categories = ["course projects"]
 banner = "img/seminar/mathcing_methods_1819/logo.png"
 author = "Seminar Applied Predictive Modeling (SS19)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
-description = "Comparing Matching Methods"
+description = "Matching Methods for causal inference"
 +++
 
 #### Authors: Samantha Sizemore and Raiber Alkurdi
@@ -104,13 +104,16 @@ As commented previously, not all causal inference studies use matching so **how 
 
 1.	**Stable unit treatment value assumption (SUTVA)** states that the treatment of one unit does not affect the potential outcome of other units (i.e. there are no network effects). It further assumes that the treatment for all *i* are similar. (In the LaLonde study this means that the job training program was more or less the same quality for all individuals across the ten states where it was administered).
 
-2.	**Ignorability** assumes that the treatment assignment is independent of the potential outcome, *Y(1), Y(0) ⟂ T*. This assumption, sometimes referred to as **Unconfoundedness** or **selection on observables** in econometrics [22], is assumed to hold in randomized trials. With observational studies, however, one can never be completely certain that this holds. [23] The most common violation of ignorability is **omitted variable bias** where an unidentified variable is affecting both the probability of treatment and the outcome, thereby biasing the treatment effect estimate. The typical way to address omitted variable bias is to identify and include all variables that make the treatment assignment independent of the outcome such that **conditional ignorability,** defined as *Y(1), Y(0)* ⟂ *T* | *X*, holds. <br/>
+2.	**Ignorability** assumes that the treatment assignment is independent of the potential outcome, *Y(1), Y(0) ⟂ T*. This assumption, sometimes referred to as **Unconfoundedness** or **selection on observables** in econometrics [22], is assumed to hold in randomized trials. With observational studies, however, one can never be completely certain that this holds. [23] The most common violation of ignorability is **omitted variable bias** where an unidentified variable is affecting both the probability of treatment and the outcome, thereby biasing the treatment effect estimate. The typical way to address omitted variable bias is to identify and include all variables that make the treatment assignment independent of the outcome such that **conditional ignorability,** defined as *Y(1), Y(0)* ⟂ *T* | *X*, holds. <br/><br>
 A natural way to think about conditional ignorability is to assume we can control for all confounding covariates so that, “any two classes at the same levels of the confounding covariates (…) have the same probability” of receiving the treatment. [24] In reality, perfect conditional ignorability is an elusive goal with observational studies. The best researchers can do is take care to identify and include all possible confounding covariates.
 
 3.	While perhaps a leap of faith, let’s assume that SUTVA and conditional ignorability hold. We are still confronted with a third problem: **lack of overlap** and **imbalance** between the treated and control groups. Gelman’s graphs below illustrate this problem clearly.
 <img style=" width:600px;display:block;margin:0 auto;" src="/blog/img/seminar/mathcing_methods_1819/SN8.png">
+
 Gelman states that lack of overlap forces us to, “rely more heavily on model specification and less on direct support from the data.” [25] For causal inference, this means we may be missing counterfactuals and therefore force our model to “extrapolate beyond the support of the data”. [26]<br/>
+
 This extrapolation is a slippery slope into **model dependence,** or differing estimates of the treatment effect with different model specifications. [27] Estimates of the treatment effect that are heavily model-dependent show only that the researcher, however well-intentioned, was able to find *a* model “consistent with the author’s prior expectations.” [28] Matching is a preprocessing step that reduces model dependence as it restricts the dataset to areas of overlap, thereby reducing the parametric modeling assumptions required in Step 2 of 2 (modeling to estimate the treatment effect). Better overlap results in improved robustness in causal effect models and estimates.<br/>
+
 In Rubin’s Causal Model, the **overlap** assumption (also referred to as **common support**) is defined as:  0 < Pr (*T* = 1 | X) < 1 for all *i*. An intuitive way to think about overlap is to consider the opposite extreme: if Pr (*T* = 1 | X) = 1 for all i then all units would be treated, and no possible control counterfactuals would exist. We need to assume that for a given individual, conditioned on *X*, there exists the possibility of *not* being treated. [29] If this assumption does not hold, there could be “neighborhoods of the confounder space” where there are treated units for which no appropriate control counterfactual is available. [30] If full overlap is assumed to hold, then conditional ignorability can be upgraded to a stronger assumption, **strong ignorability** defined as *Y(1), Y(0)* ⫫ *T* | *X*.
 
 Finally, it is important to address that matching methods inherently discard, or weight to zero, un-matched observations thus reducing the available sample size. Standard statistical assumptions dictate that a smaller sample may increase the variance of our estimates; therefore, the claim that matching can improve model robustness by down-sampling may seem counterintuitive. Sekhon, 2008 [31] citing Rosenbaum, 2005 [32] addresses this concern:
@@ -136,9 +139,9 @@ Unfortunately, its simplicity also makes it unscalable for datasets with continu
 **Coarsened Exact Matching (CEM)** <br/>
 CEM starts by transforming continuous variables into categorical variables. This technique in the machine learning is often referred to as **discretization**, or any process that converts a continuous variable into a finite number of categories, bins, features, etc. Invoking the mini-LaLonde example above, if the income variable is coarsened from a continuous scale into Low/Medium/High our matching problem is more manageable: instead of matching on 100,000 (2x50,000) bins, we now have only 6 (2x3) bins to fill with treatment/control individuals. After ‘filling’ the bins, “control units within each [bin] are weighted to equal the number of treated units in that stratum. Strata without at least one treated and one control are weighted at zero, and thus pruned from the data set.” [34]
 
-Provided that exact matching is possible after coarsening, then CEM should take priority over other matching techniques that rely on modeling. CEM, and other Monotonic Imbalance Bounding (MIB) techniques, are preferred over matching by modeling (e.g. propensity score) as they more closely approximate randomized block experimental design. [35] If exact matching is *not* possible after coarsening, then further modeling techniques must be used however CEM can still be used as a first step preceding matching by propensity score. [36] Situations where CEM would be inappropriate are where, even after coarsening, there are many empty bins (either lacking a found counterfactual control or a treated unit) and pruning would lead to excessive reduction of the dataset.
+Provided that exact matching is possible after coarsening, then CEM should take priority over other matching techniques that rely on modeling. CEM, and other Monotonic Imbalance Bounding (MIB) techniques, are preferred over matching by modeling (e.g. propensity score) as they more closely approximate randomized block experimental design. [35] If exact matching is *not* possible after coarsening, then further modeling techniques must be used however CEM can still be used as a first step preceding matching by propensity score. [36] Situations where CEM would be inappropriate are where, even after coarsening, there are many empty bins (either lacking a found counterfactual control or a treated unit) and pruning would lead to excessive reduction of the dataset. **For additional details and implementation of this method, see Section 8 below.**
 
-### Modeling: Mahalanobis Distance Matching and Propensity Score Matching**
+### Modeling: Mahalanobis Distance Matching and Propensity Score Matching
 
 **Mahalanobis Distance Matching (MDM)** <br/>
 For higher dimensional datasets where CEM is not appropriate, matching through modeling is required. Each of these approaches applies a linear transformation to the data for more effective matching. [37] Mahalanobis Distance Matching (MDM) <img style="float: right; width:600px;display:block;margin:0 auto;" src="/blog/img/seminar/mathcing_methods_1819/SN11.png"> takes each treated unit and, using the estimated Mahalanobis distance, matches it to the nearest control unit. Mahalanobis distance is mapped in an n-dimensional space and is appropriate for datasets with many continuous, potentially correlated, variables. MDM is preferred to simple Euclidean distance as it is weighted by the covariance matrix of X thereby taking into account the correlations between the variables. MDM is not, however, effective if the dataset contains covariates with non-ellipsoidal distributions (i.e. not normally- or t-distributed). [38] In addition, MDM in not appropriate for *very* high dimensions. Mahalanobis distance, “regards all interactions among the elements of X as equally important” [39] and with high-dimensional data this n-dimensional space becomes increasingly sparse [40] making it difficult to find an appropriate neighbor to match to.
@@ -151,7 +154,7 @@ PSM is most commonly implemented by:1) Estimating the propensity score through l
 
 <img style=" width:700px;display:block;margin:0 auto;" src="/blog/img/seminar/mathcing_methods_1819/SN13.png">
 
-PSM solves the matching problem for high dimensional data and is easily implemented. It is important to note however that PSM results in matched pairs that are not necessarily similar across all of their covariates; rather, the goal of PSM is that the subsampled treatment and control groups are similar to each other *on average* across all of X. [43] Further, misspecification of the propensity score model can lead to bad matches. [44]
+PSM solves the matching problem for high dimensional data and is easily implemented. It is important to note however that PSM results in matched pairs that are not necessarily similar across all of their covariates; rather, the goal of PSM is that the subsampled treatment and control groups are similar to each other *on average* across all of X. [43] Further, misspecification of the propensity score model can lead to bad matches. [44] **For additional details and implementation of this method, see Section 8 below.**
 
 ### Machine Learning Modeling: Matching Frontier, D-AEMR, Genetic Matching, and Nearest-Neighbor PSM w/ Random Forest
 The methods outlined so far were first proposed in the 1980s with tweaks and updates throughout the years. In recent years, novel approaches have been published with increasing frequency. These approaches utilize some degree of algorithmic optimization or supervised machine learning concepts to optimize individual matches, overall covariate balance, and/or the propensity score model itself. We provide summaries of Matching Frontier and D-AEMR, and summaries plus code for PSM with Random Forest and Genetic Matching.
@@ -167,7 +170,7 @@ The upper-left diagram shows the inflection point at which pruning starts to red
 The Frontier does not explicitly show if and where an increase variance in the FSATT begins as pruning progresses, but it can serve useful to determine *if* pruning will reduce imbalance and decrease model dependence and if so at which point. In doing so, it algorithmically solves the joint optimization problem of decreasing imbalance while maintaining the largest possible subsampled dataset. (King argues that typically, researchers are forced to manually optimize balance while algorithmically optimizing sample size or vice-versa. [49]) The upper-left and lower-right demonstrate that for the LaLonde study, pruning monotonically decreases covariate imbalance and model dependence. If we imagine this line fluctuating, the usefulness of the Frontier is more apparent.
 
 **Genetic Matching** <br/>
-Genetic Matching utilizes a genetic algorithm commonly employed in machine learning prediction tasks. It is an optimization algorithm which matches control units to treated units, checks the resulting covariate balance, updates the matches, and then repeats this process iteratively until the optimal covariate balance is achieved. This method matches units on all observable covariates *and* the propensity score. With each iteration, a distinct distance metric is calculated which results in different matches. The distance metric changes from iteration to iteration by weighting the covariates differently each time. In doing so, it “learns” which covariates (i.e. weights) are most important to produce the matching outcome with the best possible covariate balance. As this process is automated, it “guarantees asymptotic convergence to the optimal matched sample.” [50] The genetic optimization algorithm starts with one batch of weights and with each generation produces a batch of weights which maximizes balance by minimizing a user-specified loss function. Genetic Matching is available out-of-the-box in the MatchIt RStudio package [51] and will be used in the coding example below.
+Genetic Matching utilizes a genetic algorithm commonly employed in machine learning prediction tasks. It is an optimization algorithm which matches control units to treated units, checks the resulting covariate balance, updates the matches, and then repeats this process iteratively until the optimal covariate balance is achieved. This method matches units on all observable covariates *and* the propensity score. With each iteration, a distinct distance metric is calculated which results in different matches. The distance metric changes from iteration to iteration by weighting the covariates differently each time. In doing so, it “learns” which covariates (i.e. weights) are most important to produce the matching outcome with the best possible covariate balance. As this process is automated, it “guarantees asymptotic convergence to the optimal matched sample.” [50] The genetic optimization algorithm starts with one batch of weights and with each generation produces a batch of weights which maximizes balance by minimizing a user-specified loss function. Genetic Matching is available out-of-the-box in the MatchIt RStudio package [51] and will be used in the coding example below. **For additional details and implementation of this method, see Section 8 below.**
 
 **Dynamic Almost-Exact Matching with Replacement (D-AEMR)** <br/>
 Dieng and co-authors from Duke University propose **Dynamic Almost-Exact Matching with Replacement (D-AEMR).** [52] D-AEMR is conceptually similar to genetic matching in its emphasis on covariate importance, but it uses a different approach designed for datasets with very high dimensions. Historically, the dimensionality problem in matching been solved by PSM which collapses all covariates into one variable. Yet because the ultimate goal of PSM is to subsample so that the treatment and control groups are similar to each other *on average* across all of X, PSM does not necessarily produce matched *pairs* that are similar to each other across X. The lack of similarity in the matched pairs produced by PSM can lead to inaccurate calculation of TEi and CATE, especially in high dimensions. [53] If heterogeneity in X produces heterogenous treatment effects, then it is important to be able to calculate the CATE or CATT for each sub-group.
@@ -179,7 +182,7 @@ To address PSM’s shortfalls in finding these causal effects, plus the issue th
 **PSM with Random Forest** <br/>
 A frequently cited issue with PSM is that misspecification of the propensity score model can lead to poor estimates of the propensity scores and therefore poor matches and biased estimates of the treatment effect. [44] Propensity scores are usually estimated with logistic regression which imposes parametric assumptions relating to the underlying distribution of the population. As matching is a two-step process, these assumptions are compounded when the propensity score is modeled, *and* the estimation of the treatment effect is modeled. A potential solution to this problem is to approach estimation of the propensity score as any other prediction problem and use state-of-the-art *nonparametric* machine learning approaches to optimize predictions of the propensity score. [56] Most modeling problems in causal inference deal with unobservable outcomes making highly tuned machine learning algorithms unusable. However, for the propensity score *we do observe the outcome of interest.* For each individual in the dataset, we directly observe T = 0 or T = 1 and can therefore employ machine learning prediction models to find the best possible propensity scores.
 
-In the coding example below, we will utilize Random Forest and the related Gradient Boosting algorithm estimate the propensity scores.  Random Forest, proposed by Breiman, 2001 [57], builds an ensemble of classification trees and uses bootstrapping to combat overfitting. Gradient Boosting is a related algorithm but differs in the order in which the trees are built: where Random Forest builds trees concurrently, Gradient Boosting builds them sequentially, each time correcting the errors of the previous trees. Assuming that a stellar propensity score estimate will translate to an unbiased estimate of the ATT, then these machine learning models should outperform the model where the propensity score is estimated with logistic regression. In the application below, we will estimate the ATT with PSM where the propensity score is estimated by logistic regression and compare it with the estimated ATT from PSM where the propensity score is estimated with Random Forest / Gradient Boosting and cross-validation.
+In the coding example below, we will utilize Random Forest and the related Gradient Boosting algorithm estimate the propensity scores.  Random Forest, proposed by Breiman, 2001 [57], builds an ensemble of classification trees and uses bootstrapping to combat overfitting. Gradient Boosting is a related algorithm but differs in the order in which the trees are built: where Random Forest builds trees concurrently, Gradient Boosting builds them sequentially, each time correcting the errors of the previous trees. Assuming that a stellar propensity score estimate will translate to an unbiased estimate of the ATT, then these machine learning models should outperform the model where the propensity score is estimated with logistic regression. In the application below, we will estimate the ATT with PSM where the propensity score is estimated by logistic regression and compare it with the estimated ATT from PSM where the propensity score is estimated with Random Forest / Gradient Boosting and cross-validation. **For additional details and implementation of this method, see Section 8 below.**
 
 
 ## 5. Outline of Our Methodological Approach for Comparing Matching Methods
@@ -200,21 +203,29 @@ We utilize a DGP package created by our seminar classmates to create our synthet
 
 These parameter choices were inspired by our matching research, the available settings in the Opossum package, and helpful recommendations from Dorie (2018) [58] that outlines the simulated DGP from a causal inference competition. Our rationale for choosing these parameter settings is as follows:
 
-•	Random assignment into treatment = False, as we are simulating an observational study where the probability of treatment is determined by *X*.
-•	Treatment Effect = heterogeneous as would like the treatment effect to vary across different sub-groups of the population as is common in observational studies and produces differing CATT for each sub-group.
-•	Assignment probability = low as we would like the datasets to have C units >> T units. This is common in observational studies: from a large pool of control individuals some are selectively matched to a small treated group. The “low” setting produces a dataset with 35% treated units and 65% control units.
-•	We create two datasets (*small* and small_cat*) with low dimensions and observations to determine if any one matching method performs better on low-dimensional data and if any one method performs better with categorical data.
-•	One dataset (*noTreat_k50*) with no treatment effect is created in order to see how susceptible the matching methods are to general noise.
-•	All the datasets feature positive, heterogeneous treatment effects, but the dataset *weights_k30* augments this heterogeneity by specifying 60% positive, 20% negative and 20% no treatment effect.
-•	The final two datasets are inspired by frequent claims in matching literature that matching methods are susceptible to irrelevant covariates. To see if this is true, we create one dataset *cond_assign* with k=100 but the treatment assignment is determined by only 10 of the covariates and *cond_treat* with k=100 but the treatment effect is determined by only 10 of the covariates. This concept in causal inference is referred to as “degree of alignment” and is recommended for causal inference DGP [58].
+*	Random assignment into treatment = False, as we are simulating an observational study where the probability of treatment is determined by *X*.
+*	Treatment Effect = heterogeneous as would like the treatment effect to vary across different sub-groups of the population as is common in observational studies and produces differing CATT for each sub-group.
+*	Assignment probability = low as we would like the datasets to have C units >> T units. This is common in observational studies: from a large pool of control individuals some are selectively matched to a small treated group. The “low” setting produces a dataset with 35% treated units and 65% control units.
+*	We create two datasets (*small* and small_cat*) with low dimensions and observations to determine if any one matching method performs better on low-dimensional data and if any one method performs better with categorical data.
+*	One dataset (*noTreat_k50*) with no treatment effect is created in order to see how susceptible the matching methods are to general noise.
+*	All the datasets feature positive, heterogeneous treatment effects, but the dataset *weights_k30* augments this heterogeneity by specifying 60% positive, 20% negative and 20% no treatment effect.
+*	The final two datasets are inspired by frequent claims in matching literature that matching methods are susceptible to irrelevant covariates. To see if this is true, we create one dataset *cond_assign* with k=100 but the treatment assignment is determined by only 10 of the covariates and *cond_treat* with k=100 but the treatment effect is determined by only 10 of the covariates. This concept in causal inference is referred to as “degree of alignment” and is recommended for causal inference DGP [58].
 
 ## 8. Match (and Estimate ATT) with:
+
+1. Coarsened Exact Matching
+2. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Logistic Regression
+3. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Random Forest
+4. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with XGBoost
+5. Genetic Matching
+
+
 ### 1.	Coarsened Exact Matching
 
 The idea of CEM is to temporarily coarsen each variable into substantively meaningful groups, exact match on these coarsened data and then only retain the original (uncoarsened) values of the matched data.
 <br/>
 
-**Algorithm:** The CEM algorithm then involves three steps:
+**Algorithm:** The CEM algorithm then involves three steps [61] :
 
    1. Temporarily coarsen each control variable in X (covariates) according to user-defined cutpoints, or CEM’s automatic binning algorithm, for the purposes of matching. For example, years of education might be coarsened into grade school, middle school, high school, college, graduate school.
    2. Sort all units into strata, each of which has the same values of the coarsened X.
@@ -240,7 +251,22 @@ Now the matched & weighted Treatment and Control members can be compared by usin
 * If the right variables are chosen, but the coarsening is too loose.<br/>
   Example: Age could be binned into 1 or 0 depending on if a member is ≥ 50 years old or < 50 yearsold — for some studies that might be appropriate, but working on a geriatric study, almost everyone will be≥ 50 years old, and this coarsening strategy is inappropriate and too lose.
 
+We can perform CEM macthing using MatchIt package in R, by passing the name of the method to MatchIt as "cem" which load the cem package automatically.
+```{r}
+  #Perform One-to-One greedy matching with replacement and with caliper to estimate the ATT
+  calc_cem = function(data, psFormula){
+    cemMatching <- matchit(psFormula, data = data, method = "cem")
+    return(cemMatching)
+  }
+  ```
 
+* psFormula: is the matching fomula "treat ~ covariate1 + covariate2 + ..."
+
+**Important Note Regarding CEM:** if we look a bit below in the section 9 where we show the results of our comparative of matching methods, we will notice there are no results from the CEM Unfortunately. We have encountered an error "subscript out of bounds" while trying to match using CEM MatchIt faction in R. After doing some searches, it turns that is a common bug in the MachIt package as mentioned in: <br/>
+https://lists.gking.harvard.edu/pipermail/matchit/2017-August/000733.html <br/>
+https://lists.gking.harvard.edu/pipermail/matchit/2009-April/000271.html <br/>
+https://lists.gking.harvard.edu/pipermail/cem/2013-August/000120.html <br/>
+And even after we have tried to apply some of the proposed solutions, we kept getting the same error.
 
 ### 2. Nearest-Neighbor Matching with different estimations of propensity score:
 Greedy nearest neighbor is a version of the algorithm that works by choosing a treatment group member and then choosing a control group member that is the closest match. It works as follows:
@@ -254,7 +280,7 @@ there are some important parameter to consider:
 
 * with or withour replacement: with replacement an untreated individual can be used more than once as a match, whereas in the latter case it is considered only once.
 * one-to-one or one-to-k: in first case each treated is matched to a single control whereas in the latter case each treated is matched to K controls.
-* Caliper matching: a maximum caliper distance is set for the matches. A caliper distance is the absolute difference in propensity scores for the matches. As a maximum value is being set, this may result in some participants not being matched \(Rosembaum and Rubin \(1985\) suggest a caliper of .25 standard deviations\).
+* Caliper matching: a maximum caliper distance is set for the matches. A caliper distance is the absolute difference in propensity scores for the matches. As a maximum value is being set, this may result in some participants not being matched \(Rosembaum and Rubin \(1985\) [60] suggest a caliper of .25 standard deviations\).
 
 In our study we perform a one-to-one greedy nearest neighbor matching with replacement and with caliper to estimate the ATT
 ```{r}
@@ -263,12 +289,11 @@ greedyMatching <- matchit(psFormula, distance = Ps_scores,
                             data = data,
                             method = "nearest", ratio = 1, replace = T, caliper = 0.25)
 ```
-psFormula: is the matching fomula "treat ~ covariate1 + covariate2 + ..." <br/>
-distance: are the propensity scores <br/>
-data: the name of the dataset
-method: nearest neighbor <br/>
-ratio = 1: one-to-one matching <br/>
-replace = T: matching with replacement
+* distance: are the propensity scores <br/>
+* data: the name of the dataset
+* method: nearest neighbor <br/>
+* ratio = 1: one-to-one matching <br/>
+* replace = T: matching with replacement
 
 **Disadvantages:**
 Greedy nearest neighbor matching may result in poor quality matches overall. The first few matches might be good matches, and the rest poor matches. This is because one match at a time is optimized, instead of the whole system. An alternative is optimal matching, which takes into account the entire system before making any matches (Rosenbaum, 2002). When there is a lot of competition for controls, greedy matching performs poorly and optimal matching performs well. Which method you use may depend on your goal; greedy matching will create well-matched groups, while optimal matching created well-matched pairs \(Stuart, 2010\)[4].
@@ -354,9 +379,9 @@ rf_ps <- function(dataset, psFormula){
 * Regression trees are used to minimize the within-node sum of sequared residual:
     * Z<sub>*i*</sub> - *e*<sub>*i*</sub>(X) <br/>
 
-**Stopping GMB:** There is no defined stopping criterion, so errors decline up to a point and then increase, for propensity score estimation, McCaffrey recommended using a measure of covariate balance, to stop the GMB algorithm the first time that a minimum covariate balance is achieved, but there is no guarantee that better covariate balance would not be achieved if the algorithm runs additional iteration.
+**Stopping GMB:** There is no defined stopping criterion, so errors decline up to a point and then increase, for propensity score estimation, McCaffrey [62] recommended using a measure of covariate balance, to stop the GMB algorithm the first time that a minimum covariate balance is achieved, but there is no guarantee that better covariate balance would not be achieved if the algorithm runs additional iteration.
 
-We use the twang package in R to produce porpensity score estimation using GMB, which contains a set of functions and procedures to support causal modeling of observational data through the estimation and evaluation of propensity scores and associated weights. The main workhorse of twang is the ps() function which implements generalized boosted regression modeling to estimate the propensity scores.
+We use the twang package in R [63] to produce porpensity score estimation using GMB, which contains a set of functions and procedures to support causal modeling of observational data through the estimation and evaluation of propensity scores and associated weights. The main workhorse of twang is the ps() function which implements generalized boosted regression modeling to estimate the propensity scores.
 
 ```{r}
 # library for ps() function
@@ -380,7 +405,7 @@ gbm_ps <- function(dataset, psFormula){
 * shrinkage: helps to enhance the smoothness of resulting model. The shrinkage argument controls the amount of shrinkage. Small values such as 0.005 or 0.001 yield smooth fits but require greater values of n.trees to achieve adequate fits. Computational time increases inversely with shrinkage argument.
 * stop.method: A method or methods of measuring and summarizing balance across pretreat-ment variables.  Current options areks.mean,ks.max,es.mean, andes.max.ksrefers to the Kolmogorov-Smirnov statistic andesrefers to standardized ef-fect size.  These are summarized across the pretreatment variables by either themaximum (.max) or the mean (.mean).
 
-### 5.	Genetic Matching
+### 3.	Genetic Matching
 
 Genetic Matching Offers the benefit of combining the merits of traditional PSM and Mahalanobis Distance Matching (MDM) and the benefit of automatically checking balance and searching for best solutions, via software computational support and machine learning algorithms. Genetic Matching matches by minimizing a generalized version of Mahalanobis distance (GMD), which has the additional weight parameter *W* . Formally
 
@@ -443,15 +468,37 @@ command does the imputation. The sim() function returns the predicted and the ex
 
 
 ## 9. Compare Performance of 5 Matching Methods in estimating ATT across 6 Datasets
+<tr>
+    <td> <img src="/blog/img/seminar/mathcing_methods_1819/df_small.png" alt="Drawing" style="width: 280px;"/> </td>
+    <td> <img src="/blog/img/seminar/mathcing_methods_1819/df_small_cat.png" alt="Drawing" style="width: 280px;"/> </td>
+    <td> <img src="/blog/img/seminar/mathcing_methods_1819/df_cond_assign.png" alt="Drawing" style="width: 280px;"/> </td>
+</tr>
+<tr>
+    <td> <img src="/blog/img/seminar/mathcing_methods_1819/df_cond_treat.png" alt="Drawing" style="width: 280px;"/> </td>
+    <td> <img src="/blog/img/seminar/mathcing_methods_1819/df_noTreat_k50.png" alt="Drawing" style="width: 280px;"/> </td>
+    <td> <img src="/blog/img/seminar/mathcing_methods_1819/df_weights_k30.png" alt="Drawing" style="width: 280px;"/> </td>
+</tr>
+<center><img src="/blog/img/seminar/mathcing_methods_1819/plot_legend_to_crop.png" alt="Drawing" style="width: 350px;"/></center>
 
-[Graphs from R only, no text]
-
-## 10. Conclusions & Recommendations: Academic + Results from Our Experiment**
+## 10. Conclusions & Recommendations: Academic + Results from Our Experiment
 We hope that this has been a helpful exploration into the statistical assumptions around matching methods and the recent machine learning developments in the field of matching.  The decision to implement matching should come with great care; it is difficult to provide precise recommendations around matching as best practices will vary depending on the dataset at hand. As such, we provide high-level recommendations for researchers considering matching as a preprocessing intervention and point readers to the wealth of literature in the References section for further guidance. In short, the main questions researchers should ask when considering matching is: what is my quantity of interest? Do I care about the group-level estimates, or do I need good individual matches? How much overlap and balance do I have in my data pre-matching? What is the dimensionality of my data? Here are some brief guidelines:
 
-<img style=" width:500px;display:block;margin:0 auto;" src="/blog/img/seminar/mathcing_methods_1819/SN18.png">
+<img style=" width:800px;display:block;margin:0 auto;" src="/blog/img/seminar/mathcing_methods_1819/SN18.png">
 
-[Raiber’s interpretation of results above]
+Looking at the results in section 9 from our comparative of matching methods, which they are the mean absolute error in the ATT in our data after applying four different mathcing methods, namely:
+* Nearest Niebour propensity score estimated with Logistic Regression
+* Nearest Niebour propensity score estimated with Random Forest
+* Nearest Niebour propensity score estimated with Generalized Boosting model
+* Genetic matching on coviarates and ropensity score estimated with Generalized Boosting model
+
+which were applied on six different simulated datasets each with different characteristics.
+
+We can see clearly, that:
+
+  * Genetic matching does very poorly in all datasets, even it looked to us very attractive theory. Beside the poor results of Genetic matching we have encountered an excessive computational power requirement in order to perform the matching method, especially when the data we highly dimensional.
+  * Nearest Neighbor with Random Forest and Generalized Boosting propensity score doesn’t perform very bad but also not good as our expectations.
+  * Our winning model is as always, the simplest model, Nearest Neighbor with Logistic Regression estimated propensity score, we were definitely surprised with its result. In addition of the good results, it was easy to implement and did not required any computational power, beside its possibility of being interpreted, contrary to the other methods which are considered black box models.
+
 
 ## 11. References
 [1] LaLonde, R. (1986). “Evaluating the Econometric Evaluations of Training Programs with Experimental Data.” The American Economic Review, (Vol. 76, No. 4, pp. 604-620). Page 605.
@@ -586,6 +633,6 @@ Using ML for Propensity Scores. (2015). The National Bureau of Economic Research
 
 [63]CRAN. Package: twang. Retrieved 02-07-2017 from: https://cran.r-project.org/web/packages/twang/index.html
 
-[64] CRAN. Package: Matchit. Retrieved 22-04-2019 from: https://cran.r-project.org/web/packages/Zelig/index.html
+[64] CRAN. Package: Zelig. Retrieved 22-04-2019 from: https://cran.r-project.org/web/packages/Zelig/index.html
 
 [65] King, G., Tomz, M., Wittenberg, J. (2000) Making the the most of Statistical Analysis: Improving interpretation and Presentation. American Journal of Political Science. 44 (2): 347-361. http://gking.harvard.edu/files/making.pdf
