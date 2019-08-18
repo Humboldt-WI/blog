@@ -30,11 +30,11 @@ Practitioners from quantitative Social Sciences such as Economics, Sociology, Po
 6.	Synthetic Data Generating Process to Generate 6 Datasets
 7.	Evaluation Metrics: Known ATT / Mean Absolute Error
 8.	Match (and Estimate ATT) with 5 Matching Methods:
-  1. Coarsened Exact Matching
-  2. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Logistic Regression
-  3. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Random Forest
-  4. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with XGBoost
-  5. Genetic Matching
+  * Coarsened Exact Matching
+  * Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Logistic Regression
+  * Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Random Forest
+  * Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with XGBoost
+  * Genetic Matching
 9.	Compare Performance in estimating ATT of 5 Matching Methods on 6 Datasets
 10.	Conclusions & Recommendations: Academic + Results from Our Experiment
 11.	References
