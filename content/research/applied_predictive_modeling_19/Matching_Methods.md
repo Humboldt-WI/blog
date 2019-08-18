@@ -31,12 +31,10 @@ Practitioners from quantitative Social Sciences such as Economics, Sociology, Po
 7.	Evaluation Metrics: Known ATT / Mean Absolute Error
 8.	Match (and Estimate ATT) with 5 Matching Methods:
   1. Coarsened Exact Matching
-  2. Nearest-Neighbor Matching with different estimations of propensity score
-      - Logistic Regression
-      - Random Forest
-      - Generalized Boosting Modeling
-  3. Genetic Matching
-  4. After Matching Analysis and Estimating ATT
+  2. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Logistic Regression
+  3. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Random Forest
+  4. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with XGBoost
+  5. Genetic Matching
 9.	Compare Performance in estimating ATT of 5 Matching Methods on 6 Datasets
 10.	Conclusions & Recommendations: Academic + Results from Our Experiment
 11.	References
@@ -234,11 +232,11 @@ The idea of CEM is to temporarily coarsen each variable into substantively meani
 <img style=" width:700px;display:block;margin:0 auto;" src="/blog/img/seminar/mathcing_methods_1819/SN23.png">
 [Source:https://medium.com/@devmotivation/cem-coarsened-exact-matching-explained-7f4d64acc5ef]
 
-With every member having a BIN Signature, each is matched to other members with that same BINSignature. There will likely be an imbalance between the number of Treatment and Control memberswith a BIN Signature. This variance in distribution must be normalized using CEM Weights.
+With every member having a BIN Signature, each is matched to other members with that same BIN Signature. There will likely be an imbalance between the number of Treatment and Control members with a BIN Signature. This variance in distribution must be normalized using CEM Weights.
 
 * All unmatched members get a weight of 0 (zero) and thus are effectively thrown out.
 * Matched treatment members get a weight of 1 (one).
-* Matched control members get weights above 0 that can be fractional or ≥ 1 that will normalizethe BIN signature (archetype) to the distribution within the treatment group.
+* Matched control members get weights above 0 that can be fractional or ≥ 1 that will normalize the BIN signature (archetype) to the distribution within the treatment group.
 
 The formula being:<br/>
 <center>**Weight = (Treatnment_N / Control_N) / ( Total_Control_N / otal_Treatment_N)**</center> <br/>
@@ -262,7 +260,7 @@ We can perform CEM macthing using MatchIt package in R, by passing the name of t
 
 * psFormula: is the matching fomula "treat ~ covariate1 + covariate2 + ..."
 
-**Important Note Regarding CEM:** if we look a bit below in the section 9 where we show the results of our comparative of matching methods, we will notice there are no results from the CEM Unfortunately. We have encountered an error "subscript out of bounds" while trying to match using CEM MatchIt faction in R. After doing some searches, it turns that is a common bug in the MachIt package as mentioned in: <br/>
+**Important Note Regarding CEM:** if we look a bit below in the section 9 where we show the results of our comparative of matching methods, we will notice there are no results from the CEM Unfortunately. We have encountered an error "subscript out of bounds" while trying to match using CEM MatchIt function in R. After doing some searches, it turns that is a common bug in the MachIt package as mentioned in: <br/>
 https://lists.gking.harvard.edu/pipermail/matchit/2017-August/000733.html <br/>
 https://lists.gking.harvard.edu/pipermail/matchit/2009-April/000271.html <br/>
 https://lists.gking.harvard.edu/pipermail/cem/2013-August/000120.html <br/>
@@ -309,7 +307,7 @@ The idea with propensity score matching is that we use a logit model to estimate
 
 The estimation of propensity scores could be done using:
 
-* Statistical models: logistic regression, porbit regression
+* Statistical models: logistic regression, probit regression
   - Mostly widely used
   - relay on functional form assumption
 * Machine learning algorithms: classification trees, boosting, bagging, random Forests
@@ -338,7 +336,8 @@ rather than the propensity score itself, bacause it avoids compression around ze
       return(lr_estimations)
   }
 ```
-**Random Forest:** <br/>
+
+### 3. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Random Forest
 Random forest, like its name implies, consists of a large number of individual decision trees that operate as an ensemble. Each individual tree in the random forest spits out a class prediction and the class with the most votes becomes our model’s prediction (see figure below).
 
 The fundamental concept behind random forest is a simple but powerful one — the wisdom of crowds.
@@ -369,7 +368,7 @@ rf_ps <- function(dataset, psFormula){
 * ntree: Number of trees to grow for the forest.
 * mtry: number of input variables randomly sampled as candidates at each node
 
-**Generalized Boosted Modeling:**
+### 4. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with XGBoost
 
 * Boosting is a general method to improve a predictor by reducing prediction error.This technique employs the logic in which the subsequent predictors learn from the mistakes of the previous predictors. Therefore, the observations have an unequal probability of appearing in subsequent models and ones with the highest error appear most. (So the observations are not chosen based on the bootstrap process, but based on the error).
 * GNB for propensity score estimation impoves prediction of the logit of treatment assignment: <br/>
@@ -405,7 +404,7 @@ gbm_ps <- function(dataset, psFormula){
 * shrinkage: helps to enhance the smoothness of resulting model. The shrinkage argument controls the amount of shrinkage. Small values such as 0.005 or 0.001 yield smooth fits but require greater values of n.trees to achieve adequate fits. Computational time increases inversely with shrinkage argument.
 * stop.method: A method or methods of measuring and summarizing balance across pretreat-ment variables.  Current options areks.mean,ks.max,es.mean, andes.max.ksrefers to the Kolmogorov-Smirnov statistic andesrefers to standardized ef-fect size.  These are summarized across the pretreatment variables by either themaximum (.max) or the mean (.mean).
 
-### 3.	Genetic Matching
+### 5.	Genetic Matching
 
 Genetic Matching Offers the benefit of combining the merits of traditional PSM and Mahalanobis Distance Matching (MDM) and the benefit of automatically checking balance and searching for best solutions, via software computational support and machine learning algorithms. Genetic Matching matches by minimizing a generalized version of Mahalanobis distance (GMD), which has the additional weight parameter *W* . Formally
 
@@ -418,7 +417,7 @@ GM adopts an iterative approach of automatically checking and improving covariat
 
 The iterative process ends when all univariate balance tests yield non-significant results. GM loosens the requirement on ellipsoidal distribution of covariates.
 
-Blow the Flowchart describes how the Genetic Matching algorithm works [13]:
+Below the Flowchart describes how the Genetic Matching algorithm works [13]:
 
 <img style="  width:300px;display:block;margin:0 auto;" src="/blog/img/seminar/mathcing_methods_1819/SN22.png">
 
@@ -447,7 +446,7 @@ We can perform the genetic matching in R, by calling the Matchit package, in our
 * ties = T: A logical flag for whether ties should be handled deterministically. If, for example, one treated observation matches more than one control observation, the matched dataset will include the multiple matched control observations and the matched data will be weighted to reflect the multiple matches. The sum of the weighted observations will still equal the original number of observations. If ties = FALSE, ties will be randomly broken.
 * discarded = "both": a vector of length n that displays whether the units were ineligible for matching due to common support restrictions. In case discarded = both, then both treatment and control unit that are not in the common support will not be matched on.
 
-### 4. After Matching Analysis and Estimating ATT:
+#### After Matching Analysis and Estimating ATT:
 There are different ways of estimating ATT. We decide to follow the approach suggested by (Ho, D., Imai, K., King, G. & Stuart) [42] using Zelig [64], Which is an R package that implements a large variety of statistical models (using numerous existing R packages) with a single easy-to-use interface, gives easily interpretable results by simulating quantities of interest, provides numerical and graphical summaries, and is easily extensible to include new methods.
 We estimate the average treatment effect on the treated in a way that is quite robust. We do this by estimating the coefficients in the control group alone.
 After conducting matching method on our date we go to Zelig, and in this case choose to fit a linear least squares model to the control group only:
@@ -486,16 +485,16 @@ We hope that this has been a helpful exploration into the statistical assumption
 <img style=" width:800px;display:block;margin:0 auto;" src="/blog/img/seminar/mathcing_methods_1819/SN18.png">
 
 Looking at the results in section 9 from our comparative of matching methods, which they are the mean absolute error in the ATT in our data after applying four different mathcing methods, namely:
-* Nearest Niebour propensity score estimated with Logistic Regression
-* Nearest Niebour propensity score estimated with Random Forest
-* Nearest Niebour propensity score estimated with Generalized Boosting model
+* Nearest Neighbor propensity score estimated with Logistic Regression
+* Nearest Neighbor propensity score estimated with Random Forest
+* Nearest Neighbor propensity score estimated with Generalized Boosting model
 * Genetic matching on coviarates and ropensity score estimated with Generalized Boosting model
 
 which were applied on six different simulated datasets each with different characteristics.
 
 We can see clearly, that:
 
-  * Genetic matching does very poorly in all datasets, even it looked to us very attractive theory. Beside the poor results of Genetic matching we have encountered an excessive computational power requirement in order to perform the matching method, especially when the data we highly dimensional.
+  * Genetic matching does very poorly in all datasets, even it looked to us very attractive theory. Beside the poor results of Genetic matching we have encountered an excessive computational power requirement in order to perform the matching method, especially when the data was highly dimensional.
   * Nearest Neighbor with Random Forest and Generalized Boosting propensity score doesn’t perform very bad but also not good as our expectations.
   * Our winning model is as always, the simplest model, Nearest Neighbor with Logistic Regression estimated propensity score, we were definitely surprised with its result. In addition of the good results, it was easy to implement and did not required any computational power, beside its possibility of being interpreted, contrary to the other methods which are considered black box models.
 
