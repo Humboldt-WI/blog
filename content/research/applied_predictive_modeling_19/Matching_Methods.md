@@ -30,11 +30,13 @@ Practitioners from quantitative Social Sciences such as Economics, Sociology, Po
 6.	Synthetic Data Generating Process to Generate 6 Datasets
 7.	Evaluation Metrics: Known ATT / Mean Absolute Error
 8.	Match (and Estimate ATT) with 5 Matching Methods:
-  - Coarsened Exact Matching
-  - Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Logistic Regression
-  - Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Random Forest
-  - Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with XGBoost
-  - Genetic Matching
+  1. Coarsened Exact Matching
+  2. Nearest-Neighbor Matching with different estimations of propensity score
+      - Logistic Regression
+      - Random Forest
+      - Generalized Boosting Modeling
+  3. Genetic Matching
+  4. After Matching Analysis and Estimating ATT
 9.	Compare Performance in estimating ATT of 5 Matching Methods on 6 Datasets
 10.	Conclusions & Recommendations: Academic + Results from Our Experiment
 11.	References
@@ -278,6 +280,8 @@ In oder to perform nearest neighbor maching or any other propensity score based 
 * Generalized Gradient Boosting
 
 #### Propesity Score Estimation
+The idea with propensity score matching is that we use a logit model to estimate the probability that each observation in our dataset was in the treatment or control group.Then we use the predicted probabilities to prune out dataset such that, forevery treated unit, there’s a control unit that can serve as a viable counterfactual.
+
 The estimation of propensity scores could be done using:
 
 * Statistical models: logistic regression, porbit regression
@@ -288,8 +292,7 @@ The estimation of propensity scores could be done using:
   - it is not clear whether these methods on average better than binomial models
 
 **Logistic Regression:**
-The idea with propensity score matching is that we use a logit model toestimate the probability that each observation in our dataset was in thetreatment or control group.Then we use the predicted probabilities to prune out dataset such that, forevery treated unit, there’s a control unit that can serve as a viable counterfactual.
-<br/>
+
 logistic regression of treatment Z on observed predictors X
 
   * logit(Z<sub>*i*</sub> = 1 | X) = $B$<sub>0</sub> + $B$<sub>1</sub>X<sub>1*i*</sub> + ...$B$<sub>k</sub>X<sub>k*i*</sub>
@@ -310,12 +313,14 @@ rather than the propensity score itself, bacause it avoids compression around ze
       return(lr_estimations)
   }
 ```
-**Random Forest:**
+**Random Forest:** <br/>
 Random forest, like its name implies, consists of a large number of individual decision trees that operate as an ensemble. Each individual tree in the random forest spits out a class prediction and the class with the most votes becomes our model’s prediction (see figure below).
 
 The fundamental concept behind random forest is a simple but powerful one — the wisdom of crowds.
 
 A large number of relatively uncorrelated models (trees) operating as a committee will outperform any of the individual constituent models.<br/>
+
+The low correlation between models is the key.uncorrelated models can produce ensemble predictions that are more accurate than any of the individual predictions. The reason for this wonderful effect is that the trees protect each other from their individual errors (as long as they don’t constantly all err in the same direction). While some trees may be wrong, many other trees will be right, so as a group the trees are able to move in the correct direction.
 
 we estimate the propensity secore using random forest with the R package party using the function cforest().
 ```{r}
@@ -341,7 +346,7 @@ rf_ps <- function(dataset, psFormula){
 
 **Generalized Boosted Modeling:**
 
-* Boosting is a general method to improve a predictor by reducing prediction error.
+* Boosting is a general method to improve a predictor by reducing prediction error.This technique employs the logic in which the subsequent predictors learn from the mistakes of the previous predictors. Therefore, the observations have an unequal probability of appearing in subsequent models and ones with the highest error appear most. (So the observations are not chosen based on the bootstrap process, but based on the error).
 * GNB for propensity score estimation impoves prediction of the logit of treatment assignment: <br/>
     * logit(Z<sub>*i*</sub> = 1 | X)
 * Starting value:
@@ -417,7 +422,7 @@ We can perform the genetic matching in R, by calling the Matchit package, in our
 * ties = T: A logical flag for whether ties should be handled deterministically. If, for example, one treated observation matches more than one control observation, the matched dataset will include the multiple matched control observations and the matched data will be weighted to reflect the multiple matches. The sum of the weighted observations will still equal the original number of observations. If ties = FALSE, ties will be randomly broken.
 * discarded = "both": a vector of length n that displays whether the units were ineligible for matching due to common support restrictions. In case discarded = both, then both treatment and control unit that are not in the common support will not be matched on.
 
-### After Matching Analysis and Estimating ATT:
+### 4. After Matching Analysis and Estimating ATT:
 There are different ways of estimating ATT. We decide to follow the approach suggested by (Ho, D., Imai, K., King, G. & Stuart) [42] using Zelig [64], Which is an R package that implements a large variety of statistical models (using numerous existing R packages) with a single easy-to-use interface, gives easily interpretable results by simulating quantities of interest, provides numerical and graphical summaries, and is easily extensible to include new methods.
 We estimate the average treatment effect on the treated in a way that is quite robust. We do this by estimating the coefficients in the control group alone.
 After conducting matching method on our date we go to Zelig, and in this case choose to fit a linear least squares model to the control group only:
