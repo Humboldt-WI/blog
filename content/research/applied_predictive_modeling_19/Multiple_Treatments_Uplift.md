@@ -422,7 +422,7 @@ As the dataset is already preprocessed we did not had to do any manipulations to
 
 Using the E-Mail campaign dataset, we have evaluated our implementations of the described models.
 We have implemented the trees from Rzepakowski et al. (2012) with multiple possible divergence measures and the described splitting criterions in R.
-We have also tried to build a forest model with those trees as the subtrees, but unfortunately due to time constraints we were only able to use 20 subtrees per forest, which did not result in a significant improvement. 
+We have also built a forest model with those trees as the subtrees. Unfortunately it did not result in a significant improvement. 
 Therefore, we did not include them into our evaluation.
 For the causal forest we use the <a href="https://github.com/susanathey/causalTree" target="_blank">available implementation</a> from Athey et al. (2016).
 We build the causal forest using 200 subtrees and a mtry parameter of 2.
