@@ -313,16 +313,11 @@ Therefore, we see the uplift curves more applicable for multiple treatments and 
 Another evaluation method for uplift models with multiple treatments is the expected outcome metric propose by Zhao et al. (2017).
 It estimates the expected outcome, given that each subject is assigned the treatment with the highest outcome, predicted by the uplift model (including choosing no treatment).
 
-
-
-<!--
 The authors define a random variable $Z$ as follows:
 
 \begin{equation}
-Z = \sum_{t=0}^{K} \frac{1}{p_t} Y I \{ h(X)=t \} I { T=t }
+Z = \sum_{t=0}^{K} \frac{1}{p_t} Y  [h(X)=t] I { T=t }
 \end{equation}
-
--->
 
 
 In case the treatment predicted by the uplift model is equal to the actual assigned treatment to the subject during the experiment, the weighted outcome of this subject is summed.
@@ -365,9 +360,7 @@ When looking at the two E-Mail campaigns in <b>Table 2</b> both treatments have 
 <br />
 As the dataset is already preprocessed we did not had to do any manipulations to the data.
 
-
 <table border="1" class="dataframe" style="width:300px">
-<CAPTION><b>Table 1</b>: Average response of all customers in the E-Mail dataset.</CAPTION>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -388,10 +381,10 @@ As the dataset is already preprocessed we did not had to do any manipulations to
       <td>$1.05</td>
     </tr>
   </tbody>
+ <CAPTION><b>Table 1</b>: Average response of all customers in the E-Mail dataset.</CAPTION>
 </table>
 
 <table border="1" class="dataframe" style="width:500px">
-  <CAPTION><b>Table 2</b>: Average treatment effect for both E-Mail campaigns.</CAPTION>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -414,6 +407,7 @@ As the dataset is already preprocessed we did not had to do any manipulations to
       <td>$0.42</td>
     </tr>
   </tbody>
+  <CAPTION><b>Table 2</b>: Average treatment effect for both E-Mail campaigns.</CAPTION>
 </table>
 
 
@@ -422,7 +416,7 @@ As the dataset is already preprocessed we did not had to do any manipulations to
 
 Using the E-Mail campaign dataset, we have evaluated our implementations of the described models.
 We have implemented the trees from Rzepakowski et al. (2012) with multiple possible divergence measures and the described splitting criterions in R.
-We have also tried to build a forest model with those trees as the subtrees, but unfortunately due to time constraints we were only able to use 20 subtrees per forest, which did not result in a significant improvement. 
+We have also built a forest model with those trees as the subtrees. Unfortunately it did not result in a significant improvement. 
 Therefore, we did not include them into our evaluation.
 For the causal forest we use the <a href="https://github.com/susanathey/causalTree" target="_blank">available implementation</a> from Athey et al. (2016).
 We build the causal forest using 200 subtrees and a mtry parameter of 2.
@@ -437,11 +431,23 @@ The full implementation of our models and evaluation metrics is <a href="https:/
 
 ## Predictive Results
 
+When looking at the uplift curves for the conversion, we can see that all models are very close to the random assignment.
+Also as the cumulative curves are constantly rising, the E-Mail campaign seems not include a large number of 'Do-Not-Disturbs'.
+The same applies for the expected conversion per customer.
+Due to no early rising of the curves and the overall positive treatment effect of the treatments, from a marketing perspective it would be best to target as many customers as possible, within the marketing budget.
+<br />
+The flat plateau for the SMA model in the expected comversion, is due to the fact, that the RF model has less than 10 leaf nodes. 
+Therefore, when calculating the deciles for the ranked test subjects some decile segments did were the same.
+<br />
+The causal forest slightly outperforms the remaining models, while still being close to a random treatment assignment.
+
+
 <img
 align="center"
 width="550"
 height="360"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/results_conv_up.png"> </br>
+
 
 <img
 align="center"
@@ -449,6 +455,12 @@ width="550"
 height="360"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/results_conv_exp.png"> </br>
 
+
+Also in case of the continous spend target variable, the results are close to a random assignment.
+The causal forest once again slighly outperforms the other models, while the trees from Rzepakowski et al. (2012) perform even worse than random.
+<br />
+We assume that the better performance of the causal forest might be due to the fact that it consists of 200 subtrees. 
+However, it is still interesting that it outperforms the trees from Rzepakowski et al. (2012), as the causal forest consists of separate causal forest for each treatment and cannot consider both treatments while training.
 
 <img
 align="center"
@@ -496,9 +508,15 @@ The second covariate which was added was a continuous variable which can take in
 
 # 7. Outlook <a class="anchor" id="outlook"></a>
 
-The described evaluation metrics for uplift models all represent approximative approaches under specific assumptions. 
-The expected response metric from Zhao et al. (2017) is the only metric defined under the assumptions of multiple treatments.
-A standardized  evaluation procedure in the uplift field could increase the comparability of models throughout different works.
+Unfortunately, our evaluation using the E-Mail campaign dataset provided mixed results, so that it cannot be clearly said which model would be most applicable for a marketing campaign.
+
+The causal forest, as an ensemble model, did perform slighly better than the remaining models. Therefore, it would be interesting to compare a forest model from the proposed trees, which consider all treatments while training.
+<!--
+<br />
+Uplift models require datasets of a randomized experiment in order to be fitted appropriately, which are quite rare.
+Therefore, we were also limited to our experiment with the E-Mail campaign dataset, which has also been 
+-->
+
 
 
 # 8. References <a class="anchor" id="references"></a>
