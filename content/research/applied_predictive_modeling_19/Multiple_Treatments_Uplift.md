@@ -34,12 +34,10 @@ description = "Evaluation and discussion of Uplift Models for multiple possible 
 8. [References](#references)
 
 # 1. Introduction <a class="anchor" id="introduction"></a>
-Nowadays marketing practitioners face a multitude of challenges. In this blogpost we want to look at some of the most common challenges and identify ways in which treatment effect analysis could be applied to tackle those challenges.
+Nowadays marketing practitioners face a multitude of challenges. In the first part of this blogpost we want to broadly look at some of the most common challenges and identify ways in which treatment effect analysis could be applied to tackle those challenges.
 </br>
-This blog post is structured as follows.
-In the first part we will give a broad overview over challenges and ways in which treatment effect analysis might help.</br>
 In the second part we will focus more closely on one specific issue. Namely, estimating the effect of various treatments in order to select the best. 
-To do that, we describe three models, which are applicable for modelling the uplift in the case of multiple possible treatment assignments. 
+To do that, we describe several models, which are applicable for modelling the uplift in the case of multiple possible treatment assignments. 
 Later on we describe the difficulty of evaluating uplift models in contrast to classic machine learning models and describe two methods, which we use for our experimental evaluation.
 Afterwards, we describe our experimental setup and evaluate the performance of our implemented models, both in terms of their predictions and in terms of the duration it takes to train them. 
 Finally, provide an outlook for further aspects that can be investigated.
