@@ -835,20 +835,20 @@ alt = "Qini Curves for the Causal KNN Targeting Policy">
 
 <img align="center" width="800"
 style="display:block;margin:0 auto;" 
-src="\blog\static\img\seminar\causal_knn\cp_plot.png"
-alt = "Qini Curves for the Causal Tree Targeting Policy">
+src="/blog/img/seminar/causal_knn/qini_plot_cp.png"
+alt = "Qini Curves for the Causal Tree Targeting Policy">   
 
   
 ### AUUC
 
 This measure is defined by the area under the uplift curve. We can compare the resulting uplift curves to the optimal curve. Therefore it has strong relations to the Qini-Curve, but this measure does not take the incremental effect of random targeting into account. 
     
-<!--
-Model                | MSE    | AUUC
+
+<!-- Model                | MSE    | AUUC
 -------------------- | ------ | -----------
-Causal KNN (K = 250) | 0.5508 | 0.34
-Causal Tree          | 0.5321 | 0.36
--->
+Causal KNN (K = 450) | 0.5508 | 0.34
+Causal Tree          | 0.5321 | 0.36 -->
+
 
 ## Results
 
@@ -866,20 +866,20 @@ Causal Tree          | 0.5321 | 0.36
     <th class="tg-hjhm">AUUC</th>
   </tr>
   <tr>
-    <td class="tg-cly1">Causal KNN (K = 250)</td>
-    <td class="tg-cly1">0.5914</td>
-    <td class="tg-cly1">26470055012</td>
+    <td class="tg-cly1">Causal KNN (K = 450)</td>
+    <td class="tg-cly1"> 0.5508 </td>
+    <td class="tg-cly1">0.34</td>
   </tr>
   <tr>
     <td class="tg-cly1">Causal Tree</td>
-    <td class="tg-cly1">0.5803</td>
-    <td class="tg-cly1">30718837480</td>
+    <td class="tg-cly1">0.5321</td>
+    <td class="tg-cly1">0.36</td>
   </tr>
 </table>
 
 <br>
 
-When comparing both, the causal KNN and the causal tree model, it can be observed that the causal tree performs better than the causal KNN model. This holds true for evaluating both models in terms of the MSE as well as for the area under the uplift curves. 
+When comparing both, the causal KNN and the causal tree model, it can be observed that the causal tree performs better than the Causal KNN model. This holds true for evaluating both models in terms of the MSE as well as for the area under the uplift curves (AUUC). 
 
 ## Conclusion
 
