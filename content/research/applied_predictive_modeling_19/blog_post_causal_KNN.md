@@ -297,14 +297,14 @@ The Causal KNN alorithm starts with selecting the k treated and untreated neares
 
 ```{r, eval = FALSE, include = TRUE}
 #select data partition for training
-data_d = data_d[1:10000, ]
+data_d = data_[1:25000, ]
 
 ###splitting data set
 #1 no treatment
 data_nt = data_d[which(data_d$segment.No.E.Mail == 1),]
 
 #2 treatment
-data_t  = data_d[which(data_d$segment.No.E.Mail == 0),]
+data_t = data_d[which(data_d$segment.No.E.Mail == 0),]
 
 ```
 
@@ -363,9 +363,6 @@ untreated_nn = sapply(untreated_nn, FUN = function(x){
   data_nt$idx[x]
 }) 
 
-#transpose data frames
-treated_nn   = t(treated_nn)
-untreated_nn = t(untreated_nn)
 ```
 
 <!--
@@ -690,7 +687,7 @@ library(causalTree)
 
 #setting parameters for the complexity parameters to test for
 cp_start = 0
-cp_end   = 0.0001
+cp_end = 0.0001
 cp_steps = 0.00001
 
 #creating sequence of k values to test for
@@ -710,36 +707,38 @@ for (cp in cp_values) {
 
 
 #calculate the transformed outcome
-uplift_ct$trans_out = sapply(uplift_ct$idx, FUN = function(x){
+trans_out_ct = sapply(uplift_ct$idx, FUN = function(x){
   transformed_outcome(e_x = e_x, w_i = data_d$treatment[x], target = data_d$visit[x])
 })
 
+uplift_ct$trans_out_ct = trans_out_ct
+
 #transformed outcome loss
-outcome_loss = data.frame("cp" = cp_values, "loss" = 0)
+outcome_loss_ct = data.frame("cp" = cp_values, "loss" = 0)
 
 #find optimal cp value
+
 for (i in 1:length(cp_values)){
-  outcome_loss[i, 2] = mean((uplift_ct$trans_out - uplift_ct[, i + 3])^2)
+  outcome_loss_ct[i, 2] = mean((uplift_ct$trans_out_ct - uplift_ct[, i+3 ])^2, na.rm = TRUE)
 }
 
-outcome_loss
+outcome_loss_ct
 
 #find minimal value
-min(outcome_loss$loss)
+min(outcome_loss_ct$loss)
 
-outcome_loss$cp[which.min(outcome_loss$loss)]
+outcome_loss_ct$cp[which.min(outcome_loss_ct$loss)]
 
-plot(outcome_loss$loss)
+plot(outcome_loss_ct$loss)
 
-cp_plot = ggplot(data = outcome_loss) +
-  geom_point(aes(x = outcome_loss$cp, y = outcome_loss$loss), size = 2, shape = 18) +
-  geom_point(aes(x = outcome_loss$cp[which.min(outcome_loss$loss)], y = min(outcome_loss$loss)), 
+cp_plot = ggplot(data = outcome_loss_ct) +
+  geom_line(aes(x = outcome_loss_ct$cp, y = outcome_loss_ct$loss)) +
+  geom_point(aes(x = outcome_loss_ct$cp, y = outcome_loss_ct$loss), size=2, shape=18) +
+  geom_point(aes(x = outcome_loss_ct$cp[which.min(outcome_loss_ct$loss)], y = min(outcome_loss_ct$loss)), 
              size = 4, shape = 18, color = "red") +
-  geom_text(aes(x = outcome_loss$cp[which.min(outcome_loss$loss)], y = min(outcome_loss$loss)), 
-            label = paste("cp = ", outcome_loss$cp[which.min(outcome_loss$loss)]), color = "black", size = 4, 
+  geom_text(aes(x = outcome_loss_ct$cp[which.min(outcome_loss_ct$loss)], y = min(outcome_loss_ct$loss)), 
+            label = paste("cp = ", outcome_loss_ct$cp[which.min(outcome_loss_ct$loss)]), color = "black", size = 4, 
             nudge_x = 0.00001, nudge_y = 0, check_overlap = TRUE) +
-  stat_smooth(data = outcome_loss, aes(x = outcome_loss$cp, y = outcome_loss$loss), method = "loess", 
-              se = FALSE, span = 0.1) +
   labs(title="Parameter Optimization of Causal-KNN CATE-Estimation", x ="Value of Complexity Parameter", y = "Outcome Loss Value") +
   theme_light()
 
@@ -801,16 +800,6 @@ alt = "Qini Curves for the Causal Tree Targeting Policy">
 ### AUUC
 
 The AUUC is a common measure for model evaluation. This measure is defined by the area under the uplift curve. We can compare the resulting uplift curves to the optimal curve. Therefore it has strong relations to the Qini-Curve, but this measure does not take the incremental effect of random targeting into account. The following table contains measures to compare the two applied uplift modeling approaches. 
-
-    
-
-<!-- Model                | MSE    | AUUC
--------------------- | ------ | -----------
-Causal KNN (K = 450) | 0.5508 | 0.34
-Causal Tree          | 0.5321 | 0.36 -->
-
-
-## Results
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
