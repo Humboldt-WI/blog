@@ -773,7 +773,6 @@ uplift_ct$uplift = sapply(causal_tree$where, FUN = function(x){causal_tree$frame
 
 ## Model Evaluation
 
-
 ### MSE
 
 To find the most promising individuals to target, the uplift data frame is sorted according to the individual CATE estimations. After specifying the percentage of individuals to receive a treatment, it is possible to select the first $x$% observations from the sorted data frame. For these individuals, a treatment is expected to have the highest impact on the outcome variable. To evaluate the model, Hitsch and Misra (2018) propose the mean squared error as an indicator of the model quality. This measure also allows to compare the model with the proposed treatment assignment of other uplift models. It is shown by Hitsch and Misra (2018) that, under unconfoundedness, the mean squared error based on the transformed outcome, is applicable for the comparison of different model fits on a particular data set. Therefore, the transformed outcome can be used for model evaluation as well (c.f. Hitsch & Misra, p.27, 2018). We can use the transformed outcome in the same manner as we used it when we tuned the parameter k. The criterion to minimize is therefore given by:
@@ -781,10 +780,7 @@ To find the most promising individuals to target, the uplift data frame is sorte
 <img src="http://chart.googleapis.com/chart?cht=tx&chl=$MSE_b=\frac{1}{|\tau_b|}\sum\limits_{i\in{\tau_b}}(Y_i^*-\widehat{\tau_b}(X_i))^2$" style="border:none;">
 
 
-```{r, eval = FALSE, include = TRUE}
-```
-
-## Qini Curves for evaluation of the causal KNN model
+### Qini Curves for evaluation of the causal KNN model
 
 The Gini-Coefficient is a widely used metric to compare the fit of different modeling approaches on a particular data set. The metric is intuitive and applicable, since it provides a single value for the evaluation. The value of the Gini-Coefficient is defined between 0 and 1, where 1 represents a perfect model and 0 indicates a fit that is not performing any better than a random ranking of customers. Devriendt et al. (2018) state that the Gini-Coefficient, however, is not readily applicable in uplift modeling context, since for every class we have individuals from the treatment and the control group. Therefore, in this context, the so called "Qini-Coefficient" is preferred. The Qini-Coefficient is mathematically equal to the difference of the Gini-Curve for the treatment group and the control group. 
 The Qini-Coefficient provides an opportunity to evaluate uplift models according to the treatment effect estmations. Since the Qini is a common indicator for the quality of uplift models, it is used here to evaluate the Causal KNN model results. Based on the calculated uplift factors for every individual, one could target only those individuals with the highest uplift, i.e. the highest probability of visiting the website after receiving an email. Treatment assignment based on the uplift values can be compared to the random assignment, where every individual gets a treatment with a probability of 2/3. Finally, one can look at the cumulative visits for the targeted customers. If the targeting of customers with a higher uplift also corresponds to a higher chance of visit, the curve of the Causal KNN predictions must be above the curve of the randomized predictions. 
@@ -847,7 +843,7 @@ Causal Tree          | 0.5321 | 0.36 -->
 
 ## Conclusion
 
-In this blogpost, we presented a method for estimating the conditional average treatment effect on an individual basis. This approach is called causal KNN. The causal KNN algorithm was implemented in R and applied to a real world data set from a randomized E-Mail marketing campaign. Furthermore, the transformed outcome was introduced, which represents the value of the "true" CATE in expectation, if several required assumptions to the data are fulfilled. The transformed outcome approach could be used for finding the optimal k value for the causal KNN model and also for the parameter tuning of other uplift modelling techniques. We trained a causal tree model to compare the results of our causal KNN estimations. The transformed outcome allowed for an evaluation of uplift models in terms of the MSE. Here, the causal tree performed better than the causal KNN model in terms of the MSE and the AUUC. Therefore, the causal KNN approach is a simple algorithm that delivers estimations of the CATE in uplift applications. However, the accuracy of the estimations is worse than those of comparable uplift models.
+In this blogpost, we presented a method for estimating the conditional average treatment effect on an individual basis. This approach is called causal KNN. The causal KNN algorithm was implemented in R and applied to a real world data set from a randomized E-Mail marketing campaign. Furthermore, the Transformed Outcome was introduced, which represents the value of the "true" CATE in expectation, if several required assumptions to the data are fulfilled. The Transformed Outcome approach could be used for finding the optimal k value for the causal KNN model and also for the parameter tuning of other uplift modelling techniques. We trained a causal tree model to compare the results of our causal KNN estimations. The Transformed outcome allowed for an evaluation of uplift models in terms of the MSE. Here, the causal tree performed better than the causal KNN model in terms of the MSE and the AUUC. Therefore, the causal KNN approach is a simple algorithm that delivers estimations of the CATE in uplift applications. However, the accuracy of the estimations is worse than those of comparable uplift models.
 
 
 ## Code distribution
