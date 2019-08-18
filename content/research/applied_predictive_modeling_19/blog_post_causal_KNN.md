@@ -20,9 +20,11 @@ LatexIT.add('p',true);
 
 # Applied Predictive Analytics Seminar - Causal KNN 
 
-## Abstract 
 
-Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch & Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbor algorithm provides an interesting opportunity for the estimation of treatment effects in small groups. <!--Additional tweaks to the parameter tuning procedure make the approach to an interesting case study in the extension of machine learning concepts to causal modeling in general.--> The Causal KNN algorithm provides a simple and effective framework for the direct estimation of the Conditional Average Treatment Effect (CATE). Furthermore, the Transformed Outcome, introduced from Athey and Imbens (2015b), is used for the parameter tuning and evaluation of Uplift Models. The Causal KNN Algorithm is presented in an application framework, using a real world data set from an email marketing campaign.
+
+Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch & Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbour algorithm provides an interesting opportunity for the estimation of treatment effects in small groups. To estimate the treatment effect, the Transformed Outcome, introduced by Athey and Imbens (2015b), is used. We will show that the Transformed Outcome is not only restricted to the Causal KNN modeling approach. Under several assumptions to the data, the Transformed Outcome equals in expectation to the true CATE. Hence it can be seen as a general tool for the parameter tuning in the context of Treatment Effect Analysis. Additionally, the Transformed Outcome can be used to evaluate different uplift models in terms of the MSE. 
+
+In the beginning, we will give a motivation for the topic, followed by an introduction of the methods presented by Hitsch & Misra (2018). In order to highlight the applicability of those methods, an implementation on real world data of a randomized E-Mail marketing campaign is given. We will perform the Causal KNN estimation as well as a Causal Tree estimation. In the end, the model performance is compared using MSE, AUUC and the Qini-Curve.  
 
 ## Motivation and Literature Foundation:
 
@@ -250,7 +252,7 @@ After importing the e-mail data set, the non-numeric variables are converted int
 
 To label the different observations in the data set, an index column was added, in order to be able to reassign all observations in the later steps of the analysis. The original data set contains three outcomes for the treatment variable, i.e. E-Mail for Women, E-Mail for Men and no E-Mail. Since the analysis is designed to deal with binary treatment variables, the three possible treatment values are reduced to either receiving an E-Mail or not. For the further process of the analysis, the binary variable "treatment" indicates solely whether units received a treatment. There is no distinction anymore between E-Mails for Women and Men. 
 
-Since the different treatments were randomly assigned with the same probability, the aggregation of the treatment yields at a propensity score of 2/3 for each individual. Therefore, the treatment assignment in the data set is slightly unbalanced. Since the difference between the number of treated and untreated customers is not too high, the unbalancedness should not cause any problems for the proposed method. For extremely unbalanced data sets with regard to the treatment status, the causal KNN algorithm might not work, because it can become impossible to find sufficiently much treated or untreated nearest neighbours.
+Since the different treatments were randomly assigned with the same probability, the aggregation of the treatment yields at a propensity score of 2/3 for each individual. Therefore, the treatment assignment in the data set is slightly unbalanced. Since the difference between the number of treated and untreated customers is not too high, the unbalancedness should not cause any problems for the proposed method. For extremely unbalanced data sets with regard to the treatment status, the Causal KNN algorithm might not work, because it can become impossible to find sufficiently much treated or untreated nearest neighbours.
 
 The KNN algorithm identifies the nearest neighbours of an individual $i$ by calculating the euclidean distances between target variable outcomes of different units. Therefore, the method can only deal with numeric variables. To meet this requirement, the non-numeric covariates are transformed into dummy variables, using the mlr package.
 
@@ -306,7 +308,7 @@ data_t  = data_d[which(data_d$segment.No.E.Mail == 0),]
 
 ```
 
-The KNN search is done by using the FNN package in R. This package allows to extract the index values of the nearest neighbours for each observation and the corresponding distances. An important aspect of causal KNN is to find the optimal value of $K$ for a specific application setting. To check for several values of k, it is necessary to specify the maximum number of nearest neighbours, that should be tested. The maximum possible value of $K$ is restricted by the minimum total number of treated or untreated observations, i.e. the minimum number of rows of the data frames with the two treatment groups. 
+The KNN search is done by using the FNN package in R. This package allows to extract the index values of the nearest neighbours for each observation and the corresponding distances. An important aspect of Causal KNN is to find the optimal value of $K$ for a specific application setting. To check for several values of k, it is necessary to specify the maximum number of nearest neighbours, that should be tested. The maximum possible value of $K$ is restricted by the minimum total number of treated or untreated observations, i.e. the minimum number of rows of the data frames with the two treatment groups. 
 
 A very useful feature of the FNN package is the possibility to specify different data sets for the search space and the observations for which nearest neighbours have to be found. This allows to conduct a simple search for nearest neighbours among the treated and untreated observations. There are two data frames resulting from both steps of the search process. The "treated_nn" data frame includes the nearest neighbours with treatment status $W_i=1$ and "untreated_nn" those with treatment status $W_i=0$. These two data sets build the basis for the next step of the algorithm, i.e. the identification of the optimal value of $K$.
 
@@ -377,7 +379,7 @@ $\widehat{\tau_K}(x)= \frac{1}{K} \sum_{i \in N_K(x,1)} Y_i - \frac{1}{K}  \sum_
                                                                                                        
 ### Comparison of Causal KNN and the Two-Model-Approach
 At this point, a distinction between the Causal KNN and the Two-Model-Approach has to be made, since both methods seem to be similar. According to Rzepakowski and Jaroszewicz (2012, 2), the idea behind the two model approach is to build two separate models, to estimate the treatment effect. One Model is trained, using the treatment, and the other one using the control data set. After building the two models, the treatment effect estimations are calculated by subtracting the predicted class probabilities of the control model from those of the treatment model. This yields at a direct estimation of the difference in the outcome, caused by the treatment. An advantage of the two model approach is that it can be applied with any classification model (Rzepakowski and Jaroszewicz, 2012). A possible problem that might arise with this approach, is that the uplift might be different from the class distributions. In this case, the both models focus on predicting the class, rather than the treatment effect.
-The Causal KNN ALgorithm also calculates the difference between the predicted outcomes of the treated and untreated observations in a data set. The number of observations that are taken into account, is limited by the KNN parameter K. Therefore, the Causal KNN algorithm itself can be possibly seen as a special case of the two model approach. An important aspect of the described method here, is the usage of the transformed outcome for the tuning of the causal KNN model. Since the combination of causal KNN and the transformed outcome allows to calculate the CATE estimations directly, it is not appropriate to completely assign this to the group of two model approaches. According to Rzepakowski and Jaroszewicz (2012, 2), the two model approach is different from the direct estimation methods, since it focuses on predicting the outcome of the target variable to estimate the treatment effect, rather than predicting the treatment effect itself. As already shown above, the Causal KNN algorithm should be rather categorized as a direct estimation approach (Hitsch and Misra, 2018) and should therefore not be seen as a pure two model approach.
+The Causal KNN ALgorithm also calculates the difference between the predicted outcomes of the treated and untreated observations in a data set. The number of observations that are taken into account, is limited by the KNN parameter K. Therefore, the Causal KNN algorithm itself can be possibly seen as a special case of the two model approach. An important aspect of the described method here, is the usage of the transformed outcome for the tuning of the Causal KNN model. Since the combination of Causal KNN and the transformed outcome allows to calculate the CATE estimations directly, it is not appropriate to completely assign this to the group of two model approaches. According to Rzepakowski and Jaroszewicz (2012, 2), the two model approach is different from the direct estimation methods, since it focuses on predicting the outcome of the target variable to estimate the treatment effect, rather than predicting the treatment effect itself. As already shown above, the Causal KNN algorithm should be rather categorized as a direct estimation approach (Hitsch and Misra, 2018) and should therefore not be seen as a pure two model approach.
 
 To estimate a robust CATE, we would likely use all customers in the neighborhood. A high value for K increases the accounted neighborhood, while it decreases the similarity between the customers. Therefore, the estimation depends on the choice of K. To find an optimal value of K, we want to minimize the squared difference between $\hat{\tau}_K(x)$ and the transformed outcome $Y^*$. This is called the **Transformed Outcome Approach**, which will be described in the following.
 
@@ -387,7 +389,7 @@ Naturally, the optimal value of $K$ is given for the minimum of the transformed 
 
 $\mathbb{E}[(\tau_k(X_i)-\widehat{\tau_k}(X_i))^2]$
 
-Unfortunately, as mentioned before, this criterion is infeasible, since the true CATE $\tau_K(X_i)$ is not observable. The transformed outcome approach is a method to somehow overcome the described fundamental problem of causal inference by estimating the true CATE. In the literature, we find multiple approaches to do so. Gutierrez (2017) presents three different methods. First,he mentions the two-model approach that trains two models, one for the treatment group and one for the control group. Second, he mentions the class transformation method that was first introduced by Jaskowski and Jaroszewicz (2012). Their approach works for binary outcome variables (i.e. $Y_i^{obs.}=\text{{0,1}}$) and a balanced dataset (i.e. $e(X_i)=\frac{1}{2}$). A general formulation for the class transformation, which is even applicable for numeric outcome variables and an unbalanced dataset is given by Athey and Imbens (2015b). The transformed outcome is defined as follows: 
+Unfortunately, as mentioned before, this criterion is infeasible, since the true CATE $\tau_K(X_i)$ is not observable. The transformed outcome approach is a method to somehow overcome the described fundamental problem of Causal inference by estimating the true CATE. In the literature, we find multiple approaches to do so. Gutierrez (2017) presents three different methods. First,he mentions the two-model approach that trains two models, one for the treatment group and one for the control group. Second, he mentions the class transformation method that was first introduced by Jaskowski and Jaroszewicz (2012). Their approach works for binary outcome variables (i.e. $Y_i^{obs.}=\text{{0,1}}$) and a balanced dataset (i.e. $e(X_i)=\frac{1}{2}$). A general formulation for the class transformation, which is even applicable for numeric outcome variables and an unbalanced dataset is given by Athey and Imbens (2015b). The transformed outcome is defined as follows: 
 
 $Y_i^*=W_i\cdot\frac{Y_i(1)}{e(X_i)}-(1-W_i)\cdot\frac{Y_i(0)}{1-e(X_i)}$
 
@@ -431,7 +433,7 @@ Therefore the transformed outcome allows us to estimate the true CATE and with t
  
 ## Parameter Tuning using the Transformed Outcome
 
-An essential part of the causal KNN algorithm is the parameter tuning to specify the value of $K$, that leads to the most accurate treatment effect estimations. For the parameter tuning, several values for $K$ are tested and different CATE estimations are stored in a separate data frame. To derive estimations for all observations in the data set, the differences of the mean outcome variable values, of the k treated and untreated nearest neigbours, are calculated. Several iterations of this precedure yield at a data frame, containing the individual uplift estimations for different values of k. To select the most accurate estimation, the transformed outcome is used to decide for a preferable k value.
+An essential part of the Causal KNN algorithm is the parameter tuning to specify the value of $K$, that leads to the most accurate treatment effect estimations. For the parameter tuning, several values for $K$ are tested and different CATE estimations are stored in a separate data frame. To derive estimations for all observations in the data set, the differences of the mean outcome variable values, of the k treated and untreated nearest neigbours, are calculated. Several iterations of this precedure yield at a data frame, containing the individual uplift estimations for different values of k. To select the most accurate estimation, the transformed outcome is used to decide for a preferable k value.
 
 ```{r, eval = FALSE, include = TRUE}
 ###parameter tuning to find optimal k value
@@ -529,7 +531,7 @@ k_plot = ggplot(data = outcome_loss) +
 k_plot -->
 
 
-<img align="center" width="800"
+<img align="center" width="900"
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/causal_knn/k_plot.png"
 alt = "Outcome Loss for Different Values of K">
@@ -578,12 +580,12 @@ ggplot(data = cate_channel, aes(x = Group.1, y = x)) +
 
 <img align="center" width="800"
 style="display:block;margin:0 auto;" 
-src="/blog/img/seminar/causal_knn/cate_hist_seg.png"
+src="/blog/img/seminar/causal_knn/cate-hist_seg.png"
 alt = "CATE for History Segments">
 
 <img align="center" width="800"
 style="display:block;margin:0 auto;" 
-src="/blog/img/seminar/causal_knn/cate_channel.png"
+src="/blog/img/seminar/causal_knn/cate_chann.png"
 alt = "CATE for different contacting Channels">
 
 
@@ -674,7 +676,7 @@ uplift[paste("uplift_", k, sep = "")] = reaction_t - reaction_nt
 ## Application of Transformed Outcome Approach for general Uplift Models
 
 ### Causal Tree Model
-The parameter tuning using the transformed outcome loss is equally useful for other uplift applications. To show this, the same methodology that was applied to determine the optimal k value for the causal KNN model, is used here to find optimal parameters for a causal tree. Different values for parameters are tested and evaluated by using the transformed outcome loss. Again, the minimal outcome loss value indicates the most favorable parameter value for the model estimation.
+The parameter tuning using the transformed outcome loss is equally useful for other uplift applications. To show this, the same methodology that was applied to determine the optimal $K$ value for the Causal KNN model, is used here to find optimal parameters for a causal tree. Different values for parameters are tested and evaluated by using the transformed outcome loss. Again, the minimal outcome loss value indicates the most favorable parameter value for the model estimation.
 
 ```{r, eval = FALSE, include = TRUE}
 #using transformed outcome for tuning parameters of other uplift models
@@ -746,7 +748,7 @@ cp_plot
 
 <img align="center" width="800"
 style="display:block;margin:0 auto;" 
-src="/blog/img/seminar/causal_knn/cp_plot.png"
+src="/blog/img/seminar/causal_knn/cpplot.png"
 alt = "Outcome Loss for Different Complexity Parameters of the Causal Tree Model">
 
 
@@ -769,79 +771,41 @@ uplift_ct$uplift = sapply(causal_tree$where, FUN = function(x){causal_tree$frame
 ```
 
 
-
-
-
-
-
 ## Model Evaluation
 
 
 ### MSE
 
-To find the most promising individuals to target, the uplift data frame is sorted according to the individual CATE estimations. After specifying the percentage of individuals to receive a treatment, it is possible to select the first $x$% observations from the sorted data frame. For these individuals, a treatment is expected to have the highest impact on the outcome variable. To evaluate the model, Hitsch and Misra (2018) propose the mean squared error as an indicator of the model quality. This measure also allows to compare the model with the proposed treatment assignment of other uplift models. Since we have seen that the transformed outcome is an unbiased estimator for the CATE, we can also use this metric to evaluate the model fit. It is shown in Gutierrez and Gerardy (2016) and Hitsch and Misra (2018) that, under unconfoundedness, the mean squared error based on the transformed outcome, is applicable for the comparison of different model fits on a particular data set. In the last paragraph, we have summarized how to use the transformed outcome in order to determine an optimal value for the parameter K in the Causal-KNN model. However, the transformed outcome can be used for model evaluation as well (c.f. Hitsch & Misra, p.27, 2018). We can use the transformed outcome in the same manner as we used it when we tuned the parameter k. The criterion to minimize is therefore given by:
+To find the most promising individuals to target, the uplift data frame is sorted according to the individual CATE estimations. After specifying the percentage of individuals to receive a treatment, it is possible to select the first $x$% observations from the sorted data frame. For these individuals, a treatment is expected to have the highest impact on the outcome variable. To evaluate the model, Hitsch and Misra (2018) propose the mean squared error as an indicator of the model quality. This measure also allows to compare the model with the proposed treatment assignment of other uplift models. It is shown by Hitsch and Misra (2018) that, under unconfoundedness, the mean squared error based on the transformed outcome, is applicable for the comparison of different model fits on a particular data set. Therefore, the transformed outcome can be used for model evaluation as well (c.f. Hitsch & Misra, p.27, 2018). We can use the transformed outcome in the same manner as we used it when we tuned the parameter k. The criterion to minimize is therefore given by:
 
 <img src="http://chart.googleapis.com/chart?cht=tx&chl=$MSE_b=\frac{1}{|\tau_b|}\sum\limits_{i\in{\tau_b}}(Y_i^*-\widehat{\tau_b}(X_i))^2$" style="border:none;">
 
 
 ```{r, eval = FALSE, include = TRUE}
-#sorting observations according to uplift values
-uplift_sorted = uplift[order(uplift[, 3], decreasing = TRUE), ]
-
-#targeting the top fixed percentage of customers(50%)
-top_obs = uplift_sorted$idx[1:(0.5*nrow(uplift_sorted))]
-
-evaluation = data.frame("visit" = test_set$visit)
-evaluation$idx = test_set$idx
-evaluation$treatment_cknn = 0
-evaluation$treatment_cknn[top_obs] = 1
-
-#calculate mean squared error (Hitsch - page 27)
-mse = mean((transformed_outcome(e_x = e_x, test_set$treatment, test_set$visit) - uplift[, 3])^2)
-mse
-
-
-###calculating the mse of the causal tree model
-#sorting observations according to uplift values
-uplift_ct_sorted = uplift_ct[order(uplift_ct$uplift, decreasing = TRUE), ]
-
-#targeting the top fixed percentage of customers(50%)
-top_obs = uplift_ct_sorted$idx[1:(0.5*nrow(uplift_ct_sorted))]
-
-evaluation_ct = data.frame("visit" = test_set$visit)
-evaluation_ct$idx = test_set$idx
-evaluation_ct$treatment_ct = 0
-evaluation_ct$treatment_ct[top_obs] = 1
-
-#calculate mean squared error (Hitsch - page 27)
-mse_ct = mean((transformed_outcome(e_x = e_x, test_set$treatment, test_set$visit) - uplift_ct$uplift)^2)
-mse_ct
-
-#comparing both mse values
-mse
-mse_ct
 ```
 
 ## Qini Curves for evaluation of the causal KNN model
 
 The Gini-Coefficient is a widely used metric to compare the fit of different modeling approaches on a particular data set. The metric is intuitive and applicable, since it provides a single value for the evaluation. The value of the Gini-Coefficient is defined between 0 and 1, where 1 represents a perfect model and 0 indicates a fit that is not performing any better than a random ranking of customers. Devriendt et al. (2018) state that the Gini-Coefficient, however, is not readily applicable in uplift modeling context, since for every class we have individuals from the treatment and the control group. Therefore, in this context, the so called "Qini-Coefficient" is preferred. The Qini-Coefficient is mathematically equal to the difference of the Gini-Curve for the treatment group and the control group. 
-The Qini-Coefficient provides an opportunity to evaluate uplift models according to the treatment effect estmations. Since the Qini is a common indicator for the quality of uplift models, it is used here to evaluate the Causal KNN model results. Based on the calculated uplift factors for every individual, one could target only those individuals with the highest uplift, i.e. the highest probability of visiting the website after receiving an email. This targeted treatment assignment can be compared to the random assignment, where every individual gets a treatment with a probability of 2/3. Then one can look at the cumulative visits for the targeted customers. If the targeting of customers with a higher uplift also corresponds to a higher chance of visit, the curve of the Causal KNN predictions must be above the randomized predictions. 
+The Qini-Coefficient provides an opportunity to evaluate uplift models according to the treatment effect estmations. Since the Qini is a common indicator for the quality of uplift models, it is used here to evaluate the Causal KNN model results. Based on the calculated uplift factors for every individual, one could target only those individuals with the highest uplift, i.e. the highest probability of visiting the website after receiving an email. Treatment assignment based on the uplift values can be compared to the random assignment, where every individual gets a treatment with a probability of 2/3. Finally, one can look at the cumulative visits for the targeted customers. If the targeting of customers with a higher uplift also corresponds to a higher chance of visit, the curve of the Causal KNN predictions must be above the curve of the randomized predictions. 
+We can use the same procedure to evaluate the predictions of the Causal Tree Model. The following to graphs are illustrating the desired result. If we first target the customers we identified using the two model approaches, we will gain more desired outcomes (i.e. visits) than for the randomized targeting.
 
 
 <img align="center" width="800"
 style="display:block;margin:0 auto;" 
-src="/blog/img/seminar/causal_knn/qini_plot_cknn.png"
+src="/blog/img/seminar/causal_knn/qini_knn.png"
 alt = "Qini Curves for the Causal KNN Targeting Policy">
 
 <img align="center" width="800"
 style="display:block;margin:0 auto;" 
-src="/blog/img/seminar/causal_knn/qini_plot_cp.png"
+src="/blog/img/seminar/causal_knn/qini_ct.png"
 alt = "Qini Curves for the Causal Tree Targeting Policy">   
 
   
 ### AUUC
 
-This measure is defined by the area under the uplift curve. We can compare the resulting uplift curves to the optimal curve. Therefore it has strong relations to the Qini-Curve, but this measure does not take the incremental effect of random targeting into account. 
+The AUUC is a common measure for model evaluation. This measure is defined by the area under the uplift curve. We can compare the resulting uplift curves to the optimal curve. Therefore it has strong relations to the Qini-Curve, but this measure does not take the incremental effect of random targeting into account. The following table contains measures to compare the two applied uplift modeling approaches. 
+
     
 
 <!-- Model                | MSE    | AUUC
@@ -879,7 +843,7 @@ Causal Tree          | 0.5321 | 0.36 -->
 
 <br>
 
-When comparing both, the causal KNN and the causal tree model, it can be observed that the causal tree performs better than the Causal KNN model. This holds true for evaluating both models in terms of the MSE as well as for the area under the uplift curves (AUUC). 
+ When comparing both, the causal KNN and the causal tree model, it can be observed that the causal tree performs better than the Causal KNN model. This holds true for evaluating both models in terms of the MSE as well as for the area under the uplift curves (AUUC).
 
 ## Conclusion
 
