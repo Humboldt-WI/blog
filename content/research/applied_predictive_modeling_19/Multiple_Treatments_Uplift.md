@@ -81,11 +81,11 @@ style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_u
 </figure>
 </br>
 Being able to estimate the long term effect of ones marketing activity allows the practicioner to select the appropriate starting point in order to maximize the ROI. </br>
+Another approach to find seasonal effects might be to look at past marketing activities which have been similar in terms of the activity performed, but have been done at different times. Then one could estimate the treatment effects of each of these campaigns to get an idea at which time during the year the campaign works better. However, the activities should not be to far apart. Otherwise global factors like the state of the economy could have changed. This would also have an impact on the purchasing behavior of customers and could lead to false conclusions.
 
-Another approach to find seasonal effects might be to look at past marketing activities which have been similar in terms of the activity performed, but have been done at different times. Then one could estimate the treatment effects of each of these campaigns to get an idea at which time during the year the campaign works better. However, the activities should not be to far apart. Otherwise global factors like the state of the economy could have changed. This would also have an impact on the purchasing behavior of customers and could lead to false conclusions.</br>
+<h3>Who?</h3>
 
-### Who?
-The importance of this question varies greatly depending on the kind of marketing that is being done. Figure 2 shows various types of marketing from broad to narrow. The narrower the more potential there is for the usage of treatment effects. For the broadest possible marketing activity (like the social media marketing mentioned before) the average treatment effect (ATE) is important but no selection cade be made in terms of who we target. Narrower activities might allow us to select certain subgroups of our potential customers. Here we would be interested in the group average treatment effects (GATES) of those subgroups. Then we could determine which group to target based on those treatment effects.
+The importance of this question varies greatly depending on the kind of marketing that is being done. Figure 2 shows various types of marketing from broad to narrow. The narrower the more potential there is for the usage of treatment effects. For the broadest possible marketing activity (like the social media marketing mentioned before) the average treatment effect (ATE) is important but no selection can be made in terms of who we target. Narrower activities might allow us to select certain subgroups of our potential customers. Here we would be interested in the group average treatment effects (GATES) of those subgroups. Then we could determine which group to target based on those treatment effects.
 
 <figure>
 <img
@@ -116,7 +116,6 @@ With the historical approach we will target mostly the 'Sure Things' and maybe t
 Several approaches have been proposed to estimate uplift. Gubela et. al (2019) give an overview in their paper <a href = "https://www.researchgate.net/publication/331791032_Conversion_uplift_in_E-commerce_A_systematic_benchmark_of_modeling_strategies" target="_blank"> Conversion uplift in E-commerce: A systematic benchmark of modeling strategies</a>. In their evaluation they find that the two model uplift method and interaction term method (ITM) performed best. </br>
 The two model approach as the name suggests uses two separate models. The training set is split into two with one set contained all the treated observations and the other all control observations. Then for each traning set one model is built to predict the outcome. To estimate the uplift of the treatment for a new person, we generate the predicted outcome with both models. One predicted outcome with treatment and one without. The difference between these two estimates is the expected uplift. The two model is very simple and works with virtually every possible base model (e.g. random forest, linear regression, svm, ...). Since it is so simple it is often considered a good benchmark to test new approaches against.</br>
 The interaction term method (ITM) was proposed by Lo in his 2002 paper <a href="https://www.researchgate.net/publication/220520042_The_True_Lift_Model_-_A_Novel_Data_Mining_Approach_to_Response_Modeling_in_Database_Marketing" target="_blank">The True Lift Model - A Novel Data Mining Approach to Response Modeling in Database Marketing</a>. Unlike double machine learning, ITM only uses a single model. However, ITM also works with two predictions. One with treatment and one without. Both predictions are obtained from the same model which has been trained on both treatment and control data. Whether a treatment is given or not is indicated by a binary variable D. A new observation is evaluated twice. Once with D=1 (treatment given) and once with D=0. Again the difference between the two predictions is the estimated uplift.
-
 
 ### What?
 The last question we look at is "What marketing activity to choose?". There are many ways one could approach one customers (e.g. coupons, newsletters, ...). Finding the right method on an individual level is important, because different approaches might not only have different effects on potential customers but are also associated with different costs. For example it would be better to send a customer a newsletter which costs virtually nothing, rather then a coupon which would reduce the profit, if the newsletter has a similar effect on purchase probability. Since there isn't much research on this area and the selection of the proper marketing channel is crucial, we decided to lay the focus of our blog post on this issue.
@@ -219,8 +218,30 @@ $n\_{il}$ and $n\_{ir}$  are the number of samples with treatment i in the left 
 The causal tree, introduced by Susan Athey et. al in their paper <a href = "https://github.com/susanathey/causalTree/blob/master/briefintro.pdf" target="_blank">An Introduction to Recursive Partitioning for Heterogeneous Causal Effect Estimation Using causalTree package</a> is a tree based classifier which directly estiamtes the treatment effect. It is based on the rpart package and implements many in the CART (Classification and Regression Trees). By default it only supports single treatment. Therefore, we train one tree for each of the multiple treatments and then compare the predicted uplifts. </br>
 They also implemented a function which allows the user to build forests based on the causal tree. These forests are in the form of a list of rpart objects.
 
-## 3.3 Separate Model <a class="anchor" id="separate"></a>
+## 3.3 Separate Model Approach<a class="anchor" id="separate"></a>
 
+The two model approach for uplift models can also be extended for the case of multiple treatments. 
+We adapt the naming convention from Zhao et al.(2017) and this approach as the separate model approach (SMA).
+<br />
+With multiple treatments, for each treatment and the control group a seperate model is trained.
+The predicted uplift for an individual $x$, for every treatmen $T$ is than calculated as:
+
+\begin{equation}
+\text{uplift}^T(x) = P(Y^T | X) - P(Y^C | X)
+\end{equation}
+
+Where $X$ depicts the covariates for the subject $x$, which are used by the base learners to predict the outcome $Y$.
+<br />
+For the SMA any prediction model can be used as the base learner to model the repsonse of a group.
+This makes the performance of the SMA highly dependent from the choice and model specific tuning of its base learners.
+<br />
+The training objective of the base learners is to model the response of the underlying treatment or control group. 
+The effect of the treatment itself is estimated later, which makes the SMA an indirect modelling approach.
+Therefore, in the literature it is often advised to use a direct approach, which is trained towards modelling the actual difference between classes (Zhao et al. 2017).
+
+
+
+<!--
 An early idea to model the uplift of a treated subject is known as the two-model approach. 
 The name results from the fact that in the case of a single treatement assignment, a separate model is fitted for the treatment and control group.
 <br />
@@ -324,8 +345,8 @@ tree_sma_uplift <- function(models_dt, test_data, response, treatment, control_l
 }
 ```
 
-<br />
-The SMA represents an indirect uplift modelling approach, as the objective of the base learners is not to model the class difference, but the class specific outcomes.
+-->
+
 
 
 <!--
@@ -455,6 +476,8 @@ This can make it easier to draw decision in a business setting, as the expected 
 Describe Dataset with different outcome variables
 -->
 
+
+
 <a href="https://blog.minethatdata.com/2008/03/minethatdata-e-mail-analytics-and-data.html" target="_blank">Kevin Hillstrom’s MineThatData</a>
 
 
@@ -465,11 +488,48 @@ Models evaluated using 5-fold cross validation.
 
 ## Predictive Results
 
+<img
+align="center"
+width="550"
+height="360"
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/results_conv_up.png"> </br>
+
+<img
+align="center"
+width="550"
+height="360"
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/results_conv_exp.png"> </br>
+
+
+<img
+align="center"
+width="550"
+height="360"
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/results_spend_up.png"> </br>
+
+
+<img
+align="center"
+width="550"
+height="360"
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/results_spend_exp.png"> </br>
 
 ## Training Duration
+<<<<<<< HEAD
 Even though predictive performance is the focus of this evaluation we also wanted to look at how well our approaches scaled in terms of training duration. The are 3 factors we looked at which will influence performance: number of observations, number of covariates and number of treatments. The causal forest consists of 100 trees and randomly selects 3 covariates for each tree. The forest on the basis of the Rzp-tree is not in the comparison. This is due to the fact, that its training duration was up to 10 times the one of the base tree. Therefore it was omitted for readablity of the graphs. It is important to note that parallelization is not implemented yet, which could reduce the training duration significantly. </br>
 The figures below show a comparison of our models.</br>
 </br>
+=======
+Even though predictive performance is the focus of this evaluation we also wanted to look at how well our approaches scaled in terms of training time. The are 3 factors we looked at which will influence performance time: number of observations, number of covariates and number of treatments.</br>
+The figures below show a comparisson of our models.</br>
+
+### TODO Passt du das noch an? 
+<ul>
+<li> Ueberschrift abgehakt </li>
+<li>'Samples' statt 'Simples' </li>
+</ul>
+
+
 3 Covariates: </br>
 <img
 align="center"
