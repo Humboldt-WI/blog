@@ -29,7 +29,6 @@ description = "Evaluation and discussion of Uplift Models for multiple possible 
 4.1 [Uplift Curves](#uplift_curves)</br>
 4.2 [Expected Outcome](#expected_outcome)</br>
 5. [Experimental Setup](#experiment) <br />
-5.1 [Data Sets](#datasets)</br>
 6. [Results](#evaluationresults)
 7. [Outlook](#outlook)
 8. [References](#references)
@@ -313,15 +312,22 @@ Therefore, we see the uplift curves more applicable for multiple treatments and 
 
 Another evaluation method for uplift models with multiple treatments is the expected outcome metric propose by Zhao et al. (2017).
 It estimates the expected outcome, given that each subject is assigned the treatment with the highest outcome, predicted by the uplift model (including choosing no treatment).
+
+
+
+<!--
 The authors define a random variable $Z$ as follows:
 
 \begin{equation}
 Z = \sum_{t=0}^{K} \frac{1}{p_t} Y I \{ h(X)=t \} I { T=t }
 \end{equation}
 
+-->
+
+
 In case the treatment predicted by the uplift model is equal to the actual assigned treatment to the subject during the experiment, the weighted outcome of this subject is summed.
 In other words, the subjects where the predicted and assigned treatments match, form the group of representatives for those with this treatment assigned.
-As the number of matched subjects can vary, their group outcomes are weighted.
+As the number of matched subjects can vary, their group outcomes are then weighted.
 <br />
 The expected value of $Z$ is than equal to the expected outcome, given that each subject is assigned the best predicted treatment, as shown by the authors.
 Furthermore, the sample average $\bar{z}$ represents an unbiased estimate of $E[Z]$
@@ -330,13 +336,16 @@ Furthermore, the sample average $\bar{z}$ represents an unbiased estimate of $E[
 E[Z] = E[Y|T=h(X)]
 \end{equation}
 
+
+
 \begin{equation}
 \bar{z}=\frac{1}{N} \sum_{i=1}^{N}z^{(i)} 
 \end{equation}
 
+
 The expected response can also be used to draw uplift curves. In Zhao et al. (2017) those curves are named modified uplift curves.
-Once again the subjects are ranked by their score (expected uplift). Now for the top x-percent the optimal treatment is assigned and the remaining subject are assigned to the control group.
-Now the expected value for treating x-percent of the subjects are given as $\bar{z}$.
+Once again the subjects are ranked by their score (expected uplift). Now for the top t-percent the optimal treatment is assigned and the remaining subject are assigned to the control group.
+Now the expected value for treating t-percent of the subjects are given as $\bar{z}$.
 <br />
 In contrast to the qini and uplift curves, the modified uplift curve is not cumulative, as the outcomes of the not treated subjects are also taken into account. 
 Also the expected outcome is defined per customer and therefore independent from the size of the testing data. 
@@ -344,19 +353,18 @@ This can make it easier to draw decision in a business setting, as the expected 
 
 
 # 5. Experimental Setup <a class="anchor" id="outlook"></a>
-## 5.1 Data Set <a class="anchor" id="datasets"></a>
-
-<!--
-Describe Dataset with different outcome variables
--->
+## Data Set
 
 We use the E-Mail campaign dataset from <a href="https://blog.minethatdata.com/2008/03/minethatdata-e-mail-analytics-and-data.html" target="_blank">Kevin Hillstrom’s MineThatData</a> for our evaluation.
 This dataset represents a randomized E-Mail marketing campaign of an online vendor with two treatments (Mens E-Mail, Womens E-Mail) and a control group.
 The dataset consists of 64,000 observations, 3 target variables and 8 feature variables.
 The measured outcome variables are whether the customer visited the website or if he actually converted, which are both binary.
 Furthermore, also the actual spend of the customers is measure, which represents a continuous outcome.
-As shown in Table 1 the total response rates for all outcome variables are quite low.
-When looking at the two E-Mail campaigns in Table 2 both treatments have a total positive effect on all target variables.
+As shown in <b>Table 1</b> the total response rates for all outcome variables are quite low.
+When looking at the two E-Mail campaigns in <b>Table 2</b> both treatments have a total positive effect on all target variables.
+<br />
+As the dataset is already preprocessed we did not had to do any manipulations to the data.
+
 
 <table border="1" class="dataframe" style="width:300px">
 <CAPTION><b>Table 1</b>: Average response of all customers in the E-Mail dataset.</CAPTION>
@@ -410,14 +418,19 @@ When looking at the two E-Mail campaigns in Table 2 both treatments have a total
 
 
 
-## 5.2 Implementation <a class="anchor" id="implementation"></a>
+## Implementation
 
-Using the E-Mail campaign dataset, we have evaluated our implementations the models.
-
-For the causal forest we use the implementation from **.
-For the SMA we have evaluated several possible base learners and now use a tuned random forest as it performed best in our experiments.
-The tree from Rzepakowski () and 
-
+Using the E-Mail campaign dataset, we have evaluated our implementations of the described models.
+We have implemented the trees from Rzepakowski et al. (2012) with multiple possible divergence measures and the described splitting criterions in R.
+We have also tried to build a forest model with those trees as the subtrees, but unfortunately due to time constraints we were only able to use 20 subtrees per forest, which did not result in a significant improvement. 
+Therefore, we did not include them into our evaluation.
+For the causal forest we use the <a href="https://github.com/susanathey/causalTree" target="_blank">available implementation</a> from Athey et al. (2016).
+We build the causal forest using 200 subtrees and a mtry parameter of 2.
+For the SMA we have evaluated several possible base learners and chose a tuned random forest as it performed best in our experiments.
+<br /> 
+We have fitted and evaluated all models using 5 fold cross validation and set a seed beforehand, in order to avoid inconsistencies in the outcomes due to different evaluation data splits.
+<br />
+The full implementation of our models and evaluation metrics is <a href="https://github.com/Matthias2193/APA" target="_blank">shared on GitHub</a>.
 
 
 # 6. Results <a class="anchor" id="evaluationresults"></a>
@@ -490,6 +503,7 @@ A standardized  evaluation procedure in the uplift field could increase the comp
 
 # 8. References <a class="anchor" id="references"></a>
 
+* Athey, S. and Imbens, G., 2016. Recursive partitioning for heterogeneous causal effects. Proceedings of the National Academy of Sciences, 113(27), pp.7353-7360.
 * Devriendt, F., Moldovan, D. and Verbeke, W., 2018. A literature survey and experimental evaluation of the state-of-the-art in uplift modeling: A stepping stone toward the development of prescriptive analytics. Big data, 6(1), pp.13-41.
 * Gubela, R., Bequé, A., Lessmann, S. and Gebert, F., 2019. Conversion uplift in e-commerce: A systematic benchmark of modeling strategies. International Journal of Information Technology & Decision Making (IJITDM), 18(03), pp.747-791.
 * Gutierrez, P. and Gérardy, J.Y., 2017, July. Causal inference and uplift modelling: A review of the literature. In International Conference on Predictive Applications and APIs (pp. 1-13).
