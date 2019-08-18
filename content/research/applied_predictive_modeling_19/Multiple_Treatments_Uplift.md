@@ -467,27 +467,33 @@ Models evaluated using 5-fold cross validation.
 
 
 ## Training Duration
-Even though predictive performance is the focus of this evaluation we also wanted to look at how well our approaches scaled in terms of training time. The are 3 factors we looked at which will influence performance time: number of observations, number of covariates and number of treatments.</br>
-The figures below show a comparisson of our models.</br>
+Even though predictive performance is the focus of this evaluation we also wanted to look at how well our approaches scaled in terms of training duration. The are 3 factors we looked at which will influence performance: number of observations, number of covariates and number of treatments. The causal forest consists of 100 trees and randomly selects 3 covariates for each tree. The forest on the basis of the Rzp-tree is not in the comparison. This is due to the fact, that its training duration was up to 10 times the one of the base tree. Therefore it was omitted for readablity of the graphs. It is important to note that parallelization is not implemented yet, which could reduce the training duration significantly. </br>
+The figures below show a comparison of our models.</br>
+</br>
 3 Covariates: </br>
 <img
 align="center"
-width="550"
-height="360"
-style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison3Features.png"> </br>
+width="600"
+height="400"
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/3Features.png"> </br>
+As one would expect, training duration increases with an increasing number of observations and possible treatments. The increase is roughly linear or a little less. Overall, the Rzp-tree has by far the highest training duration. This could either be a result of the design or due to poor optimization in the implementation.</br>
+</br>
 4 Covariates: </br>
 <img
 align="center"
-width="550"
-height="360"
-style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison4Features.png"> </br>
+width="600"
+height="400"
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/4Features.png"> </br>
+The added covariate was random binary, which means it has no predictive power. For the trees this additional covariate leads to one more potential split which has to be evaluated. As we can see this has virtually no effect on training duration.</br>
+</br>
 5 Covariates: </br>
 <img
 align="center"
-width="550"
-height="360"
-style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/Comparison5Features.png"></br>
-
+width="600"
+height="400"
+style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/5Features.png"></br>
+The second covariate which was added was a continuous variable which can take integer values from 0 to 100. It too was randomly assigned. Here we see hardly any effect on the simple tree and some effect on the Rzp-tree. By far the biggest effect is observed for the causal tree. Especially for higher numbers of observations the training duration increases significantly. It is intreresting to see that the highest training duration is for 3 treatments instead of 4. This is likely due to 'bad luck' when selecting the covariates for each tree, often selecting the continuous rather than binary covariate.</br>
+</br>
 
 # 7. Outlook <a class="anchor" id="outlook"></a>
 
