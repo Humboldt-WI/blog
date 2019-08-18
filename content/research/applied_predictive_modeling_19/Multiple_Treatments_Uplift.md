@@ -65,8 +65,8 @@ Since those challenges were all related to marketing activity we decided to focu
 
 ### When?
 When it comes to selecting the time of a marketing activity there is not much research out there with regards to treatment effects.
-Most advice for marketing pratitioners focuses on social media marketing and on what time are best for publishing new posts. These guidelines mostly look at single performance measures like engagement to see at which times the performance measure are maximized. An example of this can be seen in the blog post 
-<a  href="https://sproutsocial.com/insights/best-times-to-post-on-social-media/" target="_blank"> "Best times to post on social media for 2019"</a>. Generally these approaches only attempt to maximize the average treatment effect. Since social media usually works in a broadcast style in which each post reaches all users it is not possible to adjust the content or publishing time of a post for specific users or groups of users.</br>
+Most advice for marketing practitioners focuses on social media marketing and on the best publishing times for new posts. These guidelines mostly look at single performance measures like engagement to see at which times the performance measures are maximized. An example of this can be seen in the blog post 
+<a  href="https://sproutsocial.com/insights/best-times-to-post-on-social-media/" target="_blank"> "Best times to post on social media for 2019"</a>. Generally these approaches only attempt to maximize the average treatment effect. Social media usually works in a broadcasting style in which each post reaches all users. It is not possible to adjust the content or publishing time of a post for specific users or groups of users.</br>
 In their paper <a href = "https://www.researchgate.net/publication/4753376_Time-Series_Models_in_Marketing" target="_blank"> Time Series Models in Marketing </a> the authors look at the application of time series models for marketing. For example they use persistance modeling in order to estimate  the longterm effect of marketing activities. The image below shows the long term impact of an activity on the price promotion elasticity. For detergent there is an immidiate effect, which levels off and reaches the original level after some time. For dairy creamer we also see some recution over time but it remains stable at an elevated level.
 
 <figure>
@@ -81,11 +81,11 @@ style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_u
 </figure>
 </br>
 Being able to estimate the long term effect of ones marketing activity allows the practicioner to select the appropriate starting point in order to maximize the ROI. </br>
-Another approach to find seasonal effects might be to look at past marketing activities which have been similar in terms of the activity performed, but have been done at different times. Then one could estimate the treatment effects of each of these campaigns to get an idea at which time during the year the campaign works better. However, the activities should not be to far apart. Otherwise global factors like the state of the economy could have changed. This would also have an impact on the purchasing behavior of customers and could lead to false conclusions.
+Another approach to find seasonal effects might be to look at past marketing activities which have been similar in terms of the activity performed, but have been done at different times. Then, one could estimate the treatment effects of each of these campaigns to get an idea at which time during the year the campaign is more effective. However, the activities should not be too far apart. Otherwise global factors like the state of the economy could have changed. This would also have an impact on the purchasing behavior of customers and could lead to false conclusions.
 
 <h3>Who?</h3>
 
-The importance of this question varies greatly depending on the kind of marketing that is being done. Figure 2 shows various types of marketing from broad to narrow. The narrower the more potential there is for the usage of treatment effects. For the broadest possible marketing activity (like the social media marketing mentioned before) the average treatment effect (ATE) is important but no selection can be made in terms of who we target. Narrower activities might allow us to select certain subgroups of our potential customers. Here we would be interested in the group average treatment effects (GATES) of those subgroups. Then we could determine which group to target based on those treatment effects.
+The importance of this question varies greatly depending on the kind of marketing that is being done. Figure 2 shows various types of marketing from broad to narrow. The narrower, the more potential there is for the usage of treatment effects. For the broadest possible marketing activity (like the social media marketing mentioned before) the average treatment effect (ATE) is important but no selection can be made in terms of who we target. Narrower activities might allow us to select certain subgroups of our potential customers. Here we would be interested in the group average treatment effects (GATES) of those subgroups. Then we could determine which group to target based on those treatment effects.
 
 <figure>
 <img
@@ -98,7 +98,7 @@ style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_u
 </figcaption>
 </figure>
 
-Our focus lies on the most narrow kind of marketing activities. This means activities like emails, coupons etc. which are specifically targeted towards the receiving person. Here we can decide on an individual basis whether we target a given potential customer and what treatment we use. This is in contrast to the broadest form, like social media posts, which reach all followers and not just specific ones. Historically practicioners would target the people who they thought would be most likely to do a purchase. This approach is suboptimal since it is solely based on the overall purchase possibility and not the effect of the treatment. </br>
+Our focus lies on the most narrow kind of marketing activities. This means activities like emails, coupons etc. which are specifically targeted towards the receiving person. Here we can decide on an individual basis whether we target a given potential customer and what treatment we use. This is in contrast to the broadest form, like social media posts, which reaches all followers and not just specific ones. Historically practicioners would target the people who they thought would be most likely to do a purchase. This approach is suboptimal since it is solely based on the overall purchase possibility and not the effect of the treatment. </br>
 In general we can separate our customers in 4 groups (Figure 3). </br>
 
 <figcaption>
@@ -112,13 +112,13 @@ style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_u
 </figcaption>
 </figure>
 
-With the historical approach we will target mostly the 'Sure Things' and maybe the 'Do-Not-Disturbs'. For those groups we at best get no return and at worst actually lose customers. Ideally we want to target the 'Persuadables'. This is commonly done by estimating the conditional average treatment effect (CATE) or uplift of the proposed marketing activity and then target the customers where the activity is estimated to have the highest effect. </br>
-Several approaches have been proposed to estimate uplift. Gubela et. al (2019) give an overview in their paper <a href = "https://www.researchgate.net/publication/331791032_Conversion_uplift_in_E-commerce_A_systematic_benchmark_of_modeling_strategies" target="_blank"> Conversion uplift in E-commerce: A systematic benchmark of modeling strategies</a>. In their evaluation they find that the two model uplift method and interaction term method (ITM) performed best. </br>
-The two model approach as the name suggests uses two separate models. The training set is split into two with one set contained all the treated observations and the other all control observations. Then for each traning set one model is built to predict the outcome. To estimate the uplift of the treatment for a new person, we generate the predicted outcome with both models. One predicted outcome with treatment and one without. The difference between these two estimates is the expected uplift. The two model is very simple and works with virtually every possible base model (e.g. random forest, linear regression, svm, ...). Since it is so simple it is often considered a good benchmark to test new approaches against.</br>
+With the historical approach we will target mostly the 'Sure Things' and maybe the 'Do-Not-Disturbs'. For those groups we at best get no return and at worst actually lose customers. Ideally, we want to target the 'Persuadables'. This is commonly done by estimating the conditional average treatment effect (CATE) or uplift of the proposed marketing activity and then target the customers for whom the activity is estimated to have the highest effect. </br>
+Several approaches have been proposed to estimate uplift. Gubela et. al (2019) give an overview in their paper <a href = "https://www.researchgate.net/publication/331791032_Conversion_uplift_in_E-commerce_A_systematic_benchmark_of_modeling_strategies" target="_blank"> Conversion uplift in E-commerce: A systematic benchmark of modeling strategies</a>. In their evaluation they find that the two model uplift method and the interaction term method (ITM) performed best. </br>
+The two model approach uses two separate models. The training set is split into two subsets. One subset contains all the treated observations and the other all control observations. For each traning set one model is built to predict the outcome. To estimate the uplift of the treatment for a new person, we generate the predicted outcome with both models. One predicted outcome with treatment and one without. The difference between these two estimates is the expected uplift. The two model approach is very simple and works with virtually every possible base model (e.g. random forest, linear regression, svm, ...). Since it is so simple it is often considered a good benchmark to test new approaches against.</br>
 The interaction term method (ITM) was proposed by Lo in his 2002 paper <a href="https://www.researchgate.net/publication/220520042_The_True_Lift_Model_-_A_Novel_Data_Mining_Approach_to_Response_Modeling_in_Database_Marketing" target="_blank">The True Lift Model - A Novel Data Mining Approach to Response Modeling in Database Marketing</a>. Unlike double machine learning, ITM only uses a single model. However, ITM also works with two predictions. One with treatment and one without. Both predictions are obtained from the same model which has been trained on both treatment and control data. Whether a treatment is given or not is indicated by a binary variable D. A new observation is evaluated twice. Once with D=1 (treatment given) and once with D=0. Again the difference between the two predictions is the estimated uplift.
 
 ### What?
-The last question we look at is "What marketing activity to choose?". There are many ways one could approach one customers (e.g. coupons, newsletters, ...). Finding the right method on an individual level is important, because different approaches might not only have different effects on potential customers but are also associated with different costs. For example it would be better to send a customer a newsletter which costs virtually nothing, rather then a coupon which would reduce the profit, if the newsletter has a similar effect on purchase probability. Since there isn't much research on this area and the selection of the proper marketing channel is crucial, we decided to lay the focus of our blog post on this issue.
+The last question we look at is "What marketing activity to choose?". There are many ways one could approach ones customers (e.g. coupons, newsletters, ...). Finding the right method on an individual level is important, because different approaches might not only have different effects on potential customers but are also associated with different costs. For example it would be better to send a customer a newsletter which costs virtually nothing, rather then a coupon which would reduce profit, if the newsletter has a similar effect on purchase probability. Since there isn't much research in this area and the selection of the proper marketing channel is crucial, we decided to lay the focus of our blog post on this issue.
 
 # 3. Models <a class="anchor" id="models"></a>
 ## 3.1 Decision Trees Rzepakowski & Jaroszewicz <a class="anchor" id="decisiontree"></a>
@@ -127,7 +127,7 @@ The last question we look at is "What marketing activity to choose?". There are 
 In their paper <a  href="https://core.ac.uk/download/pdf/81899141.pdf/"> Decision trees for uplift modeling with single and multiple treatments</a> Rzepakowski and Jaroszewicz propose the usage of a decision tree for uplift modeling. The goal of their tree is to maximize the divergence of outcome distribution between the treatment(s) and control and between treatments.
 To that end they developed a splitting criterion used to evaluate the possible splits. For each possible split they calculate the associated gain. To put it simply the gain is the divergence of outcome distribution after the split (conditional divergence), minus the diveregence prior to it (multiple divergence).
 The aim is to find the split, which maximizes the gain. </br>
-The formula for calculating the gain is given in Figure 6. $D$ represents a divergence function. In their paper they looked at KL-divergence, Euclidean distance and the chi-squared divergence. However, any other divergence measure could also be implemented. </br>
+The formula for calculating the gain is given below. $D$ represents a divergence function. In their paper they looked at KL-divergence, Euclidean distance and the chi-squared divergence. However, any other divergence measure could also be implemented. </br>
 It is important to note here, that they only considere discrete outcome distributions in the paper. </br>
 The gain:
 \begin{equation}
@@ -140,7 +140,7 @@ Multiple Divergence:
 {D(P^{T_1}(Y),...,P^{T_k}(Y):P^C(Y)|A) = \sum_a\frac{N(a)}{N}D(P^{T_1}(Y|a),...,P^{T_k}(Y|a):P^C(Y|a))}
 \end{equation}
 
-With $a$ being one outcome of a given test and $N(a)$ the number of samples with outcome $a$ of that test. Let's say we have $N = 1000$ people and we test for age below or above 25. Then $a_1$ would be $\leq25$ and $a_2$ would be $>25$. $N(a_1)$ are the number of people who are 25 or younger.
+With $a$ being one outcome of a given test and $N(a)$ the number of samples with outcome $a$ of that test. For example, let's say we have $N = 1000$ people and we test for age below or above 25. Then $a_1$ would be $\leq25$ and $a_2$ would be $>25$. $N(a_1)$ are the number of people who are 25 or younger.
 
 Conditional Divergence:
 
@@ -149,11 +149,11 @@ D(P^{T\_1}(Y),...,P^{T\_k}(Y):P^{C}(Y))=\alpha\sum_{i=1}^{k}\lambda_iD(P^{T_i}(Y
 \end{equation}
 
 There are 3 parameters which can be set by the user to adjust the model. </br>
-$\alpha$: This parameter determines how much the treatment-control and between treatment divergence are measured. An $\alpha$ of 0.5 means both are valued equally. </br>
+$\alpha$: This parameter determines how much the treatment-control and between treatment divergence are weighted. An $\alpha$ of 0.5 means both are valued equally. </br>
 
-$\lambda_{i}$: Allows to put an emphasis on certain treatmens. For example one might put more emphasis on cheaper treatments. </br>
+$\lambda_{i}$: Allows to put an emphasis on certain treatments. For example, one might put more emphasis on cheaper treatments. </br>
 
-$\gamma_{ij}$: Allows to put individual weights on the divergence between treatments i and j. </br>
+$\gamma_{ij}$: Allows to put individual weights on the divergence between certain treatments i and j. </br>
 
 In addition to the gain, they also added a normalization factor. In the equation below it is given for KL-divergence and entropy. It is supposed to prevent bias towards test with high number of outcomes. Additionaly, it punishes uneven splits. </br>
 
@@ -176,7 +176,7 @@ treatment and control datasets.</br>
 
 Lastly, pruning based on a validation set is also implemented. The pruning algorithm goes through the entire tree starting at the bottom. For each subtree the algorithm checks if the outcome divergence in the leafs is greater than in the root for the validation set. If yes, than the algorithm continues, if no the subtree is pruned and the root becomes a new leaf. </br>
 
-On the basis of this tree, we also implemented a function which allows to build a forest instead of just one tree. The implementation is loosely based on the random forest. There are two main parameters which can be set when building a forest. The number of trees and the number of covariates considered in each tree. For each tree a random subset of the covariates with the specified number of covariates is used.
+On the basis of this tree, we also implemented a function which allows to build a forest instead of just one tree. There are two main parameters which can be set when building a forest. The number of trees and the number of covariates considered in each tree. For each tree a random subset of the covariates with the specified number of covariates is used. Below is the process in pseudo code.
 
 ```r
 Forest building:
@@ -203,19 +203,37 @@ Return the average of all predictions
 
 ### 3.1.2 Simple Splitting Criterion <a class="anchor" id="simple"></a>
 
-In addition to the tree proposed by Rzepakowski & Jaroszewicz we also implemented another splitting criterion as a benchmark. Unlike the previously discussed cruterion, ours aim to maximize the difference in mean outcome between treatment and control and between different treatments. This also allows for continuous outcomes without any adjustments.</br>
-There is no pruning implemented as we wanted to keep it as simple as possible. For that reason we also only compare the difference in outcome of the left side of a new split to the root in order to get the gain of a give split. </br>
-Despite our effort to keep this criterion simple we implemented a normalization factor which is used to guarantee that we have at least one observation of each treatment and control in every leaf. In addition, it also punishes uneven splits.</br>
+In addition to the tree proposed by Rzepakowski & Jaroszewicz we also implemented another splitting criterion as a benchmark. Unlike the previously discussed criterion, ours aims to maximize the difference in mean outcome between treatment and control and between different treatments. This also allows for continuous outcomes without any adjustments.</br>
+There is no pruning implemented as we wanted to keep it as simple as possible. For that reason we also only compare the difference in outcome of the left side of a new split to the root in order to get the gain of a give split.</br>
+Despite our effort to keep this criterion simple, we implemented a normalization factor which is used to guarantee that we have at least one observation of each treatment and control in every leaf. In addition, it also punishes uneven splits.</br>
 Here is the formula used to evaluate the possible splits. The "$S = l$" indicates, that we are only looking at the left side of the split.
 $n\_{il}$ and $n\_{ir}$  are the number of samples with treatment i in the left and right leaf respectively. As one can see if either becomes 0 the whole equation is 0. 
 \begin{equation}
 \sum_{i=1}^{I}\sum\_{j=1}^{I}[Mean(Y|T_i=1,S=l)-Mean(Y|T_j=1,S=l)]^2*\prod\_{i=1}^I\frac{n\_{il}}{n}\*\frac{n\_{ir}}{n}
 \end{equation}
-
+</br>
+Pseudo code for the simple tree:
+```r
+Build_tree(data){
+  For each split:
+    Split the data
+    Calculate and save the gain (equation above)
+  If max(gains) > 0{
+    Select split with highest gain
+    Split the data according to the split in data_left and data_right
+    Left leaf = Build_tree(data_left)
+    Right leaf = Build_tree(data_right)
+  }
+  Else{
+    Calculate mean outcomes for all treatments and control (these outcomes serve as predictions)
+    Return(outcomes)
+  }
+}
+```
 
 
 ## 3.2 Causal Tree and Causal Forest <a class="anchor" id="causaltree"></a>
-The causal tree, introduced by Susan Athey et. al in their paper <a href = "https://github.com/susanathey/causalTree/blob/master/briefintro.pdf" target="_blank">An Introduction to Recursive Partitioning for Heterogeneous Causal Effect Estimation Using causalTree package</a> is a tree based classifier which directly estiamtes the treatment effect. It is based on the rpart package and implements many in the CART (Classification and Regression Trees). By default it only supports single treatment. Therefore, we train one tree for each of the multiple treatments and then compare the predicted uplifts. </br>
+The causal tree, introduced by Susan Athey et. al in their paper <a href = "https://github.com/susanathey/causalTree/blob/master/briefintro.pdf" target="_blank">An Introduction to Recursive Partitioning for Heterogeneous Causal Effect Estimation Using causalTree package</a> is a tree based classifier which directly estimates the treatment effect. It is based on the rpart package and implements many ideas in the CART (Classification and Regression Trees). By default it only supports single treatment. Therefore, we train one tree for each of the multiple treatments and then compare the predicted uplifts. </br>
 They also implemented a function which allows the user to build forests based on the causal tree. These forests are in the form of a list of rpart objects.
 
 ## 3.3 Separate Model Approach<a class="anchor" id="separate"></a>
