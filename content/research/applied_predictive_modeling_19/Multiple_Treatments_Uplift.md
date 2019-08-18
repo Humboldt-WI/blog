@@ -35,8 +35,7 @@ description = "Evaluation and discussion of Uplift Models for multiple possible 
 
 # 1. Introduction <a class="anchor" id="introduction"></a>
 Nowadays marketing practitioners face a multitude of challenges. In this blogpost we want to look at some of the most common challenges and identify ways in which treatment effect analysis could be applied to tackle those challenges.
-
-<br />
+</br>
 This blog post is structured as follows.
 In the first part we will give a broad overview over challenges and ways in which treatment effect analysis might help.</br>
 In the second part we will focus more closely on one specific issue. Namely, estimating the effect of various treatments in order to select the best. 
