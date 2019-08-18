@@ -776,19 +776,13 @@ uplift_ct$uplift = sapply(causal_tree$where, FUN = function(x){causal_tree$frame
 
 ## Model Evaluation
 
-Vorstellung: Qini-Koeffizient (Max)
-Similarities (Qini: vgl. Devriend p.29ff.)
-Differences
-Possible Advantages
-Vorstellung AUUC (Devriendt)
-Vorstellung MSE (Hitsch & Misra)
-Uplift Metric (vgl. Gutierrez p. 9 ff.)
 
 ### MSE
 
-To find the most promising individuals to target, the uplift data frame is sorted according to the individual CATE estimations. After specifying the percentage of individuals to receive a treatment, it is possible to select the first x% observations from the sorted data frame. For these individuals, a treatment is expected to have the highest impact on the outcome variable. To evaluate the model, Hitsch and Misra (2018) propose the mean squared error as an indicator of the model quality. This measure also allows to compare the model with the proposed treatment assignment of other uplift models. Since we have seen that the transformed outcome is an unbiased estimator for the CATE, we can also use this metric to evaluate the model fit. It is shown in Gutierrez and Gerardy (2016) and Hitsch and Misra (2018) that, under unconfoundedness, the mean squared error based on the transformed outcome, is applicable for the comparison of different model fits on a particular data set. In the last paragraph, we have summarized how to use the transformed outcome in order to determine an optimal value for the parameter K in the Causal-KNN model. However, the transformed outcome can be used for model evaluation as well (c.f. Hitsch & Misra, p.27, 2018). We can use the transformed outcome in the same manner as we used it when we tuned the parameter k. The criterion to minimize is therefore given by:
+To find the most promising individuals to target, the uplift data frame is sorted according to the individual CATE estimations. After specifying the percentage of individuals to receive a treatment, it is possible to select the first $x$% observations from the sorted data frame. For these individuals, a treatment is expected to have the highest impact on the outcome variable. To evaluate the model, Hitsch and Misra (2018) propose the mean squared error as an indicator of the model quality. This measure also allows to compare the model with the proposed treatment assignment of other uplift models. Since we have seen that the transformed outcome is an unbiased estimator for the CATE, we can also use this metric to evaluate the model fit. It is shown in Gutierrez and Gerardy (2016) and Hitsch and Misra (2018) that, under unconfoundedness, the mean squared error based on the transformed outcome, is applicable for the comparison of different model fits on a particular data set. In the last paragraph, we have summarized how to use the transformed outcome in order to determine an optimal value for the parameter K in the Causal-KNN model. However, the transformed outcome can be used for model evaluation as well (c.f. Hitsch & Misra, p.27, 2018). We can use the transformed outcome in the same manner as we used it when we tuned the parameter k. The criterion to minimize is therefore given by:
 
-$MSE_b=\frac{1}{|\tau_b|}\sum\limits_{i\in{\tau_b}}(Y_i^*-\widehat{\tau_b}(X_i))^2$
+<img src="http://chart.googleapis.com/chart?cht=tx&chl=$MSE_b=\frac{1}{|\tau_b|}\sum\limits_{i\in{\tau_b}}(Y_i^*-\widehat{\tau_b}(X_i))^2$" style="border:none;">
+
 
 ```{r, eval = FALSE, include = TRUE}
 #sorting observations according to uplift values
