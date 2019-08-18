@@ -205,8 +205,8 @@ Return the average of all predictions
 
 In addition to the tree proposed by Rzepakowski & Jaroszewicz we also implemented another splitting criterion as a benchmark. Unlike the previously discussed cruterion, ours aim to maximize the difference in mean outcome between treatment and control and between different treatments. This also allows for continuous outcomes without any adjustments.</br>
 There is no pruning implemented as we wanted to keep it as simple as possible. For that reason we also only compare the difference in outcome of the left side of a new split to the root in order to get the gain of a give split. </br>
-Despite our effort to keep this criterion simple we implemented a normalization factor which main use is to guarantee that we have at least one observation of each treatment and control in every leaf. In addition, it also punishes uneven splits.</br>
-Here is the formula used to evaluate the possible splits. The "S = l" indicates, that we are only looking at the left side of the split.
+Despite our effort to keep this criterion simple we implemented a normalization factor which is used to guarantee that we have at least one observation of each treatment and control in every leaf. In addition, it also punishes uneven splits.</br>
+Here is the formula used to evaluate the possible splits. The "$S = l$" indicates, that we are only looking at the left side of the split.
 $n\_{il}$ and $n\_{ir}$  are the number of samples with treatment i in the left and right leaf respectively. As one can see if either becomes 0 the whole equation is 0. 
 \begin{equation}
 \sum_{i=1}^{I}\sum\_{j=1}^{I}[Mean(Y|T_i=1,S=l)-Mean(Y|T_j=1,S=l)]^2*\prod\_{i=1}^I\frac{n\_{il}}{n}\*\frac{n\_{ir}}{n}
