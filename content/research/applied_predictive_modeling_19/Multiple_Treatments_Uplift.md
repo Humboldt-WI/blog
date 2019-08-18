@@ -515,13 +515,11 @@ height="360"
 style="display:block;margin:0 auto;" src="/blog/img/seminar/multiple_treatment_uplift/results_spend_exp.png"> </br>
 
 ## Training Duration
-<<<<<<< HEAD
+
 Even though predictive performance is the focus of this evaluation we also wanted to look at how well our approaches scaled in terms of training duration. The are 3 factors we looked at which will influence performance: number of observations, number of covariates and number of treatments. The causal forest consists of 100 trees and randomly selects 3 covariates for each tree. The forest on the basis of the Rzp-tree is not in the comparison. This is due to the fact, that its training duration was up to 10 times the one of the base tree. Therefore it was omitted for readablity of the graphs. It is important to note that parallelization is not implemented yet, which could reduce the training duration significantly. </br>
 The figures below show a comparison of our models.</br>
 </br>
-=======
-Even though predictive performance is the focus of this evaluation we also wanted to look at how well our approaches scaled in terms of training time. The are 3 factors we looked at which will influence performance time: number of observations, number of covariates and number of treatments.</br>
-The figures below show a comparisson of our models.</br>
+
 
 ### TODO Passt du das noch an? 
 <ul>
