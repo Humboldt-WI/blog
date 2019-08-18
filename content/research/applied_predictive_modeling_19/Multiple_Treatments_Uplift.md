@@ -509,6 +509,10 @@ The second covariate which was added was a continuous variable which can take in
 Unfortunately, our evaluation using the E-Mail campaign dataset provided mixed results, so that it cannot be clearly said which model would be most applicable for a marketing campaign.
 
 The causal forest, as an ensemble model, did perform slighly better than the remaining models. Therefore, it would be interesting to compare a forest model from the proposed trees, which consider all treatments while training.
+
+In terms of runtime, the key take away is that causal tree seems to struggle with continuous variables. For data with many continuous variables one should consider other models.
+
+Overall, the rather poor results show, that there is still much room for improvement and further research on this topic. 
 <!--
 <br />
 Uplift models require datasets of a randomized experiment in order to be fitted appropriately, which are quite rare.
