@@ -591,13 +591,12 @@ Another advantage of the Causal KNN method is the high flexibility with regard t
 
 ### Causal KNN for optimal Targeting Policy Prediction
 
-The next section presents the causal KNN method in an application case, where a targeting policy has to be developed, based on the CATE estimations. From the model training and parameter tuning of previous steps, it was possible to find a best fitting value for the number of nearest neighbours k, that are taken into account. This value is now used in the prediction setting, where we assume that we do not know the actual outcome values. 
+The next section deals with the Causal KNN method in an application case, where a targeting policy has to be developed, based on the CATE estimations. From the model training and parameter tuning of previous steps, it was possible to find a best fitting value for the $K$ nearest neighbours that are taken into account. This value is now used in the prediction setting, where we assume that we do not know the actual outcome value. 
 
-The aim is to find those individuals, where a treatment increases the value of the outcome variable the most. By specifying a fixed percentage of the population, we are able to select the most profitable individuals for a treatment assignment. The causal KNN algorithm process is similar to the one above, but without any parameter tuning. The important difference to the causal KNN estimation for the k value determination, is the change in the search space. For the test data, we assume that we did not decide for a treatment assignment yet and do not have any information about the individual outcome values. Therefore, we are not able to calculate the transformed outcome for the test data set. Since we decided in a previous step for an optimal parameter of k, we use this value here as parameter for the causal knn algorithm. The difference is now that we do not search for treated and untreated nearest neighbours in the test data set. We are not able to do so, because we did not decide for any treatment assignment yet. We rather search the neighbours for the observations in the training data, which we already used for finding the optimal k value. 
+The aim is to find those individuals, where a treatment increases the value of the outcome variable the most. By specifying a fixed percentage of the population, we are able to select the most profitable individuals for a treatment assignment. For the test data, we assume that we did not decide for a treatment assignment yet and do not have any information about the individual outcome values. Therefore, we are not able to calculate the transformed outcome for the test data set. Since we already estimated optimal parameter of k, we use this value here as parameter for the Causal KNN algorithm. The difference is now that we do not search for treated and untreated nearest neighbours in the test data set. We are not able to do so, because we did not decide for any treatment assignment yet. We rather search the neighbours for the observations in the training data, which we already used for finding the optimal k value. 
 
 ```{r, eval = FALSE, include = TRUE}
-###using causal knn as predictive model
-test_set     = createDummyFeatures(data[10001:20000, ])
+test_set = createDummyFeatures(data[25001:30000, ])
 test_set$idx = 1:nrow(test_set)
 
 #splitting data set
@@ -608,7 +607,7 @@ data_nt = data_d[which(data_d$segment.No.E.Mail == 1),]
 data_t = data_d[which(data_d$segment.No.E.Mail == 0),]
 
 
-#running causal knn for test set to calculate mse
+#running Causal KNN for test set to calculate MSE
 #select target columns
 drop_cols = c("visit", 
               "spend", 
@@ -653,7 +652,7 @@ untreated_nn = sapply(untreated_nn, FUN = function(x){
 }) 
 
 #transpose data frames
-treated_nn   = t(treated_nn)
+treated_nn = t(treated_nn)
 untreated_nn = t(untreated_nn)
 
 #preparing uplift data frame
@@ -669,6 +668,7 @@ reaction_t = apply(treated_nn, MARGIN = 2, FUN = function(x){
 })
 
 uplift[paste("uplift_", k, sep = "")] = reaction_t - reaction_nt
+
 ```
 
 ## Application of Transformed Outcome Approach for general Uplift Models
@@ -822,121 +822,11 @@ mse
 mse_ct
 ```
 
-## Qini Coefficient for evaluation of the causal KNN model
+## Qini Curves for evaluation of the causal KNN model
 
 The Gini-Coefficient is a widely used metric to compare the fit of different modeling approaches on a particular data set. The metric is intuitive and applicable, since it provides a single value for the evaluation. The value of the Gini-Coefficient is defined between 0 and 1, where 1 represents a perfect model and 0 indicates a fit that is not performing any better than a random ranking of customers. Devriendt et al. (2018) state that the Gini-Coefficient, however, is not readily applicable in uplift modeling context, since for every class we have individuals from the treatment and the control group. Therefore, in this context, the so called "Qini-Coefficient" is preferred. The Qini-Coefficient is mathematically equal to the difference of the Gini-Curve for the treatment group and the control group. 
-The Qini-Coefficient provides an opportunity to evaluate uplift models according to the treatment effect estmations. Since the Qini is a common indicator for the quality of uplift models, it is used here to further evaluate the causal KNN model results.
+The Qini-Coefficient provides an opportunity to evaluate uplift models according to the treatment effect estmations. Since the Qini is a common indicator for the quality of uplift models, it is used here to evaluate the Causal KNN model results. Based on the calculated uplift factors for every individual, one could target only those individuals with the highest uplift, i.e. the highest probability of visiting the website after receiving an email. This targeted treatment assignment can be compared to the random assignment, where every individual gets a treatment with a probability of 2/3. Then one can look at the cumulative visits for the targeted customers. If the targeting of customers with a higher uplift also corresponds to a higher chance of visit, the curve of the Causal KNN predictions must be above the randomized predictions. 
 
-```{r, eval = FALSE, include = TRUE}
-###qini plot
-#random assignment of treatments
-qini_data_rnd = data.frame(uplift)
-qini_data_rnd$visit = test_set$visit
-
-#incremental gain
-segments = seq(0, nrow(qini_data_rnd), by = 100)
-incremental_gain = data.frame("part_from" = segments[1:(length(segments)-1)]+1)
-incremental_gain$part_to = segments[1:(length(segments)-1)]+100
-incremental_gain$sum = 0
-
-#calculate reactions for segments
-for (i in 1:(nrow(incremental_gain))){
-  incremental_gain$sum[i] = sum(qini_data_rnd$visit[incremental_gain$part_from[i]:incremental_gain$part_to[i]])
-}
-
-#cumulative reactions
-incremental_gain$cumsum = cumsum(incremental_gain$sum)
-incremental_gain[1:10,]
-
-sum(qini_data_rnd$visit[1:100])
-sum(qini_data_rnd$visit)
-
-
-#model assignment of treatments
-qini_data_model = qini_data_rnd[order(qini_data_rnd[, 3], decreasing = TRUE), ]
-
-#incremental gain
-segments = seq(0, nrow(qini_data_model), by = 100)
-incremental_gain = data.frame("part_from" = segments[1:(length(segments)-1)]+1)
-incremental_gain$part_to = segments[1:(length(segments)-1)]+100
-incremental_gain$sum = 0
-
-#calculate reactions for segments
-for (i in 1:(nrow(incremental_gain))){
-  incremental_gain$sum[i] = sum(qini_data_model$visit[incremental_gain$part_from[i]:incremental_gain$part_to[i]])
-}
-
-#cumulative reactions
-incremental_gain$cumsum = cumsum(incremental_gain$sum)
-
-
-#plotting qini curves of the causal knn predictions
-qini_plot_data = data.frame("visit_rnd" = cumsum(qini_data_rnd$visit), 
-                            "visit_model" = cumsum(qini_data_model$visit), 
-                            "idx" = 1:nrow(qini_data_rnd))
-
-library(ggplot2)
-
-qini_plot = ggplot(data = qini_plot_data, aes(x = idx)) +
-  geom_smooth(aes(y = visit_rnd), method = "lm", se = FALSE) +
-  geom_smooth(aes(y = visit_model), method = "loess", se = FALSE, span = 2, color = "red") + 
-  labs(title = "Qini-Curves of Treatment Assignment for Causal KNN Model", x = "Observations", y = "Cumulative Visitations of the Website") +
-  theme_light()
-
-qini_plot
-
-
-#AUUC
-qini_plot_data$rnd_cumsum = cumsum(qini_plot_data$visit_rnd)
-qini_plot_data$model_cumsum = cumsum(qini_plot_data$visit_model)
-head(qini_plot_data)
-
-auuc_cknn = 0
-
-for(i in 1:(nrow(qini_plot_data)-1)){
-  
-  x = qini_plot_data$model_cumsum[i] + 0.5*(qini_plot_data$model_cumsum[i+1]-qini_plot_data$model_cumsum[i])
-  auuc_cknn = auuc_cknn + x
-}
-auuc_cknn
-
-
-#plotting qini curves of the causal tree predictions
-#random assignment of treatments
-qini_data_rnd[, 3] = NULL
-qini_data_rnd$uplift = uplift_ct$uplift
-
-qini_data_model = qini_data_rnd[order(qini_data_rnd$uplift, decreasing = TRUE), ]
-
-qini_plot_data = data.frame("visit_rnd" = cumsum(qini_data_rnd$visit), 
-                            "visit_model" = cumsum(qini_data_model$visit), 
-                            "idx" = 1:nrow(qini_data_rnd))
-
-qini_plot_ct = ggplot(data = qini_plot_data, aes(x = idx)) +
-  geom_smooth(aes(y = visit_rnd), method = "lm", se = FALSE) +
-  geom_smooth(aes(y = visit_model), method = "loess", se = FALSE, span = 2, color = "red") + 
-  labs(title = "Qini-Curves of Treatment Assignment for Causal Tree Model", x = "Observations", y = "Cumulative Visitations of the Website") +
-  theme_light()
-
-qini_plot_ct
-  
-#AUUC
-qini_plot_data$rnd_cumsum = cumsum(qini_plot_data$visit_rnd)
-qini_plot_data$model_cumsum = cumsum(qini_plot_data$visit_model)
-head(qini_plot_data)
-
-auuc_ct = 0
-
-for(i in 1:(nrow(qini_plot_data)-1)){
-  
-  x = qini_plot_data$model_cumsum[i] + 0.5*(qini_plot_data$model_cumsum[i+1]-qini_plot_data$model_cumsum[i])
-  auuc_ct = auuc_ct + x
-}
-
-#compare AUUC for both models
-auuc_ct
-auuc_cknn
-```
 
 <img align="center" width="800"
 style="display:block;margin:0 auto;" 
@@ -945,7 +835,7 @@ alt = "Qini Curves for the Causal KNN Targeting Policy">
 
 <img align="center" width="800"
 style="display:block;margin:0 auto;" 
-src="/blog/img/seminar/causal_knn/qini_plot_ct.png"
+src="\blog\static\img\seminar\causal_knn\cp_plot.png"
 alt = "Qini Curves for the Causal Tree Targeting Policy">
 
   
@@ -956,8 +846,8 @@ This measure is defined by the area under the uplift curve. We can compare the r
 <!--
 Model                | MSE    | AUUC
 -------------------- | ------ | -----------
-Causal KNN (K = 250) | 0.5914 | 26470055012
-Causal Tree          | 0.5803 | 30718837480
+Causal KNN (K = 250) | 0.5508 | 0.34
+Causal Tree          | 0.5321 | 0.36
 -->
 
 ## Results

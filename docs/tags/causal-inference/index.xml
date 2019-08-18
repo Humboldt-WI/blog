@@ -27,7 +27,7 @@
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</guid>
       <description>LatexIT.add(&amp;lsquo;p&amp;rsquo;,true);  
-Applied Predictive Analytics Seminar - Causal KNN Abstract Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where an uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbor algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
+Applied Predictive Analytics Seminar - Causal KNN Abstract Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbor algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
     </item>
     
     <item>
@@ -37,7 +37,7 @@ Applied Predictive Analytics Seminar - Causal KNN Abstract Beyond estimating the
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</guid>
       <description>LatexIT.add(&amp;lsquo;p&amp;rsquo;,true);  
-Applied Predictive Analytics Seminar - Causal KNN Abstract Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where an uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbor algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
+Applied Predictive Analytics Seminar - Causal KNN Abstract Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbor algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
     </item>
     
   </channel>
