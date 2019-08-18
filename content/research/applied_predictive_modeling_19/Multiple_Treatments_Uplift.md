@@ -470,21 +470,69 @@ This can make it easier to draw decision in a business setting, as the expected 
 
 
 # 5. Experimental Setup <a class="anchor" id="outlook"></a>
-## 5.1 Data Sets <a class="anchor" id="datasets"></a>
+## 5.1 Data Set <a class="anchor" id="datasets"></a>
 
 <!--
 Describe Dataset with different outcome variables
 -->
 
+We use the E-Mail campaign dataset from <a href="https://blog.minethatdata.com/2008/03/minethatdata-e-mail-analytics-and-data.html" target="_blank">Kevin Hillstrom’s MineThatData</a> dataset for our evaluation.
+This dataset represents a randomized E-Mail marketing campaign of an online vendor, with two treatments and a control group.
+The dataset consists of 64,000 observations, 3 target variables and 8 feature variables.
+However, as shown in Table ** the total response rates for all target variables are quite low.
 
 
-<a href="https://blog.minethatdata.com/2008/03/minethatdata-e-mail-analytics-and-data.html" target="_blank">Kevin Hillstrom’s MineThatData</a>
+<!--
+show head of dataset
+
+show response rates
+-->
+
+
+As shown in Table ** both treatments have a total positive effect on all target variables.
+
+
+<!--
+Add title and descition
+
+Format header, padding
+-->
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>visit</th>
+      <th>conversion</th>
+	  <th>spend</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Mens E-Mail </th>
+      <td>7.66%</td>
+      <td>0.68%</td>
+      <td>$0.77</td>
+    </tr>
+    <tr>
+      <th>Womens E-Mail </th>
+      <td>4.52%</td>
+      <td>0.31%</td>
+      <td>$0.42</td>
+    </tr>
+  </tbody>
+</table>
+
+## 5.2 Implementation <a class="anchor" id="implementation"></a>
+
+Using the E-Mail campaign dataset, we have evaluated our implementations the models.
+
+For the causal forest we use the implementation from **.
+For the SMA we have evaluated several possible base learners and now use a tuned random forest as it performed best in our experiments.
+The tree from Rzepakowski () and 
+
 
 
 # 6. Results <a class="anchor" id="evaluationresults"></a>
-
-Models evaluated using 5-fold cross validation.
-
 
 ## Predictive Results
 
