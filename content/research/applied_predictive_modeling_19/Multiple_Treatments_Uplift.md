@@ -520,14 +520,6 @@ Even though predictive performance is the focus of this evaluation we also wante
 The figures below show a comparison of our models.</br>
 </br>
 
-
-### TODO Passt du das noch an? 
-<ul>
-<li> Ueberschrift abgehakt </li>
-<li>'Samples' statt 'Simples' </li>
-</ul>
-
-
 3 Covariates: </br>
 <img
 align="center"
