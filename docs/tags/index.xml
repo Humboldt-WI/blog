@@ -48,6 +48,15 @@
     </item>
     
     <item>
+      <title>Data Simulation</title>
+      <link>https://humboldt-wi.github.io/blog/tags/data-simulation/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/data-simulation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Genetic Matching</title>
       <link>https://humboldt-wi.github.io/blog/tags/genetic-matching/</link>
       <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
@@ -125,6 +134,33 @@
       <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/simulation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Uplift</title>
+      <link>https://humboldt-wi.github.io/blog/tags/uplift/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/uplift/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>KNN Algorithm</title>
+      <link>https://humboldt-wi.github.io/blog/tags/knn-algorithm/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/knn-algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Uplift Modelling</title>
+      <link>https://humboldt-wi.github.io/blog/tags/uplift-modelling/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/uplift-modelling/</guid>
       <description></description>
     </item>
     
@@ -449,15 +485,6 @@
       <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/conversion/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Uplift</title>
-      <link>https://humboldt-wi.github.io/blog/tags/uplift/</link>
-      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/uplift/</guid>
       <description></description>
     </item>
     

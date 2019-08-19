@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Data Generating Process Simulation: The opossum package</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/data_generating_process_blogpost/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/data_generating_process_blogpost/</guid>
+      <description>Data Generating Process Simulation&amp;#182;    1&amp;nbsp;&amp;nbsp;Introduction1.1&amp;nbsp;&amp;nbsp;Topic1.2&amp;nbsp;&amp;nbsp;Motivation1.3&amp;nbsp;&amp;nbsp;Properties2&amp;nbsp;&amp;nbsp;Review2.1&amp;nbsp;&amp;nbsp;Literature2.2&amp;nbsp;&amp;nbsp;Software3&amp;nbsp;&amp;nbsp;Theory behind the package3.1&amp;nbsp;&amp;nbsp;General Model: Partial Linear Regression3.2&amp;nbsp;&amp;nbsp;Generating Covariates3.2.1&amp;nbsp;&amp;nbsp;Continuous Covariates3.2.2&amp;nbsp;&amp;nbsp;Binary and categorical covariates3.3&amp;nbsp;&amp;nbsp;Treatment assignment3.3.1&amp;nbsp;&amp;nbsp;Random3.3.2&amp;nbsp;&amp;nbsp;Dependent on covariates3.4&amp;nbsp;&amp;nbsp;Treatment effects3.4.1&amp;nbsp;&amp;nbsp;Positive &amp;amp; negative constant effect3.4.2&amp;nbsp;&amp;nbsp;Positive &amp;amp; negative continuous heterogeneous effect3.4.3&amp;nbsp;&amp;nbsp;No effect3.4.4&amp;nbsp;&amp;nbsp;Discrete heterogeneous treatment effect3.5&amp;nbsp;&amp;nbsp;Output variable3.5.1&amp;nbsp;&amp;nbsp;Continuous3.5.2&amp;nbsp;&amp;nbsp;Binary4&amp;nbsp;&amp;nbsp;Package application4.1&amp;nbsp;&amp;nbsp;Choosing covariates4.2&amp;nbsp;&amp;nbsp;Creating treatment effects4.3&amp;nbsp;&amp;nbsp;Creating output4.4&amp;nbsp;&amp;nbsp;Other functions5&amp;nbsp;&amp;nbsp;Example: Applying double machine learning6&amp;nbsp;&amp;nbsp;Discussion7&amp;nbsp;&amp;nbsp;References    Introduction&amp;#182;Topic&amp;#182;As modern science becomes increasingly data-driven among virtually all fields, it is obligatory to inspect not only how scientists analyze data but also what kind of data is used.</description>
+    </item>
+    
+    <item>
       <title>Efficient Experiments Through Inverse Propensity Score Weighting</title>
       <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/efficient_a_b_testing_propensity_scoring/</link>
       <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
@@ -27,6 +36,18 @@
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/matching_methods/</guid>
       <description>Authors: Samantha Sizemore and Raiber Alkurdi Introduction Practitioners from quantitative Social Sciences such as Economics, Sociology, Political Science, Epidemiology and Public Health have undoubtedly come across matching as a go-to technique for preprocessing observational data before treatment effect estimation; those on the machine learning side of the aisle, however, may be unfamiliar with the concept of matching. This blog post aims to provide a succinct primer for matching neophytes and, for those already familiar with this technique, an overview of how state-of-the-art machine learning can be incorporated into the matching process.</description>
+    </item>
+    
+    <item>
+      <title>Uplift Modelling with Multiple Treatments</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/multiple_treatments_uplift/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/multiple_treatments_uplift/</guid>
+      <description>Applications of Causal Inference for Marketing: Estimating Treatment Effects for multiple Treatments Authors: Jan Krol and Matthias Becher Table of Contents  Introduction
+ Common Marketing Challenges
+ Models  3.1 Decision Trees Rzepakowski &amp;amp; Jaroszewicz  3.1.1 Basic Rzepakowski &amp;amp; Jaroszewicz  3.1.2 Simple Splitting Criterion  3.2 Causal Tree and Causal Forest  3.3 Separate Model  Evaluation Methods
+4.1 Uplift Curves 4.2 Expected Outcome Experimental Setup  Results Outlook References  1.</description>
     </item>
     
     <item>
@@ -84,6 +105,26 @@ Neural Networks and its early development Text</description>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/00template2/</guid>
       <description> HTML template </description>
+    </item>
+    
+    <item>
+      <title>Causal KNN</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</guid>
+      <description>LatexIT.add(&amp;lsquo;p&amp;rsquo;,true);  
+Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbour algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
+    </item>
+    
+    <item>
+      <title>Causal KNN</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</guid>
+      <description>LatexIT.add(&amp;lsquo;p&amp;rsquo;,true);  
+Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbour algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
     </item>
     
   </channel>

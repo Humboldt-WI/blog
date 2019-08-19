@@ -59,6 +59,17 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/data_generating_process_blogpost/</loc>
+    <lastmod>2019-08-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/data-simulation/</loc>
+    <lastmod>2019-08-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/efficient_a_b_testing_propensity_scoring/</loc>
     <lastmod>2019-08-18T00:00:00+00:00</lastmod>
   </url>
@@ -140,6 +151,17 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/uplift/</loc>
+    <lastmod>2019-08-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/multiple_treatments_uplift/</loc>
+    <lastmod>2019-08-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/microfinance-policy/</loc>
     <lastmod>2019-08-15T00:00:00+00:00</lastmod>
   </url>
@@ -162,6 +184,23 @@
   <url>
     <loc>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/00template2/</loc>
     <lastmod>2019-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</loc>
+    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/knn-algorithm/</loc>
+    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/uplift-modelling/</loc>
+    <lastmod>2019-08-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -448,12 +487,6 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/conversion/</loc>
-    <lastmod>2018-09-20T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/uplift/</loc>
     <lastmod>2018-09-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
