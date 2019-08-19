@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 18 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,81 @@
     <item>
       <title>Causal Inference</title>
       <link>https://humboldt-wi.github.io/blog/tags/causal-inference/</link>
-      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/causal-inference/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Coarsened Exact Matching</title>
+      <link>https://humboldt-wi.github.io/blog/tags/coarsened-exact-matching/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/coarsened-exact-matching/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Genetic Matching</title>
+      <link>https://humboldt-wi.github.io/blog/tags/genetic-matching/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/genetic-matching/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Machine Learning</title>
+      <link>https://humboldt-wi.github.io/blog/tags/machine-learning/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MatchIt</title>
+      <link>https://humboldt-wi.github.io/blog/tags/matchit/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/matchit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Matching Methods</title>
+      <link>https://humboldt-wi.github.io/blog/tags/matching-methods/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/matching-methods/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nearest Neighbor</title>
+      <link>https://humboldt-wi.github.io/blog/tags/nearest-neighbor/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/nearest-neighbor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Optimal MAtching</title>
+      <link>https://humboldt-wi.github.io/blog/tags/optimal-matching/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/optimal-matching/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Propensity Score</title>
+      <link>https://humboldt-wi.github.io/blog/tags/propensity-score/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/propensity-score/</guid>
       <description></description>
     </item>
     

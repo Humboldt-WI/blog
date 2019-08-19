@@ -6,10 +6,19 @@
     <description>Recent content in Course projects on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 18 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/categories/course-projects/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Matching Methods for Causal Inference: A Machine Learning Update</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/matching_methods/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/matching_methods/</guid>
+      <description>Authors: Samantha Sizemore and Raiber Alkurdi Introduction Practitioners from quantitative Social Sciences such as Economics, Sociology, Political Science, Epidemiology and Public Health have undoubtedly come across matching as a go-to technique for preprocessing observational data before treatment effect estimation; those on the machine learning side of the aisle, however, may be unfamiliar with the concept of matching. This blog post aims to provide a succinct primer for matching neophytes and, for those already familiar with this technique, an overview of how state-of-the-art machine learning can be incorporated into the matching process.</description>
+    </item>
     
     <item>
       <title>APA19 Microfinance Policies</title>
