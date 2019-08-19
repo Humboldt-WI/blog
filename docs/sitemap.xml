@@ -23,6 +23,12 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/a/b-testing/</loc>
+    <lastmod>2019-08-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/categories/</loc>
     <lastmod>2019-08-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -30,6 +36,12 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/causal-inference/</loc>
+    <lastmod>2019-08-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/class19/</loc>
     <lastmod>2019-08-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -44,6 +56,11 @@
     <loc>https://humboldt-wi.github.io/blog/categories/course-projects/</loc>
     <lastmod>2019-08-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/efficient_a_b_testing_propensity_scoring/</loc>
+    <lastmod>2019-08-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -100,8 +117,20 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/propensity-score-weighting/</loc>
+    <lastmod>2019-08-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/research/</loc>
     <lastmod>2019-08-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/simulation/</loc>
+    <lastmod>2019-08-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -113,12 +142,6 @@
   <url>
     <loc>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/microfinance-policy/</loc>
     <lastmod>2019-08-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/class19/</loc>
-    <lastmod>2019-08-15T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

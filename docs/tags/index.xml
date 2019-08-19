@@ -12,11 +12,29 @@
     
     
     <item>
+      <title>A/B-Testing</title>
+      <link>https://humboldt-wi.github.io/blog/tags/a/b-testing/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/a/b-testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Causal Inference</title>
       <link>https://humboldt-wi.github.io/blog/tags/causal-inference/</link>
       <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/causal-inference/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Class19</title>
+      <link>https://humboldt-wi.github.io/blog/tags/class19/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/class19/</guid>
       <description></description>
     </item>
     
@@ -93,11 +111,20 @@
     </item>
     
     <item>
-      <title>Class19</title>
-      <link>https://humboldt-wi.github.io/blog/tags/class19/</link>
-      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      <title>Propensity Score Weighting</title>
+      <link>https://humboldt-wi.github.io/blog/tags/propensity-score-weighting/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://humboldt-wi.github.io/blog/tags/class19/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/propensity-score-weighting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Simulation</title>
+      <link>https://humboldt-wi.github.io/blog/tags/simulation/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/simulation/</guid>
       <description></description>
     </item>
     
