@@ -6,7 +6,8 @@ categories = ["Course projects"]
 banner = "img/seminar/nn_fundamentals/neuralNetworkKlein.jpg"
 author = "Seminar Applied Predictive Modeling (SS19) – Asmir Muminovic, Lukas Kolbe"
 disqusShortname = "https-humbodt-wi-github-io-blog"
-description = "One sentence description of your work"
+description = " "
+
 +++
 
 
@@ -152,7 +153,6 @@ The adjusted net information value is computed as follows:
 $$NIV{mean} - \frac{NIV{sd}}{√{B}}$$
 
 <script src="https://gist.github.com/lukekolbe/9b5a09776fc547b6b235700ac61aa890.js"></script>
-
 From the results of the NIV, the top 25 features were selected for training.
 
 <br>
@@ -162,7 +162,6 @@ Since the datasets at hand were quite different in size, we opted to stratify th
 The package 'splitstackshape' allows for such stratification across multiple variables and was used to receive our training and test sets. The ratios by which to split the data depended on the size of the dataset.
 
 <script src="https://gist.github.com/lukekolbe/dd9bf80fdbf74e0f9844d0e6c40a70de.js"></script>
-
 <br>
 ### Model Selection
 
@@ -219,7 +218,6 @@ We put these up against the two-model approach which functions as our benchmark 
 In order to judge whether the direct modeling of treatment effects is more efficient than the conventional two-model approach, we built such a model as baseline. We picked Ridge Regression since it penalizes on coefficient size without removing coefficients entirely, as LASSO does.
 
 <script src="https://gist.github.com/lukekolbe/317c7c868df54edeab45c0cd376dd9c9.js"></script>
-
 <br>
 #### CausalTree
 As it is a popular and well established method for treatment effect modeling and the foundation of causal_forest() and causalBoosting() models, we naturally fit a causalTree (package 'causalTree'), a derivative of Leo Breiman's Decision Trees geared toward modeling causal inference.
@@ -229,7 +227,6 @@ The tree was configured as giving an 'honest' estimation, i.e. the tree was fit 
 Computation-wise, the model is surprisingly costly. The CP parameter was crucial for model predictive power as well as computation time. Setting it too high and the resulting tree only has one node. Setting it too low and the tree becomes overly complex and costly to compute. The difference between cp=0.0000001 (1e<sup>-7</sup>) and cp=0.00000001 (1e<sup>-8</sup>) amounted to 10-fold increase in computation time
 
 <script src="https://gist.github.com/lukekolbe/27513b368226dcc1ee1096be6421d1c9.js"></script>
-
 <br>
 #### CausalForest
 The Causal Forest (package 'grf) was fitted using a parallelized approach, building four forests with 1000 trees each and then combining them using the designated combine function of the 'grf' package. Parallelization was deployed using the 'doParallel' package. Performance this way in terms of computation time was good.
@@ -237,20 +234,17 @@ The Causal Forest (package 'grf) was fitted using a parallelized approach, build
 The Forests were again configured toward honest estimation. All NULL variables were automatically tuned.
 
 <script src="https://gist.github.com/lukekolbe/be6a0ded7db88dab6b3cce96124d6d33.js"></script>
-
 <br>
 #### CausalBoosting
 In theory a powerful model, the Causal Boosting (package 'causalLearning') model suffered from severe performance issues in our application. The model in its base configuration took over a week to compute (it was stopped after 7 days) and was thus not feasible for implementation. Instead, we de-tuned it by reducing the number of trees to 50 (default = 500), setting the learning rate (eps) to a rather weak 0.3 and reducing the cross validation folds to 5. Still it took up to 36 hours on designated servers to compute.
 It is entirely possible that this low-cost approach has negative influence on performance, but computational cost is a factor to consider when choosing models.
 
 <script src="https://gist.github.com/lukekolbe/2bc00088b843ae785915df5575f674c1.js"></script>
-
 <br>
 #### Causal Bart
 Implementation of Causal Bart (package 'bartCause') was rather straightforward. Computation was rather quick, even with 1000 trees and elaborated sampling. An interesting feature of the bartc() function is the parameter group.by, which lets the model calculate the treatment effects for different groups. This might be useful when there isn't just one treatment, but in fact different treatmens within a population (see description of Books&Toys dataset).
 
 <script src="https://gist.github.com/lukekolbe/455e31d86fb7ce96ad08993cd7e81cf3.js"></script>
-
 <br>
 ### Implicatons towards Profit, Revenue and Costs. 
 
@@ -387,12 +381,10 @@ Notice that individuals receiving a discount in percent are calculated slightly 
 These new variables are added to our existing model matrix. 
     
 <script src="https://gist.github.com/AsmirMumin/d178be6d9d00d824e834d046bc870194.js"></script>
-
 We proceed with calculating the number of _eligible_ and _model eligible_ customers per decile to be able to put these in our profitability matrix later on.
 The difference of these measures is the number of additional eligible customers, which we called _delta.eligible_.
 
 <script src="https://gist.github.com/AsmirMumin/29de48f8a851911f8494080c4b4fe522.js"></script>
-
 The number of aditionally eligible individuals is core to compute the additional costs stemming from our _model campaign_, since only these individuals can use the discount voucher, which effectively reduces our profits and thus adds costs.
 The model costs are generated by individuals using their vouchers multiplied by the campaign value (discount) of these vocuhers. Same applies for the campaign costs of the _campaign_.
 The difference of these costs are the additional costs caused by our _model campaign_, and we are only interested in these. 
@@ -518,7 +510,7 @@ arXiv preprint arXiv:1504.01132, 2015a.
 [14] Gubela et. al. Revenue Uplift Modeling, 2007. 
 
 [15] J. L. Hill. Bayesian Nonparametric Modeling for Causal Inference, Journal of Computational and Graphical Statistics, 20:1, 217-240. DOI: 10.1198/jcgs.2010.08162, 2011.
- 
+
 [16] M. Soltys, S. Jaroszewicz, and P. Rzepakowski. Ensemble methods for uplift modeling. Data mining and knowledge discovery, 29(6):1531–1559, 2015.
 
 [17] https://www.statista.com/statistics/236943/global-advertising-spending/

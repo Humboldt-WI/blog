@@ -14,7 +14,7 @@
   
 
   
-  <meta name="description" content="One sentence description of your work">
+  <meta name="description" content=" ">
   
 
   <meta name="generator" content="Hugo 0.56.3" />
@@ -324,29 +324,32 @@ A variable called label was also not needed, since it contained a transformed bi
 <p>In order to further reduce the features, we conducted a correlation analysis and removed features with high correlation. The threshold was set to 0.75. This is rather low, the default value of the used findCorrelation function of the &lsquo;caret&rsquo; package is 0.9. But since we needed to reduce features for the costly models to be deployed, we set the threshold to a lower level.
 For all datasets (barring Hillstrom), this removed between 11 and 12 features, leaving about 60 features for possible training plus targets and campaign specific features.</p>
 
-<script src="https://gist.github.com/lukekolbe/497a9c4a6d2851028c06230292825ffd.js"></script>
-_Exemplary correlation handling_
+<p><script src="https://gist.github.com/lukekolbe/497a9c4a6d2851028c06230292825ffd.js"></script>
+<em>Exemplary correlation handling</em></p>
 
-<br>
-##### Feature Selection: Adjusted Net Information Value (NIV)
-To further reduce the amount of features, we deployed the NIV function from Leo Guelmann's 'Uplift' Package [8].
+<p><br></p>
 
-The net information value is derived from the well known Information Value (IV) and optimized for purposed of uplift modeling. It is computed as
+<h5 id="feature-selection-adjusted-net-information-value-niv">Feature Selection: Adjusted Net Information Value (NIV)</h5>
 
-$$NIV = 100 \times ∑_{i=1}^{G}(P(x=i|y=1)^{T} \times P(x=i|y=0)^{C} - P(x=i|y=0)^{T} \times P(x=i|y=1)^{C}) \times NWOE_i$$
+<p>To further reduce the amount of features, we deployed the NIV function from Leo Guelmann&rsquo;s &lsquo;Uplift&rsquo; Package [8].</p>
 
-where $$NWOE_i = WOE_i^{T} - WOE_i^{C}$$.
+<p>The net information value is derived from the well known Information Value (IV) and optimized for purposed of uplift modeling. It is computed as</p>
 
-The adjusted net information value is computed as follows:
+<p>$$NIV = 100 \times ∑_{i=1}^{G}(P(x=i|y=1)^{T} \times P(x=i|y=0)^{C} - P(x=i|y=0)^{T} \times P(x=i|y=1)^{C}) \times NWOE_i$$</p>
 
-1. Take B bootstrap samples and compute the NIV for each variable on each sample
-2. Compute the mean of the NIV $$(NIV{mean})$$ and standatd deviation of the NIV $$(NIV{sd})$$ for each variable over all the B bootstraps
-3. The adjusted NIV for a given variable is computed by adding a penalty term to the mean NIV: 
-$$NIV{mean} - \frac{NIV{sd}}{√{B}}$$
+<p>where $$NWOE_i = WOE_i^{T} - WOE_i^{C}$$.</p>
 
-<script src="https://gist.github.com/lukekolbe/9b5a09776fc547b6b235700ac61aa890.js"></script>
+<p>The adjusted net information value is computed as follows:</p>
 
-<p>From the results of the NIV, the top 25 features were selected for training.</p>
+<ol>
+<li>Take B bootstrap samples and compute the NIV for each variable on each sample</li>
+<li>Compute the mean of the NIV $$(NIV{mean})$$ and standatd deviation of the NIV $$(NIV{sd})$$ for each variable over all the B bootstraps</li>
+<li>The adjusted NIV for a given variable is computed by adding a penalty term to the mean NIV:
+$$NIV{mean} - \frac{NIV{sd}}{√{B}}$$</li>
+</ol>
+
+<p><script src="https://gist.github.com/lukekolbe/9b5a09776fc547b6b235700ac61aa890.js"></script>
+From the results of the NIV, the top 25 features were selected for training.</p>
 
 <p><br></p>
 
@@ -356,9 +359,8 @@ $$NIV{mean} - \frac{NIV{sd}}{√{B}}$$
 
 <p>The package &lsquo;splitstackshape&rsquo; allows for such stratification across multiple variables and was used to receive our training and test sets. The ratios by which to split the data depended on the size of the dataset.</p>
 
-<script src="https://gist.github.com/lukekolbe/dd9bf80fdbf74e0f9844d0e6c40a70de.js"></script>
-
-<p><br></p>
+<p><script src="https://gist.github.com/lukekolbe/dd9bf80fdbf74e0f9844d0e6c40a70de.js"></script>
+<br></p>
 
 <h3 id="model-selection">Model Selection</h3>
 
@@ -434,9 +436,8 @@ By using a prior, which provide regularization in a way that no single regressio
 
 <p>In order to judge whether the direct modeling of treatment effects is more efficient than the conventional two-model approach, we built such a model as baseline. We picked Ridge Regression since it penalizes on coefficient size without removing coefficients entirely, as LASSO does.</p>
 
-<script src="https://gist.github.com/lukekolbe/317c7c868df54edeab45c0cd376dd9c9.js"></script>
-
-<p><br></p>
+<p><script src="https://gist.github.com/lukekolbe/317c7c868df54edeab45c0cd376dd9c9.js"></script>
+<br></p>
 
 <h4 id="causaltree">CausalTree</h4>
 
@@ -446,9 +447,8 @@ By using a prior, which provide regularization in a way that no single regressio
 
 <p>Computation-wise, the model is surprisingly costly. The CP parameter was crucial for model predictive power as well as computation time. Setting it too high and the resulting tree only has one node. Setting it too low and the tree becomes overly complex and costly to compute. The difference between cp=0.0000001 (1e<sup>-7</sup>) and cp=0.00000001 (1e<sup>-8</sup>) amounted to 10-fold increase in computation time</p>
 
-<script src="https://gist.github.com/lukekolbe/27513b368226dcc1ee1096be6421d1c9.js"></script>
-
-<p><br></p>
+<p><script src="https://gist.github.com/lukekolbe/27513b368226dcc1ee1096be6421d1c9.js"></script>
+<br></p>
 
 <h4 id="causalforest">CausalForest</h4>
 
@@ -456,26 +456,23 @@ By using a prior, which provide regularization in a way that no single regressio
 
 <p>The Forests were again configured toward honest estimation. All NULL variables were automatically tuned.</p>
 
-<script src="https://gist.github.com/lukekolbe/be6a0ded7db88dab6b3cce96124d6d33.js"></script>
-
-<p><br></p>
+<p><script src="https://gist.github.com/lukekolbe/be6a0ded7db88dab6b3cce96124d6d33.js"></script>
+<br></p>
 
 <h4 id="causalboosting">CausalBoosting</h4>
 
 <p>In theory a powerful model, the Causal Boosting (package &lsquo;causalLearning&rsquo;) model suffered from severe performance issues in our application. The model in its base configuration took over a week to compute (it was stopped after 7 days) and was thus not feasible for implementation. Instead, we de-tuned it by reducing the number of trees to 50 (default = 500), setting the learning rate (eps) to a rather weak 0.3 and reducing the cross validation folds to 5. Still it took up to 36 hours on designated servers to compute.
 It is entirely possible that this low-cost approach has negative influence on performance, but computational cost is a factor to consider when choosing models.</p>
 
-<script src="https://gist.github.com/lukekolbe/2bc00088b843ae785915df5575f674c1.js"></script>
-
-<p><br></p>
+<p><script src="https://gist.github.com/lukekolbe/2bc00088b843ae785915df5575f674c1.js"></script>
+<br></p>
 
 <h4 id="causal-bart">Causal Bart</h4>
 
 <p>Implementation of Causal Bart (package &lsquo;bartCause&rsquo;) was rather straightforward. Computation was rather quick, even with 1000 trees and elaborated sampling. An interesting feature of the bartc() function is the parameter group.by, which lets the model calculate the treatment effects for different groups. This might be useful when there isn&rsquo;t just one treatment, but in fact different treatmens within a population (see description of Books&amp;Toys dataset).</p>
 
-<script src="https://gist.github.com/lukekolbe/455e31d86fb7ce96ad08993cd7e81cf3.js"></script>
-
-<p><br></p>
+<p><script src="https://gist.github.com/lukekolbe/455e31d86fb7ce96ad08993cd7e81cf3.js"></script>
+<br></p>
 
 <h3 id="implicatons-towards-profit-revenue-and-costs">Implicatons towards Profit, Revenue and Costs.</h3>
 
@@ -510,117 +507,121 @@ In the following example, we are going to show you how to compute these step-by-
 
 <p>We are starting with ranking our model predictions for both treated and control data points, and rank them from high to low.</p>
 
-<script src="https://gist.github.com/lukekolbe/18eb7c3330a42bb390f6db54c2954372.js"></script>
-<br>
+<p><script src="https://gist.github.com/lukekolbe/18eb7c3330a42bb390f6db54c2954372.js"></script>
+<br></p>
 
-We continue binning the individuals accordingly to their rankings into deciles. Consequently the individuals with the highest uplift scores will populate the first group. 
+<p>We continue binning the individuals accordingly to their rankings into deciles. Consequently the individuals with the highest uplift scores will populate the first group.</p>
 
-<script src="https://gist.github.com/lukekolbe/bc5c40f0f0ac8d9844daae7f4c045cb1.js"></script>
-<br>
+<p><script src="https://gist.github.com/lukekolbe/bc5c40f0f0ac8d9844daae7f4c045cb1.js"></script>
+<br></p>
 
-Next, we are interested in the actual values, especially the following:
+<p>Next, we are interested in the actual values, especially the following:</p>
 
-* Number of individuals in the treatment group per decile
+<ul>
+<li><p>Number of individuals in the treatment group per decile</p></li>
 
-* Number of individuals in the control group per decile
+<li><p>Number of individuals in the control group per decile</p></li>
 
-* The spending of both groups per decile
+<li><p>The spending of both groups per decile</p></li>
 
-* The spending per capita of both groups per decile
+<li><p>The spending per capita of both groups per decile</p></li>
 
-* The achieved uplift per decile 
+<li><p>The achieved uplift per decile</p></li>
+</ul>
 
-<script src="https://gist.github.com/lukekolbe/a2df2f2cc1c15f799f5ac24cd8804a0b.js"></script>
-<br>
+<p><script src="https://gist.github.com/lukekolbe/a2df2f2cc1c15f799f5ac24cd8804a0b.js"></script>
+<br></p>
 
-<img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/perf_pred_b_t_bc.png">
+<p><img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/perf_pred_b_t_bc.png"></p>
 
-<br>Based on these values we can create some plots, visualizing the performance matrix. 
-Ideally, the plot should have high average checkout amount for the treatment group and low average checkout amounts for the control group in the first deciles and vice versa in the last deciles. 
+<p><br>Based on these values we can create some plots, visualizing the performance matrix.
+Ideally, the plot should have high average checkout amount for the treatment group and low average checkout amounts for the control group in the first deciles and vice versa in the last deciles.</p>
 
-<img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/BooksToys_causalBart_arpd_.png">
+<p><img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/BooksToys_causalBart_arpd_.png"></p>
 
-By subtracting the average checkout amount for the control group from the average checkout amount of the treatment group we achieve the uplift per capita per decile as pictured in the following plot.
+<p>By subtracting the average checkout amount for the control group from the average checkout amount of the treatment group we achieve the uplift per capita per decile as pictured in the following plot.</p>
 
-<img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/BooksToys_causalBart_upd_.png">
+<p><img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/BooksToys_causalBart_upd_.png"></p>
 
-Now using our beforehand calculated performance matrix we are able to generate uplift curves. The procedure is as follows:
+<p>Now using our beforehand calculated performance matrix we are able to generate uplift curves. The procedure is as follows:</p>
 
-1.  We calculate the cumulitative sum of the revenue of the treated and the control group while controlling for the total population in each group of the specified decile.
+<ol>
+<li><p>We calculate the cumulitative sum of the revenue of the treated and the control group while controlling for the total population in each group of the specified decile.</p></li>
 
-2.  We calculate the percentage of the total amount of people (both treatment and control) present in each decile. 
+<li><p>We calculate the percentage of the total amount of people (both treatment and control) present in each decile.</p></li>
+</ol>
 
-<script src="https://gist.github.com/lukekolbe/42c33b759d727fac25ebbcfe9f7bad1e.js"></script>
-<br>
+<p><script src="https://gist.github.com/lukekolbe/42c33b759d727fac25ebbcfe9f7bad1e.js"></script>
+<br></p>
 
-Afterwards, we are able to calculate the incremental gains for the model performance. This represents our uplift curve. 
-The overall incremental gains represent the random curve. This is corresponding to the global effect of the treatment.
+<p>Afterwards, we are able to calculate the incremental gains for the model performance. This represents our uplift curve.
+The overall incremental gains represent the random curve. This is corresponding to the global effect of the treatment.</p>
 
-<script src="https://gist.github.com/lukekolbe/c3324c449bb15d33ba06e464ff89207f.js"></script>
-<br>
+<p><script src="https://gist.github.com/lukekolbe/c3324c449bb15d33ba06e464ff89207f.js"></script>
+<br></p>
 
-In our case the positive slope of the random curve confirms the overall positive effect of the randomized campaign. Finally, the shape of the curves shows the strong positive and negative uplifts. Contrary, the closer an uplift curve is to the random line, the weaker are the uplifts achieved. 
+<p>In our case the positive slope of the random curve confirms the overall positive effect of the randomized campaign. Finally, the shape of the curves shows the strong positive and negative uplifts. Contrary, the closer an uplift curve is to the random line, the weaker are the uplifts achieved.</p>
 
-
-We proceed with computing the area of both of these curves. 
+<p>We proceed with computing the area of both of these curves.
 <script src="https://gist.github.com/lukekolbe/490216b804451790f4a88dfa3b2a6caa.js"></script>
-<br>
+<br></p>
 
-Next up we substract the area under to random curve from the area of our uplift curve. 
+<p>Next up we substract the area under to random curve from the area of our uplift curve.</p>
 
-<script src="https://gist.github.com/lukekolbe/c6d024d8c1a880e76d13b51157b4e865.js"></script>
-<br>
+<p><script src="https://gist.github.com/lukekolbe/c6d024d8c1a880e76d13b51157b4e865.js"></script>
+<br></p>
 
-The area between the Qini curve and the Random curve is called the Qini-coefficient.
+<p>The area between the Qini curve and the Random curve is called the Qini-coefficient.</p>
 
-<img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/BooksToys_causalBart_qini_.png">
+<p><img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/BooksToys_causalBart_qini_.png"></p>
 
-The code was adapted from Guelman's Uplift package. 
-https://cran.r-project.org/web/packages/uplift/index.html
+<p>The code was adapted from Guelman&rsquo;s Uplift package.
+<a href="https://cran.r-project.org/web/packages/uplift/index.html">https://cran.r-project.org/web/packages/uplift/index.html</a></p>
 
-<br>
-### Model Profitability
+<p><br></p>
 
-Since we now want to know how profitiable a campaign would be which is based on our model predictions, we need to know the revenue and cost streams which would occur and compare these to the realized campaign from the random experiment. Thus, we need to calculate the additional revenue, cost, and finally profit we generate.
+<h3 id="model-profitability">Model Profitability</h3>
 
-From here on we refer to the campaign based on the model as the _model campaign_ and for the realized camapign from the random experiement as the _campaign_.
-    
-**Assumption**
-We assume, that every individual who is eligible to use a voucher, indeed uses it. This is rather a conservative point of view. But we have no indication of how many people actually used the discount code for every dataset.  
+<p>Since we now want to know how profitiable a campaign would be which is based on our model predictions, we need to know the revenue and cost streams which would occur and compare these to the realized campaign from the random experiment. Thus, we need to calculate the additional revenue, cost, and finally profit we generate.</p>
 
-In the first step we need these variables, two of these, namingly _eligibility_ and _ExpectedDiscount_ should be familiar to this point:
-    
-* eligibility
-* model eligibility
-* ExpecedDiscount
-* model ExpectedDiscount
+<p>From here on we refer to the campaign based on the model as the <em>model campaign</em> and for the realized camapign from the random experiement as the <em>campaign</em>.</p>
 
-So what are the two other variables referring to our model?
-    
-The _model eligibility_ ("m.eligiblity") variable is an adaption of the _eligibility_ variable we spoke about in our **Feature Creation** section. 
-The difference is that _model eligibility_ is applied to all individuals, internalizes the uplift (treatment effect), and is not accounting for the campaign value (discount). The reason for the lastest is, that you cannot use a voucher before qualifying to use it. Effectively, in this case the checkout amount is equal to the revenue and is not internalizing the discount. 
+<p><strong>Assumption</strong>
+We assume, that every individual who is eligible to use a voucher, indeed uses it. This is rather a conservative point of view. But we have no indication of how many people actually used the discount code for every dataset.</p>
 
-This function demonstrates how the _model eligibility_ variable is constructed: 
+<p>In the first step we need these variables, two of these, namingly <em>eligibility</em> and <em>ExpectedDiscount</em> should be familiar to this point:</p>
 
-**(p + checkoutAmount <sub>i</sub>) >= campaignMov <sub>i</sub>**
+<ul>
+<li>eligibility</li>
+<li>model eligibility</li>
+<li>ExpecedDiscount</li>
+<li>model ExpectedDiscount</li>
+</ul>
 
-After calculating the _model eligibility_, we computed the _model ExpectedDiscount_, which indicates how much we expect each person's treatment (given _model eligibility_) to cost.
-Notice that individuals receiving a discount in percent are calculated slightly different than those with an absolut discount value:
+<p>So what are the two other variables referring to our model?</p>
 
-**(ExpectedDiscount <sub>i</sub> | eligibility = 1 & campaignUnit = "CURRENCY") = campaignValue <sub>i</sub>**
-**(ExpectedDiscount <sub>i</sub> | eligibility = 1 & campaignUnit = "PERCENT") = (checkoutAmount <sub>i</sub> / (1 - campaignValue)) - checkoutAmount**
-**Costs**
+<p>The <em>model eligibility</em> (&ldquo;m.eligiblity&rdquo;) variable is an adaption of the <em>eligibility</em> variable we spoke about in our <strong>Feature Creation</strong> section.
+The difference is that <em>model eligibility</em> is applied to all individuals, internalizes the uplift (treatment effect), and is not accounting for the campaign value (discount). The reason for the lastest is, that you cannot use a voucher before qualifying to use it. Effectively, in this case the checkout amount is equal to the revenue and is not internalizing the discount.</p>
 
-These new variables are added to our existing model matrix. 
-    
-<script src="https://gist.github.com/AsmirMumin/d178be6d9d00d824e834d046bc870194.js"></script>
+<p>This function demonstrates how the <em>model eligibility</em> variable is constructed:</p>
 
-<p>We proceed with calculating the number of <em>eligible</em> and <em>model eligible</em> customers per decile to be able to put these in our profitability matrix later on.
+<p><strong>(p + checkoutAmount <sub>i</sub>) &gt;= campaignMov <sub>i</sub></strong></p>
+
+<p>After calculating the <em>model eligibility</em>, we computed the <em>model ExpectedDiscount</em>, which indicates how much we expect each person&rsquo;s treatment (given <em>model eligibility</em>) to cost.
+Notice that individuals receiving a discount in percent are calculated slightly different than those with an absolut discount value:</p>
+
+<p><strong>(ExpectedDiscount <sub>i</sub> | eligibility = 1 &amp; campaignUnit = &ldquo;CURRENCY&rdquo;) = campaignValue <sub>i</sub></strong>
+<strong>(ExpectedDiscount <sub>i</sub> | eligibility = 1 &amp; campaignUnit = &ldquo;PERCENT&rdquo;) = (checkoutAmount <sub>i</sub> / (1 - campaignValue)) - checkoutAmount</strong>
+<strong>Costs</strong></p>
+
+<p>These new variables are added to our existing model matrix.</p>
+
+<p><script src="https://gist.github.com/AsmirMumin/d178be6d9d00d824e834d046bc870194.js"></script>
+We proceed with calculating the number of <em>eligible</em> and <em>model eligible</em> customers per decile to be able to put these in our profitability matrix later on.
 The difference of these measures is the number of additional eligible customers, which we called <em>delta.eligible</em>.</p>
 
-<script src="https://gist.github.com/AsmirMumin/29de48f8a851911f8494080c4b4fe522.js"></script>
-
-<p>The number of aditionally eligible individuals is core to compute the additional costs stemming from our <em>model campaign</em>, since only these individuals can use the discount voucher, which effectively reduces our profits and thus adds costs.
+<p><script src="https://gist.github.com/AsmirMumin/29de48f8a851911f8494080c4b4fe522.js"></script>
+The number of aditionally eligible individuals is core to compute the additional costs stemming from our <em>model campaign</em>, since only these individuals can use the discount voucher, which effectively reduces our profits and thus adds costs.
 The model costs are generated by individuals using their vouchers multiplied by the campaign value (discount) of these vocuhers. Same applies for the campaign costs of the <em>campaign</em>.
 The difference of these costs are the additional costs caused by our <em>model campaign</em>, and we are only interested in these.</p>
 
