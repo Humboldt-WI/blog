@@ -13211,7 +13211,7 @@ $\&gt;$ In the implementation of a randomized control trial, the goal of a resea
 <p><strong>1.2:</strong>
 $\&gt;$ Uplift modeling attempts to directly model a treatment's incremental impact on the behavior of individual participants, often in cases of imbalanced data. Uplift applied to traditional AB testing with randomized training data allows for the average treatment effect to be analyzed in relation to base demographic information on participants.</p>
 <p>Within the practical literature on uplift models, customer classes have been defined via a segmentation of population average treatment effects such that practitioners are aware of target groups and strategies to reach them effectively. Target customers have been broken down into the following groups based on their likelihood to respond to targeting and projected response:</p>
-<p><img src="blog/img/seminar/prop_score_weighting/trial_response_segments.png" width="300" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/trial_response_segments.png" width="300" align="center"/></p>
 
 </div>
 </div>
@@ -13288,7 +13288,7 @@ The above solves the counterfactual of responses for unobserved treatments for g
 <p>Returning to the multi armed bandit formulation and its eponymous slot machine example, a gambler would not know the best way to exploit the available machines until they have tried them sufficiently. This then relates to our catalog example in that the practitioner would not know proper advertising strategies without first making initial mailings. Spoken of mathematically, the goal of our marketing practitioner is to reduce their regret within dependent Markov states, as the recipients' responses to any given mailing - be they "persuadable," "do not disturbed," etc - will determine the profitability of the next. This is defined as the difference between the practitioner's optimal strategy and that which they have actually earned, but adding further in our case an element of information gain (Vermorel &amp; Mohri, 2005). This further changes the optimal strategy within our setting away from greedy behavior where the highest known return in any round of mailings would be chosen, as such strategies within a practical setting would negate the information gain that would allow for the practitioner to derive a more optimal strategy (it being much less likely in such cases that the practitioner actually knows the true optimal).</p>
 <p>The ability of a practitioner within our strategy to balance their information gain and profit goals provides strategies distinct from those normally used within marketing fields. Normally a practitioner would target potential customers via a fully balanced method when the goal is a naive comparison of sample means, but other strategies are also implemented such as an 80-20 target and not-target split, and targeting all individuals over a given threshold of profitability - as was the final suggestion in Hitsch and Misra. In all of these cases, the firm loses information on the class with a low propensity for treatment, and thus loses potentially valuable information on the method's performance (Hitsch, Misra, 2018).</p>
 <p>The following diagram depicts our experimental process more explicitly:</p>
-<p><img src="blog/img/seminar/prop_score_weighting/experimental_process.png" width="400" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/experimental_process.png" width="400" align="center"/></p>
 
 </div>
 </div>
@@ -13399,7 +13399,7 @@ The above solves the counterfactual of responses for unobserved treatments for g
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="blog/img/seminar/prop_score_weighting/y_0_TTE_comparison.png" width="1000" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/y_0_TTE_comparison.png" width="1000" align="center"/></p>
 
 </div>
 </div>
@@ -13429,7 +13429,7 @@ The above solves the counterfactual of responses for unobserved treatments for g
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="blog/img/seminar/prop_score_weighting/y_0_y_1_comparison.png" width="1000" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/y_0_y_1_comparison.png" width="1000" align="center"/></p>
 
 </div>
 </div>
@@ -13695,7 +13695,7 @@ Targeting all:  2098142.41
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="blog/img/seminar/prop_score_weighting/imb_comparison.png" width="1000" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/imb_comparison.png" width="1000" align="center"/></p>
 
 </div>
 </div>
@@ -13774,7 +13774,7 @@ Targeting all:  2098142.41
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="blog/img/seminar/prop_score_weighting/uplift_TTE_comparison.png" width="1000" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/uplift_TTE_comparison.png" width="1000" align="center"/></p>
 
 </div>
 </div>
@@ -14049,7 +14049,7 @@ Targeting all:  2098142.41
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="blog/img/seminar/prop_score_weighting/pst_comparison.png" width="1000" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/pst_comparison.png" width="1000" align="center"/></p>
 
 </div>
 </div>
@@ -14236,7 +14236,7 @@ Targeting all:  2099079.87
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="blog/img/seminar/prop_score_weighting/scaled_pst_comparison.png" width="1000" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/scaled_pst_comparison.png" width="1000" align="center"/></p>
 
 </div>
 </div>
@@ -14365,8 +14365,8 @@ Done with iteration 500 / 500 for ratio 0.85
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Here are the results for a first look, detailed interpretation follows in the conclusion.
-<img src="blog/img/seminar/prop_score_weighting/results_accuracy.png" align="center"/>
-<img src="blog/img/seminar/prop_score_weighting/results_profit.png" align="center"/></p>
+<img src="/blog/img/seminar/prop_score_weighting/results_accuracy.png" align="center"/>
+<img src="/blog/img/seminar/prop_score_weighting/results_profit.png" align="center"/></p>
 
 </div>
 </div>
@@ -14427,7 +14427,7 @@ Done with iteration 500 / 500 for ratio 0.85
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="blog/img/seminar/prop_score_weighting/bias_effect_comparison.png" width="1000" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/bias_effect_comparison.png" width="1000" align="center"/></p>
 
 </div>
 </div>
@@ -14465,7 +14465,7 @@ Done with iteration 500 / 500 for ratio 0.85
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="blog/img/seminar/prop_score_weighting/normal_uniform_components.png" width="1000" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/normal_uniform_components.png" width="1000" align="center"/></p>
 
 </div>
 </div>
@@ -14501,7 +14501,7 @@ Done with iteration 500 / 500 for ratio 0.85
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="blog/img/seminar/prop_score_weighting/normal_uniform_comparison.png" width="1000" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/normal_uniform_comparison.png" width="1000" align="center"/></p>
 
 </div>
 </div>
@@ -15175,7 +15175,7 @@ Length of new list: 400
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="blog/img/seminar/prop_score_weighting/noise_profit_comparison.png" width="1000" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/noise_profit_comparison.png" width="1000" align="center"/></p>
 
 </div>
 </div>
@@ -15208,7 +15208,7 @@ Length of new list: 400
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="blog/img/seminar/prop_score_weighting/noise_ATE_comparison.png" width="1000" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/noise_ATE_comparison.png" width="1000" align="center"/></p>
 
 </div>
 </div>
@@ -15381,10 +15381,10 @@ Length of new list: 400
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We simulated both approachs for different target ratios. Since we do not allow propensity scores outside of [0.1, 0.9] to avoid having extreme scores giving individual samples enormous weights, we limited our target ratios to [0.15, 0.85]. This ensures that the variation in our propensity scores is always at least 10%. For each ratio, we simulated both approaches 500 times to ensure that we get robust representative results.</p>
 <p>Both traditional imblanced targeting and our propensity score targeting are first and foremost techniques for estimating the average treatment effect. The table below shows that the accuracy of proper randomised trials is consistently better than our PST technique. This is not completely unexpected. However, those differences are pretty negligible: Our true population ATE is 20, while the worst difference in MAE between the two techniques was about 0.03, or about 0.15% of the treatment effect. So both techniques performed very similar.</p>
-<p><img src="blog/img/seminar/prop_score_weighting/results_accuracy.png" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/results_accuracy.png" align="center"/></p>
 <p>One noticable trend is that the two approaches performed most similar at the extreme ends of the proportion targeted. This is caused by our propensity score algorithm. Recall that it always chooses the maximum variation in scores possible, and that this is larger the closer the target ratio is to 0.5. Thus, at the extreme ends of the target proportions, there isn't too much variation in propensity scores and thus PST acts most similar to a normal RCT with imbalanced targeting.</p>
 <p>When it comes to profit increases, a similar trend emerges. Recall that treatment is strictly profitable in our case, so a higher proportion target implies higher profits. Thus, both curves are strictly increasing. And similarly to the accuracy of the estimates, the two techniques performed more similar the closer they are to the extreme of percentage targeted. At 0.5, where PST is allowed the greatest variation, it outperforms a classical RCT the most.</p>
-<p><img src="blog/img/seminar/prop_score_weighting/results_profit.png" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/results_profit.png" align="center"/></p>
 <p>Overall, these results are quite promising: They show that both techniques lead to a similar accuracy in their estimates of the ATE, while also showing that PST is more profit-efficient. However, those differences are pretty small and while our many iterations ensure that those are true trends, it seems that PST does not add too much at present.</p>
 <p>One avenue for improvement seems promising: Adding more variation to the propensity scores of PST even at more extreme targeting ratios might drastically improve the profit-performance. Currently, we force the propensity scores into a uniform distribution. The advantage of that is that it should be relatively easy to force this uniform distribution into another, more extreme distribution in the same interval. We could for instance map it to a bimodal distribution with the same mean, and thus might improve our results.</p>
 
@@ -15481,7 +15481,7 @@ Length of new list: 400
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can see that the most extreme min-max scaling performs best in terms of profit and slightly worse in terms of accuracy, while quantile scaling is the most consistent but gains less profit over normal imbalanced targeting. So as we might have expected, there is a trade-off between accuracy and profit-increase.</p>
-<p><img src="blog/img/seminar/prop_score_weighting/results_accuracy_comparison.png" align="center"/></p>
+<p><img src="/blog/img/seminar/prop_score_weighting/results_accuracy_comparison.png" align="center"/></p>
 <p>Now, our procedure is only preserving the ordering of predicted uplift scores, but information about the original distribution is lost. Maybe mapping the predicted uplift scores to propensity scores in a way that preserves this information can offer some improvement. However, this would add further complexity in case the distribution of predicted uplift is not symmetric.</p>
 <p>As a side note: All approaches perform quite similar at the higher end of targeting ratios in terms of accuracy. We conjecture that this is caused by our uplift model being simulated as biased. (See plots below.)</p>
 
