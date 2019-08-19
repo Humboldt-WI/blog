@@ -6,10 +6,19 @@
     <description>Recent content in Causal Inference on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/causal-inference/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>APA19 Microfinance Policies</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/microfinance-policy/</link>
+      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/microfinance-policy/</guid>
+      <description>Microfinance Policies  Impact of Microfinance on The Social Well-being Authors: Edanur Kahvecioglu and Yu-Tang Wu Abstract Is microcredit a miracle or just a hype? While more and more researches were conducted to study microcredits, people started to question the effectiveness of microcredit program. This project explores the heterogeneity of treatment effect on microcredit to households&amp;rsquo; well-being. Causuall Random Forest and Two-model approach are used to analyze treatment effects on the household level and identify the important variables that separate households with higher treatment effect.</description>
+    </item>
     
     <item>
       <title>Marketing Campaign Optimization: Profit modeling</title>

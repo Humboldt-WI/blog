@@ -6,7 +6,7 @@
     <description>Recent content on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 12 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -49,6 +49,15 @@ Research Interests  Customer behavior in e-Commerce
       <guid>https://humboldt-wi.github.io/blog/member/class1718/</guid>
       <description>The students of the Seminar Information Systems contributed to this website to great extend. Groups of Master students from Humboldt University with backgrounds in Business, Economics, Statistics or Computer Science worked on analytical topics and created blog posts, presenting exciting insights into the following topis:
  Neural Networks and Convolutional Neural Networks Image Analysis Text Mining Time Series Analysis with LSTMs Survial Analysis Image Captioning Deep Learning and Recommender Systems  </description>
+    </item>
+    
+    <item>
+      <title>APA19 Microfinance Policies</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/microfinance-policy/</link>
+      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/microfinance-policy/</guid>
+      <description>Microfinance Policies  Impact of Microfinance on The Social Well-being Authors: Edanur Kahvecioglu and Yu-Tang Wu Abstract Is microcredit a miracle or just a hype? While more and more researches were conducted to study microcredits, people started to question the effectiveness of microcredit program. This project explores the heterogeneity of treatment effect on microcredit to households&amp;rsquo; well-being. Causuall Random Forest and Two-model approach are used to analyze treatment effects on the household level and identify the important variables that separate households with higher treatment effect.</description>
     </item>
     
     <item>
