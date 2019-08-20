@@ -6,7 +6,8 @@ categories = ["Course projects"]
 banner = "img/seminar/nn_fundamentals/neuralNetworkKlein.jpg"
 author = "Seminar Applied Predictive Modeling (SS19)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
-description = "One sentence description of your work"
+description = " "
+
 +++
 
 # Microfinance Policies <br/> Impact of Microfinance on The Social Well-being
@@ -222,7 +223,7 @@ str(endline1)
     $ social_index_1            : num  -0.0783 0.2015 -0.0965 -0.1182 -0.1703 ...
     - attr(*, "na.action")= 'omit' Named int  27 109 185 239 241 290 419 511 529 612 ...
      ..- attr(*, "names")= chr  "27" "109" "185" "239" ...
-      
+
 After cleaning up, the dataset contains 6036 households which
 completed the first endline survey and 54 variables, which contains
 the information of a household’s basic properties (the household size
@@ -538,7 +539,7 @@ endline1_biz_noexp <- endline1 %>%
     of informal loans should be close to zero. 
     
 4. Adjusted Household Size
-    
+  
     ![Scatter Plot
     hhsize_adj_1](/blog/img/seminar/apa19-microfinance/biz_noexp_trend_hhsize_adj-1.png)  
     
@@ -566,7 +567,7 @@ endline1_biz_noexp <- endline1 %>%
     the treatment effect starts to diminish. 
     
 5. Head Age
-    
+  
     ![Scatter Plot
     head_age](/blog/img/seminar/apa19-microfinance/biz_noexp_trend_head_age-1.png)  
     
