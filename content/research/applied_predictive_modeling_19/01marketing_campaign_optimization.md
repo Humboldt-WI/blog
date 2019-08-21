@@ -6,7 +6,7 @@ categories = ["Course projects"]
 banner = "img/seminar/nn_fundamentals/neuralNetworkKlein.jpg"
 author = "Seminar Applied Predictive Modeling (SS19) – Asmir Muminovic, Lukas Kolbe"
 disqusShortname = "https-humbodt-wi-github-io-blog"
-description = " "
+description = "Using real world online shop data to model and predict treatment effects on continous variables, aiming for profit optimization "
 
 +++
 
