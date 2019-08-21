@@ -17,7 +17,7 @@
   <meta name="description" content="Prediction of financial time series using LSTM networks ">
   
 
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.56.3" />
 
   <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
 
@@ -428,7 +428,7 @@ This should give us a starting point to explain different concepts and extension
     model<span style="color:#666">.</span>add(LSTM(<span style="color:#666">16</span>, input_shape<span style="color:#666">=</span>(timesteps, features)))
     model<span style="color:#666">.</span>add(Dense(<span style="color:#666">1</span>))
     model<span style="color:#666">.</span>add(Activation(<span style="color:#b44">&#39;linear&#39;</span>))  
-    model<span style="color:#666">.</span><span style="color:#a2f">compile</span>(loss<span style="color:#666">=</span><span style="color:#b44">&#39;mse&#39;</span>, optimizer<span style="color:#666">=</span><span style="color:#b44">&#39;adam&#39;</span>, metrics<span style="color:#666">=</span>[<span style="color:#b44">&#39;mse&#39;</span>])  
+    model<span style="color:#666">.</span>compile(loss<span style="color:#666">=</span><span style="color:#b44">&#39;mse&#39;</span>, optimizer<span style="color:#666">=</span><span style="color:#b44">&#39;adam&#39;</span>, metrics<span style="color:#666">=</span>[<span style="color:#b44">&#39;mse&#39;</span>])  
     <span style="color:#a2f;font-weight:bold">return</span> model</code></pre></div>
 
 <p>Our <code>helloModel</code> has only one layer with 16 hidden neurons. It passes its input to
@@ -456,7 +456,7 @@ If we specify <code>return_sequence = True</code> for the last layer it will pro
     <span style="color:#a2f;font-weight:bold">else</span>:
         model<span style="color:#666">.</span>add(TimeDistributed(Dense(<span style="color:#666">1</span>)))
     model<span style="color:#666">.</span>add(Activation(<span style="color:#b44">&#39;linear&#39;</span>))  
-    model<span style="color:#666">.</span><span style="color:#a2f">compile</span>(loss<span style="color:#666">=</span><span style="color:#b44">&#39;mse&#39;</span>, optimizer<span style="color:#666">=</span><span style="color:#b44">&#39;adam&#39;</span>, metrics<span style="color:#666">=</span>[<span style="color:#b44">&#39;mse&#39;</span>])  
+    model<span style="color:#666">.</span>compile(loss<span style="color:#666">=</span><span style="color:#b44">&#39;mse&#39;</span>, optimizer<span style="color:#666">=</span><span style="color:#b44">&#39;adam&#39;</span>, metrics<span style="color:#666">=</span>[<span style="color:#b44">&#39;mse&#39;</span>])  
     <span style="color:#a2f;font-weight:bold">return</span> model</code></pre></div>
 
 <p>We are stacking three different LSTM layers and included the option to predict
@@ -499,7 +499,7 @@ If <code>stateful = True</code>, states are propagated through batches and only 
         model<span style="color:#666">.</span>add(TimeDistributed(Dense(<span style="color:#666">1</span>)))
     <span style="color:#a2f;font-weight:bold">else</span>:
         model<span style="color:#666">.</span>add(Dense(<span style="color:#666">1</span>)) <span style="color:#080;font-style:italic">#not 1 but &#39;features&#39; if many-to-many   </span>
-    model<span style="color:#666">.</span><span style="color:#a2f">compile</span>(loss<span style="color:#666">=</span><span style="color:#b44">&#39;mse&#39;</span>, optimizer<span style="color:#666">=</span><span style="color:#b44">&#39;adam&#39;</span>, metrics<span style="color:#666">=</span>[<span style="color:#b44">&#39;mse&#39;</span>])  
+    model<span style="color:#666">.</span>compile(loss<span style="color:#666">=</span><span style="color:#b44">&#39;mse&#39;</span>, optimizer<span style="color:#666">=</span><span style="color:#b44">&#39;adam&#39;</span>, metrics<span style="color:#666">=</span>[<span style="color:#b44">&#39;mse&#39;</span>])  
     <span style="color:#a2f;font-weight:bold">return</span> model
     </code></pre></div>
 

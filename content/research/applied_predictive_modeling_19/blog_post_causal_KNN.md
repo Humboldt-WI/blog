@@ -6,7 +6,7 @@ categories = ["Course projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
 author = "Maximilian Kricke, Tim Peschenz"
 disqusShortname = "https-wisample-github-io-blog"
-description = "Parameter tuning for uplift models using the transformed outcome: case study on causal KNN and causal forest for email marketing targeting"
+description = "Blog Post for Seminar Applied Predictive Analytics"
 +++
 
 <head>
