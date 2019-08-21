@@ -118,6 +118,15 @@ Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall 
     </item>
     
     <item>
+      <title>Correcting for Self-selection in Product Rating: Causal Recommender Systems</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/causalrecommendersystem/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/causalrecommendersystem/</guid>
+      <description>Correcting for Self-selection in Product Rating: Causal Recommender Systems Authors: Karolina Grubinska &amp;amp; Médéric Thomas Table of Contents  An Introduction to Recommender Systems Motivation Overview of Methods Matrix Completion Problem Singular Value Decomposition Problem Definition The Missing-at-Random Assumption Does MAR really hold? Our Goal in This Framework In Mathematical Terms A proposal for Causal Recommender System: Causal Embeddings Causal Setup Results Comparison Conclusions Bibliography  An Introduction to Recommender Systems  One of the main characteristics of a modern, digital society that we currently live in is the heterogeneity of available items.</description>
+    </item>
+    
+    <item>
       <title>Uncertainty in Profit Scoring (Bayesian Deep Learning)</title>
       <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/uncertainty-and-credit-scoring/</link>
       <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
