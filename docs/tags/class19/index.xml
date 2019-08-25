@@ -99,5 +99,16 @@ Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall 
       <description>Correcting for Self-selection in Product Rating: Causal Recommender Systems Authors: Karolina Grubinska &amp;amp; Médéric Thomas Table of Contents  An Introduction to Recommender Systems Motivation Overview of Methods Matrix Completion Problem Singular Value Decomposition Problem Definition The Missing-at-Random Assumption Does MAR really hold? Our Goal in This Framework In Mathematical Terms A proposal for Causal Recommender System: Causal Embeddings Causal Setup Results Comparison Conclusions Bibliography  An Introduction to Recommender Systems  One of the main characteristics of a modern, digital society that we currently live in is the heterogeneity of available items.</description>
     </item>
     
+    <item>
+      <title>Implementation of the Double/ Debiased Machine Learning Approach in Python</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/double_machine_learning/</link>
+      <pubDate>Tue, 18 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/double_machine_learning/</guid>
+      <description>Double Machine Learning Implementation  
+Christopher Ketzler, Guillermo Morishige
+  Abstract: The aim of this paper is to replicate and apply the approach provided by Chernozhukov et al. (2016) to get the causal estimand of interest: average treatment effect (ATE) $\ \eta_0 $ using Neyman orthogonality and cross-fitting. For observational data, we will estimate the causal relationship between the eligibility and participation in the 401(k) and its effect on net financial assets; as well to apply it to other datasets, to find the effect of the Pennsylvania Reemployment Bonus on the unemployment duration and the effect of smoking on medical costs.</description>
+    </item>
+    
   </channel>
 </rss>

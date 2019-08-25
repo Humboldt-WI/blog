@@ -78,6 +78,11 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/double_machine_learning/</loc>
+    <lastmod>2019-06-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/news/newcourseoutline/</loc>
     <lastmod>2019-03-03T00:00:00+00:00</lastmod>
   </url>
@@ -344,6 +349,12 @@
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/distant-transfer-learning/</loc>
     <lastmod>2018-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/dml/</loc>
+    <lastmod>2019-06-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -655,6 +666,12 @@
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/transfer-learning/</loc>
     <lastmod>2019-02-07T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/treatment-effect/</loc>
+    <lastmod>2019-06-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
