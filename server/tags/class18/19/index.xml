@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Class18/19 on Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://humboldt-wi.github.io/blog/tags/class18/19/</link>
+    <description>Recent content in Class18/19 on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 09 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://humboldt-wi.github.io/blog/tags/class18/19/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Uncertainty in Profit Scoring (Bayesian Deep Learning)</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/uncertainty-and-credit-scoring/</link>
+      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/uncertainty-and-credit-scoring/</guid>
+      <description>Uncertainty in Profit Scoring (Bayesian Deep Learning) Djordje Dotlic, Batuhan Ipekci, Julia Dullin Contents  Introduction Literature Review Theory
+A. Bayesian Inference
+B. Variational Inference
+C. Monte Carlo Dropout
+ Data Exploration
+ Results and Evaluation
+  Introduction  The problem of credit scoring is a very standard one in Machine Learning literature and applications. Predicting whether or not a loan applicant will go default is one of the typical examples of classification problem, and usually serves as a good ground for application and comparison of various machine learning techniques- which, over the years, became very precise in making a binary prediction.</description>
+    </item>
+    
+    <item>
+      <title>Building a LDA-based Book Recommender System</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/is_lda_final/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/is_lda_final/</guid>
+      <description>IS_LDA_final/*!** Twitter Bootstrap**//*!* Bootstrap v3.3.7 (http://getbootstrap.com)* Copyright 2011-2016 Twitter, Inc.* Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)*//*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */html {font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;}body {margin: 0;}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary {display: block;}audio,canvas,progress,video {display: inline-block;vertical-align: baseline;}audio:not([controls]) {display: none;height: 0;}[hidden],template {display: none;}a {background-color: transparent;}a:active,a:hover {outline: 0;}abbr[title] {border-bottom: 1px dotted;}b,strong {font-weight: bold;}dfn {font-style: italic;}h1 {font-size: 2em;margin: 0.</description>
+    </item>
+    
+    <item>
+      <title>Generative Models</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/generativemodels/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/generativemodels/</guid>
+      <description>Authors: Gabriel Blumenstock, Yu Fan, Yang Tian Introduction What are generative models? In machine learning, generative models are used to generate new samples following the same distribution of the original data using unsupervised learning algorithms. Such methods provide a powerful way to detect and analyze enormous information of data, which has been applied to various domains, e.g. images and texts. By learning the statistical latent space of images or stories, the models are able to obtain human experiences and then “create” similar meaningful outputs.</description>
+    </item>
+    
+    <item>
+      <title>Text Classification with Hierarchical Attention Network</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/group5_han/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/group5_han/</guid>
+      <description>Text Classification with Hierarchical Attention Networks How to assign documents to classes or topics Authors: Maria Kränkel, Hee-Eun Lee - Seminar Information System 18&amp;frasl;19 After reading this blog post, you will know:
+ What text classification is and what it is used for What hierarchical attention networks are and how their architecture looks like How to classify documents by implementing a hierarchical attention network  Introduction Imagine you work for a company that sells cameras and you would like to find out what customers think about the latest release.</description>
+    </item>
+    
+    <item>
+      <title>Crime and Neural Nets</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/02lstmgruandbeyond/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/02lstmgruandbeyond/</guid>
+      <description>Crime and Neural Nets&amp;#182;Introducing Recurrent Neural Networks with Long-Short-Term Memory and Gated Recurrent Unit to predict reported Crime Incidents&amp;#182;Carolin Kunze, Marc Scheu, Thomas Siskos&amp;#182;Several police departments across the Unites States have been experimenting with software for crime prdiction. This started a controversial debate: Critics are questioning the predictiv power of the underlying machine learning models and point out biases towards certain crime typs and neighborhoods. We took this as occacion to look into the publicly available crime records of the city of chicago.</description>
+    </item>
+    
+    <item>
+      <title>ULMFiT: State-of-the-Art in Text Analysis</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/group4_ulmfit/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/group4_ulmfit/</guid>
+      <description>Universal Language Model Fine-Tuning (ULMFiT) State-of-the-Art in Text Analysis Authors: Sandra Faltl, Michael Schimpke &amp;amp; Constantin Hackober 
+Table of Contents  Introduction  Literature Review and Motivation Inductive Transfer Learning Our Datasets Overview ULMFiT   General-Domain Language Model Pretraining  Word Embeddings Example of a Forward Pass through the LM Preparations for Fine-Tuning  Matching Process for the Embedding Matrix Variable Length Backpropagation Sequences Adam Optimizer Dropout    Target Task Language Model Fine-Tuning  Freezing Learning Rate Schedule Discriminative Fine-Tuning   Target Task Classifier  Concat Pooling Linear Decoder Gradual Unfreezing Benchmarks Example of a Forward Pass through the Classifier   Our Model Extension  Results Without Vocabulary Reduction   Conclusion  Reference List  1.</description>
+    </item>
+    
+  </channel>
+</rss>

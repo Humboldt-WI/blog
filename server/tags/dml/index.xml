@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dml on Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://humboldt-wi.github.io/blog/tags/dml/</link>
+    <description>Recent content in Dml on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 18 Jun 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://humboldt-wi.github.io/blog/tags/dml/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Implementation of the Double/ Debiased Machine Learning Approach in Python</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/08_dml_blog_final/</link>
+      <pubDate>Tue, 18 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/08_dml_blog_final/</guid>
+      <description>Double Machine Learning Implementation  
+Christopher Ketzler, Guillermo Morishige
+  Abstract: The aim of this paper is to replicate and apply the approach provided by Chernozhukov et al. (2016) to get the causal estimand of interest: average treatment effect (ATE) $\ \eta_0 $ using Neyman orthogonality and cross-fitting. For observational data, we will estimate the causal relationship between the eligibility and participation in the 401(k) and its effect on net financial assets; as well to apply it to other datasets, to find the effect of the Pennsylvania Reemployment Bonus on the unemployment duration and the effect of smoking on medical costs.</description>
+    </item>
+    
+    <item>
+      <title>Implementation of the Double/ Debiased Machine Learning Approach in Python</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/double_machine_learning/</link>
+      <pubDate>Tue, 18 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/double_machine_learning/</guid>
+      <description>Double Machine Learning Implementation  
+Christopher Ketzler, Guillermo Morishige
+  Abstract: The aim of this paper is to replicate and apply the approach provided by Chernozhukov et al. (2016) to get the causal estimand of interest: average treatment effect (ATE) $\ \eta_0 $ using Neyman orthogonality and cross-fitting. For observational data, we will estimate the causal relationship between the eligibility and participation in the 401(k) and its effect on net financial assets; as well to apply it to other datasets, to find the effect of the Pennsylvania Reemployment Bonus on the unemployment duration and the effect of smoking on medical costs.</description>
+    </item>
+    
+  </channel>
+</rss>

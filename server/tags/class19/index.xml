@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Class19 on Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://humboldt-wi.github.io/blog/tags/class19/</link>
+    <description>Recent content in Class19 on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 18 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://humboldt-wi.github.io/blog/tags/class19/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Data Generating Process Simulation: The opossum package</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/data_generating_process_blogpost/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/data_generating_process_blogpost/</guid>
+      <description>Data Generating Process Simulation&amp;#182;1&amp;nbsp;&amp;nbsp;Introduction1.1&amp;nbsp;&amp;nbsp;Topic1.2&amp;nbsp;&amp;nbsp;Motivation1.3&amp;nbsp;&amp;nbsp;Properties2&amp;nbsp;&amp;nbsp;Review2.1&amp;nbsp;&amp;nbsp;Literature2.2&amp;nbsp;&amp;nbsp;Software3&amp;nbsp;&amp;nbsp;Theory behind the package3.1&amp;nbsp;&amp;nbsp;General Model: Partial Linear Regression3.2&amp;nbsp;&amp;nbsp;Generating Covariates3.2.1&amp;nbsp;&amp;nbsp;Continuous Covariates3.2.2&amp;nbsp;&amp;nbsp;Binary and categorical covariates3.3&amp;nbsp;&amp;nbsp;Treatment assignment3.3.1&amp;nbsp;&amp;nbsp;Random3.3.2&amp;nbsp;&amp;nbsp;Dependent on covariates3.4&amp;nbsp;&amp;nbsp;Treatment effects3.4.1&amp;nbsp;&amp;nbsp;Positive &amp;amp; negative constant effect3.4.2&amp;nbsp;&amp;nbsp;Positive &amp;amp; negative continuous heterogeneous effect3.4.3&amp;nbsp;&amp;nbsp;No effect3.4.4&amp;nbsp;&amp;nbsp;Discrete heterogeneous treatment effect3.5&amp;nbsp;&amp;nbsp;Output variable3.5.1&amp;nbsp;&amp;nbsp;Continuous3.5.2&amp;nbsp;&amp;nbsp;Binary4&amp;nbsp;&amp;nbsp;Package application4.1&amp;nbsp;&amp;nbsp;Choosing covariates4.2&amp;nbsp;&amp;nbsp;Creating treatment effects4.3&amp;nbsp;&amp;nbsp;Creating output4.4&amp;nbsp;&amp;nbsp;Other functions5&amp;nbsp;&amp;nbsp;Example: Applying double machine learning6&amp;nbsp;&amp;nbsp;Discussion7&amp;nbsp;&amp;nbsp;ReferencesIntroduction&amp;#182;Topic&amp;#182;As modern science becomes increasingly data-driven among virtually all fields, it is obligatory to inspect not only how scientists analyze data but also what kind of data is used.</description>
+    </item>
+    
+    <item>
+      <title>Efficient Experiments Through Inverse Propensity Score Weighting</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/efficient_a_b_testing_propensity_scoring/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/efficient_a_b_testing_propensity_scoring/</guid>
+      <description>APA_Blogpost_latest/*!** Twitter Bootstrap**//*!* Bootstrap v3.3.7 (http://getbootstrap.com)* Copyright 2011-2016 Twitter, Inc.* Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)*//*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */html {font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;}body {margin: 0;}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary {display: block;}audio,canvas,progress,video {display: inline-block;vertical-align: baseline;}audio:not([controls]) {display: none;height: 0;}[hidden],template {display: none;}a {background-color: transparent;}a:active,a:hover {outline: 0;}abbr[title] {border-bottom: 1px dotted;}b,strong {font-weight: bold;}dfn {font-style: italic;}h1 {font-size: 2em;margin: 0.</description>
+    </item>
+    
+    <item>
+      <title>Uplift Modelling with Multiple Treatments</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/multiple_treatments_uplift/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/multiple_treatments_uplift/</guid>
+      <description>Applications of Causal Inference for Marketing: Estimating Treatment Effects for multiple Treatments Authors: Jan Krol and Matthias Becher Table of Contents  Introduction
+ Common Marketing Challenges
+ Models  3.1 Decision Trees Rzepakowski &amp;amp; Jaroszewicz  3.1.1 Basic Rzepakowski &amp;amp; Jaroszewicz  3.1.2 Simple Splitting Criterion  3.2 Causal Tree and Causal Forest  3.3 Separate Model  Evaluation Methods
+4.1 Uplift Curves 4.2 Expected Outcome Experimental Setup  Results Outlook References  1.</description>
+    </item>
+    
+    <item>
+      <title>APA19 Microfinance Policies</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/microfinance-policy/</link>
+      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/microfinance-policy/</guid>
+      <description>Microfinance Policies  Impact of Microfinance on The Social Well-being Authors: Edanur Kahvecioglu and Yu-Tang Wu Abstract Is microcredit a miracle or just a hype? While more and more researches were conducted to study microcredits, people started to question the effectiveness of microcredit program. This project explores the heterogeneity of treatment effect on microcredit to households&amp;rsquo; well-being. Causuall Random Forest and Two-model approach are used to analyze treatment effects on the household level and identify the important variables that separate households with higher treatment effect.</description>
+    </item>
+    
+    <item>
+      <title>Marketing Campaign Optimization: Profit modeling</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/01marketing_campaign_optimization/</link>
+      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/01marketing_campaign_optimization/</guid>
+      <description>Marketing Campaign Optimization 
+Causal Inference in Profit Uplift Modeling Authors: Asmir Muminovic, Lukas Kolbe 
+Motivation The global spending on advertising amounts to more than 540 billion US dollars for 2018 only, and the spending for 2019 is predicted to reach over 560 billion US dollars. The marketing spendings have continuously increased since 2010 [17], and this trend does not seem to brittle in the near future. Although marketing is such an integral part of most businesses, marketers often fail to maximize the profitability of their marketing efforts.</description>
+    </item>
+    
+    <item>
+      <title>APA Template</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/00template/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/00template/</guid>
+      <description>Template Authors: A, B and C Text
+Neural Networks and its early development Text</description>
+    </item>
+    
+    <item>
+      <title>APA Template html</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/00template2/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/00template2/</guid>
+      <description>HTML template</description>
+    </item>
+    
+    <item>
+      <title>Causal KNN</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</guid>
+      <description>LatexIT.add(&amp;lsquo;p&amp;rsquo;,true);  
+Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbour algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
+    </item>
+    
+    <item>
+      <title>Correcting for Self-selection in Product Rating: Causal Recommender Systems</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/causalrecommendersystem/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/causalrecommendersystem/</guid>
+      <description>Correcting for Self-selection in Product Rating: Causal Recommender Systems Authors: Karolina Grubinska &amp;amp; Médéric Thomas Table of Contents  An Introduction to Recommender Systems Motivation Overview of Methods Matrix Completion Problem Singular Value Decomposition Problem Definition The Missing-at-Random Assumption Does MAR really hold? Our Goal in This Framework In Mathematical Terms A proposal for Causal Recommender System: Causal Embeddings Causal Setup Results Comparison Conclusions Bibliography  An Introduction to Recommender Systems  One of the main characteristics of a modern, digital society that we currently live in is the heterogeneity of available items.</description>
+    </item>
+    
+    <item>
+      <title>Implementation of the Double/ Debiased Machine Learning Approach in Python</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/08_dml_blog_final/</link>
+      <pubDate>Tue, 18 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/08_dml_blog_final/</guid>
+      <description>Double Machine Learning Implementation  
+Christopher Ketzler, Guillermo Morishige
+  Abstract: The aim of this paper is to replicate and apply the approach provided by Chernozhukov et al. (2016) to get the causal estimand of interest: average treatment effect (ATE) $\ \eta_0 $ using Neyman orthogonality and cross-fitting. For observational data, we will estimate the causal relationship between the eligibility and participation in the 401(k) and its effect on net financial assets; as well to apply it to other datasets, to find the effect of the Pennsylvania Reemployment Bonus on the unemployment duration and the effect of smoking on medical costs.</description>
+    </item>
+    
+    <item>
+      <title>Implementation of the Double/ Debiased Machine Learning Approach in Python</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/double_machine_learning/</link>
+      <pubDate>Tue, 18 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/double_machine_learning/</guid>
+      <description>Double Machine Learning Implementation  
+Christopher Ketzler, Guillermo Morishige
+  Abstract: The aim of this paper is to replicate and apply the approach provided by Chernozhukov et al. (2016) to get the causal estimand of interest: average treatment effect (ATE) $\ \eta_0 $ using Neyman orthogonality and cross-fitting. For observational data, we will estimate the causal relationship between the eligibility and participation in the 401(k) and its effect on net financial assets; as well to apply it to other datasets, to find the effect of the Pennsylvania Reemployment Bonus on the unemployment duration and the effect of smoking on medical costs.</description>
+    </item>
+    
+  </channel>
+</rss>

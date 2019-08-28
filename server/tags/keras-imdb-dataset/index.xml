@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Keras Imdb Dataset on Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset/</link>
+    <description>Recent content in Keras Imdb Dataset on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Text Mining - Sentiment Analysis</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1718/05sentimentanalysis/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/05sentimentanalysis/</guid>
+      <description>Sentiment Analysis using Deep Learning Authors: Katja Metzger, Aydin Sader Fosalaie, Ninos Yonan Outline  Sentiment Analysis Introduction  Case Study  Keras IMDB Dataset
+ Data Analysis
+ Word Embeddings
+ Convolutional Neural Network
+  Summary  Sentiment Analysis Introduction Sentiment analysis is a very beneficial approach to automate the classification of the polarity of a given text. A helpful indication to decide if the customers on amazon like a product or not is for example the star rating.</description>
+    </item>
+    
+  </channel>
+</rss>

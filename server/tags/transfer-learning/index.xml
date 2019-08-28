@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Transfer Learning on Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://humboldt-wi.github.io/blog/tags/transfer-learning/</link>
+    <description>Recent content in Transfer Learning on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://humboldt-wi.github.io/blog/tags/transfer-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ULMFiT: State-of-the-Art in Text Analysis</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/group4_ulmfit/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/group4_ulmfit/</guid>
+      <description>Universal Language Model Fine-Tuning (ULMFiT) State-of-the-Art in Text Analysis Authors: Sandra Faltl, Michael Schimpke &amp;amp; Constantin Hackober 
+Table of Contents  Introduction  Literature Review and Motivation Inductive Transfer Learning Our Datasets Overview ULMFiT   General-Domain Language Model Pretraining  Word Embeddings Example of a Forward Pass through the LM Preparations for Fine-Tuning  Matching Process for the Embedding Matrix Variable Length Backpropagation Sequences Adam Optimizer Dropout    Target Task Language Model Fine-Tuning  Freezing Learning Rate Schedule Discriminative Fine-Tuning   Target Task Classifier  Concat Pooling Linear Decoder Gradual Unfreezing Benchmarks Example of a Forward Pass through the Classifier   Our Model Extension  Results Without Vocabulary Reduction   Conclusion  Reference List  1.</description>
+    </item>
+    
+    <item>
+      <title>Image Analysis: Introduction to deep learning for computer vision</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1718/03imageanalysis/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/03imageanalysis/</guid>
+      <description>Image Analysis: Introduction to deep learning for computer vision Authors: Nargiz Bakhshaliyeva, Severin Hußmann, Robert Kittel In this blog, we present the practical use of deep learning in computer vision. You will see how Convolutional Neural Networks are being applied to process the visual data, generating some valuable knowledge. In particular, we focused on the object recognition task, aiming to classify what kind of an object (a dog or a cat) is presented within a particular image by using the notion of Transfer Learning.</description>
+    </item>
+    
+  </channel>
+</rss>

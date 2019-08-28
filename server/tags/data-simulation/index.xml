@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Simulation on Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://humboldt-wi.github.io/blog/tags/data-simulation/</link>
+    <description>Recent content in Data Simulation on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 18 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://humboldt-wi.github.io/blog/tags/data-simulation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Data Generating Process Simulation: The opossum package</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/data_generating_process_blogpost/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/data_generating_process_blogpost/</guid>
+      <description>Data Generating Process Simulation&amp;#182;1&amp;nbsp;&amp;nbsp;Introduction1.1&amp;nbsp;&amp;nbsp;Topic1.2&amp;nbsp;&amp;nbsp;Motivation1.3&amp;nbsp;&amp;nbsp;Properties2&amp;nbsp;&amp;nbsp;Review2.1&amp;nbsp;&amp;nbsp;Literature2.2&amp;nbsp;&amp;nbsp;Software3&amp;nbsp;&amp;nbsp;Theory behind the package3.1&amp;nbsp;&amp;nbsp;General Model: Partial Linear Regression3.2&amp;nbsp;&amp;nbsp;Generating Covariates3.2.1&amp;nbsp;&amp;nbsp;Continuous Covariates3.2.2&amp;nbsp;&amp;nbsp;Binary and categorical covariates3.3&amp;nbsp;&amp;nbsp;Treatment assignment3.3.1&amp;nbsp;&amp;nbsp;Random3.3.2&amp;nbsp;&amp;nbsp;Dependent on covariates3.4&amp;nbsp;&amp;nbsp;Treatment effects3.4.1&amp;nbsp;&amp;nbsp;Positive &amp;amp; negative constant effect3.4.2&amp;nbsp;&amp;nbsp;Positive &amp;amp; negative continuous heterogeneous effect3.4.3&amp;nbsp;&amp;nbsp;No effect3.4.4&amp;nbsp;&amp;nbsp;Discrete heterogeneous treatment effect3.5&amp;nbsp;&amp;nbsp;Output variable3.5.1&amp;nbsp;&amp;nbsp;Continuous3.5.2&amp;nbsp;&amp;nbsp;Binary4&amp;nbsp;&amp;nbsp;Package application4.1&amp;nbsp;&amp;nbsp;Choosing covariates4.2&amp;nbsp;&amp;nbsp;Creating treatment effects4.3&amp;nbsp;&amp;nbsp;Creating output4.4&amp;nbsp;&amp;nbsp;Other functions5&amp;nbsp;&amp;nbsp;Example: Applying double machine learning6&amp;nbsp;&amp;nbsp;Discussion7&amp;nbsp;&amp;nbsp;ReferencesIntroduction&amp;#182;Topic&amp;#182;As modern science becomes increasingly data-driven among virtually all fields, it is obligatory to inspect not only how scientists analyze data but also what kind of data is used.</description>
+    </item>
+    
+  </channel>
+</rss>

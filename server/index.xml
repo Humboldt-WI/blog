@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://humboldt-wi.github.io/blog/</link>
+    <description>Recent content on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0100</lastBuildDate>
+    
+	<atom:link href="https://humboldt-wi.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Prof. Dr. Stefan Lessmann</title>
+      <link>https://humboldt-wi.github.io/blog/member/lessmann/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/member/lessmann/</guid>
+      <description>Short-bio Stefan received a diploma in business administration and a PhD from the University of Hamburg in 2002 and 2007, respectively. Stefan worked as a lecturer and senior lecture in business informatics at the Institute of Information Systems of the University of Hamburg. Since 2008, Stefan is a guest lecturer at the School of Management of University of Southampton, where he teaches under- and postgraduate courses on quantitative methods, electronic business, and web application development.</description>
+    </item>
+    
+    <item>
+      <title>Johannes Haupt, M.Sc.</title>
+      <link>https://humboldt-wi.github.io/blog/member/haupt/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/member/haupt/</guid>
+      <description>Short-bio Since April 2016, he has been working as a researcher at the Chair of Information Systems of the Business and Economics department. He implemented a machine learning framework to detect tracking objects in e-mails as part of his master&amp;rsquo;s thesis. In the course of his PhD, he researches applications for machine learning in e-commerce and unstructured data
+
+Research Interests  Customer behavior in e-Commerce
+ Recommendation Engines</description>
+    </item>
+    
+    <item>
+      <title>Annika Baumann, M.Sc.</title>
+      <link>https://humboldt-wi.github.io/blog/member/baumann/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/member/baumann/</guid>
+      <description>Short-bio Annika Baumann, M.Sc., studied the Master in Information Systems at the Humboldt University in Berlin. Since June 2013 she works as a researcher at the Institute of information systems at the Humboldt University in Berlin. As part of her master&amp;rsquo;s thesis she investigated the robustness of the Internet graph based on a current dataset. In the course of her PhD she investigates the Internet topology, the readability of privacy policies as well as the social news aggregator Reddit.</description>
+    </item>
+    
+    <item>
+      <title>Class of 2017 / 2018 </title>
+      <link>https://humboldt-wi.github.io/blog/member/class1718/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/member/class1718/</guid>
+      <description>The students of the Seminar Information Systems contributed to this website to great extend. Groups of Master students from Humboldt University with backgrounds in Business, Economics, Statistics or Computer Science worked on analytical topics and created blog posts, presenting exciting insights into the following topis:
+ Neural Networks and Convolutional Neural Networks Image Analysis Text Mining Time Series Analysis with LSTMs Survial Analysis Image Captioning Deep Learning and Recommender Systems  </description>
+    </item>
+    
+    <item>
+      <title>Data Generating Process Simulation: The opossum package</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/data_generating_process_blogpost/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/data_generating_process_blogpost/</guid>
+      <description>Data Generating Process Simulation&amp;#182;1&amp;nbsp;&amp;nbsp;Introduction1.1&amp;nbsp;&amp;nbsp;Topic1.2&amp;nbsp;&amp;nbsp;Motivation1.3&amp;nbsp;&amp;nbsp;Properties2&amp;nbsp;&amp;nbsp;Review2.1&amp;nbsp;&amp;nbsp;Literature2.2&amp;nbsp;&amp;nbsp;Software3&amp;nbsp;&amp;nbsp;Theory behind the package3.1&amp;nbsp;&amp;nbsp;General Model: Partial Linear Regression3.2&amp;nbsp;&amp;nbsp;Generating Covariates3.2.1&amp;nbsp;&amp;nbsp;Continuous Covariates3.2.2&amp;nbsp;&amp;nbsp;Binary and categorical covariates3.3&amp;nbsp;&amp;nbsp;Treatment assignment3.3.1&amp;nbsp;&amp;nbsp;Random3.3.2&amp;nbsp;&amp;nbsp;Dependent on covariates3.4&amp;nbsp;&amp;nbsp;Treatment effects3.4.1&amp;nbsp;&amp;nbsp;Positive &amp;amp; negative constant effect3.4.2&amp;nbsp;&amp;nbsp;Positive &amp;amp; negative continuous heterogeneous effect3.4.3&amp;nbsp;&amp;nbsp;No effect3.4.4&amp;nbsp;&amp;nbsp;Discrete heterogeneous treatment effect3.5&amp;nbsp;&amp;nbsp;Output variable3.5.1&amp;nbsp;&amp;nbsp;Continuous3.5.2&amp;nbsp;&amp;nbsp;Binary4&amp;nbsp;&amp;nbsp;Package application4.1&amp;nbsp;&amp;nbsp;Choosing covariates4.2&amp;nbsp;&amp;nbsp;Creating treatment effects4.3&amp;nbsp;&amp;nbsp;Creating output4.4&amp;nbsp;&amp;nbsp;Other functions5&amp;nbsp;&amp;nbsp;Example: Applying double machine learning6&amp;nbsp;&amp;nbsp;Discussion7&amp;nbsp;&amp;nbsp;ReferencesIntroduction&amp;#182;Topic&amp;#182;As modern science becomes increasingly data-driven among virtually all fields, it is obligatory to inspect not only how scientists analyze data but also what kind of data is used.</description>
+    </item>
+    
+    <item>
+      <title>Efficient Experiments Through Inverse Propensity Score Weighting</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/efficient_a_b_testing_propensity_scoring/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/efficient_a_b_testing_propensity_scoring/</guid>
+      <description>APA_Blogpost_latest/*!** Twitter Bootstrap**//*!* Bootstrap v3.3.7 (http://getbootstrap.com)* Copyright 2011-2016 Twitter, Inc.* Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)*//*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */html {font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;}body {margin: 0;}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary {display: block;}audio,canvas,progress,video {display: inline-block;vertical-align: baseline;}audio:not([controls]) {display: none;height: 0;}[hidden],template {display: none;}a {background-color: transparent;}a:active,a:hover {outline: 0;}abbr[title] {border-bottom: 1px dotted;}b,strong {font-weight: bold;}dfn {font-style: italic;}h1 {font-size: 2em;margin: 0.</description>
+    </item>
+    
+    <item>
+      <title>Matching Methods for Causal Inference: A Machine Learning Update</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/matching_methods/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/matching_methods/</guid>
+      <description>Authors: Samantha Sizemore and Raiber Alkurdi Introduction Practitioners from quantitative Social Sciences such as Economics, Sociology, Political Science, Epidemiology and Public Health have undoubtedly come across matching as a go-to technique for preprocessing observational data before treatment effect estimation; those on the machine learning side of the aisle, however, may be unfamiliar with the concept of matching. This blog post aims to provide a succinct primer for matching neophytes and, for those already familiar with this technique, an overview of how state-of-the-art machine learning can be incorporated into the matching process.</description>
+    </item>
+    
+    <item>
+      <title>Uplift Modelling with Multiple Treatments</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/multiple_treatments_uplift/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/multiple_treatments_uplift/</guid>
+      <description>Applications of Causal Inference for Marketing: Estimating Treatment Effects for multiple Treatments Authors: Jan Krol and Matthias Becher Table of Contents  Introduction
+ Common Marketing Challenges
+ Models  3.1 Decision Trees Rzepakowski &amp;amp; Jaroszewicz  3.1.1 Basic Rzepakowski &amp;amp; Jaroszewicz  3.1.2 Simple Splitting Criterion  3.2 Causal Tree and Causal Forest  3.3 Separate Model  Evaluation Methods
+4.1 Uplift Curves 4.2 Expected Outcome Experimental Setup  Results Outlook References  1.</description>
+    </item>
+    
+    <item>
+      <title>APA19 Microfinance Policies</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/microfinance-policy/</link>
+      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/microfinance-policy/</guid>
+      <description>Microfinance Policies  Impact of Microfinance on The Social Well-being Authors: Edanur Kahvecioglu and Yu-Tang Wu Abstract Is microcredit a miracle or just a hype? While more and more researches were conducted to study microcredits, people started to question the effectiveness of microcredit program. This project explores the heterogeneity of treatment effect on microcredit to households&amp;rsquo; well-being. Causuall Random Forest and Two-model approach are used to analyze treatment effects on the household level and identify the important variables that separate households with higher treatment effect.</description>
+    </item>
+    
+    <item>
+      <title>Social Pressure and Voter Turnout - A Causal Machine Learning Approach</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/social_pressure/</link>
+      <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/social_pressure/</guid>
+      <description>Revisiting Social Pressure and Voter Turnout: Causal Inference with Supervised Learning Methods Julius Reimer &amp;amp; Toby Chelton
+
+[Source: https://paulkiser.com/2016/02/04/five-fixes-for-our-primarycaucus-fiasco/] Table of contents 1. Introduction
+2. Original Study and Our Objectives
+3. Data and Random Assignment
+4. Modelling
+5. Results
+6. Conclusion
+7. References
+1. Introduction The issue of voter turnout has long been examined in both academic and media spheres. In fact, the interest dates back many years to papers such as Gosnell’s 1927 ‘Getting out the vote- an experiment in the stimulation of voting’.</description>
+    </item>
+    
+    <item>
+      <title>Marketing Campaign Optimization: Profit modeling</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/01marketing_campaign_optimization/</link>
+      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/01marketing_campaign_optimization/</guid>
+      <description>Marketing Campaign Optimization 
+Causal Inference in Profit Uplift Modeling Authors: Asmir Muminovic, Lukas Kolbe 
+Motivation The global spending on advertising amounts to more than 540 billion US dollars for 2018 only, and the spending for 2019 is predicted to reach over 560 billion US dollars. The marketing spendings have continuously increased since 2010 [17], and this trend does not seem to brittle in the near future. Although marketing is such an integral part of most businesses, marketers often fail to maximize the profitability of their marketing efforts.</description>
+    </item>
+    
+    <item>
+      <title>APA Template</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/00template/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/00template/</guid>
+      <description>Template Authors: A, B and C Text
+Neural Networks and its early development Text</description>
+    </item>
+    
+    <item>
+      <title>APA Template html</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/00template2/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/00template2/</guid>
+      <description>HTML template</description>
+    </item>
+    
+    <item>
+      <title>Causal KNN</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</link>
+      <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</guid>
+      <description>LatexIT.add(&amp;lsquo;p&amp;rsquo;,true);  
+Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbour algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
+    </item>
+    
+    <item>
+      <title>Correcting for Self-selection in Product Rating: Causal Recommender Systems</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/causalrecommendersystem/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/causalrecommendersystem/</guid>
+      <description>Correcting for Self-selection in Product Rating: Causal Recommender Systems Authors: Karolina Grubinska &amp;amp; Médéric Thomas Table of Contents  An Introduction to Recommender Systems Motivation Overview of Methods Matrix Completion Problem Singular Value Decomposition Problem Definition The Missing-at-Random Assumption Does MAR really hold? Our Goal in This Framework In Mathematical Terms A proposal for Causal Recommender System: Causal Embeddings Causal Setup Results Comparison Conclusions Bibliography  An Introduction to Recommender Systems  One of the main characteristics of a modern, digital society that we currently live in is the heterogeneity of available items.</description>
+    </item>
+    
+    <item>
+      <title>Implementation of the Double/ Debiased Machine Learning Approach in Python</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/08_dml_blog_final/</link>
+      <pubDate>Tue, 18 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/08_dml_blog_final/</guid>
+      <description>Double Machine Learning Implementation  
+Christopher Ketzler, Guillermo Morishige
+  Abstract: The aim of this paper is to replicate and apply the approach provided by Chernozhukov et al. (2016) to get the causal estimand of interest: average treatment effect (ATE) $\ \eta_0 $ using Neyman orthogonality and cross-fitting. For observational data, we will estimate the causal relationship between the eligibility and participation in the 401(k) and its effect on net financial assets; as well to apply it to other datasets, to find the effect of the Pennsylvania Reemployment Bonus on the unemployment duration and the effect of smoking on medical costs.</description>
+    </item>
+    
+    <item>
+      <title>Implementation of the Double/ Debiased Machine Learning Approach in Python</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/double_machine_learning/</link>
+      <pubDate>Tue, 18 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/double_machine_learning/</guid>
+      <description>Double Machine Learning Implementation  
+Christopher Ketzler, Guillermo Morishige
+  Abstract: The aim of this paper is to replicate and apply the approach provided by Chernozhukov et al. (2016) to get the causal estimand of interest: average treatment effect (ATE) $\ \eta_0 $ using Neyman orthogonality and cross-fitting. For observational data, we will estimate the causal relationship between the eligibility and participation in the 401(k) and its effect on net financial assets; as well to apply it to other datasets, to find the effect of the Pennsylvania Reemployment Bonus on the unemployment duration and the effect of smoking on medical costs.</description>
+    </item>
+    
+    <item>
+      <title>New Courses for Summer Term 2019 online</title>
+      <link>https://humboldt-wi.github.io/blog/news/newcourseoutline/</link>
+      <pubDate>Sun, 03 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/news/newcourseoutline/</guid>
+      <description>Advanced Data Analytics for Management Support The module Advanced Data Analytics for Management Support (ADAMS) introduces students to the latest developments in the scope of data-driven management support. It covers relevant theories and concepts in machine learning against the background of concrete real-world applications in management science. Special emphasize is given to the analysis of textual data and other complex data such as sequences or images. Corresponding data is typically approached using the framework of deep artificial neural networks.</description>
+    </item>
+    
+    <item>
+      <title>Open Job Positions</title>
+      <link>https://humboldt-wi.github.io/blog/news/jobs/</link>
+      <pubDate>Sun, 03 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/news/jobs/</guid>
+      <description>März 2019  Momentan gibt es keine neuen Jobangebote Currently, there are no jobs available </description>
+    </item>
+    
+    <item>
+      <title> PhD Position</title>
+      <link>https://humboldt-wi.github.io/blog/news/phdposition/</link>
+      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/news/phdposition/</guid>
+      <description>Currently no open positions</description>
+    </item>
+    
+    <item>
+      <title>Consultation Hours</title>
+      <link>https://humboldt-wi.github.io/blog/news/consultationhours/</link>
+      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/news/consultationhours/</guid>
+      <description>As of March 2019 (SS 2019) consultation hours with Prof. Lessmann will take place as follows:
+all students on Thursday 10 - 11 am. Because of the great demand, appointments will be given only with previous registration by sending an e-mail to bujarek@hu-berlin.de.</description>
+    </item>
+    
+    <item>
+      <title>Uncertainty in Profit Scoring (Bayesian Deep Learning)</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/uncertainty-and-credit-scoring/</link>
+      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/uncertainty-and-credit-scoring/</guid>
+      <description>Uncertainty in Profit Scoring (Bayesian Deep Learning) Djordje Dotlic, Batuhan Ipekci, Julia Dullin Contents  Introduction Literature Review Theory
+A. Bayesian Inference
+B. Variational Inference
+C. Monte Carlo Dropout
+ Data Exploration
+ Results and Evaluation
+  Introduction  The problem of credit scoring is a very standard one in Machine Learning literature and applications. Predicting whether or not a loan applicant will go default is one of the typical examples of classification problem, and usually serves as a good ground for application and comparison of various machine learning techniques- which, over the years, became very precise in making a binary prediction.</description>
+    </item>
+    
+    <item>
+      <title>Building a LDA-based Book Recommender System</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/is_lda_final/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/is_lda_final/</guid>
+      <description>IS_LDA_final/*!** Twitter Bootstrap**//*!* Bootstrap v3.3.7 (http://getbootstrap.com)* Copyright 2011-2016 Twitter, Inc.* Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)*//*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */html {font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;}body {margin: 0;}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary {display: block;}audio,canvas,progress,video {display: inline-block;vertical-align: baseline;}audio:not([controls]) {display: none;height: 0;}[hidden],template {display: none;}a {background-color: transparent;}a:active,a:hover {outline: 0;}abbr[title] {border-bottom: 1px dotted;}b,strong {font-weight: bold;}dfn {font-style: italic;}h1 {font-size: 2em;margin: 0.</description>
+    </item>
+    
+    <item>
+      <title>Convolutional Neural Networks - sales forecast</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/cnn_sales_forecast/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/cnn_sales_forecast/</guid>
+      <description>Authors: Jakub Kondek, Karim Chennoufi, Kevin Noessler Introduction Motivation The increasing popularity of websites such as Instagram, Facebook or Youtube has lead to an increase in visual data over the last few years. These websites have become part of everyday life for many people and are therefore used excessively. The use of such websites has contributed among other things to enormously increasing amount of visual data in the process. Every day thousands of images and videos are uploaded, making it virtually impossible to analyze them by hand, as the sheer mass of content does not allow it.</description>
+    </item>
+    
+    <item>
+      <title>Generative Models</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/generativemodels/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/generativemodels/</guid>
+      <description>Authors: Gabriel Blumenstock, Yu Fan, Yang Tian Introduction What are generative models? In machine learning, generative models are used to generate new samples following the same distribution of the original data using unsupervised learning algorithms. Such methods provide a powerful way to detect and analyze enormous information of data, which has been applied to various domains, e.g. images and texts. By learning the statistical latent space of images or stories, the models are able to obtain human experiences and then “create” similar meaningful outputs.</description>
+    </item>
+    
+    <item>
+      <title>Opening the black box of machine learning</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/openingtheblackbox/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/openingtheblackbox/</guid>
+      <description>Authors: Christopher Ketzler, Stefan Grosse, Raiber Alkurdi Motivation The development of machine learning or deep learning (ML/DL) models which provides the user to have a decision to a specific problem has progressed enormously in the last years. The emergence of better computer hardware and therefore software, and the collecting of big data leads to more and more complicated algorithms. If these algorithms are no more understandable by average humans in terms of what are they doing or why they give a certain decision, we call them black-boxes.</description>
+    </item>
+    
+    <item>
+      <title>Text Classification with Hierarchical Attention Network</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/group5_han/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/group5_han/</guid>
+      <description>Text Classification with Hierarchical Attention Networks How to assign documents to classes or topics Authors: Maria Kränkel, Hee-Eun Lee - Seminar Information System 18&amp;frasl;19 After reading this blog post, you will know:
+ What text classification is and what it is used for What hierarchical attention networks are and how their architecture looks like How to classify documents by implementing a hierarchical attention network  Introduction Imagine you work for a company that sells cameras and you would like to find out what customers think about the latest release.</description>
+    </item>
+    
+    <item>
+      <title>Crime and Neural Nets</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/02lstmgruandbeyond/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/02lstmgruandbeyond/</guid>
+      <description>Crime and Neural Nets&amp;#182;Introducing Recurrent Neural Networks with Long-Short-Term Memory and Gated Recurrent Unit to predict reported Crime Incidents&amp;#182;Carolin Kunze, Marc Scheu, Thomas Siskos&amp;#182;Several police departments across the Unites States have been experimenting with software for crime prdiction. This started a controversial debate: Critics are questioning the predictiv power of the underlying machine learning models and point out biases towards certain crime typs and neighborhoods. We took this as occacion to look into the publicly available crime records of the city of chicago.</description>
+    </item>
+    
+    <item>
+      <title>ULMFiT: State-of-the-Art in Text Analysis</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/group4_ulmfit/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/group4_ulmfit/</guid>
+      <description>Universal Language Model Fine-Tuning (ULMFiT) State-of-the-Art in Text Analysis Authors: Sandra Faltl, Michael Schimpke &amp;amp; Constantin Hackober 
+Table of Contents  Introduction  Literature Review and Motivation Inductive Transfer Learning Our Datasets Overview ULMFiT   General-Domain Language Model Pretraining  Word Embeddings Example of a Forward Pass through the LM Preparations for Fine-Tuning  Matching Process for the Embedding Matrix Variable Length Backpropagation Sequences Adam Optimizer Dropout    Target Task Language Model Fine-Tuning  Freezing Learning Rate Schedule Discriminative Fine-Tuning   Target Task Classifier  Concat Pooling Linear Decoder Gradual Unfreezing Benchmarks Example of a Forward Pass through the Classifier   Our Model Extension  Results Without Vocabulary Reduction   Conclusion  Reference List  1.</description>
+    </item>
+    
+    <item>
+      <title>Uplift Modelling</title>
+      <link>https://humboldt-wi.github.io/blog/research/theses/uplift_modeling_blogpost/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/theses/uplift_modeling_blogpost/</guid>
+      <description>Uplift Modeling Blogcode{white-space: pre;}pre:not([class]) {background-color: white;}if (window.hljs) {hljs.configure({languages: []});hljs.initHighlightingOnLoad();if (document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) {window.setTimeout(function() { hljs.initHighlighting(); }, 0);}}h1 {font-size: 34px;}h1.title {font-size: 38px;}h2 {font-size: 30px;}h3 {font-size: 24px;}h4 {font-size: 18px;}h5 {font-size: 16px;}h6 {font-size: 12px;}.</description>
+    </item>
+    
+    <item>
+      <title>Convolutional Neural Networks (CNN)</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1718/02convolutionalneuralnetworks/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/02convolutionalneuralnetworks/</guid>
+      <description>Convolutional Neural Networks Authors: Elias Baumann, Franko Maximilian Hölzig, Josef Lorenz Rumberger Table of Content  Motivation Images Artificial Neural Networks Convolutional Neural Networks  Architecture Overview Layers Convolutional Layer  Filters Convolution for Functions Mathematical 2D convolution Back to 2D convolution Stride Padding Local receptive fields Parameter Sharing Weight Initialization im2col Convolution using im2col  Activation Function Layer  Why is a non-linear function needed? Logistic sigmoid function hyperbolic tangent function Rectified Linear Units  Pooling Layer  Max Pooling Average Pooling  Fully-connected Layer Forward pass in a convolutional neural network using im2col  The backpropagation algorithm  Backpropagation for Pooling layers The gradient descent algorithm The Vanishing Gradient Problem  Optimizing gradient descent  Stochastic gradient descent Mini-batch gradient descent Learning Rate  Transfer Learning Other interesting use cases for CNNs  Videos Neural language processing Variant calling   Motivation Within the last few years we observed a large increase of visual data.</description>
+    </item>
+    
+    <item>
+      <title>Financial Time Series Predicting with Long Short-Term Memory</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1718/06financialtime-series/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/06financialtime-series/</guid>
+      <description>Financial Time Series Predicting with Long Short-Term Memory Authors: Daniel Binsfeld, David Alexander Fradin, Malte Leuschner Introduction Failing to forecast the weather can get us wet in the rain, failing to predict stock prices can cause a loss of money and so can an incorrect prediction of a patient’s medical condition lead to health impairments or to decease. However, relying on multiple information sources, using powerful machines and complex algorithms brought us to a point where the prediction error is as little as it has ever been before.</description>
+    </item>
+    
+    <item>
+      <title>Image Analysis: Introduction to deep learning for computer vision</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1718/03imageanalysis/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/03imageanalysis/</guid>
+      <description>Image Analysis: Introduction to deep learning for computer vision Authors: Nargiz Bakhshaliyeva, Severin Hußmann, Robert Kittel In this blog, we present the practical use of deep learning in computer vision. You will see how Convolutional Neural Networks are being applied to process the visual data, generating some valuable knowledge. In particular, we focused on the object recognition task, aiming to classify what kind of an object (a dog or a cat) is presented within a particular image by using the notion of Transfer Learning.</description>
+    </item>
+    
+    <item>
+      <title>Numeric representation of text documents: doc2vec how it works and how you implement it</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1718/04topicmodels/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/04topicmodels/</guid>
+      <description>Numeric representation of text documents: doc2vec how it works and how you implement it Authors: Felix Idelberger, Alisa Kolesnikova, Jonathan Mühlenpfordt Introduction Natural language processing (NLP) received a lot of attention from academia and industry over the recent decade, benefiting from the introduction of new algorithms for processing the vast corpora of digitized text. A set of language modeling and feature learning techniques called word embeddings became increasingly popular for NLP tasks.</description>
+    </item>
+    
+    <item>
+      <title>Text Mining - Sentiment Analysis</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1718/05sentimentanalysis/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/05sentimentanalysis/</guid>
+      <description>Sentiment Analysis using Deep Learning Authors: Katja Metzger, Aydin Sader Fosalaie, Ninos Yonan Outline  Sentiment Analysis Introduction  Case Study  Keras IMDB Dataset
+ Data Analysis
+ Word Embeddings
+ Convolutional Neural Network
+  Summary  Sentiment Analysis Introduction Sentiment analysis is a very beneficial approach to automate the classification of the polarity of a given text. A helpful indication to decide if the customers on amazon like a product or not is for example the star rating.</description>
+    </item>
+    
+    <item>
+      <title>Wide and Deep Learning Model for Grocery Product Recommendations</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1718/08recommendation/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/08recommendation/</guid>
+      <description>Recommendation Systems Authors: Jingyi Liu, Brijesh Nanavati, Bharathi Srinivasan 
+Introduction The explosion of information with the advent of the Internet and the multitude of choices available to customers introduces complexity in a customer’s decision processes. Recommender system is a useful information-filtering tool, which guides customers to a narrower selection of products and consequently helps them make better decisions. Matching users to the right products saves customers time and effort leading to increased user satisfaction, which in turn earns customer loyalty.</description>
+    </item>
+    
+    <item>
+      <title>A Manual on How To Write a Blog Post</title>
+      <link>https://humboldt-wi.github.io/blog/research/instruction/manual/</link>
+      <pubDate>Mon, 19 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/instruction/manual/</guid>
+      <description>The Website of the Institute of Information Systems is based on a framework called Hugo. Hugo is a static website generator, which allows us to easily present your content of your deep learning projects. In order to present results in the best way, we combine this tool with another tool called Gist. Within this documentation you will learn how to work with those tools. The manual is composed of following sections:</description>
+    </item>
+    
+    <item>
+      <title>Image Captioning</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1718/07imagecaptioning/</link>
+      <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/07imagecaptioning/</guid>
+      <description>Image Captioning Authors: Benjamin Jaidi, Simon Remy, Murat Gökhan Yigit Introduction Image captioning aims for automatically generating a text that describes the present picture. In the last years it became a topic with growing interest in machine learning and the advances in this field lead to models that (depending on which evaluation) can score even higher than humans do. Image captioning can for instance help visually impaired people to grasp what is happening in a picture.</description>
+    </item>
+    
+    <item>
+      <title>Blockchain Night Series: final session for Winter Term</title>
+      <link>https://humboldt-wi.github.io/blog/news/bcn/</link>
+      <pubDate>Fri, 02 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/news/bcn/</guid>
+      <description>Final Blockchain Night of Winter semester is coming up soon!
+ICOs ever overcome the currently shady public image? Will they leave venture funds out of business and open a new era of crowdfunding? Our speakers have first-hand ICO expertise and will offer their unique views on this controversial subject.
+ Dr Philipp Hacker from HU Law School will start the discussion exploring the current legal framework of EU followed by Ingmar Wegel, vice president at Clipperton (international M&amp;amp;A advisors) who will share the current industry experience on raising funds through ICOs and why it might not be a good idea concluded by Balazs Deme, CEO at Herdius - first startup to boldly launch an ICO in Germany  Wether or not you are planning to participate or launch an ICO in the nearest future, we invite you to register at www.</description>
+    </item>
+    
+    <item>
+      <title>Neural Network Fundamentals</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1718/01neuralnetworkfundamentals/</link>
+      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/01neuralnetworkfundamentals/</guid>
+      <description>Neural Network Fundamentals Authors: Mahdi Bayat, Denis Augusto Pinto Maciel, Roman Proskalovich This blog post is a guide to help readers build a neural network from the very basics. It starts with an introduction to the concept of a neural networks concept and its early development. A step-by-step coding tutorial follows, through which relevant concepts are illustrated. Later in the post, there is also an introduction on how to build neural networks in Keras.</description>
+    </item>
+    
+    <item>
+      <title>Neural Networks into Production</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1718/09deeplearningintoproduction/</link>
+      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/09deeplearningintoproduction/</guid>
+      <description>Neural Networks into Production Authors: Mahdi Bayat, Denis Augusto Pinto Maciel, Roman Proskalovich Motivation Training and tuning machine learning model is a hard task. There are many variables involved that can make or break your results. However, also very important is, after fine tuning your model, to be able to deploy it, so it can be accessed by other researchers, developers and applications.
+A very common way to accomplish that is by using an API.</description>
+    </item>
+    
+    <item>
+      <title>Sample Post</title>
+      <link>https://humboldt-wi.github.io/blog/research/instruction/00samplepost/</link>
+      <pubDate>Thu, 14 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/instruction/00samplepost/</guid>
+      <description>TEST #hugo
+import numpy as np import pandas as pd 2+3  A Gentle Introduction to Neural Network Fundamentals 
+Imagine the following problem: There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.</description>
+    </item>
+    
+    <item>
+      <title>Meet the Contributors</title>
+      <link>https://humboldt-wi.github.io/blog/contributors/</link>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/contributors/</guid>
+      <description>Prof. Dr. Stefan Lessmann Prof. Lessmann is the head of the chair Information Systems at the Humboldt University of Berlin. In cooperation with his team, he initiated this website in oder to present, inform and discuss latest research results. For his more extensive bio click here. In research, he is most active in:
+ Artificial neural networks, deep learning Big Data Analytics Credit risk modeling Ensemble models and forecast combination Marketing and E-Commerce analytics Non-standard paradigms to learn from data Sentiment and social network analysis Time series forecasting</description>
+    </item>
+    
+    <item>
+      <title>Contact Us</title>
+      <link>https://humboldt-wi.github.io/blog/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/contact/</guid>
+      <description>We are happy to get in touch with you. For directly contacting us, please use one of the following:  Contact Person: Anna-Lena Bujarek
+Room: 326
+Telephone: +49 30 2093-5742
+Fax:+49 30 2093-5741
+E-mail: bujarek@hu-berlin.de
+  
+If you prefer mailing, see our address here: Humboldt-University of Berlin School of Business and Economics Chair of Information Systems University: Unter den Linden 6, 10099 Berlin Faculty: Spandauer Straße 1, 10178 Berlin</description>
+    </item>
+    
+  </channel>
+</rss>

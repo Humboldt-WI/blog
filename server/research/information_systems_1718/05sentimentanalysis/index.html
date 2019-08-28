@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Text Mining - Sentiment Analysis</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Sentiment Analysis for IMDB Movie Reviews">
+  
+
+  <meta name="generator" content="Hugo 0.54.0" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="https://humboldt-wi.github.io/blog/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="https://humboldt-wi.github.io/blog/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="https://humboldt-wi.github.io/blog/img/apple-touch-icon.png" />
+  
+
+  <link href="https://humboldt-wi.github.io/blog/css/owl.carousel.css" rel="stylesheet">
+  <link href="https://humboldt-wi.github.io/blog/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://humboldt-wi.github.io/index.xml" type="application/rss+xml" title="Institute of Infomation Systems at HU-Berlin">
+
+  
+  <meta property="og:title" content="Text Mining - Sentiment Analysis" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/research/information_systems_1718/05sentimentanalysis//" />
+  <meta property="og:image" content="img/logoGross.png" />
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://humboldt-wi.github.io/blog/">
+                    <img src="https://humboldt-wi.github.io/blog/img/logo.png" alt="Text Mining - Sentiment Analysis logo" class="hidden-xs hidden-sm">
+                    <img src="https://humboldt-wi.github.io/blog/img/logo-small.png" alt="Text Mining - Sentiment Analysis logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Text Mining - Sentiment Analysis - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/news/">News</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/contributors/">Contributors</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/research/">research</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Text Mining - Sentiment Analysis</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Seminar Information Systems (WS17/18)</a> | March 15, 2018</p>
+
+                        <div id="post-content">
+                          
+
+<h1 id="sentiment-analysis-using-deep-learning">Sentiment Analysis using Deep Learning</h1>
+
+<h4 id="authors-katja-metzger-aydin-sader-fosalaie-ninos-yonan">Authors: Katja Metzger, Aydin Sader Fosalaie, Ninos Yonan</h4>
+
+<h2 id="outline">Outline</h2>
+
+<ul>
+<li><h4 id="sentiment-analysis-introduction-br-br">Sentiment Analysis Introduction <br><br></h4></li>
+
+<li><h4 id="case-study">Case Study</h4>
+
+<ul>
+<li>Keras IMDB Dataset<br><br></li>
+<li>Data Analysis<br><br></li>
+<li>Word Embeddings<br><br></li>
+<li>Convolutional Neural Network<br><br></li>
+</ul></li>
+
+<li><h4 id="summary">Summary</h4></li>
+</ul>
+
+<hr />
+
+<h2 id="sentiment-analysis-introduction">Sentiment Analysis Introduction</h2>
+
+<p>Sentiment analysis is a very beneficial approach to automate the classification of the polarity of a given text. A helpful indication to decide if the customers on amazon like a product or not is for example the star rating. The same applies to many other use cases. However, the underlying basis for the review rating is the raw text material containing the customer&rsquo;s opinion. Therefore, analyzing and categorizing the sentiment of reviews, emails, blog posts and other texts is undoubtedly useful for firms to evaluate the perception of their customers regarding their products, services or as well of the firm by itself. Analyzing the public opinion and brand awareness supports managing the strategy of a firm and the business decisions.</p>
+
+<p>Now before we start with the our tutorial, let&rsquo;s first have a look on the basic sentiment analysis steps and characteristics.</p>
+
+<h3 id="sentiment-analysis">Sentiment Analysis</h3>
+
+<ul>
+<li>Computational study of opinions, sentiments and emotions in text</li>
+<li>Task: Classifying the expressed opinion of a text (positive, negative, neutral)</li>
+<li>Sentiment analysis uses:
+
+<ul>
+<li>natural language processing (NLP)</li>
+<li>text analysis</li>
+<li>computational techniques</li>
+</ul></li>
+<li>to automate the extraction or classification of sentiment from text</li>
+</ul>
+
+<h3 id="different-levels-of-sentiment-analysis">Different levels of Sentiment Analysis:</h3>
+
+<ul>
+<li>Document based: One score for the whole document (e.g. review)</li>
+<li>Sentence based: Does sentence express positive, neutral, negative opinion</li>
+<li>Aspect based: Focus on a specific aspect and identify what people like/dislike</li>
+</ul>
+
+<h3 id="why-do-we-need-sentiment-analysis">Why do we need sentiment analysis?</h3>
+
+<ul>
+<li>it becomes a hot area in decisionmaking</li>
+<li>97% of customer’s read online reviews for local business in 2017 (Local Consumer Review Survey 2017)</li>
+<li>85% of consumers trust online reviews as much as personal recommendations (Local Consumer Review Survey 2017)</li>
+</ul>
+
+<h3 id="challenges-of-sentiment-analysis">Challenges of Sentiment Analysis</h3>
+
+<ul>
+<li>abbreviations (e.g. LOL, YOLO, CD9 → Code 9, parents around)</li>
+<li>emoticons</li>
+<li>sarcasm</li>
+<li>negation</li>
+</ul>
+
+<p><img src="/blog/img/seminar/sentiment_analysis/Smiley.PNG" alt="" /></p>
+
+<hr />
+
+<h3 id="preprocessing">Preprocessing</h3>
+
+<p><img src="/blog/img/seminar/sentiment_analysis/Preprocessing.png" alt="" /></p>
+
+<h3 id="example">Example</h3>
+
+<h4 id="1-step-tokenization-split-each-token-word-for-itself">1. Step Tokenization: Split each token/word for itself</h4>
+
+<script src="https://gist.github.com/KatMet/9928625987fb7f0dce84c2227a5da1b1.js"></script>
+
+<h4 id="2-step-stop-word-removal-remove-stop-words-such-as-by-my-and-a">2. Step Stop word removal: remove stop words such as: by, my, and, a…</h4>
+
+<script src="https://gist.github.com/KatMet/3d3e5d758ebf10b1315f230e327bac72.js"></script>
+
+<h4 id="3-step-stemming-reduce-each-token-word-into-the-original-word-stem-root-form">3. Step Stemming: reduce each token/word into the original word stem/root form</h4>
+
+<script src="https://gist.github.com/anonymous/d837946518382fa4c08920e20bf448cd.js"></script>
+
+<h4 id="4-step-sentiment-assignment-assign-positive-negative-and-neutral-words-and-the-overall-sentiment">4. Step Sentiment assignment: assign positive, negative and neutral words and the overall sentiment</h4>
+
+<script src="https://gist.github.com/aydinsa/bbeae30127dd57e49400685dc3d60ba2.js"></script>
+
+<h1 id="case-study-1">Case Study:</h1>
+
+<h2 id="keras-imdb-movie-review-dataset">Keras IMDB Movie Review Dataset</h2>
+
+<p>For this tutorial, we chose the so called Large Movie Review Dataset often referred to as Keras IMDB dataset. Starting with the procedure of the data exploration, we will further explain how to devise a model that can predict the sentiment of movie reviews as either negative or positive. Therefore, we will use Python and the Keras deep learning library. However, the overall goal of this tutorial is to focus on explaining how all the things work rather than achieving the best accuracies. Our models perfomed good but might have also achieved better accuracy results when using a bigger dataset. <br><br></p>
+
+<h4 id="keras-imdb-movie-review-dataset-1">Keras IMDB Movie Review Dataset</h4>
+
+<ul>
+<li>The dataset has originally been used in Maas et al. (2011): Learning Word Vectors for Sentiment Analysis</li>
+<li>Overall distribution of labels is balanced
+
+<ul>
+<li>50.000 reviews (25.000 for training and 25.000 for testing with each 12.500 reviews marked as positive or negative)</li>
+</ul></li>
+<li>It is a binary (0 = negative or 1 = positive) classification problem.
+
+<ul>
+<li>The negative reviews have a score from 4 out of 10,</li>
+<li>The positive reviews have a score from 7 out of 10.</li>
+<li>Thus, neutral rated reviews are not included in the train/test sets.</li>
+<li>To not bias the ratings between the movies, in the entire dataset, not more than 30 reviews for a specific movie were allowed.</li>
+</ul></li>
+<li>The reviews have been preprocessed and encoded as a sequence of integer word indexes, where each word is indexed by its overall frequency (e.g. integer “5” encodes the 5th most frequent words in the dataset).</li>
+</ul>
+
+<p><img align="center" width="500" height="500"
+     style="display:block;margin:0 auto;"
+     src="/blog/img/seminar/sentiment_analysis/Review.PNG">
+Source: <a href="http://www.imdb.com/title/tt0120338/reviews">http://www.imdb.com/title/tt0120338/reviews</a></p>
+
+<h3 id="tutorial">Tutorial:</h3>
+
+<ul>
+<li>The overall goal and focus is to evaluate whether sentiment expressed in movie reviews obtained from IMDB can effectively indicate public opinion</li>
+<li>The underlying data mining question becomes whether we can devise a model that can measure the polarity of the text accurately <br><br></li>
+</ul>
+
+<p>Before we will have look into the Keras IMDB dataset and its characteristics you should keep the following assumptions in mind:</p>
+
+<p>Movie reviews are not expected to have the same text length (number of words)
+Neural networks are expecting a fixed size of input vector
+We will therefore have to either truncate long reviews or pad short reviews
+Before building the deep learning models it is necessary to gain a clear understanding of the shape and complexity of the dataset. Therefore we show you how to calculate some crucial properties and how to find key statistics through data exploration. This is required because some of the following decisions taken when building the models were based on specific characteristics of the Keras IMDB dataset.</p>
+
+<p>Now let&rsquo;s have a deeper look at our data.</p>
+
+<script src="https://gist.github.com/aydinsa/2962241a28fd5111ad9060b7d402165e.js"></script>
+
+<p>As you can see, we have 25.000 train and 25.000 test sequences.<br>
+Further, by printing the number of unique classes, it becomes obvious that it is a binary classification problem for positive and negative sentiment in the review.<br>
+The reviews consists of list of integers. Each integer represents one word in a movie review, where each word is indexed by its overall frequency in the dataset.</p>
+
+<h3 id="the-top-10-most-frequently-used-words-across-the-dataset">The top 10 most frequently used words across the dataset:</h3>
+
+<p>To show the top 10 most frequent words across the dataset we need to run the snippet below.
+Our helperfunction-file includes a function to load the IMDB dataset that contains the original reviews with their text. You can also download the original files here (<a href="https://s3.amazonaws.com/text-datasets/imdb_full.pkl">https://s3.amazonaws.com/text-datasets/imdb_full.pkl</a>).
+However, the most frequent words in the reviews are as expected the typical stopwords (&ldquo;the&rdquo;, &ldquo;and&rdquo;, &ldquo;a&rdquo;, &ldquo;of&rdquo;&hellip;).
+<script src="https://gist.github.com/aydinsa/a5d2e23a02809a525a65c85fec9a3c65.js"></script></p>
+
+<h3 id="wordcloud">Wordcloud</h3>
+
+<p>This wordclound illustration presents the most common words across the dataset but excludes the stopwords.<br>
+The most common words are: &lsquo;movie&rsquo;, &lsquo;film&rsquo;, &lsquo;story&rsquo;, &lsquo;character&rsquo;, &lsquo;scene&rsquo;&hellip;</p>
+
+<p>If you look closer you will find also the terms &lsquo;good&rsquo; and &lsquo;bad&rsquo; within the wordcloud. In general, these words do not provide us with detailed information on the polarity of the reviews. Consequently, further exploration regarding the positive and negative sentiment words is needed.
+<script src="https://gist.github.com/aydinsa/1cc257a6ad069f6cc6a6ba406979ff8f.js"></script></p>
+
+<h3 id="summary-statistics">Summary  Statistics:</h3>
+
+<script src="https://gist.github.com/aydinsa/cea393f97bd595ff09582c3da13dd0db.js"></script>
+
+<p>As you can see the number of unique words in the dataset is given as 88.585. This is an interesting fact indicating that there are less than 100.000 words within the whole dataset. Moreover, the calculated average review length amounts to 238.71 words in total with a standard deviation of 176.49 words.</p>
+
+<h3 id="boxplot">Boxplot</h3>
+
+<script src="https://gist.github.com/aydinsa/adb4cd943dcd26da5c7c129d099f04dd.js"></script>
+
+<p>As a result, we get to the information that most reviews have less than 500 words and the mass of the distribution can be covered with a length of 400 to 500 words. Further, the overall distribution review length is positively skewed.</p>
+
+<h3 id="which-words-make-a-review-positive-or-negative">Which words make a review positive or negative?</h3>
+
+<p>In addition, to show how the combination of words can influence the polarity of a given text, we need to have a basic understanding of the concept of n-grams. N-grams are the result of fragmenting a text into N consecutive pieces.<br><br> For example: “Good” (unigram) is definitely positive and “very good” (bigram) even more. However, “not good” (bigram) seems to be less positive. <br><br> Therefore, you can use the NLTK library to remove the stopwords from the original dataset. Further, you can apply a simple logistic regression to get more insights to what important unigrams and bigrams make a review positive or negative.</p>
+
+<h4 id="which-words-make-a-review-positive">Which words make a review positive?</h4>
+
+<script src="https://gist.github.com/aydinsa/df521f7530d3dd7f53813f35d80040f3.js"></script>
+
+<h4 id="which-words-make-a-review-negative">Which words make a review negative?</h4>
+
+<script src="https://gist.github.com/aydinsa/55289ce8bcc0f4f72329b1d3f5bf251b.js"></script>
+
+<h4 id="which-2-grams-make-it-positive">Which 2-grams make it positive?</h4>
+
+<script src="https://gist.github.com/aydinsa/8017863e55d1bd1438f93a144e64c1c7.js"></script>
+
+<h4 id="which-2-grams-make-it-negative">Which 2-grams make it negative?</h4>
+
+<script src="https://gist.github.com/aydinsa/88fd5e4e9c8f3493600810741d61b14a.js"></script>
+
+<p><br></p>
+
+<h2 id="word-embeddings">Word Embeddings</h2>
+
+<p>The Keras definition says that word embeddings turn positive integers (indexes) into dense vectors of fixed size. Generally speaking, word embeddings is a technique in the field of NLP. It describes a technique where words are encoded as dense vectors in a high-dimensional space that carry a meaning. Each word has a specific position within the vector space. This position is learned from the text during the training and is premised on the surrounding words. Training the model will cause that semantically similar words will appear closer together also in the vector space.</p>
+
+<h4 id="bag-of-words">Bag of Words</h4>
+
+<p>A simple bag of words has for the same representation different meanings. Additionally, huge text datasets would be represented by a vector comprised by many zeros and only a few one’s which is not only inefficient but leads also to data sparsity.</p>
+
+<ul>
+<li>“Netflix is better than Maxdome”
+
+<ul>
+<li>Bag of words: [Netflix] [is] [better] [than] [Maxdome]<br><br></li>
+</ul></li>
+<li>One Hot Encoding: index of the specific word becomes a one, the rest becomes a zero
+
+<ul>
+<li>Maxdome → 00001</li>
+<li>better → 00100</li>
+<li>Netflix → 10000</li>
+</ul></li>
+</ul>
+
+<h4 id="one-hot-encoding-problems">One Hot Encoding - Problems:</h4>
+
+<ol>
+<li>Word ordering information is lost:
+    * Netflix is better than Maxdome vs. Maxdome is better than Netflix
+    * Different meaning but same representation<br><br></li>
+<li>Data sparsity:
+    * many zeros and few ones (imagine 20.000 zeros)<br><br></li>
+
+<li><p>Words as atomic symbols
+    * cat and dog would have the same distance as cat and apple
+    * but cats and dogs are closer together (both are animals)
+    * semantic similarity and relations is all learned from the data</p></li>
+
+<li><p>Very hard to find higher level features when using One Hot Encoding
+<br><br>
+<img align="center" width="450" height="120"
+ style="display:block;margin:0 auto;"
+ src="/blog/img/seminar/sentiment_analysis/Cat.PNG"></p></li>
+</ol>
+
+<h3 id="example-1">Example</h3>
+
+<p>Below we want to show you an example why using dense vectors has a computational benefit when working with deep learning models such as CNNs. First, imagine you have the sentence &ldquo;deep learning is very deep&rdquo;. Next, you have to decide on how long the vector should be (usually a length of 32 or 50). For this example we assign a length of 6 factors per index in this post to keep it readable.</p>
+
+<p><img align="center" width="400" height="200"
+     style="display:block;margin:0 auto;"
+     src="/blog/img/seminar/sentiment_analysis/deep.PNG"></p>
+
+<p>Now instead of ending up with huge one-hot encoded vectors, an embedding matrix keeps the size of a vector much smaller. The embedded vectors are learned during the training process. This is computationally efficient when using very big datasets. Below you see an example for the embedding matrix for the word deep:</p>
+
+<h3 id="deep-32-02-48-21-56-15-br-br">deep = [.32, .02, .48, .21, .56, .15]<br><br></h3>
+
+<p><img align="center" width="500" height="250"
+     style="display:block;margin:0 auto;"
+     src="/blog/img/seminar/sentiment_analysis/vector.PNG"></p>
+
+<ul>
+<li>Also relationships are learned, for example the information of gender<br><br></li>
+<li>Subtraction of vector [woman - man] is the same as [queen - king]</li>
+</ul>
+
+<h4 id="word-embeddings-benefits">Word Embeddings - Benefits:</h4>
+
+<ol>
+<li><p>Trained in a completely unsupervised way, so you don&rsquo;t need labeled data <br><br></p></li>
+
+<li><p>Reduce data sparsity because you are not dealing with a huge number of 0/1 you have a lot of float values<br><br></p></li>
+
+<li><p>Semantic hashing</p>
+
+<ul>
+<li>representing the information of word meaning of the words</li>
+<li>semantic hashing: semantically similar words are closer <br><br></li>
+</ul></li>
+
+<li><p>Freely available for out of the box usage</p></li>
+</ol>
+
+<h2 id="train-your-own-embedding-layer">Train Your Own Embedding Layer</h2>
+
+<h4 id="in-a-nutshell">In a Nutshell:</h4>
+
+<p>In the following you will see an example of how to learn a word embedding which is based on a neural network. This example aims to show how Keras supports word embeddings for deep learning in detail. First, it requires the input data to be integer encoded, so that each word is represented by a unique integer. Then the Embedding layer is initialized with random weights and will learn an embedding for all words in the training dataset. We will define a small problem with ten text documents and classify them as positive &ldquo;1&rdquo; or negative &ldquo;0&rdquo;. We are using a Keras Sequential Model to finish the task.
+<script src="https://gist.github.com/aydinsa/51ba0e1725b9f950a38e0b0ba01c05f9.js"></script>
+<script src="https://gist.github.com/aydinsa/f0b15e7185cdb6620e4590c088de191e.js"></script></p>
+
+<h4 id="one-hot-encoding">One Hot Encoding</h4>
+
+<p>Next, each document has to be integer encoded. This means that as input the Embedding layer will have sequences of integers. We use the Keras one_hot() function that creates a hash of each word as an efficient integer encoding. Further, the vocabulary size is estimated at 20.</p>
+
+<script src="https://gist.github.com/aydinsa/aa09ab8c2c8e41e158faf111fd7410f9.js"></script>
+#### Padding
+As Neural Networks are expecting a fixed size of input vector we have to pad each document to ensure they are of the same length.
+<script src="https://gist.github.com/aydinsa/8a10fa89d00b52093f2d2417a30910c0.js"></script>
+
+<h4 id="keras-embedding-layer">Keras Embedding Layer</h4>
+
+<p>Finally, we will define our Embedding layer as part of a neural network model for binary classification.
+The Embedding has a vocabulary of 20 words and an input length of 4 words. We will choose a typical embedding space of 8 dimensions. Importantly, the output from the Embedding layer will be 4 vectors of 32 dimensions each, one for each word. In the end, we flatten this to a one 32-element vector to pass on to the Dense output layer.</p>
+
+<p>The trained model shows that it learned the training dataset perfectly (which is not surprising).
+<script src="https://gist.github.com/aydinsa/30f74d872b439f2ccf4b64c8ad925d34.js"></script>
+<script src="https://gist.github.com/aydinsa/12b3405922dc7113cc99101ce7e5218a.js"></script></p>
+
+<h2 id="machine-learning-approach-for-sentiment-classification">Machine Learning Approach for Sentiment Classification</h2>
+
+<p>In the following code section you will find our machine learning approach for the sentiment classification task on the Keras IMDB dataset.</p>
+
+<p>First, we will load the dataset as done before. The input_dim describes the size of the vocabulary in the data. We used a vocabulary size of 5000 (0 - 4999). Overall, we tested the vocabulary size between 5.000 – 10.000 words to reduce the parameters and improve the performance. Second, for the output_dim (output dimension) we defined a 32 dimensional vector space in which the words will be embedded. Third, the input_lenght of the input sequences was set to 500 because we will only consider a maximum review length of 500 words, due to the distribution of review lengths seen in the boxplot in the data exploration part. As CNNs expect a fixed size of input vectors and we set the input_lenght to 500 words, we have to either truncate longer reviews or pad shorter reviews with zeros at the end when loading the data.
+<script src="https://gist.github.com/aydinsa/d6ac48c9993995f9f941a26e0c02b943.js"></script>
+<script src="https://gist.github.com/aydinsa/244a5b28501bccf3268db60e02454f55.js"></script>
+<script src="https://gist.github.com/aydinsa/8817e3a809271776512e77a9d28cb5e9.js"></script></p>
+
+<h2 id="multilayer-perceptron-model">Multilayer Perceptron Model</h2>
+
+<p>One of the models we chose to predict the sentiment of the IMDB dataset is a multilayer perceptron model. It is a feedforward neural network.  It consists of three layers, the input layer, the hidden layer and the output layer. It is interconnected over neurons, each of them is connected to the neurons in the next layer. We used a “Sequential” model from Keras to build the MLP. Keras defines this model as a linear stack of layers (Keras Documentation). The embedding layer which was built build already in the previous chapter Word Embeddings served as the input layer. The next step was to flatten this layer to one dimension and afterwards to add the hidden layer with 250 units. A rectifier activation function was used in this part of the model. The last layer has an output of one neuron which is binary and can have the values 0 or 1 (positive or negative). It is activated with the sigmoid function.
+<script src="https://gist.github.com/aydinsa/a356ebaa57d89663020fa6bcd7afb4e3.js"></script>
+<script src="https://gist.github.com/aydinsa/d40e024f0a362832c892ce7a2b90e314.js"></script>
+<script src="https://gist.github.com/aydinsa/e864c4618dde7a91c780eea76b767846.js"></script></p>
+
+<p>As you can see, this  simple model achieved a score of nearly 87.38% which is very close to the original paper. But we can get more out of this. Therefore lets try another network model - the Convolutional Neural Networks.</p>
+
+<h4 id="cnn-model">CNN Model</h4>
+
+<p>After performing a MLP, we conducted a one-dimensional convolutional neural network for the IMDB dataset. When looking at our dataset, an advantage for us is that Keras already provides the necessary one-dimensional convolutions as well as the Conv1D and MaxPooling1D classes. The first layer to start with is the embedding layer. After transforming the words into dense vectors they can be shifted to a convolutional layer, that with the help of the filters, indicates the proper sentiment in the sequence of words.</p>
+
+<p>In contrast to image pixels, in which the filters in the convolutional layer would slide over local patches, in NLP tasks, the filters would instead slide over full rows of the input matrix representing the words. Therefore, the width of the filters is equal compared to the width of the matrix in the embedding layer. Nevertheless, the height may vary but it is quite common to determine a sliding window of over two to five words at a time.</p>
+
+<p>Next, the pooling layer is applied right after the convolutional layer.  Generally speaking, max-pooling is the most common implementation. An advantage of the pooling layer is the outcome of a fixed size output matrix. This process is inevitable because in the end the output has to be fed into the classifier. Furthermore, the operation aggregates features over a region by calculating the maximum value of the features in the region. This means that it reduces the output dimensionality while still keeping the most salient information.</p>
+
+<p>Afterwards, the Flatten() operation takes the output and flattens the structure in order to create a single long feature vector, so that it can be used by the following dense layer for the final classification. The final dense layer with the activation function sigmoid transforms the output into a single output in order to indicate the sentiment.</p>
+
+<p>In the end we used the binary_crossentropy loss function for our binary classification problem. Again, the Adam optimization algorithm is performed, since it is known to be very fast, efficient and had become very popular in recent deep learning model applications.</p>
+
+<p><img align="center" width="500" height="500"
+     style="display:block;margin:0 auto;"
+     src="/blog/img/seminar/sentiment_analysis/Cnn.PNG">
+Source: <a href="https://infoscience.epfl.ch/record/221430/files/EPFL_TH7148.pdf">https://infoscience.epfl.ch/record/221430/files/EPFL_TH7148.pdf</a></p>
+
+<script src="https://gist.github.com/aydinsa/4a7e669d4026c7c926e95d073e24412f.js"></script>
+<script src="https://gist.github.com/aydinsa/80128eb66e7e676fe79798ed0f018678.js"></script>
+<script src="https://gist.github.com/aydinsa/4fd74d5083d90905b01a7b78404de9f7.js"></script>
+After two rounds we achieved quick a satisfactory outcome of 88.75% accuracy. Besides, it is an improvement compared to the end result of the MLP model we conducted earlier. Now there are a lot of opportunities to optimize and configure the model. You can play with the different settings and try to boost the performance.
+
+<script src="https://gist.github.com/aydinsa/117067dfe051085f1c5a502a6bd3bb7c.js"></script>
+
+<h4 id="confusion-matrix">Confusion Matrix</h4>
+
+<p>Calculating a confusion matrix can give you a better idea of what your classification model is getting right and what types of errors it is making. The confusion matrix below, visualizes the outcome of the binary classification:</p>
+
+<ul>
+<li>Total of 2813 wrong classifications and 22187 true classifications</li>
+<li>True negative: 11093 | False positive: 1407</li>
+<li>False negative: 1406 | True positive: 11094</li>
+<li>Accuracy: 88,75%
+<script src="https://gist.github.com/aydinsa/f333a768f11efe7c5ee25dd620d69027.js"></script></li>
+</ul>
+
+<h3 id="summary-1">Summary</h3>
+
+<ul>
+<li><h4 id="in-this-tutorial-we-discovered-the-topic-of-sentiment-analysis-with-the-keras-imdb-dataset-br-br">In this tutorial, we discovered the topic of Sentiment Analysis with the Keras IMDB dataset.<br><br></h4></li>
+
+<li><h4 id="we-learned-how-to-develop-deep-learning-models-for-sentiment-analysis-including">We learned how to develop deep learning models for sentiment analysis including:</h4>
+
+<ul>
+<li>How to handle the basic dictionary approach for sentiment analysis<br><br></li>
+<li>How to load review and analyze the IMDB dataset within Keras<br><br></li>
+<li>How to use and build word embeddings with the Keras Embedding Layer for deep learning<br><br></li>
+<li>How to develop a one-dimensional CNN model for sentiment analysis and how it works for NLP<br><br></li>
+</ul></li>
+
+<li><h4 id="how-to-continue-with-this-tutorial">How to continue with this tutorial?</h4>
+
+<ul>
+<li>Try to experiment with the number of features such as filter size in the convolutional layer<br><br></li>
+<li>You can also experiment with several convolutional layers and maxpooling layers, etc.<br><br></li>
+<li>Try to obtain higher accuracy</li>
+</ul></li>
+</ul>
+
+<h3 id="limitations-and-further-topics">Limitations and further Topics</h3>
+
+<ul>
+<li>CNNs are not able to encode long-range dependencies, and therefore, for some language modeling tasks, where long-distance dependence matters, other  architectures are preferred:<br><br>
+
+<ul>
+<li>Recurrent Neural Networks (RNN)<br><br></li>
+<li>Long Short Term memory (LSTM)</li>
+</ul></li>
+</ul>
+
+                        </div>
+                        
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (31)</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/instruction">instruction (2)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/a/b-testing"><i class="fa fa-tags"></i> a/b-testing</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/attention"><i class="fa fa-tags"></i> attention</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/awd-lstm"><i class="fa fa-tags"></i> awd-lstm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-deep-learning"><i class="fa fa-tags"></i> bayesian-deep-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-topic-modelling"><i class="fa fa-tags"></i> bayesian-topic-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/black-box"><i class="fa fa-tags"></i> black-box</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/blockchain"><i class="fa fa-tags"></i> blockchain</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/causal-inference"><i class="fa fa-tags"></i> causal-inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class17/18"><i class="fa fa-tags"></i> class17/18</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class18/19"><i class="fa fa-tags"></i> class18/19</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class19"><i class="fa fa-tags"></i> class19</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/classification"><i class="fa fa-tags"></i> classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/coarsened-exact-matching"><i class="fa fa-tags"></i> coarsened-exact-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/conversion"><i class="fa fa-tags"></i> conversion</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks"><i class="fa fa-tags"></i> convolutional-neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/data-simulation"><i class="fa fa-tags"></i> data-simulation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/deep-learning"><i class="fa fa-tags"></i> deep-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/distant-transfer-learning"><i class="fa fa-tags"></i> distant-transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/dml"><i class="fa fa-tags"></i> dml</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/doc2vec"><i class="fa fa-tags"></i> doc2vec</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/document-embeddings"><i class="fa fa-tags"></i> document-embeddings</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/explanation"><i class="fa fa-tags"></i> explanation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/fine-tuning"><i class="fa fa-tags"></i> fine-tuning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/genetic-matching"><i class="fa fa-tags"></i> genetic-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/gru"><i class="fa fa-tags"></i> gru</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/hierarchical-network"><i class="fa fa-tags"></i> hierarchical-network</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ice"><i class="fa fa-tags"></i> ice</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-analysis"><i class="fa fa-tags"></i> image-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-captioning"><i class="fa fa-tags"></i> image-captioning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/inference"><i class="fa fa-tags"></i> inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset"><i class="fa fa-tags"></i> keras-imdb-dataset</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/knn-algorithm"><i class="fa fa-tags"></i> knn-algorithm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/language-modelling"><i class="fa fa-tags"></i> language-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lda"><i class="fa fa-tags"></i> lda</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lime"><i class="fa fa-tags"></i> lime</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/long-short-term-memory"><i class="fa fa-tags"></i> long-short-term-memory</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lstm"><i class="fa fa-tags"></i> lstm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/machine-learning"><i class="fa fa-tags"></i> machine-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matching-methods"><i class="fa fa-tags"></i> matching-methods</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matchit"><i class="fa fa-tags"></i> matchit</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/monte-carlo-dropout"><i class="fa fa-tags"></i> monte-carlo-dropout</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/movie-reviews"><i class="fa fa-tags"></i> movie-reviews</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nearest-neighbor"><i class="fa fa-tags"></i> nearest-neighbor</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/neural-network"><i class="fa fa-tags"></i> neural-network</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/neural-networks"><i class="fa fa-tags"></i> neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nlp"><i class="fa fa-tags"></i> nlp</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/optimal-matching"><i class="fa fa-tags"></i> optimal-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/pdp"><i class="fa fa-tags"></i> pdp</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/pretraining"><i class="fa fa-tags"></i> pretraining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score"><i class="fa fa-tags"></i> propensity-score</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score-weighting"><i class="fa fa-tags"></i> propensity-score-weighting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommendation"><i class="fa fa-tags"></i> recommendation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-system"><i class="fa fa-tags"></i> recommender-system</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-systems"><i class="fa fa-tags"></i> recommender-systems</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/rnn"><i class="fa fa-tags"></i> rnn</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/rs"><i class="fa fa-tags"></i> rs</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-analysis"><i class="fa fa-tags"></i> sentiment-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-classification"><i class="fa fa-tags"></i> sentiment-classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/share-price-prediction"><i class="fa fa-tags"></i> share-price-prediction</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/simulation"><i class="fa fa-tags"></i> simulation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-analysis"><i class="fa fa-tags"></i> text-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-mining"><i class="fa fa-tags"></i> text-mining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series"><i class="fa fa-tags"></i> time-series</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series-forecasting"><i class="fa fa-tags"></i> time-series-forecasting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/transfer-learning"><i class="fa fa-tags"></i> transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/treatment-effect"><i class="fa fa-tags"></i> treatment-effect</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/twitter"><i class="fa fa-tags"></i> twitter</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ulmfit"><i class="fa fa-tags"></i> ulmfit</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift"><i class="fa fa-tags"></i> uplift</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift-modelling"><i class="fa fa-tags"></i> uplift-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/variational-inference"><i class="fa fa-tags"></i> variational-inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/wikitext-103"><i class="fa fa-tags"></i> wikitext-103</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/word-embeddings"><i class="fa fa-tags"></i> word-embeddings</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<footer id="footer">
+    <div class="container">
+
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            
+
+            
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+            
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-112025566-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+
+<script src="//maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+<script src="https://humboldt-wi.github.io/blog/js/hpneo.gmaps.js"></script>
+<script src="https://humboldt-wi.github.io/blog/js/gmaps.init.js"></script>
+<script src="https://humboldt-wi.github.io/blog/js/front.js"></script>
+
+
+<script src="https://humboldt-wi.github.io/blog/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

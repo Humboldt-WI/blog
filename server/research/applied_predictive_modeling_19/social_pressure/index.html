@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Social Pressure and Voter Turnout - A Causal Machine Learning Approach</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Using Causal Machine Learning to optimise the impact of voter targeting campaigns.">
+  
+
+  <meta name="generator" content="Hugo 0.54.0" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="https://humboldt-wi.github.io/blog/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="https://humboldt-wi.github.io/blog/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="https://humboldt-wi.github.io/blog/img/apple-touch-icon.png" />
+  
+
+  <link href="https://humboldt-wi.github.io/blog/css/owl.carousel.css" rel="stylesheet">
+  <link href="https://humboldt-wi.github.io/blog/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://humboldt-wi.github.io/index.xml" type="application/rss+xml" title="Institute of Infomation Systems at HU-Berlin">
+
+  
+  <meta property="og:title" content="Social Pressure and Voter Turnout - A Causal Machine Learning Approach" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/research/applied_predictive_modeling_19/social_pressure//" />
+  <meta property="og:image" content="img/logoGross.png" />
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://humboldt-wi.github.io/blog/">
+                    <img src="https://humboldt-wi.github.io/blog/img/logo.png" alt="Social Pressure and Voter Turnout - A Causal Machine Learning Approach logo" class="hidden-xs hidden-sm">
+                    <img src="https://humboldt-wi.github.io/blog/img/logo-small.png" alt="Social Pressure and Voter Turnout - A Causal Machine Learning Approach logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Social Pressure and Voter Turnout - A Causal Machine Learning Approach - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/news/">News</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/contributors/">Contributors</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/research/">research</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Social Pressure and Voter Turnout - A Causal Machine Learning Approach</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Seminar Applied Predictive Modeling (SS19)</a> | August 13, 2019</p>
+
+                        <div id="post-content">
+                          
+
+<h1 id="revisiting-social-pressure-and-voter-turnout-causal-inference-with-supervised-learning-methods"><strong>Revisiting Social Pressure and Voter Turnout: Causal Inference with Supervised Learning Methods</strong></h1>
+
+<p><strong>Julius Reimer &amp; Toby Chelton</strong></p>
+
+<p><img align = "center" width ="800" src="/blog/img/seminar/social_pressure_voting/polling_place.jpg"></p>
+
+<p><br>
+<br>
+[Source: <a href="https://paulkiser.com/2016/02/04/five-fixes-for-our-primarycaucus-fiasco/">https://paulkiser.com/2016/02/04/five-fixes-for-our-primarycaucus-fiasco/</a>]
+<br>
+<br></p>
+
+<h2 id="table-of-contents">Table of contents</h2>
+
+<p><a href="#introduction">1. Introduction</a></p>
+
+<p><a href="#originalstudy">2. Original Study and Our Objectives</a></p>
+
+<p><a href="#data">3. Data and Random Assignment</a></p>
+
+<p><a href="#modelling">4. Modelling</a></p>
+
+<p><a href="#results">5. Results</a></p>
+
+<p><a href="#conclusion">6. Conclusion</a></p>
+
+<p><a href="#references">7. References</a></p>
+
+<h2 id="1-introduction-a-name-introduction-a"><strong>1. Introduction<a name="introduction"></a></strong></h2>
+
+<p>The issue of voter turnout has long been examined in both academic and media spheres. In fact, the interest dates back many years to papers such as Gosnell’s 1927 ‘Getting out the vote- an experiment in the stimulation of voting’. Many more academics followed this path like Powell (1986) ‘American Voter Turnout in comparative perspective&rsquo; - examining variance in turnout across developed democracies - and Geys (2007) ‘Explaining Voter Turnout: A review of aggregate-level research’ - an attempt to pin down some of the underlying factors behind turnout. These papers have thousands of academic citations according to Google Scholar. Meanwhile, stories such as the <a href="https://www.dw.com/en/how-young-voters-matter-in-european-parliament-elections/a-48824508-0">significance of youth voter turnout in European elections</a> are widely reported and analysed in mainstream media. Perhaps there is an even greater interest than ever in this topic today, given the context of the <a href="https://time.com/time-person-of-the-year-populism/">rise in populism in Europe</a> alongside <a href="https://www.theguardian.com/news/series/cambridge-analytica-files">threats to democracy from emerging technology</a>.</p>
+
+<p>In this post, we revisit the data from another widely-cited academic paper: Gerber et al.’s (2008) ‘Social Pressure and Voter Turnout: Evidence from a large-scale field Experiment’. By applying some of the latest methods in the emerging area of causal machine learning we build on the paper’s findings, specifically by investigating ‘heterogeneous treatment effects’. Our contribution is three-fold: first, we demonstrate the efficacy of causal machine learning models and compare their performance. Secondly, we uncover demographic trends in the original data that add further depth to the findings of Gerber et al., for example, the importance of age for the effectiveness of the treatment. The third key result in this post is how such methods can offer tangible benefits to practitioners in political science and consulting.</p>
+
+<h2 id="2-original-study-and-our-objectives-a-name-originalstudy-a"><strong>2. Original Study and Our Objectives <a name="originalstudy"></a></strong></h2>
+
+<p>Gerber et al’s original study compared the effects of four different treatments on voter turnout in order to observe the significance of social pressure. The experiment was designed with a sample of 180,002 households in Michigan, prior to the August 2006 U.S. primary election.</p>
+
+<p>The data was split into 5 groups. One control group including roughly 100,000 households and then 4 treatment groups of roughly 20,000. The households in a treatment group received one of four different mailers:</p>
+
+<ol>
+<li><strong>Civic Duty</strong> - A simple call to “DO YOUR CIVIC DUTY - VOTE!”. This treatment serves as a baseline for the other three.</li>
+<li><strong>Hawthorne</strong> - in the spirit of the famous Hawthorne experiment, this mailer informed the household that their voting behaviour was being studied: representing a mild form of social pressure.</li>
+<li><strong>Self</strong> - this mailer takes the social pressure to the next level by showing the recent election participation of each individual in the household and promising to send a follow-up updated after the coming election.</li>
+<li><strong>Neighbours</strong> - the fourth treatment was seemingly the strongest form of social pressure: the same as ‘Self’ but this time publishing the records not only of the household but also the closest neighbours on their street.
+<br>
+<br>
+<img align = "center" width ="800" src="/blog/img/seminar/social_pressure_voting/neighbours_mailer.png">
+<br>
+<br>
+<strong>Fig. 1: The ‘Neighbours’ mailing (Gerber et al., 2008)</strong>
+<br>
+<br>
+All four mailings can be found <a href="http://isps.its.yale.edu/isps/public/Gerber_Green_Larimer_APSR_2008/GerberGreenlarimer_APSR_2008_treatment_mailings.pdf">here</a>.
+<br>
+<br>
+Mailers were sent out in the days running up to the 2006 primary election. Due to the random assignment of treatment and control (which we explain later) and a large sample size, the treatment effect for each of the four mailers can be justified as equal to the difference in turnout rates between treatment groups and the control group. Their results were as follows and show the remarkably strong impact that social pressure was deemed to have had on turnout.</li>
+</ol>
+
+<p><img align = "center" width ="800" src="/blog/img/seminar/social_pressure_voting/gerber_results.png"></p>
+
+<p><strong>Tab. 1: Results from the original study (Gerber et al., 2008)</strong>
+<br>
+<br></p>
+
+<p>While Gerber et al. restricted their attention to average treatment effects, we want to build on their study by investigating heterogeneous treatment effects. In particular, we used supervised learning methods to estimate the conditional average treatment effect (CATE), which is defined as follows:</p>
+
+<p>$$\tau(x)=\mathbb{E}[Y_i(1)-Y_i(0)|X_i=x].$$</p>
+
+<p>In our application with a binary outcome variable $Y_i$, this is the difference in the probability of voting if treated and the probability if not, conditional on the covariates $X_i$, for individuals $i=1,&hellip;,N$. By finding out which groups of individuals were most reactive to the treatments, we can answer our key question: ‘Who should be targeted by these mailings?’. On the way, we will explore which characteristics of individuals are the most important for optimizing the campaign. The results then have the potential to be used by practitioners from political science or to consult on how such a campaign can be optimized in the future.</p>
+
+<h2 id="3-data-and-random-assignment-a-name-data-a"><strong>3. Data and Random Assignment<a name="data"></a></strong></h2>
+
+<p>The authors provide the data set on two levels of aggregation: the household- and the individual-level. Throughout this post, we work with the more fine-grained individual-level data, containing information about more than 340,000 subjects. Although the number of observations emphasizes that Gerber et al. conducted a “large-scale” (p.33) experiment, the number of features for each observation is quite limited. An overview of them all is given in Table 2. Additionally to the outcome, indicating whether a person has voted in the 2006 primary elections, known characteristics are the sex, year of birth as well as the household size. It is further recorded whether a person has voted in the six general and primary elections between 2000 and 2004. We aimed to enrich the set of variables by computing averages by household, such as the average age. Moreover, we calculated the total number of previous elections, each individual has voted at. Given that information about six elections is available in the data, this feature would range between zero and six. However, the 2004 general election was excluded here and also from later analyses, since all subjects have voted at this election. In fact, participation at this election was one criterion, based on which the subjects have been pre-selected by the original authors. This brings us to the key question: how the treatment was assigned to subjects.</p>
+
+<p><br>
+<br></p>
+
+<p><table align="center">
+  <tr>
+   <td><strong>Notation</strong>
+   </td>
+   <td><strong>Description</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>voted
+   </td>
+   <td>Binary conversion indicator. It takes the value of one, if an individual has voted in the 2006 primary election and zero otherwise.
+   </td>
+  </tr>
+  <tr>
+   <td>female
+   </td>
+   <td>Binary variable that takes the value of one for females and zero for males.
+   </td>
+  </tr>
+  <tr>
+   <td>age
+   </td>
+   <td>The individual’s age in 2006.
+   </td>
+  </tr>
+  <tr>
+   <td>hh_size
+   </td>
+   <td>The size of the household an individual lives in.
+   </td>
+  </tr>
+  <tr>
+   <td>p2000, p2002, p2004, g2000, g2002, g2004
+   </td>
+   <td>Six binary variables that take the value of one if an individual has voted in the primary (p) or general (g) election of the respective year and zero otherwise. The variable g2004 is excluded from all analyses here, because it is one for all individuals.
+   </td>
+  </tr>
+  <tr>
+   <td>sum&#95;votes
+   </td>
+   <td>The number of previous elections, an individual has voted at, excluding the 2004 general election.
+   </td>
+  </tr>
+  <tr>
+   <td>mean&#95;[variable]&#95;hh
+   </td>
+   <td>The average value of [variable] by household. For example, mean_age_hh denotes the average age in an individual’s household. Household means are calculated for the following variables: age, female, p2000, p2002, p2004, g2000, g2002, and sum_votes.
+   </td>
+  </tr>
+</table>
+<br>
+<br></p>
+
+<p><strong>Tab. 2 Overview of variables</strong>
+<br>
+<br></p>
+
+<p>The treatment assignment is a crucial element of every experimental design with implications for which methods can be used for analysing the treatment effect. Here, the four treatments were randomly assigned, using the following procedure:</p>
+
+<p>First, out of all households in the state of Michigan, several were excluded based on certain criteria. Probably the most important exclusion is that of households where all people were believed to be strong Democrats, with the reasoning that the analysed election was important mainly for Republicans. As indicated above, another criterion was that an individual must have voted in the 2004 general election, assuming “that those not voting in this very high-turnout election were likely to be ‘deadwood’—those who had moved, died, or registered under more than one name” (p.37). The households remaining after applying these two and some more criteria were sorted into an order required for mailing with the US Postal Service. After that, they were divided into groups of 18 households each and each group was sorted by a random number.</p>
+
+<p>Although the authors state reasons for each step, their interventions raise the question whether the treatment can really be viewed as randomly assigned in the remaining data set. Therefore, we calculate variable means by treatment group, some of which are shown in Table 3. As shown, the averages differ only marginally across treatment groups, which supports the assumption of random assignment. Moreover, chi-squared tests were conducted, checking whether the variables are equally distributed in the different groups. All p-values were larger than 0.1, which is further evidence for the random assignment of treatments. The only exceptions, where the null hypothesis was not rejected, were the household size as well as the household mean variables, which we have created earlier. We presume that the reason is that the random assignment was done on a household-level, whereas the chi-squared tests - as all our analyses - were conducted on the individual-level.</p>
+
+<p><br>
+<br>
+<table align="center">
+  <tr>
+   <td><strong>Treatment        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+   </td>
+   <td><strong>female   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+   </td>
+   <td><strong>age  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+   </td>
+   <td><strong>g2000    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+   </td>
+   <td><strong>hh_size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    </strong>
+   </td>
+  </tr>
+  <tr>
+   <td><strong> Civic Duty      </strong>
+   </td>
+   <td>0.5002
+   </td>
+   <td>49.6590
+   </td>
+   <td>0.8417
+   </td>
+   <td>2.1891
+   </td>
+  </tr>
+  <tr>
+   <td><strong> Control     </strong>
+   </td>
+   <td>0.4989
+   </td>
+   <td>49.8135
+   </td>
+   <td>0.8434
+   </td>
+   <td>2.1837
+   </td>
+  </tr>
+  <tr>
+   <td><strong> Hawthorne   </strong>
+   </td>
+   <td>0.4990
+   </td>
+   <td>49.7048
+   </td>
+   <td>0.8444
+   </td>
+   <td>2.1801
+   </td>
+  </tr>
+  <tr>
+   <td><strong> Neighbours  </strong>
+   </td>
+   <td>0.5001
+   </td>
+   <td>49.8529
+   </td>
+   <td>0.8417
+   </td>
+   <td>2.1878
+   </td>
+  </tr>
+  <tr>
+   <td><strong> Self        </strong>
+   </td>
+   <td>0.4996
+   </td>
+   <td>49.7925
+   </td>
+   <td>0.8404
+   </td>
+   <td>2.1808
+   </td>
+  </tr>
+</table>
+<br>
+<br></p>
+
+<p><strong>Tab. 3: Covariates’ mean values by treatment group</strong>
+<br>
+<br></p>
+
+<h2 id="4-modelling-a-name-modelling-a"><strong>4. Modelling<a name="modelling"></a></strong></h2>
+
+<p>Before turning to another crucial element of studying treatment effects, the models, the general estimation strategy should be explained. This is especially interesting, because instead of one, we analyse four different treatments here. The way we approach this, is to analyse each treatment separately. For each treatment, a different random sample of 38,000 control group observations is drawn. Since each treatment was given to approximately the same number of individuals, we have balanced data. The sampling of control observations is stratified on the outcome variable, i.e. the voting indicator for the 2006 primary election.</p>
+
+<p>When having balanced data of approximately 76,000 cases for each treatment, this is split into a training and an estimation set with the ratio <sup>70</sup>&frasl;<sub>30</sub>. The splitting is stratified on both the conversion indicator and the treatment indicator. The training set is then used for training the models, while the estimation set is “predicted” by the trained model, i.e. the treatment effect is estimated. This way, we avoid overfitting.</p>
+
+<p><script src="https://gist.github.com/kennyisking/de5e71107fb374e5cc6df90f21f6c6f1.js"></script></p>
+
+<p>Having a total of four training and four estimation sets, we search for heterogeneous treatment effects using three different models. It is important to note that we used the same training and estimations sets for a certain treatment across all models, which ensures that the results are comparable. Our models are introduced in the following.</p>
+
+<h3 id="logistic-regression-logit"><strong>Logistic Regression (Logit)</strong></h3>
+
+<p>The first model is a logistic regression with interaction term (Lo, 2002). A logit model - a binary outcome regressed on several covariates - is usually used for response modelling. The difference here is that in addition to the covariates, the treatment indicator is included as a regressor. Moreover, we include an interaction term with the treatment indicator for each covariate. The interaction effects allow for heterogeneity, because the marginal effect of the treatment now depends on the covariates’ values. To estimate heterogeneous treatment effects, the probability of conversion is computed with the treatment indicator set to one and a second time when it is set to zero. The difference between both probabilities is the estimated CATE. To allow for more complex relationships, quadratic terms have been included in the set of regressors.</p>
+
+<p>As noted by Lo (2002), the approach of including interaction terms with the treatment indicator can also be used together with other supervised learning methods. A logistic regression, however, appeals for its simplicity and easy interpretation. A disadvantage is that we cannot include both the indicator variables for the previous elections and the total number of votes in these elections due to perfect multicollinearity. Since preliminary results and the findings of Künzel, Sekhon, Bickel, and Yu (2019) suggested that the total number of votes is a very important covariate, we decided to exclude the individual voting indicators.</p>
+
+<script src="https://gist.github.com/kennyisking/c44ff861cafce7e7cdf95a51efcc6190.js"></script>
+
+<h3 id="two-model"><strong>Two-model</strong></h3>
+
+<p>A simple approach that builds on standard learning algorithms to provide CATE estimates is often called the two-model approach. The data is separated into control and treatment groups and then for each group, a standard prediction model is trained, using all features apart from the control/treated indicator. Next, both models are applied to the estimation set giving both a prediction under control and a prediction after treatment for each observation. Finally, we take the difference between these two numbers as the estimated CATE for that observation. The validity of this calculation relies completely on the assumption of random assignment discussed earlier.</p>
+
+<p>The advantages of this approach are both its simplicity as well as its flexibility, since it allows any non-causal learning model to be applied to each of the two groups. However, the approach is often used as a baseline model and is typically outperformed by other models. Radcliffe and Surry (2011, Section 5.1) suggest that the reason for its often lower performance is that since both models are trained independently, ‘nothing in the fitting process is (explicitly) attempting to fit the difference in behaviour between the two populations’.</p>
+
+<p>The most important consideration in our implementation was that the two-model should be on a level playing field with the other approaches. For this reason, instead of training one model for the control group and then a model for each of the four treatments, we trained four pairs of models (therefore that included four separately trained models that all aim to predict voter turnout in the control group) using the same data sampling as we did for the other models. The base model that was used in every case was the XGBoost algorithm, tuned minimally using the MLR package for R.</p>
+
+<script src="https://gist.github.com/kennyisking/e3ef8369eb980ca57e27948b9971d3c9.js"></script>
+
+<h3 id="causal-forest"><strong>Causal Forest</strong></h3>
+
+<p>Similar to Breiman’s (2001) random forest for response modelling, which is an ensemble of many decision trees, a causal forest combines several causal trees into a treatment effect estimate. Causal trees were introduced by Athey and Imbens (2016) and developed further to causal forests by Wager and Athey (2018). The latest version of causal forests is described in Athey, Tibshirani, and Wager (2018). In fact, estimating heterogeneous treatment effects is only one special application of their so-called “Generalized Random Forest”. Together with this paper, the authors released the R package grf, which we use for implementing causal forests here.</p>
+
+<p>Basically, there are two main characteristics that make causal forests different from the well-known random forests. First, their trees split the data as to “maximize the difference [i.e. heterogeneity] in treatment effect between the two child nodes” (Tibshirani, Athey &amp; Wager, 2019). Secondly, they do not estimate the probability of response, but the treatment effect. It is worth to point out that - contrary to the logit and two-model approach - the causal forest estimates the CATE directly. The analyst does not need to take any differences or other transformations after estimation.</p>
+
+<p>Moreover, we make use of an option proposed for causal forests, that is called “honesty”. This lets the causal forest split the data into two folds. Only the first fold is then used for growing a tree, i.e. determining the best split. After that, the second part of the data is used to calculate the estimations the tree will give. The clear disadvantage of making trees honest is that half of the data is wasted for both steps described above. However, honesty is one requirement that makes the forest’s estimations asymptotically normal (Wager &amp; Athey, 2018). Together with variance estimates, this allows us to construct valid confidence intervals for the treatment effect (Athey, Tibshirani &amp; Wager, 2018).</p>
+
+<p>When implementing the causal forest, we use the package’s option to tune several parameters using cross-validation. For details, please refer to the package’s reference manual (Tibshirani, Athey &amp; Wager, 2019). The only exception is the number of candidate variables for each split (mtry) for the ‘Neighbours’ treatment. In this case, the optimal value for mtry was found to be one, which we do not find sensible, as there would be only one candidate for each split. Therefore, we follow the rule of thumb for random forests, which suggests to take the square root of the number of variables, giving us a rounded mtry-value of four.</p>
+
+<script src="https://gist.github.com/kennyisking/f5692b8f40e76b1ce120238f0f3d9593.js"></script>
+
+<h2 id="5-results-a-name-results-a"><strong>5. Results<a name="results"></a></strong></h2>
+
+<p>From the modelling stage we arrived at 3 main results which will be explained in more detail:</p>
+
+<ol>
+<li>Our models predict significant heterogeneity in treatment effects</li>
+<li>Using causal models can add clear value to practitioners by suggesting which people to target</li>
+<li>Our results vary when comparing across models (as well as across treatments)</li>
+</ol>
+
+<h3 id="heterogeneity-and-variable-importance"><strong>Heterogeneity and Variable Importance</strong></h3>
+
+<p>Gerber et al’s (2008) study highlights the extraordinary impact that social pressure had on voter turnout in the Michigan primary. When you consider the long list of factors that might determine whether someone votes, and the fact that a single mailer to households of multiple people surely won’t even be seen by the entire treatment group, then the 8.1% turnout gain that they observe in the ‘Neighbours’ group cannot be understated. Nevertheless, what their study didn’t discuss is how this effect varied on a more granular basis. All of our models predicted quite a lot of variance within the estimation set.</p>
+
+<p>Since all models predict an individual treatment effect for every individual in our prediction set, we can visualise the estimated heterogeneity by ordering the data by the predicted effect, grouping into quantiles (in our case deciles) and then for each decile calculating the average estimated treatment effect. In Figure 2 it is clear to see the variety in estimated treatment effect for the ‘Neighbours’ treatment.</p>
+
+<p><img align = "center" width ="800" src="/blog/img/seminar/social_pressure_voting/neighbours_heterogeneity.jpeg"></p>
+
+<p><strong>Fig. 2: Heterogeneity in treatment effect for the ‘Neighbours’ treatment</strong>
+<br>
+<br></p>
+
+<p>This comparison highlights a few points of interest:</p>
+
+<ul>
+<li><p>All models predict that heterogeneous treatment effects exist in the data.</p></li>
+
+<li><p>The extent of the predicted heterogeneity varies by model, with the two-model approach estimating much more variation than the causal forest and logit models.</p></li>
+
+<li><p>It reminds us that for some individuals the treatment effect could even be negative.</p></li>
+</ul>
+
+<p>We also see a similar trend for the 3 other treatments, but of course with (on average) lower values for the estimated effect.</p>
+
+<p>Before going deeper into the analysis of how certain covariates relate to the treatment effect, we want to investigate which are the most important. The causal forest offers a method to estimate the importance of each variable. It is based on the number of splits, that are done on a variable in the top layers of the trees. Recall that the model aims to do splits that maximise the heterogeneity in treatment effect across the child nodes. Hence, the most important variables are those that have the largest impact on the CATE.</p>
+
+<p>Figure 3 shows the causal forest’s variable importance for the ‘Neighbours’ treatment. The results do not differ a lot for the other treatments, i.e. Figure 3 is well-representative for all four treatments. The first observation we made is that the age, the total number of votes as well as their household averages are among the most important variables for all treatments. This means, the treatment effect for an individual differs depending on his/her age, the number of previous votes as well as certain household characteristics. Moreover, it was found that the individual voting indicators are rather unimportant across all four treatments. Interestingly, Figure 3 also shows that female is the least important variable, meaning that the treatment effect differs very little between males and females.</p>
+
+<p><img align = "center" width ="800" src="/blog/img/seminar/social_pressure_voting/variable_importance_neighbours.jpg"></p>
+
+<p><strong>Fig. 3: Variable importance for the ‘Neighbours’ treatment</strong>
+<br>
+<br></p>
+
+<h3 id="who-should-be-targeted"><strong>Who should be targeted?</strong></h3>
+
+<p>Now that we found out that the treatment effect is different for people of different ages and with different participation in previous elections, we want to investigate how this relationship looks. This means, we want to find out, e.g whether old or young individuals have a larger treatment effect and should therefore be targeted with a mailing. To explore this kind of relationship, we use two different approaches. The first one is that we take the estimation set, we have split from the training set above, and estimate the treatment effects for these individuals. We can then investigate the relationship between the estimate and the individuals’ characteristics, e.g. by computing the average of the estimated effects for people with a certain age. The second approach is to use partial dependence plots, manipulating one variable in the training data and tracking how the model’s estimate changes, holding everything else constant. For both approaches, we show all plots together with a histogram of the analysed covariate. This allows to assess the uncertainty of the estimates, which is especially important for extreme covariate values. Furthermore, the estimations of the two-model approach proved to be very fluctuating, and giving some extreme values. We decided to limit the plots’ vertical axis, such that those extreme values are not always visible. Including these values would require a less granular scaled axis, thereby making more subtle trends almost invisible.</p>
+
+<p>First, we focus on treatment effect heterogeneity depending on people’s age. Figure 4 depicts the estimated treatment effect averaged by age for the ‘Civic Duty’ treatment. As said above, the estimations of the two-model approach are highly fluctuating. Contrary to that, the differences in treatment effect estimated by the causal forest are smaller. What all models agree about, is that there seems to be a U-shaped relationship between the treatment effect and an individual’s age. This means the treatment effect is largest for people who are just older than 30 years, as well as for elderly people above 70 years. The curves indicate that the treatment effect becomes even larger for people above 80. However, as the histogram shows, there are few observations for very old people. Therefore, the estimates in these regions are rather not reliable.</p>
+
+<p><img align = "center" width ="800" src="/blog/img/seminar/social_pressure_voting/age_civic_duty.jpeg"></p>
+
+<p><strong>Fig. 4: Estimated treatment effects, averaged by age for ‘Civic Duty’ treatment</strong>
+<br>
+<br>
+Next, the same analysis is done for the ‘Self’ treatment. The corresponding plots are shown in Figure 5. As shown, the story is a different one here. The logit and the causal forest both estimate a larger treatment effect for elder as compared to younger people. According to the logit, the treatment effect when targeting a 40 year old person is an increase in the probability of voting of approximately 4.1%. The treatment effect for a 70 year old person is 6.5% and hence considerably larger.</p>
+
+<p><img align = "center" width ="800" src="/blog/img/seminar/social_pressure_voting/age_self.jpg"></p>
+
+<p><strong>Fig. 5: Estimated treatment effects, averaged by age for ‘Self’ treatment</strong></p>
+
+<p><br>
+<br></p>
+
+<p>The comparison of results for the ‘Civic Duty’ and the ‘Self’ treatment shows that different groups of people may be better targeted with different mailings. While the call to the civic duty of voting appeals most to younger or elderly people, but not to those in between, the stronger form of social pressure exerted by the ‘Self’ treatment is more effective, the older the target is. The results for the remaining two treatments are briefly described in the following without showing the corresponding plots. For the ‘Neighbours’ treatment, the mailing seems to work best on people between 60 and 65 years. Moreover note, that the general level of treatment effect is larger for the ‘Neighbours’ treatment for many levels of age. The reason is that this treatment was the overall most effective, as shown by Gerber et al. Finally, for the ‘Hawthorne’ treatment, it is difficult to see any meaningful trend. The only conclusion that can be drawn is that this kind of mailing is less effective on individuals younger than 40.</p>
+
+<p>Another important driver of heterogeneity for all four treatments was the total number of votes in previous elections. Figure 6 shows partial dependence plots for this covariate, when analysing the ‘Neighbours’ treatment. The treatment effect is comparatively small for individuals that have not voted in any of the primary or general elections between 2000 and 2004. It is larger for people having voted in some of the elections, and again smaller for those, having voted in all five elections. These results are very intuitive. Individuals that have never voted are probably hard to persuade to vote in the upcoming election. Opposed to that, individuals that have voted in all elections, are likely to participate in the next one even without treating them. The mailings have the largest effect on those who have voted in some elections, but not all. This group of people is maybe not fully confident in their decision to vote or not and therefore easy to influence. They should be targeted with the ‘Neighbours’ mailing.</p>
+
+<p><img align = "center" width ="800" src="/blog/img/seminar/social_pressure_voting/total_votes_neighbours.jpeg"></p>
+
+<p><strong>Fig. 6: Partial dependence plots for total number of votes and ‘Neighbours’ treatment</strong></p>
+
+<p><br>
+<br></p>
+
+<p>According to the logit model and the causal forest, results are similar for the other three treatments. The two-model approach shows different trends for the ‘Civic Duty’ and the ‘Self’. In particular, it suggests sending the first type of mailing to people having voted three or five times, whereas people having voted exactly two out of five times are most responsive to the latter.</p>
+
+<p>The relationship between the household’s average age and the treatment effect is not entirely clear. While the logit model suggest that the overall relationship is negative for the ‘Civic Duty’, ‘Hawthorne’ and ‘Neighbours’ treatment, the two two-model approach does not indicate any clear trend. The only exception is the ‘Civic Duty’ treatment, where it agrees with the logit model’s findings. Contrary to that, the causal forest estimates a slightly positive relationship for the ‘Neighbours’ and ‘Self’ mailings. Interestingly, it also finds that households with an average age of approximately 35 are suitable targets for the ‘Hawthorne’ treatment.</p>
+
+<p>Drawing an overall conclusion for the average number of votes in a household is even harder. If existing, trends differ by model and treatment. At least it can be stated that the ‘Neighbours’ treatment seems most effective for households with an average number of votes between two and four. This basically coincides with the findings for the individual-level number of votes.</p>
+
+<p>It was discussed that - especially for the household characteristics - results differ significantly across models. They give different recommendations on what group of individuals to target. Practitioners might therefore want to follow the suggestions of the “best” model. The issue of which model is “best” is discussed in the following section on model evaluation.</p>
+
+<h3 id="evaluating-and-comparing-models"><strong>Evaluating and comparing models</strong></h3>
+
+<p>A predictive model is only as good as its ability to make accurate predictions on unseen data. Whilst this is fairly straightforward to compute in a typical prediction setting (albeit choices must be made about which metrics to use), the matter is complicated when considering treatment effects. The ‘fundamental problem of causal inference’ (Holland, 1986) is that for any individual we can only observe one of the two potential outcomes: the outcome under treatment or the outcome under control. It’s not possible to observe both and so we can never observe the ‘true’ treatment effect for any individual.</p>
+
+<p>In light of this, one useful method we can use is the “Qini curve” and its coefficient. As outlined by Radcliffe (2007) this method requires us to rank our separate prediction dataset by the estimated individual treatment effect and then calculate the incremental gains at each segment (in our case deciles). The precise details of the calculation are not the main focus here but are outlined clearly in Radcliffe’s paper.</p>
+
+<p>The higher the y-value of a point on a Qini curve, the better the model performs at that cutoff point. The Qini coefficient is then defined as the area between this curve and the straight line we would get for a random allocation of treatment (so, the higher the better). Figure 7 shows the Qini curves for our 3 models applied to the ‘Civic Duty’ treatment:</p>
+
+<p><img align = "center" width ="800" src="/blog/img/seminar/social_pressure_voting/qini_civic_duty.jpeg"></p>
+
+<p><strong>Fig. 7: Qini curves for each model applied to the &lsquo;Civic Duty&rsquo; treatment</strong></p>
+
+<p><br>
+<br></p>
+
+<p>Suppose we were targeting 30% of the population. The Civic Duty treatment would be expected to induce roughly an incremental 0.6% of the total population to vote under random treatment assignment. If we instead assigned treatment to the most responsive 30% as predicted by the two model then the increment increases from 0.6% to around 0.7%. This reaches 0.8% and 1.2% for the logit and causal forest models respectively. (An interesting observation is that it is quite possible for the models to perform worse than random targeting at certain levels i.e. at 20% and 90%.)</p>
+
+<p>From the image alone it’s not entirely clear which model is best. Whilst the causal forest dominates up to the 50% mark, the logit model then becomes better for targeting to 60%, 70% or 80% of the population. By calculating the Qini coefficient we are able to conclude that the random forest performed best for this treatment with a Qini score = 0.00257.</p>
+
+<p>By replicating the same approach we see that the best performing model varies by treatment.</p>
+
+<p><img align = "center" width ="800" src="/blog/img/seminar/social_pressure_voting/qini_neighbours.jpeg"></p>
+
+<p><strong>Fig. 8: Qini curves for each model applied to the &lsquo;Neighbours&rsquo; treatment</strong></p>
+
+<p><br>
+<br></p>
+
+<p>And the following table summarises the results for all treatments and models:</p>
+
+<p><table align="center">
+  <tr>
+   <td>
+   </td>
+   <td colspan="3" >Qini Scores
+   </td>
+  </tr>
+  <tr>
+   <td>Treatment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   </td>
+   <td>Logit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   </td>
+   <td>Two Model&nbsp;&nbsp;&nbsp;&nbsp;
+   </td>
+   <td>Causal Forest
+   </td>
+  </tr>
+  <tr>
+   <td>Neighbours
+   </td>
+   <td>0.00436
+   </td>
+   <td>0.00466
+   </td>
+   <td>0.00593
+   </td>
+  </tr>
+  <tr>
+   <td>Self
+   </td>
+   <td>0.00102
+   </td>
+   <td>0.00163
+   </td>
+   <td>0.00135
+   </td>
+  </tr>
+  <tr>
+   <td>Hawthorne
+   </td>
+   <td>0.00102
+   </td>
+   <td>0.00668
+   </td>
+   <td>0.00568
+   </td>
+  </tr>
+  <tr>
+   <td>Civic Duty
+   </td>
+   <td>0.00173
+   </td>
+   <td>0.00105
+   </td>
+   <td>0.00257
+   </td>
+  </tr>
+</table>
+<br>
+<br>
+  <strong>Tab. 4: Qini scores by model and treatment</strong>
+<br>
+<br></p>
+
+<p>This provides us with our overall conclusion about the competing performance of the models in this setting: Logit takes 3rd place, whilst Causal Forest and the 2-model approach are fairly even in 1st. Since Causal Forest performs best on the most effective treatment (by ATE), political campaigners would be advised to start with that combination in practice.</p>
+
+<h2 id="6-conclusion-a-name-conclusion-a"><strong>6. Conclusion<a name="conclusion"></a></strong></h2>
+
+<p>In this research, we have studied heterogeneous treatment effects with the example of voter mobilisation through four different mailings. In particular, we extended the findings of a widely-cited paper by Gerber et al. (2008) by investigating which groups of individuals the treatments were most effective on. We used three supervised models and found evidence that the treatment effect is indeed heterogeneous. The heterogeneity is mainly driven by an individual’s age and participation in previous elections as well as household characteristics. Investigating the relationship between treatment effect and covariates, it was observed that the results differed across treatments. This means, our recommendations on who should be targeted depends on the type of mailing. When using the highly effective ‘Neighbours’ treatment, individuals in their sixties, who have voted in the majority of but not all previous elections are most responsive.</p>
+
+<p>We also found that results differed across models. Our evaluation of model performance suggested that the Logit model’s estimates are slightly less reliable than those given by the other two models. Perhaps  the most important contribution we wanted to emphasise is that causal machine learning approaches can have a meaningful impact in a practical situation. The Qini curves clearly show that using models to target the most responsive individuals can be a significant improvement over random targeting. This means that a political campaign with a limited budget could make large improvements to their ROI by using these models.</p>
+
+<p>Moreover, practitioners can not only target the individuals with the largest treatment effect, but also assess the uncertainty of this effect. Athey et al. (2018) showed that the causal forest’s estimations are asymptotically normally distributed. Together with the estimator for the treatment effect’s variance, it is possible to construct valid confidence intervals. To illustrate this point, Figure 9 depicts the estimated treatment effect together with the 95% confidence interval for six arbitrary individuals. We want to emphasize that this plot’s only purpose is illustrating the confidence intervals, even though it shows trends similar to the general results discussed above.</p>
+
+<p>In Figure 9, the causal forest provides not only the information that the individual having voted in three previous elections has a treatment effect, that is considerably larger, but also assesses the uncertainty of the estimates. In this example, practitioners can be almost entirely sure that targeting the individual with three is more effective than targeting the person with two votes, since their confidence intervals do not overlap. Especially in the consulting industry, this theoretically proven information may convince potential clients.</p>
+
+<p>Having emphasized the value of causal inference, the limitations in praxis should also be mentioned. Of course, there may be other considerations outside the scope of modelling such as whether or not the logistical costs of targeting specific individuals rather than certain zip codes outweigh the benefits. Moreover, the availability of suitable data is always an issue. Finally, it is important to note that there is not guarantee that the findings of this study would generalise to other conditions and elections. Especially since analysed individuals were mostly Republicans, it would be an interesting avenue for further research to investigate treatment effect heterogeneity in an election that is of interest also for Democrats. Nevertheless, the positive results from this research suggest that there will be many productive applications of causal machine learning models.</p>
+
+<p><img align = "center" width ="800" src="/blog/img/seminar/social_pressure_voting/ci_sumvotes_neighbours.jpeg"></p>
+
+<p><strong>Fig. 9: Illustration of confidence intervals</strong></p>
+
+<p><br>
+<br></p>
+
+<h2 id="7-references-a-name-references-a"><strong>7. References<a name="references"></a></strong></h2>
+
+<p>Athey, S., &amp; Imbens, G. W. 2016. Recursive partitioning for heterogeneous causal effects. <em>Proceedings of the National Academy of Sciences, 113 (27)</em>, 7353-7360.</p>
+
+<p>Athey, S., Tibshirani, J., &amp; Wager, S. 2018. <em>Generalized Random Forests</em>. Available at: <a href="https://arxiv.org/abs/1610.01271">https://arxiv.org/abs/1610.01271</a>.</p>
+
+<p>Breiman, L. 2001. Random Forests. <em>Machine Learning, 45 (1)</em>, 5-32.</p>
+
+<p>Gerber A. S., Green, D. P., &amp; Larimer, C. W. 2008. Social Pressure and Voter Turnout: Evidence from a Large-Scale Field Experiment. <em>American Political Science Review, 102 (1)</em>, 33-48.</p>
+
+<p>Gosnell, H. 1927. Getting out the vote–an experiment in the stimulation of voting. <em>The Chicago University Press.</em></p>
+
+<p>Holland, P. 1986. Statistics and Causal Inference. <em>Journal of the American Statistical Association, 81 (396)</em>, 945–960<em>.</em></p>
+
+<p>Künzel, S. R., Sekhon, J. S., Bickel, P. J., &amp; Yu, B. 2019. <em>Meta-learners for Estimating Heterogeneous Treatment Effects using Machine Learning.</em> Available at: <a href="https://arxiv.org/abs/1706.03461">https://arxiv.org/abs/1706.03461</a>.</p>
+
+<p>Lo, V. S. Y. 2002. The True Lift Model - A Novel Data Mining Approach to Response Modeling in Database Marketing. <em>ACM SIGKDD Explorations Newsletter, 4 (2)</em>, 78-86.</p>
+
+<p>Radcliffe, N., &amp; Surry, P. 2011. Real-World Uplift Modelling with significance-based uplift trees. <em>White Paper TR-2011-1, Stochastic Solutions.</em></p>
+
+<p>Tibshirani, J., Athey, S., &amp; Wager, S. 2019. <em>The GRF Algorithm</em>. Available at: <a href="https://github.com/grf-labs/grf/blob/master/REFERENCE.md">https://github.com/grf-labs/grf/blob/master/REFERENCE.md</a> [last checked: 04/08/2019].</p>
+
+<p>Wager, S., &amp; Athey, S. 2018. Estimation and Inference of Heterogeneous Treatment Effects using Random Forests. <em>Journal of the American Statistical Association, 113 (523)</em>, 1228-1242.</p>
+
+<!-- Docs to Markdown version 1.0β17 -->
+
+                        </div>
+                        
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (31)</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/instruction">instruction (2)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/a/b-testing"><i class="fa fa-tags"></i> a/b-testing</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/attention"><i class="fa fa-tags"></i> attention</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/awd-lstm"><i class="fa fa-tags"></i> awd-lstm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-deep-learning"><i class="fa fa-tags"></i> bayesian-deep-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-topic-modelling"><i class="fa fa-tags"></i> bayesian-topic-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/black-box"><i class="fa fa-tags"></i> black-box</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/blockchain"><i class="fa fa-tags"></i> blockchain</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/causal-inference"><i class="fa fa-tags"></i> causal-inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class17/18"><i class="fa fa-tags"></i> class17/18</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class18/19"><i class="fa fa-tags"></i> class18/19</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class19"><i class="fa fa-tags"></i> class19</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/classification"><i class="fa fa-tags"></i> classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/coarsened-exact-matching"><i class="fa fa-tags"></i> coarsened-exact-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/conversion"><i class="fa fa-tags"></i> conversion</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks"><i class="fa fa-tags"></i> convolutional-neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/data-simulation"><i class="fa fa-tags"></i> data-simulation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/deep-learning"><i class="fa fa-tags"></i> deep-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/distant-transfer-learning"><i class="fa fa-tags"></i> distant-transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/dml"><i class="fa fa-tags"></i> dml</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/doc2vec"><i class="fa fa-tags"></i> doc2vec</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/document-embeddings"><i class="fa fa-tags"></i> document-embeddings</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/explanation"><i class="fa fa-tags"></i> explanation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/fine-tuning"><i class="fa fa-tags"></i> fine-tuning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/genetic-matching"><i class="fa fa-tags"></i> genetic-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/gru"><i class="fa fa-tags"></i> gru</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/hierarchical-network"><i class="fa fa-tags"></i> hierarchical-network</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ice"><i class="fa fa-tags"></i> ice</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-analysis"><i class="fa fa-tags"></i> image-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-captioning"><i class="fa fa-tags"></i> image-captioning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/inference"><i class="fa fa-tags"></i> inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset"><i class="fa fa-tags"></i> keras-imdb-dataset</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/knn-algorithm"><i class="fa fa-tags"></i> knn-algorithm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/language-modelling"><i class="fa fa-tags"></i> language-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lda"><i class="fa fa-tags"></i> lda</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lime"><i class="fa fa-tags"></i> lime</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/long-short-term-memory"><i class="fa fa-tags"></i> long-short-term-memory</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lstm"><i class="fa fa-tags"></i> lstm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/machine-learning"><i class="fa fa-tags"></i> machine-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matching-methods"><i class="fa fa-tags"></i> matching-methods</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matchit"><i class="fa fa-tags"></i> matchit</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/monte-carlo-dropout"><i class="fa fa-tags"></i> monte-carlo-dropout</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/movie-reviews"><i class="fa fa-tags"></i> movie-reviews</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nearest-neighbor"><i class="fa fa-tags"></i> nearest-neighbor</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/neural-network"><i class="fa fa-tags"></i> neural-network</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/neural-networks"><i class="fa fa-tags"></i> neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nlp"><i class="fa fa-tags"></i> nlp</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/optimal-matching"><i class="fa fa-tags"></i> optimal-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/pdp"><i class="fa fa-tags"></i> pdp</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/pretraining"><i class="fa fa-tags"></i> pretraining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score"><i class="fa fa-tags"></i> propensity-score</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score-weighting"><i class="fa fa-tags"></i> propensity-score-weighting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommendation"><i class="fa fa-tags"></i> recommendation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-system"><i class="fa fa-tags"></i> recommender-system</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-systems"><i class="fa fa-tags"></i> recommender-systems</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/rnn"><i class="fa fa-tags"></i> rnn</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/rs"><i class="fa fa-tags"></i> rs</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-analysis"><i class="fa fa-tags"></i> sentiment-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-classification"><i class="fa fa-tags"></i> sentiment-classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/share-price-prediction"><i class="fa fa-tags"></i> share-price-prediction</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/simulation"><i class="fa fa-tags"></i> simulation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-analysis"><i class="fa fa-tags"></i> text-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-mining"><i class="fa fa-tags"></i> text-mining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series"><i class="fa fa-tags"></i> time-series</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series-forecasting"><i class="fa fa-tags"></i> time-series-forecasting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/transfer-learning"><i class="fa fa-tags"></i> transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/treatment-effect"><i class="fa fa-tags"></i> treatment-effect</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/twitter"><i class="fa fa-tags"></i> twitter</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ulmfit"><i class="fa fa-tags"></i> ulmfit</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift"><i class="fa fa-tags"></i> uplift</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift-modelling"><i class="fa fa-tags"></i> uplift-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/variational-inference"><i class="fa fa-tags"></i> variational-inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/wikitext-103"><i class="fa fa-tags"></i> wikitext-103</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/word-embeddings"><i class="fa fa-tags"></i> word-embeddings</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<footer id="footer">
+    <div class="container">
+
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            
+
+            
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+            
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-112025566-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+
+<script src="//maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+<script src="https://humboldt-wi.github.io/blog/js/hpneo.gmaps.js"></script>
+<script src="https://humboldt-wi.github.io/blog/js/gmaps.init.js"></script>
+<script src="https://humboldt-wi.github.io/blog/js/front.js"></script>
+
+
+<script src="https://humboldt-wi.github.io/blog/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

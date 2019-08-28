@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Attention on Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://humboldt-wi.github.io/blog/tags/attention/</link>
+    <description>Recent content in Attention on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 08 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://humboldt-wi.github.io/blog/tags/attention/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Text Classification with Hierarchical Attention Network</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/group5_han/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/group5_han/</guid>
+      <description>Text Classification with Hierarchical Attention Networks How to assign documents to classes or topics Authors: Maria Kränkel, Hee-Eun Lee - Seminar Information System 18&amp;frasl;19 After reading this blog post, you will know:
+ What text classification is and what it is used for What hierarchical attention networks are and how their architecture looks like How to classify documents by implementing a hierarchical attention network  Introduction Imagine you work for a company that sells cameras and you would like to find out what customers think about the latest release.</description>
+    </item>
+    
+  </channel>
+</rss>

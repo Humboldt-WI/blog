@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2019 03 on Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://humboldt-wi.github.io/blog/month/2019-03/</link>
+    <description>Recent content in 2019 03 on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://humboldt-wi.github.io/blog/month/2019-03/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>New Courses for Summer Term 2019 online</title>
+      <link>https://humboldt-wi.github.io/blog/news/newcourseoutline/</link>
+      <pubDate>Sun, 03 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/news/newcourseoutline/</guid>
+      <description>Advanced Data Analytics for Management Support The module Advanced Data Analytics for Management Support (ADAMS) introduces students to the latest developments in the scope of data-driven management support. It covers relevant theories and concepts in machine learning against the background of concrete real-world applications in management science. Special emphasize is given to the analysis of textual data and other complex data such as sequences or images. Corresponding data is typically approached using the framework of deep artificial neural networks.</description>
+    </item>
+    
+    <item>
+      <title>Open Job Positions</title>
+      <link>https://humboldt-wi.github.io/blog/news/jobs/</link>
+      <pubDate>Sun, 03 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/news/jobs/</guid>
+      <description>März 2019  Momentan gibt es keine neuen Jobangebote Currently, there are no jobs available </description>
+    </item>
+    
+    <item>
+      <title> PhD Position</title>
+      <link>https://humboldt-wi.github.io/blog/news/phdposition/</link>
+      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/news/phdposition/</guid>
+      <description>Currently no open positions</description>
+    </item>
+    
+    <item>
+      <title>Consultation Hours</title>
+      <link>https://humboldt-wi.github.io/blog/news/consultationhours/</link>
+      <pubDate>Sat, 02 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/news/consultationhours/</guid>
+      <description>As of March 2019 (SS 2019) consultation hours with Prof. Lessmann will take place as follows:
+all students on Thursday 10 - 11 am. Because of the great demand, appointments will be given only with previous registration by sending an e-mail to bujarek@hu-berlin.de.</description>
+    </item>
+    
+  </channel>
+</rss>

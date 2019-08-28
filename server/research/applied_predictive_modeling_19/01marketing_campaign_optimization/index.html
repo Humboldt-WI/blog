@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marketing Campaign Optimization: Profit modeling</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Using real world online shop data to model and predict treatment effects on continuous variables, aiming for profit optimization ">
+  
+
+  <meta name="generator" content="Hugo 0.54.0" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="https://humboldt-wi.github.io/blog/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="https://humboldt-wi.github.io/blog/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="https://humboldt-wi.github.io/blog/img/apple-touch-icon.png" />
+  
+
+  <link href="https://humboldt-wi.github.io/blog/css/owl.carousel.css" rel="stylesheet">
+  <link href="https://humboldt-wi.github.io/blog/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://humboldt-wi.github.io/index.xml" type="application/rss+xml" title="Institute of Infomation Systems at HU-Berlin">
+
+  
+  <meta property="og:title" content="Marketing Campaign Optimization: Profit modeling" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/research/applied_predictive_modeling_19/01marketing_campaign_optimization//" />
+  <meta property="og:image" content="img/logoGross.png" />
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://humboldt-wi.github.io/blog/">
+                    <img src="https://humboldt-wi.github.io/blog/img/logo.png" alt="Marketing Campaign Optimization: Profit modeling logo" class="hidden-xs hidden-sm">
+                    <img src="https://humboldt-wi.github.io/blog/img/logo-small.png" alt="Marketing Campaign Optimization: Profit modeling logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Marketing Campaign Optimization: Profit modeling - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/news/">News</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/contributors/">Contributors</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/research/">research</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Marketing Campaign Optimization: Profit modeling</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Seminar Applied Predictive Modeling (SS19) – Asmir Muminovic, Lukas Kolbe</a> | August 12, 2019</p>
+
+                        <div id="post-content">
+                          
+
+<h1 id="marketing-campaign-optimization">Marketing Campaign Optimization</h1>
+
+<p><br></p>
+
+<h2 id="causal-inference-in-profit-uplift-modeling">Causal Inference in Profit Uplift Modeling</h2>
+
+<h4 id="authors-asmir-muminovic-lukas-kolbe">Authors: Asmir Muminovic, Lukas Kolbe</h4>
+
+<p><br></p>
+
+<h3 id="motivation">Motivation</h3>
+
+<p>The global spending on advertising amounts to more than 540 billion US dollars for 2018 only, and the spending for 2019 is predicted to reach over 560 billion US dollars. The marketing spendings have continuously increased since 2010 [17], and this trend does not seem to brittle in the near future.
+Although marketing is such an integral part of most businesses, marketers often fail to maximize the profitability of their marketing efforts.
+Traditionally, this issue was tackled via utilization of so-called “Response” models [18], which targets the most likely to buy customers. This model has a big downside, since it disregard causality. We effectively do not know if the targeted customers would have bought anyways, is annoyed by the targeting, or does not react at all. Targeting these customers would result in unnecessary costs.
+We should therefore select customers who will buy because of the campaign, that is, those who are likely to buy if targeted, but unlikely to buy otherwise [1]. This could be achieved with uplift modeling, since it measures the treatment effect. Additionally, customers have different spendings, therefore revenue uplift modeling seems more viable than standard conversion modeling. But, since targeting customers can come with a price in form of vouchers which effectively reduce the profits, Profit Uplift Modeling is what truly optimizes the profitability of online marketing campaigns.</p>
+
+<p><br></p>
+
+<h3 id="datasets">Datasets</h3>
+
+<p>For this project, we used four different datasets. All of them contain data from marketing campaigns in online shops, each having a treatment and control group and both conversion and revenue/spend as target variables. All our models focus on modeling the treatment effect as additional revenue gained by the treatment, thus focusing on the continuous spending variable as the target.
+The binary conversion variable is used for stratification of the data.</p>
+
+<p>All datasets show an inherent treatment effect, i.e. the spending of customers in the treatment group is higher than spending of customers in the control group. This treatment effect is what our analysis tries to isolate and assign to single individuals/sessions in our data.</p>
+
+<p><img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/ate-plot.png"></p>
+
+<p>All datasets show an imbalance in the spending class, meaning that the cases where the spending is &gt;0 are quite rare. This is an important caveat which might influence model learning, since the cases where people actually spend money are both the most interesting and the most rare.</p>
+
+<p><img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/spend_percentage.png"></p>
+
+<p><br></p>
+
+<h4 id="kevin-hillstrom-data">Kevin Hillstrom Data</h4>
+
+<p>The first dataset was the well known Hillström dataset published by Kevin Hillström in 2008. It contains well cleaned data which revolves around an email campaign that was sent out to a group of male and female customers of an online shop.</p>
+
+<p>As taken from the Blog description, the dataset contains 64,000 customers who last purchased within twelve months. The customers were involved in an e-mail test.</p>
+
+<ul>
+<li><sup>1</sup>&frasl;<sub>3</sub> were randomly chosen to receive an e-mail campaign featuring Mens merchandise.</li>
+<li><sup>1</sup>&frasl;<sub>3</sub> were randomly chosen to receive an e-mail campaign featuring Womens merchandise.</li>
+<li><sup>1</sup>&frasl;<sub>3</sub> were randomly chosen to not receive an e-mail campaign.</li>
+</ul>
+
+<p>In our case, we do <em>not</em> differenciate between the two treatments. Instead, we try to optimize the targeting decision within the population supplied, regardless of mens or womens treatment.</p>
+
+<p>During a period of two weeks following the e-mail campaign, results were tracked. Hillstrom suggests that the user tries to find out whether the mens or the womens campaign was more successful.</p>
+
+<p>The data and its full description can be found here: [<a href="https://blog.minethatdata.com/2008/03/minethatdata-e-mail-analytics-and-data.html">https://blog.minethatdata.com/2008/03/minethatdata-e-mail-analytics-and-data.html</a>]</p>
+
+<p>The Code for reproduction of the results can be found in our GitHub Repo:
+[<a href="https://github.com/lukekolbe/hu_apa/tree/master/R%20Code/hillstrom">https://github.com/lukekolbe/hu_apa/tree/master/R%20Code/hillstrom</a>]</p>
+
+<p><br></p>
+
+<h4 id="fashion-a-fashion-b-books-toys">Fashion A, Fashion B, Books&amp;Toys</h4>
+
+<p>The chair of Information Systems at the Humboldt University of Berlin provided us with three real-world e-commerce datasets from a cooperating partner. These datasets, namely FashionA, FashionB and Books&amp;Toys contain 1.000.000, 700.000 and 150.000 customer sessions, respectively. The data was collected over a one year period. All datasets are similar in structure, since they all possess the same variables.</p>
+
+<p>All three sets share the same 93 features, which can be grouped into campaign related variables, time counting variables, session status variables (interaction counter, time variables, the target and treatment variables) [&hellip;&hellip;&hellip;]</p>
+
+<p>While the data has the same inherent features, the context of the campaign might be different each time. Also, the actual nature of the campaigns showed to be quite different:</p>
+
+<p>The treatments were defined by their Campaign Unit (Currency or Percent), the Campaign Value (either a fixed discount amount or a discount percentage) and the Campaign Minimum Order Value (MOV). The latter defined whether the user had to reach a certain shopping cart value before becoming eligible for treatment. This is very interesting, as it means that being in the treatment group does not necessarily mean everyone treated gets a discount. Instead, the discount is conditional on reaching the MOV.
+For any cost and profit analysis, this is very important.</p>
+
+<p>In <strong>Fashion A</strong>, a user had to reach 125€ before getting to claim the 20€ discount proposed by the campaign. The goal here seems to have been an upselling effect: the high MOV reduces the number of people who become eligible for the discount. For everyone else, the assumption is that showing them the option of a discount motivates them to shop. In many cases, they might find find items they like, but not for more than the the MOV. Yet still they might commit to the cart items they added and check out. In such cases, there might be a positive effect of the campaign on the amount spent, without causing any cost.
+Some ~64.000 rows in the Data had a differing campaign: 50€ MOV and a 5€ campaign value. These lines were removed because they had a lower average treatment effect than those in the majority campaign and were vastly outnumbered.</p>
+
+<pre><code class="language-R">mean(f_a$checkoutAmount[f_a$controlGroup==0&amp;f_a$campaignValue==500]) - 
+mean(f_a$checkoutAmount[f_a$controlGroup==1&amp;f_a$campaignValue==500])
+</code></pre>
+
+<p><em>0.250630</em></p>
+
+<pre><code class="language-R">mean(f_a$checkoutAmount[f_a$controlGroup==0&amp;f_a$campaignValue==2000]) - 
+mean(f_a$checkoutAmount[f_a$controlGroup==1&amp;f_a$campaignValue==2000])
+</code></pre>
+
+<p><em>0.4990753</em></p>
+
+<p>This left us with a completely homogeneous campaign structure in Fashion A:
+* Campaign Value of 20€</p>
+
+<ul>
+<li>Campaign Minimum Order Value of 125€</li>
+</ul>
+
+<p>In <strong>Fashion B</strong>, the treatment was similar, but with a lower coupon value (5€) and lower MOV (50 and 30€).
+In <strong>Books&amp;Toys</strong>, there was a mix of fixed discounts and percentage on final cart sum.</p>
+
+<p>In all of these datasets, the target variable <em>checkoutAmount</em> (the final amount paid) has the cost of the treatment already internalized. This is relevant for the calaculation of profits later on.</p>
+
+<p>Because of the differences between the datasets, we opted to treat every dataset individually regarding feature selection and cleaning.</p>
+
+<p><br></p>
+
+<h4 id="data-cleaning">Data Cleaning</h4>
+
+<p>Since the Hillstrom Data is in a very clean state as-is, no major transformation of the data was done. Only factor variables were dummified in order to make them compatible with the causalBoosting algorithm. Also, the treatment vector, a fractor with 3 levels (No E-Mail, Womens E-Mail, Mens E-Mail) was transformed into a binary treatment vector.</p>
+
+<p>The cleaning process for Fashion A, Fashion B and Books&amp;Toys followed the same steps, respectively. The primary goal of our thorough feature reduction was computational performance: as we had to train a set of 5 models on each of the datasets, we could not afford to run models for extended periods of time. This is why we chose to narrow down the set of features while retaining the maximum possible information value.</p>
+
+<p>An outlier treatment was not done</p>
+
+<p><br></p>
+
+<h5 id="feature-creation">Feature creation</h5>
+
+<p>Firstly, we transformed the unusual controlGroup variable into a treatment variable, effectlively reversing the scale. This is needed as most of our models rely on a binary treatment vector.</p>
+
+<p>Secondly, we created an &ldquo;eligibility&rdquo; variable, indicating whether a person i&rsquo;s checkountAmount plus campaignValue puts them over the Minimum Order Value (MOV):
+<strong>(checkoutAmount <sub>i</sub> + campaignValue <sub>i</sub> | treatment <sub>i</sub> = 1) &gt;= campaignMov <sub>i</sub></strong></p>
+
+<p>After calculating the eligibility, we computed the ExpectedDiscount, which indicates how much we expect each person&rsquo;s treatment (given eligibility) to cost:</p>
+
+<p><strong>(ExpectedDiscount <sub>i</sub> | eligibility = 1 &amp; campaignUnit = &ldquo;CURRENCY&rdquo;) = campaignValue <sub>i</sub></strong>
+<strong>(ExpectedDiscount <sub>i</sub> | eligibility = 1 &amp; campaignUnit = &ldquo;PERCENT&rdquo;) = (checkoutAmount <sub>i</sub> / (1 - campaignValue)) - checkoutAmount</strong></p>
+
+<p><br></p>
+
+<h5 id="1-remove-unneccessary-lines">1. Remove unneccessary lines</h5>
+
+<p>Some features such as trackerKey, campaignId, campaignTags were not useful for analysis. These features were deleted.
+A variable called label was also not needed, since it contained a transformed binary target variable (see Gubela 2017) that was likely indended in order to do machine learning with conventional methods. As we model treatment effects directly, this was not necessary (see above).</p>
+
+<p>Some other deleted features include factors with only one level, variables with only NA values and variables with an NA ratio of more than 85%.</p>
+
+<p><br></p>
+
+<h5 id="2-na-treatment">2. NA treatment</h5>
+
+<p>After deleting the features with highest NA ratios, we undertook a median imputation on time variables (as setting time counters such as timeSinceLastVisit to 0 would imply a very recent visit while the opposite is likely the case).</p>
+
+<p>For other counters or binary variables, we set NA values to 0.</p>
+
+<p><br></p>
+
+<h5 id="3-correlated-features">3. Correlated features</h5>
+
+<p>In order to further reduce the features, we conducted a correlation analysis and removed features with high correlation. The threshold was set to 0.75. This is rather low, the default value of the used findCorrelation function of the &lsquo;caret&rsquo; package is 0.9. But since we needed to reduce features for the costly models to be deployed, we set the threshold to a lower level.
+For all datasets (barring Hillstrom), this removed between 11 and 12 features, leaving about 60 features for possible training plus targets and campaign specific features.</p>
+
+<p><script src="https://gist.github.com/lukekolbe/497a9c4a6d2851028c06230292825ffd.js"></script>
+<em>Exemplary correlation handling</em></p>
+
+<p><br></p>
+
+<h5 id="feature-selection-adjusted-net-information-value-niv">Feature Selection: Adjusted Net Information Value (NIV)</h5>
+
+<p>To further reduce the amount of features, we deployed the NIV function from Leo Guelmann&rsquo;s &lsquo;Uplift&rsquo; Package [8].</p>
+
+<p>The net information value is derived from the well known Information Value (IV) and optimized for purposed of uplift modeling. It is computed as</p>
+
+<p>$$NIV = 100 \times ∑_{i=1}^{G}(P(x=i|y=1)^{T} \times P(x=i|y=0)^{C} - P(x=i|y=0)^{T} \times P(x=i|y=1)^{C}) \times NWOE_i$$</p>
+
+<p>where $$NWOE_i = WOE_i^{T} - WOE_i^{C}$$.</p>
+
+<p>The adjusted net information value is computed as follows:</p>
+
+<ol>
+<li>Take B bootstrap samples and compute the NIV for each variable on each sample</li>
+<li>Compute the mean of the NIV $$(NIV{mean})$$ and standatd deviation of the NIV $$(NIV{sd})$$ for each variable over all the B bootstraps</li>
+<li>The adjusted NIV for a given variable is computed by adding a penalty term to the mean NIV:
+$$NIV{mean} - \frac{NIV{sd}}{√{B}}$$</li>
+</ol>
+
+<p><script src="https://gist.github.com/lukekolbe/9b5a09776fc547b6b235700ac61aa890.js"></script>
+From the results of the NIV, the top 25 features were selected for training.</p>
+
+<p><br></p>
+
+<h4 id="stratification">Stratification</h4>
+
+<p>Since the datasets at hand were quite different in size, we opted to stratify them in a way that leaves us with training (and test) sets of similar size. The challenge was to find a way to keep the balance of the data: each set should have a ratio of treatment and control group members very close to the initial dataset. At the same time, we wanted to make sure that the ratio of conversions (actually buying something) was also kept similar.</p>
+
+<p>The package &lsquo;splitstackshape&rsquo; allows for such stratification across multiple variables and was used to receive our training and test sets. The ratios by which to split the data depended on the size of the dataset.</p>
+
+<p><script src="https://gist.github.com/lukekolbe/dd9bf80fdbf74e0f9844d0e6c40a70de.js"></script>
+<br></p>
+
+<h3 id="model-selection">Model Selection</h3>
+
+<p><br></p>
+
+<h4 id="approaches-to-uplift-modeling">Approaches to Uplift modeling</h4>
+
+<p>There are three main approaches in the uplift literature, the Class Transformation approach, the Two-Model approach and the direct modeling approach[7].
+The Class Transformation method is popular but yields mixed results, while some argue that the performance of this method is typically outperformed by the Two-Model approach [6], others say the exacte opposite[7].
+Since, there is no clear opinion on this matter, we decided to use the Two-Model approach as a baseline model, which finds wide application as such.</p>
+
+<p><br></p>
+
+<h4 id="two-model-approach">Two-Model approach</h4>
+
+<p>The Two-Model approach, how the name suggests, uses two predictive models, one using the treatment group data and the other using the control group data. This makes it possible to use a variety of machine learning models, which is the biggest advantage of this approach. The prediction of these two models get subtracted from each other to generate the uplift predictions. However, this could be a major drawback, for two reasons. First, since we employ two models, we end up having two error terms and secondly and more important both models focus on predicting the outcome isolated from eachother, instead of focusing on the differences between the two groups, which could lead to missing the &ldquo;weak&rdquo; uplift signal [7].</p>
+
+<p><br></p>
+
+<h4 id="direct-model-approach">Direct Model approach</h4>
+
+<p>There are various approaches to model uplift directly, for example Logistic Regression, K-Nearest-Neigbors, Support Vector Machines. But the by far most frequently used ones are in the family of tree-based models, such as Decision Trees [10], Random Forest [11], Boosting[12] and Bayesian Additive Regression Trees [13]. According to Gubela et. al tree-based models are among the top performers [14].</p>
+
+<p><br></p>
+
+<h4 id="model-selection-1">Model Selection</h4>
+
+<p>As mentioned above, tree-based models are usually outperforming other models. This is why we opted to use those mentioned in the Direct Model approach section along with a Ridge Regression Two-Model approach as our baseline model.</p>
+
+<p><br></p>
+
+<h4 id="honest-causal-tree">Honest Causal Tree</h4>
+
+<p>Since the Causal Tree is the base learner of most of our utilized models, we will quickly summarize its functionality.
+Causal Trees do not differ much from traditional Decision Trees, the only difference is instead of estimating a mean outcome in each leaf it estimates the average treatment effect.
+This is achieved by using a modified Mean Sqaured Error criterion for splitting. At each leaf it partions the data in such way that it maximizes the heterogeneity in treatment effects between groups and penalizes a partition that creates variance in leaf estimates [9]. The heterogenieity is usually measured with the Kullback-Leibler divergence [4].</p>
+
+<p>$$ \begin{equation} \label{eq:kl} \displaystyle \mathrm{KL}( P | Q) = \sum_x P(x) \log \frac{ P(x) }{ Q(x) } \end{equation} $$</p>
+
+<p>But how does the tree make sure, that the heterogeneity is not due to noise in the data. The solution is to make the Causal Tree &ldquo;<strong>honest</strong>&rdquo; by splitting our training data into two subsamples, where one is functioning as a subsample to find splits and the other is used to estimate the effects employing the splits found in the splitting subsample [9]. Each case of the estimation subsample is dropped down the tree until it falls into a leaf. This procedure is basically mimicing Cross-Validation.
+Cross-Validation per se cannot be applied in uplift settings, because of the fundamental problem of Causal Inference. For every individual, only one outcome is observed, never both at the same time.</p>
+
+<p><br></p>
+
+<h4 id="honest-causal-forest">Honest Causal Forest</h4>
+
+<p>The Honest Causal Forest is an just like any other Random Forest, an ensemble of Honest Causal Trees. The idea is the same, instead of fitting a single Honest Causal Tree, which can be noisy we fit multiple Causal Honest Trees at the same time, effectively
+The “Random Forest” part functions the same way as a standard Random Forest (e.g., resampling, considering a subset of predictors, averaging across many trees, etc.)[5][11].</p>
+
+<p><br></p>
+
+<h4 id="cross-validated-honest-causal-boosting">&ldquo;Cross Validated&rdquo; Honest Causal Boosting</h4>
+
+<p>Causal Boosting is also an ensemble algorithm which uses Causal Trees as a &ldquo;weak&rdquo; base learner. This change results in the learned function to be able to find treatment effect heterogeneities [12].
+This Causal Boosting algorithm is validated the same way as the Causal Tree, but the creators of this algorithm still referred to it as &ldquo;Cross Validated&rdquo;, although this is rather an &ldquo;Honest&rdquo; Causal Boosting algorithm.</p>
+
+<p><br></p>
+
+<h4 id="causal-bayesian-additive-regression-trees-bart">Causal Bayesian Additive Regression Trees (BART)</h4>
+
+<p>Causal BART is very similar to Causal Boosting, both use sequential weak learners. But instead of applying a learning rate to the sequentilals, the Bayesian approach uses a set of priors.
+By using a prior, which provide regularization in a way that no single regression tree can dominate the total fit, and likelihood to get a poterior distribution of our predictions[13].</p>
+
+<p><br></p>
+
+<h3 id="model-deployment-and-training">Model Deployment and Training</h3>
+
+<p>We put these up against the two-model approach which functions as our benchmark model. In this regard we want to find out if these specially constructed algorithms outperform the traditional and rather fast implementations, here the ridge regression two modell approach.</p>
+
+<p><br></p>
+
+<h4 id="baseline-two-model-with-ridge-regression">Baseline: Two-Model with Ridge Regression</h4>
+
+<p>In order to judge whether the direct modeling of treatment effects is more efficient than the conventional two-model approach, we built such a model as baseline. We picked Ridge Regression since it penalizes on coefficient size without removing coefficients entirely, as LASSO does.</p>
+
+<p><script src="https://gist.github.com/lukekolbe/317c7c868df54edeab45c0cd376dd9c9.js"></script>
+<br></p>
+
+<h4 id="causaltree">CausalTree</h4>
+
+<p>As it is a popular and well established method for treatment effect modeling and the foundation of causal_forest() and causalBoosting() models, we naturally fit a causalTree (package &lsquo;causalTree&rsquo;), a derivative of Leo Breiman&rsquo;s Decision Trees geared toward modeling causal inference.</p>
+
+<p>The tree was configured as giving an &lsquo;honest&rsquo; estimation, i.e. the tree was fit on the training data and the nodes were estimated using the (separate) estimation set. Likewise, splitting criteria and cross-validation parameters are also optimized for honest estimation.</p>
+
+<p>Computation-wise, the model is surprisingly costly. The CP parameter was crucial for model predictive power as well as computation time. Setting it too high and the resulting tree only has one node. Setting it too low and the tree becomes overly complex and costly to compute. The difference between cp=0.0000001 (1e<sup>-7</sup>) and cp=0.00000001 (1e<sup>-8</sup>) amounted to 10-fold increase in computation time</p>
+
+<p><script src="https://gist.github.com/lukekolbe/27513b368226dcc1ee1096be6421d1c9.js"></script>
+<br></p>
+
+<h4 id="causalforest">CausalForest</h4>
+
+<p>The Causal Forest (package &lsquo;grf) was fitted using a parallelized approach, building four forests with 1000 trees each and then combining them using the designated combine function of the &lsquo;grf&rsquo; package. Parallelization was deployed using the &lsquo;doParallel&rsquo; package. Performance this way in terms of computation time was good.</p>
+
+<p>The Forests were again configured toward honest estimation. All NULL variables were automatically tuned.</p>
+
+<p><script src="https://gist.github.com/lukekolbe/be6a0ded7db88dab6b3cce96124d6d33.js"></script>
+<br></p>
+
+<h4 id="causalboosting">CausalBoosting</h4>
+
+<p>In theory a powerful model, the Causal Boosting (package &lsquo;causalLearning&rsquo;) model suffered from severe performance issues in our application. The model in its base configuration took over a week to compute (it was stopped after 7 days) and was thus not feasible for implementation. Instead, we de-tuned it by reducing the number of trees to 50 (default = 500), setting the learning rate (eps) to a rather weak 0.3 and reducing the cross validation folds to 5. Still it took up to 36 hours on designated servers to compute.
+It is entirely possible that this low-cost approach has negative influence on performance, but computational cost is a factor to consider when choosing models.</p>
+
+<p><script src="https://gist.github.com/lukekolbe/2bc00088b843ae785915df5575f674c1.js"></script>
+<br></p>
+
+<h4 id="causal-bart">Causal Bart</h4>
+
+<p>Implementation of Causal Bart (package &lsquo;bartCause&rsquo;) was rather straightforward. Computation was rather quick, even with 1000 trees and elaborated sampling. An interesting feature of the bartc() function is the parameter group.by, which lets the model calculate the treatment effects for different groups. This might be useful when there isn&rsquo;t just one treatment, but in fact different treatmens within a population (see description of Books&amp;Toys dataset).</p>
+
+<p><script src="https://gist.github.com/lukekolbe/455e31d86fb7ce96ad08993cd7e81cf3.js"></script>
+<br></p>
+
+<h3 id="implicatons-towards-profit-revenue-and-costs">Implicatons towards Profit, Revenue and Costs.</h3>
+
+<p>We have two different kind of costs. Cost-type one are costs which result from using a voucher, effectively reducing the revenue a customer generates for the amount of the campaign Value.
+The other cost-type stems from not treating customers, which would have generated an additional revenue, if they were treated. This could be seen as some form of opportunity costs.</p>
+
+<p>The following definitions should help to understand the complexity of incurring costs:</p>
+
+<p>(1) discount<sub>i</sub>:= Campaign Value<sub>i</sub>; if basketValue<sub>i</sub> &gt;= MOV
+                       <br>0; else</p>
+
+<p>(2) Profit<sub>i</sub> := basketValue<sub>i</sub> – discount<sub>i</sub> := checkoutAmount<sub>i</sub></p>
+
+<p>One should bare in mind, that the cost-type one, costs from discounts are already internalized in the checkout amount variable (1). The discount can either be equal to the campaign value or zero, follwing the logic of (1). As, stated in (2) the checkout amount is equal to the profit.</p>
+
+<p>Hence, we do profit modeling when utilizing the <em>checkoutAmount</em> variable as the target variable in our models.</p>
+
+<p>(3) basketValue<sub>tr</sub> := basketValuect + Uplift<sub>tr</sub>
+The basket value of a treated person is equal to the basket value of a person in the control group, plus the uplift in revenue which was generated by the treatment.</p>
+
+<p>(4) basketValue<sub>ct</sub> := checkoutAmount<sub>ct</sub>
+The basket value of a person in the control group is equal to its checkout amount, since there are no additional factors, such as discount or uplifts, since this person was not treated.</p>
+
+<p><br></p>
+
+<h3 id="model-evaluation">Model Evaluation</h3>
+
+<p>Since there is no ground truth to evaluate our estimates on, finding a measure for the model performance in Uplift modeling is a core issue.</p>
+
+<p>Most practicioners resort to measures such as uplift curves [16].
+In the following example, we are going to show you how to compute these step-by-step.</p>
+
+<p>We are starting with ranking our model predictions for both treated and control data points, and rank them from high to low.</p>
+
+<p><script src="https://gist.github.com/lukekolbe/18eb7c3330a42bb390f6db54c2954372.js"></script>
+<br></p>
+
+<p>We continue binning the individuals accordingly to their rankings into deciles. Consequently the individuals with the highest uplift scores will populate the first group.</p>
+
+<p><script src="https://gist.github.com/lukekolbe/bc5c40f0f0ac8d9844daae7f4c045cb1.js"></script>
+<br></p>
+
+<p>Next, we are interested in the actual values, especially the following:</p>
+
+<ul>
+<li><p>Number of individuals in the treatment group per decile</p></li>
+
+<li><p>Number of individuals in the control group per decile</p></li>
+
+<li><p>The spending of both groups per decile</p></li>
+
+<li><p>The spending per capita of both groups per decile</p></li>
+
+<li><p>The achieved uplift per decile</p></li>
+</ul>
+
+<p><script src="https://gist.github.com/lukekolbe/a2df2f2cc1c15f799f5ac24cd8804a0b.js"></script>
+<br></p>
+
+<p><img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/perf_pred_b_t_bc.png"></p>
+
+<p><br>Based on these values we can create some plots, visualizing the performance matrix.
+Ideally, the plot should have high average checkout amount for the treatment group and low average checkout amounts for the control group in the first deciles and vice versa in the last deciles.</p>
+
+<p><img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/BooksToys_causalBart_arpd_.png"></p>
+
+<p>By subtracting the average checkout amount for the control group from the average checkout amount of the treatment group we achieve the uplift per capita per decile as pictured in the following plot.</p>
+
+<p><img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/BooksToys_causalBart_upd_.png"></p>
+
+<p>Now using our beforehand calculated performance matrix we are able to generate uplift curves. The procedure is as follows:</p>
+
+<ol>
+<li><p>We calculate the cumulitative sum of the revenue of the treated and the control group while controlling for the total population in each group of the specified decile.</p></li>
+
+<li><p>We calculate the percentage of the total amount of people (both treatment and control) present in each decile.</p></li>
+</ol>
+
+<p><script src="https://gist.github.com/lukekolbe/42c33b759d727fac25ebbcfe9f7bad1e.js"></script>
+<br></p>
+
+<p>Afterwards, we are able to calculate the incremental gains for the model performance. This represents our uplift curve.
+The overall incremental gains represent the random curve. This is corresponding to the global effect of the treatment.</p>
+
+<p><script src="https://gist.github.com/lukekolbe/c3324c449bb15d33ba06e464ff89207f.js"></script>
+<br></p>
+
+<p>In our case the positive slope of the random curve confirms the overall positive effect of the randomized campaign. Finally, the shape of the curves shows the strong positive and negative uplifts. Contrary, the closer an uplift curve is to the random line, the weaker are the uplifts achieved.</p>
+
+<p>We proceed with computing the area of both of these curves.
+<script src="https://gist.github.com/lukekolbe/490216b804451790f4a88dfa3b2a6caa.js"></script>
+<br></p>
+
+<p>Next up we substract the area under to random curve from the area of our uplift curve.</p>
+
+<p><script src="https://gist.github.com/lukekolbe/c6d024d8c1a880e76d13b51157b4e865.js"></script>
+<br></p>
+
+<p>The area between the Qini curve and the Random curve is called the Qini-coefficient.</p>
+
+<p><img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/BooksToys_causalBart_qini_.png"></p>
+
+<p>The code was adapted from Guelman&rsquo;s Uplift package.
+<a href="https://cran.r-project.org/web/packages/uplift/index.html">https://cran.r-project.org/web/packages/uplift/index.html</a></p>
+
+<p><br></p>
+
+<h3 id="model-profitability">Model Profitability</h3>
+
+<p>Since we now want to know how profitiable a campaign would be which is based on our model predictions, we need to know the revenue and cost streams which would occur and compare these to the realized campaign from the random experiment. Thus, we need to calculate the additional revenue, cost, and finally profit we generate.</p>
+
+<p>From here on we refer to the campaign based on the model as the <em>model campaign</em> and for the realized camapign from the random experiement as the <em>campaign</em>.</p>
+
+<p><strong>Assumption</strong>
+We assume, that every individual who is eligible to use a voucher, indeed uses it. This is rather a conservative point of view. But we have no indication of how many people actually used the discount code for every dataset.</p>
+
+<p>In the first step we need these variables, two of these, namingly <em>eligibility</em> and <em>ExpectedDiscount</em> should be familiar to this point:</p>
+
+<ul>
+<li>eligibility</li>
+<li>model eligibility</li>
+<li>ExpecedDiscount</li>
+<li>model ExpectedDiscount</li>
+</ul>
+
+<p>So what are the two other variables referring to our model?</p>
+
+<p>The <em>model eligibility</em> (&ldquo;m.eligiblity&rdquo;) variable is an adaption of the <em>eligibility</em> variable we spoke about in our <strong>Feature Creation</strong> section.
+The difference is that <em>model eligibility</em> is applied to all individuals, internalizes the uplift (treatment effect), and is not accounting for the campaign value (discount). The reason for the lastest is, that you cannot use a voucher before qualifying to use it. Effectively, in this case the checkout amount is equal to the revenue and is not internalizing the discount.</p>
+
+<p>This function demonstrates how the <em>model eligibility</em> variable is constructed:</p>
+
+<p><strong>(p + checkoutAmount <sub>i</sub>) &gt;= campaignMov <sub>i</sub></strong></p>
+
+<p>After calculating the <em>model eligibility</em>, we computed the <em>model ExpectedDiscount</em>, which indicates how much we expect each person&rsquo;s treatment (given <em>model eligibility</em>) to cost.
+Notice that individuals receiving a discount in percent are calculated slightly different than those with an absolut discount value:</p>
+
+<p><strong>(ExpectedDiscount <sub>i</sub> | eligibility = 1 &amp; campaignUnit = &ldquo;CURRENCY&rdquo;) = campaignValue <sub>i</sub></strong>
+<strong>(ExpectedDiscount <sub>i</sub> | eligibility = 1 &amp; campaignUnit = &ldquo;PERCENT&rdquo;) = (checkoutAmount <sub>i</sub> / (1 - campaignValue)) - checkoutAmount</strong>
+<strong>Costs</strong></p>
+
+<p>These new variables are added to our existing model matrix.</p>
+
+<p><script src="https://gist.github.com/AsmirMumin/d178be6d9d00d824e834d046bc870194.js"></script>
+We proceed with calculating the number of <em>eligible</em> and <em>model eligible</em> customers per decile to be able to put these in our profitability matrix later on.
+The difference of these measures is the number of additional eligible customers, which we called <em>delta.eligible</em>.</p>
+
+<p><script src="https://gist.github.com/AsmirMumin/29de48f8a851911f8494080c4b4fe522.js"></script>
+The number of aditionally eligible individuals is core to compute the additional costs stemming from our <em>model campaign</em>, since only these individuals can use the discount voucher, which effectively reduces our profits and thus adds costs.
+The model costs are generated by individuals using their vouchers multiplied by the campaign value (discount) of these vocuhers. Same applies for the campaign costs of the <em>campaign</em>.
+The difference of these costs are the additional costs caused by our <em>model campaign</em>, and we are only interested in these.</p>
+
+<p><script src="https://gist.github.com/AsmirMumin/73edf863c8b93efae170d77ee2dd29ad.js"></script>
+<br></p>
+
+<p>The additional revenue is basically the number of additionally treated individuals multiplied by the uplift achieved on a decile level.
+Now, we are able to calculate the additional profit, which is generated by our <em>model campaign</em> if we treated every customer for each decile.</p>
+
+<p><script src="https://gist.github.com/AsmirMumin/f0a08e6a42fb2d6f15f10443e1bbab28.js"></script>
+<br></p>
+
+<p>But since it is not optimal to treat everyone. We need to compute the additional profits generated cumulatively for each treated decile to detect how many deciles we should treat.<br />
+This is done, by cumulating profits for each treated decile and accounting for the missed profits of deciles which are not treated. We did this for every possible number of deciles and finally found the maximum. This is telling us how much profit we gain and at how many deciles we should treat.</p>
+
+<p><script src="https://gist.github.com/AsmirMumin/e58e83c4fd9e00f4f71691634bb0a3ee.js"></script>
+<br></p>
+
+<p>Since, it is not always possible to treat as many as suggested when maximizing the profit, due to budget constraints. We opted to calculate the Return on Investment (ROI) as well and use it as our decision criterion. This enables marketers to gain the maximal profitability per euro spend.
+We save these metrics to a profitability matrix.</p>
+
+<p><script src="https://gist.github.com/AsmirMumin/16706b352d3fa586926ce0a457a2890d.js"></script>
+<br></p>
+
+<p><img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/profitability_b_t_bc.png"></p>
+
+<p><br></p>
+
+<h3 id="results">Results</h3>
+
+<p>So how did our more sophisticated models, which are directly measuring the uplift in comparison to our baseline model, the Two-Model approach?</p>
+
+<p><img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/Qini_table.png">
+<br></p>
+
+<p>The tree based models dominated the Two-Model approach measured by the Qini-coefficient in our FashionA and FashionB dataset. In the BooksToys dataset, the Two-Model approach placed second to Causal BART and in the Hillstrom dataset it placed best, leaving out the ensemble model.</p>
+
+<p>We could not confirm that having more features generally betters the model performance.</p>
+
+<p>Which models are especially mention-worthy?
+The Causal Bart generally performed pretty well across all datasets, but FashionB. It was only beaten by our ensemble model, which averages the predictions of the other models did well in every dataset, and is considered the overall winner when measuring the Qini-coefficient.</p>
+
+<p>Although the Qini-coefficient is a viable measure for the model performance, it does not account for costs which are occuring from the treatment. Thus, these results are only fully valid, when we have low or no costs from additional treatments.
+Since costs are occuring in some of the datasets, the of models can change.</p>
+
+<p><img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/Profit-decile_table.png">
+<br></p>
+
+<p>Considering the absolute profits gained by the models, the ensemble model no longer is the best performer.
+We also do not have a clear winner here. In the FashionA dataset, the Causal Forest is suprisingly the winner, with 13k profits generated when targeting 9 deciles. In FashionB causal Boosting is generating the most profits, with 17k while treating 8 deciles. In BooysToys we achieved the highest profit gain of 50k, when treating only the first decile, which makes it also the most profitable one in terms of Return on Investment (ROI).
+In the Hillstrom dataset, Causal Boosting won again with 4k profits while treating all customers.</p>
+
+<p>Causal Boosting was able top place first in two of our four datasets, making it the best performing in terms of absolute profits.</p>
+
+<p>If budget is restricted, the ROI would be the measure to decide on which deciles to treat.</p>
+
+<p><img style=" width:750px;display:block;margin:0 auto;"src="https://raw.githubusercontent.com/lukekolbe/hu_apa/master/final%20predictions/final%20plots/ROI_table.png">
+<br></p>
+
+<p>You might ask yourself, why are one of the latest deciles the most profitible ones, this is due to the campaign design. We explain this in the next section.</p>
+
+<p><br></p>
+
+<h3 id="key-findings">Key Findings</h3>
+
+<p>We see that the way the campaign is constructed/designed is heavily impactful on the uplifts achieved and the general profitability of our campaign.
+For example, in FashionA, the marketers have used upselling, a technique employed in marketing to incentivize customers to spend a certain amount of money. In this case, the treatment group received a 20€ voucher, but those vouchers could be only used if the customers had a minimum order value of 125€.
+The data shows that not everybody was willing to spend this amount of money, since a lot of treated customers didn&rsquo;t reach the necessary spending, but still we estimated a lot of customers to respond positively on the treatment. This means, that solely giving the customers a chance of saving 20€ is effective as a treatment, which means it incentivizes customers to shop. The data suggests that some customers would browse the shopping website for products they like, finally ending up at a lower cart value than the minimum order value requires, and still buy those articles. One could assume that they were invested too much to this point, be it timewise or emotionally to churn now.
+The profit analysis for FashionA shows that the most profitable deciles for every model were always the last ones, which indicates that this upselling technique allows to treat most of the customers, since the cost which come with the 20€ voucher would only occur for a minority of the treated.
+The same logic applies to dataset FashionB, where the minimum order value is between 30€ and 50€.
+Similarly, for the Hillstrom data, where treatment is generally very cheap, it might still be benefitial to treat many people – only avoiding the sleeping dogs (customers who have negative treatment effects).</p>
+
+<p>Contrarily, if we don&rsquo;t restrict the treatment, every additional treatment equates to additional cost. The profitability table above shows that in Books&amp;Toys, the lower deciles are most profitable. This is likely because many rows in the data have no MOV assigned, meaning that everyone who is treated receives a discount. In these cases the treatment cost amounts to substantial amounts when treating all or most people. Hence, the profit as we model it does not only reflect the uplift gained, but also the money <em>not</em> spend by not treating later deciles.</p>
+
+<p><br></p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>In Conclusion, we were able to increase our model profits with every model.
+Our results suggest that uplift modeling is a viable tool to optimize marketing campaign profits.
+But one should bare in mind, the cost of treatments if the number of the effectively treated is high or has no restriction.
+The campaigns with a higher minimum order value where most profitable.</p>
+
+<p>Our models mostly performed better than random. But it is hard to declare a clear winner, since it is highly depended what our campaign looks like.</p>
+
+<p><br></p>
+
+<h3 id="recommendations">Recommendations</h3>
+
+<p>We recommend to use various models to find the best performing ones for a given scenario, regarding budget restrictions and campaign design.</p>
+
+<p>It is also important to account for the computational costs: Causal Boosting, which was computationally very heavy, might not be a sensible choice for treatment effect modeling when time is a factor or model adaption and re-training cycles are frequent.</p>
+
+<p>Deciding for a model should ideally consider both the performance as measures by the Qini score, as well as the (predicted) profitability. Builing ensembles might be useful!</p>
+
+<p>Also regarding the modeling, it is much simpler to assess the profitability when you are not dealing with a variable which has internalized costs. This proved to be quite troubling when finding the right assessment models, as for some lines the checkoutAmount is acutal revenue, while for others it is revenue minus treatment cost.</p>
+
+<p><br></p>
+
+<h3 id="literature">Literature</h3>
+
+<p>[1] M. Soltys and S. Jaroszewicz. Boosting algorithms for uplift modeling, 2018.</p>
+
+<p>[2] B. Hansotia and B. Rukstales. Incremental value modeling. Journal of Interactive Marketing, 16(3):35–46, 2002.</p>
+
+<p>[3] K. Hillstrom. The MineThatData e-mail analytics and data mining challenge. MineThatData blog, <a href="http://blog.minethatdata.com/2008/03/">http://blog.minethatdata.com/2008/03/</a> minethatdata-e-mail-analytics-and-data.html, 2008. Retrieved on 06.10.2014.</p>
+
+<p>[4] I. Csiszar and P. Shields. Information theory and statistics: A tutorial. Foundations and Trends in Communications and Information Theory, 1(4):417–528, 2004.</p>
+
+<p>[5] L. Guelman, M. Guill&rsquo;en, and A.M. P&rsquo;erez-Mar&rsquo;ın. Random forests for uplift modeling: An insurance customer retention case. In Modeling and Simulation in Engineering, Economics and Management, volume 115 of Lecture Notes in Business Information Processing (LNBIP), pages 123–133. Springer, 2012.</p>
+
+<p>[6] M. Ja&rsquo;skowski and S. Jaroszewicz. Uplift modeling for clinical trial data. In ICML 2012 Workshop on Machine Learning for Clinical Data Analysis, Edinburgh, Scotland, June 2012.</p>
+
+<p>[7] P. Gutierrez and J.-Y. Gérardy. Causal Inference and Uplift Modeling. A review of the literature, 2016.</p>
+
+<p>[8] L. Guelman, M. Guillen, A. M. Pérez-Marín, et al. Optimal personalized treat-
+ment rules for marketing interventions: A review of methods, a new proposal, and an insurance case study. Technical report, 2014.</p>
+
+<p>[9] S. Athey and G. W. Imbens. Recursive partitioning for heterogeneous causal effects.
+arXiv preprint arXiv:1504.01132, 2015a.</p>
+
+<p>[10] S. Athey and G. W. Imbens. Machine learning methods for estimating heterogeneous causal effects. stat, 1050:5, 2015b.</p>
+
+<p>[11] S. Athey and S. Wager. Estimation and inference of heterogeneous treatment effects using random forests. arXiv preprint arXiv:1510.04342, 2015.</p>
+
+<p>[12] S. Powers et. al. Some methods for heterogenous treatment effect estimation in high dimensions. arXiv preprint arXiv:1707.00102, 2017.</p>
+
+<p>[13] P. R. Hahn et. al. Bayesian Regresion tree models for causal inference: Regularization, Confounding, and Heterogenous Effects. arXiv preprint arXiv:1706.09523, 2019.</p>
+
+<p>[14] Gubela et. al. Revenue Uplift Modeling, 2007.</p>
+
+<p>[15] J. L. Hill. Bayesian Nonparametric Modeling for Causal Inference, Journal of Computational and Graphical Statistics, 20:1, 217-240. DOI: 10.1198/jcgs.2010.08162, 2011.</p>
+
+<p>[16] M. Soltys, S. Jaroszewicz, and P. Rzepakowski. Ensemble methods for uplift modeling. Data mining and knowledge discovery, 29(6):1531–1559, 2015.</p>
+
+<p>[17] <a href="https://www.statista.com/statistics/236943/global-advertising-spending/">https://www.statista.com/statistics/236943/global-advertising-spending/</a></p>
+
+                        </div>
+                        
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (31)</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/instruction">instruction (2)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/a/b-testing"><i class="fa fa-tags"></i> a/b-testing</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/attention"><i class="fa fa-tags"></i> attention</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/awd-lstm"><i class="fa fa-tags"></i> awd-lstm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-deep-learning"><i class="fa fa-tags"></i> bayesian-deep-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-topic-modelling"><i class="fa fa-tags"></i> bayesian-topic-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/black-box"><i class="fa fa-tags"></i> black-box</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/blockchain"><i class="fa fa-tags"></i> blockchain</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/causal-inference"><i class="fa fa-tags"></i> causal-inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class17/18"><i class="fa fa-tags"></i> class17/18</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class18/19"><i class="fa fa-tags"></i> class18/19</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class19"><i class="fa fa-tags"></i> class19</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/classification"><i class="fa fa-tags"></i> classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/coarsened-exact-matching"><i class="fa fa-tags"></i> coarsened-exact-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/conversion"><i class="fa fa-tags"></i> conversion</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks"><i class="fa fa-tags"></i> convolutional-neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/data-simulation"><i class="fa fa-tags"></i> data-simulation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/deep-learning"><i class="fa fa-tags"></i> deep-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/distant-transfer-learning"><i class="fa fa-tags"></i> distant-transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/dml"><i class="fa fa-tags"></i> dml</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/doc2vec"><i class="fa fa-tags"></i> doc2vec</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/document-embeddings"><i class="fa fa-tags"></i> document-embeddings</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/explanation"><i class="fa fa-tags"></i> explanation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/fine-tuning"><i class="fa fa-tags"></i> fine-tuning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/genetic-matching"><i class="fa fa-tags"></i> genetic-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/gru"><i class="fa fa-tags"></i> gru</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/hierarchical-network"><i class="fa fa-tags"></i> hierarchical-network</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ice"><i class="fa fa-tags"></i> ice</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-analysis"><i class="fa fa-tags"></i> image-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-captioning"><i class="fa fa-tags"></i> image-captioning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/inference"><i class="fa fa-tags"></i> inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset"><i class="fa fa-tags"></i> keras-imdb-dataset</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/knn-algorithm"><i class="fa fa-tags"></i> knn-algorithm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/language-modelling"><i class="fa fa-tags"></i> language-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lda"><i class="fa fa-tags"></i> lda</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lime"><i class="fa fa-tags"></i> lime</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/long-short-term-memory"><i class="fa fa-tags"></i> long-short-term-memory</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lstm"><i class="fa fa-tags"></i> lstm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/machine-learning"><i class="fa fa-tags"></i> machine-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matching-methods"><i class="fa fa-tags"></i> matching-methods</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matchit"><i class="fa fa-tags"></i> matchit</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/monte-carlo-dropout"><i class="fa fa-tags"></i> monte-carlo-dropout</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/movie-reviews"><i class="fa fa-tags"></i> movie-reviews</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nearest-neighbor"><i class="fa fa-tags"></i> nearest-neighbor</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/neural-network"><i class="fa fa-tags"></i> neural-network</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/neural-networks"><i class="fa fa-tags"></i> neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nlp"><i class="fa fa-tags"></i> nlp</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/optimal-matching"><i class="fa fa-tags"></i> optimal-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/pdp"><i class="fa fa-tags"></i> pdp</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/pretraining"><i class="fa fa-tags"></i> pretraining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score"><i class="fa fa-tags"></i> propensity-score</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score-weighting"><i class="fa fa-tags"></i> propensity-score-weighting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommendation"><i class="fa fa-tags"></i> recommendation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-system"><i class="fa fa-tags"></i> recommender-system</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-systems"><i class="fa fa-tags"></i> recommender-systems</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/rnn"><i class="fa fa-tags"></i> rnn</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/rs"><i class="fa fa-tags"></i> rs</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-analysis"><i class="fa fa-tags"></i> sentiment-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-classification"><i class="fa fa-tags"></i> sentiment-classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/share-price-prediction"><i class="fa fa-tags"></i> share-price-prediction</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/simulation"><i class="fa fa-tags"></i> simulation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-analysis"><i class="fa fa-tags"></i> text-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-mining"><i class="fa fa-tags"></i> text-mining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series"><i class="fa fa-tags"></i> time-series</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series-forecasting"><i class="fa fa-tags"></i> time-series-forecasting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/transfer-learning"><i class="fa fa-tags"></i> transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/treatment-effect"><i class="fa fa-tags"></i> treatment-effect</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/twitter"><i class="fa fa-tags"></i> twitter</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ulmfit"><i class="fa fa-tags"></i> ulmfit</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift"><i class="fa fa-tags"></i> uplift</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift-modelling"><i class="fa fa-tags"></i> uplift-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/variational-inference"><i class="fa fa-tags"></i> variational-inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/wikitext-103"><i class="fa fa-tags"></i> wikitext-103</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/word-embeddings"><i class="fa fa-tags"></i> word-embeddings</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<footer id="footer">
+    <div class="container">
+
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            
+
+            
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+            
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-112025566-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+
+<script src="//maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+<script src="https://humboldt-wi.github.io/blog/js/hpneo.gmaps.js"></script>
+<script src="https://humboldt-wi.github.io/blog/js/gmaps.init.js"></script>
+<script src="https://humboldt-wi.github.io/blog/js/front.js"></script>
+
+
+<script src="https://humboldt-wi.github.io/blog/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

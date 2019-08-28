@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Institute of Infomation Systems at HU-Berlin</title>
+    <link>https://humboldt-wi.github.io/blog/categories/</link>
+    <description>Recent content in Categories on Institute of Infomation Systems at HU-Berlin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://humboldt-wi.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Course Projects</title>
+      <link>https://humboldt-wi.github.io/blog/categories/course-projects/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/categories/course-projects/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Instruction</title>
+      <link>https://humboldt-wi.github.io/blog/categories/instruction/</link>
+      <pubDate>Mon, 19 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/categories/instruction/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
