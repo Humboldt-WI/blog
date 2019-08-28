@@ -251,8 +251,8 @@ Now the matched & weighted Treatment and Control members can be compared by usin
 
 We can perform CEM matching using MatchIt package in R, by passing the name of the method to MatchIt as "cem" which load the cem package automatically.
 ```{r}
-  #Perform One-to-One greedy matching with replacement and with caliper to estimate the ATT
-  calc_cem = function(data, psFormula){
+  #Perform cem matching to estimate the ATT
+  calc_cem <- function(data, psFormula){
     cemMatching <- matchit(psFormula, data = data, method = "cem")
     return(cemMatching)
   }
@@ -269,14 +269,14 @@ And even after we have tried to apply some of the proposed solutions, we kept ge
 ### 2. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Logistic Regression:
 Greedy nearest neighbor is a version of the algorithm that works by choosing a treatment group member and then choosing a control group member that is the closest match. It works as follows:
 
-  1. randomly order the treated and untreated individuals
-  2. select the first treated individual *i* and find the untreated individual *j* with closest propensity score.
-  3. if matching without replacement, remove *j* from the pool.
+  1. Randomly order the treated and untreated individuals
+  2. Select the first treated individual *i* and find the untreated individual *j* with closest propensity score.
+  3. If matching without replacement, remove *j* from the pool.
   4. Repeat the above process until matches are found for all participants.
 
 There are some important parameter to consider:
 
-* with or with our replacement: with replacement an untreated individual can be used more than once as a match, whereas in the latter case it is considered only once.
+* with or without replacement: with replacement an untreated individual can be used more than once as a match, whereas in the latter case it is considered only once.
 * one-to-one or one-to-k: in first case each treated is matched to a single control whereas in the latter case each treated is matched to K controls.
 * Caliper matching: a maximum caliper distance is set for the matches. A caliper distance is the absolute difference in propensity scores for the matches. As a maximum value is being set, this may result in some participants not being matched \(Rosembaum and Rubin \(1985\) [60] suggest a caliper of .25 standard deviations\).
 
