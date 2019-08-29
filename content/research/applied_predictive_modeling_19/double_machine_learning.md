@@ -96,7 +96,7 @@ A simple way to estimate the treatment effect is to construct a sophisticated ma
 <br>
 <br>
    <figure role="group"> 
-  $\ \hat{\theta_0} = (\frac{1}{n} \sum_{i \in I}D_i^2)^{-1} \frac{1}{n} \sum_{i \in I} D_i (Y_i-\hat{g}_0(X_i)). $ 
+  $\ \hat{\theta_0} = (\frac{1}{n} \sum_{i \in I}D_i^2)^{-1} \frac{1}{n} \sum_{i \in I}D_i (Y_i-\hat{g}_0(X_i)). $ 
 <figcaption>
      [Eq. 2.1]
   </figcaption>
@@ -125,7 +125,7 @@ Where term $\ a $ (underlined), under mild conditions, follows: $\ a \to N(\thet
 <br>
 <br>
 <figure>
-<img align="center"  src="/blog/img/seminar/double_machine_learning/plotEffectDML.PNG">
+<img align="center"  src="images/plotEffectDML.png">
  <figcaption>Fig.1: The left panel visualizes the simulated distribution of the treatment effect computed by a conventional (non-orthogonal or naive) ML estimator. The estimator is badly biased, meaning that the distribution is shifted to much to the right. The right panel shows the bahavior of an orthogonal, DML estimator, which is unbiased.</figcaption>
 <figure>
 <br>
@@ -221,7 +221,7 @@ Sample splitting guarantees an efficient remove of the bias induced by overfitti
 <br>
 <br>
 <figure>
-<img align="center" src="/blog/img/seminar/double_machine_learning/SampleSplitting.PNG">
+<img align="center" src="images/SampleSplitting.png">
  <figcaption>Fig.2: The left panel shows an overfitted estimator, which theta distribution is shifted. The other panel visualizes a distribution without any kind of bias based on sample splitting.</figcaption>
 <figure>
 <br>
@@ -301,27 +301,27 @@ All treatment effect distributions plots show a gaussian distribution. Our neura
 <table style="width:100%">
   <tr>
       <td>
-<img align="center" width=50% src="/blog/img/seminar/double_machine_learning/Naive401kplan.png">
+<img align="center" width=50% src="images/Naive401kplan.png">
  <figcaption>Fig.3.1: treatment effect distribution: Naive Estimator</figcaption>
       </td>
       <td>
-<img align="center" width=50% src="/blog/img/seminar/double_machine_learning/DictionaryLearning, DML1 - 401(k) plan.png">
+<img align="center" width=50% src="images/DictionaryLearning, DML1 - 401(k) plan.png">
  <figcaption>Fig.3.2: treatment effect distribution: given Estimator: Dictionary Learning; Nuisance Estimator: Lasso </figcaption>
       </td>
      <\tr>
          <tr>
       <td>
-<img align="center" width=50% src="/blog/img/seminar/double_machine_learning/DecisionTreeRegressor, DML1 - 401(k) plan.png">
+<img align="center" width=50% src="images/DecisionTreeRegressor, DML1 - 401(k) plan.png">
  <figcaption>Fig.3.3: treatment effect distribution: given Estimator: Decision Tree; Nuisance Estimator: Decision Tree</figcaption>
       </td>
       <td>
-<img align="center" width=50% src="/blog/img/seminar/double_machine_learning/MLPRegressor DML1 401(k) plan.png">
+<img align="center" width=50% src="images/MLPRegressor DML1 401(k) plan.png">
  <figcaption>Fig.3.4: treatment effect distribution: given Estimator: Neural Network; Nuisance Estimator: Neural Network</figcaption>
       </td>
      <\tr>
          <tr>
       <td>
-<img align="center" width=50% src="/blog/img/seminar/double_machine_learning/ExtraTreesRegressor, DML1 - 401(k) plan.png">
+<img align="center" width=50% src="images/ExtraTreesRegressor, DML1 - 401(k) plan.png">
  <figcaption>Fig.3.5: treatment effect distribution: given Estimator: ExtraTreesRegressor (Ensemble); Nuisance Estimator: Decision Tree </figcaption>
       </td>
 </tr>
@@ -388,27 +388,27 @@ Only the naïve Estimator does not generate a gaussian distribution. The remaini
 <table style="width:100%">
   <tr>
       <td>
-<img align="center" width=50% src="/blog/img/seminar/double_machine_learning/Naive - Pennsylvania.png">
+<img align="center" width=50% src="images/Naive - Pennsylvania.png">
  <figcaption>Fig.4.1: treatment effect distribution: Naive Estimator</figcaption>
       </td>
       <td>
-<img align="center" width=50% src="/blog/img/seminar/double_machine_learning/DictionaryLearning DML1 Pennsylvania.png">
+<img align="center" width=50% src="images/DictionaryLearning DML1 Pennsylvania.png">
  <figcaption>Fig.4.2: treatment effect distribution: given Estimator: Dictionary Learning; Nuisance Estimator: Lasso </figcaption>
       </td>
      <\tr>
          <tr>
       <td>
-<img align="center" width=50% src="/blog/img/seminar/double_machine_learning/DecisionTreeRegressor DML1 Pennsylvania.png">
+<img align="center" width=50% src="images/DecisionTreeRegressor DML1 Pennsylvania.png">
  <figcaption>Fig.4.3: treatment effect distribution: given Estimator: Decision Tree; Nuisance Estimator: Decision Tree</figcaption>
       </td>
       <td>
-<img align="center" width=50% src="/blog/img/seminar/double_machine_learning/MLPRegressor DML1 Pennsylvania.png">
+<img align="center" width=50% src="images/MLPRegressor DML1 Pennsylvania.png">
  <figcaption>Fig.4.4: treatment effect distribution: given Estimator: Neural Network; Nuisance Estimator: Neural Network</figcaption>
       </td>
      <\tr>
          <tr>
       <td>
-<img align="center" width=50% src="/blog/img/seminar/double_machine_learning/ExtraTreesRegressor DML1 Pennsylvania.png">
+<img align="center" width=50% src="images/ExtraTreesRegressor DML1 Pennsylvania.png">
  <figcaption>Fig.4.5: treatment effect distribution: given Estimator: ExtraTreesRegressor (Ensemble); Nuisance Estimator: Decision Tree </figcaption>
       </td>
 </tr>
@@ -476,27 +476,27 @@ The generated plots behave as expected. If one compares the naïve Estimator wit
 <table style="width:100%">
   <tr>
       <td>
-<img align="center" width=50% src="/blog/img/seminar/double_machine_learning/Naive - Insurance.png">
+<img align="center" width=50% src="images/Naive - Insurance.png">
  <figcaption>Fig.5.1: treatment effect distribution: Naive Estimator</figcaption>
       </td>
       <td>
-<img align="center" width=50% src="/blog/img/seminar/double_machine_learning/DictionaryLearning, DML1 - Insurance.png">
+<img align="center" width=50% src="images/DictionaryLearning, DML1 - Insurance.png">
  <figcaption>Fig.5.2: treatment effect distribution: given Estimator: Dictionary Learning; Nuisance Estimator: Lasso </figcaption>
       </td>
      <\tr>
          <tr>
       <td>
-<img align="center" width=50% src="/blog/img/seminar/double_machine_learning/DecisionTreeRegressor, DML1 - Insurance.png">
+<img align="center" width=50% src="images/DecisionTreeRegressor, DML1 - Insurance.png">
  <figcaption>Fig.5.3: treatment effect distribution: given Estimator: Decision Tree; Nuisance Estimator: Decision Tree</figcaption>
       </td>
       <td>
-<img align="center" width=50% src="/blog/img/seminar/double_machine_learning/MLPRegressor, DML1 - Insurance.png">
+<img align="center" width=50% src="images/MLPRegressor, DML1 - Insurance.png">
  <figcaption>Fig.5.4: treatment effect distribution: given Estimator: Neural Network; Nuisance Estimator: Neural Network</figcaption>
       </td>
      <\tr>
          <tr>
       <td>
-<img align="center" width=50% src="/blog/img/seminar/double_machine_learning/ExtraTreesRegressor, DML1 - Insurance.png">
+<img align="center" width=50% src="images/ExtraTreesRegressor, DML1 - Insurance.png">
  <figcaption>Fig.5.5: treatment effect distribution: given Estimator: ExtraTreesRegressor (Ensemble); Nuisance Estimator: Decision Tree </figcaption>
       </td>
 </tr>
