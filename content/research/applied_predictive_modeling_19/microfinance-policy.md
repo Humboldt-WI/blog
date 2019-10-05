@@ -1,5 +1,5 @@
 +++
-title = "APA19 Microfinance Policies"
+title = "Impact of Microfinance on Social Well-being"
 date = '2019-08-15'
 tags = [ "Causal Inference", "Class19",]
 categories = ["Course projects"]
