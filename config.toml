@@ -9,8 +9,7 @@ defaultContentLanguage = "en"
 # Enable comments by entering your Disqus shortname
 disqusShortname = ""
 # Enable Google Analytics by entering your tracking code
-# Currently disabled until DSGVO safe
-googleAnalytics = "" #UA-112025566-1
+googleAnalytics = "UA-112025566-1"
 
 # Define the number of posts per page
 paginate = 10
