@@ -75,20 +75,20 @@
     </item>
     
     <item>
-      <title>MatchIt</title>
-      <link>https://humboldt-wi.github.io/blog/tags/matchit/</link>
-      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/matchit/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Matching Methods</title>
       <link>https://humboldt-wi.github.io/blog/tags/matching-methods/</link>
       <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/matching-methods/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MatchIt</title>
+      <link>https://humboldt-wi.github.io/blog/tags/matchit/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/matchit/</guid>
       <description></description>
     </item>
     
@@ -165,20 +165,20 @@
     </item>
     
     <item>
-      <title>RS</title>
-      <link>https://humboldt-wi.github.io/blog/tags/rs/</link>
-      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/rs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Recommender Systems</title>
       <link>https://humboldt-wi.github.io/blog/tags/recommender-systems/</link>
       <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/recommender-systems/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RS</title>
+      <link>https://humboldt-wi.github.io/blog/tags/rs/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/rs/</guid>
       <description></description>
     </item>
     
@@ -345,20 +345,20 @@
     </item>
     
     <item>
-      <title>NLP</title>
-      <link>https://humboldt-wi.github.io/blog/tags/nlp/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/nlp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Neural Networks</title>
       <link>https://humboldt-wi.github.io/blog/tags/neural-networks/</link>
       <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/neural-networks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NLP</title>
+      <link>https://humboldt-wi.github.io/blog/tags/nlp/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/nlp/</guid>
       <description></description>
     </item>
     
@@ -408,20 +408,20 @@
     </item>
     
     <item>
-      <title>LSTM</title>
-      <link>https://humboldt-wi.github.io/blog/tags/lstm/</link>
-      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/lstm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Language Modelling</title>
       <link>https://humboldt-wi.github.io/blog/tags/language-modelling/</link>
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/language-modelling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LSTM</title>
+      <link>https://humboldt-wi.github.io/blog/tags/lstm/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/lstm/</guid>
       <description></description>
     </item>
     
@@ -543,6 +543,15 @@
     </item>
     
     <item>
+      <title>doc2vec</title>
+      <link>https://humboldt-wi.github.io/blog/tags/doc2vec/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/doc2vec/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Document Embeddings</title>
       <link>https://humboldt-wi.github.io/blog/tags/document-embeddings/</link>
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
@@ -638,15 +647,6 @@
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/time-series-forecasting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>doc2vec</title>
-      <link>https://humboldt-wi.github.io/blog/tags/doc2vec/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/doc2vec/</guid>
       <description></description>
     </item>
     
