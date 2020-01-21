@@ -10,7 +10,7 @@ description = " The goal of this blog is an introduction to image captioning, an
 +++
 # Image Captioning
 
-#### Authors: Benjamin Jaidi, Simon Remy, Murat Gökhan Yigit
+#### Authors: Severin Hußmann, Simon Remy, Murat Gökhan Yigit
 
 # Introduction
 
@@ -20,18 +20,23 @@ The goal of this blog is an introduction to image captioning, an explanation of 
 
 ## Outline
 
-* [Introduction](#introduction)
-* [Data Preparation](#data-preparation)
-  - Image Features
-  - Image Descriptions
-* [Set up Caption Generation Model](#set-up-caption-generation-model)
-  - Model Structure
-  - Training Data Generation
-  - Train Model
-* [Caption Generation](#caption-generation)
-  - Web App
-* [Evaluation](#evaluation)
-* [Summary](#summary)
+- [Image Captioning](#image-captioning)
+      - [Authors: Severin Hußmann, Simon Remy, Murat Gökhan Yigit](#authors-severin-hu%c3%9fmann-simon-remy-murat-g%c3%b6khan-yigit)
+- [Introduction](#introduction)
+  - [Outline](#outline)
+  - [Dataset](#dataset)
+- [Data Preparation](#data-preparation)
+  - [Image Data](#image-data)
+  - [Text Data](#text-data)
+- [Set up Caption Generation Model](#set-up-caption-generation-model)
+  - [Model Structure](#model-structure)
+  - [Training Data Generation](#training-data-generation)
+    - [Train Model](#train-model)
+- [Caption Generation](#caption-generation)
+  - [Web App](#web-app)
+- [Evaluation](#evaluation)
+- [Summary](#summary)
+    - [References](#references)
 
 *Environment Requirements*
 
