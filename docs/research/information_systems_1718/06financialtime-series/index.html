@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en-us">
 
@@ -38,6 +39,48 @@
   <link href="https://humboldt-wi.github.io/blog/css/custom.css" rel="stylesheet">
 
   
+=======
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Financial Time Series Predicting with Long Short-Term Memory</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Prediction of financial time series using LSTM networks ">
+  
+
+  <meta name="generator" content="Hugo 0.58.1" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="https://humboldt-wi.github.io/blog/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/custom.css" rel="stylesheet">
+
+  
+>>>>>>> upstream/master
   
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -220,27 +263,27 @@ API does normally not provide returns, which are commonly used in practice. We a
 our modelling, but have a look!</p></li>
 </ul>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Get Yahoo Data</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Get Yahoo Data</span>
 <span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">pandas_datareader</span> <span style="color:#a2f;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">pdr</span>
 
 stock <span style="color:#666">=</span> pdr<span style="color:#666">.</span>get_data_yahoo(symbols<span style="color:#666">=</span><span style="color:#b44">&#39;#your stock ticker&#39;</span>, start<span style="color:#666">=</span>datetime(<span style="color:#666">2012</span>, <span style="color:#666">1</span>, <span style="color:#666">1</span>), end<span style="color:#666">=</span>datetime(<span style="color:#666">2017</span>, <span style="color:#666">12</span>, <span style="color:#666">31</span>))
-stock <span style="color:#666">=</span> stock[<span style="color:#b44">&#39;Adj Close&#39;</span>] <span style="color:#080;font-style:italic"># or one of the other columns (i.e., opening prices, Volumes)</span>
+stock <span style="color:#666">=</span> stock[<span style="color:#b44">&#39;Adj Close&#39;</span>] <span style="color:#080;font-style:italic"># or one of the other columns (i.e., opening prices, Volumes)</span>
 stock_returns <span style="color:#666">=</span> np<span style="color:#666">.</span>log(stock<span style="color:#666">/</span>stock<span style="color:#666">.</span>shift())[<span style="color:#666">1</span>:] <span style="color:#080;font-style:italic">#calculate log returns</span></code></pre></div>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Download Data from google Trends</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Download Data from google Trends</span>
 <span style="color:#a2f;font-weight:bold">from</span> <span style="color:#00f;font-weight:bold">pytrends.request</span> <span style="color:#a2f;font-weight:bold">import</span> TrendReq
 <span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">datetime</span>
 <span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">os</span>
-google_username <span style="color:#666">=</span> <span style="color:#080;font-style:italic">#(...) #INCLUDE YOUR GOOGLE ACCOUNT</span>
-google_password <span style="color:#666">=</span> <span style="color:#080;font-style:italic">#(...)</span>
+google_username <span style="color:#666">=</span> <span style="color:#080;font-style:italic">#(...) #INCLUDE YOUR GOOGLE ACCOUNT</span>
+google_password <span style="color:#666">=</span> <span style="color:#080;font-style:italic">#(...)</span>
 pytrend <span style="color:#666">=</span> TrendReq(google_username, google_password, custom_useragent<span style="color:#666">=</span><span style="color:#b44">&#34;My Pytrends Script&#34;</span>)
 
 formatter <span style="color:#666">=</span> <span style="color:#b44">&#34;{:02d}&#34;</span><span style="color:#666">.</span>format
 
-databegin <span style="color:#666">=</span> <span style="color:#a2f">list</span>(<span style="color:#a2f">map</span>(formatter, <span style="color:#a2f">range</span>(<span style="color:#666">0</span>, <span style="color:#666">19</span>, <span style="color:#666">3</span>))) <span style="color:#080;font-style:italic">#change TIME here.</span>
-dataend   <span style="color:#666">=</span> <span style="color:#a2f">list</span>(<span style="color:#a2f">map</span>(formatter, <span style="color:#a2f">range</span>(<span style="color:#666">4</span>, <span style="color:#666">25</span>, <span style="color:#666">3</span>))) <span style="color:#080;font-style:italic">#downloads for hourly data atm</span>
+databegin <span style="color:#666">=</span> <span style="color:#a2f">list</span>(<span style="color:#a2f">map</span>(formatter, <span style="color:#a2f">range</span>(<span style="color:#666">0</span>, <span style="color:#666">19</span>, <span style="color:#666">3</span>))) <span style="color:#080;font-style:italic">#change TIME here.</span>
+dataend   <span style="color:#666">=</span> <span style="color:#a2f">list</span>(<span style="color:#a2f">map</span>(formatter, <span style="color:#a2f">range</span>(<span style="color:#666">4</span>, <span style="color:#666">25</span>, <span style="color:#666">3</span>))) <span style="color:#080;font-style:italic">#downloads for hourly data atm</span>
 
-lastdate <span style="color:#666">=</span> datetime<span style="color:#666">.</span>date(<span style="color:#666">2018</span>, <span style="color:#666">3</span>, <span style="color:#666">12</span>) <span style="color:#080;font-style:italic"># Until when do you want to download</span>
+lastdate <span style="color:#666">=</span> datetime<span style="color:#666">.</span>date(<span style="color:#666">2018</span>, <span style="color:#666">3</span>, <span style="color:#666">12</span>) <span style="color:#080;font-style:italic"># Until when do you want to download</span>
 
 <span style="color:#a2f">file</span> <span style="color:#666">=</span> <span style="color:#a2f">open</span>(<span style="color:#b44">&#34;daysleft.txt&#34;</span>)
 daysprior <span style="color:#666">=</span> <span style="color:#a2f">int</span>(<span style="color:#a2f">file</span><span style="color:#666">.</span>read())
@@ -254,7 +297,7 @@ daysprior <span style="color:#666">=</span> <span style="color:#a2f">int</span>(
 
     daysbefore <span style="color:#666">=</span> lastdate <span style="color:#666">-</span> datetime<span style="color:#666">.</span>timedelta(days<span style="color:#666">=</span>daysprior)
 
-    keywords <span style="color:#666">=</span> [<span style="color:#b44">&#34;Volkswagen&#34;</span>] <span style="color:#080;font-style:italic">#INCLUDE KEYWORDS HERE!</span>
+    keywords <span style="color:#666">=</span> [<span style="color:#b44">&#34;Volkswagen&#34;</span>] <span style="color:#080;font-style:italic">#INCLUDE KEYWORDS HERE!</span>
     <span style="color:#a2f;font-weight:bold">for</span> i <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#a2f">range</span>(<span style="color:#666">0</span>, <span style="color:#a2f">len</span>(databegin)):
         begin <span style="color:#666">=</span> daysbefore<span style="color:#666">.</span>strftime(<span style="color:#b44">&#34;%Y-%m-</span><span style="color:#b68;font-weight:bold">%d</span><span style="color:#b44">&#34;</span>) <span style="color:#666">+</span> <span style="color:#b44">&#34;T&#34;</span> <span style="color:#666">+</span> databegin[i]
         end   <span style="color:#666">=</span> daysbefore<span style="color:#666">.</span>strftime(<span style="color:#b44">&#34;%Y-%m-</span><span style="color:#b68;font-weight:bold">%d</span><span style="color:#b44">&#34;</span>) <span style="color:#666">+</span> <span style="color:#b44">&#34;T&#34;</span> <span style="color:#666">+</span> dataend[i]
@@ -303,9 +346,9 @@ seasonal effects already. Nevertheless, be creative!</p>
 <p><a href="/blog/img/seminar/financial_time_series/final_df_VW.csv">Download the data sheet (final_df_VW.CSV)</a></p>
 </blockquote>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># We read in the dataset</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># We read in the dataset</span>
 data <span style="color:#666">=</span> read_csv(<span style="color:#b44">&#34;final_df_VW.csv&#34;</span>)
-data <span style="color:#666">=</span> data<span style="color:#666">.</span>iloc[:,<span style="color:#666">1</span>] <span style="color:#080;font-style:italic"># delete column you dont want to use for training here!</span>
+data <span style="color:#666">=</span> data<span style="color:#666">.</span>iloc[:,<span style="color:#666">1</span>] <span style="color:#080;font-style:italic"># delete column you dont want to use for training here!</span>
                       <span style="color:#080;font-style:italic"># We are deleteting date here.</span></code></pre></div>
 
 <h3 id="data-preprocessing">Data Preprocessing</h3>
@@ -316,7 +359,7 @@ If we included the dataset without it, <code>volLVL</code> could completely domi
 You can use it for example to reverse the scaling after your predictions.
 The second step is a little more involved but it is crucial for working with sequences in <a href="https://keras.io/layers/recurrent/">Keras</a>.</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># function to normalize</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># function to normalize</span>
 <span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">normalize</span>(df):
     <span style="color:#b44">&#34;&#34;&#34;
 </span><span style="color:#b44">        Uses minMax scaler on data to normalize. Important especially for Volume and google_lvl
@@ -366,7 +409,7 @@ Would that be a problem? Most likely not, since the model should learn to ignore
 
 <p>Now that you understand the <code>batch_input_shape</code> (<code>batch_size</code>, <code>timesteps</code>, <code>features</code>) of a recurrent layer, you might have noticed that our dataset does not really have the correct dimensions to be fed into the model. Below you can see the function which solves this. The idea is simple: We shift the input and append the new column to our dataset. Thus we extend the dataset according to our specified <code>timesteps</code>.</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Append with timesteps</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Append with timesteps</span>
 <span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">createTimeSteps</span>(df, lags<span style="color:#666">=</span><span style="color:#666">1</span>):
     <span style="color:#b44">&#34;&#34;&#34;
 </span><span style="color:#b44">        creates the amount of timesteps from the target and appends to df.
@@ -378,10 +421,10 @@ Would that be a problem? Most likely not, since the model should learn to ignore
     columns <span style="color:#666">=</span> <span style="color:#a2f">list</span>()
     <span style="color:#a2f;font-weight:bold">for</span> i <span style="color:#a2f;font-weight:bold">in</span> <span style="color:#a2f">range</span>(lags, <span style="color:#666">0</span>, <span style="color:#666">-</span><span style="color:#666">1</span>):
         columns<span style="color:#666">.</span>append(df<span style="color:#666">.</span>shift(i))
-    columns<span style="color:#666">.</span>append(df) <span style="color:#080;font-style:italic">#add original</span>
-    <span style="color:#080;font-style:italic"># combine</span>
+    columns<span style="color:#666">.</span>append(df) <span style="color:#080;font-style:italic">#add original</span>
+    <span style="color:#080;font-style:italic"># combine</span>
     output <span style="color:#666">=</span> pd<span style="color:#666">.</span>concat(columns, axis<span style="color:#666">=</span><span style="color:#666">1</span>)
-    <span style="color:#080;font-style:italic"># replace rows with NaN values</span>
+    <span style="color:#080;font-style:italic"># replace rows with NaN values</span>
     output<span style="color:#666">.</span>fillna(<span style="color:#666">0</span>, inplace <span style="color:#666">=</span> True)
     <span style="color:#a2f;font-weight:bold">return</span> output</code></pre></div>
 
@@ -389,22 +432,22 @@ Would that be a problem? Most likely not, since the model should learn to ignore
 extend by our <code>timesteps</code>, split into training and test set with <code>TRAINING_DAYS</code>, choose our <code>features</code> and our target <code>y</code>. It is good practive to define
 CONSTANTS in capital letter in the beginning of your training. It helps you to keep eveything structured and is very convenient for testing different setups.</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Everything prepared...</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Everything prepared...</span>
 scaler, normalized_data <span style="color:#666">=</span> normalize(data)
 
-BATCH_SIZE <span style="color:#666">=</span> <span style="color:#666">1</span> <span style="color:#080;font-style:italic"># batch size during training</span>
-TS <span style="color:#666">=</span> <span style="color:#666">14</span> <span style="color:#080;font-style:italic"># length of Sequence we use for our samples (7 = week, 30 = month)</span>
-FEATURES <span style="color:#666">=</span> <span style="color:#666">6</span> <span style="color:#080;font-style:italic"># number of features in data set</span>
-TRAINING_DAYS <span style="color:#666">=</span> <span style="color:#666">1250</span> <span style="color:#080;font-style:italic"># Training/Test split for data</span>
+BATCH_SIZE <span style="color:#666">=</span> <span style="color:#666">1</span> <span style="color:#080;font-style:italic"># batch size during training</span>
+TS <span style="color:#666">=</span> <span style="color:#666">14</span> <span style="color:#080;font-style:italic"># length of Sequence we use for our samples (7 = week, 30 = month)</span>
+FEATURES <span style="color:#666">=</span> <span style="color:#666">6</span> <span style="color:#080;font-style:italic"># number of features in data set</span>
+TRAINING_DAYS <span style="color:#666">=</span> <span style="color:#666">1250</span> <span style="color:#080;font-style:italic"># Training/Test split for data</span>
 
 full_df <span style="color:#666">=</span> createTimeSteps(normalized_data, TS)
-full_df <span style="color:#666">=</span> full_df<span style="color:#666">.</span>values <span style="color:#080;font-style:italic"># Training vs Test</span>
+full_df <span style="color:#666">=</span> full_df<span style="color:#666">.</span>values <span style="color:#080;font-style:italic"># Training vs Test</span>
 
 train <span style="color:#666">=</span> full_df[:TRAINING_DAYS, :]
 test <span style="color:#666">=</span> full_df[TRAINING_DAYS:, :]
 
-input_var <span style="color:#666">=</span> <span style="color:#a2f">int</span>(TS<span style="color:#666">*</span>FEATURES) <span style="color:#080;font-style:italic"># Every feature has as many columns as defined timestep</span>
-target <span style="color:#666">=</span> <span style="color:#666">-</span><span style="color:#666">1</span> <span style="color:#080;font-style:italic"># Our Volkswagen AG stock price is the last column of our dataset</span>
+input_var <span style="color:#666">=</span> <span style="color:#a2f">int</span>(TS<span style="color:#666">*</span>FEATURES) <span style="color:#080;font-style:italic"># Every feature has as many columns as defined timestep</span>
+target <span style="color:#666">=</span> <span style="color:#666">-</span><span style="color:#666">1</span> <span style="color:#080;font-style:italic"># Our Volkswagen AG stock price is the last column of our dataset</span>
 X_train, y_train <span style="color:#666">=</span> train[:, :input_var], train[:, target]
 X_test, y_test <span style="color:#666">=</span> test[:, :input_var], test[:, target]
 
@@ -422,6 +465,7 @@ able to train your model.</p>
 please refer to the <a href="https://keras.io/#keras-the-python-deep-learning-library">Keras in 30s guide</a>.
 This should give us a starting point to explain different concepts and extensions.</p>
 
+<<<<<<< HEAD
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Our first very easy model</span>
 <span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">helloModel</span>(timesteps, features, batch_size<span style="color:#666">=</span><span style="color:#666">1</span>):
     model <span style="color:#666">=</span> Sequential()
@@ -429,6 +473,15 @@ This should give us a starting point to explain different concepts and extension
     model<span style="color:#666">.</span>add(Dense(<span style="color:#666">1</span>))
     model<span style="color:#666">.</span>add(Activation(<span style="color:#b44">&#39;linear&#39;</span>))  
     model<span style="color:#666">.</span>compile(loss<span style="color:#666">=</span><span style="color:#b44">&#39;mse&#39;</span>, optimizer<span style="color:#666">=</span><span style="color:#b44">&#39;adam&#39;</span>, metrics<span style="color:#666">=</span>[<span style="color:#b44">&#39;mse&#39;</span>])  
+=======
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Our first very easy model</span>
+<span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">helloModel</span>(timesteps, features, batch_size<span style="color:#666">=</span><span style="color:#666">1</span>):
+    model <span style="color:#666">=</span> Sequential()
+    model<span style="color:#666">.</span>add(LSTM(<span style="color:#666">16</span>, input_shape<span style="color:#666">=</span>(timesteps, features)))
+    model<span style="color:#666">.</span>add(Dense(<span style="color:#666">1</span>))
+    model<span style="color:#666">.</span>add(Activation(<span style="color:#b44">&#39;linear&#39;</span>))  
+    model<span style="color:#666">.</span>compile(loss<span style="color:#666">=</span><span style="color:#b44">&#39;mse&#39;</span>, optimizer<span style="color:#666">=</span><span style="color:#b44">&#39;adam&#39;</span>, metrics<span style="color:#666">=</span>[<span style="color:#b44">&#39;mse&#39;</span>])  
+>>>>>>> upstream/master
     <span style="color:#a2f;font-weight:bold">return</span> model</code></pre></div>
 
 <p>Our <code>helloModel</code> has only one layer with 16 hidden neurons. It passes its input to
@@ -445,6 +498,7 @@ The output shape for such a layer will also be 3D (<code>nb_samples</code>, <cod
 If we specify <code>return_sequence = True</code> for the last layer it will produce 3D predictions (Careful: If you would like to apply another layer to every <code>timesteps</code> and not only to the last one, you need to use a <a href="https://keras.io/layers/wrappers/">TimeDistributed wrapper</a>).</p></li>
 </ul>
 
+<<<<<<< HEAD
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Our return model</span>
 <span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">returnModel</span>(timesteps, features, batch_size<span style="color:#666">=</span><span style="color:#666">1</span>, return_sequence <span style="color:#666">=</span> False):
     model <span style="color:#666">=</span> Sequential()
@@ -457,6 +511,20 @@ If we specify <code>return_sequence = True</code> for the last layer it will pro
         model<span style="color:#666">.</span>add(TimeDistributed(Dense(<span style="color:#666">1</span>)))
     model<span style="color:#666">.</span>add(Activation(<span style="color:#b44">&#39;linear&#39;</span>))  
     model<span style="color:#666">.</span>compile(loss<span style="color:#666">=</span><span style="color:#b44">&#39;mse&#39;</span>, optimizer<span style="color:#666">=</span><span style="color:#b44">&#39;adam&#39;</span>, metrics<span style="color:#666">=</span>[<span style="color:#b44">&#39;mse&#39;</span>])  
+=======
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Our return model</span>
+<span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">returnModel</span>(timesteps, features, batch_size<span style="color:#666">=</span><span style="color:#666">1</span>, return_sequence <span style="color:#666">=</span> False):
+    model <span style="color:#666">=</span> Sequential()
+    model<span style="color:#666">.</span>add(LSTM(<span style="color:#666">32</span>, input_shape<span style="color:#666">=</span>(timesteps, features), return_sequence <span style="color:#666">=</span> True ))
+    model<span style="color:#666">.</span>add(LSTM(<span style="color:#666">16</span>, input_shape<span style="color:#666">=</span>(timesteps, features), return_sequence <span style="color:#666">=</span> True ))
+    model<span style="color:#666">.</span>add(LSTM(<span style="color:#666">8</span>, input_shape<span style="color:#666">=</span>(timesteps, features), return_sequence <span style="color:#666">=</span> return_sequence ))
+    <span style="color:#a2f;font-weight:bold">if</span> return_sequence:
+        model<span style="color:#666">.</span>add(Dense(<span style="color:#666">1</span>))
+    <span style="color:#a2f;font-weight:bold">else</span>:
+        model<span style="color:#666">.</span>add(TimeDistributed(Dense(<span style="color:#666">1</span>)))
+    model<span style="color:#666">.</span>add(Activation(<span style="color:#b44">&#39;linear&#39;</span>))  
+    model<span style="color:#666">.</span>compile(loss<span style="color:#666">=</span><span style="color:#b44">&#39;mse&#39;</span>, optimizer<span style="color:#666">=</span><span style="color:#b44">&#39;adam&#39;</span>, metrics<span style="color:#666">=</span>[<span style="color:#b44">&#39;mse&#39;</span>])  
+>>>>>>> upstream/master
     <span style="color:#a2f;font-weight:bold">return</span> model</code></pre></div>
 
 <p>We are stacking three different LSTM layers and included the option to predict
@@ -473,6 +541,7 @@ hidden states of the LSTM neurons are reset after every batch. After the reset, 
 If <code>stateful = True</code>, states are propagated through batches and only reset manually (<code>model.reset_state()</code>). Using <code>shuffle</code> = True together with <code>stateful</code> = True will not make any sense, since the output destroys the ordering of the time series and produces pure chaos. Careful: It is important to think about the timing of the state reset. Common practice is resetting after every <code>epoch</code>. Without it, the model would treat every new epoch as an extension of the original time series and not as the same time series fed in again. In model training, Keras requires you to exactly define the input shape in the first layer only (<code>batch_input_shape</code>=(<code>batch_size</code>, <code>timesteps</code>, <code>features</code>)).</p></li>
 </ul>
 
+<<<<<<< HEAD
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># create Bao Model</span>
 <span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">bao2017</span>(timesteps, features, batch_size<span style="color:#666">=</span><span style="color:#666">1</span>,
             state_config <span style="color:#666">=</span> False, return_config <span style="color:#666">=</span> False):
@@ -501,13 +570,43 @@ If <code>stateful = True</code>, states are propagated through batches and only 
         model<span style="color:#666">.</span>add(Dense(<span style="color:#666">1</span>)) <span style="color:#080;font-style:italic">#not 1 but &#39;features&#39; if many-to-many   </span>
     model<span style="color:#666">.</span>compile(loss<span style="color:#666">=</span><span style="color:#b44">&#39;mse&#39;</span>, optimizer<span style="color:#666">=</span><span style="color:#b44">&#39;adam&#39;</span>, metrics<span style="color:#666">=</span>[<span style="color:#b44">&#39;mse&#39;</span>])  
     <span style="color:#a2f;font-weight:bold">return</span> model
+=======
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># create Bao Model</span>
+<span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">bao2017</span>(timesteps, features, batch_size<span style="color:#666">=</span><span style="color:#666">1</span>,
+            state_config <span style="color:#666">=</span> False, return_config <span style="color:#666">=</span> False):
+    model <span style="color:#666">=</span> Sequential()
+
+    <span style="color:#080;font-style:italic">#AUTOENCODER</span>
+    model<span style="color:#666">.</span>add(LSTM(input_dim<span style="color:#666">=</span>features, output_dim<span style="color:#666">=</span><span style="color:#666">8</span>, return_sequences<span style="color:#666">=</span>False))
+    model<span style="color:#666">.</span>add(RepeatVector(<span style="color:#666">4</span>))
+    model<span style="color:#666">.</span>add(LSTM(output_dim<span style="color:#666">=</span><span style="color:#666">8</span>, return_sequences<span style="color:#666">=</span>True))
+    model<span style="color:#666">.</span>add(TimeDistributed(Dense(features)))
+    model<span style="color:#666">.</span>add(Activation(<span style="color:#b44">&#39;linear&#39;</span>))
+
+    <span style="color:#080;font-style:italic">#STACKED MODEL</span>
+    <span style="color:#a2f;font-weight:bold">if</span> state_config:
+        model<span style="color:#666">.</span>add(LSTM(<span style="color:#666">128</span>, batch_input_shape<span style="color:#666">=</span>(batch_size, timesteps, features),
+                       return_sequences<span style="color:#666">=</span>True, stateful<span style="color:#666">=</span>True))
+    <span style="color:#a2f;font-weight:bold">else</span>:
+        model<span style="color:#666">.</span>add(LSTM(<span style="color:#666">128</span>, input_shape<span style="color:#666">=</span>(timesteps, features),
+                       return_sequences<span style="color:#666">=</span>True, stateful<span style="color:#666">=</span>False))
+    model<span style="color:#666">.</span>add(LSTM(<span style="color:#666">64</span>, return_sequences<span style="color:#666">=</span>True, stateful<span style="color:#666">=</span>state_config))
+    model<span style="color:#666">.</span>add(LSTM(<span style="color:#666">32</span>, return_sequences<span style="color:#666">=</span>return_config, stateful<span style="color:#666">=</span>state_config))
+    <span style="color:#080;font-style:italic">#... add more layers</span>
+    <span style="color:#a2f;font-weight:bold">if</span> return_config:
+        model<span style="color:#666">.</span>add(TimeDistributed(Dense(<span style="color:#666">1</span>)))
+    <span style="color:#a2f;font-weight:bold">else</span>:
+        model<span style="color:#666">.</span>add(Dense(<span style="color:#666">1</span>)) <span style="color:#080;font-style:italic">#not 1 but &#39;features&#39; if many-to-many   </span>
+    model<span style="color:#666">.</span>compile(loss<span style="color:#666">=</span><span style="color:#b44">&#39;mse&#39;</span>, optimizer<span style="color:#666">=</span><span style="color:#b44">&#39;adam&#39;</span>, metrics<span style="color:#666">=</span>[<span style="color:#b44">&#39;mse&#39;</span>])  
+    <span style="color:#a2f;font-weight:bold">return</span> model
+>>>>>>> upstream/master
     </code></pre></div>
 
 <p>The number of hidden neurons is somehow arbitrary. We could also include different ones but this is the setup used by Bao et. al (2017). It is important for the auto-encoder to have the sandwich architecture (8 to 8 neurons). We haven&rsquo;t really touched on the <code>RepeatVector</code> layer, but it does essentially what it says <a href="https://keras.io/layers/core/#repeatvector">(Check the Keras RepeatVector documentation for more)</a>.</p>
 
 <p>What is left to do? We have the data, we have the models&hellip; let fit! Our last function does that for us. We can specify the number of our <code>model</code>, <code>data</code>, <code>epochs</code>, <code>batch_size</code>,  if we want our states to be reset per batch by <code>state_config</code>, and decide if we would like <code>shuffle</code> to the True. We set <code>model.reset_state</code> in a way that is resets after every <code>epoch</code>, and saves the training results in two list.</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Fit the model</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Fit the model</span>
 <span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00a000">fitting</span>(model, X, y, val_X, val_y, epochs, batch_size<span style="color:#666">=</span><span style="color:#666">1</span>, state_config<span style="color:#666">=</span>False, sf<span style="color:#666">=</span>False):
     <span style="color:#b44">&#34;&#34;&#34;
 </span><span style="color:#b44">        fits the model to the data via keras API.
@@ -541,7 +640,7 @@ If <code>stateful = True</code>, states are propagated through batches and only 
 
 <h3 id="sit-through-we-are-almost-there-put-it-together-and-get-your-predictions">Sit through, we are almost there! Put it together and get your predictions:</h3>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Almost forgot... your libraries</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#080;font-style:italic"># Almost forgot... your libraries</span>
 <span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">keras</span>
 <span style="color:#a2f;font-weight:bold">from</span> <span style="color:#00f;font-weight:bold">keras</span> <span style="color:#a2f;font-weight:bold">import</span> Sequential
 <span style="color:#a2f;font-weight:bold">from</span> <span style="color:#00f;font-weight:bold">keras.models</span> <span style="color:#a2f;font-weight:bold">import</span> load_model
@@ -559,24 +658,24 @@ If <code>stateful = True</code>, states are propagated through batches and only 
 <span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">matplotlib.pyplot</span> <span style="color:#a2f;font-weight:bold">as</span> <span style="color:#00f;font-weight:bold">plt</span>
 <span style="color:#a2f;font-weight:bold">import</span> <span style="color:#00f;font-weight:bold">os</span>
 
-<span style="color:#080;font-style:italic"># Our new CONSTANTS</span>
-EPOCHS <span style="color:#666">=</span> <span style="color:#666">30</span> <span style="color:#080;font-style:italic"># number of training Epochs</span>
-STATEFUL <span style="color:#666">=</span> True <span style="color:#080;font-style:italic"># stateless/stateful</span>
-SF <span style="color:#666">=</span> False <span style="color:#080;font-style:italic"># activate shuffle</span>
-RETURN_SEQ <span style="color:#666">=</span> False <span style="color:#080;font-style:italic"># many to many prediction (outputs results of every TS)</span>
+<span style="color:#080;font-style:italic"># Our new CONSTANTS</span>
+EPOCHS <span style="color:#666">=</span> <span style="color:#666">30</span> <span style="color:#080;font-style:italic"># number of training Epochs</span>
+STATEFUL <span style="color:#666">=</span> True <span style="color:#080;font-style:italic"># stateless/stateful</span>
+SF <span style="color:#666">=</span> False <span style="color:#080;font-style:italic"># activate shuffle</span>
+RETURN_SEQ <span style="color:#666">=</span> False <span style="color:#080;font-style:italic"># many to many prediction (outputs results of every TS)</span>
 
-<span style="color:#080;font-style:italic"># Choose a model</span>
+<span style="color:#080;font-style:italic"># Choose a model</span>
 model <span style="color:#666">=</span>  bao2017(TS, FEATURES, batch_size<span style="color:#666">=</span>BATCH_SIZE,
                 state_config <span style="color:#666">=</span> STATEFUL, return_config <span style="color:#666">=</span> RETURN_SEQ)
-<span style="color:#080;font-style:italic"># Fit the model</span>
+<span style="color:#080;font-style:italic"># Fit the model</span>
 result, training_mse, val_mse <span style="color:#666">=</span> fitting(model, X_train, y_train, X_test, y_test, EPOCHS, batch_size<span style="color:#666">=</span>BATCH_SIZE,
                 state_config<span style="color:#666">=</span>STATEFUL, sf<span style="color:#666">=</span>SF)
-<span style="color:#080;font-style:italic"># Predict the model</span>
+<span style="color:#080;font-style:italic"># Predict the model</span>
 yhat <span style="color:#666">=</span> model<span style="color:#666">.</span>predict(X_test, batch_size <span style="color:#666">=</span> BATCH_SIZE)
 <span style="color:#a2f;font-weight:bold">print</span>(yhat<span style="color:#666">.</span>shape)
 <span style="color:#a2f;font-weight:bold">print</span>(y_test<span style="color:#666">.</span>shape)
 
-<span style="color:#080;font-style:italic"># Plot the model</span>
+<span style="color:#080;font-style:italic"># Plot the model</span>
 plt<span style="color:#666">.</span>plot(y_test, label<span style="color:#666">=</span><span style="color:#b44">&#39;y&#39;</span>)
 plt<span style="color:#666">.</span>plot(yhat1, label<span style="color:#666">=</span><span style="color:#b44">&#39;yhat&#39;</span>)
 plt<span style="color:#666">.</span>legend()
@@ -613,6 +712,7 @@ div.highlight {
 margin: 25px 0 25px 0;
 }
 </style>
+<<<<<<< HEAD
 
                         </div>
                         
@@ -983,6 +1083,426 @@ MathJax.Hub.Config({
     </div>
     
 
+=======
+
+                        </div>
+                        
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (28)</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/instruction">instruction (2)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/a/b-testing"><i class="fa fa-tags"></i> a/b-testing</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/attention"><i class="fa fa-tags"></i> attention</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/awd-lstm"><i class="fa fa-tags"></i> awd-lstm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-deep-learning"><i class="fa fa-tags"></i> bayesian-deep-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-topic-modelling"><i class="fa fa-tags"></i> bayesian-topic-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/black-box"><i class="fa fa-tags"></i> black-box</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/blockchain"><i class="fa fa-tags"></i> blockchain</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/causal-inference"><i class="fa fa-tags"></i> causal-inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class17/18"><i class="fa fa-tags"></i> class17/18</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class18/19"><i class="fa fa-tags"></i> class18/19</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class19"><i class="fa fa-tags"></i> class19</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/classification"><i class="fa fa-tags"></i> classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/coarsened-exact-matching"><i class="fa fa-tags"></i> coarsened-exact-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/conversion"><i class="fa fa-tags"></i> conversion</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks"><i class="fa fa-tags"></i> convolutional-neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/data-simulation"><i class="fa fa-tags"></i> data-simulation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/deep-learning"><i class="fa fa-tags"></i> deep-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/distant-transfer-learning"><i class="fa fa-tags"></i> distant-transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/dml"><i class="fa fa-tags"></i> dml</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/doc2vec"><i class="fa fa-tags"></i> doc2vec</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/document-embeddings"><i class="fa fa-tags"></i> document-embeddings</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/explanation"><i class="fa fa-tags"></i> explanation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/fine-tuning"><i class="fa fa-tags"></i> fine-tuning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/genetic-matching"><i class="fa fa-tags"></i> genetic-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/gru"><i class="fa fa-tags"></i> gru</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/hierarchical-network"><i class="fa fa-tags"></i> hierarchical-network</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ice"><i class="fa fa-tags"></i> ice</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-analysis"><i class="fa fa-tags"></i> image-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-captioning"><i class="fa fa-tags"></i> image-captioning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/inference"><i class="fa fa-tags"></i> inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset"><i class="fa fa-tags"></i> keras-imdb-dataset</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/knn-algorithm"><i class="fa fa-tags"></i> knn-algorithm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/language-modelling"><i class="fa fa-tags"></i> language-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lda"><i class="fa fa-tags"></i> lda</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lime"><i class="fa fa-tags"></i> lime</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/long-short-term-memory"><i class="fa fa-tags"></i> long-short-term-memory</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lstm"><i class="fa fa-tags"></i> lstm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/machine-learning"><i class="fa fa-tags"></i> machine-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matching-methods"><i class="fa fa-tags"></i> matching-methods</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matchit"><i class="fa fa-tags"></i> matchit</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/monte-carlo-dropout"><i class="fa fa-tags"></i> monte-carlo-dropout</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/movie-reviews"><i class="fa fa-tags"></i> movie-reviews</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nearest-neighbor"><i class="fa fa-tags"></i> nearest-neighbor</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/neural-network"><i class="fa fa-tags"></i> neural-network</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/neural-networks"><i class="fa fa-tags"></i> neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nlp"><i class="fa fa-tags"></i> nlp</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/optimal-matching"><i class="fa fa-tags"></i> optimal-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/pdp"><i class="fa fa-tags"></i> pdp</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/pretraining"><i class="fa fa-tags"></i> pretraining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score"><i class="fa fa-tags"></i> propensity-score</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score-weighting"><i class="fa fa-tags"></i> propensity-score-weighting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommendation"><i class="fa fa-tags"></i> recommendation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-system"><i class="fa fa-tags"></i> recommender-system</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-systems"><i class="fa fa-tags"></i> recommender-systems</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/rnn"><i class="fa fa-tags"></i> rnn</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/rs"><i class="fa fa-tags"></i> rs</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-analysis"><i class="fa fa-tags"></i> sentiment-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-classification"><i class="fa fa-tags"></i> sentiment-classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/share-price-prediction"><i class="fa fa-tags"></i> share-price-prediction</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/simulation"><i class="fa fa-tags"></i> simulation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-analysis"><i class="fa fa-tags"></i> text-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-mining"><i class="fa fa-tags"></i> text-mining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series"><i class="fa fa-tags"></i> time-series</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series-forecasting"><i class="fa fa-tags"></i> time-series-forecasting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/transfer-learning"><i class="fa fa-tags"></i> transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/treatment-effect"><i class="fa fa-tags"></i> treatment-effect</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/twitter"><i class="fa fa-tags"></i> twitter</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ulmfit"><i class="fa fa-tags"></i> ulmfit</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift"><i class="fa fa-tags"></i> uplift</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift-modelling"><i class="fa fa-tags"></i> uplift-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/variational-inference"><i class="fa fa-tags"></i> variational-inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/wikitext-103"><i class="fa fa-tags"></i> wikitext-103</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/word-embeddings"><i class="fa fa-tags"></i> word-embeddings</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<footer id="footer">
+    <div class="container">
+
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            
+
+            
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+            
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+>>>>>>> upstream/master
     
 <script type="application/javascript">
 var doNotTrack = false;

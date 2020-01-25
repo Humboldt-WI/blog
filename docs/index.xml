@@ -6,7 +6,11 @@
     <description>Recent content on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+<<<<<<< HEAD
     <lastBuildDate>Thu, 01 Aug 2019 00:00:00 +0000</lastBuildDate>
+=======
+    <lastBuildDate>Sun, 18 Aug 2019 00:00:00 +0000</lastBuildDate>
+>>>>>>> upstream/master
     
 	<atom:link href="https://humboldt-wi.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -52,12 +56,89 @@ Research Interests  Customer behavior in e-Commerce
     </item>
     
     <item>
+<<<<<<< HEAD
       <title>APA Template html</title>
       <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/00template2/</link>
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/00template2/</guid>
       <description>HTML template</description>
+=======
+      <title>Data Generating Process Simulation: The opossum package</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/data_generating_process_blogpost/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/data_generating_process_blogpost/</guid>
+      <description>Data Generating Process Simulation&amp;#182;    1&amp;nbsp;&amp;nbsp;Introduction1.1&amp;nbsp;&amp;nbsp;Topic1.2&amp;nbsp;&amp;nbsp;Motivation1.3&amp;nbsp;&amp;nbsp;Properties2&amp;nbsp;&amp;nbsp;Review2.1&amp;nbsp;&amp;nbsp;Literature2.2&amp;nbsp;&amp;nbsp;Software3&amp;nbsp;&amp;nbsp;Theory behind the package3.1&amp;nbsp;&amp;nbsp;General Model: Partial Linear Regression3.2&amp;nbsp;&amp;nbsp;Generating Covariates3.2.1&amp;nbsp;&amp;nbsp;Continuous Covariates3.2.2&amp;nbsp;&amp;nbsp;Binary and categorical covariates3.3&amp;nbsp;&amp;nbsp;Treatment assignment3.3.1&amp;nbsp;&amp;nbsp;Random3.3.2&amp;nbsp;&amp;nbsp;Dependent on covariates3.4&amp;nbsp;&amp;nbsp;Treatment effects3.4.1&amp;nbsp;&amp;nbsp;Positive &amp;amp; negative constant effect3.4.2&amp;nbsp;&amp;nbsp;Positive &amp;amp; negative continuous heterogeneous effect3.4.3&amp;nbsp;&amp;nbsp;No effect3.4.4&amp;nbsp;&amp;nbsp;Discrete heterogeneous treatment effect3.5&amp;nbsp;&amp;nbsp;Output variable3.5.1&amp;nbsp;&amp;nbsp;Continuous3.5.2&amp;nbsp;&amp;nbsp;Binary4&amp;nbsp;&amp;nbsp;Package application4.1&amp;nbsp;&amp;nbsp;Choosing covariates4.2&amp;nbsp;&amp;nbsp;Creating treatment effects4.3&amp;nbsp;&amp;nbsp;Creating output4.4&amp;nbsp;&amp;nbsp;Other functions5&amp;nbsp;&amp;nbsp;Example: Applying double machine learning6&amp;nbsp;&amp;nbsp;Discussion7&amp;nbsp;&amp;nbsp;References    Introduction&amp;#182;Topic&amp;#182;As modern science becomes increasingly data-driven among virtually all fields, it is obligatory to inspect not only how scientists analyze data but also what kind of data is used.</description>
+    </item>
+    
+    <item>
+      <title>Efficient Experiments Through Inverse Propensity Score Weighting</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/efficient_a_b_testing_propensity_scoring/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/efficient_a_b_testing_propensity_scoring/</guid>
+      <description>APA_Blogpost_latest   /*! * * Twitter Bootstrap * */ /*! * Bootstrap v3.3.7 (http://getbootstrap.com) * Copyright 2011-2016 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */ /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */ html { font-family: sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; } body { margin: 0; } article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; } audio, canvas, progress, video { display: inline-block; vertical-align: baseline; } audio:not([controls]) { display: none; height: 0; } [hidden], template { display: none; } a { background-color: transparent; } a:active, a:hover { outline: 0; } abbr[title] { border-bottom: 1px dotted; } b, strong { font-weight: bold; } dfn { font-style: italic; } h1 { font-size: 2em; margin: 0.</description>
+    </item>
+    
+    <item>
+      <title>Matching Methods for Causal Inference: A Machine Learning Update</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/matching_methods/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/matching_methods/</guid>
+      <description>Authors: Samantha Sizemore and Raiber Alkurdi Introduction Practitioners from quantitative Social Sciences such as Economics, Sociology, Political Science, Epidemiology and Public Health have undoubtedly come across matching as a go-to technique for preprocessing observational data before treatment effect estimation; those on the machine learning side of the aisle, however, may be unfamiliar with the concept of matching. This blog post aims to provide a succinct primer for matching neophytes and, for those already familiar with this technique, an overview of how state-of-the-art machine learning can be incorporated into the matching process.</description>
+    </item>
+    
+    <item>
+      <title>Uplift Modelling with Multiple Treatments</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/multiple_treatments_uplift/</link>
+      <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/multiple_treatments_uplift/</guid>
+      <description>Applications of Causal Inference for Marketing: Estimating Treatment Effects for multiple Treatments Authors: Jan Krol and Matthias Becher Table of Contents  Introduction
+ Common Marketing Challenges
+ Models  3.1 Decision Trees Rzepakowski &amp;amp; Jaroszewicz  3.1.1 Basic Rzepakowski &amp;amp; Jaroszewicz  3.1.2 Simple Splitting Criterion  3.2 Causal Tree and Causal Forest  3.3 Separate Model  Evaluation Methods
+4.1 Uplift Curves 4.2 Expected Outcome Experimental Setup  Results Outlook References  1.</description>
+    </item>
+    
+    <item>
+      <title>Impact of Microfinance on Social Well-being</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/microfinance-policy/</link>
+      <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/microfinance-policy/</guid>
+      <description>Microfinance Policies  Impact of Microfinance on The Social Well-being Authors: Edanur Kahvecioglu and Yu-Tang Wu Abstract Is microcredit a miracle or just a hype? While more and more researches were conducted to study microcredits, people started to question the effectiveness of microcredit program. This project explores the heterogeneity of treatment effect on microcredit to households&amp;rsquo; well-being. Causuall Random Forest and Two-model approach are used to analyze treatment effects on the household level and identify the important variables that separate households with higher treatment effect.</description>
+    </item>
+    
+    <item>
+      <title>Social Pressure and Voter Turnout - A Causal Machine Learning Approach</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/social_pressure/</link>
+      <pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/social_pressure/</guid>
+      <description>Revisiting Social Pressure and Voter Turnout: Causal Inference with Supervised Learning Methods Julius Reimer &amp;amp; Toby Chelton
+
+[Source: https://paulkiser.com/2016/02/04/five-fixes-for-our-primarycaucus-fiasco/] Table of contents 1. Introduction
+2. Original Study and Our Objectives
+3. Data and Random Assignment
+4. Modelling
+5. Results
+6. Conclusion
+7. References
+1. Introduction The issue of voter turnout has long been examined in both academic and media spheres. In fact, the interest dates back many years to papers such as Gosnell’s 1927 ‘Getting out the vote- an experiment in the stimulation of voting’.</description>
+    </item>
+    
+    <item>
+      <title>Marketing Campaign Optimization: Profit modeling</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/01marketing_campaign_optimization/</link>
+      <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/01marketing_campaign_optimization/</guid>
+      <description>Marketing Campaign Optimization 
+Causal Inference in Profit Uplift Modeling Authors: Asmir Muminovic, Lukas Kolbe 
+Motivation The global spending on advertising amounts to more than 540 billion US dollars for 2018 only, and the spending for 2019 is predicted to reach over 560 billion US dollars. The marketing spendings have continuously increased since 2010 [17], and this trend does not seem to brittle in the near future. Although marketing is such an integral part of most businesses, marketers often fail to maximize the profitability of their marketing efforts.</description>
+>>>>>>> upstream/master
     </item>
     
     <item>
@@ -67,7 +148,31 @@ Research Interests  Customer behavior in e-Commerce
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</guid>
       <description>LatexIT.add(&amp;lsquo;p&amp;rsquo;,true);  
+<<<<<<< HEAD
 Applied Predictive Analytics Seminar - Causal KNN Abstract Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbor algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
+=======
+Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbour algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
+    </item>
+    
+    <item>
+      <title>Correcting for Self-selection in Product Rating: Causal Recommender Systems</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/causalrecommendersystem/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/causalrecommendersystem/</guid>
+      <description>Correcting for Self-selection in Product Rating: Causal Recommender Systems Authors: Karolina Grubinska &amp;amp; Médéric Thomas Table of Contents  An Introduction to Recommender Systems Motivation Overview of Methods Matrix Completion Problem Singular Value Decomposition Problem Definition The Missing-at-Random Assumption Does MAR really hold? Our Goal in This Framework In Mathematical Terms A proposal for Causal Recommender System: Causal Embeddings Causal Setup Results Comparison Conclusions Bibliography  An Introduction to Recommender Systems  One of the main characteristics of a modern, digital society that we currently live in is the heterogeneity of available items.</description>
+    </item>
+    
+    <item>
+      <title>Implementation of the Double/ Debiased Machine Learning Approach in Python</title>
+      <link>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/double_machine_learning/</link>
+      <pubDate>Tue, 18 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/double_machine_learning/</guid>
+      <description>Double Machine Learning Implementation  
+Christopher Ketzler, Guillermo Morishige
+  Abstract: The aim of this paper is to replicate and apply the approach provided by Chernozhukov et al. (2016) to get the causal estimand of interest: average treatment effect (ATE) $\ \eta_0 $ using Neyman orthogonality and cross-fitting. For observational data, we will estimate the causal relationship between the eligibility and participation in the 401(k) and its effect on net financial assets; as well to apply it to other datasets, to find the effect of the Pennsylvania Reemployment Bonus on the unemployment duration and the effect of smoking on medical costs.</description>
+>>>>>>> upstream/master
     </item>
     
     <item>
@@ -127,7 +232,7 @@ C. Monte Carlo Dropout
       <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/is_lda_final/</guid>
-      <description>IS_LDA_final/*!** Twitter Bootstrap**//*!* Bootstrap v3.3.7 (http://getbootstrap.com)* Copyright 2011-2016 Twitter, Inc.* Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)*//*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */html {font-family: sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;}body {margin: 0;}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary {display: block;}audio,canvas,progress,video {display: inline-block;vertical-align: baseline;}audio:not([controls]) {display: none;height: 0;}[hidden],template {display: none;}a {background-color: transparent;}a:active,a:hover {outline: 0;}abbr[title] {border-bottom: 1px dotted;}b,strong {font-weight: bold;}dfn {font-style: italic;}h1 {font-size: 2em;margin: 0.</description>
+      <description>IS_LDA_final  /*! * * Twitter Bootstrap * */ /*! * Bootstrap v3.3.7 (http://getbootstrap.com) * Copyright 2011-2016 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */ /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */ html { font-family: sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; } body { margin: 0; } article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; } audio, canvas, progress, video { display: inline-block; vertical-align: baseline; } audio:not([controls]) { display: none; height: 0; } [hidden], template { display: none; } a { background-color: transparent; } a:active, a:hover { outline: 0; } abbr[title] { border-bottom: 1px dotted; } b, strong { font-weight: bold; } dfn { font-style: italic; } h1 { font-size: 2em; margin: 0.</description>
     </item>
     
     <item>
@@ -219,7 +324,7 @@ Table of Contents  Introduction  Literature Review and Motivation Inductive Tran
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/03imageanalysis/</guid>
-      <description>Image Analysis: Introduction to deep learning for computer vision Authors: Nargiz Bakhshaliyeva, Severin Hußmann, Robert Kittel In this blog, we present the practical use of deep learning in computer vision. You will see how Convolutional Neural Networks are being applied to process the visual data, generating some valuable knowledge. In particular, we focused on the object recognition task, aiming to classify what kind of an object (a dog or a cat) is presented within a particular image by using the notion of Transfer Learning.</description>
+      <description>Image Analysis: Introduction to deep learning for computer vision Authors: Nargiz Bakhshaliyeva, Robert Kittel In this blog, we present the practical use of deep learning in computer vision. You will see how Convolutional Neural Networks are being applied to process the visual data, generating some valuable knowledge. In particular, we focused on the object recognition task, aiming to classify what kind of an object (a dog or a cat) is presented within a particular image by using the notion of Transfer Learning.</description>
     </item>
     
     <item>
@@ -269,7 +374,7 @@ Introduction The explosion of information with the advent of the Internet and th
       <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/07imagecaptioning/</guid>
-      <description>Image Captioning Authors: Benjamin Jaidi, Simon Remy, Murat Gökhan Yigit Introduction Image captioning aims for automatically generating a text that describes the present picture. In the last years it became a topic with growing interest in machine learning and the advances in this field lead to models that (depending on which evaluation) can score even higher than humans do. Image captioning can for instance help visually impaired people to grasp what is happening in a picture.</description>
+      <description>Image Captioning Authors: Severin Hußmann, Simon Remy, Murat Gökhan Yigit Introduction Image captioning aims for automatically generating a text that describes the present picture. In the last years it became a topic with growing interest in machine learning and the advances in this field lead to models that (depending on which evaluation) can score even higher than humans do. Image captioning can for instance help visually impaired people to grasp what is happening in a picture.</description>
     </item>
     
     <item>

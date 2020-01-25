@@ -17,7 +17,11 @@
   <meta name="description" content=" The goal of this blog is an introduction to image captioning, an explanation of a comprehensible model structure and an implementation of that model.">
   
 
+<<<<<<< HEAD
   <meta name="generator" content="Hugo 0.57.0" />
+=======
+  <meta name="generator" content="Hugo 0.58.1" />
+>>>>>>> upstream/master
 
   <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
 
@@ -181,7 +185,7 @@
 
 <h1 id="image-captioning">Image Captioning</h1>
 
-<h4 id="authors-benjamin-jaidi-simon-remy-murat-gökhan-yigit">Authors: Benjamin Jaidi, Simon Remy, Murat Gökhan Yigit</h4>
+<h4 id="authors-severin-hußmann-simon-remy-murat-gökhan-yigit">Authors: Severin Hußmann, Simon Remy, Murat Gökhan Yigit</h4>
 
 <h1 id="introduction">Introduction</h1>
 
@@ -192,27 +196,41 @@
 <h2 id="outline">Outline</h2>
 
 <ul>
-<li><a href="#introduction">Introduction</a></li>
+<li><a href="#image-captioning">Image Captioning</a>
+
+<ul>
+<li><a href="#authors-severin-hu%c3%9fmann-simon-remy-murat-g%c3%b6khan-yigit">Authors: Severin Hußmann, Simon Remy, Murat Gökhan Yigit</a></li>
+</ul></li>
+<li><a href="#introduction">Introduction</a>
+
+<ul>
+<li><a href="#outline">Outline</a></li>
+<li><a href="#dataset">Dataset</a></li>
+</ul></li>
 <li><a href="#data-preparation">Data Preparation</a>
 
 <ul>
-<li>Image Features</li>
-<li>Image Descriptions</li>
+<li><a href="#image-data">Image Data</a></li>
+<li><a href="#text-data">Text Data</a></li>
 </ul></li>
 <li><a href="#set-up-caption-generation-model">Set up Caption Generation Model</a>
 
 <ul>
-<li>Model Structure</li>
-<li>Training Data Generation</li>
-<li>Train Model</li>
+<li><a href="#model-structure">Model Structure</a></li>
+<li><a href="#training-data-generation">Training Data Generation</a></li>
+<li><a href="#train-model">Train Model</a></li>
 </ul></li>
 <li><a href="#caption-generation">Caption Generation</a>
 
 <ul>
-<li>Web App</li>
+<li><a href="#web-app">Web App</a></li>
 </ul></li>
 <li><a href="#evaluation">Evaluation</a></li>
-<li><a href="#summary">Summary</a></li>
+<li><a href="#summary">Summary</a>
+
+<ul>
+<li><a href="#references">References</a></li>
+</ul></li>
 </ul>
 
 <p><em>Environment Requirements</em></p>
@@ -723,7 +741,11 @@ Benchmark – a New Evaluation Resource for Visual Information Systems. 2006.</p
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
+<<<<<<< HEAD
             <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (20)</a>
+=======
+            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (28)</a>
+>>>>>>> upstream/master
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/categories/instruction">instruction (2)</a>
@@ -750,6 +772,9 @@ Benchmark – a New Evaluation Resource for Visual Information Systems. 2006.</p
 
     <div class="panel-body">
         <ul class="tag-cloud">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/a/b-testing"><i class="fa fa-tags"></i> a/b-testing</a>
+            </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/attention"><i class="fa fa-tags"></i> attention</a>
             </li>
@@ -784,16 +809,25 @@ Benchmark – a New Evaluation Resource for Visual Information Systems. 2006.</p
             <li><a href="https://humboldt-wi.github.io/blog/tags/classification"><i class="fa fa-tags"></i> classification</a>
             </li>
             
+            <li><a href="https://humboldt-wi.github.io/blog/tags/coarsened-exact-matching"><i class="fa fa-tags"></i> coarsened-exact-matching</a>
+            </li>
+            
             <li><a href="https://humboldt-wi.github.io/blog/tags/conversion"><i class="fa fa-tags"></i> conversion</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks"><i class="fa fa-tags"></i> convolutional-neural-networks</a>
             </li>
             
+            <li><a href="https://humboldt-wi.github.io/blog/tags/data-simulation"><i class="fa fa-tags"></i> data-simulation</a>
+            </li>
+            
             <li><a href="https://humboldt-wi.github.io/blog/tags/deep-learning"><i class="fa fa-tags"></i> deep-learning</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/distant-transfer-learning"><i class="fa fa-tags"></i> distant-transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/dml"><i class="fa fa-tags"></i> dml</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/doc2vec"><i class="fa fa-tags"></i> doc2vec</a>
@@ -806,6 +840,9 @@ Benchmark – a New Evaluation Resource for Visual Information Systems. 2006.</p
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/fine-tuning"><i class="fa fa-tags"></i> fine-tuning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/genetic-matching"><i class="fa fa-tags"></i> genetic-matching</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/gru"><i class="fa fa-tags"></i> gru</a>
@@ -847,10 +884,22 @@ Benchmark – a New Evaluation Resource for Visual Information Systems. 2006.</p
             <li><a href="https://humboldt-wi.github.io/blog/tags/lstm"><i class="fa fa-tags"></i> lstm</a>
             </li>
             
+            <li><a href="https://humboldt-wi.github.io/blog/tags/machine-learning"><i class="fa fa-tags"></i> machine-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matching-methods"><i class="fa fa-tags"></i> matching-methods</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matchit"><i class="fa fa-tags"></i> matchit</a>
+            </li>
+            
             <li><a href="https://humboldt-wi.github.io/blog/tags/monte-carlo-dropout"><i class="fa fa-tags"></i> monte-carlo-dropout</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/movie-reviews"><i class="fa fa-tags"></i> movie-reviews</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nearest-neighbor"><i class="fa fa-tags"></i> nearest-neighbor</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/neural-network"><i class="fa fa-tags"></i> neural-network</a>
@@ -862,10 +911,19 @@ Benchmark – a New Evaluation Resource for Visual Information Systems. 2006.</p
             <li><a href="https://humboldt-wi.github.io/blog/tags/nlp"><i class="fa fa-tags"></i> nlp</a>
             </li>
             
+            <li><a href="https://humboldt-wi.github.io/blog/tags/optimal-matching"><i class="fa fa-tags"></i> optimal-matching</a>
+            </li>
+            
             <li><a href="https://humboldt-wi.github.io/blog/tags/pdp"><i class="fa fa-tags"></i> pdp</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/pretraining"><i class="fa fa-tags"></i> pretraining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score"><i class="fa fa-tags"></i> propensity-score</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score-weighting"><i class="fa fa-tags"></i> propensity-score-weighting</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/recommendation"><i class="fa fa-tags"></i> recommendation</a>
@@ -874,7 +932,13 @@ Benchmark – a New Evaluation Resource for Visual Information Systems. 2006.</p
             <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-system"><i class="fa fa-tags"></i> recommender-system</a>
             </li>
             
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-systems"><i class="fa fa-tags"></i> recommender-systems</a>
+            </li>
+            
             <li><a href="https://humboldt-wi.github.io/blog/tags/rnn"><i class="fa fa-tags"></i> rnn</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/rs"><i class="fa fa-tags"></i> rs</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-analysis"><i class="fa fa-tags"></i> sentiment-analysis</a>
@@ -884,6 +948,9 @@ Benchmark – a New Evaluation Resource for Visual Information Systems. 2006.</p
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/share-price-prediction"><i class="fa fa-tags"></i> share-price-prediction</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/simulation"><i class="fa fa-tags"></i> simulation</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/text-analysis"><i class="fa fa-tags"></i> text-analysis</a>
@@ -899,6 +966,9 @@ Benchmark – a New Evaluation Resource for Visual Information Systems. 2006.</p
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/transfer-learning"><i class="fa fa-tags"></i> transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/treatment-effect"><i class="fa fa-tags"></i> treatment-effect</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/twitter"><i class="fa fa-tags"></i> twitter</a>
