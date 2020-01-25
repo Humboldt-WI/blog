@@ -20,4 +20,10 @@ LatexIT.add('p',true);
 
 # Headline 1
 
+test123
+
+<img align="center" width="800"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/text_generation/test.png"
+alt = "test">
 
