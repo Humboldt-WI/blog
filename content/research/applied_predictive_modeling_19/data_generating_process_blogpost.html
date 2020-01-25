@@ -1,0 +1,402 @@
++++
+title = "Data Generating Process Simulation: The opossum package"
+date = '2019-08-18'
+tags = [ "Causal Inference", "Class19", "Data Simulation"]
+categories = ["Course projects"]
+banner = "img/seminar/data_generating_process/opossum.jpg"
+author = "Julian Winkel, Tobias Krebs"
+disqusShortname = "https-humbodt-wi-github-io-blog"
+description = "Generating datasets with observed treatment effects for model evaluation"
++++
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Data-Generating-Process-Simulation">Data Generating Process Simulation<a class="anchor-link" href="#Data-Generating-Process-Simulation">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="toc"><ul class="toc-item"><li><span><a href="#Introduction" data-toc-modified-id="Introduction-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Introduction</a></span><ul class="toc-item"><li><span><a href="#Topic" data-toc-modified-id="Topic-1.1"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Topic</a></span></li><li><span><a href="#Motivation" data-toc-modified-id="Motivation-1.2"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Motivation</a></span></li><li><span><a href="#Properties" data-toc-modified-id="Properties-1.3"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Properties</a></span></li></ul></li><li><span><a href="#Review" data-toc-modified-id="Review-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Review</a></span><ul class="toc-item"><li><span><a href="#Literature" data-toc-modified-id="Literature-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Literature</a></span></li><li><span><a href="#Software" data-toc-modified-id="Software-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Software</a></span></li></ul></li><li><span><a href="#Theory-behind-the-package" data-toc-modified-id="Theory-behind-the-package-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Theory behind the package</a></span><ul class="toc-item"><li><span><a href="#General-Model:-Partial-Linear-Regression" data-toc-modified-id="General-Model:-Partial-Linear-Regression-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>General Model: Partial Linear Regression</a></span></li><li><span><a href="#Generating-Covariates" data-toc-modified-id="Generating-Covariates-3.2"><span class="toc-item-num">3.2&nbsp;&nbsp;</span>Generating Covariates</a></span><ul class="toc-item"><li><span><a href="#Continuous-Covariates" data-toc-modified-id="Continuous-Covariates-3.2.1"><span class="toc-item-num">3.2.1&nbsp;&nbsp;</span>Continuous Covariates</a></span></li><li><span><a href="#Binary-and-categorical-covariates" data-toc-modified-id="Binary-and-categorical-covariates-3.2.2"><span class="toc-item-num">3.2.2&nbsp;&nbsp;</span>Binary and categorical covariates</a></span></li></ul></li><li><span><a href="#Treatment-assignment" data-toc-modified-id="Treatment-assignment-3.3"><span class="toc-item-num">3.3&nbsp;&nbsp;</span>Treatment assignment</a></span><ul class="toc-item"><li><span><a href="#Random" data-toc-modified-id="Random-3.3.1"><span class="toc-item-num">3.3.1&nbsp;&nbsp;</span>Random</a></span></li><li><span><a href="#Dependent-on-covariates" data-toc-modified-id="Dependent-on-covariates-3.3.2"><span class="toc-item-num">3.3.2&nbsp;&nbsp;</span>Dependent on covariates</a></span></li></ul></li><li><span><a href="#Treatment-effects" data-toc-modified-id="Treatment-effects-3.4"><span class="toc-item-num">3.4&nbsp;&nbsp;</span>Treatment effects</a></span><ul class="toc-item"><li><span><a href="#Positive-&amp;-negative-constant-effect" data-toc-modified-id="Positive-&amp;-negative-constant-effect-3.4.1"><span class="toc-item-num">3.4.1&nbsp;&nbsp;</span>Positive &amp; negative constant effect</a></span></li><li><span><a href="#Positive-&amp;-negative-continuous-heterogeneous-effect" data-toc-modified-id="Positive-&amp;-negative-continuous-heterogeneous-effect-3.4.2"><span class="toc-item-num">3.4.2&nbsp;&nbsp;</span>Positive &amp; negative continuous heterogeneous effect</a></span></li><li><span><a href="#No-effect" data-toc-modified-id="No-effect-3.4.3"><span class="toc-item-num">3.4.3&nbsp;&nbsp;</span>No effect</a></span></li><li><span><a href="#Discrete-heterogeneous-treatment-effect" data-toc-modified-id="Discrete-heterogeneous-treatment-effect-3.4.4"><span class="toc-item-num">3.4.4&nbsp;&nbsp;</span>Discrete heterogeneous treatment effect</a></span></li></ul></li><li><span><a href="#Output-variable" data-toc-modified-id="Output-variable-3.5"><span class="toc-item-num">3.5&nbsp;&nbsp;</span>Output variable</a></span><ul class="toc-item"><li><span><a href="#Continuous" data-toc-modified-id="Continuous-3.5.1"><span class="toc-item-num">3.5.1&nbsp;&nbsp;</span>Continuous</a></span></li><li><span><a href="#Binary" data-toc-modified-id="Binary-3.5.2"><span class="toc-item-num">3.5.2&nbsp;&nbsp;</span>Binary</a></span></li></ul></li></ul></li><li><span><a href="#Package-application" data-toc-modified-id="Package-application-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Package application</a></span><ul class="toc-item"><li><span><a href="#Choosing-covariates" data-toc-modified-id="Choosing-covariates-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>Choosing covariates</a></span></li><li><span><a href="#Creating-treatment-effects" data-toc-modified-id="Creating-treatment-effects-4.2"><span class="toc-item-num">4.2&nbsp;&nbsp;</span>Creating treatment effects</a></span></li><li><span><a href="#Creating-output" data-toc-modified-id="Creating-output-4.3"><span class="toc-item-num">4.3&nbsp;&nbsp;</span>Creating output</a></span></li><li><span><a href="#Other-functions" data-toc-modified-id="Other-functions-4.4"><span class="toc-item-num">4.4&nbsp;&nbsp;</span>Other functions</a></span></li></ul></li><li><span><a href="#Example:-Applying-double-machine-learning" data-toc-modified-id="Example:-Applying-double-machine-learning-5"><span class="toc-item-num">5&nbsp;&nbsp;</span>Example: Applying double machine learning</a></span></li><li><span><a href="#Discussion" data-toc-modified-id="Discussion-6"><span class="toc-item-num">6&nbsp;&nbsp;</span>Discussion</a></span></li><li><span><a href="#References" data-toc-modified-id="References-7"><span class="toc-item-num">7&nbsp;&nbsp;</span>References</a></span></li></ul></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><h3 id="Topic">Topic<a class="anchor-link" href="#Topic">&#182;</a></h3><p>As modern science becomes increasingly data-driven among virtually all fields, it is obligatory to inspect not only how scientists analyze data but also what kind of data is used.
+Naturally, the performance of a model is bound by the quality of underlying data. 
+This blog post explores the properties and constituents of realistic data sets and proposes flexible and user-friendly software to support research by means of 'Simulated Data Generating Processes' (SDGP).</p>
+<h3 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">&#182;</a></h3><p>With increasing dimension, standard Machine Learning Techniques tend to suffer from the 'Curse of Dimensionality', referring to the phenomenon of data points becoming sparse for constant sample sizes, whilst large parameter spaces render consistent estimation difficult (Chernozhukov, 2017).
+However, having more and more data available, these problems need to be addressed in a specialized framework. 
+Facing ever growing amounts of data in different fields of interests in statistics and econometrics, e.g. inference, time series analysis, causality or prediction, the necessity of generating flexible data sets becomes obvious. Especially when dealing with methods such as Neural Networks, which are often labelled as 'Black Boxes', model reactions to data changes are particularly insightful.</p>
+<h3 id="Properties">Properties<a class="anchor-link" href="#Properties">&#182;</a></h3><p>The researcher's setting is located in a high-dimensional, partial-linear model. The covariates are pseudo-randomly generated in such a manner that they are (partially) correlated with the output variable, which itself can take binary or continuous values. The relation between the covariates and the output variable can be specified as linear or non-linear. Individual treatment assignment, propensity, being the probability of treatment assignment, can be random or non-random. One of the fundamental problems researchers face is the non-observability of counterfactuals and treatment effects, firstly addressed in the 'Potential Outcomes Framework' (Rubin, 2011). In the proposed setting, treatment effects are known and can be customized in their effect. By proposing a model in which all components are expounded, researchers receive support to evaluate and compare various models that are applied to a realistic data set.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Review">Review<a class="anchor-link" href="#Review">&#182;</a></h2><h3 id="Literature">Literature<a class="anchor-link" href="#Literature">&#182;</a></h3><p>Chernozhukov et al. address some problems in the area of modern, prediction focussed machine learning. Using Robinson's framework, they argue, standard techniques to estimate statistics as 'regression coefficients, average treatment effects, average lifts, and demand or supply elasticities' can easily fail due to regularization bias. They suggest to estimate and compensate the introduced bias in a double machine learning setting in order to restrict estimated parameters to a reasonably small space. The resulting estimators are proven to have desirable statistical properties; hence presenting a method to apply common machine learning methods as 'random forest, lasso, ridge, deep neural nets, boosted trees' in a highdimensional and nonlinear model.</p>
+<p>Powers et al. are handling high dimensional, observational data and try to estimate treatment effects. They target regions of especially high or low treatment effects in the parameter space, for their average might be close to zero.
+Having proposed various models to estimate heterogeneous treatment effects, they simulate a data set that mimics their original data in order to compare model performance.</p>
+<p>Dorie et al. compare inferential strategies from a data analysis competition. The authors criticize a general lack of guidance on optimal applications of statistical models. They discuss the problem of adequately assigning participants to test and control groups where unobserved characteristics require a tradeoff between a demanding parametric structure or flexibility. Results from a competition for various models and strategies are reported and compared, yielding in an overall surplus for flexibility. Moreover, they provide a list of un-addressed issues to be considered for application, including (but not limited to) non-binary treatment, non-continuous response, non-iid data, varying data / covariate size. Our proposed model accounts for the mentioned issues.</p>
+<p>Jacob et al. provide an analysis on the application of modern machine learning techniques on simulated data; relying on a setting as in Robinson's framework.
+They compare different methods to estimate causal effects where the true treatment effects are known. This is the foundation of our blog post.</p>
+<h3 id="Software">Software<a class="anchor-link" href="#Software">&#182;</a></h3><p>Naturally, software packages that generate synthetic data sets already exist. Given that the most popular languages for data analysis are R and Python, it is desirable to provide the according software in the respective environment. One existing R package to deal with data generating processes is <code>simstudy</code> (Goldfeld, 2019).</p>
+<p>While <code>simstudy</code> provides great flexibility, using low-level functions to generate desirable relationships, it comes at the cost of properly understanding their backend and the ability to create a sound statistical model with regard to the probability theoretic background. Furthermore, it is costly to create high dimensional data sets.</p>
+<p>To enrich and broaden the state of the art, our proposed model aims to strip the user of this burden by offering a backend which can be easily accessed, but by no means has to be regarded at all by the user. Hence the informed user can decide how deeply he wants to explore the underlying mathematics. On top of the backend, we offer an easily-adjustable user interface for common scientific approaches.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Theory-behind-the-package">Theory behind the package<a class="anchor-link" href="#Theory-behind-the-package">&#182;</a></h2><p>In the following sections you will find a step by step explanation of how our data simulation package works internally, accompanied by the corresponding formulas, code snippets and explanatory graphs.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="General-Model:-Partial-Linear-Regression">General Model: Partial Linear Regression<a class="anchor-link" href="#General-Model:-Partial-Linear-Regression">&#182;</a></h3><p>The model that our package is based on is a partial linear regression model as it is described in Chernozhukov (2017). It consists of the covariates X that are possibly non-linear in relation to y, the treatment term consisting of the treatment effect and the treatment assignment vector, and a normally distributed error term.</p>
+<p><br/></p>
+$$ \begin{align} Y = \theta_0  D + g_0(X)+ U,  &amp;&amp;  &amp; E[U|X,D] = 0 \\ 
+   D = m_0(X) + V, &amp;&amp;   &amp;  E[V|X] = 0 \\
+  \theta_0 =  t_0(Z) + W, &amp;&amp; &amp; E[W|Z] = 0, \; Z \subseteq X  \\
+   \end{align}$$<p>$Y$ - Outcome Variable $\quad \theta_0$ - True treatment effect $\quad D$ - Treatment Dummy $ \quad X_{n*k}$ - Covariates</p>
+<p>$U$, $V$ &amp; $W$ - normally distributed error terms with expected value 0</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Generating-Covariates">Generating Covariates<a class="anchor-link" href="#Generating-Covariates">&#182;</a></h3><h4 id="Continuous-Covariates">Continuous Covariates<a class="anchor-link" href="#Continuous-Covariates">&#182;</a></h4><p>The covariate matrix $X$ in our simulation is drawn from a multivariate normal distribution with an expected value of 0 and a specified covariance matrix $\Sigma$. $\Sigma$ is constructed the following way. First, values for Matrix $A$ are drawn from a uniform distribution. In a second step, to make sure that there exist negative correlations and that not all variables are highly correlated with each other, we create an overlay matrix $B$. This overlay matrix $B$ consists of values 1 and -1. Third, we multiply the two matrices element-wise and adjust the result with a correction term to assure that values in $\Sigma$ are not increasing in $k$. This result is represented by the matrix $\Lambda$. In a final step, we calculate $\Sigma$ by multiplying $\Lambda$ with its transposed to assure that it is positive definite.</p>
+<p><br/></p>
+$$ X_{n*k} \sim N_k(0,\Sigma)$$<p>With the following variables:,</p>
+<p>$n = Number \; of \; Observations, \quad k =  Number \; of \; Covariates$</p>
+<p>$\Sigma = \Lambda*\Lambda^T, \quad \Lambda = \frac{10}{k} (A \circ B), \quad A \sim U(0,1), \quad B \sim Bernoulli(0.5)\;,B \in \{-1,1\}$</p>
+<p>$Matrices \; A, \; B, \; and \; \Lambda \; are \; all \; of \; dimension \; k*k$</p>
+<p><br/></p>
+<script src="https://gist.github.com/Tobias-K93/f550c942f3ceea379271c9d89913fac7.js"></script><p>The following heat-map shows an example of Sigma with k=10 covariates. Depending on the chosen random seed, typically correlations range between -0.7 and 0.7 with slightly varying minimum and maximum values.</p>
+<p><img align="center" width="660" height="500" style="display:block;margin:0 auto;" src="/blog/img/seminar/data_generating_process/covariates_correlation.png"></p>
+<h4 id="Binary-and-categorical-covariates">Binary and categorical covariates<a class="anchor-link" href="#Binary-and-categorical-covariates">&#182;</a></h4><p>Binary and categorical covariates are created by transforming the continuous covariates $X$. Depending on what option is chosen, the package simulates all covariates or a subset of $X$ as binary and/or categorical. The covariates are transformed by min-max-standardization to obtain prediction values. These values are then used to either obtain binary realizations from a Bernoulli distribution or categorical covariates by summing up the realizations of several Bernoulli draws.</p>
+$$ p_{j} = \frac{x(j) - min(x(j))}{max(x(j)) - min(x(j))} $$$$ x_{binary}(j) = Bernoulli\left( p_{j} \right) $$$$ x_{categorical}(j) = \sum_{c=1}^{C-1} Bernoulli_c \left( p_{j} \right) $$<p>Where,</p>
+<p>$x(j) \in X = covariate\; vector, \quad j \in \{1,...,k\}, \quad C = number\; of\; categories $</p>
+<p><br/></p>
+<p>The following code serves as an example of how binary and categorical covariates are implemented. In this example, the user chooses how many covariates are transformed and gives a list of categories that should be included, e.g. [2,5] for binary and categorical variables with 5 categories.</p>
+<script src="https://gist.github.com/Tobias-K93/c9d325e584421595ed1b012fe090d6fc.js"></script>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Treatment-assignment">Treatment assignment<a class="anchor-link" href="#Treatment-assignment">&#182;</a></h3><p>There are two ways treatment can be assigned. The first one is to simulate a random control trial where all observations are assigned treatment with the same probability $m_0$. This is a rather rare case in reality since most datasets are not constructed from experiments but there still exist cases where it is a realistic assumption, e.g. medical or psychological studies. The second one is assigning treatment in the fashion of an observational study where assignment of treatment depends on covariates $X$ and probability $m_0$ differs between observations. This is the far more common case in all kinds of fields, especially in more business related cases, e.g. customers that sign up for newsletters but also people starting in job programs are not randomly selected into taking part in those programs. The assignment vector $D$ is drawn from a Bernoulli distribution with probability $m_0$ in both cases.</p>
+$$ D_{n*1} \sim Bernoulli(m_0) $$<h4 id="Random">Random<a class="anchor-link" href="#Random">&#182;</a></h4><p>In the random assignment case, only an assignment probability $m_0$ has to be chosen which is then used to draw realizations from a Bernoulli distribution to create the assignment vector $D$.</p>
+$$ m_0 \in [0,1] $$<h4 id="Dependent-on-covariates">Dependent on covariates<a class="anchor-link" href="#Dependent-on-covariates">&#182;</a></h4><p>To obtain the individual probabilities, as a first step, a subset $Z \subseteq X$  with dimensions $n$ times $l$ is chosen. Then, $Z$ is multiplied with a weight vector $b$, which is made up of values drawn from a uniform distribution, resulting in vector $a$. The standardized version of vector $a$ is then used to draw values from a Normal CDF which eventually serve as assignment probabilities in vector $m_0$. To include some randomness, random noise, drawn from a uniform distribution and labeled as $\eta$, is added to $a$ before the standardization.</p>
+<p><br/></p>
+$$ m_{0, n*1} = \Phi\left(\frac{a-\hat{\mu}(a)}{\hat{\sigma}(a)}\right) $$<p>Where,</p>
+<p>$ a_{n*1} = Z * b + \eta, \quad Z_{n*l} \subseteq X_{n*k}, \quad b_{l*1} \sim U(0,1), \quad  \eta_{n*1} \sim U(0,0.25)$</p>
+<p><br/></p>
+<script src="https://gist.github.com/Tobias-K93/4b94f744158ec4ee2411075c2cf66e06.js"></script><p>The following histograms show the distributions of propensity scores ($m_0$) in the case of non-random assignment with low, medium, and high average assignment probability. In the trivial case of random assignment, propensity scores are all the same for each observation.</p>
+<p><img align="center" width="800" height="350" style="display:block;margin:0 auto;" src="/blog/img/seminar/data_generating_process/propensity_score_plot.png"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Treatment-effects">Treatment effects<a class="anchor-link" href="#Treatment-effects">&#182;</a></h3><p>The package offers 6 different options for the treatment effect $\theta_0
+$. These effects are: Positive constant, negative constant , positive heterogeneous, negative heterogeneous, no effect, and discrete heterogeneous. When applying these treatment effects, one can choose a single option or pick preferred options and apply a mix of them.</p>
+<h4 id="Positive-&amp;-negative-constant-effect">Positive &amp; negative constant effect<a class="anchor-link" href="#Positive-&amp;-negative-constant-effect">&#182;</a></h4><p>In the case of a constant effect, treatment is the same for each individual and, thus, is just a constant $c$. Depending on the chosen sign either positive or negative. This is a popular assumption in research which can serve as a benchmark.</p>
+<p><strong>Option 1</strong> positive constant: $$ \theta_0 = c $$</p>
+<p><strong>Option 2</strong> negative constant: $$\theta_0 = - \; c$$</p>
+<h4 id="Positive-&amp;-negative-continuous-heterogeneous-effect">Positive &amp; negative continuous heterogeneous effect<a class="anchor-link" href="#Positive-&amp;-negative-continuous-heterogeneous-effect">&#182;</a></h4><p>In contrast to the constant effect, for which each observation has the same treatment effect, the continuous heterogeneous effect differs between individuals within a specified interval. Moreover, depends the size of the individual treatment effect on a subset Z of the covariates X. That the treatment effect is different among individuals is quite common, e.g. coupons lead to different amounts of purchases or the same kind of medicine has a different effect on different patients which is due to their differing characteristics.</p>
+<p>The creation of this treatment effect begins similar to the treatment assignment with taking the dot product of the subset $Z$ and the same weight vector used in the treatment assignment $b$. The result is forwarded into a sine function and a normally distributed error term $W$ is added. The result $\gamma$ is then min-max-standardized and adjusted in size with a constant $c$. Note that eventually the size of treatment depends on the intensity chosen which will be explained later on in the <em>Package application</em> part. In case that the heterogeneous effect is supposed to be partly or entirely negative, the resulting distribution is shifted by the respective quantile value $q_{neg}$ that corresponds to the wanted negative percentage share.</p>
+<p><br/></p>
+$$\gamma =  sin(Z * b) + W$$$$\theta_0 = \frac{\gamma - min(\gamma)}{max(\gamma) - min(\gamma)}*c - q_{neg}$$<p>Where,</p>
+<p>$Z \subseteq X,\quad  b_{k*1} \stackrel{ind.}{\sim} U(0,1), \quad W \stackrel{ind.}{\sim} N(0,1), \quad q_{neg} \in [0,c], \quad c = size \; adjustment \; parameter$</p>
+<p><br/></p>
+<script src="https://gist.github.com/Tobias-K93/80c8db186625da23d99caebf1bbfc913.js"></script><p>The following histogram shows an example where 30% of the continuous heterogeneous treatment effect is negative and 70% is positive.</p>
+<p><img align="center" width="500" height="400" style="display:block;margin:0 auto;" src="/blog/img/seminar/data_generating_process/pos_neg_heterogeneous_treatment_effect.png"></p>
+<h4 id="No-effect">No effect<a class="anchor-link" href="#No-effect">&#182;</a></h4><p>This option allows that there are cases of treatment assignment that show no effect, i.e. $\theta_0$ is simply 0.<br>
+This could be the case e.g. when customers are target with some kind of commercial that does not reach them due to logistic reasons.</p>
+$$\theta_0 = 0$$<h4 id="Discrete-heterogeneous-treatment-effect">Discrete heterogeneous treatment effect<a class="anchor-link" href="#Discrete-heterogeneous-treatment-effect">&#182;</a></h4><p>The discrete heterogeneous treatment effect is created in a similar manner as the continuous version. The scalar product of a subset of the covariates is put into a sinus function and the result is standardized to be interpretable as a probability. In another step, those probabilities are used to draw values from a Bernoulli distribution, where 0's are exchanged with the lower value and 1's with the higher value of the new treatment effect. The resulting treatment effect depends then on a subset of covariates.</p>
+$$\gamma =  sin(Z * b)$$$$ p_{dh} = \frac{\gamma - min(\gamma)}{max(\gamma) - min(\gamma)}$$$$ \theta_0 \sim Bernoulli(p_{dh}), \; \theta_0 \in \{0.1*c , 0.2*c\}$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Output-variable">Output variable<a class="anchor-link" href="#Output-variable">&#182;</a></h3><h4 id="Continuous">Continuous<a class="anchor-link" href="#Continuous">&#182;</a></h4><p>The continuous output variable $Y$ comprises of three main parts. The treatment part $\theta_0 D $ as explained above, the possibly non-linearly transformed covariates $X$, and the error term $U$. The transformation $g_0()$ consists of two parts. First, the dot product of $X$ and the weighting vector $b$ is taken. The values of $b$ are drawn from an uneven beta distribution which assures that a few covariates impact the outcome much more than others which seems more realistic than e.g. a uniformly distributed impact. Second, there is either no further transformation, i.e. the relation is linear, a partial non-linear transformation which consists of a linear and non-linear part, or an entirely non-linear transformation. Moreover, the package offers an option to add interaction terms of the form $x_i*x_j$ that are drawn randomly out of $X$ and added into $g_0()$. The number of interaction terms $I$ is set to $\sqrt{k}$ as a default and can be adjusted if wanted.</p>
+<p><br/></p>
+$$ Y = \theta_0  D + g_0(X)+ U, \quad E[U|X,D] = 0$$<p>where,</p>
+<p>$g_0(x) \in  \{x, \; \; 2.5*cos(x)^3 + 0.5*x, \; \; 3*cos(x)^3\}, \qquad x \in \{X_{n*k}*b_{k*1}, \quad X_{n*k}*b_{k*1} + X_{in,n*I}*b_{in,I*1} \},$</p>
+<p>$b_{k*1} \sim Beta(1,5), \qquad X_{in}*b_{in} = \sum_{i,j=1}^{I} b_{i,1*1} * (x_{i,n*1} \circ x_{j,n*1}), \qquad i,j \in \{i_1,...,i_I\} \sim U\{0,k\}, $</p>
+<p>$I = number \; of \; interaction \; terms$</p>
+<p>The following code snippet shows a slightly simplified version of how the continuous output variable is implemented with the two examples of a simple linear transformation and a non-linear transformation including interaction terms.</p>
+<script src="https://gist.github.com/Tobias-K93/c8a7a18db3149d5762070fca1315db8e.js"></script><p>The following scatter plots display the three different types of relation between X and y that can be chosen. The underlying data was simulated without treatment effects or interaction terms.</p>
+<p><img align="center" width="850" height="350" style="display:block;margin:0 auto;" src="/blog/img/seminar/data_generating_process/y_transformations_plot.png"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Binary">Binary<a class="anchor-link" href="#Binary">&#182;</a></h4><p>To simulate a binary outcome, the continuous outcome is transformed and then used as probabilities to draw $Y$ from a Bernoulli distribution. $Y_{binary}$ consists of the possibly non-linearly transformed covariates $g_0(X)$ that are min-max-standardized and the treatment vector $\theta_0$ that is simply adjusted by dividing all values by 10. The range of the standardized values is set to $[0.1,0.9]$ to assure that treatment effects always have influence on the outcome probability.</p>
+$$ p_{n*1} = \frac{\delta - min(\delta)}{max(\delta) - min(\delta)}*0.8 + 0.1 + \theta_{binary}*D$$$$Y_{n*1} \sim Bernoulli(p)$$<p>where,</p>
+<p>$p \in [0,1], \quad \theta_{binary} = \frac{1}{10} * \theta_0, \quad \delta = g_0(X) $</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Package-application">Package application<a class="anchor-link" href="#Package-application">&#182;</a></h2><p><code>opossum</code> can be obtained by either downloading the Github repository <a href="https://github.com/jgitr/opossum">https://github.com/jgitr/opossum</a> and using the opossum directory as working directory or by simply installing it with the following command from the console:</p>
+<p><code>pip install opossum</code></p>
+<p>A detailed installation instruction is provided in the project README.
+The package is executed by simply importing the <code>UserInterface</code>, initializing it, and using the two main methods <code>generate_treatment</code> and <code>output_data</code> as shown in the code below. The only required parameters the user has to choose are the number of observations N and the number of covariates k. All other parameters have default values that can be changed if needed. The following code gives all necessary lines to create a dataset and has all default values listed. How values can be adjusted will be explained in the following sections.</p>
+<script src="https://gist.github.com/Tobias-K93/72319f8e5b96190d1fdadbe1a1cedd59.js"></script><h3 id="Choosing-covariates">Choosing covariates<a class="anchor-link" href="#Choosing-covariates">&#182;</a></h3><p>As a default, covariates are continuous. However, one can change that with the <code>categorical_covariates</code> parameter. It allows to make either all or a chosen number of covariates binary and/or categorical. Depending on how covariates should be transformed there are three options. Option one is to simply give an integer $i$ which then transforms the whole dataset into variables with i categories, e.g. $i$ = 2 makes all covariates binary. Option two is a list with two integers $[z,i]$, where the first one $z$ is the number of variables that are transformed, and the second one $i$ is again the number of categories, e.g. <code>[5,2]</code> generates 5 of all k covariates as binary variables. Option three is again a list but this time contains an integer and a list $[z,[i_1,..i_C]]$. As before, the first integer $z$ gives the number of covariates that are transformed, whereas the integers in the list $[i_1,...i_C]$ give the different frequencies of categories that are then equally common among the transformed covariates. As an example, <code>[10,[2,3,5]]</code> would lead to 10 transformed covariates of which four would be binary and three would have 3 and 5 categories respectively.</p>
+<script src="https://gist.github.com/Tobias-K93/02d7c3b424f19a894fcbab69775247e8.js"></script><h3 id="Creating-treatment-effects">Creating treatment effects<a class="anchor-link" href="#Creating-treatment-effects">&#182;</a></h3><p>The <code>generate_treatment()</code> function has two main purposes. Assigning treatment and generating the chosen treatment effects. As a default treatment is assigned randomly as in a random control trial, i.e. the <code>random_assignment</code> boolean parameter is set to <code>True</code>. Setting it to <code>False</code> makes treatment depending on a subset of covariates, simulating an observational study. The size of this subset is set to k/2 by default but can be adjusted with the function <code>set_subset_z_size_assignment()</code> that is further explained under the point <em>Other functions</em> below. The other parameter concerning assignment is <code>assignment_prob</code> which affects the average probability of treatment assignment, determining how many observations end up being treated. In the case of random assignment, parameter values can be freely chosen from the interval (0,1), however, when assignment is not random one has to choose between the three levels <code>'low'</code>, <code>'medium'</code>, and <code>'high'</code> which represent average probability values of 0.35, 0.5, and 0.65 respectively.</p>
+<p>Regarding the creation of treatment effects there are two ways on how to choose which kind of effects should be simulated. Either by setting the wanted parameters to <code>True</code> and unwanted to <code>False</code>, where the default is <code>constant_pos=True</code> and all other options False, or by passing a list of length 6 to <code>treatment_option_weights</code> containing the wanted percentages of treatment effect options that sum up to 1. If the first way, using booleans, is chosen then the frequency of each selected option is the same. This option is the easiest way to use when just one kind of effect is wanted. The second option, passing a list, offers a better way of customizing the wanted mix of treatment effects. Each value in the list corresponds to a kind of treatment effect the following way <code>[constant_pos, constant_neg, heterogeneous_pos, heterogeneous_neg, no_treatment, discrete_heterogeneous]</code>, e.g. <code>[0, 0, 0.8, 0.2, 0, 0]</code> generates 20% negative heterogeneous treatment and 80% positive heterogeneous treatment.</p>
+<p>The following code shows the application of the above discussed parameters. All parameters that are not shown are automatically set to their default values.</p>
+<script src="https://gist.github.com/Tobias-K93/c07617c63231c9e0a76886ac49d273a9.js"></script><p>The intensity parameter adjusts the size of treatment effects. It takes a float from the interval [1,10] which determines the magnitude of the treatment effects the following way:</p>
+<ul>
+<li>$constant: \; intensity*0.2$, </li>
+<li>$heterogeneous: \; [0, intensity*0.4]$, </li>
+<li>$discrete\_heterogeneous: \{intensity*0.1, intensity*0.2\}$</li>
+</ul>
+<p>The interactive plot bellow shows different resulting magnitudes of the treatment effect as part of the outcome variable y in form of a kernel density estimation. Just press the <em>Show widgets</em> button, wait a few seconds, and change the intensity value to see how it affects the outcome distributions of treated and not treated observations!</p>
+
+</div>
+</div>
+</div>  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="hidden">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">interactive</span><span class="p">,</span> <span class="n">fixed</span><span class="p">,</span> <span class="n">interact_manual</span>
+
+<span class="kn">from</span> <span class="nn">interactive_plots_functions</span> <span class="k">import</span> <span class="n">output_difference_plt</span>
+<span class="kn">from</span> <span class="nn">opossum</span> <span class="k">import</span> <span class="n">UserInterface</span>
+
+
+<span class="k">def</span> <span class="nf">output_difference_interaction_fct</span><span class="p">(</span><span class="n">intensity</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">UserInterface</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">categorical_covariates</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">u</span><span class="o">.</span><span class="n">generate_treatment</span><span class="p">(</span><span class="n">intensity</span> <span class="o">=</span> <span class="n">intensity</span><span class="p">)</span>
+
+    <span class="n">y_continuous</span><span class="p">,</span> <span class="n">X_continuous</span><span class="p">,</span> <span class="n">assignment_continuous</span><span class="p">,</span> <span class="n">treatment_continuous</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">output_data</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">y_binary</span><span class="p">,</span> <span class="n">X_binary</span><span class="p">,</span> <span class="n">assignment_binary</span><span class="p">,</span> <span class="n">treatment_binary</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">output_data</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+
+
+    <span class="n">y_treated_continuous</span> <span class="o">=</span> <span class="n">y_continuous</span><span class="p">[</span><span class="n">assignment_continuous</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">y_not_treated_continuous</span> <span class="o">=</span> <span class="n">y_continuous</span><span class="p">[</span><span class="n">assignment_continuous</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">y_treated_binary</span> <span class="o">=</span> <span class="n">y_binary</span><span class="p">[</span><span class="n">assignment_binary</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">y_not_treated_binary</span> <span class="o">=</span> <span class="n">y_binary</span><span class="p">[</span><span class="n">assignment_binary</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+
+    
+    <span class="n">output_difference_plt</span><span class="p">(</span><span class="n">y_treated_continuous</span><span class="p">,</span> <span class="n">y_not_treated_continuous</span><span class="p">,</span> 
+                          <span class="n">y_treated_binary</span><span class="p">,</span> <span class="n">y_not_treated_binary</span><span class="p">)</span>
+    
+
+
+<span class="n">interactive</span><span class="p">(</span><span class="n">output_difference_interaction_fct</span><span class="p">,</span> <span class="n">intensity</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    
+
+
+
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
+
+</div>
+
+</div>
+</div>
+
+  </div>
+
+
+
+<!-- Loads nbinteract package -->
+<script src="https://unpkg.com/nbinteract-core" async></script>
+<script>
+  (function setupNbinteract() {
+    // If NbInteract hasn't loaded, wait one second and try again
+    if (window.NbInteract === undefined) {
+      setTimeout(setupNbinteract, 1000)
+      return
+    }
+
+    var interact = new window.NbInteract({
+      spec: 'Tobias-K93/5d6f9a8b7de571a2248533ef327c6f8f/master',
+      baseUrl: 'https://mybinder.org',
+      provider: 'gist',
+    })
+    interact.prepare()
+
+    window.interact = interact
+  })()
+</script>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Creating-output">Creating output<a class="anchor-link" href="#Creating-output">&#182;</a></h3><p>The second main function is <code>output_data()</code> which internally creates the output variable y and returns a tuple including the 4 numpy arrays of interest. In the sample code below denoted as <code>y</code> is the array of size N with the output variable values, <code>X</code> is an array of size $N*k$ consisting of the simulated covariates, <code>assignment</code> is an array of length N consisting of zeros and ones, and <code>treatment</code> is an array of length N consisting of the realized treatment effect values.</p>
+<p>The function provides two parameters that can be adjusted. <code>binary</code> simply allows to change the output variable y from continuous to binary while the default is <code>False</code> which makes y continuous. <code>x_y_relation</code> defines the relationship of y and X that is used offering 6 different options one can choose from: <code>'linear_simple'</code>, <code>'linear_interaction'</code>, <code>'partial_nonlinear_simple'</code>, <code>'partial_nonlinear_interaction'</code>, <code>'nonlinear_simple'</code>, <code>'nonlinear_interaction'</code>. For more information about the implications of each option see part <em>3.5 Output variable</em>.</p>
+<script src="https://gist.github.com/Tobias-K93/a9e602687253fa3c3e60810b9810ffa4.js"></script><p>In the drop down menu below you can choose between the different options of <code>x_y_relation</code> and get a scatter plot of the combined X and, if the interaction version is chosen, interaction terms of X plotted on the y values. The underlying dataset is created with N=10000 observations and k=50 covariates.</p>
+
+</div>
+</div>
+</div>
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="hidden">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="k">import</span> <span class="n">interactive</span>
+<span class="kn">from</span> <span class="nn">interactive_plots_functions</span> <span class="k">import</span> <span class="n">x_y_relation_plot</span>
+<span class="kn">from</span> <span class="nn">opossum</span> <span class="k">import</span> <span class="n">UserInterface</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">scatter_output_fct</span><span class="p">(</span><span class="n">x_y_relation</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">UserInterface</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">categorical_covariates</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">u</span><span class="o">.</span><span class="n">generate_treatment</span><span class="p">()</span>
+    <span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">assignment</span><span class="p">,</span> <span class="n">treatment</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">output_data</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">x_y_relation</span> <span class="o">=</span> <span class="n">x_y_relation</span><span class="p">)</span>
+    
+    <span class="k">if</span>  <span class="s1">&#39;interaction&#39;</span> <span class="ow">in</span> <span class="n">x_y_relation</span><span class="p">:</span>
+        <span class="n">g_0_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">u</span><span class="o">.</span><span class="n">get_weigths_covariates_to_outputs</span><span class="p">())</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">X_interaction</span><span class="p">,</span> <span class="n">u</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">weights_interaction</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">g_0_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">u</span><span class="o">.</span><span class="n">get_weigths_covariates_to_outputs</span><span class="p">())</span>
+
+    <span class="n">x_y_relation_plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">g_0_X</span><span class="p">)</span>
+    
+<span class="n">sco_plot</span> <span class="o">=</span> <span class="n">interactive</span><span class="p">(</span><span class="n">scatter_output_fct</span><span class="p">,</span> <span class="n">x_y_relation</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;linear_simple&#39;</span><span class="p">,</span> <span class="s1">&#39;linear_interaction&#39;</span><span class="p">,</span>
+                                                           <span class="s1">&#39;partial_nonlinear_simple&#39;</span><span class="p">,</span> 
+                                                           <span class="s1">&#39;partial_nonlinear_interaction&#39;</span><span class="p">,</span> 
+                                                           <span class="s1">&#39;nonlinear_simple&#39;</span><span class="p">,</span> <span class="s1">&#39;nonlinear_interaction&#39;</span><span class="p">])</span>
+<span class="n">sco_plot</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    
+
+
+
+  <div class="output_subarea output_widget_view ">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
+
+</div>
+
+</div>
+</div>
+
+  </div>
+
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Other-functions">Other functions<a class="anchor-link" href="#Other-functions">&#182;</a></h3><p>While the two main functions are enough to produce a dataset, it can be necessary to make use of other functions to adjust some specific attributes or use other features of the package. Most of the functions' names should be self-explanatory and under the <code>help()</code> command there is a documentation for each function in case it is not clear how it should be used or what its purpose is. The functions are:</p>
+<p><code>plot_covariates_correlation()</code></p>
+<p><code>get_propensity_scores()</code></p>
+<p><code>get_weights_treatment_assignment()</code></p>
+<p><code>get_weights_covariates_to_outputs()</code></p>
+<p><code>get_treatment_effect_type()</code></p>
+<p><code>set_weights_treatment_assignment(new_weight_vector)</code></p>
+<p><code>set_weights_covariates_to_outputs(new_weight_vector)</code></p>
+<p><code>set_subset_z_size_assignment(new_size)</code></p>
+<p><code>set_subset_z_size_treatment(new_size)</code></p>
+<p><code>set_interaction_num(new_num)</code></p>
+<p>It is important that functions are used before or after necessary instances are created. While covariates can be plotted after the UserInterface object was created, propensity scores can first be extracted after treatment was assigned. In the same manner should values like the size of the subset Z that is used for assignment or treatment be changed <strong>before</strong> treatment is generated. All these functions are class methods, which means they need to be called from the created UserInterface object as it is the case with the main functions shown above, e.g. <code>u.plot_covariates_correlation()</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Example:-Applying-double-machine-learning">Example: Applying double machine learning<a class="anchor-link" href="#Example:-Applying-double-machine-learning">&#182;</a></h2><p>In the following we present a show case on how to use our proposed data generator.
+As mentioned before, the double machine learning framework of Chernozhukov et al., applied on Robinson's partial
+linear model, deals with the problem of biased parameter estimates (e.g. treatment effect)
+due to high dimensionality. To get more information about the method have a look at Chernozhukov's paper or the following blog entry <a href="http://aeturrell.com/2018/02/10/econometrics-in-python-partI-ML/">http://aeturrell.com/2018/02/10/econometrics-in-python-partI-ML/</a> which inspired this example application of our package.</p>
+<p>We demonstrate the performance of three different parameter estimators. The employed models are an Ordinary Least Squares Regression,
+a naive Double-ML Random Forest and another Double-ML model in a cross-fitted version.</p>
+<p>By design the true parameter $\,\theta\,$ is known to be 1. The datasets were created with N=1000, k=50 and simulated 100 times, once with random treatment assignment and once with assignment depending on covariates. As machine learning model a random forest regressor with default values was used. Scripts of this simulation can be found in the opossum GitHub repository. Densities are reported as follows:</p>
+<p><img align="center" width="850" height="300" style="display:block;margin:0 auto;" src="/blog/img/seminar/data_generating_process/dml_estimator_distribution.png"></p>
+<p>Both plots show that OLS as well as the naive estimator are obviously biased, while the bias of OLS is stronger. In the random assignment case the cross fit double machine learning estimator on the other side meets on average $\, \theta \,$ perfectly and even in the non-random assignment it is still close the the true value compared to the other two alternatives.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Discussion">Discussion<a class="anchor-link" href="#Discussion">&#182;</a></h2><p>This blog post has introduced a novel software that has the potential of supporting researchers from all fields in their model setup and evaluation.
+Due to the ease of use, people without a mathematical or computer-scientific background will be able to apply its core functions, while others will be capable of refining the underlying principles.
+Being entirely written in <code>Python</code> and hosted on <code>Pypi</code> and <code>Github</code> with a public license, the project is now accessible to the scientific community.</p>
+<p>Based upon a thoroughly tested and often-used partial linear model, the exact relations between all variables are known and easily adjustable for personalized use.
+Consequentially, our software provides a general toolset to fit and compare various models for all purposes. 
+A practical application has been presented in terms of <code>Double Machine Learning</code>, where a constant and known treatment effect was a parameter to be estimated.
+The example displayed the performance of some naive and some sophisticated models and their capability of accurately predicting the parameter of interest under varying circumstances (random vs. non-random assignment).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>Chernozhukov, Victor, Denis Chetverikov, Mert Demirer, Esther Duflo, Christian Hansen, and Whitney Newey. 2017. "Double/Debiased/Neyman Machine Learning of Treatment Effects." American Economic Review, 107 (5): 261-65. DOI: 10.1257/aer.p20171038</p>
+<p>Dorie, Vincent &amp; Hill, Jennifer &amp; Shalit, Uri &amp; Scott, Marc &amp; Cervone, Dan. (2017). Automated versus Do-It-Yourself Methods for Causal Inference: Lessons Learned from a Data Analysis Competition. Statistical Science. 34. 10.1214/18-STS667.</p>
+<p>Goldfeld, Keith (2019). <code>simstudy</code>: Simulation of Study Data. R package version 0.1.14. <a href="https://CRAN.R-project.org/package=simstudy">https://CRAN.R-project.org/package=simstudy</a></p>
+<p>Jacob, D., Lessmann, S., &amp; Härdle, W. K. (2018). Causal Inference using Machine Learning. An Evaluation of recent Methods through Simulations</p>
+<p>Powers, S, Qian, J, Jung, K, al, et. Some methods for heterogeneous treatment effect estimation in high dimensions. Statistics in Medicine. 2018; 37: 1767– 1787. <a href="https://doi.org/10.1002/sim.7623">https://doi.org/10.1002/sim.7623</a></p>
+<p>Robinson, P. M. (1988). Root-N-consistent semiparametric regression. Econometrica 56, 931–954</p>
+<p>B. Rubin, Donald &amp; John, L. (2011). Rubin Causal Model. 10.1007/978-3-642-04898-2_64.</p>
+
+</div>
+</div>
+</div>
+ 
+
