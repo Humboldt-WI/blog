@@ -1,7 +1,7 @@
 +++
 title = "Text Generation for Imbalanced Classification Settings"
 date = '2020-02-07'
-tags = [ "Text Generation", "NLP", "GPT-2", "GloVe", "Text Classification",]
+tags = [ "Text Generation", "NLP", "GPT-2", "GloVe", "Text Classification"]
 categories = ["Course Projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
 author = "lukas Faulbrück, Asmir Muminovic, Tim Peschenz"
@@ -26,4 +26,6 @@ test123
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/test.png"
 alt = "test">
+
+![example](/blog/img/seminar/text_generation/test.png)
 
