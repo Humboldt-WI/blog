@@ -11,7 +11,7 @@ description = "In this blog, we present the practical use of deep learning in co
 
 # Image Analysis: <br>Introduction to deep learning for computer vision
 
-#### Authors: Nargiz Bakhshaliyeva, Severin Hußmann, Robert Kittel
+#### Authors: Nargiz Bakhshaliyeva, Robert Kittel
 
 In this blog, we present the practical use of deep learning in <b><i>computer vision</i></b>. You will see how <b><i>Convolutional Neural Networks</i></b> are being applied to process the visual data, generating some valuable knowledge. In particular, we focused on the object recognition task, aiming to classify what kind of an object (a dog or a cat) is presented within a particular image by using the notion of Transfer Learning.
 <br><br>
