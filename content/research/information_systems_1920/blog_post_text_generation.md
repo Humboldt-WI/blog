@@ -1,6 +1,6 @@
 +++
 title = "Text Generation for Imbalanced Classification Settings"
-date = '2020-02-07'
+date = '2019-02-07'
 tags = [ "Text Generation", "NLP", "GPT-2", "GloVe", "Text Classification"]
 categories = ["Course Projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
