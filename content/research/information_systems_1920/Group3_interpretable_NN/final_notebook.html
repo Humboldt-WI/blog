@@ -10,11 +10,11 @@ description = " group 3"
 +++
 
 <!DOCTYPE html>
+
 <html>
+
 <head><meta charset="utf-8" />
-
 <title>final_notebook</title>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
@@ -9447,6 +9447,11 @@ body > #header .header-bar {
   padding-top: 1px;
   padding-bottom: 1px;
 }
+@media (max-width: 991px) {
+  #ipython_notebook {
+    margin-left: 10px;
+  }
+}
 [dir="rtl"] #ipython_notebook {
   margin-right: 10px;
   margin-left: 0;
@@ -13291,7 +13296,7 @@ $$ p(\mathcal{Y}_t | \rho, \alpha) = \displaystyle \sum_{\pi}p(\mathbf{y}_{t, \p
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Matrix-Factorization">Matrix Factorization<a class="anchor-link" href="#Matrix-Factorization">&#182;</a></h3><p>Now that we have seen how SHOPPER works conceptually, we can look into how the latent variables are actually generated.</p>
 <p>One option of creating latent variables is to simply create a one-hot encoded matrix. We could create a vector for each shopper that has a 1 for each item they have bought, and a zero for products they did not buy. If we repeat this process for all shoppers, we create our one hot encoded cusomer-item matrix. The rows of our matrix can actually be considered an embedding for that shopper, as we have now converted a shopper's purchases into a numerical vector. Similarly the columns of our matrix can be considered to be the item embedding, as we now see which shoppers purchased that item. The following shows an example of what a one-hot encoded matrix would look like:</p>
-<p><img src="https://drive.google.com/uc?id=1M0a88fH6cLm181I8dq6NWbnjjrVpoOM7" alt="alt text"></p>
+<p><img src="/blog/static/img/seminar/interpretable_nn/shopper_mf.png" alt="alt text"></p>
 <!-- Consider a world with 4 shoppers $(A, B, C, D)$ and 10 items $(a, b,..., j)$
 $ 
  \begin{matrix}
