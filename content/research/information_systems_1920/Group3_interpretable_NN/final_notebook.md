@@ -130,7 +130,7 @@ Now that we have seen how SHOPPER works conceptually, we can look into how the l
 
 One option of creating latent variables is to simply create a one-hot encoded matrix. We could create a vector for each shopper that has a 1 for each item they have bought, and a zero for products they did not buy. If we repeat this process for all shoppers, we create our one hot encoded cusomer-item matrix. The rows of our matrix can actually be considered an embedding for that shopper, as we have now converted a shopper's purchases into a numerical vector. Similarly the columns of our matrix can be considered to be the item embedding, as we now see which shoppers purchased that item. The following shows an example of what a one-hot encoded matrix would look like:
 
-![alt text](/blog/static/img/seminar/interpretable_nn/shopper_mf.jpg)
+![alt text](/blog/static/img/seminar/group3_shopper/shopper_mf.jpg)
 
 We can see that it is easy to summarize across shoppers or products, but it is difficult to see any underlying patterns among users or products. A large number of shoppers and products can also cause memory problems very quickly, the dimensions of the matrix are $number \ of \ unique \ shoppers * number \ of \ unique \ items$. Much of the matrix is also sparse, meaning most entries are 0, because most shoppers do not purchase or even consider all of the unique products for sale. For our small example, this is not a problem but larger datasets with thousands of unique shoppers and thousands of unique products, require a higher memory capacity.
 
