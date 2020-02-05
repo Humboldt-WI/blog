@@ -1,4 +1,3 @@
-
 +++
 title = "SHOPPER"
 date = '2017-12-14'
@@ -11443,7 +11442,7 @@ div#notebook {
 }
 @media not print {
   #notebook-container {
-    padding: 15px;
+    padding: 1px;
     background-color: #fff;
     min-height: 0;
     -webkit-box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
@@ -13292,7 +13291,7 @@ $$ p(\mathcal{Y}_t | \rho, \alpha) = \displaystyle \sum_{\pi}p(\mathbf{y}_{t, \p
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Matrix-Factorization">Matrix Factorization<a class="anchor-link" href="#Matrix-Factorization">&#182;</a></h3><p>Now that we have seen how SHOPPER works conceptually, we can look into how the latent variables are actually generated.</p>
 <p>One option of creating latent variables is to simply create a one-hot encoded matrix. We could create a vector for each shopper that has a 1 for each item they have bought, and a zero for products they did not buy. If we repeat this process for all shoppers, we create our one hot encoded cusomer-item matrix. The rows of our matrix can actually be considered an embedding for that shopper, as we have now converted a shopper's purchases into a numerical vector. Similarly the columns of our matrix can be considered to be the item embedding, as we now see which shoppers purchased that item. The following shows an example of what a one-hot encoded matrix would look like:</p>
-<p><img src="https://drive.google.com/uc?id=1M0a88fH6cLm181I8dq6NWbnjjrVpoOM7" alt="alt text"></p>
+<p><img src="/blog/img/seminar/group3_shopper/shopper_mf.jpg" alt="alt text"></p>
 <!-- Consider a world with 4 shoppers $(A, B, C, D)$ and 10 items $(a, b,..., j)$
 $ 
  \begin{matrix}
