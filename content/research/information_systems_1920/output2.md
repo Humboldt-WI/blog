@@ -1,13 +1,3 @@
-+++
-title = "SHOPPER"
-date = '2017-12-14'
-tags = [ "Deep Learning", "Neural Networks", "Class19/20",]
-categories = ["Course projects"]
-banner = "img/seminar/sample/hu-logo.jpg"
-author = "Test"
-disqusShortname = "https-wisample-github-io-blog"
-description = " group 3"
-+++
 
 # Introduction
 
@@ -208,11 +198,11 @@ We will now attempt to replicate the SHOPPER model using a neural network framew
 # Data Exploration and Preparation
 
 Our dataset contains all purchases made in an unspecified grocery chain made between April 2015 and March 2017 in Germany. The information available to us is the user ID, shopping basket ID, product description, category and sub-category of the product, price and date of purchase. 
-
+Our data is classified into 119 categories (e.g. Fruits) and 911 unique subcategories (e.g. Apples). 
 
 ### Read in data 
 
-Here we seperate our file into chunks and drop rows that have NA in the article_text and user_id columns. Since we will be estimating individual preferences and item attributes, we require these two columns for the model. 
+Here we seperate our file into chunks and drop rows that have no value for item description or user ID. Since we will be estimating individual preferences and item attributes, we require these two columns for the model. 
 
 
 ```
@@ -421,7 +411,7 @@ df_concat.describe([0.02, 0.1, 0.25, 0.5, 0.75, 0.85, 0.9, 0.95, 0.98])
 
 ### Number of products in a basket
 
-To get a sense of our shopper's habits, we first take a look at the distribution of the number of items in each basket. This will also become important later for our modelling.
+To get a sense of our shoppers' habits, we first take a look at the distribution of the number of items in each basket. This will also become important later for our modelling.
 
 
 ```
@@ -454,19 +444,7 @@ We have a large variance in the number of products in each basket, but in order 
 ```
 #filter out baskets with less than two products and more than 40
 df_concat = df_concat[(df_concat['prods_in_basket'] >= 2) & (df_concat['prods_in_basket'] <= 40)]
-sns.distplot(df_concat['prods_in_basket'], kde = False, rug=True)
 ```
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f5479b346a0>
-
-
-
-
-![png](output2_files/output2_26_1.png)
-
 
 In addition to the number of items in a basket, we also consider the number of times a shopper has visited the store. It does not make sense to estimate user preferences when we have such a small number of visits for that user. We would only be adding noise to the model, so we consider dropping infrequent visitors.
 
@@ -513,37 +491,7 @@ We have many users that have only visted the store once in our dataset. It is im
 ```
 no_baskets_by_user = no_baskets_by_user[no_baskets_by_user >= 10]
 
-print(no_baskets_by_user.describe([0.02, 0.1, 0.25, 0.5, 0.75, 0.85, 0.9, 0.95, 0.98]))
-sns.distplot(no_baskets_by_user)
 ```
-
-    count    283181.000000
-    mean         62.769186
-    std          68.469905
-    min          10.000000
-    2%           10.000000
-    10%          13.000000
-    25%          20.000000
-    50%          39.000000
-    75%          79.000000
-    85%         112.000000
-    90%         140.000000
-    95%         193.000000
-    98%         271.000000
-    max        1584.000000
-    Name: basket_hash, dtype: float64
-    
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f0053005a58>
-
-
-
-
-![png](output2_files/output2_30_2.png)
-
 
 In addition to limiting ourselves to shoppers with more than 10 visits, we also consider a sample of shopper IDs. Our total dataset includes about 25 000 unique shoppers, and in the interest of focusing on modelling and experimenting quickly, we consider a subsample of them. Throughout the project we considered sampling 5000, 10 000, and 15 000 shoppers. The goal being to show that our model can generate latent variables for tens of thousands of shoppers. Going forward, we will consider a sample of 15 000 unique shopping IDs.
 
@@ -553,44 +501,17 @@ import numpy as np
 
 # take a random sample of 15000 user IDs
 user_sample = np.random.choice(no_baskets_by_user.sort_values(ascending=False).index, 15000)
-```
 
-
-```
-no_baskets_by_user[user_sample].describe()
-```
-
-
-
-
-    count    15000.000000
-    mean        61.957200
-    std         67.123684
-    min         10.000000
-    25%         20.000000
-    50%         39.000000
-    75%         78.000000
-    max       1248.000000
-    Name: basket_hash, dtype: float64
-
-
-
-
-```
 # filter our df so only user IDs from our sample are in df
 df_filter = df_concat[df_concat['user_id'].isin(user_sample)]
-```
 
-After filtering out products with only one item or more than 40 items in the basket, there were 12 items in a basket on average. 
-Our data is classified into 119 categories (e.g. Fruits) and 911 unique subcategories (e.g. Apples). 
-
-
-```
 # select necessary columns
 total_filter = df_filter[['basket_hash', 'article_text', 'user_id', 'price', 'day', 'category_name', 'subcategory_name', 'week', 'year', 'bought']]
 ```
 
-We now have a dataframe with 15000 unique users, and only necessary columns. Now we extract the week and year from the day column so that we can join our prices table, and use the week column for our week embeddings.
+After filtering out products with only one item or more than 40 items in the basket, there were 12 items in a basket on average. We now have a dataframe with 15000 unique users, and only necessary columns. Now we extract the week and year from the day column so that we can join our prices table, and use the week column for our week embeddings.
+
+
 
 
 ```
@@ -699,6 +620,8 @@ total_filter.head()
 ### Item View
 
 
+
+
 ```
 # check item sales by day
 total_filter['month'] = total_filter['day'].dt.month
@@ -774,25 +697,18 @@ total_filter.describe(include=['object'])
 
 #### Bestsellers
 
-Most purchased items are:
+The top ten bestselling items in the dataset are the following: 
 
-1. Newspapers
-2. Pfand (Bottle deposit)
+1. Pfand (Bottle deposit)
+2. Newspapers
 3. Bananas
-4. Plastic bag
-5. Bread rolls
-6. Bigger plastic bag
-7. Pickles
-8. Bananas (bio)
-9. Tomatoes
-10. Butter
-11. Cherry tomatoes
-12. Potatoes
-13. Carrots
-14. Whole milk
-15. Skinned milk
-
-(based on 5K)
+4. Bread rolls
+5. Shopping bags
+6. Pickles
+7. Tomatoes
+8. Butter
+9. Whole milk
+10. Potatoes
 
 
 ```
@@ -952,8 +868,7 @@ total_filter = total_filter.drop(total_filter[total_filter.subcategory_name == "
 
 #### Price Points
 
-We can observe that most products are selling at low price points - most of the store's revenue comes from products cheaper than 5 Euros.
-This is specific to grocery stores.
+We can observe that most products are selling at low price points - most of the store's revenue comes from products cheaper than 5 Euros, and in fact, most products cost between 50 cents and 1 Euro. This fact is specific to grocery stores.
 
 
 ```
@@ -967,7 +882,7 @@ plt.show()
 ```
 
 
-![png](output2_files/output2_47_0.png)
+![png](output2_files/output2_45_0.png)
 
 
 
@@ -980,10 +895,30 @@ plt.show()
 ```
 
 
-![png](output2_files/output2_48_0.png)
+![png](output2_files/output2_46_0.png)
 
 
 #### Seasonality
+
+Some days are more popular for shopping than others. If you prefer to do your groceries in peace and quiet, consider going on Tuesday; if however you enjoy the rush and crowds, Saturday is your (and everyone else's) day to visit. Note that in Germany, stores are closed on Sundays! 
+
+There is not as much variation when it comes to months. Still, the most revenue is usually made in April, when Germans stack up on their favourite asparagus, while in October people rather go trick-or-treating than grocery shopping. 
+
+Although there is little difference in the number of products sold between individual months, *which* products are sold differs immensely. The product sub-categories with the greatest degree of seasonality entail, unsurprisingly, Easter marzipan, Christmas chocolate figures, figs and other dried fruit, stem vegetables (including asparagus), venison, poultry and nuts.
+
+
+```
+plt.bar(df_by_weekday['dayofweek'],df_by_weekday['revenue']/1000)
+plt.ylabel('Total sales in Euros (thousands)')
+plt.title('Revenue by Day of week', fontsize=15)
+plt.show()
+
+# remove revenue info
+```
+
+
+![png](output2_files/output2_48_0.png)
+
 
 
 ```
@@ -1156,20 +1091,7 @@ plt.show()
 ```
 
 
-![png](output2_files/output2_51_0.png)
-
-
-
-```
-plt.bar(df_by_weekday['dayofweek'],df_by_weekday['revenue']/1000)
-plt.ylabel('Total sales in Euros (thousands)')
-plt.title('Revenue by Day of week', fontsize=15)
-plt.show()
-# shops are closed on Sunday!
-```
-
-
-![png](output2_files/output2_52_0.png)
+![png](output2_files/output2_50_0.png)
 
 
 
@@ -2371,7 +2293,7 @@ le_week.fit(final_df['week'])
 final_df['encoded_week'] = le_week.transform(final_df['week'])
 ```
 
-We split our data into 80% training and and 20% test sets. We elect to use a random split for this problem.
+We split our data into 80% training and 20% test sets. We elected to use a random split for this problem, as it is testing all possible seasons and holidays, rather than taking only the last few months of our dataset.
 
 
 ```
@@ -2698,7 +2620,7 @@ plot_model(model, to_file='model.png')
 
 
 
-![png](output2_files/output2_105_0.png)
+![png](output2_files/output2_103_0.png)
 
 
 
@@ -2769,7 +2691,7 @@ X_test['pred'] = round(X_test['pred_prob'])
 
 ## Results
 
-After training we take a look at our results. First, we see how the model performed on our prediction task. 
+After training we take a look at our results. First, we see how the model performed on our prediction task. We plot the ROC curve and calculate the AUC to determine how well our model performed on the prediction task. We use an AUC score of 0.5 as a naive benchmark, to see if our model is at least better than predicting randomly. Recall that the distribution of 1's and 0's is equal, due to our earlier sampling procedure.
 
 
 ```
@@ -2839,7 +2761,7 @@ compute_roc(X_test['bought'], X_test['pred'], plot=True)
 ```
 
 
-![png](output2_files/output2_113_0.png)
+![png](output2_files/output2_111_0.png)
 
 
 
@@ -2851,126 +2773,154 @@ compute_roc(X_test['bought'], X_test['pred'], plot=True)
 
 
 
-## Benchmark
+## Embeddings
 
-For our benchmark, we chose a simple logistic regression.
-
-
-```
-week = pd.get_dummies(final_df['week'],drop_first=True)
-year = pd.get_dummies(final_df['year'],drop_first=True)
-# create dummy variables for what could be considered categorical
-```
+The real benefit to othis model is the embeddings that it generates. These embeddings can give insights into user preferences, seasonal factors and price elasticities. Below we will take a look at the resulting embeddings. First we define a function to extract our embeddings.
 
 
 ```
-final_df.drop(['week','year'],axis=1,inplace=True)
+def get_model_embeddings(model_name, layer_name, encoder_name):
+  import numpy as np
+  import pandas as pd
 
-final_df = pd.concat([final_df,week,year],axis=1)
+  embeddings = model_name.get_layer(layer_name)
+  embeddings_weights = embeddings.get_weights()[0]
 
-#replace the week and year columns with the dummy variables
+  integer_mapping = {l:i for i, l in enumerate(encoder_name.classes_)}
+  embeddings_dict = {w:embeddings_weights[idx] for w, idx in integer_mapping.items()}
+
+  vectors_df = np.array([v for i, v in embeddings_dict.items()])
+  names = [i for i, v in embeddings_dict.items()]
+  vectors_df = pd.DataFrame(data = vectors_df, index = names)
+
+  return vectors_df
+```
+
+Since we have over 91 categories to consider, we will look at a small sample of 6 categories to see how our embeddings look.
+
+
+```
+# extract item embeddings 
+item_vectors_df = get_model_embeddings(model, 'prod_embed_shared_embedding', le)
+
+item_vectors_df = item_vectors_df.merge(cat_subcat_text_groups, left_index=True, right_on='article_text')
+item_vectors_df = item_vectors_df.set_index(['category_name', 'subcategory_name', 'article_text'])
+
+cats_to_consider = ['condiments', 'oil', 'fresh_pasta', 'milk', 'fruits', 'meat_sausages']
+item_vectors_df_subset = item_vectors_df.loc[item_vectors_df.index.get_level_values('category_name').isin(cats_to_consider)]
+item_vectors_df_subset = item_vectors_df_subset.sort_index(level = 'category_name')
+```
+
+To reduce the number of dimensions, we use a relatively new method of dimensionality reduction calle UMAP. UMAP is similar to other reduction techniques, like T-SNE, although it is much faster and can capture global relationships better.
+
+
+```
+import umap
+
+reducer = umap.UMAP(n_neighbors= 2,
+                    n_components = 2,
+                    min_dist = 0.1,
+                    metric = 'cosine')
+viz = reducer.fit_transform(item_vectors_df_subset)
+
+item_embeddings_umap = pd.DataFrame(viz, columns=['dim_1', 'dim_2'], index=item_vectors_df_subset.index).reset_index()
 ```
 
 
 ```
-from sklearn.model_selection import train_test_split
+datasource = ColumnDataSource(item_embeddings_umap)
+color_mapping = CategoricalColorMapper(factors= [x for x in item_embeddings_umap['category_name'].unique()],
+                                       palette=Accent[6])
 
-X = final_df.drop(["bought", "article_text", 'basket_hash', 'category_name', 'subcategory_name', 'other_basket_prods', 'other_basket_prods_encoded'], 
-                  axis = 1)
+plot_figure = figure(
+    title='UMAP projection of the Item Embeddings',
+    plot_width=800,
+    plot_height=800,
+    tools=('pan, wheel_zoom, reset')
+)
 
-X_train, X_test, y_train, y_test = train_test_split(X, final_df['bought'], 
-                                                    test_size=0.2, 
-                                                    random_state=42)
-# using a random train/test split (e.g. Option C) with 80:20 ratio
-```
+plot_figure.add_tools(HoverTool(tooltips=[("Label1", "@article_text")]))
 
-
-```
-from sklearn.linear_model import LogisticRegression
-
-logmodel = LogisticRegression(class_weight = 'balanced')
-logmodel.fit(X_train,y_train)
-```
-
-
-
-
-    LogisticRegression(C=1.0, class_weight='balanced', dual=False,
-                       fit_intercept=True, intercept_scaling=1, l1_ratio=None,
-                       max_iter=100, multi_class='auto', n_jobs=None, penalty='l2',
-                       random_state=None, solver='lbfgs', tol=0.0001, verbose=0,
-                       warm_start=False)
-
-
-
-
-```
-predictions = logmodel.predict(X_test)
-
-np.mean(predictions)
-# 0.46 = the benchmark is predicting about the same amount of 1s and 0s, which is expected
+plot_figure.circle(
+    'dim_1',
+    'dim_2',
+    source=datasource,
+    color=dict(field='category_name', transform=color_mapping),
+    line_alpha=0.6,
+    fill_alpha=0.6,
+    size=6
+)
+show(plot_figure)
 ```
 
 
 
 
-    0.46087726681700264
 
 
 
+
+
+
+  <div class="bk-root" id="b1cdc55b-a717-4683-8576-9e64b1cb995a" data-root-id="1752"></div>
+
+
+
+
+
+
+```
+item_embeddings_umap_zoom = item_embeddings_umap[item_embeddings_umap['category_name'] == 'milk']
+
+datasource = ColumnDataSource(item_embeddings_umap_zoom)
+color_mapping = CategoricalColorMapper(factors= [x for x in item_embeddings_umap_zoom['subcategory_name'].unique()],
+                                       palette=Category20[13])
+
+plot_figure = figure(
+    title='UMAP projection of the Item Embeddings',
+    plot_width=800,
+    plot_height=800,
+    tools=('pan, wheel_zoom, reset')
+)
+
+plot_figure.add_tools(HoverTool(tooltips=[("Label1", "@article_text")]))
+
+plot_figure.circle(
+    'dim_1',
+    'dim_2',
+    source=datasource,
+    color=dict(field='subcategory_name', transform=color_mapping),
+    line_alpha=0.6,
+    fill_alpha=0.6,
+    size=6
+)
+show(plot_figure)
 
 ```
-from sklearn.metrics import confusion_matrix 
-from sklearn.metrics import accuracy_score 
-from sklearn.metrics import classification_report 
-results = confusion_matrix(y_test, predictions) 
-print('Confusion Matrix :')
-print(results) 
-print('Accuracy Score :',accuracy_score(y_test, predictions))
-print('Report : ')
-print(classification_report(y_test, predictions))
-
-```
-
-    Confusion Matrix :
-    [[228460 167684]
-     [200679 199172]]
-    Accuracy Score : 0.5372295052104599
-    Report : 
-                  precision    recall  f1-score   support
-    
-               0       0.53      0.58      0.55    396144
-               1       0.54      0.50      0.52    399851
-    
-        accuracy                           0.54    795995
-       macro avg       0.54      0.54      0.54    795995
-    weighted avg       0.54      0.54      0.54    795995
-    
-    
-
-
-```
-from sklearn.metrics import roc_curve, auc
-import matplotlib.pyplot as plt 
-compute_roc(y_test, predictions, plot=True)
-```
-
-
-![png](output2_files/output2_121_0.png)
 
 
 
 
 
-    (array([0.        , 0.42329052, 1.        ]),
-     array([0.        , 0.49811555, 1.        ]),
-     0.5374125137114403)
+
+
+
+
+
+  <div class="bk-root" id="227e3a1f-30ff-4ef8-a0d4-401115f14003" data-root-id="1887"></div>
+
+
 
 
 
 # Conclusion
 
-Our model is computing the probability that the given user will purchase a given product at a given price in a given week, given all the other products in his basket (or other products that the customer came to buy). So circling back to the initial question of designing the coupons that maximize revenue: when the customer enters the store in a given week, we would compute the maximal price this customer is willing to pay (by running the model over the same product but multiple prices and taking the highest price whose probability is still over a certain threshold), and then print coupons for the products that have highest probabilities of purchase under their maximal price. If our model is right, the customer will use all printed coupons during their store visit.
+Our model is computing the probability that the given user will purchase a given product at a given price in a given week, given all the other products in his basket (or other products that the customer came to buy). So circling back to the initial question of designing the coupons that maximize revenue: when the customer enters the store in a given week, we would compute the maximal price this customer is willing to pay (by running the model over the same product but multiple prices and taking the highest price whose probability is still over a certain threshold*), and then print coupons for the products that have highest probabilities of purchase under their maximal price. We can also incorporate other products in the basket in this reasoning: first, the product with the highest probability would be assumed as already being in the basket when computing the second most probable product, then these two would comprise the basket for selection of the third product, and so on. This would be iterated as long as the purchase probability is over a certain threshold. If our model is right, the customer will use all printed coupons during their store visit.
+
+ *As the price with highest probability would most certainly be very low, and far from the WTP.
+
+An error may occur in several ways. During the first run of the model, when determining the maximum willingness to pay, the calculated price can be either too high or too low. If too low, the store is losing additional revenue from the price difference, but if it is too high, the customer will not buy at all. As the “sunk” revenue is expected to be generally higher than the potential loss from setting a low price (unless the cost is lower than the customer’s WTP), it is more profitable to minimize the probability of overestimating the WTP, and so the management should choose a high enough probability threshold for price (e.g. 80%). Recall that in our example, customers may buy a product only with a personalized coupon.
+Even if the calculated WTP is right, our model may still misjudge the probability of buying the product. Issuing a coupon for a product that will not be purchased only costs the firm the printing expenses, but not issuing a coupon for a product that would otherwise be bought is again a sunken revenue. Therefore the management should consider to print sufficiently many coupons. Although then psychological barriers could arise, when the customer is pressured to buy too many things and so ends up not purchasing anything, but that is outside the scope of our model. 
 
 ## Suggestions for improvement
 
