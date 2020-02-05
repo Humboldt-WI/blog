@@ -1,5 +1,5 @@
 +++
-title = "mic check 12"
+title = "Mc test face"
 date = '2017-12-14'
 tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
 categories = ["Course projects"]
@@ -1550,9 +1550,6 @@ samp {
   font-family: monospace;
 }
 code {
-  white-space: nowrap;
-  overflow-x: scroll;
-  overflow-y: scroll;
   padding: 2px 4px;
   font-size: 90%;
   color: #c7254e;
@@ -10554,9 +10551,6 @@ div.inner_cell {
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
-  width: auto;
-  white-space: nowrap;
-  overflow-x: scroll;
   border: 1px solid #cfcfcf;
   border-radius: 2px;
   background: #f7f7f7;
@@ -10653,8 +10647,6 @@ div.input {
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_prompt {
-  white-space: nowrap;
-  width: auto;
   color: #303F9F;
   border-top: 1px solid transparent;
 }
@@ -11450,7 +11442,7 @@ div#notebook {
 }
 @media not print {
   #notebook-container {
-    padding: 5px;
+    padding: 15px;
     background-color: #fff;
     min-height: 0;
     -webkit-box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
@@ -12527,7 +12519,7 @@ div#pager #pager-contents {
 }
 div#pager #pager-contents #pager-container {
   position: relative;
-  padding: 10px 0px;
+  padding: 15px 0px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -13129,10 +13121,9 @@ div#notebook {
     </script>
     <!-- End of mathjax configuration --></head>
 <body>
-  <div>
   <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div >
-</div>
+    <div class="container" id="notebook-container">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13300,7 +13291,7 @@ $$ p(\mathcal{Y}_t | \rho, \alpha) = \displaystyle \sum_{\pi}p(\mathbf{y}_{t, \p
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Matrix-Factorization">Matrix Factorization<a class="anchor-link" href="#Matrix-Factorization">&#182;</a></h3><p>Now that we have seen how SHOPPER works conceptually, we can look into how the latent variables are actually generated.</p>
 <p>One option of creating latent variables is to simply create a one-hot encoded matrix. We could create a vector for each shopper that has a 1 for each item they have bought, and a zero for products they did not buy. If we repeat this process for all shoppers, we create our one hot encoded cusomer-item matrix. The rows of our matrix can actually be considered an embedding for that shopper, as we have now converted a shopper's purchases into a numerical vector. Similarly the columns of our matrix can be considered to be the item embedding, as we now see which shoppers purchased that item. The following shows an example of what a one-hot encoded matrix would look like:</p>
-<p><img src="/blog/img/seminar/group3_shopper/shopper_mf.jpg  " alt="alt text"></p>
+<p><img src="https://drive.google.com/uc?id=1M0a88fH6cLm181I8dq6NWbnjjrVpoOM7" alt="alt text"></p>
 <!-- Consider a world with 4 shoppers $(A, B, C, D)$ and 10 items $(a, b,..., j)$
 $ 
  \begin{matrix}
@@ -19884,7 +19875,14 @@ e+QgGDI2OsAAAAAASUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Embeddings">Embeddings<a class="anchor-link" href="#Embeddings">&#182;</a></h2><p>The real benefit to othis model is the embeddings that it generates. These embeddings can give insights into user preferences, seasonal factors and price elasticities. Below we will take a look at the resulting embeddings. First we define a function to extract our embeddings.</p>
+<h2 id="Embeddings">Embeddings<a class="anchor-link" href="#Embeddings">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Item-Embeddings">Item Embeddings<a class="anchor-link" href="#Item-Embeddings">&#182;</a></h3><p>The real benefit to othis model is the embeddings that it generates. These embeddings can give insights into user preferences, seasonal factors and price elasticities. Below we will take a look at the resulting embeddings. First we define a function to extract our embeddings.</p>
 
 </div>
 </div>
@@ -20020,10 +20018,10 @@ e+QgGDI2OsAAAAAASUVORK5CYII=
 
 
 
-<div id="12f0d7d2-27f6-499e-acc2-810f46386352"></div>
+<div id="93d563e5-862a-4ce2-aed4-4ad18ab94fb8"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#12f0d7d2-27f6-499e-acc2-810f46386352');
+var element = $('#93d563e5-862a-4ce2-aed4-4ad18ab94fb8');
 
 (function(root) {
   function now() {
@@ -20343,10 +20341,10 @@ var element = $('#12f0d7d2-27f6-499e-acc2-810f46386352');
 
 
 
-<div id="a7c1f224-93d2-41f1-81c4-d5a7b6865208"></div>
+<div id="c5c01da1-ef84-40ee-a51f-e84aa7164fc9"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#a7c1f224-93d2-41f1-81c4-d5a7b6865208');
+var element = $('#c5c01da1-ef84-40ee-a51f-e84aa7164fc9');
 (function(root) {
   function embed_document(root) {
     
@@ -20382,36 +20380,43 @@ var element = $('#a7c1f224-93d2-41f1-81c4-d5a7b6865208');
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Seasonality">Seasonality<a class="anchor-link" href="#Seasonality">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Another feature of our model, similar to SHOPPER, is the usage of seasonl effects on shopping preferences. To calculate seasonal effects we take the dot product of our respective item and week embeddings. Below we show the seasonal scores for the week of Easter. The item with the second highest score is an Easter product and we see many more eggs with a higher score than other weeks. Our model is able to identify these products that would be in higher demand during Easter, showing at least some seasonal effects have been picked up by the model.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">item_embeddings_umap_zoom</span> <span class="o">=</span> <span class="n">item_embeddings_umap</span><span class="p">[</span><span class="n">item_embeddings_umap</span><span class="p">[</span><span class="s1">&#39;category_name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;milk&#39;</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">week_vectors_df</span> <span class="o">=</span> <span class="n">get_model_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;week_embedding&#39;</span><span class="p">,</span> <span class="n">le_week</span><span class="p">)</span>
+<span class="n">week_item_vectors_df</span> <span class="o">=</span> <span class="n">get_model_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;week_item_embedding&#39;</span><span class="p">,</span> <span class="n">le</span><span class="p">)</span>
+<span class="n">seasonality</span> <span class="o">=</span> <span class="n">week_vectors_df</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">week_item_vectors_df</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
 
-<span class="n">datasource</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">item_embeddings_umap_zoom</span><span class="p">)</span>
-<span class="n">color_mapping</span> <span class="o">=</span> <span class="n">CategoricalColorMapper</span><span class="p">(</span><span class="n">factors</span><span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">item_embeddings_umap_zoom</span><span class="p">[</span><span class="s1">&#39;subcategory_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()],</span>
-                                       <span class="n">palette</span><span class="o">=</span><span class="n">Category20</span><span class="p">[</span><span class="mi">13</span><span class="p">])</span>
+    </div>
+</div>
+</div>
 
-<span class="n">plot_figure</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span>
-    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;UMAP projection of the Item Embeddings&#39;</span><span class="p">,</span>
-    <span class="n">plot_width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
-    <span class="n">plot_height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
-    <span class="n">tools</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;pan, wheel_zoom, reset&#39;</span><span class="p">)</span>
-<span class="p">)</span>
-
-<span class="n">plot_figure</span><span class="o">.</span><span class="n">add_tools</span><span class="p">(</span><span class="n">HoverTool</span><span class="p">(</span><span class="n">tooltips</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;Label1&quot;</span><span class="p">,</span> <span class="s2">&quot;@article_text&quot;</span><span class="p">)]))</span>
-
-<span class="n">plot_figure</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span>
-    <span class="s1">&#39;dim_1&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;dim_2&#39;</span><span class="p">,</span>
-    <span class="n">source</span><span class="o">=</span><span class="n">datasource</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="s1">&#39;subcategory_name&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">color_mapping</span><span class="p">),</span>
-    <span class="n">line_alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
-    <span class="n">fill_alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
-    <span class="n">size</span><span class="o">=</span><span class="mi">6</span>
-<span class="p">)</span>
-<span class="n">show</span><span class="p">(</span><span class="n">plot_figure</span><span class="p">)</span>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[0]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#easter (lots of chocolate and eggs show up)</span>
+<span class="n">seasonality</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -20424,366 +20429,33 @@ var element = $('#a7c1f224-93d2-41f1-81c4-d5a7b6865208');
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[0]:</div>
 
 
 
 
-
-<div id="87890058-7031-4e73-91b4-b54fd61953c8"></div>
-<div class="output_subarea output_javascript ">
-<script type="text/javascript">
-var element = $('#87890058-7031-4e73-91b4-b54fd61953c8');
-
-(function(root) {
-  function now() {
-    return new Date();
-  }
-
-  var force = true;
-
-  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
-    root._bokeh_onload_callbacks = [];
-    root._bokeh_is_loading = undefined;
-  }
-
-  var JS_MIME_TYPE = 'application/javascript';
-  var HTML_MIME_TYPE = 'text/html';
-  var EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
-  var CLASS_NAME = 'output_bokeh rendered_html';
-
-  /**
-   * Render data to the DOM node
-   */
-  function render(props, node) {
-    var script = document.createElement("script");
-    node.appendChild(script);
-  }
-
-  /**
-   * Handle when an output is cleared or removed
-   */
-  function handleClearOutput(event, handle) {
-    var cell = handle.cell;
-
-    var id = cell.output_area._bokeh_element_id;
-    var server_id = cell.output_area._bokeh_server_id;
-    // Clean up Bokeh references
-    if (id != null && id in Bokeh.index) {
-      Bokeh.index[id].model.document.clear();
-      delete Bokeh.index[id];
-    }
-
-    if (server_id !== undefined) {
-      // Clean up Bokeh references
-      var cmd = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
-      cell.notebook.kernel.execute(cmd, {
-        iopub: {
-          output: function(msg) {
-            var id = msg.content.text.trim();
-            if (id in Bokeh.index) {
-              Bokeh.index[id].model.document.clear();
-              delete Bokeh.index[id];
-            }
-          }
-        }
-      });
-      // Destroy server and session
-      var cmd = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
-      cell.notebook.kernel.execute(cmd);
-    }
-  }
-
-  /**
-   * Handle when a new output is added
-   */
-  function handleAddOutput(event, handle) {
-    var output_area = handle.output_area;
-    var output = handle.output;
-
-    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
-    if ((output.output_type != "display_data") || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
-      return
-    }
-
-    var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
-
-    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
-      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
-      // store reference to embed id on output_area
-      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
-    }
-    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
-      var bk_div = document.createElement("div");
-      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
-      var script_attrs = bk_div.children[0].attributes;
-      for (var i = 0; i < script_attrs.length; i++) {
-        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
-      }
-      // store reference to server id on output_area
-      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
-    }
-  }
-
-  function register_renderer(events, OutputArea) {
-
-    function append_mime(data, metadata, element) {
-      // create a DOM node to render to
-      var toinsert = this.create_output_subarea(
-        metadata,
-        CLASS_NAME,
-        EXEC_MIME_TYPE
-      );
-      this.keyboard_manager.register_events(toinsert);
-      // Render to node
-      var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
-      render(props, toinsert[toinsert.length - 1]);
-      element.append(toinsert);
-      return toinsert
-    }
-
-    /* Handle when an output is cleared or removed */
-    events.on('clear_output.CodeCell', handleClearOutput);
-    events.on('delete.Cell', handleClearOutput);
-
-    /* Handle when a new output is added */
-    events.on('output_added.OutputArea', handleAddOutput);
-
-    /**
-     * Register the mime type and append_mime function with output_area
-     */
-    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
-      /* Is output safe? */
-      safe: true,
-      /* Index of renderer in `output_area.display_order` */
-      index: 0
-    });
-  }
-
-  // register the mime type if in Jupyter Notebook environment and previously unregistered
-  if (root.Jupyter !== undefined) {
-    var events = require('base/js/events');
-    var OutputArea = require('notebook/js/outputarea').OutputArea;
-
-    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
-      register_renderer(events, OutputArea);
-    }
-  }
-
-  
-  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
-    root._bokeh_timeout = Date.now() + 5000;
-    root._bokeh_failed_load = false;
-  }
-
-  var NB_LOAD_WARNING = {'data': {'text/html':
-     "<div style='background-color: #fdd'>\n"+
-     "<p>\n"+
-     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
-     "may be due to a slow or bad network connection. Possible fixes:\n"+
-     "</p>\n"+
-     "<ul>\n"+
-     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
-     "<li>use INLINE resources instead, as so:</li>\n"+
-     "</ul>\n"+
-     "<code>\n"+
-     "from bokeh.resources import INLINE\n"+
-     "output_notebook(resources=INLINE)\n"+
-     "</code>\n"+
-     "</div>"}};
-
-  function display_loaded() {
-    var el = document.getElementById(null);
-    if (el != null) {
-      el.textContent = "BokehJS is loading...";
-    }
-    if (root.Bokeh !== undefined) {
-      if (el != null) {
-        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
-      }
-    } else if (Date.now() < root._bokeh_timeout) {
-      setTimeout(display_loaded, 100)
-    }
-  }
-
-
-  function run_callbacks() {
-    try {
-      root._bokeh_onload_callbacks.forEach(function(callback) {
-        if (callback != null)
-          callback();
-      });
-    } finally {
-      delete root._bokeh_onload_callbacks
-    }
-    console.debug("Bokeh: all callbacks have finished");
-  }
-
-  function load_libs(css_urls, js_urls, callback) {
-    if (css_urls == null) css_urls = [];
-    if (js_urls == null) js_urls = [];
-
-    root._bokeh_onload_callbacks.push(callback);
-    if (root._bokeh_is_loading > 0) {
-      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
-      return null;
-    }
-    if (js_urls == null || js_urls.length === 0) {
-      run_callbacks();
-      return null;
-    }
-    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
-    root._bokeh_is_loading = css_urls.length + js_urls.length;
-
-    function on_load() {
-      root._bokeh_is_loading--;
-      if (root._bokeh_is_loading === 0) {
-        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
-        run_callbacks()
-      }
-    }
-
-    function on_error() {
-      console.error("failed to load " + url);
-    }
-
-    for (var i = 0; i < css_urls.length; i++) {
-      var url = css_urls[i];
-      const element = document.createElement("link");
-      element.onload = on_load;
-      element.onerror = on_error;
-      element.rel = "stylesheet";
-      element.type = "text/css";
-      element.href = url;
-      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
-      document.body.appendChild(element);
-    }
-
-    for (var i = 0; i < js_urls.length; i++) {
-      var url = js_urls[i];
-      var element = document.createElement('script');
-      element.onload = on_load;
-      element.onerror = on_error;
-      element.async = false;
-      element.src = url;
-      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
-      document.head.appendChild(element);
-    }
-  };
-
-  function inject_raw_css(css) {
-    const element = document.createElement("style");
-    element.appendChild(document.createTextNode(css));
-    document.body.appendChild(element);
-  }
-
-  
-  var js_urls = ["https://cdn.pydata.org/bokeh/release/bokeh-1.4.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.4.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-tables-1.4.0.min.js", "https://cdn.pydata.org/bokeh/release/bokeh-gl-1.4.0.min.js"];
-  var css_urls = [];
-  
-
-  var inline_js = [
-    function(Bokeh) {
-      Bokeh.set_log_level("info");
-    },
-    function(Bokeh) {
-    
-    
-    }
-  ];
-
-  function run_inline_js() {
-    
-    if (root.Bokeh !== undefined || force === true) {
-      
-    for (var i = 0; i < inline_js.length; i++) {
-      inline_js[i].call(root, root.Bokeh);
-    }
-    } else if (Date.now() < root._bokeh_timeout) {
-      setTimeout(run_inline_js, 100);
-    } else if (!root._bokeh_failed_load) {
-      console.log("Bokeh: BokehJS failed to load within specified timeout.");
-      root._bokeh_failed_load = true;
-    } else if (force !== true) {
-      var cell = $(document.getElementById(null)).parents('.cell').data().cell;
-      cell.output_area.append_execute_result(NB_LOAD_WARNING)
-    }
-
-  }
-
-  if (root._bokeh_is_loading === 0) {
-    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
-    run_inline_js();
-  } else {
-    load_libs(css_urls, js_urls, function() {
-      console.debug("Bokeh: BokehJS plotting callback run at", now());
-      run_inline_js();
-    });
-  }
-}(window));
-</script>
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-
-
-
-
-
-
-  <div class="bk-root" id="227e3a1f-30ff-4ef8-a0d4-401115f14003" data-root-id="1887"></div>
-
-</div>
-
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-
-<div id="2c1e0d08-41d4-4de7-bc72-2d1a48feab35"></div>
-<div class="output_subarea output_javascript ">
-<script type="text/javascript">
-var element = $('#2c1e0d08-41d4-4de7-bc72-2d1a48feab35');
-(function(root) {
-  function embed_document(root) {
-    
-  var docs_json = {"3a3ba8c0-6f04-4da3-a3a5-b545b1c9c12e":{"roots":{"references":[{"attributes":{"below":[{"id":"1898","type":"LinearAxis"}],"center":[{"id":"1902","type":"Grid"},{"id":"1907","type":"Grid"}],"left":[{"id":"1903","type":"LinearAxis"}],"plot_height":800,"plot_width":800,"renderers":[{"id":"1920","type":"GlyphRenderer"}],"title":{"id":"1888","type":"Title"},"toolbar":{"id":"1911","type":"Toolbar"},"x_range":{"id":"1890","type":"DataRange1d"},"x_scale":{"id":"1894","type":"LinearScale"},"y_range":{"id":"1892","type":"DataRange1d"},"y_scale":{"id":"1896","type":"LinearScale"}},"id":"1887","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1984","type":"Selection"},{"attributes":{},"id":"1909","type":"WheelZoomTool"},{"attributes":{},"id":"1983","type":"UnionRenderers"},{"attributes":{"text":"UMAP projection of the Item Embeddings"},"id":"1888","type":"Title"},{"attributes":{"callback":null,"tooltips":[["Label1","@article_text"]]},"id":"1915","type":"HoverTool"},{"attributes":{},"id":"1910","type":"ResetTool"},{"attributes":{},"id":"1981","type":"BasicTickFormatter"},{"attributes":{},"id":"1908","type":"PanTool"},{"attributes":{"callback":null},"id":"1892","type":"DataRange1d"},{"attributes":{"factors":["Frische Schlagsahne (ohne Sterilsahne)","Frischmilch (lose und verpackt)","H-Kakao","H-Milch","H-Sahne","Kaffeesahne, sterilisiert und kondensier","Kondensmilch","Milchmischgetr\u00e4nke","Sauermilch (Kefir, Molke, Buttermilch)","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Soja-Milch und Soja-Erzeugnisse","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonstige Milchpr\u00e4parate"],"palette":["#1f77b4","#aec7e8","#ff7f0e","#ffbb78","#2ca02c","#98df8a","#d62728","#ff9896","#9467bd","#c5b0d5","#8c564b","#c49c94","#e377c2"]},"id":"1886","type":"CategoricalColorMapper"},{"attributes":{"callback":null,"data":{"article_text":["a&p frische schlagsahne 200g","arla bio frische schlagsahne 30%, 330g","baerenmarke schlagsahne 32% 500g","frischgold schlagsahne 30% 200g becher","hemme frische sahne 32% 200g","jeden tag schlagsahne 30% 200g becher","mb schlagsahne 30% 200g","minus l frische sahne 33% 200g","naturkind schlagsahne 32% 200g","rama cremefine zum schlagen 19% f.250g","star marke schlagsahne 30% 200g","star marke schlagsahne 32% 500g pet","weihenstephan fr.     schlagrahm 32% 500","weihenstephan sahne zum kochen 15% 250g","weihenstephan schlagrahm 32% 250g","7g\u00fcn ayran natur 1000ml","7g\u00fcn ayran natur 250ml","a&p frischmilch       1.5% 1l","a&p frischmilch       3.5% 1l","alpro soya drink original fresh 1.0liter mit calcium","andechser natur fettarme bio milch","arla bio frische weidemilch 1.5% 1l","arla bio frische weidemilch 3.8% 1l l\u00e4nger haltbar","baerenmarke    milch 3.8% f.1l","baerenmarke milch 1.8% fett 1 liter","frischgold milch 1.5% 1ltr.  esl","frischgold vollmilch 3.5% 1 ltr. esl","hemme frische milch   1.8% 1l","hemme frische milch   mind.3.7% 1l schlauchbeutel","koerfez ayran         1.8% fett 500ml","landliebe kakaomilch  3.8% fett 1l mw","landliebe landmilch   mind.3.8% fett 1l","ll rahmig frische     landmilch 3.8% f.1","mark brandenburg  vollmilch 3.5% 1l","mark brandenburg fr. fetta.milch 1.5% 1l","mark brandenburg vollmilch 3.5% 0.5l","naturkind fettarme    milch 1.5% 1l","naturkind frische vollmilch 3.8% 1liter","swm lactosefreie fettarme milch 1.5% 1l","swm lactosefreie vollmilch 3.5% 1l","trienon ayran original 330ml","weihen. l\u00e4nger frische milch 1.5% 0.5l","weihen. l\u00e4nger frische milch 3.5% 0.5l","weihenstephan frische milch 1.5% 1l","weihenstephan frische milch 3.5% 1l","bm h-kakao 1.8% 0.2l","b\u00e4renmarke h-kakao 1.8% 0.5l","hochwald eisschokodrink 0.25 liter","hochwald h-eiskaffee 1.5% 1l","hochwald h-eiskaffee 500ml","landlob cacao drink 500ml","landlob vanilla drink 500ml","muh h-eiskaffee 1.5% 1l","muh kakaotrunk 3.5%   0.5l","nesquik trinkfertig 330ml","nesquik trinkfertig 3x0.2l","\"andechser bio h-ziegenmilch 3.0% 1l /\"mit nat\u00fcrlichem fettgehalt mindestens/\" \"","\"frischli h-milch  /\"fit/\" 0.1% 1l  \"","a&p fettarme h-milch  1.5% 1l","a&p h-milch 1.5% fett 1l","a&p h-milch 3.5% fett 1l","arla bio h-weidemilch 1.5% 1l","arla bio h-weidemilch 3.8% 1l","baerenmarke haltb.    alpenmilch 1.5% 1l","baerenmarke haltb.    alpenmilch 3.8% 1l","frischli h-milch 1.5% fett 1l","frischli h-milch 3.5% fett 1l","gabler vollmilchpulver instant 250g 26%","jeden tag h-milch 1.5% 1l","jeden tag h-milch 3.5% 1l","k\u00f6lln smelk haferdrink classic 1l","landliebe haltbare    landmilch 3.8% 1l","landliebe haltbare landmilch 1.5% 1l","mb fettarme h-milch 1.5% 1l","mb h-vollmilch 3.5% 1l","minus l laktosefreie  h-milch 1.5% 1l","minus l laktosefreie  h-milch 3.8% 1l","minus l schokomilch 1.7% 250ml","muh h-milch 1.5% 200ml","muh laktosefreie      h-milch 1.5% 1l","muh laktosefreie h-milch 3.5% 1l","naturkind h-biomilch  1.5% fett 1l","naturkind h-biomilch  3.8% fett 1l","naturland bio h-milch 3.8% 1 liter","naturland fettarme bio h-milch 1.5% 1 l.","salzburger bergbauern h-milch 1.5% 1l","salzburger bergbauern h-milch 3.5% 1l","tuffi h-vollmilch     3.5% fett 0.5l","weihenstephan  h-milch 1.5% 1l.","weihenstephan  h-milch 3.5% 1l.","weihenstephan haltbare milch 1.5% 0.5l.","weihenstephan haltbare milch 3.5% 0.5l.","zimmermann zickenmilch 2.5% 0.5l","a&p h-sahne 30% 200g","a&p spruehfertige     spr.sahne 30% 250m","debic chantibic       spruehsahne 250ml","gluecksklee gourmet   spruehsahn.33% 250","gl\u00fccksklee sahne finesse 30% 250ml","jeden tag h-schlagsahne 30% 200g pkg.","jeden tag spr\u00fchsahne 30% 250ml","minus l haltb.schlag- sahne 30% 200g","natreen spruehsahne   15% 250gr","omira minus l spr\u00fchsahne 30% 250g","rama cremefine        geschlagen 250ml","sahnewunder choco 250 ml 24% fett absolut","sahnewunder eierlik\u00f6r 250ml 22% fett absolut","a&p kaffeesahne 10% fett 20x10g portion","a&p kaffeesahne 12%  fett 200g k\u00e4nnchen","gabler kaffeesahne 10% fett 3 x 100g","hochw.kaffeeglueck    kondensm.10% 10x10","jeden tag kaffeesahne 10% fett 20x10g po","kaffeegl\u00fcck milchk\u00e4nnchen 4%  fett 200g","kaffeegl\u00fcck sahnek\u00e4nnchen 12% fett 200g","sm sahnekaennchen 12% 200g","starmarke kaffeesahne 10%  fett 250g","starmarke kaffeesahne 10% fett portionen 10x10g riegel","a&p kondensmilch 10% fett 340g","a&p kondensmilch 4% fett 340g","a&p kondensmilch 7.5% fett 340g","b\u00e4renmarke 8% fett 170g der genussvolle traum","b\u00e4renmarke kondensmilch 10% 340g die ergiebige","b\u00e4renmarke leichte 4 familiendose 4%  fett 340g","b\u00e4renmarke leichter traum 3% 170g","gabler bio kaffeesahne 10% 395g","gezuckerte kondensmilch 400g","immergut kondensmilch 4% 200g","jede tag kondensmilch 10% fett 340g","jeden tag kaffeesahne 12% fett 200 g k\u00e4nnchen","jeden tag kodensmilch 4% fett 340g","jeden tag kondensmilch 7.5% fett 340g, packung","minus l kaffeesahne 10% 165g","m\u00fcnchner kindl kondensmilch 7.5% fett 500g","sm milchkaennchen 4% 200g","\"mm /\" limitiert /\" eiskaffee 400ml  \"","\"mm/\"limitiert/\" a la banane-karamell 400ml  \"","\"mm/\"limitiert/\"schoko caramel cookie 400ml  \"","actimel drink granatapfel 8x100g","actimel drink multifrucht 8x100g","actimel kids drink 8x100g erdbeer-banane","actimel kids drink 8x100g vanille","actimel kids drink erdbeer-banane 8x100g","actimel kidsdrink erdbeer-vanille 8x100g","actimel multifrucht 8x100g","activia jogh.drink    erdbeere-kiwi 300g","activia joghurt drink waldfrucht 300g","alpenfrische vanille-milch 1.8% 0.5l","alpenfrischer kakao 1.8% 0.5l","an bio erfrischungsgetr\u00e4nk mango 500g","an bio erfrischungsgetr\u00e4nk maracuja 500g","an bio erfrischungsgetr\u00e4nk orange 500g","an bio trinkjog. erdbeer-minze 0.1% 500g","an bio trinkjog. himbeer-lemon 0.1% 500g","and.bio trinkjogh.mango van.0.1%f.500g","andechser bio lassi 3.5% 250g mango","bio smoothie grash\u00fcpfer 240ml handgemacht","bio smoothie kreuzbeere 240ml handgemacht","bio smoothie liebesgru\u00df 240ml handgemacht","bio viboo chia smoothie 250ml ananas+kiwi","bio viboo chia smoothie gua.,himb. 250ml guave, himbeere 250ml","bio viboo smoothie 250ml rooibos tee + guave vanille","bio viboo smoothie minz tee 250ml orange kiwi","bio viboo smoothie+jas.tee r.beer.250ml jasmin tee rote beeren","b\u00e4renmarke alpenfrischer kakao 1liter","b\u00e4renmarke schokomilch typ haselnuss 500ml","caffreddo cappuccino  250ml","caffreddo espresso 250ml","caffreddo macchiato   250ml","caff\u00e8 latte cappuccino 5x230ml + gratis cup cooler","caf\u00e9 grandioso latte cappuccino 250ml","caf\u00e9 grandioso latte espresso 250ml","caf\u00e9 grandioso latte macchiato 250ml","chai latte classic 230ml","chai latte vanilla 230ml","chia fruchts.heidelb,birne&zitrone 250ml ganze chia samen drink","chia fruchtsaftg.wasserm.u.granat. 250ml ganze chia samen drink","chia fruchtsaftget.apf,kiwi,spinat 250ml ganze chia samen drink","chia fruchtsaftgetr.ananas&zitrone 250ml ganze chia samen drink","chia fruchtsaftgetr.ora.,man.,kar. 250ml orange,mango,karotte, ganze chia samen drink","chia fruchtsaftgetr.orange & mango 250ml ganze chia samen drink","chiquita organ. smoothie ananas, banane & kokos 200ml","chiquita organ. smoothie apf./bl./cranb. 200 ml","chiquita organ. smoothie birne/him/gran 200ml","chiquita organ. smoothie erdb./ban.200ml","chiquita organ. smoothie erdb./ban.650ml","chiquita organ. smoothie ma/or/pas 650ml","chiquita organ.smoothie ma/or/pa 200ml","choco latte classic 230ml","danone actimel classic 0.1% 8x100g","danone actimel drink  classic 8x100g","danone actimel drink  multifrucht 4x100g","danone actimel drink classic 0.1% 8x100g","danone actimel drink erdbeere 8x100g","danone actimel drink vanille 4x100g","danone actimel mit l.casei 4x100g","disney star wars shake erdbeer 250g","emmi caffe latte cappuccino 230ml","emmi caffe latte macciato 230ml","emmi caffe latte vanilla 230ml","emmi caff\u00e8 latte macchiato 5x230ml + gratis cup cooler","emmi caff\u00e8 latte vanille 5x230ml + gratis cup cooler","emmi caff\u00e9 latte caramello 230ml","emmi caff\u00e9 latte espresso 230ml","frubumi typ zitronenwaffel 500g max 1% fett","frubumi zitrone-basilikum 500g max.1%fett","fruchtwerk smoothie ana/ma/ingwer 250ml ananas/mango/ingwer","fruchtwerk smoothie him/brom 250ml himbeere/brombeere","fruchtwerk smoothie wellness 250ml kiwi,limette&weizengras","fruchtzwerge drink 4x100g banane","fruchtzwerge drink 4x100g erdbeere","fruchtzwerge go erdbeere 70g","fruchtzwerge go vanille 70g","fructiv drink  roter multivitamin 440ml","fructiv drink apf.bir.aprik.mira. 440ml","fructiv drink apfel-johannisbeere 440ml","fructiv drink erdb.lim.was. 440ml 4fach erdbeere-limette-wassermelone","fructiv drink granatapfel-zitrone 440ml","fructiv drink kirsche-kokos 440ml","fructiv drink mango-maracuja 440ml","fructiv drink multivitamin 440ml","fructiv drink or.mara.guar. 440ml orange - maracuja-guarana","giacomo jogh.drink    colada lass.3.5% 2","giacomo joghurt drink mango lassi 3.5% 250g","gropper milchdrink 1.5% 500g banane","gropper milchdrink 1.5% 500g erdbeer","gropper milchdrink 1.5% 500g vanille","gropper milchdrink 1.5% 500ml schoko","happy drink           vanille 3x200ml","hemme buttermilch 600g","hemme schokomilch     250g","hemme vanillemilch    250g","huck finn mindrefresher 250ml","inn. ora-grapefr-blutora saft 900ml","innoc. orangensaft m. fruchtfl. 900ml","innocent  multi mix saft 900ml","innocent antioxidant super smooth.360ml","innocent apfel-beeren saft 900ml","innocent apfel-himbeere saft 900ml","innocent defence super smooth.360ml","innocent energise super smoothie 360ml","innocent green smoothie 250ml","innocent orange & kiwi saft 900ml","innocent orange-mango saft 900ml","innocent orangensaft ohne fruchtfl.900ml","innocent perfectly pink smoothie 250ml","innocent smooth. bromb.-erdb.-joh. 750ml","innocent smooth. kiwi-apfel-lim. 250ml","innocent smoothie ananas, banane & kokosnuss 250ml","innocent smoothie brombeere-erdbeere- johannisbeere 250ml","innocent smoothie granatapfel, heidelbeere & acai 250ml","innocent smoothie mango-maracuja 250ml","innocent smoothie orange-karotte-mango 250ml","innocent tropical saft 900ml","landliebe landmilch kaffee 350g","landliebe landmilch schoko 350g","landliebe landmilch vanille 350g","mark brandenburg      schoko milch 0.5l","mark brandenburg kefir 3.5% 500ml","mb frische schokomilch 250ml","mb reine buttermilch 500g","milr.fruchtbutter-    milch multi 500g","milram buttermilch sorte d. jahres 750g","milram frucht kefir drink mango 500g","milram frucht kefir drink pfirsich 500g","milram frucht-buttermilch himbeere 750g - sorte des jahres","milram fruchtbuttermilch erdbeere 750g","milram fruchtbuttermilch kirsch-banane 500g","milram fruchtbuttermilch zitrone 750g","mm kaffee espresso macchiato 250ml","mm limit. mandelcreme 400ml","mm limit. pumpkin spice latte 400ml","mm limit. schoko caramel cookie 400ml","mm saison a la honig 400ml","mm saison coco-schoko 400ml","mm saison milchschokolade 400ml","mm saison schoko-erdbeere 400ml","mm saison schokolade-minze 400ml","mm saison weisse schokol.-pistazie 400ml","mm select wei\u00dfe schoko himbeere 250ml","mm select wei\u00dfe schoko+kokosmandel 250ml","mm select wei\u00dfe schoko-pistazie 250ml","mueller fructiv 440ml blutorange","mueller milch banane 400ml 1.5%  fett","mueller milch erdbeer 400ml 1.5%  fett","mueller milch kirsch banane 400 ml 1.5% fett","mueller milch pistazie 400ml, 1.5%  fett","mueller milch schoko 400ml, 1.5%  fett","muellermilch banane   1.5% 500ml","muellermilch coff.    cappuccino 250ml","muellermilch erdbeer  1.5% 500ml","muellermilch schoko   1.5% 500ml","m\u00fcller frubumi zitrone-maracuja 500g 1% fett","m\u00fcller fructiv gelber multi 440ml","m\u00fcller milch kokos 400ml 1.5% fett i.ma","m\u00fcller milch limit. a la eiskaffee 400ml","m\u00fcller milch w. schoko macadamia 400ml 1.5% fett","m\u00fcllermilch limitiert schoko banane400ml","m\u00fcllermilch mask. 400ml sorte 4 schwarz","m\u00fcllermilch maskiert 400ml sorte 1 gold","m\u00fcllermilch maskiert 400ml sorte 2 lila","m\u00fcllermilch maskiert 400ml sorte 2 rot","m\u00fcllermilch maskiert 400ml sorte 3 wei\u00df","nescafe shakissimo 190ml latte cappuccino","nescafe shakissimo 190ml latte espresso","odw milchshake 4-fach sort. 230ml ban./schoko/erdb./vanille","odw milchshake banane 230ml","odw milchshake erdbeere 230ml","odw milchshake schoko 230ml","odw milchshake vanille 230ml","plombir kefir m. vanillegeschmack 330ml","sam frucht-buttermilch erdbeere 500g","sam frucht-buttermilch multivitamin 500g","sam frucht-buttermilch zitrone 500g","schoko hemme milch 600g","starbucks caramel macchiato 220ml 2% fett","starbucks seattle latte 3.1% 220ml coffee drink","stille frucht-milch-schorle 310ml apfel-pfirsich-birne","stille frucht-milch-schorle 310ml apfel-schw.johannesbeere","stille frucht-milch-schorle 310ml landapfel-holunderbl\u00fcte","strothm.molke dr.diaet multivitam.500ml","strothm.molkedr.diaet tropic 500ml","super smoothie tropical & protein 360ml","super smoothie uplift 360ml","superjuice beet royal hpp 330ml 100% kaltgepresst","superjuice berry babe hpp 330ml 100% kaltgepresst","superjuice good vibes hpp 330ml 100% kaltgepresst","superjuice good vibes hpp 500ml 100% kaltgepresst","superjuice green love hpp 330ml 100% kaltgepresst","superjuice green love hpp 500ml 100% kaltgepresst","superjuice master cleanse hpp 330ml 100% kaltgepresst","superjuice master cleanse hpp 500ml 100% kaltgepresst","superjuice pure shine hpp 330ml 100% kaltgepresst","superjuice pure shine hpp 500ml 100% kaltgepresst","superjuice spicy o hpp 330ml 100% kaltgepresst","superjuice spicy o hpp 500ml 100% kaltgepresst","true fruit smoothie   purpel 250ml","true fruit smoothie   yellow 250ml","true fruit smoothie pink 250g","true fruits smoothie green 250ml","true fruits smoothie triple purple 750ml","true fruits smoothie white 250ml","true fruits triple yellow 750ml","twix shake'n snack 167ml","viba nougat-milch 250ml","weihenstephan milchgetr\u00e4nk kakao 1l 3.5%","yakult light 5er pack","yakult original 5er pack","yakult plus 5x65ml","zott monte drink      1.8% 200ml","7g\u00fcn ayran kirsch 250ml","7g\u00fcn ayran mango 250ml","andechser bio natur   kefir 1.5% 500g","domspitzmilch reine buttermilch 500g","fruchtbuttermilch ananas-kokos 500g","fruchtbuttermilch kirsch-banane 500g","fruchtbuttermilch mango 500g","fruchtbuttermilch rote multifrucht 500g","landliebe butter-     milch pur 500g","mark brandenb.fruchtbutterm.aprikos.500g","mark brandenb.fruchtbutterm.erdbeer 500g","mark brandenb.fruchtbutterm.zitrone 500g","mark brandenburg fruchtbuttermilch 500g aprikose/erdbeer/zitrone","meysu ayran mit meersalz 330ml","mueller kalinka kefir 1.5% 500g","mueller reine buttermilch max.1% 500g","m\u00fcller dickmilch 3.5% 500g","m\u00fcller frubumi zitrone-maracuja 500g 0.1 % fett","m\u00fcller fruchtbuttermilch himbeere 500g","m\u00fcller fruchtbuttermilch zitrone max. 1.0% fett, 500-g-flasche","m\u00fcller kalinka kefir 1.5% 500g flasche","m\u00fcller reine buttermilch flasche  500g max. 1.0%","naturland bio buttermilch 500g max. 1% fett","star marke buttermilch 500g","weih.frucht-buttermilch 500g becher mango-maracuja","weih.fruchtbuttermilch erdbeer 500g","weih.fruchtbuttermilch himbeer 500g","weih.fruchtbuttermilch mango 500g","weih.fruchtbuttermilch multifrucht 500g","weihen. frucht. buttermilch 500g becher kirsche","weihen.frucht-buttermilch 500g becher himbeere","weihen.frucht-buttermilch 500g becher zitrone","weihenstephan frische buttermilch 500g","andechser bio-schmand 150g","apostel aioli 200g","block house aioli 200ml","domspitz creme fraiche 30% 200g","domspitzmilch saure sahne 10% 200g","dr. oetker creme fra\u00eeche classic 250g","dr.oetker creme double 42% f.125g","dr.oetker creme fraiche kraeuter 30% 125g","dr.oetker creme fraiche natur 30% 150g","dr.oetker creme legere 150g","frischgold schmand    24% 200g","frischli h-schmand 24% fett 200g becher","mb saure sahne 150g 10 % fett","minus l schmand 24% 150g","nordmilch schmand     24% 250g","rama cremefine zum    kochen 7% 250ml","rama cremefine zum kochen 15% f.250ml","star marke saure sahne 10% 150g","star marke schmand 24% 200g","swm lac creme fraiche 30% 150g","bedda frischk\u00e4se 150g","bedda kr\u00e4uterfrischk\u00e4se 150g","bedda k\u00e4se scheiben classic 150g","bedda k\u00e4se scheiben mediterran 150g","bedda k\u00e4se scheiben schedda 150g","simply veg. streichgenuss 150g cremig - frisch","simply veg. streichgenuss 150g kr\u00e4uter","vegan thousand island salad dress. 340g","vegane creamy garlic salad dressing 340g","vegane daiya cheddar style shreds 227g","vegane daiya cheddar style slices 220g","vegane daiya mozz. style shreds 220g","vegane daiya swiss style slices 220g","vegane honey mustard salad dressing 340g","vegane original vegenaise 454g","vegane tofurky beer brats 397g","vegane tofurky hickory smoked 156g deli slices","vegane tofurky kielbasa 397g","vegane tofurky roast beef 156g","veganz nuggets 250g","veganz schnitzel n.wiener art 300g","alpro cashewdrink original 1 liter","alpro cuisine sojacreme 250ml","alpro mandeldrink 1l","alpro mandeldrink unges\u00fc\u00dft 1l","alpro soja dessert    caramel 4x125g","alpro soja drink choco 1l","alpro soja drink kalzium 1l","alpro soja drink pur ohne salz&zucker 1l","alpro soja drink vanilla 1l","alpro soja jog. natur m. kokosnuss 500g","alpro soja joghurt natur m. mandeln 500g","alpro sojadrink choco 1l","alpro sojadrink light 1l","alpro sojadrink original mit calcium 1l","alpro sojadrink unges\u00fc\u00dft 1l","alpro sojadrink vanille 1l","alpro soya  vanille 500g","alpro soya dessert dunkl. schokolade 4x125g","alpro soya dessert schokolade 4x125g mildfein","alpro soya dessert vanille 4x125g","alpro soya drink calcium light 1l","alpro soya kokosnussdrink 1l.","basic eier-sp\u00e4tzle 250g","bonta divina          profiteroles 450g","bonta divina  panna cotta caramel 2x120g","bonta divina tiramisu 180g","bonta divina tiramisu 500g","bont\u00e0 divina caff\u00e8 90g","bont\u00e1 divina cioccolato 90g","bont\u00e1 divina vaniglia 90g","caffreddo latte macchiato light 250ml","danone dany sahne     schoko 4x115g","danone dany sahne dunkle schoko 4x115g","danone dany sahne vanille 4x115g","dany sahne duett schoko/vanille 4x115g","dany sahne schoko mousse 4x80g","dany sahne toffee kuss 4x115g","dany sahne toffee kuss vanille 4x115g","dessert phantasie kuchendessert 420g bayrisch creme","dessert phantasie mousse au chocol. 350g","dessert phantasie weisse mousse au chocolat 350g","doppeldecker himbeer/vanilla-so\u00dfe 4x125g","doppeldecker schoko/vanille-so\u00dfe 4x125g","doppeldecker waldm.&vanilla-so\u00dfe 4x125g","dr. oekter g\u00f6tterspeise 6+2 himbeer 6+2 gratis = 8x50g","dr. oetker g\u00f6tterspeise 6+2 waldmeister 6+2 gratis = 8x50g=400g","dr. oetker g\u00f6tterspeise himbeer 3x125g + 1 x gratis","dr. oetker g\u00f6tterspeise waldmeister 3x125g + 1xgratis","dr. oetker kirschgr\u00fctze 500g","dr. oetker pudding schoko weniger kalorien 150g","dr. oetker rote gr\u00fctze 30% weniger kalorien m. so\u00dfe 160g","dr. oetker rote gr\u00fctze 500g","dr. oetker rotweinmousse  100g","dr. oetker vanille pudding weniger kalorien 150g","dr. oetker w\u00f6lkchen schoko 125g weniger kalorien","dr. oetker w\u00f6lkchen vanille 125g","dr.oetker goettersp.  waldm.&van.160g","dr.oetker goetterspeise himb.&van.160g","dr.oetker goetterspeise himbeer 125g","dr.oetker goetterspeise waldmeister 125g","dr.oetker kirschgruet.m.vanillecreme 160 g","dr.oetker paula minis 6x50g schokolade mit vanille","dr.oetker paula minis 6x50g vanille mit schokolade","dr.oetker rote gruetze m.sosse 160g","dr.oetker woelkchen 125g cappuccino","dr.oetker woelkchen schoko haseln. 125g","dr.oetker woelkchen schokolade 125g","duo vla  schoko vanille 800","duo vla schoko-van. leichter gen. 200g","duo vla schoko/       vanille 200g","ehrm.grand dessert schoko & cookies 190g","ehrm.grand dessert vanille & cookies190g","ehrm.grand dessert+sahne schoko 200g","ehrm.grand dessert+sahne vanilla 200g","ehrmann grand dessert choc noir 200g","emmi caramel toepfli  150g","emmi griess toepfli   classic 175g","emmi griess toepfli   erdb./rhabarb.175g","erdbeer-rhabarber-gr\u00fctze 500g+so\u00dfe 250ml","exquisa snack natur 70g","feiner genuss cookie dessert 80g","feiner genuss toffee-coffee dessert 80g","fer.kinder pingui     7+1 gratis 240g","ferrero kinder choco  fresh 5er=100g","ferrero kinder maxi   king 3+1 gratis","ferrero kinder maxi king 3er","ferrero kinder pingui 8x30g","ferrero kinder pingui cocos 4er=120g","ferrero maxi king     extra chocolate 3e","ferrero milchschnitte 10er=280g","ferrero milchschnitte 5x28g","ferrero paradiso      4er=116g","fontana schoko nuss   dessert 4x62.5g","fruttissima limited edition  250g erdbeer-blutorange","fruttissima limited edition winter 250g erdbeer-blutorange","goetterspeise 125g sunny island","goetterspeise 125g very cherry","gran dessert          double coffee 200g","grand dessert double choc 200g","grand dessert double nut 200g","grand dessert milchreis m. schoko-sahne 150g","grand dessert milchreis m. zimt-sahne 150g","grand dessert raffinesse schoko mit wei\u00dfer sahne u. schokosahne 200g","grand dessert raffinesse vanille mit weisser sahne u. schokosahne 200g","grand dessert schoko-kirsche 175g feine tropfen","grie\u00df mit apfelmus 300g","grie\u00df mit roter gr\u00fctze 300g","g\u00f6tterspeise minis himbeer 6x50g","g\u00f6tterspeise minis waldmeister 6x50g","happy almond mandeldrink 1l","happy oats haferdrink 1l","happy rice reisdrink 1l","happy soya soja-      drink schoko 1.0l","happy soya sojadrink natur 1l","happy soya sojadrink vanilla 1l","hemme molke mit orange 600ml","hochwald eiskaffee-dose 0.25l","immergut naschkatze dessertsosse 345 ml vanillegeschmack","jeden tag locker. sahnepudd. schoko 200g","jeden tag locker. sahnepudd. van. 200g","jubil\u00e4ums pudding bourbon vanille 2x140g","jubil\u00e4ums pudding schokolade 2x140g","kid's world ei mit \u00fcberraschung 70g","kinder choco fresh t4+1 5x21 g","kinder pingui 3er + 1 gratis 4x30g","kinder pingui himbeere 4er (4x32g)","kinder pingui schoko  4x30g multipack","kirschgruetze 500g    +vanillesosse 250m","lakoma quarki erdbeer 35g","lakomka quark riegel schoko 35g","lakomka quarki himbeere 2+1 gratis 105g 3x35g","lakomka quarki himbeere 35g","lakomka quarki kokos 35g","lakomka quarki van/erdb./schoko/him 35g 4-fach sort.","lakomka quarki vanille 2+1gratis 105g 3x35g","lakomka quarki vanille 35g","landliebe griespudding mit zimt 150g","landliebe grie\u00dfpudding vollkorn 150g","landliebe milchreis 150g aprikose trend i","landliebe milchreis 150g vanille trend ii","landliebe milchreis apfel 150g","landliebe milchreis apfel/schoko 150g","landliebe milchreis schokolade 150g","landliebe sahnepudding schoko 500g","landliebe sahnepudding vanille 500g","leckerm\u00e4ulchen zitronencreme 100g","li griesspudding      himbeere 150g","ll griesspudding      erdbeere 150g","ll griesspudding      kirsche 150g","ll griesspudding traditionell 10% 150g","ll sahnepudd. dunkle schokolade 150g","ll sahnepudd. stracciatella 150g","ll sahnepudding kakao 10% fett 150g","ll sahnepudding lakt. schokolade 150g","ll sahnepudding laktosefrei vanille 150g","ll sahnepudding vanille 10% fett 150g","marmor. bourb.-van.m.schokomousse 4x100g","marmor. schoko mit schoko-splits 4x100g","marmorette schokopudding mit sahne 4x100","marmorette vanille m. schoko-splits 4x100g","matilde daen.vanille- sosse 500ml","mennel mousse au chocolat 4 x 62.5g","milchreis banane - karamel 200g","milchreis choco brownie  200g","milchreis haselnuss 200g","milchreis korn-birne 200g","milchreis korn-traditionell 200g","milchreis orig. pistazie 200g","milchreis salty caramel  200g","milchschnitte 10er    +1 gratis=308g","milchschnitte 4er+1 gratis 5x28g","minus l pudding       vanille 125g","minus l schokopudding m.sahne 125g","mixpack milchschnitte/kinder pingui 260g 5x milchschnitte 4x kinder pingui","mueller griess mit    kirschsosse 450g","mueller schokopud.    m.vanillesosse 450","m\u00fcller milchreis kompott aprikose 160g","m\u00fcller milchreis kompott erdbeere 160g","m\u00fcller milchreis kompott kirsche 160g","m\u00fcller milchreis kompott rhabarber 160g","m\u00fcller milchreis kompott stachelbeere 160g","m\u00fcller mr 2-kammer-becher 160g birne","m\u00fcller mr leicht&lecker 200g kirsche kirsche","naschkatz.dessert-    sosse vanille 300m","naschkatze erdbeer-so\u00dfe 345ml","nesquick snack kakao  4er 104g","nesquick snack kakao  4x26g 4+1 gratis","nestle nesquick snack milch 4x26g","neuburg. lockerer sahnepudd. schoko 200g","neuburg. lockerer sahnepudd. vanille200g vanillegeschmack","neuburger pudding m. sahne schoko 4x115g","neuburger pudding m.sahne vanille 4x115g","oetker mousse au chocolat m. sahne 100g","oetker sahne sosse bourbon vanille 250ml","osterl. grie\u00dfdessert mango-pfirsich 175g","osterland griessdes. rote  gruetze 175g","osterland griessdess. zimt 175g","osterland griessdessert 175g liebling der saison","osterland griessdessert apfel-zimt 175g","osterland griessdessert erd-himb 175g erdbeere-himbeere","osterland griessdessert kirsch 175g","osterland rote gr\u00fctze m. van.-sosse 160g","paula pudding vanillegeschmack 125g m. schokofl. & knusperklee","paula pudding vanillegeschmack 125g m. schokofl. & schokolinsen","paula schokopudd.   mit vanille 4x125g","paula vanillepudd.  mit schoko 4x125g","pfennig's rote gruetze 1kg","puddis in love kiss 120g 2fach schokopudding mit sahnekiss schokopudding mit schokokiss","puddis in love mousse mit sosse 80g wei\u00dfes & dunkles mousse","puddis milchp.schoko m.van-sosse 4x125g","puddis milchp.van. m.schokososse 4x125g","quarki 3er pack va/erdb./schoko/him 105g 4-fach sort.","quarki erdbeere 3er pack","quarki himbeere 3er pack","quarki kokos 3er pack","quarki schoko 3er pack","quarki van/erdb./schoko/him 35g 4-fach","quarki vanille 3er pack 105g","ravensb./milram grie\u00dfpudding 1000g","ravensberger / milram milchreis 1000g","ravensberger dessert- sosse vanille 500m","rote gruetze 500g     +vanillesosse 250m","santa teresas gazpacho mit oliven\u00f6l verfeinert 1.0 liter","schwartau fruttissima erdbeere 250g aufstrich","schwartau fruttissima himbeere 250g aufstrich","soja - kochcreme cuisine 250ml","swm lac fructosefr. pudding schoko 125g","swm lac fructosefr. pudding vanille 125g","tiffany pudding mit sahne schoko 4x115","unser butterm.-dess. 200g apfel","unser butterm.-dess. 200g birne","unser butterm.-dess. 200g erdbeere","unser butterm.-dess. 200g heidelbeer","unser butterm.-dess. 200g himb-bromb","unser butterm.-dess. 200g kirsche","unser butterm.-dess. 200g pflaume","unser butterm.-dess. 200g rhabarber","unsere rote gr\u00fctze 150g","vla vanille 800g","weidegl\u00fcck milchreis nach klass.art 800g","zott g\u00f6tterspeise 175g himbeere","zott g\u00f6tterspeise 175g waldmeister","zott monte 160g becher","zott monte snack 8x29g","frischgold kaffeewei\u00dfer 250g","knusperm\u00fcsli+milch+l\u00f6ffel 220g w. schokol. und erdbeer","knusperm\u00fcsli+milch+l\u00f6ffel 225g schoko","nestl\u00e9 milchm\u00e4dchen 170g tube"],"category_name":["milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk","milk"],"dim_1":{"__ndarray__":"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","dtype":"float32","shape":[670]},"dim_2":{"__ndarray__":"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","dtype":"float32","shape":[670]},"index":[4095,4096,4097,4098,4099,4100,4101,4102,4103,4104,4105,4106,4107,4108,4109,4110,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120,4121,4122,4123,4124,4125,4126,4127,4128,4129,4130,4131,4132,4133,4134,4135,4136,4137,4138,4139,4140,4141,4142,4143,4144,4145,4146,4147,4148,4149,4150,4151,4152,4153,4154,4155,4156,4157,4158,4159,4160,4161,4162,4163,4164,4165,4166,4167,4168,4169,4170,4171,4172,4173,4174,4175,4176,4177,4178,4179,4180,4181,4182,4183,4184,4185,4186,4187,4188,4189,4190,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4202,4203,4204,4205,4206,4207,4208,4209,4210,4211,4212,4213,4214,4215,4216,4217,4218,4219,4220,4221,4222,4223,4224,4225,4226,4227,4228,4229,4230,4231,4232,4233,4234,4235,4236,4237,4238,4239,4240,4241,4242,4243,4244,4245,4246,4247,4248,4249,4250,4251,4252,4253,4254,4255,4256,4257,4258,4259,4260,4261,4262,4263,4264,4265,4266,4267,4268,4269,4270,4271,4272,4273,4274,4275,4276,4277,4278,4279,4280,4281,4282,4283,4284,4285,4286,4287,4288,4289,4290,4291,4292,4293,4294,4295,4296,4297,4298,4299,4300,4301,4302,4303,4304,4305,4306,4307,4308,4309,4310,4311,4312,4313,4314,4315,4316,4317,4318,4319,4320,4321,4322,4323,4324,4325,4326,4327,4328,4329,4330,4331,4332,4333,4334,4335,4336,4337,4338,4339,4340,4341,4342,4343,4344,4345,4346,4347,4348,4349,4350,4351,4352,4353,4354,4355,4356,4357,4358,4359,4360,4361,4362,4363,4364,4365,4366,4367,4368,4369,4370,4371,4372,4373,4374,4375,4376,4377,4378,4379,4380,4381,4382,4383,4384,4385,4386,4387,4388,4389,4390,4391,4392,4393,4394,4395,4396,4397,4398,4399,4400,4401,4402,4403,4404,4405,4406,4407,4408,4409,4410,4411,4412,4413,4414,4415,4416,4417,4418,4419,4420,4421,4422,4423,4424,4425,4426,4427,4428,4429,4430,4431,4432,4433,4434,4435,4436,4437,4438,4439,4440,4441,4442,4443,4444,4445,4446,4447,4448,4449,4450,4451,4452,4453,4454,4455,4456,4457,4458,4459,4460,4461,4462,4463,4464,4465,4466,4467,4468,4469,4470,4471,4472,4473,4474,4475,4476,4477,4478,4479,4480,4481,4482,4483,4484,4485,4486,4487,4488,4489,4490,4491,4492,4493,4494,4495,4496,4497,4498,4499,4500,4501,4502,4503,4504,4505,4506,4507,4508,4509,4510,4511,4512,4513,4514,4515,4516,4517,4518,4519,4520,4521,4522,4523,4524,4525,4526,4527,4528,4529,4530,4531,4532,4533,4534,4535,4536,4537,4538,4539,4540,4541,4542,4543,4544,4545,4546,4547,4548,4549,4550,4551,4552,4553,4554,4555,4556,4557,4558,4559,4560,4561,4562,4563,4564,4565,4566,4567,4568,4569,4570,4571,4572,4573,4574,4575,4576,4577,4578,4579,4580,4581,4582,4583,4584,4585,4586,4587,4588,4589,4590,4591,4592,4593,4594,4595,4596,4597,4598,4599,4600,4601,4602,4603,4604,4605,4606,4607,4608,4609,4610,4611,4612,4613,4614,4615,4616,4617,4618,4619,4620,4621,4622,4623,4624,4625,4626,4627,4628,4629,4630,4631,4632,4633,4634,4635,4636,4637,4638,4639,4640,4641,4642,4643,4644,4645,4646,4647,4648,4649,4650,4651,4652,4653,4654,4655,4656,4657,4658,4659,4660,4661,4662,4663,4664,4665,4666,4667,4668,4669,4670,4671,4672,4673,4674,4675,4676,4677,4678,4679,4680,4681,4682,4683,4684,4685,4686,4687,4688,4689,4690,4691,4692,4693,4694,4695,4696,4697,4698,4699,4700,4701,4702,4703,4704,4705,4706,4707,4708,4709,4710,4711,4712,4713,4714,4715,4716,4717,4718,4719,4720,4721,4722,4723,4724,4725,4726,4727,4728,4729,4730,4731,4732,4733,4734,4735,4736,4737,4738,4739,4740,4741,4742,4743,4744,4745,4746,4747,4748,4749,4750,4751,4752,4753,4754,4755,4756,4757,4758,4759,4760,4761,4762,4763,4764],"subcategory_name":["Frische Schlagsahne (ohne Sterilsahne)","Frische Schlagsahne (ohne Sterilsahne)","Frische Schlagsahne (ohne Sterilsahne)","Frische Schlagsahne (ohne Sterilsahne)","Frische Schlagsahne (ohne Sterilsahne)","Frische Schlagsahne (ohne Sterilsahne)","Frische Schlagsahne (ohne Sterilsahne)","Frische Schlagsahne (ohne Sterilsahne)","Frische Schlagsahne (ohne Sterilsahne)","Frische Schlagsahne (ohne Sterilsahne)","Frische Schlagsahne (ohne Sterilsahne)","Frische Schlagsahne (ohne Sterilsahne)","Frische Schlagsahne (ohne Sterilsahne)","Frische Schlagsahne (ohne Sterilsahne)","Frische Schlagsahne (ohne Sterilsahne)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","Frischmilch (lose und verpackt)","H-Kakao","H-Kakao","H-Kakao","H-Kakao","H-Kakao","H-Kakao","H-Kakao","H-Kakao","H-Kakao","H-Kakao","H-Kakao","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Milch","H-Sahne","H-Sahne","H-Sahne","H-Sahne","H-Sahne","H-Sahne","H-Sahne","H-Sahne","H-Sahne","H-Sahne","H-Sahne","H-Sahne","H-Sahne","Kaffeesahne, sterilisiert und kondensier","Kaffeesahne, sterilisiert und kondensier","Kaffeesahne, sterilisiert und kondensier","Kaffeesahne, sterilisiert und kondensier","Kaffeesahne, sterilisiert und kondensier","Kaffeesahne, sterilisiert und kondensier","Kaffeesahne, sterilisiert und kondensier","Kaffeesahne, sterilisiert und kondensier","Kaffeesahne, sterilisiert und kondensier","Kaffeesahne, sterilisiert und kondensier","Kondensmilch","Kondensmilch","Kondensmilch","Kondensmilch","Kondensmilch","Kondensmilch","Kondensmilch","Kondensmilch","Kondensmilch","Kondensmilch","Kondensmilch","Kondensmilch","Kondensmilch","Kondensmilch","Kondensmilch","Kondensmilch","Kondensmilch","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Milchmischgetr\u00e4nke","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Sauermilch (Kefir, Molke, Buttermilch)","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Saure Sahne, Sauerrahm, Cr\u00e8me fra\u00eeche","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Soja-Milch und Soja-Erzeugnisse","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonst.Milcherz.(ohne Jog., K\u00e4se, Butter)","Sonstige Milchpr\u00e4parate","Sonstige Milchpr\u00e4parate","Sonstige Milchpr\u00e4parate","Sonstige Milchpr\u00e4parate"]},"selected":{"id":"1984","type":"Selection"},"selection_policy":{"id":"1983","type":"UnionRenderers"}},"id":"1885","type":"ColumnDataSource"},{"attributes":{"dimension":1,"ticker":{"id":"1904","type":"BasicTicker"}},"id":"1907","type":"Grid"},{"attributes":{"callback":null},"id":"1890","type":"DataRange1d"},{"attributes":{"fill_alpha":{"value":0.6},"fill_color":{"field":"subcategory_name","transform":{"id":"1886","type":"CategoricalColorMapper"}},"line_alpha":{"value":0.6},"line_color":{"field":"subcategory_name","transform":{"id":"1886","type":"CategoricalColorMapper"}},"size":{"units":"screen","value":6},"x":{"field":"dim_1"},"y":{"field":"dim_2"}},"id":"1918","type":"Circle"},{"attributes":{},"id":"1904","type":"BasicTicker"},{"attributes":{"formatter":{"id":"1981","type":"BasicTickFormatter"},"ticker":{"id":"1904","type":"BasicTicker"}},"id":"1903","type":"LinearAxis"},{"attributes":{"source":{"id":"1885","type":"ColumnDataSource"}},"id":"1921","type":"CDSView"},{"attributes":{},"id":"1979","type":"BasicTickFormatter"},{"attributes":{},"id":"1896","type":"LinearScale"},{"attributes":{},"id":"1894","type":"LinearScale"},{"attributes":{"data_source":{"id":"1885","type":"ColumnDataSource"},"glyph":{"id":"1918","type":"Circle"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1919","type":"Circle"},"selection_glyph":null,"view":{"id":"1921","type":"CDSView"}},"id":"1920","type":"GlyphRenderer"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1908","type":"PanTool"},{"id":"1909","type":"WheelZoomTool"},{"id":"1910","type":"ResetTool"},{"id":"1915","type":"HoverTool"}]},"id":"1911","type":"Toolbar"},{"attributes":{"formatter":{"id":"1979","type":"BasicTickFormatter"},"ticker":{"id":"1899","type":"BasicTicker"}},"id":"1898","type":"LinearAxis"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b4"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b4"},"size":{"units":"screen","value":6},"x":{"field":"dim_1"},"y":{"field":"dim_2"}},"id":"1919","type":"Circle"},{"attributes":{},"id":"1899","type":"BasicTicker"},{"attributes":{"ticker":{"id":"1899","type":"BasicTicker"}},"id":"1902","type":"Grid"}],"root_ids":["1887"]},"title":"Bokeh Application","version":"1.4.0"}};
-  var render_items = [{"docid":"3a3ba8c0-6f04-4da3-a3a5-b545b1c9c12e","roots":{"1887":"227e3a1f-30ff-4ef8-a0d4-401115f14003"}}];
-  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
-
-  }
-  if (root.Bokeh !== undefined) {
-    embed_document(root);
-  } else {
-    var attempts = 0;
-    var timer = setInterval(function(root) {
-      if (root.Bokeh !== undefined) {
-        clearInterval(timer);
-        embed_document(root);
-      } else {
-        attempts++;
-        if (attempts > 100) {
-          clearInterval(timer);
-          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
-        }
-      }
-    }, 10, root)
-  }
-})(window);
-</script>
+<div class="output_text output_subarea output_execute_result">
+<pre>bananen gut&amp;guenstig kg banderole           1.690266
+ostereier lose gew.kl m regenbogen          1.175529
+palmin &amp; soft 500g                          1.163657
+lose eier weiß aus bodenhaltung             1.158803
+bio zitronen stück                          1.119776
+briefmarkenbogen ampelmann 10x0.55 eur      1.090467
+bio naturkind kirschen 500g schale          1.074869
+ostereier lose aus    bodenh.intens.gr.m    1.070034
+bio gurken stück                            1.069818
+schwarze miniklappsteige                    1.062480
+tomaten blackberry  250g                    1.054375
+lose eier aus         bodenhaltung kl.l     1.042873
+trauben schwarz kernlos kg                  1.030175
+birnen conference 2kg steige                1.025236
+naturkind bio mini  gurke 2er               1.018142
+speisefruehkartoffeln kg f.k. sieglinde     1.001327
+leerverpackung für lose eier 6er            0.982800
+porree 500g                                 0.981021
+speisekartoffeln kg f.k. anoé               0.974821
+briefmarken ampelmann 4x0.45 ?              0.971587
+Name: 12, dtype: float32</pre>
 </div>
 
 </div>
@@ -20791,6 +20463,22 @@ var element = $('#2c1e0d08-41d4-4de7-bc72-2d1a48feab35');
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Although it may be fairly obvious that eggs sell more during Easter, this information can be valauble to retailers because then they know which specific items are more likely to be bought than others. With this knowledge, retailers can avoid printing coupons for seasonal items that are near the top of the list, since shoppers will seek them out anyways. Instead retailers can focus on seasonal products that have a lower score, to induce shoppers to purchase them, and reduce in-store waste.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Price-Elasticities">Price Elasticities<a class="anchor-link" href="#Price-Elasticities">&#182;</a></h3><p>Perhaps the most interesting case of all, the price sensitivities.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
