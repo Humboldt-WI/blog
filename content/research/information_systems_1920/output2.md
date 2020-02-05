@@ -1,3 +1,13 @@
++++
+title = "SHOPPER"
+date = '2017-12-14'
+tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
+categories = ["Course projects"]
+banner = "img/seminar/sample/hu-logo.jpg"
+author = "Class of Winter Term 2017 / 2018"
+disqusShortname = "https-wisample-github-io-blog"
+description = " Testy mctestface"
++++
 
 # Introduction
 
