@@ -1,5 +1,5 @@
 +++
-title = "Mc test face"
+title = "Sid test"
 date = '2017-12-14'
 tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
 categories = ["Course projects"]
@@ -8,6 +8,7 @@ author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-wisample-github-io-blog"
 description = " A Sample Post"
 +++
+
 
 <!DOCTYPE html>
 <html>
@@ -6877,6 +6878,36 @@ button.close {
     transform: rotate(359deg);
   }
 }
+.fa-rotate-90 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.fa-rotate-180 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.fa-rotate-270 {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.fa-flip-horizontal {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+  -webkit-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+.fa-flip-vertical {
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
 :root .fa-rotate-90,
 :root .fa-rotate-180,
 :root .fa-rotate-270,
@@ -10521,7 +10552,6 @@ div.inner_cell {
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
-  white-space: nowrap;
   border: 1px solid #cfcfcf;
   border-radius: 2px;
   background: #f7f7f7;
@@ -10572,13 +10602,50 @@ div.unrecognized_cell .inner_cell a:hover {
     display: none;
   }
 }
-
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
 @media print {
   div.code_cell {
     page-break-inside: avoid;
   }
 }
-
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_prompt {
   color: #303F9F;
@@ -10591,7 +10658,6 @@ div.input_area > div.highlight {
   background-color: transparent;
 }
 div.input_area > div.highlight > pre {
-  white-space: pre-line;
   margin: 0px;
   border: none;
   padding: 0px;
@@ -11000,6 +11066,9 @@ div.output_javascript:empty {
 div.raw_input_container {
   line-height: 1.21429em;
   padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
 }
 input.raw_input {
   font-family: monospace;
@@ -11885,7 +11954,7 @@ ul#help_menu li a i {
   -moz-osx-font-smoothing: grayscale;
   display: block;
   content: "\f0da";
-  float: none;
+  float: right;
   color: #333333;
   margin-top: 2px;
   margin-right: -10px;
@@ -12573,8 +12642,10 @@ span.autosave_status {
 }
 .toolbar select,
 .toolbar label {
+  width: auto;
   vertical-align: middle;
   margin-right: 2px;
+  margin-bottom: 0px;
   display: inline;
   font-size: 92%;
   margin-left: 0.3em;
@@ -12637,7 +12708,38 @@ li.pulse.open > a.dropdown-toggle {
  * have some strange css to have the scroll bar on
  * the left with fix button on the top right of the tooltip
  */
-
+@-moz-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 /*properties of tooltip after "expand"*/
 .bigtooltip {
   overflow: auto;
@@ -12725,6 +12827,10 @@ li.pulse.open > a.dropdown-toggle {
   top: 10px;
   width: 25px;
   height: 25px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
 }
 ul.typeahead-list i {
   margin-left: -10px;
@@ -12968,7 +13074,7 @@ ul.typeahead-list  > li > a.pull-right {
 /* Overrides of notebook CSS for static HTML export */
 body {
   overflow: visible;
-  padding: 0px;
+  padding: 8px;
 }
 
 div#notebook {
@@ -12977,6 +13083,7 @@ div#notebook {
 }@media print {
   div.cell {
     display: block;
+    page-break-inside: avoid;
   } 
   div.output_wrapper { 
     display: block;
@@ -13014,10 +13121,9 @@ div#notebook {
     });
     </script>
     <!-- End of mathjax configuration --></head>
-    
 <body>
-
-
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -19913,10 +20019,10 @@ e+QgGDI2OsAAAAAASUVORK5CYII=
 
 
 
-<div id="93d563e5-862a-4ce2-aed4-4ad18ab94fb8"></div>
+<div id="50ece039-3141-4117-bd4d-b50a3e5b0b5e"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#93d563e5-862a-4ce2-aed4-4ad18ab94fb8');
+var element = $('#50ece039-3141-4117-bd4d-b50a3e5b0b5e');
 
 (function(root) {
   function now() {
@@ -20236,10 +20342,10 @@ var element = $('#93d563e5-862a-4ce2-aed4-4ad18ab94fb8');
 
 
 
-<div id="c5c01da1-ef84-40ee-a51f-e84aa7164fc9"></div>
+<div id="e9fd339b-1140-4b13-9a54-a61fd207265b"></div>
 <div class="output_subarea output_javascript ">
 <script type="text/javascript">
-var element = $('#c5c01da1-ef84-40ee-a51f-e84aa7164fc9');
+var element = $('#e9fd339b-1140-4b13-9a54-a61fd207265b');
 (function(root) {
   function embed_document(root) {
     
@@ -20436,8 +20542,8 @@ Even if the calculated WTP is right, our model may still misjudge the probabilit
 </div>
 </div>
 </div>
-  
-
+    </div>
+  </div>
 </body>
 
  
