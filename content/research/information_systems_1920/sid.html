@@ -4239,7 +4239,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-right: 0px;
   margin-left: 0px;
 }
-@media (min-width: 541px) {
+@media (min-width: 50px) {
   .container > .navbar-header,
   .container-fluid > .navbar-header,
   .container > .navbar-collapse,
@@ -9129,9 +9129,9 @@ label {
 /* Make the page background atleast 100% the height of the view port */
 /* Make the page itself atleast 70% the height of the view port */
 .border-box-sizing {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  box-sizing: auto;
+  -moz-box-sizing: auto;
+  -webkit-box-sizing: auto;
 }
 .corner-all {
   border-radius: 2px;
@@ -9222,7 +9222,7 @@ Browsers not listed, including Safari, are supported via the styling under the
   box-flex: 0;
   /* Modern browsers */
   flex: none;
-  width: auto;
+  width: 60px;
 }
 .hbox.box-flex1,
 .vbox.box-flex1,
@@ -9382,7 +9382,6 @@ div.error > p {
 div.traceback-wrapper {
   text-align: left;
   max-width: 800px;
-  margin: auto;
 }
 div.traceback-wrapper pre.traceback {
   max-height: 600px;
@@ -9397,7 +9396,7 @@ body {
   background-color: #fff;
   /* This makes sure that the body covers the entire window and needs to
        be in a different element than the display: box in wrapper below */
-  position: absolute;
+  position: relative;
   left: 0px;
   right: 0px;
   top: 0px;
@@ -9409,7 +9408,7 @@ body > #header {
   display: none;
   background-color: #fff;
   /* Display over codemirror */
-  position: relative;
+  position: absolute;
   z-index: 100;
 }
 body > #header #header-container {
@@ -9419,12 +9418,12 @@ body > #header #header-container {
   padding: 5px;
   padding-bottom: 5px;
   padding-top: 5px;
-  box-sizing: border-box;
+  box-sizing: 0;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
 body > #header .header-bar {
-  width: 100%;
+  width: 70%;
   height: 1px;
   background: #e7e7e7;
   margin-bottom: -1px;
@@ -9435,7 +9434,7 @@ body > #header .header-bar {
   }
 }
 #header-spacer {
-  width: 100%;
+  width: 70%;
   visibility: hidden;
 }
 @media print {
@@ -9449,11 +9448,11 @@ body > #header .header-bar {
   padding-bottom: 1px;
 }
 [dir="rtl"] #ipython_notebook {
-  margin-right: 10px;
+  margin-right: 0px;
   margin-left: 0;
 }
 [dir="rtl"] #ipython_notebook.pull-left {
-  float: right !important;
+  float: right;
   float: right;
 }
 .flex-spacer {
@@ -9472,7 +9471,7 @@ body > #header .header-bar {
   height: 28px;
 }
 #site {
-  width: 100%;
+  width: 70%;
   display: none;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -9618,9 +9617,9 @@ span#login_widget > .button .badge,
 .modal-header {
   cursor: move;
 }
-@media (min-width: 768px) {
+@media (min-width: 7px) {
   .modal .modal-dialog {
-    width: 700px;
+    width: 7px;
   }
 }
 @media (min-width: 768px) {
@@ -10894,7 +10893,7 @@ div.output_scroll {
   /* ideally, this would be max-height, but FF barfs all over that */
   height: 24em;
   /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
-  width: 100%;
+  width: 70%;
   overflow: auto;
   border-radius: 2px;
   -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
@@ -10991,7 +10990,7 @@ div.output_area .mglyph > img {
   box-orient: vertical;
   box-align: stretch;
   /* Modern browsers */
-  display: flex;
+  display: left;
   flex-direction: column;
   align-items: stretch;
 }
@@ -11008,7 +11007,7 @@ div.output_area .mglyph > img {
     box-orient: vertical;
     box-align: stretch;
     /* Modern browsers */
-    display: flex;
+    display: left;
     flex-direction: column;
     align-items: stretch;
   }
@@ -11033,7 +11032,7 @@ div.output_subarea {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-  max-width: calc(100% - 14ex);
+  max-width: calc(70% - 14ex);
 }
 div.output_scroll div.output_subarea {
   overflow-x: visible;
@@ -11067,9 +11066,7 @@ div.raw_input_container {
   line-height: 1.21429em;
   padding-top: 5px;
 }
-pre.raw_input_prompt {
-  /* nothing needed here. */
-}
+
 input.raw_input {
   font-family: monospace;
   font-size: inherit;
@@ -11296,7 +11293,7 @@ div.output_unrecognized a:hover {
 }
 .rendered_html img.unconfined,
 .rendered_html svg.unconfined {
-  max-width: none;
+  max-width: 70px;
 }
 .rendered_html .alert {
   margin-bottom: initial;
@@ -11443,7 +11440,7 @@ div#notebook {
 }
 @media not print {
   #notebook-container {
-    padding: 15px;
+    padding: 1px;
     background-color: #fff;
     min-height: 0;
     -webkit-box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
@@ -11452,7 +11449,7 @@ div#notebook {
 }
 @media print {
   #notebook-container {
-    width: 100%;
+    width: 70%;
   }
 }
 div.ui-widget-content {
@@ -13121,13 +13118,16 @@ div#notebook {
     });
     </script>
     <!-- End of mathjax configuration --></head>
-<body>
-  <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
 
+
+
+  <div >
+    <div >
+   
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+  <body>
 <h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h1>
 </div>
 </div>
@@ -20542,10 +20542,14 @@ Even if the calculated WTP is right, our model may still misjudge the probabilit
 </div>
 </div>
 </div>
+
     </div>
   </div>
+
 </body>
 
+</td>  
+</table>
  
 
 
