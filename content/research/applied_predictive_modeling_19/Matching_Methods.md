@@ -251,8 +251,8 @@ Now the matched & weighted Treatment and Control members can be compared by usin
 
 We can perform CEM matching using MatchIt package in R, by passing the name of the method to MatchIt as "cem" which load the cem package automatically.
 ```{r}
-  #Perform One-to-One greedy matching with replacement and with caliper to estimate the ATT
-  calc_cem = function(data, psFormula){
+  #Perform cem matching to estimate the ATT
+  calc_cem <- function(data, psFormula){
     cemMatching <- matchit(psFormula, data = data, method = "cem")
     return(cemMatching)
   }
@@ -269,16 +269,16 @@ And even after we have tried to apply some of the proposed solutions, we kept ge
 ### 2. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Logistic Regression:
 Greedy nearest neighbor is a version of the algorithm that works by choosing a treatment group member and then choosing a control group member that is the closest match. It works as follows:
 
-  1. randomly order the treated and untreated individuals
-  2. select the first treated individual *i* and find the untreated individual *j* with closest propensity score.
-  3. if matching without replacement, remove *j* from the pool.
+  1. Randomly order the treated and untreated individuals
+  2. Select the first treated individual *i* and find the untreated individual *j* with closest propensity score.
+  3. If matching without replacement, remove *j* from the pool.
   4. Repeat the above process until matches are found for all participants.
 
 There are some important parameter to consider:
 
-* with or with our replacement: with replacement an untreated individual can be used more than once as a match, whereas in the latter case it is considered only once.
+* with or without replacement: with replacement an untreated individual can be used more than once as a match, whereas in the latter case it is considered only once.
 * one-to-one or one-to-k: in first case each treated is matched to a single control whereas in the latter case each treated is matched to K controls.
-* Caliper matching: a maximum caliper distance is set for the matches. A caliper distance is the absolute difference in propensity scores for the matches. As a maximum value is being set, this may result in some participants not being matched \(Rosembaum and Rubin \(1985\) [60] suggest a caliper of .25 standard deviations\).
+* caliper matching: a maximum caliper distance is set for the matches. A caliper distance is the absolute difference in propensity scores for the matches. As a maximum value is being set, this may result in some participants not being matched \(Rosembaum and Rubin \(1985\) [60] suggest a caliper of .25 standard deviations\).
 
 In our study we perform a one-to-one greedy nearest neighbor matching with replacement and with caliper to estimate the ATT
 ```{r}
@@ -309,14 +309,14 @@ The estimation of propensity scores could be done using:
 
 * Statistical models: logistic regression, probit regression
   - Mostly widely used
-  - relay on functional form assumption
-* Machine learning algorithms: classification trees, boosting, bagging, random Forests
-  - do not rely on functional  form Assumptions
-  - it is not clear whether these methods on average better than binomial models
+  - Relay on functional form assumption
+* Machine learning algorithms: classification trees, boosting, bagging, random forests
+  - Do not rely on functional form assumptions
+  - It is not clear whether these methods on average better than binomial models
 
 **Logistic Regression:**
 
-logistic regression of treatment Z on observed predictors X
+Logistic regression of treatment Z on observed predictors X
 
   * logit(Z<sub>*i*</sub> = 1 | X) = $B$<sub>0</sub> + $B$<sub>1</sub>X<sub>1*i*</sub> + ...$B$<sub>k</sub>X<sub>k*i*</sub>
   * Estimated PS:
@@ -338,7 +338,7 @@ rather than the propensity score itself, bacause it avoids compression around ze
 ```
 
 ### 3. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Random Forest
-Random forest, like its name implies, consists of a large number of individual decision trees that operate as an ensemble. Each individual tree in the random forest spits out a class prediction and the class with the most votes becomes our model’s prediction (see figure below).
+Random forest, like its name implies, consists of a large number of individual decision trees that operate as an ensemble. Each individual tree in the random forest spits out a class prediction and the class with the most votes becomes our model’s prediction.
 
 The fundamental concept behind random forest is a simple but powerful one — the wisdom of crowds.
 
@@ -346,7 +346,7 @@ A large number of relatively uncorrelated models (trees) operating as a committe
 
 The low correlation between models is the key. Uncorrelated models can produce ensemble predictions that are more accurate than any of the individual predictions. The reason for this wonderful effect is that the trees protect each other from their individual errors (as long as they don’t constantly all err in the same direction). While some trees may be wrong, many other trees will be right, so as a group the trees are able to move in the correct direction.
 
-we estimate the propensity score using random forest with the R package party using the function cforest().
+We estimate the propensity score using random forest with the R package party using the function cforest().
 ```{r}
 rf_ps <- function(dataset, psFormula){
     #estimate propensity scores with random forests
@@ -395,14 +395,13 @@ gbm_ps <- function(dataset, psFormula){
 
   #extract estimated propensity scores from object
   gbm_estimations <- myGBM$ps[, 1]
-  # notice here we do not need to
   return(gbm_estimations)
 }
 ```
 * n.trees: is the maximum number of iterations that gbm will run.
-* interaction.depth:controls the level of interactions allowed in the GBM.
+* interaction.depth: controls the level of interactions allowed in the GBM.
 * shrinkage: helps to enhance the smoothness of resulting model. The shrinkage argument controls the amount of shrinkage. Small values such as 0.005 or 0.001 yield smooth fits but require greater values of n.trees to achieve adequate fits. Computational time increases inversely with shrinkage argument.
-* stop.method: A method or methods of measuring and summarizing balance across pretreat-ment variables.  Current options areks.mean,ks.max,es.mean, andes.max.ksrefers to the Kolmogorov-Smirnov statistic andesrefers to standardized ef-fect size.  These are summarized across the pretreatment variables by either themaximum (.max) or the mean (.mean).
+* stop.method: A method or methods of measuring and summarizing balance across pretreat-ment variables.  Current options are ks.mean, ks.max, es.mean, and es.max. ks refers to the Kolmogorov-Smirnov statistic and es refers to standardized ef-fect size.  These are summarized across the pretreatment variables by either the maximum (.max) or the mean (.mean).
 
 ### 5.	Genetic Matching
 
@@ -433,11 +432,12 @@ Genetic Matching may or may not decrease the bias in the conditional estimates. 
 We can perform the genetic matching in R, by calling the MatchIt package, in our study we performed genetic matcing on the covariates and the propensity scores estimated by the generalized boosted model
  ```{r}
  # perform genetic matching based on all the covariates and the propensity score estimated from GMB
- calc_geneticMatchin_with_gmb = function(data, psFormula, zeFormula, Ps_scores){
+ calc_geneticMatchin_with_gmb = function(data, psFormula, Ps_scores){
   geneticMatching <- matchit(psFormula, distance = Ps_scores,
-                             data = data, method = "genetic",pop.size=1000,
+                             data = data, method = "genetic", pop.size = 1000,
                              fit.func = "pvals",
                              estimand = "ATT", replace = T, ties = T, discard = "both")
+  return(geneticMatching)
 }
  ```
 * pop.size: the number of individuals genoud uses to solve the optimization problem, i.e. the number of the weight matrixes that will be generated in order to have a perfect balance.
@@ -484,17 +484,16 @@ We hope that this has been a helpful exploration into the statistical assumption
 
 <img style=" width:800px;display:block;margin:0 auto;" src="/blog/img/seminar/mathcing_methods_1819/SN18.png">
 
-Looking at the results in section 9 from our comparative of matching methods, which they are the mean absolute error in the ATT in our data after applying four different matching methods, namely:
+Looking at the results in section 9 from our comparative of matching methods, which they are the mean absolute error in the ATT in five datasets after applying four different matching methods, namely:
+
 * Nearest Neighbor propensity score estimated with Logistic Regression
 * Nearest Neighbor propensity score estimated with Random Forest
 * Nearest Neighbor propensity score estimated with Generalized Boosting model
 * Genetic matching on covariates and propensity score estimated with Generalized Boosting model
 
-which were applied on six different simulated datasets each with different characteristics.
-
 We can see clearly, that:
 
-  * Genetic matching does very poorly in all datasets, even it looked to us very attractive theory. Beside the poor results of Genetic matching we have encountered an excessive computational power requirement in order to perform the matching method, especially when the data was highly dimensional.
+  * Genetic matching perform very poorly in all datasets, even it looked to us very attractive theory. Beside the poor results of Genetic matching we have encountered an excessive computational power requirement in order to perform the matching method, especially when the data was highly dimensional.
   * Nearest Neighbor with Random Forest and Generalized Boosting propensity score doesn’t perform very bad but also not good as our expectations.
   * Our winning model is as always, the simplest model, Nearest Neighbor with Logistic Regression estimated propensity score, we were definitely surprised with its result. In addition of the good results, it was easy to implement and did not required any computational power, beside its possibility of being interpreted, contrary to the other methods which are considered black box models.
 
