@@ -440,8 +440,8 @@ Example: Age could be binned into 1 or 0 depending on if a member is ≥ 50 year
 
 <p>We can perform CEM matching using MatchIt package in R, by passing the name of the method to MatchIt as &ldquo;cem&rdquo; which load the cem package automatically.</p>
 
-<pre><code class="language-r">  #Perform One-to-One greedy matching with replacement and with caliper to estimate the ATT
-  calc_cem = function(data, psFormula){
+<pre><code class="language-r">  #Perform cem matching to estimate the ATT
+  calc_cem &lt;- function(data, psFormula){
     cemMatching &lt;- matchit(psFormula, data = data, method = &quot;cem&quot;)
     return(cemMatching)
   }
@@ -462,18 +462,18 @@ And even after we have tried to apply some of the proposed solutions, we kept ge
 <p>Greedy nearest neighbor is a version of the algorithm that works by choosing a treatment group member and then choosing a control group member that is the closest match. It works as follows:</p>
 
 <ol>
-<li>randomly order the treated and untreated individuals</li>
-<li>select the first treated individual <em>i</em> and find the untreated individual <em>j</em> with closest propensity score.</li>
-<li>if matching without replacement, remove <em>j</em> from the pool.</li>
+<li>Randomly order the treated and untreated individuals</li>
+<li>Select the first treated individual <em>i</em> and find the untreated individual <em>j</em> with closest propensity score.</li>
+<li>If matching without replacement, remove <em>j</em> from the pool.</li>
 <li>Repeat the above process until matches are found for all participants.</li>
 </ol>
 
 <p>There are some important parameter to consider:</p>
 
 <ul>
-<li>with or with our replacement: with replacement an untreated individual can be used more than once as a match, whereas in the latter case it is considered only once.</li>
+<li>with or without replacement: with replacement an untreated individual can be used more than once as a match, whereas in the latter case it is considered only once.</li>
 <li>one-to-one or one-to-k: in first case each treated is matched to a single control whereas in the latter case each treated is matched to K controls.</li>
-<li>Caliper matching: a maximum caliper distance is set for the matches. A caliper distance is the absolute difference in propensity scores for the matches. As a maximum value is being set, this may result in some participants not being matched (Rosembaum and Rubin (1985) [60] suggest a caliper of .25 standard deviations).</li>
+<li>caliper matching: a maximum caliper distance is set for the matches. A caliper distance is the absolute difference in propensity scores for the matches. As a maximum value is being set, this may result in some participants not being matched (Rosembaum and Rubin (1985) [60] suggest a caliper of .25 standard deviations).</li>
 </ul>
 
 <p>In our study we perform a one-to-one greedy nearest neighbor matching with replacement and with caliper to estimate the ATT</p>
@@ -514,19 +514,19 @@ Greedy nearest neighbor matching may result in poor quality matches overall. The
 
 <ul>
 <li>Mostly widely used</li>
-<li>relay on functional form assumption</li>
+<li>Relay on functional form assumption</li>
 </ul></li>
-<li>Machine learning algorithms: classification trees, boosting, bagging, random Forests
+<li>Machine learning algorithms: classification trees, boosting, bagging, random forests
 
 <ul>
-<li>do not rely on functional  form Assumptions</li>
-<li>it is not clear whether these methods on average better than binomial models</li>
+<li>Do not rely on functional form assumptions</li>
+<li>It is not clear whether these methods on average better than binomial models</li>
 </ul></li>
 </ul>
 
 <p><strong>Logistic Regression:</strong></p>
 
-<p>logistic regression of treatment Z on observed predictors X</p>
+<p>Logistic regression of treatment Z on observed predictors X</p>
 
 <ul>
 <li>logit(Z<sub><em>i</em></sub> = 1 | X) = $B$<sub>0</sub> + $B$<sub>1</sub>X<sub>1<em>i</em></sub> + &hellip;$B$<sub>k</sub>X<sub>k<em>i</em></sub></li>
@@ -554,7 +554,7 @@ rather than the propensity score itself, bacause it avoids compression around ze
 
 <h3 id="3-nearest-neighbor-propensity-score-matching-with-propensity-score-estimated-with-random-forest">3. Nearest-Neighbor Propensity Score Matching, with Propensity Score estimated with Random Forest</h3>
 
-<p>Random forest, like its name implies, consists of a large number of individual decision trees that operate as an ensemble. Each individual tree in the random forest spits out a class prediction and the class with the most votes becomes our model’s prediction (see figure below).</p>
+<p>Random forest, like its name implies, consists of a large number of individual decision trees that operate as an ensemble. Each individual tree in the random forest spits out a class prediction and the class with the most votes becomes our model’s prediction.</p>
 
 <p>The fundamental concept behind random forest is a simple but powerful one — the wisdom of crowds.</p>
 
@@ -562,7 +562,7 @@ rather than the propensity score itself, bacause it avoids compression around ze
 
 <p>The low correlation between models is the key. Uncorrelated models can produce ensemble predictions that are more accurate than any of the individual predictions. The reason for this wonderful effect is that the trees protect each other from their individual errors (as long as they don’t constantly all err in the same direction). While some trees may be wrong, many other trees will be right, so as a group the trees are able to move in the correct direction.</p>
 
-<p>we estimate the propensity score using random forest with the R package party using the function cforest().</p>
+<p>We estimate the propensity score using random forest with the R package party using the function cforest().</p>
 
 <pre><code class="language-r">rf_ps &lt;- function(dataset, psFormula){
     #estimate propensity scores with random forests
@@ -624,16 +624,15 @@ gbm_ps &lt;- function(dataset, psFormula){
 
   #extract estimated propensity scores from object
   gbm_estimations &lt;- myGBM$ps[, 1]
-  # notice here we do not need to
   return(gbm_estimations)
 }
 </code></pre>
 
 <ul>
 <li>n.trees: is the maximum number of iterations that gbm will run.</li>
-<li>interaction.depth:controls the level of interactions allowed in the GBM.</li>
+<li>interaction.depth: controls the level of interactions allowed in the GBM.</li>
 <li>shrinkage: helps to enhance the smoothness of resulting model. The shrinkage argument controls the amount of shrinkage. Small values such as 0.005 or 0.001 yield smooth fits but require greater values of n.trees to achieve adequate fits. Computational time increases inversely with shrinkage argument.</li>
-<li>stop.method: A method or methods of measuring and summarizing balance across pretreat-ment variables.  Current options areks.mean,ks.max,es.mean, andes.max.ksrefers to the Kolmogorov-Smirnov statistic andesrefers to standardized ef-fect size.  These are summarized across the pretreatment variables by either themaximum (.max) or the mean (.mean).</li>
+<li>stop.method: A method or methods of measuring and summarizing balance across pretreat-ment variables.  Current options are ks.mean, ks.max, es.mean, and es.max. ks refers to the Kolmogorov-Smirnov statistic and es refers to standardized ef-fect size.  These are summarized across the pretreatment variables by either the maximum (.max) or the mean (.mean).</li>
 </ul>
 
 <h3 id="5-genetic-matching">5.  Genetic Matching</h3>
@@ -665,11 +664,12 @@ gbm_ps &lt;- function(dataset, psFormula){
 <p>We can perform the genetic matching in R, by calling the MatchIt package, in our study we performed genetic matcing on the covariates and the propensity scores estimated by the generalized boosted model</p>
 
 <pre><code class="language-r"> # perform genetic matching based on all the covariates and the propensity score estimated from GMB
- calc_geneticMatchin_with_gmb = function(data, psFormula, zeFormula, Ps_scores){
+ calc_geneticMatchin_with_gmb = function(data, psFormula, Ps_scores){
   geneticMatching &lt;- matchit(psFormula, distance = Ps_scores,
-                             data = data, method = &quot;genetic&quot;,pop.size=1000,
+                             data = data, method = &quot;genetic&quot;, pop.size = 1000,
                              fit.func = &quot;pvals&quot;,
                              estimand = &quot;ATT&quot;, replace = T, ties = T, discard = &quot;both&quot;)
+  return(geneticMatching)
 }
 </code></pre>
 
@@ -722,18 +722,19 @@ command does the imputation. The sim() function returns the predicted and the ex
 
 <p><img style=" width:800px;display:block;margin:0 auto;" src="/blog/img/seminar/mathcing_methods_1819/SN18.png"></p>
 
-<p>Looking at the results in section 9 from our comparative of matching methods, which they are the mean absolute error in the ATT in our data after applying four different matching methods, namely:
-* Nearest Neighbor propensity score estimated with Logistic Regression
-* Nearest Neighbor propensity score estimated with Random Forest
-* Nearest Neighbor propensity score estimated with Generalized Boosting model
-* Genetic matching on covariates and propensity score estimated with Generalized Boosting model</p>
+<p>Looking at the results in section 9 from our comparative of matching methods, which they are the mean absolute error in the ATT in five datasets after applying four different matching methods, namely:</p>
 
-<p>which were applied on six different simulated datasets each with different characteristics.</p>
+<ul>
+<li>Nearest Neighbor propensity score estimated with Logistic Regression</li>
+<li>Nearest Neighbor propensity score estimated with Random Forest</li>
+<li>Nearest Neighbor propensity score estimated with Generalized Boosting model</li>
+<li>Genetic matching on covariates and propensity score estimated with Generalized Boosting model</li>
+</ul>
 
 <p>We can see clearly, that:</p>
 
 <ul>
-<li>Genetic matching does very poorly in all datasets, even it looked to us very attractive theory. Beside the poor results of Genetic matching we have encountered an excessive computational power requirement in order to perform the matching method, especially when the data was highly dimensional.</li>
+<li>Genetic matching perform very poorly in all datasets, even it looked to us very attractive theory. Beside the poor results of Genetic matching we have encountered an excessive computational power requirement in order to perform the matching method, especially when the data was highly dimensional.</li>
 <li>Nearest Neighbor with Random Forest and Generalized Boosting propensity score doesn’t perform very bad but also not good as our expectations.</li>
 <li>Our winning model is as always, the simplest model, Nearest Neighbor with Logistic Regression estimated propensity score, we were definitely surprised with its result. In addition of the good results, it was easy to implement and did not required any computational power, beside its possibility of being interpreted, contrary to the other methods which are considered black box models.</li>
 </ul>
@@ -908,7 +909,7 @@ Kreif, N. &amp; DiazOrdaz, K. (2019). Machine Learning in Policy Evaluation: New
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
-            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (28)</a>
+            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (29)</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/categories/instruction">instruction (2)</a>
@@ -969,6 +970,9 @@ Kreif, N. &amp; DiazOrdaz, K. (2019). Machine Learning in Policy Evaluation: New
             <li><a href="https://humboldt-wi.github.io/blog/tags/class19"><i class="fa fa-tags"></i> class19</a>
             </li>
             
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class19/20"><i class="fa fa-tags"></i> class19/20</a>
+            </li>
+            
             <li><a href="https://humboldt-wi.github.io/blog/tags/classification"><i class="fa fa-tags"></i> classification</a>
             </li>
             
@@ -979,6 +983,9 @@ Kreif, N. &amp; DiazOrdaz, K. (2019). Machine Learning in Policy Evaluation: New
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks"><i class="fa fa-tags"></i> convolutional-neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/credit-risk"><i class="fa fa-tags"></i> credit-risk</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/data-simulation"><i class="fa fa-tags"></i> data-simulation</a>
@@ -1114,6 +1121,9 @@ Kreif, N. &amp; DiazOrdaz, K. (2019). Machine Learning in Policy Evaluation: New
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/simulation"><i class="fa fa-tags"></i> simulation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/survival-analysis"><i class="fa fa-tags"></i> survival-analysis</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/text-analysis"><i class="fa fa-tags"></i> text-analysis</a>

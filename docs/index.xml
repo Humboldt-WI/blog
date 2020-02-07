@@ -6,7 +6,7 @@
     <description>Recent content on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 06 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
@@ -49,6 +49,15 @@ Research Interests  Customer behavior in e-Commerce
       <guid>https://humboldt-wi.github.io/blog/member/class1718/</guid>
       <description>The students of the Seminar Information Systems contributed to this website to great extend. Groups of Master students from Humboldt University with backgrounds in Business, Economics, Statistics or Computer Science worked on analytical topics and created blog posts, presenting exciting insights into the following topis:
  Neural Networks and Convolutional Neural Networks Image Analysis Text Mining Time Series Analysis with LSTMs Survial Analysis Image Captioning Deep Learning and Recommender Systems  </description>
+    </item>
+    
+    <item>
+      <title>Deep Learning for Survival Analysis</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/group2_survivalanalysis/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group2_survivalanalysis/</guid>
+      <description>Deep Learning for Survival Analysis Authors: Laura Löschmann, Daria Smorodina Table of content  Motivation - Business case Introduction to Survival Analysis  2.1 Common terms 2.2 Survival function 2.3 Hazard function  Dataset Standard Methods in Survival Analysis  4.1 Kaplan - Meier estimator 4.2 Cox Proportional Hazard Model 4.3 Time-varying Cox regression 4.4 Random survival forests  Deep Learning for Survival Analysis  5.1 DeepSurv 5.2 Deep Hit  Evaluation  6.</description>
     </item>
     
     <item>
@@ -407,6 +416,16 @@ Imagine the following problem: There are handwritten numbers that you want compu
       <guid>https://humboldt-wi.github.io/blog/contributors/</guid>
       <description>Prof. Dr. Stefan Lessmann Prof. Lessmann is the head of the chair Information Systems at the Humboldt University of Berlin. In cooperation with his team, he initiated this website in oder to present, inform and discuss latest research results. For his more extensive bio click here. In research, he is most active in:
  Artificial neural networks, deep learning Big Data Analytics Credit risk modeling Ensemble models and forecast combination Marketing and E-Commerce analytics Non-standard paradigms to learn from data Sentiment and social network analysis Time series forecasting</description>
+    </item>
+    
+    <item>
+      <title>Analysis of social media behavior of the 2020 presidential election candidates</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1819/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</guid>
+      <description>+++ title = &amp;ldquo;Analysis of social media behavior of the 2020 presidential election candidates&amp;rdquo; date = &amp;lsquo;2020-02-07&amp;rsquo; tags = [ &amp;ldquo;Fasttext&amp;rdquo;, &amp;ldquo;CNN&amp;rdquo;, &amp;ldquo;Class19/20&amp;rdquo;, &amp;ldquo;Sentiment Analysis&amp;rdquo;] categories = [&amp;ldquo;course projects&amp;rdquo;] banner = &amp;ldquo;img/seminar/sample/hu-logo.jpg&amp;rdquo; author = &amp;ldquo;Seminar Information Systems (WS19/20)&amp;rdquo; disqusShortname = &amp;ldquo;https-humbodt-wi-github-io-blog&amp;rdquo; description = &amp;ldquo;This blog post analyzes the tweets of the 2020 presidential candidates using Fasttext and CNN&amp;rdquo; +++
+Authors: Georg Velev, Iliyana Pekova Table of Content  Introduction</description>
     </item>
     
     <item>

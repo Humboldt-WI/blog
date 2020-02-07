@@ -6,10 +6,55 @@
     <description>Recent content in Tags on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 06 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Class19/20</title>
+      <link>https://humboldt-wi.github.io/blog/tags/class19/20/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/class19/20/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Credit risk</title>
+      <link>https://humboldt-wi.github.io/blog/tags/credit-risk/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/credit-risk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deep Learning</title>
+      <link>https://humboldt-wi.github.io/blog/tags/deep-learning/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Neural Networks</title>
+      <link>https://humboldt-wi.github.io/blog/tags/neural-networks/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/neural-networks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Survival Analysis</title>
+      <link>https://humboldt-wi.github.io/blog/tags/survival-analysis/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/survival-analysis/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>A/B-Testing</title>
@@ -282,15 +327,6 @@
     </item>
     
     <item>
-      <title>Deep Learning</title>
-      <link>https://humboldt-wi.github.io/blog/tags/deep-learning/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/deep-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Explanation</title>
       <link>https://humboldt-wi.github.io/blog/tags/explanation/</link>
       <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
@@ -341,15 +377,6 @@
       <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/lime/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Neural Networks</title>
-      <link>https://humboldt-wi.github.io/blog/tags/neural-networks/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/neural-networks/</guid>
       <description></description>
     </item>
     
