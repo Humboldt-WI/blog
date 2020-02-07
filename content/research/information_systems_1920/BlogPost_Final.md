@@ -292,7 +292,7 @@ What makes GPT-2 so powerful is its sheer size. It was one of the biggest models
 Since a language model is trying to predict the next word based on previous words, context becomes very important. Let´s imagine this toy example “**the lead singer of the…**”, it is obvious that the next word has to be “**band**”. 
 
 
-<img align="center" width="600"
+<img align="center" width="450"
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/RNN_state1.png"
 alt = "RNN State1">
@@ -441,6 +441,8 @@ These vectors are created by multiplying (dot product) the embedding by the quer
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/gpt2-self-attention-2.png"
 alt = "gpt2-self-attention-creating_q_k_v">
+<br>
+
 
 
 ##### Splitting into Attention Heads <a name="gpt2_12"></a>
@@ -454,12 +456,14 @@ We proceed with splitting our **query**, **key** and **value** vectors in such a
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/gpt2-self-attention-split-attention-heads-1.png"
 alt = "gpt2-splitting-attention-heads">
+<br>
 
 This procedure improves the performance of the Attention layer in two ways:
 
 1.	It **expands the model’s ability to focus on different positions**. In the example above, it would be useful if we’re processing a sentence like “*a robot must obey the orders given it*”, we would want to know which word “it” refers to. 
 2.	It creates multiple **representation subspaces**. As we’ll see next, with multi-headed Attention we have multiple sets of **Query/Key/Value weight matrices** (GPT-2 uses 12 attention heads, so we end up with 12 sets for each decoder block). Each of these sets is randomly initialized. Then, after training, each set is used to project the input embeddings (+ positional encoding) or vectors from lower decoders into a different representation subspace.
 
+<br>
 
 ##### Scoring <a name="gpt2_13"></a>
 
@@ -473,7 +477,7 @@ This is done for every of the 12 attention heads.
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/gpt2-self-attention-scoring-2.png"
 alt = "gpt2-attention-head-scoring">
-
+<br>
 
 The score impacts how much focus to place on other parts of the input sentence as we encode a word at a certain position.
 
@@ -529,7 +533,7 @@ The following example should clarify that:
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/attention_sentence_example.png"
 alt = "attention_sentence_example">
-
+<br>
 
 
 As we process the word “it”, one attention head is focusing most on “The” and “animal”, while another is focusing on “tired”.  
@@ -655,11 +659,12 @@ Additionally to the reduction of vocabulary size, there are several more advanta
 
 
 
-
+<br>
 <img align="center" width="600"
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/classification/subwords_english_to_german.png"
 alt = "german english subwords">
+<br>
 
 Another useful advantage of splitting words into subword tokens, is the fact that rare words can potentially be returned in the output of the generation process. When using word level embeddings for a large text corpus, it is generally necessary to reduce the vocabulary size by setting a fixed limit to the number of words. This means that very rare words, that only occur e.g. one or two times in the whole corpus, drop out of the set of words that can appear in the generated text. By splitting rare words into much more frequent subwords, these can still be included in the resulting synthetic text. 
 
@@ -696,6 +701,7 @@ In our classification stage, we train several models on different data inputs. W
 
 For our binary classification problem, we first construct a recurrent neural network (RNN), of which the model architecture is depicted below. We include an embedding layer into our model, which uses a Word2Vec embedding that we trained on 1 million comments from our own text corpus. We further included a bidirectional LSTM Layer in our model to capture the sequential character of our data. To obtain the required output from our RNN model, we include two dense layers. The first uses relu and the second sigmoid as activation function. The second dense layer turns our values into the required output format, i.e. a probability prediction for each comment.
 
+<br>
 <img align="center" width="600"
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/classification/model_summary.PNG"
@@ -826,10 +832,12 @@ alt = "table results">
 
 We further analyzed the distribution of class predictions and compare them to their corresponding true value. We use the confusion matrix of each model to extract the true/false-positives (TP, FP) and negatives (TN, FN).
 
+<br>
 <img align="center" width="700"
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/classification/cm_table.png"
 alt = "confusion matrix">
+<br>
 
 We included 50000 observations (i.e. real comments) in our test set. In the chart below, the percentages for the four prediction cartegories are visualized. The "false" class predictions are represented in red and the "true" ones in blue. We can see that the Imbalanced setting again yielded at the most true values (TP, TN) compared to the other scenarios. Regarding our business case, the class we want to identify most are the negatives, i.e. the comments that are not publishable. Therefore, we want to minimize especially the amount of FP-predictions, i.e. the comments that are not publishable but are classified as publishable. The percentage of correctly classified values (TP+TN) is higest in the Imbalanced setting. However, the percentage of FP and TN are minimal in the Undersampling setting. A severe drawback in the Undersampling case is that we observe a very high rate of FN, meaning that there are a lot of comments that are actually publishable but are clasified as not publishable by the classifier. This means that a large amount of comments would not be published without any justification.
 
@@ -837,6 +845,7 @@ There are some differences between the BOW and the RNN model, especially with re
 
 The predictions of the two Oversampling settings lie inbetween the others (Imbalanced and Undersampling). As already observed before, the setting including the GloVe-based generated comments performed a bit worse than the GPT-2 scenario.
 
+<br>
 <table>
   <tr>
     <td width="50%"><img align="center" width="450" 
@@ -849,6 +858,7 @@ src="/blog/img/seminar/text_generation/classification/07_cm_eval.png"
 alt = "confusion matrix eval 2"></td>
   </tr>
 </table>
+<br>
 
 
 ## Including the "Not-Sure"-Category <a name="class_not_sure"></a>
@@ -887,6 +897,7 @@ There are also severe differences between the impact of including a "not-sure"-c
 
 Depending on the probability distribution, it is possible to adjust the threshold depending on the given percentage of comments that can be checked manually. In this case, approx. 7.5% of the comments from the test set were labelled as "not sure" (range: 0.4-0.6). When more resources are available to check comments manually, then the range could be extended to include more comments into the "not sure"-class.
 
+<br>
 <table>
   <tr>
     <td width="50%"><img align="center" width="400"
