@@ -1,13 +1,14 @@
 +++
-title = "SHOPPER: A Probalistic Model of Consumer Choice"
-date = '2020-02-07'
-tags = [ "Deep Learning", "Neural Networks", "Class19/20",]
+title = "SHOPPER: A Probabalistic Consumer Choice Model"
+date = '2020-02-06'
+tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
 categories = ["Course projects"]
-banner = "img/seminar/sample/hu-logo.jpg"
+banner = "/img/seminar/group3_shopper/shopping_banner.jpg"
 author = "Class of Winter Term 2019 / 2020"
 disqusShortname = "https-wisample-github-io-blog"
-description = " An in-depth look into the SHOPPER architecture and a recreation in Keras"
+description = " A Sample Post"
 +++
+
 
 <!DOCTYPE html>
 <html>
@@ -10431,7 +10432,7 @@ div.cell {
   border-width: 1px;
   border-style: solid;
   border-color: transparent;
-  width: 100%;
+  width: 75%;
   padding: 5px;
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
@@ -11032,7 +11033,7 @@ div.output_subarea {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
-  max-width: calc(100% - 14ex);
+  max-width: 100%;
 }
 div.output_scroll div.output_subarea {
   overflow-x: visible;
@@ -11432,7 +11433,7 @@ div#notebook {
   overflow-x: auto;
   width: 100%;
   /* This spaces the page away from the edge of the notebook area */
-  padding-top: 20px;
+  padding-top: 0px;
   margin: 0px;
   outline: none;
   box-sizing: border-box;
@@ -11446,7 +11447,7 @@ div#notebook {
     background-color: #fff;
     min-height: 0;
     -webkit-box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
-    box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
+    box-shadow: 0px 0px 12px 1px rgba(255, 255, 255, 0.2);
   }
 }
 @media print {
@@ -11475,7 +11476,7 @@ pre,
 code,
 kbd,
 samp {
-  white-space: pre-wrap;
+  white-space: pre;
 }
 #fonttest {
   font-family: monospace;
@@ -13124,8 +13125,8 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+ <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Interpretable-Neural-Networks-for-Customer-Choice-Modelling">Interpretable Neural Networks for Customer Choice Modelling<a class="anchor-link" href="#Interpretable-Neural-Networks-for-Customer-Choice-Modelling">&#182;</a></h1><p>Haseeb Warsi, Benedict Becker, Veronika Simoncikova</p>
 <hr>
@@ -13133,15 +13134,16 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It's no secret that consumers today are faced with a more product choices than ever before. While having many choices can be beneficial to a point, eventually it can become overwhelming and consumers can become paralysed in the face of so many options (<em>Iyengar, Lepper, 2000</em>). For this reason, many online, and offline, businesses have created tools and methods to recommend certain products to certain groups of consumers, thereby reducing the number of products a consumer has to consider. Of course, recommendation is no easy task, and much has been written about the best method to use (<em>Koren et al., 2009</em>).</p>
 <p>Many recommendation algorithms focus on latent variables that seek to describe underlying user preferences and item attributes. Most, however, do not include external factors such as price or seasonality. From a retailer's perspective, it would be ideal to know the maximum price each customer is willing to pay for each item. Retailers could then potentially have personalized per-item prices for each consumer, which would maximize the retailer's revenue.</p>
@@ -13151,23 +13153,24 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Literature-review">Literature review<a class="anchor-link" href="#Literature-review">&#182;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What are the current trends in retail marketing to maximize stores’ revenue? To name a few, firms perform demand-sensitive pricing through estimating price elasticity (<em>Skyscanner</em>), or identify which of their (and their competitors’) products are substitutes or complements to allow for product differentiation. This is commonly performed in the industry through econometric models such as regression or various forms of matrix factorization. Further, marketing departments are aiming to capture customer heterogeneity by splitting customers into a number of clusters and developing products or services customized for these segments (e.g. pet owners, vegetarians). For such tasks analysts may opt for clustering techniques, such as principal components analysis, k-means clustering, or discrete choice models, including questionnaire-based conjoint analysis. Traditional choice models require that products are restricted to a small subset of items, or grouped into a handful of categories, in order to make computations feasible (<em>Nevo, 1998</em>). One step beyond clustering is individual personalization - serving each customer according to their needs. This will be our aim in the grocery store setting. So what are the current state-of-the-art models for personalized item predictions?</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#160;Poisson-factorization">&#160;Poisson factorization<a class="anchor-link" href="#&#160;Poisson-factorization">&#182;</a></h3><p>Widely used in E-commerce settings, Hierarchical Poisson factorization (HPF) captures user-to-item interaction, extracting user preferences for recommendation of previously unpurchased products through past purchases of other similar customers. The mathematics underlying this model are straightforward: users’ preferences are Gamma distributed based on their past activity (number of shopping trips) and items’ attributes are Gamma distributed based on their popularity (number of purchases). The user-item interaction is expressed in the rating (either a points scale, such as 1-5 stars, or binary dummy for purchase), which is Poisson distributed according to the user’s preference and item’s attribute. As a simple example, imagine a customer who has only bought vegetables in her five previous shopping trips (activity). This customer’s preference would thus be classified as vegetarian. On the other hand, the shop has a variety of frequently bought (popular) vegetables (which is an attribute of those items). As other customers with the preference “vegetarian” have bought asparagus, the resulting “rating” will be high, and thus this customer would receive a recommendation to buy asparagus. 
 It is called hierarchical due to the ordering of both items and users; some products are bought more frequently than others (are more popular), and some customers execute more purchases than others (are more active).</p>
@@ -13175,33 +13178,35 @@ It is called hierarchical due to the ordering of both items and users; some prod
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#160;Exponential-Family-Embeddings">&#160;Exponential Family Embeddings<a class="anchor-link" href="#&#160;Exponential-Family-Embeddings">&#182;</a></h3><p>Yet better than Poisson factorization is the collection of models called Exponential family embeddings (EFE). It stems from methods created for natural language processing, such as word embeddings (<em>Mikolov et al., 2013</em>) , but can be extended to other highly-relational datasets. It is composed of individual terms (originally words, in our case grocery items) that make up a corpus (dictionary or store inventory) and are mutually bound in a context (sentence or a shopping basket) via conditional probability. This link is the probability that a specific item is in this particular basket given all the other items in the same basket, and comes from an exponential distribution, such as Poisson for discrete and Gaussian for real-valued data points. The objective is to maximize these conditional probabilities of the whole corpus, which creates shared embeddings for each term. Through these latent embeddings, we can calculate similarity (and dissimilarity) as the cosine distance between the embedding vectors and thus represent how similar (or disimilar) items are to each other. Moreover, “Poisson embeddings can capture important econometric concepts, such as items that tend not to occur together but occur in the same contexts (substitutes) and items that co-occur, but never one without the other (complements)” (<em>Rudolph et al, 2016</em>).</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>These state-of-the-art models have their shortcomings; neither of these capture price effects and seasonality patterns. SHOPPER attempts to build on these two models, by combining the item-to-item interaction of EFE and user preferences of HPF, and also accounting for price effects and seasonality.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Shopper---What-is-it-and-how-does-it-work?">Shopper - What is it and how does it work?<a class="anchor-link" href="#Shopper---What-is-it-and-how-does-it-work?">&#182;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="https://drive.google.com/uc?id=1CEMZjsyzsq8nsjCW6gL1pmqNP_3bxdjX" alt="Shopping Recommendations"></p>
+<p><img align="center" width="275" height="275" 
+  src="/blog/img/seminar/group3_shopper/recommendation_comic.jfif" alt="Shopping Recommendations"
+  style="display:block;margin:0 auto;"></p>
 <p>The SHOPPER algorithm (<em>Blei et al., 2017</em>) is a sequential probabilistic model for market baskets. SHOPPER models how customers place items in their basket when shopping for groceries, taking various factors into account, including seasonal effects, personal preferences, price sensitivities and item-to-item interactions. SHOPPER imposes a structure on customer behaviour and assumes customers behave according to the Random Utility Model, with theory grounded in economics.</p>
 <p>SHOPPER posits that a customer walks into the store and sequentially chooses each item to be placed in the basket. The customer chooses each item based on personal preferences, price, seasonality and overall item popularity. As each item is placed into the basket, the customer then takes the current products in the basket into account when deciding on the next product. One can imagine a typical shopping trip, where the customer goes in with an intent to buy a specific item, e.g. cheese, and later decides to spontaneously purchase complementary products, such as wine and crackers. Although the customer initially had no intention of purchasing wine and crackers, the presence of cheese increased the attractiveness of the complementary products. SHOPPER generates latent variables to model these factors, estimates an overall utility value for each shopping trip and calculates a probability of observing a set of items in a given basket.</p>
 <p>The basics of the model can be summarized with the following 5 equations:</p>
@@ -13221,18 +13226,21 @@ It is called hierarchical due to the ordering of both items and users; some prod
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Although daunting at first, the model can be broken down into smaller pieces to fully understand it. From a conceptual point of view, SHOPPER assumes that a consumer seeks to maximize the utility received from their basket each shopping trip (equation 5). They do this by selecting an item from all of the available items in the store (equation 4). The product most likely to be chosen by the shopper is the one that provides her with the highest utility (equation 3). The utility function can be described as a log-linear function with latent variables representing: item popularity, user preferences, price sensitivities, seasonal effects and item-item interactions (equations 1 and 2). The following sections will delve further into detail for each equation.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Equation-1-(Latent-Variables)">Equation 1 (Latent Variables)<a class="anchor-link" href="#Equation-1-(Latent-Variables)">&#182;</a></h3>$$\psi_{tc} = \lambda_{c} + \theta_{ut}^T \alpha_{c} - \gamma_{ut}^T \beta_{c} log(r_{tc}) + \delta_{wt}^T \mu_{c} $$<p>Equation 1 represents the utility a customer gets from item $c$ in trip $t$. The above equation can be divided into several smaller portions.</p>
+<h3 id="Equation-1-(Latent-Variables)">Equation 1 (Latent Variables)<a class="anchor-link" href="#Equation-1-(Latent-Variables)">&#182;</a>
+</h3>
+<br>
+$$\psi_{tc} = \lambda_{c} + \theta_{ut}^T \alpha_{c} - \gamma_{ut}^T \beta_{c} log(r_{tc}) + \delta_{wt}^T \mu_{c} $$<p>Equation 1 represents the utility a customer gets from item $c$ in trip $t$. The above equation can be divided into several smaller portions.</p>
 <p><em>Item Popularity</em> : $\lambda_{c}$ can be thought of as representing a latent (time invariant) intercept term that captures overall item popularity. In this case, the more popular an item is, the higher the value of this variable should be.</p>
 <p><em>User Preferences</em> : To get a more accurate utility estimate, SHOPPER creates a per-user latent vector $\theta_{u}$, along with a per-item latent $\alpha_c$. By taking the dot product of the two vectors we get per-item preferences for each shopper. A larger value indicates a higher preference a user has for a certain item.</p>
 <p><em>Price Sensitivities</em> : SHOPPER posits that each user has an individualized price elasticity for each item. To estimate these elasticities SHOPPER generates a new set of per-user latent vectors, $\gamma_{ut}$, and a new set of per-item latent vectors, $\beta_{c}$. $\gamma_{ut}^T \beta_{c}$ then represents the price elasticity for each user for each item. $\gamma_{ut}^T \beta_{c}$ is restricted to be positive, so that $- \gamma_{ut}^T \beta_{c} log(r_{tc})$ remains negative, where $r_{tc}$ is the normalized price of the product. This is to ensure that shopper utility will decrease as price increases, meaning shoppers prefer to have the same good at lower prices. SHOPPER normalizes item prices by dividing the item's price by its mean weekly price. This brings all prices to a comparable scale so that larger prices don’t over-influence the training.</p>
@@ -13241,10 +13249,14 @@ It is called hierarchical due to the ordering of both items and users; some prod
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Equation-2-(Item-Item-Interactions)">Equation 2 (Item-Item Interactions)<a class="anchor-link" href="#Equation-2-(Item-Item-Interactions)">&#182;</a></h3>$$\Psi(c, y_{t, i-1}) = \psi_{tc} + \rho_{c}^T(\frac{1}{i-1} \displaystyle\sum_{j=1}^{i-1} \alpha_{y_{tj}} )$$<p>Equation 1 calculates the utility a customer receives from a specific item $c$ by itself. However, this ignores important item-to-item interaction effects. For example, if a customer has already placed crackers in their basket, then the utility obtained by buying cheese would be greater than if the cheese was purchased without crackers. To model these item to item interactions, SHOPPER introduces the term $\rho_c$.</p>
+<h3 id="Equation-2-(Item-Item-Interactions)">Equation 2 (Item-Item Interactions)<a class="anchor-link" href="#Equation-2-(Item-Item-Interactions)">&#182;</a>
+ 
+</h3>
+<br>
+$$\Psi(c, y_{t, i-1}) = \psi_{tc} + \rho_{c}^T(\frac{1}{i-1} \displaystyle\sum_{j=1}^{i-1} \alpha_{y_{tj}} )$$<p>Equation 1 calculates the utility a customer receives from a specific item $c$ by itself. However, this ignores important item-to-item interaction effects. For example, if a customer has already placed crackers in their basket, then the utility obtained by buying cheese would be greater than if the cheese was purchased without crackers. To model these item to item interactions, SHOPPER introduces the term $\rho_c$.</p>
 <p>If we consider two items $c$ and $c'$, then $\rho_c$ represents the interaction effects of product $c$ and $c'$. Using the item attribute vector, $\alpha_{c'}$ estimated earlier in equation 1 we can estimate the complementary and substitution effects of different products. If $\rho_{c}^T \alpha_{c'}$ is large, then the presence of item $c'$ in the basket increases the benefit choosing item $c$. These two products would be considered complements. Conversely, when $\rho_{c}^T \alpha_{c'}$ is small, we can interpret these items as substitutes. Even if the latent item vectors are similar, the two products can still be substitutes, i.e. crackers and crispbread (Knäckebrot).</p>
 <p>In the SHOPPER model, when the customer is deciding whether to put item $c$ in the basket, they do not consider the item-to-item interaction of every single item individually. Instead SHOPPER takes the average value of the latent item vectors of the products already in the basket and calculates the scaler product with $\rho_{c}$. The scaling factor $ \frac{1}{(i - 1)}$ captures the idea that in larger baskets each individual item has a smaller effect on the addition of a new product in the basket.</p>
 <p>Additionally, the utility function is additive in the other items in the basket, meaning SHOPPER assumes that item interactions within the basket are linear. This is a point that could be studied for future work.</p>
@@ -13252,18 +13264,28 @@ It is called hierarchical due to the ordering of both items and users; some prod
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Equation-3-&amp;-4-(Utility-and-Choice-Probabilities)">Equation 3 &amp; 4 (Utility and Choice Probabilities)<a class="anchor-link" href="#Equation-3-&amp;-4-(Utility-and-Choice-Probabilities)">&#182;</a></h3><p>From equations 1 and 2 we calculate the term $\Psi(c, y_{t, i-1})$, which is interpreted as the utility a customer receives from item $c$, given the week, price, and other items in the basket. The customer's problem then becomes:</p>
+<br>
 $$max \space U_{t,c}(y_{t, i-1}) = \Psi(c, y_{t, i-1}) + \epsilon_{t,c} $$<p>Those familiar with discrete choice modelling will quickly recognize the above formula as a Random Utlity Model (<em>Mcfadden, 1978</em>). Upon entering the store, the customer is presented with a set of alternatives they must choose from. The customer chooses the alternative that maximizes her utility, i.e. if item $c$ generates a higher utility than item $c'$, the customer chooses item $c$. The full utility $U$ is known to the customer, but has a random component that is not observable by an outsider (for example how hungry they are during the shopping trip). In SHOPPER, $\Psi(c, y_{t, i-1})$ represents the deterministic portion of the customer's utility, the portion that can be modelled, and $\epsilon_{t,c}$ represents the random portion of utility. See the Appendix for a further explanation of the Random Utility Model.</p>
 <p>Using the derivation from (<em>Train, 2009</em>) and the assumption of i.i.d error terms that follow a Gumbel distribution, we can show that the probability of choosing item $c$ can be described using a softmax function.</p>
+<br>
 $$p(y_{ti} = c | \mathbf{y}_{t, i-1}) = \frac{exp\{\Psi(c, \mathbf{y}_{t, i-1})\}}{\displaystyle \sum_{c' \notin y_{t, i-1}}exp\{\Psi(c', \mathbf{y}_{t, i-1})\} }$$
+
+<figure>
+  <img align="center" width="600" height="400" 
+    src="/blog/img/seminar/group3_shopper/full_basket.jpg" alt="Choices"
+    style="display:block;margin:0 auto;">
+    <figcaption align = "center"><em>An example of all the choices a shopper faces in a shopping trip</em></figcaption>
+  </figure>
+
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Equation-5-(Putting-it-All-Together)">Equation 5 (Putting it All Together)<a class="anchor-link" href="#Equation-5-(Putting-it-All-Together)">&#182;</a></h3><p>We have now seen the decision making process of our customer when choosing a single product, but the overall goal of the shopping trip is to maximize the utility of the entire basket. In this case, the shopper only cares about the items that are in their basket at the end of the trip and not necessarily in what order they were placed in.</p>
 $$\widetilde{U}_t(\mathcal{Y_t}) = \displaystyle\sum_{c \in \mathcal{Y_t}} \psi_{tc} + \frac{1}{|\mathcal{Y_t}| - 1} \displaystyle\sum_{(c, c') \in \mathcal{Y_t} \times \mathcal{Y_t}:c'\neq c} v_{c',c}$$<p>From the above equation, we see that the customer chooses items such that the unordered set of items $\mathcal{Y_t}$ maximizes utility. $\displaystyle\sum_{c \in \mathcal{Y_t}} \psi_{tc}$ represents the sum of the utilities gained from each item in the basket. $\frac{1}{|\mathcal{Y_t}| - 1} \displaystyle\sum_{(c, c') \in \mathcal{Y_t} \times \mathcal{Y_t}:c'\neq c} v_{c',c}$ represents the utility gained from item-item interactions in the basket.</p>
@@ -13271,74 +13293,99 @@ $$\widetilde{U}_t(\mathcal{Y_t}) = \displaystyle\sum_{c \in \mathcal{Y_t}} \psi_
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Probabilities-of-Unordered-Baskets">Probabilities of Unordered Baskets<a class="anchor-link" href="#Probabilities-of-Unordered-Baskets">&#182;</a></h3><p>Equation 5 from above actually represents the utility a shopper gains from the unordered set of items in <em>her</em> basket, but using our softmax function from earlier, equation 4, gives us the probability of an <em>ordered</em> basket.</p>
 <p>The probability of an ordered basket can be calculated by multiplying the individual choice probabilities with each other. For example, the probability of getting the basket $(bread, eggs, milk)$ equals $p(bread| ) \times p(eggs| bread) \times p(milk| bread, eggs)$. In general, it can be written as:</p>
-$$p(\mathbf{y}_t | \rho, \alpha) = \displaystyle \prod_{i=1}^{n_t} p(y_{ti}| \mathbf{y}_{t, i-1}, \rho, \alpha) $$<p>where $n_t$ represents the last item in the basket for that trip. However, in most offline real-world datasets, the order in which items are added to the basket is not observed. To account for this, SHOPPER calculates the likelihood of an unordered set of items $\mathcal{Y}_t$, by summing over all the possible orderings. In our small example above, this corresponds to $$p(\{bread, eggs, milk\}) = p((bread, eggs, milk)) + p((eggs, bread, milk)) + p((eggs, milk, bread)) + ...$$</p>
+<br>
+$$p(\mathbf{y}_t | \rho, \alpha) = \displaystyle \prod_{i=1}^{n_t} p(y_{ti}| \mathbf{y}_{t, i-1}, \rho, \alpha) $$<p>where $n_t$ represents the last item in the basket for that trip. However, in most offline real-world datasets, the order in which items are added to the basket is not observed. To account for this, SHOPPER calculates the likelihood of an unordered set of items $\mathcal{Y}_t$, by summing over all the possible orderings. In our small example above, this corresponds to:
+<br>  
+$$p(\{bread, eggs, milk\}) = p((bread, eggs, milk)) + p((eggs, bread, milk)) + p((eggs, milk, bread)) + ...$$</p>
 <p>For only three items, we have to consider six different probabilities. As the basket size grows to $n$ items, we then have to sum over $n!$ probabilities, which can very quickly become intractable. The probability of an unordered basket can be generalized as:</p>
+<br>
 $$ p(\mathcal{Y}_t | \rho, \alpha) = \displaystyle \sum_{\pi}p(\mathbf{y}_{t, \pi}| \rho, \alpha) $$<p>where $\pi$ is a permutation of the items in the basket. SHOPPER then generates its latent variables to maximize the estimated log of this probability. The closer the log-likelihood is to zero, the better the latent variables describe the observed data.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="How-is-SHOPPER-different">How is SHOPPER different<a class="anchor-link" href="#How-is-SHOPPER-different">&#182;</a></h4><p>As we have seen, SHOPPER combines modern machine learning techniques with economic theory to create a generative model that takes user preferences, seasonal factors, and price elasticities into account. SHOPPER uses the Random Utility Model to model customer behaviour and matrix factorization to generate user and item embeddings. By combining these two techniques, SHOPPER can generate shopper preferences for large-scale shopping data.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Generating-Latent-Variables">Generating Latent Variables<a class="anchor-link" href="#Generating-Latent-Variables">&#182;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Matrix-Factorization">Matrix Factorization<a class="anchor-link" href="#Matrix-Factorization">&#182;</a></h4><p>Now that we have seen how SHOPPER works conceptually, we can look into how the latent variables are actually generated.</p>
 <p>One option of creating latent variables is to simply create a one-hot encoded matrix. We could create a vector for each shopper that has a 1 for each item they have bought, and a zero for products they did not buy. By repeating this process for all shoppers, we create our one-hot encoded customer-item matrix. The rows of our matrix can actually be considered an embedding for that shopper, as we have now converted a shopper's purchases into a numerical vector. Similarly the columns of our matrix can be considered to be the item embedding, as we now see which shoppers purchased that item. The following shows an example of what an one-hot encoded matrix would look like:</p>
-<p><img src="https://drive.google.com/uc?id=1M0a88fH6cLm181I8dq6NWbnjjrVpoOM7" alt="alt text"></p>
+<br>
+<figure>
+<img align="center" width="500" height="300" 
+  src="/blog/img/seminar/group3_shopper/item_shopper_mf.png" alt="Matrix Factorization"
+  style="display:block;margin:0 auto;">
+  <figcaption align = "center"><em>An example of a one-hot encoded shopper-item matrix</em></figcaption>
+</figure>
+
 <p>We can see that it is easy to summarize across shoppers or products, but it is difficult to see any underlying patterns among users or products. A large number of shoppers and products can also cause memory problems. The dimensions of the matrix are $ \# \ unique \ shoppers * \# \ unique \ items$. Much of the matrix is also sparse, meaning most entries are 0, because most shoppers do not purchase or even consider all of the unique products for sale. For our small example, this is not a problem but larger datasets with thousands of unique shoppers and thousands of unique products require a higher memory capacity. It also becomes difficult to optimize our model using this structure, since we would have to update weights for each individual item-shopper combination.</p>
 <p>To solve this problem we turn to matrix factorization (MF). MF posits that there is a set of latent variables (unobservable features) that describe each shopper and each item, such that when multiplied together the resulting product is our observed shopper-item matrix. In our small example, we believe that there are 5 latent variables that can accurately describe shoppers and items. Therefore we create two matrices $Shoppers$ and $Items$, that hold our shoppers' latent variables and items' latent variables, respectively. To begin with, we initialize the matrices randomly. They would look something like this, where $l_i$ represents latent variable $i$:</p>
-<p><img src="https://drive.google.com/uc?id=1kvSUgun_3u0LBpwZV6nIqdkvnRHk3pZn" alt="alt text"></p>
-<p><img src="https://drive.google.com/uc?id=18KNFXDTUyJw57f99IziUOPZGSfu-aMeY" alt="alt text"></p>
+
+<br>
+<figure>
+  <img align="center" width="250" height="250" 
+    src="/blog/img/seminar/group3_shopper/shopper_mf.png" alt="Shopper Latent Factors"
+    style="display:block;margin:0 auto;">
+    <figcaption align = "center"><em>An example of latent shopper vectors</em></figcaption>
+  </figure>
+
+  <figure>
+    <img align="center" width="400" height="275" 
+      src="/blog/img/seminar/group3_shopper/items_mf.png" alt="Item Latent Factors"
+      style="display:block;margin:0 auto;">
+      <figcaption align = "center"><em>An example of latent item vectors</em></figcaption>
+    </figure>
+
 <p>The rows of our $Shoppers$ matrix represent latent shopper variables and the columns of our $Items$ matrix represent latent item variables. We need to estimate our latent variables such that $Shoppers \cdot Items $ is equal to our observed shopper-item matrix.
 To see if our factorization is doing well, we define an error function. In traditional matrix factorization, an error term such as the matrix norm or mean squared error is used to calculate the error. However, the authors of SHOPPER define a variational inference algorithm that optimizes the factorization based on the log-likelihood of baskets described earlier. The algorithm is out of the scope of this post, but interested readers can see it <a href="https://arxiv.org/pdf/1711.03560.pdf">here</a>.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Our-Task">Our Task<a class="anchor-link" href="#Our-Task">&#182;</a></h1><p>We will now attempt to replicate the SHOPPER model using the TensorFlow framework. The trick here is to turn SHOPPER, a generative model, into a discriminative model, one that optimizes by making a prediction. We will take a deeper look into the unique challenges of this problem and our corresponding results.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Data-Exploration">Data Exploration<a class="anchor-link" href="#Data-Exploration">&#182;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For this task, we will use a dataset of purchases made between April 2015 and March 2017 from an unspecified grocery chain in Germany. The information available to us is the user ID, shopping basket ID, product description, category and sub-category of the product, price and date of purchase.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The top five bestselling items in the dataset are the following:</p>
 <ol>
@@ -13353,8 +13400,8 @@ To see if our factorization is doing well, we define an error function. In tradi
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To get a sense of our shoppers' habits, we first take a look at the distribution of the number of items in each basket. We would like to know how many items are in a shopper's basket, on average, for modelling purposes later. 
 From the chart below, we see that, with a few notable outliers, almost all shoppers had less that 40 products in their baskets, with 12 products on average.</p>
@@ -13364,7 +13411,7 @@ From the chart below, we see that, with a few notable outliers, almost all shopp
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -13384,7 +13431,7 @@ From the chart below, we see that, with a few notable outliers, almost all shopp
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[0]:</div>
+   
 
 
 
@@ -13672,8 +13719,8 @@ AElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>A vast majority of products are sold at low price points - most of the store's revenue comes from products cheaper than 5 Euros, and in fact, most products cost between 50 cents and 1 Euro. This fact is specific to grocery stores.</p>
 
@@ -13682,7 +13729,7 @@ AElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">n</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">4.5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">density</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
@@ -13908,8 +13955,8 @@ ODmYmVkVJwczM6vi5GBmZlWcHMzMrIqTg5mZVXFyMDOzKv8PTdjfRu5eF/oAAAAASUVORK5CYII=
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Some days are more popular for shopping than others. If you prefer to do your groceries in peace and quiet, consider going on Tuesday; if however you enjoy the rush and crowds, Saturday is your (and everyone else's) day to visit. Note that in Germany, stores are closed on Sundays!</p>
 <p>There is not as much variation when it comes to months. Still, the most revenue is usually made in April, when Germans stack up on their favourite asparagus, while in October people rather go trick-or-treating than grocery shopping.</p>
@@ -13919,7 +13966,8 @@ ODmYmVkVJwczM6vi5GBmZlWcHMzMrIqTg5mZVXFyMDOzKv8PTdjfRu5eF/oAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df_by_weekday</span><span class="p">[</span><span class="s1">&#39;dayofweek&#39;</span><span class="p">],</span><span class="n">df_by_weekday</span><span class="p">[</span><span class="s1">&#39;shopping_trips&#39;</span><span class="p">]</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">df_by_weekday</span><span class="p">[</span><span class="s1">&#39;shopping_trips&#39;</span><span class="p">]))</span>
@@ -14119,7 +14167,8 @@ TkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df_by_month</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">],</span><span class="n">df_by_month</span><span class="p">[</span><span class="s1">&#39;shopping_trips&#39;</span><span class="p">]</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">df_by_month</span><span class="p">[</span><span class="s1">&#39;shopping_trips&#39;</span><span class="p">]))</span>
@@ -14270,8 +14319,8 @@ OhkQkqROBoQkqdP/A+nSMdplWnWRAAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Although there is little difference in the number of products sold between individual months, <em>which</em> products are sold differs immensely. The product sub-categories with the greatest degree of seasonality entail, unsurprisingly, Easter marzipan, Christmas chocolate figures, figs and other dried fruit, stem vegetables (including asparagus), venison, poultry and nuts.</p>
 
@@ -14280,7 +14329,7 @@ OhkQkqROBoQkqdP/A+nSMdplWnWRAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_subcat_by_month_range</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span> <span class="p">((</span><span class="n">df_subcat_by_month</span><span class="p">[</span><span class="s1">&#39;items_bought&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">df_subcat_by_month</span><span class="p">[</span><span class="s1">&#39;items_bought&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="o">/</span> <span class="n">df_subcat_by_month</span><span class="p">[</span><span class="s1">&#39;items_bought&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="p">),</span> <span class="p">)</span>
@@ -14300,7 +14349,7 @@ OhkQkqROBoQkqdP/A+nSMdplWnWRAAAAAElFTkSuQmCC
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[0]:</div>
+   
 
 
 
@@ -14389,15 +14438,15 @@ OhkQkqROBoQkqdP/A+nSMdplWnWRAAAAAElFTkSuQmCC
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Data-Preparation">Data Preparation<a class="anchor-link" href="#Data-Preparation">&#182;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Before we can feed our data to any model, we need to enforce a clean-up. First of all, we drop rows that have no value for item name or user ID, as we always need to be able to identify the product and the customer in each purchase. Then, since we are predicting only which items the customer is going to buy, no matter the quantity, we therefore disregard all duplicate entries (originally, if a customer bought three bananas, we would have three identical rows in our dataset).</p>
 <p>Additionally, we do not want to consider all products for couponing. As we have seen, the bestselling products include the “Pfand” (the deposit for bottles and cans) and shopping bags. These do not have much value for our predictive model, as in most cases the prices for these are set by law and hence coupons are not applicable, therefore we preemptively remove these two product subcategories. Likewise, the category “other”, that contains items not typical for groceries such as socks and sweaters, is treated as noise.</p>
@@ -14406,8 +14455,8 @@ OhkQkqROBoQkqdP/A+nSMdplWnWRAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Since we are turning a generative model into one that makes predictions, we need to make further adjustments to our dateset. SHOPPER fits the latent variables it generates to the shopping baskets data and minimizes the log likelihood. However, in order for our model to work, we must give it a prediction task on which to optimize.</p>
 <p>One problem that occurs when facing such a task is that in a dataset with actual shopping data, there will only be products that were bought by customers and not products that were considered but not bought. However, when building a model based on shopper preferences, we require products that were not bought, in order to accurately generate the preferences.</p>
@@ -14433,8 +14482,8 @@ OhkQkqROBoQkqdP/A+nSMdplWnWRAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We first create groups for all products which were available in a subcategory for each week and year combination. We will use these groups to sample unpurchased products into the dataset which we are using for our model.</p>
 
@@ -14443,7 +14492,7 @@ OhkQkqROBoQkqdP/A+nSMdplWnWRAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 1</span>
@@ -14462,7 +14511,7 @@ OhkQkqROBoQkqdP/A+nSMdplWnWRAAAAAElFTkSuQmCC
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[0]:</div>
+    
 
 
 
@@ -14483,8 +14532,8 @@ dtype: object</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next we group the products a user bought in one shopping trip into a basket, which contains all the products she bought in this trip.</p>
 
@@ -14493,7 +14542,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 2</span>
@@ -14507,8 +14556,8 @@ dtype: object</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We then take the difference between the group of all products and the basket of products of a certain shopping trip. From this difference, we randomly select one product from the same subcategory as a product that was bought. Thereby creating a new product which was not bought by this customer in her shopping trip, but was available for purchase.</p>
 
@@ -14517,7 +14566,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 3</span>
@@ -14532,8 +14581,8 @@ dtype: object</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next we fill the rows of the new product with data of the remaining columns from the original bought item except for price.</p>
 
@@ -14542,7 +14591,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 4</span>
@@ -14562,8 +14611,8 @@ dtype: object</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The only value that is still missing is the price of the product. In our data there are lots of different prices for the same products, depending on season, coupons or other outside factors. Similar to the groups of products we create a list where we can find the most frequent price at which a particular product was sold in a respective week and year. As there can still be a week where we do not have a price for a certain product we use forward and backward fill. Therefore we will always get a price for our new products.</p>
 <p>There can be instances where prices are higher or lower depending on the day in a certain week. In the data there are sometimes differences in price even on the same day. However, this sampling approach generates reliable data that can be seen as the majority price of a certain product at which the customer did not buy the product.</p>
@@ -14574,7 +14623,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_prices</span> <span class="o">=</span> <span class="n">df_concat</span><span class="p">[[</span><span class="s1">&#39;article_text&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">]]</span>
@@ -14590,7 +14639,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">top_value_count</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -14604,7 +14653,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 5</span>
@@ -14621,7 +14670,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># add the prices for our new products by merging with the most frequent prices </span>
@@ -14636,8 +14685,8 @@ dtype: object</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>These sampled product now just have to be marked that they are not bought items in comparison to the original items that were bought and then put together with the original data to create our new dataset.</p>
 
@@ -14646,7 +14695,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 6</span>
@@ -14661,7 +14710,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_sample2</span> <span class="o">=</span> <span class="n">new_sample2</span><span class="p">[[</span><span class="s1">&#39;basket_hash&#39;</span><span class="p">,</span> <span class="s1">&#39;article_text&#39;</span><span class="p">,</span> <span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;category_name&#39;</span><span class="p">,</span><span class="s1">&#39;subcategory_name&#39;</span><span class="p">,</span> <span class="s1">&#39;bought&#39;</span><span class="p">,</span> <span class="s1">&#39;week&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">]]</span>
@@ -14672,8 +14721,8 @@ dtype: object</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We then concatenate the sampled not-bought products and bought products into one dataframe, reseting the index so that they are distributed within the bought products and are not appended in one big chunk e.g at the end.</p>
 
@@ -14682,7 +14731,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># putting bought and sampled not bought products into one dataframe</span>
@@ -14694,8 +14743,8 @@ dtype: object</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now that we have our bought and not bought products, we need to add one additional column. We are also estimating item-item interactions so we include an additional column that includes a list of all the other items that were purchased in by the shopper for that specific trip.</p>
 
@@ -14704,7 +14753,7 @@ dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># add other items from basket into seperate column as a list</span>
@@ -14716,16 +14765,16 @@ dtype: object</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Our dataset is now complete and prepared, so let's look at modelling.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Model">Model<a class="anchor-link" href="#Model">&#182;</a></h2><p>As seen in SHOPPER our approach is to build a model for personalized shopping recommendations. The difference compared to SHOPPER is that we want to translate the whole process of SHOPPER into the TensorFlow framework and see if that can yield the desired results as well. 
 Most of the maths behind SHOPPER can be found in our approach as well. This can be seen for example with the way the embeddings are calculated. 
@@ -14740,15 +14789,15 @@ $$\psi_{tc} = \lambda_{c} + \theta_{ut}^T \alpha_{c} - \gamma_{ut}^T \beta_{c} l
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Model-architecture">Model architecture<a class="anchor-link" href="#Model-architecture">&#182;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Prior to modelling, we must label encode all of our categorical variables, in order to use them as inputs into our embedding layers.</p>
 
@@ -14757,7 +14806,7 @@ $$\psi_{tc} = \lambda_{c} + \theta_{ut}^T \alpha_{c} - \gamma_{ut}^T \beta_{c} l
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># creating label encoders for items, users and weeks</span>
@@ -14782,8 +14831,8 @@ $$\psi_{tc} = \lambda_{c} + \theta_{ut}^T \alpha_{c} - \gamma_{ut}^T \beta_{c} l
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We split our data into 80% training and 20% test sets. We elected to use a random split for this problem, as it is testing all possible seasons and holidays, rather than taking only the last few months of our dataset.</p>
 
@@ -14792,7 +14841,7 @@ $$\psi_{tc} = \lambda_{c} + \theta_{ut}^T \alpha_{c} - \gamma_{ut}^T \beta_{c} l
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># splitting the data into train and test</span>
@@ -14810,8 +14859,8 @@ $$\psi_{tc} = \lambda_{c} + \theta_{ut}^T \alpha_{c} - \gamma_{ut}^T \beta_{c} l
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Here we bring all of our basket sizes to equal length. Recall, that we limited the maximum size of our baskets to 40 products.</p>
 
@@ -14820,7 +14869,7 @@ $$\psi_{tc} = \lambda_{c} + \theta_{ut}^T \alpha_{c} - \gamma_{ut}^T \beta_{c} l
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras.preprocessing.sequence</span> <span class="k">import</span> <span class="n">pad_sequences</span>
@@ -14842,8 +14891,6 @@ $$\psi_{tc} = \lambda_{c} + \theta_{ut}^T \alpha_{c} - \gamma_{ut}^T \beta_{c} l
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
 
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>Using TensorFlow backend.
@@ -14853,24 +14900,13 @@ $$\psi_{tc} = \lambda_{c} + \theta_{ut}^T \alpha_{c} - \gamma_{ut}^T \beta_{c} l
 
 <div class="output_area">
 
-    <div class="prompt"></div>
 
-
-
-<div class="output_html rendered_html output_subarea ">
-<p style="color: red;">
-The default version of TensorFlow in Colab will soon switch to TensorFlow 2.x.<br>
-We recommend you <a href="https://www.tensorflow.org/guide/migrate" target="_blank">upgrade</a> now 
-or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tensorflow_version 1.x</code> magic:
-<a href="https://colab.research.google.com/notebooks/tensorflow_version.ipynb" target="_blank">more info</a>.</p>
-
-</div>
 
 </div>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[0]:</div>
+    
 
 
 
@@ -14893,11 +14929,11 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">keras</span>
-<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="k">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">Dot</span><span class="p">,</span> <span class="n">Reshape</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">concatenate</span><span class="p">,</span> <span class="n">multiply</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="n">add</span><span class="p">,</span> <span class="n">Average</span><span class="p">,</span> <span class="n">Dropout</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="k">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">Dot</span><span class="p">,</span> <span class="n">Reshape</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="p">,</span> <span class="n">multiply</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="n">add</span>
 <span class="kn">from</span> <span class="nn">keras.models</span> <span class="k">import</span> <span class="n">Model</span>
 <span class="kn">from</span> <span class="nn">keras.optimizers</span> <span class="k">import</span> <span class="n">Adam</span>
 </pre></div>
@@ -14907,8 +14943,8 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Here we define our input variables. We will have five inputs: the shopper ID, the item, the price of the item, the week in which the shopping trip took place, and the other items in the basket. All inputs have a shape of 1, aside from the basket input. This is because baskets can be of varying length, so we leave the dimensions as None, in order to be able to accomodate this.</p>
 
@@ -14917,7 +14953,7 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># defining the inputs for our model user, item, price and week</span>
@@ -14938,8 +14974,8 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The <em>Item Popularity</em>,  $\lambda_{c}$, captures the overall item popularity and will be represented in our model by the item popularity embedding that goes straight into our last add function. It has an embedding dimension of 1.</p>
 
@@ -14948,7 +14984,7 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># creating the first embedding layer for item popularity with embedding size of 1</span>
@@ -14965,8 +15001,8 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next we implement the <em>User Preferences</em>, $\theta_{ut}^T \alpha_{c}$, as the dot product of the newly created user embedding $\theta_{u}$ and the item embedding $\alpha_c$. We create a shared embedding layer here that will be used for both indiviual items and the embeddings of items in our baskets variable. This is to ensure that the latent representation of an individual item and the latent representation of that same item in a basket remains the same.</p>
 
@@ -14975,7 +15011,7 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># creating the embeddings for user and item </span>
@@ -15008,8 +15044,8 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Jumping forward a bit, we consider the term $\rho_{c}^T(\frac{1}{i-1} \displaystyle\sum_{j=1}^{i-1} \alpha_{y_{tj}} )$ from equation 2. We first create a new item-item interaction vector $\rho_{c}$ that captures complementary effects between items. This is multiplied by the term $\displaystyle\sum_{j=1}^{i-1} \alpha_{y_{tj}}$, which is nothing more than the average of the vectors of all the other items in the shopping basket. Note that this $\alpha$ is the same as the $\alpha$ from our previous embedding. This is why we use a shared embedding layer.</p>
 
@@ -15018,7 +15054,7 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create item to item embedding</span>
@@ -15046,8 +15082,8 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We now consider estimating price sensitivities. From the SHOPPER algorithm we have, $\gamma_{ut}^T \beta_{c} log(r_{tc})$. We create new item and user embeddings $\gamma_{ut}$ and $\beta_{c}$. In order to calculate the price elasticity for each user, $\gamma$, for each item, $\beta$, we take the dot product of our two embeddings, resulting in $\gamma_{ut}^T \beta_{c}$. This elasticity then gets multiplied with the price $r_{tc}$ to get the overall price effect on shopper utility.</p>
 <p>In this step we varied from the SHOPPER paper as we did not normalize the price by taking the log and also do not take the negative. We found our model to be able to recognize that a higher price is bad for a product to be bought and it will learn to lower the utility of a product if the price gets higher. We also estimated the price effects of each individual item, whereas the authours of SHOPPER normalize prices within categories. We did this to get the most granular price effects possible. This complex embedding structure allows us to have a price sensitivity for every customer and every product instead of having one estimate for all users.</p>
@@ -15057,7 +15093,7 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Embedding the product (shape will be (None, 1, embedding_size))</span>
@@ -15086,8 +15122,8 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Lastly we consider the <em>Seasonality</em> $\delta_{wt}^T \mu_{c}$ which we calculate from a new set of item embeddings $\mu_{c}$ and a set of week embedddings $\delta_{w}$. From these latent vectors we again take the dot product to calculate the <em>Seasonality</em>.</p>
 
@@ -15096,7 +15132,7 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Embedding the week (shape will be (None, 1, embedding_size))</span>
@@ -15123,8 +15159,8 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Adding these four effects together gives us the utility of a product $c$ to a costumer $u$ when buying this product for price $r_{tc}$ in week $w$ for a certain trip $t$. This utility will be put into the dense layer and with a sigmoid function we get a probability between 0 and 1 of the customer to buy said product.</p>
 
@@ -15133,7 +15169,7 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Sum up various dot products to get total utility value</span>
@@ -15157,7 +15193,7 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
@@ -15173,7 +15209,6 @@ or ensure your notebook will continue to use TensorFlow 1.x via the <code>%tenso
 
 <div class="output_area">
 
-    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -15258,20 +15293,35 @@ None
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Putting all of the above steps together leads to the model summary that can be seen in the code above. The graphic below illustrates how the embeddings are interconnected. There the different embeddings, input layers etc. have different shapes to tell them apart and the individual components of SHOPPER equation 1 and 2 are colorcoded so that it gets easier to track what part goes where.</p>
-<p><img src="https://drive.google.com/uc?id=1vF2cLtgIDoMP9Lgqzj-l73pddolmPiaB" alt="alt text"></p>
+<br>
+<figure>
+  <img align="center" width="600" height="400" 
+    src="/blog/img/seminar/group3_shopper/Model_architecture_colorcoded.png" alt="Model Colour Coded"
+    style="display:block;margin:0 auto;">
+    <figcaption align = "center"><em>Our model architecture</em></figcaption>
+  </figure>
+
 <p>Like already mentioned when creating the item-price embedding, in this step we varied from the SHOPPER paper as we did not normalize the price by taking the log and also do not take the negative. Therefore we can just add up all the components in our last layer and calculate the utility this way.</p>
-<p><img src="https://drive.google.com/uc?id=1yX7IHaT8l5Enhfmvjr5QWGowoqrrnXZK" alt="alt text"></p>
+
+<br>
+<figure>
+  <img align="center" width="500" height="300" 
+    src="/blog/img/seminar/group3_shopper/SHOPPER_Equation_colorcoded_.png" alt="Equation Colour Coded"
+    style="display:block;margin:0 auto;">
+    <figcaption align = "center"><em>Comparison between our model and SHOPPER</em></figcaption>
+  </figure>
+
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">story</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">({</span><span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;encoded_user&#39;</span><span class="p">],</span> <span class="s1">&#39;item&#39;</span><span class="p">:</span> <span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;encoded_prods&#39;</span><span class="p">],</span> <span class="s1">&#39;price&#39;</span><span class="p">:</span><span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="s1">&#39;week&#39;</span><span class="p">:</span> <span class="n">X_train</span><span class="p">[</span><span class="s1">&#39;encoded_week&#39;</span><span class="p">],</span> 
@@ -15290,28 +15340,12 @@ None
 
 <div class="output_area">
 
-    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/keras/backend/tensorflow_backend.py:1033: The name tf.assign_add is deprecated. Please use tf.compat.v1.assign_add instead.
-
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/keras/backend/tensorflow_backend.py:1020: The name tf.assign is deprecated. Please use tf.compat.v1.assign instead.
-
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/keras/backend/tensorflow_backend.py:3005: The name tf.Session is deprecated. Please use tf.compat.v1.Session instead.
-
+<pre>
 Train on 8299710 samples, validate on 922191 samples
 Epoch 1/3
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/keras/backend/tensorflow_backend.py:190: The name tf.get_default_session is deprecated. Please use tf.compat.v1.get_default_session instead.
-
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/keras/backend/tensorflow_backend.py:197: The name tf.ConfigProto is deprecated. Please use tf.compat.v1.ConfigProto instead.
-
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/keras/backend/tensorflow_backend.py:207: The name tf.global_variables is deprecated. Please use tf.compat.v1.global_variables instead.
-
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/keras/backend/tensorflow_backend.py:216: The name tf.is_variable_initialized is deprecated. Please use tf.compat.v1.is_variable_initialized instead.
-
-WARNING:tensorflow:From /usr/local/lib/python3.6/dist-packages/keras/backend/tensorflow_backend.py:223: The name tf.variables_initializer is deprecated. Please use tf.compat.v1.variables_initializer instead.
-
 8299710/8299710 [==============================] - 510s 61us/step - loss: 0.4747 - acc: 0.7654 - val_loss: 0.4142 - val_acc: 0.8043
 Epoch 2/3
 8299710/8299710 [==============================] - 496s 60us/step - loss: 0.3113 - acc: 0.8658 - val_loss: 0.4158 - val_acc: 0.8135
@@ -15327,7 +15361,7 @@ Epoch 3/3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">story</span><span class="o">.</span><span class="n">history</span>
@@ -15343,7 +15377,7 @@ Epoch 3/3
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[0]:</div>
+    
 
 
 
@@ -15361,8 +15395,8 @@ Epoch 3/3
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We train for a small number of epochs with a low learning rate because, during experimentation, we found our model to overfit on the training set very quickly. This is likely because the data is individualized (we are using unique identifiers for users and items), so the model can not inherently generalize well. One option to be discussed in future research could be to see the effect of adding a regularization parameter to the loss function.</p>
 
@@ -15371,7 +15405,7 @@ Epoch 3/3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># make predictions</span>
@@ -15386,7 +15420,7 @@ Epoch 3/3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_test</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span> <span class="p">,</span> <span class="s1">&#39;bought&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Y_test</span>
@@ -15402,8 +15436,8 @@ Epoch 3/3
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h2><p>After training we take a look at our results. First, we see how the model performed on our prediction task by looking at the ROC and the AUC. We use an AUC score of 0.5 as a naive benchmark, to see if our model is at least better than predicting randomly. Recall that the distribution of 1's and 0's is balanced, due to our previous sampling procedure.</p>
 
@@ -15412,7 +15446,7 @@ Epoch 3/3
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Python script for confusion matrix creation. </span>
@@ -15439,7 +15473,6 @@ Epoch 3/3
 
 <div class="output_area">
 
-    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -15467,7 +15500,7 @@ weighted avg       0.81      0.81      0.81   2305476
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">compute_roc</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -15500,7 +15533,7 @@ weighted avg       0.81      0.81      0.81   2305476
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
@@ -15739,7 +15772,7 @@ e+QgGDI2OsAAAAAASUVORK5CYII=
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[0]:</div>
+  
 
 
 
@@ -15756,23 +15789,23 @@ e+QgGDI2OsAAAAAASUVORK5CYII=
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can clearly see that the model outperforms random guessing. However, as evident from the ROC, the model can correctly distinguish between purchased and unpurchased items at lower thresholds. But, eventually, the model reaches a plateau and can not improve its predictions. We also observed this in the accuracy measure during model training.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Embeddings">Embeddings<a class="anchor-link" href="#Embeddings">&#182;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Item-Embeddings">Item Embeddings<a class="anchor-link" href="#Item-Embeddings">&#182;</a></h3><p>An additional benefit of this model is the embeddings that it generates. These embeddings can give insights into user preferences, seasonal factors and price elasticities. Below we will take a look at the resulting embeddings. First we define a function to extract our embeddings.</p>
 
@@ -15781,7 +15814,7 @@ e+QgGDI2OsAAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_model_embeddings</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">encoder_name</span><span class="p">):</span>
@@ -15806,8 +15839,8 @@ e+QgGDI2OsAAAAAASUVORK5CYII=
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Since we have over 91 categories to consider, we will look at a small sample of 6 categories to see how our embeddings look.</p>
 
@@ -15816,7 +15849,7 @@ e+QgGDI2OsAAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># extract item embeddings </span>
@@ -15835,8 +15868,8 @@ e+QgGDI2OsAAAAAASUVORK5CYII=
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To reduce the number of dimensions, we use a relatively new method of dimensionality reduction called UMAP. UMAP is  another dimensionality reduction technique, like T-SNE, but has it's own algorithm. UMAP is much faster and can capture global relationships better (<em>McInnes et al., 2018</em>).</p>
 
@@ -15845,7 +15878,7 @@ e+QgGDI2OsAAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">umap</span>
@@ -15866,7 +15899,7 @@ e+QgGDI2OsAAAAAASUVORK5CYII=
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">datasource</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">item_embeddings_umap</span><span class="p">)</span>
@@ -15904,7 +15937,6 @@ e+QgGDI2OsAAAAAASUVORK5CYII=
 
 <div class="output_area">
 
-    <div class="prompt"></div>
 
 
 
@@ -16208,7 +16240,6 @@ var element = $('#630b162b-fbf0-45a0-abd6-3c724b7cdc17');
 
 <div class="output_area">
 
-    <div class="prompt"></div>
 
 
 
@@ -16227,7 +16258,7 @@ var element = $('#630b162b-fbf0-45a0-abd6-3c724b7cdc17');
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+  
 
 
 
@@ -16272,23 +16303,23 @@ var element = $('#b750979e-a7d5-44aa-a152-3c82a3da1e69');
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>With the help of UMAP we can find clusters of products that where bought by similar customers. A very nice example can be found in the bottom left with several lactose free products. We then can for example conclude that these customers are lactose intolerant and consider it for our marketing efforts.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Seasonality">Seasonality<a class="anchor-link" href="#Seasonality">&#182;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Another feature of our model, similar to SHOPPER, is the usage of seasonal effects on shopping preferences. To calculate seasonal effects we take the dot product of our respective item and week embeddings. Below we show the seasonal scores for the week of Easter. The item with the second highest score is an Easter product and we see many more chocolate items with a higher score than other weeks. Our model is able to identify these products that would be in higher demand during Easter, showing that seasonal effects have been picked up by the model.</p>
 
@@ -16297,7 +16328,7 @@ var element = $('#b750979e-a7d5-44aa-a152-3c82a3da1e69');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">week_vectors_df</span> <span class="o">=</span> <span class="n">get_model_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;week_embedding&#39;</span><span class="p">,</span> <span class="n">le_week</span><span class="p">)</span>
@@ -16312,7 +16343,7 @@ var element = $('#b750979e-a7d5-44aa-a152-3c82a3da1e69');
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#easter (lots of easter chocolate show up)</span>
@@ -16329,7 +16360,7 @@ var element = $('#b750979e-a7d5-44aa-a152-3c82a3da1e69');
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[0]:</div>
+    
 
 
 
@@ -16354,16 +16385,16 @@ Name: 12, dtype: float32</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Although it may be fairly obvious that chocolate sells more during Easter, this information can still be of value to retailers. With this knowledge retailers can see which specific items are more likely to be bought than others. They can then avoid printing coupons for seasonal items that are near the top of the list, since shoppers will seek them out anyways. Instead retailers can focus on seasonal products that have a lower score, to induce shoppers to purchase them, and reduce in-store waste.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Price-Elasticities">Price Elasticities<a class="anchor-link" href="#Price-Elasticities">&#182;</a></h3><p>We now consider the price elasticities generated by our model. The goal of generating these is to be able to accurately see the effect price has on the probability of a shopper purchasing a specific item or not. Using this, a retailer could potentially generate personalized coupons that bring the price of an item down to a consumer's maximum willingness to pay. We test this on our model by taking a shopper and an item, hold all other variables constant, and vary only the price of the item.</p>
 
@@ -16372,7 +16403,7 @@ Name: 12, dtype: float32</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">user_price_vectors_df</span> <span class="o">=</span> <span class="n">get_model_embeddings</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;user_embedding_price&#39;</span><span class="p">,</span> <span class="n">le_user</span><span class="p">)</span>
@@ -16387,7 +16418,7 @@ Name: 12, dtype: float32</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">elasticity_check</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">article_text</span><span class="p">,</span> <span class="n">price</span><span class="p">,</span> <span class="n">week</span><span class="p">,</span> <span class="n">basket_hash</span><span class="p">):</span>
@@ -16412,7 +16443,7 @@ Name: 12, dtype: float32</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">user_id</span> <span class="o">=</span> <span class="mi">859</span>
@@ -16429,7 +16460,7 @@ Name: 12, dtype: float32</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Probability of user_id </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user_id</span><span class="p">),</span> <span class="s1">&#39;purchasing item </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">item</span><span class="p">),</span>
@@ -16447,7 +16478,6 @@ Name: 12, dtype: float32</pre>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -16462,7 +16492,7 @@ Name: 12, dtype: float32</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_price</span> <span class="o">=</span> <span class="mf">1.25</span>
@@ -16482,7 +16512,7 @@ Name: 12, dtype: float32</pre>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -16495,8 +16525,8 @@ Name: 12, dtype: float32</pre>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Our above example shows an example use-case of our model. Consider a grocery retailer who wishes to induce user 859 into purchasing the Danone Activia Muesli pack. The probability of the shopper purchasing the item is 0.07 at a price of 2 euros, which results in an expected revenue of 0.14 euros for the store. Offering the shopper a discount of 0.75 euros increases the probability of purchase to 0.10, which results in an expected revenue of 0.125 euros for the store. In this case, it is not in the store's interest to give the customer a discount, unless the item would go to waste anyways. Grocery items have a relatively short shelf-life compared to other goods, and cannot be sold after their expiry date has passed. Using this method, retailers could encourage shoppers to buy these expiring groceries, as opposed to simply throwing them out.</p>
 <p>Regarding the initial question of designing the coupons that maximize revenue: when the customer enters the store in a given week, we would compute the maximum price this customer is willing to pay (by running the model over the same product but multiple prices and taking the highest price whose probability is still over a certain threshold*), and then print coupons for the products that have highest probabilities of purchase under their maximum price. We can also incorporate other products in the basket in this reasoning: first, the product with the highest probability would be assumed as already being in the basket when computing the second most probable product, then these two would comprise the basket for selection of the third product, and so on. This would be iterated as long as the purchase probability is over a certain threshold. If our model is right, the customer will use all printed coupons during their store visit.</p>
@@ -16507,8 +16537,8 @@ Name: 12, dtype: float32</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Areas-for-Further-Research">Areas for Further Research<a class="anchor-link" href="#Areas-for-Further-Research">&#182;</a></h3><p>We now discuss areas for future consideration:</p>
 <ol>
@@ -16522,8 +16552,8 @@ Name: 12, dtype: float32</pre>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Other-use-cases">Other use cases<a class="anchor-link" href="#Other-use-cases">&#182;</a></h3><p>The methods described in this paper could be further extended to other personalized recommendation tasks than couponing in a grocery store. Any other online and offline retail store could make use of this model directly. 
 Outside of retail, movie and song streaming services also do personal recommendations. In this scenario, price could be substituted with the users’ rating (similar to our discussion on Poisson factorization).  Overall, this model may be used for any purpose with multiple users, multiple items, seasonality pattern, and a numerical ordering of items.</p>
@@ -16531,23 +16561,23 @@ Outside of retail, movie and song streaming services also do personal recommenda
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>Our model computes the probability that the given user will purchase a given product at a given price in a given week, given all the other products in her basket (or other products that the customer came to buy). We have shown that it is possible to generate meaningful embeddings and also simulate the effect of price changes on purchase probabilities. We began with discussing current methods of modelling shopper preferences, took a deep look into the SHOPPER model, and final showed how the SHOPPER architecture could be translated using TensorFlow. Our results showed that meaningful embeddings could be extracted from our model and potentially be used to optimize the couponing efforts of a grocery retailer. Our methods and model could potentially be used in other retail settings as well.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">&#182;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Random-Utility-Model">Random Utility Model<a class="anchor-link" href="#Random-Utility-Model">&#182;</a></h3><p>In the main body we briefly touched on the Random Utility Model. Here we provide more detail on the model and its interpretation.</p>
 <p>Let $U_{tc}$ represent the utility a customer receives from choosing item $c$ on trip $t$ and $C$ represent the full set of alternatives ($c = 1, 2, ... ,C$; with $C\geq2$) the customer can choose from.</p>
@@ -16560,21 +16590,29 @@ Outside of retail, movie and song streaming services also do personal recommenda
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Dealing-With-a-Complex-Softmax">Dealing With a Complex Softmax<a class="anchor-link" href="#Dealing-With-a-Complex-Softmax">&#182;</a></h3><p>Noise Contrastive Estimation</p>
+<h3 id="Dealing-With-a-Complex-Softmax">Dealing With a Complex Softmax (Noise Contrastive Estimation)<a class="anchor-link" href="#Dealing-With-a-Complex-Softmax">&#182;</a></h3>
 <p>From the shopper’s utility maximization problem, we see that the probability of a shopper selecting an item takes the form of a softmax function (see above). This function, however, is difficult to compute, due to the denominator. The denominator is a sum over all of the other items that are available except for the one that we are predicting on. In our case, it is a sum over approximately 35 000 items. One can imagine that each weight update requires a recalculation of the denominator, making the problem computationally difficult.</p>
 <p>We then look to a technique developed by Gutman and Hyvärinen and modified by Mikolov et al. in the seminal word2vec paper (<em>Mikolov et al., 2013</em>). A similar problem, with an expensive softmax function, also occurs in natural language processing. Consider how word2vec generates its embeddings. When predicting the next word in a sentence, word2vec has to compare the probability of the target word to the probability of every other word in the dictionary. As the size of the vocabulary often contains tens of thousands of words, this becomes infeasible to calculate. To get around this problem, word2vec generates a noise sample, consisting of a set of words from the vocabulary that are not the next word in the sentence. It then becomes a binary classification problem between the correct word and “noisy” words.</p>
 <p>The intuition of this method is that a good model should be able to discriminate between the actual data and data generated from a known noise distribution. If the model can tell the difference between actual data and generated noise, then it must have learned some underlying properties of the data. One can think of this as ‘learning by comparison’ (<em>Gouws, S., 2016</em>).</p>
-<p><img src="https://drive.google.com/uc?id=1qyM31UimIFwlPfASNOdPatdhehGSgzzv" alt="NCE diagram"></p>
+
+<br>
+<figure>
+  <img align="center" width="500" height="300" 
+    src="/blog/img/seminar/group3_shopper/negative_sampling.png" alt="Negative sampling"
+    style="display:block;margin:0 auto;">
+    <figcaption align = "center"><em>Diagram of negative sampling approach</em></figcaption>
+  </figure>
+
 <p>We apply a similar strategy with our sampling procedure. The optimal number of negative samples required for training is not clear. Further research is required to determine that number.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>Ruiz, F. J. R., Athey, S., Blei, D. M. (2017) SHOPPER: A Probabilistic Model of Consumer Choice with Substitutes and Complements.  Annals of Applied Statistics. <a href="https://arxiv.org/abs/1711.03560">https://arxiv.org/abs/1711.03560</a></p>
 <p>Gopalan, P., Hofman, J. and Blei, D. M. (2015). Scalable recommendation with hierarchical Poisson factorization. In Uncertainty in Artificial Intelligence.</p>
@@ -16592,20 +16630,14 @@ Outside of retail, movie and song streaming services also do personal recommenda
 <p>Price Elasticity and Airfares: Analysing the Low Cost Long Haul Opportunity. <a href="https://www.partners.skyscanner.net/price-elasticity-a-long-haul-low-cost-opportunity-awaits/thought-leadership">https://www.partners.skyscanner.net/price-elasticity-a-long-haul-low-cost-opportunity-awaits/thought-leadership</a> Skyscanner (accessed Dec 2019)</p>
 <p>Mikolov, T., Chen, K., Corrado, G., Dean, J. (2013) Efficient Estimation of Word Representations in Vector Space. <a href="https://arxiv.org/abs/1301.3781">https://arxiv.org/abs/1301.3781</a></p>
 <p>Salem, M. Market Basket Analysis with R. <a href="http://www.salemmarafi.com/code/market-basket-analysis-with-r/">http://www.salemmarafi.com/code/market-basket-analysis-with-r/</a> (accessed Jan 2020)</p>
+<p>Grenier, E. Survival Guide to German Supermarkets. <a href="https://www.dw.com/en/survival-guide-to-german-supermarkets/a-46312578">https://www.dw.com/en/survival-guide-to-german-supermarkets/a-46312578</a> (accessed Jan 2020)</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[0]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
 
-    </div>
-</div>
 </div>
 
 </div>
