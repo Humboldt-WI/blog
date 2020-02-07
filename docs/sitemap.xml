@@ -23,12 +23,22 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</loc>
+    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/categories/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/class19/20/</loc>
+    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/cnn/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -53,6 +63,11 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/fasttext/</loc>
+    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
@@ -64,6 +79,11 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/research/</loc>
+    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -543,11 +563,6 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</loc>
-    <lastmod>2018-03-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/share-price-prediction/</loc>
     <lastmod>2018-03-15T00:00:00+00:00</lastmod>
   </url>
@@ -640,10 +655,6 @@
   <url>
     <loc>https://humboldt-wi.github.io/blog/member/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1819/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</loc>
   </url>
   
   <url>

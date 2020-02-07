@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analysis of social media behavior of the 2020 presidential election candidates</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="This blog post analyzes the tweets of the 2020 presidential candidates using Fasttext and CNN">
+  
+
+  <meta name="generator" content="Hugo 0.58.1" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="https://humboldt-wi.github.io/blog/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="https://humboldt-wi.github.io/blog/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="https://humboldt-wi.github.io/blog/img/apple-touch-icon.png" />
+  
+
+  <link href="https://humboldt-wi.github.io/blog/css/owl.carousel.css" rel="stylesheet">
+  <link href="https://humboldt-wi.github.io/blog/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://humboldt-wi.github.io/index.xml" type="application/rss+xml" title="Institute of Infomation Systems at HU-Berlin">
+
+  
+  <meta property="og:title" content="Analysis of social media behavior of the 2020 presidential election candidates" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates//" />
+  <meta property="og:image" content="img/logoGross.png" />
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://humboldt-wi.github.io/blog/">
+                    <img src="https://humboldt-wi.github.io/blog/img/logo.png" alt="Analysis of social media behavior of the 2020 presidential election candidates logo" class="hidden-xs hidden-sm">
+                    <img src="https://humboldt-wi.github.io/blog/img/logo-small.png" alt="Analysis of social media behavior of the 2020 presidential election candidates logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Analysis of social media behavior of the 2020 presidential election candidates - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/news/">News</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/contributors/">Contributors</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/research/">research</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Analysis of social media behavior of the 2020 presidential election candidates</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Seminar Information Systems (WS19/20)</a> | February 6, 2020</p>
+
+                        <div id="post-content">
+                          
+
+<h4 id="authors-georg-velev-iliyana-pekova">Authors: Georg Velev, Iliyana Pekova</h4>
+
+<h1 id="table-of-content">Table of Content</h1>
+
+<ol>
+<li><a href="#introduction">Introduction</a><br></li>
+<li><a href="#data_retrieval">Data Retrieval</a><br>
+2.1. <a href="#libraries">Libraries: GetOldTweets3 vs Tweepy</a><br>
+2.2. <a href="#descriptive_statistics">Descriptive Statistics</a><br></li>
+<li><a href="#methodology">Methodology</a><br>
+3.1. <a href="#retrieval">Retrieval of pre-labeled Twitter Data</a><br>
+3.2. <a href="#algorithms">Machine Learning Algorithms</a><br>
+3.2.1. <a href="#fasttext">FastText</a><br>
+3.2.2. <a href="#cnn">Convolutional Neural Network</a><br>
+3.2.3. <a href="#bayes">Multinominal Naive Bayes Classifier</a><br></li>
+<li><a href="#preprocessing">Data Preprocessing</a><br>
+4.1. <a href="#cleaning">Data Cleaning</a><br>
+4.2. <a href="#embeddings">Word Embeddings: GloVe and FastText</a><br>
+4.3. <a href="#model_specific">Model specific Data Preprocessing</a><br></li>
+<li><a href="#evaluation">Performance Evaluation</a><br>
+5.1. <a href="#initial">Initial Results</a><br>
+5.2. <a href="#tuning">Hyperparameter Tuning using Bayesian Optimization</a><br></li>
+<li><a href="#results">Analysis of the Results on unlabeled Twitter Data</a><br></li>
+</ol>
+
+<h2 id="introduction-a-class-anchor-id-introduction-a">Introduction <a class="anchor" id="introduction"></a></h2>
+
+<p>The aim of the current project is to firstly examine the way presidential candidates talk about topics of high social importance. Afterwards the public opinion in regard of the same topics is considered. Finally, a presidential campaign manual based on the results of the performed analysis is created. The social media platform used for the purpose is Twitter.
+The presidential candidates whose tweets the project is based on, are the following ones:
+1. Republican Party: Donald Trump, Joe Walsh, Bill Weld
+2. Democratic Party: Cory Booker, Elizabeth Warren, Joe Biden, Bernie Sanders
+The explored topics of interest are gun control, climate change and immigration.</p>
+
+<h2 id="data-retrieval-a-class-anchor-id-data-retrieval-a">Data Retrieval <a class="anchor" id="data_retrieval"></a></h2>
+
+<h3 id="libraries-getoldtweets3-vs-tweepy-a-class-anchor-id-libraries-a">Libraries: GetOldTweets3 vs Tweepy <a class="anchor" id="libraries"></a></h3>
+
+<p>The following section will briefly present the not so popular data retrieval package GetOldTweets3. The most widely used library for this purpose is Tweepy, which is developed by Twitter. However, GetOldTweets3 suits better the needs of the current project. The project requires the tweets of the presidential candidates from the past four years. Tweepy only allows the extraction of tweets from the past seven days. GetOldTweets3 on the other hand has no limitation regarding the amount of the retrieved data. In addition, GetOldTweets3 requires no authentification data like API-key and tockens (unlike Tweepy) and is robust and fast, making &ldquo;try-except&rdquo; blocks unnecessary (unlike in the case of Tweepy). Within this context is must be mentioned that Tweepy has various other advantages towards GetOldTweets3, but these are simply not relevant for this project. Some of them are the Tweepy&rsquo;s wide functionality like retrieving the most extensive information provided for each tweet or posting tweets, sending and receiving messages and following users through the API. When it comes to amount of accessible data GetOldTweets3 is inarguably the better library.</p>
+
+<h3 id="descriptive-statistics-of-retrieved-tweets">Descriptive Statistics of retrieved Tweets</h3>
+
+<p>Figure 1 represents the tweets&rsquo; descriptive statistics for 2019 aggregated by topic and presidential candidate. Regarding the Twitter activity of the candidates, the most active one (when considering average activity related to all topics) is Elizabeth Warren, who has tweeted mostly about climate change. The least active candidate is Bill Weld, who has also tweeted mostly about the same topic. Regarding the popularity of the topics among the candidates, the most popular topic (on average) is gun control/violence with Cory Booker being the politician who has tweeted about it most intensively. As shown, the amount of his tweets referring to this topic are more than all other candidates&rsquo; tweets regarding any of the other issues. The second and the third most popular issues (on average) are climate change and immigration respectively. An interesting discovery is that the current president of the US - Donald Trump - has tweeted mostly about the least popular topic (immigration) and the least of everybody about the most popular one (gun control/violence). In addition, he hasn&rsquo;t tweeted at all about climate change.</p>
+
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Capture.PNG?raw=true" width= "900" /></p>
+
+<p><strong>Figure 1</strong></p>
+
+<h2 id="methodology-a-class-anchor-id-methodology-a">Methodology <a class="anchor" id="methodology"></a></h2>
+
+<h3 id="retrieval-of-pre-labeled-twitter-data-a-class-anchor-id-retrieval-a">Retrieval of pre-labeled Twitter Data <a class="anchor" id="retrieval"></a></h3>
+
+<p>The starting point of the project is the retrieval of three (already) pre-labeled datasets, which serve as a train and test base of the later implemented machine learning algorithms.</p>
+
+<h4 id="noisy-pre-labeled-twitter-data">Noisy pre-labeled Twitter Data</h4>
+
+<p>The first pre-labeled dataset contains noisy pre-labeled Twitter data. The definition as &ldquo;noisy&rdquo; refers to the fact that the data has been labeled solely according to the emojis contained in the tweets. The possible labels for this dataset are positive, negative and neutral. The initial training and test set have size of 160 000 and 498 tweets respectively. This ratio is indeed unreasonable, but this is not of any importance in this case (explanation follows in the section &ldquo;Combined pre-labeled Twitter Data&rdquo; below). The occurences of the labels look as follows: 800 182 positive, 800 177 negative and 139 neutral, which makes the data imbalanced. The neutral labels are so few that they are practically neglectable. Thus, they are removed and the dataset is left with its 1 600 359 remaining positive or negative labels.</p>
+
+<h4 id="pre-labeled-twitter-data-from-the-python-library-nltk">Pre-labeled Twitter Data from the Python Library nltk</h4>
+
+<p>The next pre-labeled dataset is natively integrated in the python library nltk and thus retrieved directly from it. The dataset contains 5000 twitter samples labeled as negative and 5000 labeled as positive (again any separation in a train and test set does not currently matter).</p>
+
+<h4 id="pre-labeled-twitter-data-from-kaeggle">Pre-labeled Twitter Data from Kaeggle</h4>
+
+<p>The last pre-labeled dataset containing labeled tweets is the training set from a Kaeggle sentiment classification challenge. The training data contains 7086 sentences, already labeled as a positive or negative sentiment. Since it is a challenge a labeled test set is not provided, but (as already mentioned multiples times above) also not needed for the current project. The purpose of this dataset is to provide additional pre-labeled Twitter data.</p>
+
+<h4 id="combined-pre-labeled-twitter-data">Combined pre-labeled Twitter Data</h4>
+
+<p>Finally, all of the three datasets introduced above are combined into a new (sofar non-existing) labeled dataset. This is done because the machine learning algorithms do not deliver plausible results when trained on any of the original datasets described above. The new data consists of 10000 (5000 positive and 5000 negative) twitter samples from the nltk dataset, 10000 (5000 positive and 5000 negative) twitter samples from the noisy pre-labeled dataset and 5950 (2975 positive and 2975 negative) twitter samples from the Kaeggle challenge train set. The new dataset is perfectly balanced and has 12975 negative and 12975 positive labels. After being composed, the new pre-labeled dataset is split into a train and test dataset with a ratio of 70% - 30%. All machine learning training and testing is then performed on this data.</p>
+
+<h3 id="machine-learning-algorithms-used-for-the-text-classification-a-class-anchor-id-algorithms-a">Machine Learning Algorithms used for the Text Classification <a class="anchor" id="algorithms"></a></h3>
+
+<h4 id="fasttext-a-class-anchor-id-fasttext-a">FastText <a class="anchor" id="fasttext"></a></h4>
+
+<p>FastText is a library developed by Facebook that can be used for both text classification and word embeddings.</p>
+
+<h5 id="fasttext-for-text-classification">FastText for Text Classification</h5>
+
+<p>FastText can be regarded as a shallow neural network that consists of three layers as shown in Figure ???: an input layer, a single hidden layer and an output one. Each of the documents  (in this research: tweets) in the input file is first tokenized into single words and all unique words are saved by the model. Later  the vector containing all unique words is filtered in order to ensure that only words having a pre-defined minimum number of occurances will be included in the further preprocessing. Then the character n-grams are generated for each word. The hyperparameter maxn controls for the maximal length of the subwords retrieved from the initial words. If maxn is set to 0, then the model does not use character n-grams. For example if the word “voting” is taken and maxn is set to 2, then the resulting character bigrams would be “vo”,”ot”,”ti”,”in” and “ng”. <br>
+Afterwards, the embedding matrix is created. If the parameter pretrainedVectors receives an input file containing pre-trained embeddings, then the embedding matrix is initialized with them. Otherwise, the matrix is randomly initialized with values between -1/dim and 1/dim. Dim is the size of the word vectors. The embedding matrix has a dimension of the size (n_words + bucket) x dim. Bucket stands for the maximal number of character n-grams and word n-grams and n_words for the maximal number of unique words. It is important to mention that only if the hyperparameter wordNgrams is set to a value higher than 1, for example 2 or 3, then FastText additionally would generate bi-grams or tri-grams for each pair of words in each sentence. For example if the sentence “I post a lot on social media” is taken and wordNgram is set to 3, the resulting word n-grams would be “I post a”, “post a lot”,”a lot on”,”on social media”. <br>
+The words, character n-grams as well as the word n-grams are regarded as the features of each sentence fed to the input layer of FastText. The indices of each of these features per sentence are used in order to retrieve the corrersponding embedding vectors. The latter are averaged together into a sentence vector which is passed to the hidden layer of the model. The output of the hidden layer which is a linear transformation of the document vector is then fed to the final softmax layer. The softmax function computes the probability that the preprocessed record get assigned to the pre-defined classes and also the log-loss. For a pre-specified number of iterations the performance of the model is optimized using Stochastic Gradient Descent.</p>
+
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/FastText_Architecture.png?raw=true" width= "450" /></p>
+
+<p><strong>Figure</strong></p>
+
+<p>Source:
+<a href="https://medium.com/@mariamestre/fasttext-stepping-through-the-code-259996d6ebc4">https://medium.com/@mariamestre/fasttext-stepping-through-the-code-259996d6ebc4</a></p>
+
+<h5 id="fasttext-for-word-reresentation">FastText for Word Reresentation</h5>
+
+<p>FastText can also be used in order to generate embedding vectors instead of taking pre-trained ones. Two models are supported for that: CBOW (Continuous Bag of Words) and Skipgram. Figure ??? shows that both of these models are neural networks with a single hidden layer: w(t-1) and w(t-2) are the context words that come before the target word w(t) that has to be predicted, w(t+1) and w(t+2) are the context words that come after the target one. The difference between the two models is that CBOW tries to predict a target word given the surrounding / context words and skipgram takes as an input the target word and tries to predict the neighbours of that word. During the training process of the both models the weights are adjusted and optimized. Once the training process is over, the weights are taken and used as the trained word vectors. Therefore, the actual output of the training process is not relevant for the generation of word embeddings.</p>
+
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Cbow%20and%20Skipgram.png?raw=true" width= "500" /></p>
+
+<p>Source: <a href="https://towardsdatascience.com/nlp-101-word2vec-skip-gram-and-cbow-93512ee24314">https://towardsdatascience.com/nlp-101-word2vec-skip-gram-and-cbow-93512ee24314</a></p>
+
+<h4 id="convolutional-neural-network-a-class-anchor-id-cnn-a">Convolutional Neural Network <a class="anchor" id="cnn"></a></h4>
+
+<p>The second algorithm this project implements is a convolutional neural network (CNN). The most often application of CNNs is in the field of image recognition, where an image is decomposed in its pixels, which together form a matrix. A kernel (filter, feature detector) then convolves over the matrix, which results into a feature map of the pixel matrix. The process is visualized in Figure 1.</p>
+
+<p><img src="http://deeplearning.stanford.edu/wiki/images/6/6c/Convolution_schematic.gif" alt="Figure 1" /></p>
+
+<p><strong>Figure 2</strong></p>
+
+<p>In the case of natural language processing the process is similar in its nature. Instead of having a pixel matrix resulting from an image, one has an embedding matrix resulting from a natural language sentence. Similarly to the kernel convolving over the pixel matrix, the kernel in the context of NLP convolves over the embedding matrix. An important difference is that as shown in Figure 1, the kernel slides along both dimensions (x and y) of the matrix. Thus, the kernel itself is also two-dimensional, meaning its size is defined by two numbers. This is due to the fact the location of the single pixels within the pixel matrix is often of high relevance. Also similarities/differences between neighboring pixels also reflect in similarities/difference in the actual image, so it makes sense to let the kernel convolve over multiple neighboring pixels in both dimensions. Thus, a layer of two or more dimensions makes sense regarding the neural network architecture. Figrue 2 is a step-by-step visualization of the convolutional process when having an embedding matrix as input. Each row of the embedding matrix is a numerical representation of a word from the input text. Unlike in the case of image recognition, a similarity/difference between neighboring numbers, contained in the same row of the embedding matrix, is of low relevance, since one cannot base any assumptions on it. Accordingly, the kernel then only convolves over the embedding matrix vertically, meaning over only one dimension. For this reason, 1D layers (instead of layers of two or more dimensions) are mostly considered when determining the neural network architecture. As seen from Figure 2, six kernels - two for region sizes 2,3 and 4 (&ndash;&gt; only dimension y changes, x remains of size 5, which is the number of columns in the embedding matrix) respectively - slide along the embedding matrix. After the application of the activation function, the convolution of the six kernels over the input matrix results into 2 feature maps for each region size of the kernels - in total six featurs maps. Afterwards, a 1-max pooling layer is added. The output is six univariate vectors (one for each feature map), which together form a single feature vector to be fed to the softmax activation function in the last neural network layer.</p>
+
+<p><img src="http://www.wildml.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-06-at-12.05.40-PM-1024x937.png" width="600" /></p>
+
+<p><strong>Figure 3</strong></p>
+
+<h4 id="multinominal-naive-bayes-a-class-anchor-id-bayes-a">Multinominal Naive Bayes <a class="anchor" id="bayes"></a></h4>
+
+<p>The algorithm used to create a benchmark is Multinominal Naive Bayes (MNB). MNB is an approach going one step further that the binomial Bernoulli Naive Bayes (BNB). BNB is a discrete data Naive Bayes classification algorithm, requiring binary input exclusively, meaning it can be only applied to data, consisting of boolean features. In the context of text classification a possible application of BNB would be in case of having data which consists of binary feature vectores (0 &amp; 1), where 0 would mean that a word occurs in a document and 1 would that a word does not occur in a document. Thus, the BNB explicitly takes account of the absence of a certain feature i from class y. On the other hand, MNB&rsquo;s applicability is not limited to binary data - meaning a MNB can be used when having a feature vector consisting of the count of each word in a document (instead of solely a binary representation of a word&rsquo;s presence or absence in this document).</p>
+
+<p><img src="http://www.darrinbishop.com/wp-content/uploads/2017/10/Document-Term-Matrix.png" width="600" /></p>
+
+<h2 id="data-preprocessing-a-class-anchor-id-preprocessing-a">Data preprocessing <a class="anchor" id="preprocessing"></a></h2>
+
+<h3 id="data-cleaning-a-class-anchor-id-cleaning-a">Data Cleaning <a class="anchor" id="cleaning"></a></h3>
+
+<p>The first step of the data preprocessing is to clean the gathered pre-labeled tweets.  This involves converting all words in the tweets to lower case, unfolding contractions (for example couldn”t to could not), removing special characters, numbers, hashtags, mentions as well as punctuation. Furthermore, the emojis are also removed from the combined dataset. This is done in order to prevent potential overfitting. One part of the entire dataset consists of tweets labeled based on the emojis as already mentioned in Section???. Thus, not removing the emojis could lead to good results on the labeled data but poor ones on the unlabeled tweets. Next, each of the tweets is lemmatized. In natural language processing (NLP), lemmatization refers to reducing the different forms of the words in a sentence to the core root (for example the words “walking” and “walked” are transformed to “walk”). Afterward, the stop words are removed from the tweets. Stop words are commonly used words which introduce noise in the data in NLP tasks as they have no informative-value. The library nltk is used in order to retrieve a set of stopwords. It is important to highlight that this set is adjusted by removing the negations from it. The reason for this is that negations like “not” or “no” could have an  impact on the correct prediction of the positive and negative sentiment of the tweets. For example several negations in a tweet could serve as an indication for a negative sentiment. Therefore, the reduced set of stop words is used in the cleaning process of the tweets.</p>
+
+<h3 id="word-embeddings-glove-and-fasttext-a-class-anchor-id-embeddings-a">Word Embeddings: GloVe and FastText <a class="anchor" id="embeddings"></a></h3>
+
+<p>In NLP tasks machine learning models preprocess textual data with the help of the numerical representation of the words contained in it. In this context, word embeddings are regarded as the dominant approach. They consist of numerical vectors that capture the linguistic meaning of the textual data.
+In this research two models are used to obtain the word embeddings for the retrieved twitter data. The first one is GloVe that among others provides word embeddings trained on twitter data. The dimension size of the GloVe twitter embeddings is 200. The second model is FastText. It is trained on the cleaned pre-labeled tweets in the unsupervised mode with both CBOW and Skipgram. The dimension of the trained embeddings is also set to 200 in order to ensure comparability of the results.
+Next, three embedding matrices are generated by using the word vectors from the three models. Each of the tweets in the pre-labeled data is tokenized into single words and the corresponding embedding vector for each word is saved in the embedding matrices.
+Next the cleaned pre-labeled twitter data is preprocessed according to the requirements of the two machine learning models applied in this research.</p>
+
+<h3 id="model-specific-data-preprocessing-a-class-anchor-id-model-specific-a">Model specific Data Preprocessing <a class="anchor" id="model_specific"></a></h3>
+
+<h4 id="data-preprocessing-cnn">Data Preprocessing CNN</h4>
+
+<p>In the embedding layer of the CNN one of the parameters that has to determined in advance is the input length of the data which has to be identical for all tokenized tweets. For this reason the maximal length that each of the tokenized samples can reach is determined by examining the distribution of the length of all tweets. The maximal length is set to 300 as only several tweets in the entire cleaned dataset contain a bigger amount of words than this value. Then the pre-labeled data is padded according to the maximal length in order to ensure that all tokenized tweets have the same length.</p>
+
+<h4 id="data-preprocessing-fasttext">Data Preprocessing FastText</h4>
+
+<p>FastText does not require the data to be tokenized. For the training of the analytical model developed by Facebook, the labels from the training set are concatenated to the corresponding tweets in a string format with the prefix <em>label</em>. For example, the tweet “I am quite unhappy with some recent developments in politics lately” has the label “0”. The
+corresponding training record that can be fed to FastText looks in the following way: <em>label</em> 0 I am quite unhappy with some recent developments in politics lately.</p>
+
+<h2 id="performance-evaluation-a-class-anchor-id-evaluation-a">Performance Evaluation <a class="anchor" id="evaluation"></a></h2>
+
+<h3 id="initial-results-a-class-anchor-id-initial-a">Initial Results <a class="anchor" id="initial"></a></h3>
+
+<p>Both CNN and FastText are tested with the embedding matrices described in Section 4  in order to examine which word vectors should be used in the next steps. Figure ??? and ??? provide an overview of the initial results. It is important to mention that FastText is also trained without providing any input to the parameter pretrainedVectors. This implies that the embedding matrix is randomly initialized with values between -<sup>1</sup>&frasl;<sub>200</sub> and <sup>1</sup>&frasl;<sub>200</sub>. Both analytical models achieve the best performance in terms of accuracy with the Twitter pre-trained embeddings from GloVe. Therefore, the GloVe word representations are used in the further analysis of the results.</p>
+
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Initial_Results_CNN.png?raw=true" width="400" /> <br></p>
+
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Initial_Results_FastText.png?raw=true" width="400" /></p>
+
+<h3 id="hyperparameter-tuning-using-bayesian-optimization-a-class-anchor-id-tuning-a">Hyperparameter Tuning using Bayesian Optimization <a class="anchor" id="tuning"></a></h3>
+
+<p>The hyperparameters of the two models are optimized by using Bayesian Optimization (BO). The library scikit-optimize which is used for the modeling phase applies Gaussian Process  (GPs) for the BO. In the context of hyperparameter tuning, GPs are regarded as the surrogate model of the objective function. The later is the evaluation metric according to which the optimal hyperparameters are chosen, for example accuracy, precision, recall etc. The surrogate model learns the mappings between the already tested hyperparameters and the achieved scores by the objective function. The next set of hyperparameter values is chosen according to a selection function, for example the Expected Improvement (EI). The set of configurations that leads to the highest EI is chosen for the next call to the objective function. In this way fewer calls are made to the objective function with hyperparameters that are expected to lead to better results.</p>
+
+<script src="https://gist.github.com/gvelev123/4195f69d1124f5cfb1ff4706cd1850f7.js"></script>
+
+<h4 id="hyperparameter-optimization-fasttext">Hyperparameter Optimization FastText</h4>
+
+<p>Figure ??? contains the five tested hyperparameters of FastText, the corresponding value ranges, the final optimal set of configurations and the highest achieved accuracy. It can be seen that the model developed by Facebook performs best when the feature space of each sentence contains not only words, but also trigrams and character n-grams of a maximal length of 1. Furthermore, the optimal hyperparameters lead to a slight increase in the accuracy of 1.5% compared to the initial results of FastText using the GloVe embeddings.</p>
+
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/HO_fastText.png?raw=true" width="400" /></p>
+
+                        </div>
+                        
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (30)</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/instruction">instruction (2)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/a/b-testing"><i class="fa fa-tags"></i> a/b-testing</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/attention"><i class="fa fa-tags"></i> attention</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/awd-lstm"><i class="fa fa-tags"></i> awd-lstm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-deep-learning"><i class="fa fa-tags"></i> bayesian-deep-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-topic-modelling"><i class="fa fa-tags"></i> bayesian-topic-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/black-box"><i class="fa fa-tags"></i> black-box</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/blockchain"><i class="fa fa-tags"></i> blockchain</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/causal-inference"><i class="fa fa-tags"></i> causal-inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class17/18"><i class="fa fa-tags"></i> class17/18</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class18/19"><i class="fa fa-tags"></i> class18/19</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class19"><i class="fa fa-tags"></i> class19</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class19/20"><i class="fa fa-tags"></i> class19/20</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/classification"><i class="fa fa-tags"></i> classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/cnn"><i class="fa fa-tags"></i> cnn</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/coarsened-exact-matching"><i class="fa fa-tags"></i> coarsened-exact-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/conversion"><i class="fa fa-tags"></i> conversion</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks"><i class="fa fa-tags"></i> convolutional-neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/credit-risk"><i class="fa fa-tags"></i> credit-risk</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/data-simulation"><i class="fa fa-tags"></i> data-simulation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/deep-learning"><i class="fa fa-tags"></i> deep-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/distant-transfer-learning"><i class="fa fa-tags"></i> distant-transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/dml"><i class="fa fa-tags"></i> dml</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/doc2vec"><i class="fa fa-tags"></i> doc2vec</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/document-embeddings"><i class="fa fa-tags"></i> document-embeddings</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/explanation"><i class="fa fa-tags"></i> explanation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/fasttext"><i class="fa fa-tags"></i> fasttext</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/fine-tuning"><i class="fa fa-tags"></i> fine-tuning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/genetic-matching"><i class="fa fa-tags"></i> genetic-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/gru"><i class="fa fa-tags"></i> gru</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/hierarchical-network"><i class="fa fa-tags"></i> hierarchical-network</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ice"><i class="fa fa-tags"></i> ice</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-analysis"><i class="fa fa-tags"></i> image-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-captioning"><i class="fa fa-tags"></i> image-captioning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/inference"><i class="fa fa-tags"></i> inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset"><i class="fa fa-tags"></i> keras-imdb-dataset</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/knn-algorithm"><i class="fa fa-tags"></i> knn-algorithm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/language-modelling"><i class="fa fa-tags"></i> language-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lda"><i class="fa fa-tags"></i> lda</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lime"><i class="fa fa-tags"></i> lime</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/long-short-term-memory"><i class="fa fa-tags"></i> long-short-term-memory</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lstm"><i class="fa fa-tags"></i> lstm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/machine-learning"><i class="fa fa-tags"></i> machine-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matching-methods"><i class="fa fa-tags"></i> matching-methods</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matchit"><i class="fa fa-tags"></i> matchit</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/monte-carlo-dropout"><i class="fa fa-tags"></i> monte-carlo-dropout</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/movie-reviews"><i class="fa fa-tags"></i> movie-reviews</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nearest-neighbor"><i class="fa fa-tags"></i> nearest-neighbor</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/neural-network"><i class="fa fa-tags"></i> neural-network</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/neural-networks"><i class="fa fa-tags"></i> neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nlp"><i class="fa fa-tags"></i> nlp</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/optimal-matching"><i class="fa fa-tags"></i> optimal-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/pdp"><i class="fa fa-tags"></i> pdp</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/pretraining"><i class="fa fa-tags"></i> pretraining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score"><i class="fa fa-tags"></i> propensity-score</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score-weighting"><i class="fa fa-tags"></i> propensity-score-weighting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommendation"><i class="fa fa-tags"></i> recommendation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-system"><i class="fa fa-tags"></i> recommender-system</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-systems"><i class="fa fa-tags"></i> recommender-systems</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/rnn"><i class="fa fa-tags"></i> rnn</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/rs"><i class="fa fa-tags"></i> rs</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-analysis"><i class="fa fa-tags"></i> sentiment-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-classification"><i class="fa fa-tags"></i> sentiment-classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/share-price-prediction"><i class="fa fa-tags"></i> share-price-prediction</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/simulation"><i class="fa fa-tags"></i> simulation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/survival-analysis"><i class="fa fa-tags"></i> survival-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-analysis"><i class="fa fa-tags"></i> text-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-mining"><i class="fa fa-tags"></i> text-mining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series"><i class="fa fa-tags"></i> time-series</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series-forecasting"><i class="fa fa-tags"></i> time-series-forecasting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/transfer-learning"><i class="fa fa-tags"></i> transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/treatment-effect"><i class="fa fa-tags"></i> treatment-effect</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/twitter"><i class="fa fa-tags"></i> twitter</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ulmfit"><i class="fa fa-tags"></i> ulmfit</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift"><i class="fa fa-tags"></i> uplift</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift-modelling"><i class="fa fa-tags"></i> uplift-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/variational-inference"><i class="fa fa-tags"></i> variational-inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/wikitext-103"><i class="fa fa-tags"></i> wikitext-103</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/word-embeddings"><i class="fa fa-tags"></i> word-embeddings</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<footer id="footer">
+    <div class="container">
+
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            
+
+            
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+            
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-112025566-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+
+<script src="//maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+<script src="https://humboldt-wi.github.io/blog/js/hpneo.gmaps.js"></script>
+<script src="https://humboldt-wi.github.io/blog/js/gmaps.init.js"></script>
+<script src="https://humboldt-wi.github.io/blog/js/front.js"></script>
+
+
+<script src="https://humboldt-wi.github.io/blog/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

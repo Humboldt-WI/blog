@@ -1,11 +1,7 @@
----
-layout: "post"
-title: "Analysis of social media behavior of the 2020 presidential election candidates"
-date: "2020-01-25 18:25"
----
+
 +++
 title = "Analysis of social media behavior of the 2020 presidential election candidates"
-date = '2020-02-07'
+date = '2020-02-06'
 tags = [ "Fasttext", "CNN", "Class19/20", "Sentiment Analysis"]
 categories = ["course projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
