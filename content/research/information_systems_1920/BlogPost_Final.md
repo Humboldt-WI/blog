@@ -1,7 +1,7 @@
 +++
 title = "Generating Synthetic Comments to Balance Data for Text Classification"
 date = '2020-02-07'
-tags = [ "Text Generation", "NLP", "GPT-2", "GloVe", "Text Classification", "Oversampling"]
+tags = [ "Text Generation", "NLP", "GPT-2", "GloVe", "Text Classification", "Oversampling", "Language Model", "Imbalanced Data" ]
 categories = ["Course Projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
 author = "Lukas Faulbrück, Asmir Muminovic, Tim Peschenz"
@@ -358,7 +358,10 @@ The respective code:
 
 ### How does GPT-2 create text? <a name="gpt2_5"></a>
 
-On a high level, GPT-2 takes a sequence as input and predicts the next word for that sequence. That word is then added to this input sequence and used for the next prediction. This mechanism is called “**auto-regression**”. 
+On a high level, GPT-2 takes a sequence as input and predicts the next word for that sequence. 
+That word is then added to this input sequence and used for the next prediction. 
+This mechanism is called “**auto-regression**”. 
+In the follwing explanations, I will use "token" and "word" interchangeably. 
 
 <img align="center" width="700"
 style="display:block;margin:0 auto;" 
