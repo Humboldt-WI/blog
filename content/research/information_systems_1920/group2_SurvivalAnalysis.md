@@ -64,7 +64,7 @@ The methods of survival analysis can also be applied in the field of engineering
 
 ## 2.1 Common terms <a class="anchor" id="terms"></a>
 
-Survival analysis is a collection of data analysis methods with the outcome variable of interest *time to event*. In general *event* describes the event of interest, also called `death event`, *time* refers to the point of time of first observation, also called `birth event`, and *time to event* is the `duration` between the first observation and the time the event occurs [5].
+Survival analysis is a collection of data analysis methods with the outcome variable of interest time to event. In general event describes the event of interest, also called **death event**, time refers to the point of time of first observation, also called **birth event**, and time to event is the **duration** between the first observation and the time the event occurs [5].
 The subjects whose data were collected for survival analysis usually do not have the same time of first observation. A subject can enter the study at any time. Using durations ensure a necessary relativeness [6]. Referring to the business case the birth event is the initial recognition of a loan, the death event, consequently the event of interest, describes the time a customer defaulted and the duration is the time between the initial recognition and the event of default.
 
 During the observation time not every subject will experience the event of interest. Consequently it is unknown if the subjects will experience the event of interest in the future. The computation of the duration, the time from the first observation to the event of interest, is impossible. This special type kind of missing data can emerge due to two reasons:
@@ -72,7 +72,7 @@ During the observation time not every subject will experience the event of inter
 1. The subject is still part of the study but has not experienced the event of interest yet.
 2. The subject experienced a different event which also led to the end of study for this subject.
 
-In survival analysis this missing data is called `censorship` which refers to the inability to observe the variable of interest for the entire population. However, the censoring of data must be taken into account, dropping unobserved data would underestimate customer lifetimes and bias the results. Hence the particular subjects are labelled *censored*. 
+In survival analysis this missing data is called **censorship** which refers to the inability to observe the variable of interest for the entire population. However, the censoring of data must be taken into account, dropping unobserved data would underestimate customer lifetimes and bias the results. Hence the particular subjects are labelled *censored*. 
 
 Since for the censored subjects the death event could not be observed, the type of censorship is called right censoring which is the most common one in survival analysis. As opposed to this there is left censoring in case the birth event could not be observed. 
 
@@ -135,7 +135,7 @@ In the given dataset we are able to inspect this process using the key informati
 - interest rates for every issued loan
 - since our object of analysis is mortgage data we have some insights for inquired real estate types (home for a single family or not, is this property in area with urban development etc.) which are also playing an important role for loan amount.
 
-In order to use our data for survival analysis, we need to specify the characteristic terms. The `birth event` is the time of the initial recognition of the mortgage, the `death event` is the default of the customer. The `duration` is the time between the birth and death event. Some customers have not defaulted yet, so they will be labelled `censored` in further analysis.
+In order to use our data for survival analysis, we need to specify the characteristic terms. The **birth event** is the time of the initial recognition of the mortgage, the **death event** is the default of the customer. The **duration** is the time between the birth and death event. Some customers have not defaulted yet, so they will be labelled "censored" in further analysis.
 
 The graph below shows an example for the censorship concept at specific point in time (13 months).  
 
@@ -190,7 +190,7 @@ The main disadvantage of this method is that it cannot estimate survival probabi
 
 {{< gist dariasmorodina d2734217afc6a5585451cbefa2526fcb >}}
 
-The estimated $S(t)$ can be plotted as a stepwise function of overall population of individuals.
+>The estimated $S(t)$ can be plotted as a stepwise function of overall population of individuals.
 As an example, in the plot below, it is clear that for time $t = 10$ months the probability that borrowers survive beyond this time is about 75%.
 
 {{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/kmf.png" width="850" height="450" link="group2_SurvivalAnalysis/kmf.png">}}
@@ -206,7 +206,7 @@ It describes relationships between survival distribution and covariates. The dep
 
 $$ \lambda(t|x) = \lambda_{0}(t) exp(\beta_{1}x_1 + … + \beta_{n}x_n)$$
 
-- This method is considered as semi-parametric: it contains a parametric set of covariates and a non-parametric component $\lambda_{0}(t)$ which is called `baseline hazard`, the value of hazard when all covariates are equal to 0. 
+- This method is considered as semi-parametric: it contains a parametric set of covariates and a non-parametric component $\lambda_{0}(t)$ which is called `baseline hazard` , the value of hazard when all covariates are equal to 0. 
 - The second component are `partial hazards` or `hazard ratio` and they define the hazard effect of observed covariates on the baseline hazard $\lambda_{0}(t)$
 - These components are estimated by partial likelihood and are time-invariant
 - In general, the Cox model makes an estimation of log-risk function $\lambda(t|x)$ as a linear combination of its static covariates and baseline hazard. 
@@ -248,7 +248,7 @@ Before running the Cox regression model including new covariates it is necessary
 
 {{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/subset_data_time.png" width="900" link="group2_SurvivalAnalysis/subset_data_time.png">}}
 
-Fitting the Cox model on modified time-varying data involves using gradient descent (as well as for standard proportional hazard model). Special built-in functions in *lifelines* package take extra effort to help with the convergence of the data (high collinearity between some variables). [8]
+>Fitting the Cox model on modified time-varying data involves using gradient descent (as well as for standard proportional hazard model). Special built-in functions in *lifelines* package take extra effort to help with the convergence of the data (high collinearity between some variables). [8]
 
 {{< gist dariasmorodina 7e0e3f5f0c639fa77aec23f4b119236d >}}
  
@@ -289,13 +289,13 @@ The initial adaptation of survival analysis to meet neural networks (Farragi and
 
 ---
 
-A few years ago, the more sophisticated deep learning architecture, DeepSurv, was proposed by J.L. Katzman et al. as an addition to Simon-Farragi's network. It showed improvements of the Cox regression and the performance metrics when dealing with non-linear data [12]. This architecture was able to handle the proportional hazards constraint. Additionaly, while estimating the log-risk function $h(X)$ we use the linear combination of static features from given data $X$ and the baseline hazards. With advanced DeepSurv method it is also possible to drop this assumption out. 
+A few years ago, the more sophisticated deep learning architecture, DeepSurv, was proposed by J.L. Katzman et al. as an addition to Simon-Farragi's network. It showed improvements of the Cox PH model and the performance metrics when dealing with non-linear data [12]. This architecture was able to handle the main proportional hazards constraint. In addition to that, while estimating the log-risk function $h(X)$ with the Cox PH model we used the linear combination of static features from given data $X$ and the baseline hazards. With DeepSurv we can also drop this assumption out.
 
->**DeepSurv is a deep feed-forward neural network** which estimates each individual's effect on their `hazard rates` with respect to parametrized weigths of the network $\theta$. Generally, the structure of this neural network is quite straightforward. Comparing to Simon-Farragi network, DeepSurv is a configurable with multiple number of hidden layers.
+>**DeepSurv is a deep feed-forward neural network** which estimates each individual's effect on their *hazard rates* with respect to parametrized weigths of the network $\theta$. Generally, the structure of this neural network is quite straightforward. Comparing to Simon-Farragi network, DeepSurv is a configurable with multiple number of hidden layers.
 
 - The input data $X$ is represented as set of observed covariates
 - Hidden layers in this model are fully-connected nonlinear activation layers with not necessarily the same number of nodes in each of them, followed by dropout layers
-- The output layer has only one node with a linear activation function which gives the output $\hat{h}_{\theta}$ (log-risk hazard estimations**).
+- The output layer has only one node with a linear activation function which gives the output $\hat{h}_{\theta}$ (log-risk hazard estimations).
 
 {{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/deep_surv_arch.jpg" width="900" link="group2_SurvivalAnalysis/deep_surv_arch.jpg">}}
 
