@@ -1,12 +1,12 @@
 +++
 title = "SHOPPER: A Probabalistic Consumer Choice Model"
 date = '2020-02-06'
-tags = [ "Deep Learning", "Neural Networks", "Class17/18",]
+tags = [ "Deep Learning", "Neural Networks", "Class19/20", "Recommendation", "Recommender-System", "Recommender-Systems"]
 categories = ["Course projects"]
 banner = "/img/seminar/group3_shopper/shopping_banner.jpg"
 author = "Class of Winter Term 2019 / 2020"
 disqusShortname = "https-wisample-github-io-blog"
-description = " A Sample Post"
+description = "Estimating shopper preferences and price elasticities in a retail grocery setting."
 +++
 
 
@@ -13067,6 +13067,27 @@ ul.typeahead-list  > li > a.pull-right {
 
 .ansi-bold { font-weight: bold; }
 
+#toc_container {
+    background: #f9f9f9 none repeat scroll 0 0;
+    border: 1px solid #aaa;
+    display: table;
+    font-size: 95%;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    padding: 10px;
+    width: auto;
+    float:left;
+}
+
+.toc_title {
+    font-weight: 700;
+    text-align: center;
+}
+
+#toc_container li, #toc_container ul, #toc_container ul li{
+    list-style: outside none none !important;
+}
+
     </style>
 
 
@@ -13128,16 +13149,17 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered">
  <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Interpretable-Neural-Networks-for-Customer-Choice-Modelling">Interpretable Neural Networks for Customer Choice Modelling<a class="anchor-link" href="#Interpretable-Neural-Networks-for-Customer-Choice-Modelling">&#182;</a></h1><p>Haseeb Warsi, Benedict Becker, Veronika Simoncikova</p>
+<h1 id="Interpretable-Neural-Networks-for-Customer-Choice-Modelling">Interpretable Neural Networks for Customer Choice Modelling</h1><p>Haseeb Warsi, Benedict Becker, Veronika Simoncikova</p>
 <hr>
+</div>
+</div>
+</div>
 
-</div>
-</div>
-</div>
+
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -13145,6 +13167,45 @@ div#notebook {
 
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+
+  <div id="toc_container">
+    <p class="toc_title">Contents</p>
+    <ul class="toc_list">
+      <li><a href="#Introduction">Introduction</a>
+      <li><a href="#Literature-review">Literature Review</a></li>
+      <ul>
+        <li><a href="#Poisson-factorization">Poisson Factorization</a></li>
+        <li><a href="#Exponential-Family-Embeddings">Exponential Family Embeddings</a></li>
+      </ul>
+    </li>
+    <li><a href="#Shopper---What-is-it-and-how-does-it-work?">SHOPPER</a></li>
+    <li><a href="#Matrix-Factorization">Matrix Factorization</a></li>
+    <li><a href="#Our-Task">Our Task</a></li>
+    <ul>
+      <li><a href="#Data-Exploration">Data Exploration</a></li>
+      <li><a href="#Data-Preparation">Data Preparation</a></li>
+    </ul>    
+    <li><a href="#Modelling">Modelling</a></li>
+    <li><a href="#Results">Results</a></li>
+    <li><a href="#Embeddings">Embeddings</a></li>
+    <ul>
+      <li><a href="#Item-Embeddings">Item Embeddings</a></li>
+      <li><a href="#Seasonality">Seasonality</a></li>
+      <li><a href="#Price Elasticities">Price Elasticities</a></li>
+    </ul> 
+    <li><a href="#Areas-for-Further-Research">Areas for Further Research</a></li>
+    <li><a href="#Conclusion">Conclusion</a></li>
+    <li><a href="#Appendix">Appendix</a></li>
+    <ul>
+      <li><a href="#Random-Utility-Model">Random Utility Model</a></li>
+      <li><a href="#Dealing-With-a-Complex-Softmax">Estimating a Complex Softmax</a></li>
+    </ul> 
+    <li><a href="#References">References</a></li>
+    
+    </ul>
+    </div>
+
+    <h2 id="Introduction">Introduction</h2>
 <p>It's no secret that consumers today are faced with a more product choices than ever before. While having many choices can be beneficial to a point, eventually it can become overwhelming and consumers can become paralysed in the face of so many options (<em>Iyengar, Lepper, 2000</em>). For this reason, many online, and offline, businesses have created tools and methods to recommend certain products to certain groups of consumers, thereby reducing the number of products a consumer has to consider. Of course, recommendation is no easy task, and much has been written about the best method to use (<em>Koren et al., 2009</em>).</p>
 <p>Many recommendation algorithms focus on latent variables that seek to describe underlying user preferences and item attributes. Most, however, do not include external factors such as price or seasonality. From a retailer's perspective, it would be ideal to know the maximum price each customer is willing to pay for each item. Retailers could then potentially have personalized per-item prices for each consumer, which would maximize the retailer's revenue.</p>
 <p>One way this could be achieved is if all products were unpurchasable by default, or simply more expensive than anyone’s willingness to pay (WTP). Then all customers entering the store receive a coupon for all the products they came to buy, that is exactly equal to the difference between their maximum WTP and the item price. Though unrealistic, this example illustrates how one could achieve personalized pricing, as actively displaying different prices per customer in a store is unfeasible, and if possible, would lead to customer dissatisfaction.</p>
@@ -13156,7 +13217,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Literature-review">Literature review<a class="anchor-link" href="#Literature-review">&#182;</a></h2>
+<h2 id="Literature-review">Literature review</h2>
 </div>
 </div>
 </div>
@@ -13172,7 +13233,9 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#160;Poisson-factorization">&#160;Poisson factorization<a class="anchor-link" href="#&#160;Poisson-factorization">&#182;</a></h3><p>Widely used in E-commerce settings, Hierarchical Poisson factorization (HPF) captures user-to-item interaction, extracting user preferences for recommendation of previously unpurchased products through past purchases of other similar customers. The mathematics underlying this model are straightforward: users’ preferences are Gamma distributed based on their past activity (number of shopping trips) and items’ attributes are Gamma distributed based on their popularity (number of purchases). The user-item interaction is expressed in the rating (either a points scale, such as 1-5 stars, or binary dummy for purchase), which is Poisson distributed according to the user’s preference and item’s attribute. As a simple example, imagine a customer who has only bought vegetables in her five previous shopping trips (activity). This customer’s preference would thus be classified as vegetarian. On the other hand, the shop has a variety of frequently bought (popular) vegetables (which is an attribute of those items). As other customers with the preference “vegetarian” have bought asparagus, the resulting “rating” will be high, and thus this customer would receive a recommendation to buy asparagus. 
+<h3 id="Poisson-factorization">Poisson factorization</h3>
+
+<p>Widely used in E-commerce settings, Hierarchical Poisson factorization (HPF) captures user-to-item interaction, extracting user preferences for recommendation of previously unpurchased products through past purchases of other similar customers. The mathematics underlying this model are straightforward: users’ preferences are Gamma distributed based on their past activity (number of shopping trips) and items’ attributes are Gamma distributed based on their popularity (number of purchases). The user-item interaction is expressed in the rating (either a points scale, such as 1-5 stars, or binary dummy for purchase), which is Poisson distributed according to the user’s preference and item’s attribute. As a simple example, imagine a customer who has only bought vegetables in her five previous shopping trips (activity). This customer’s preference would thus be classified as vegetarian. On the other hand, the shop has a variety of frequently bought (popular) vegetables (which is an attribute of those items). As other customers with the preference “vegetarian” have bought asparagus, the resulting “rating” will be high, and thus this customer would receive a recommendation to buy asparagus. 
 It is called hierarchical due to the ordering of both items and users; some products are bought more frequently than others (are more popular), and some customers execute more purchases than others (are more active).</p>
 
 </div>
@@ -13181,7 +13244,9 @@ It is called hierarchical due to the ordering of both items and users; some prod
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#160;Exponential-Family-Embeddings">&#160;Exponential Family Embeddings<a class="anchor-link" href="#&#160;Exponential-Family-Embeddings">&#182;</a></h3><p>Yet better than Poisson factorization is the collection of models called Exponential family embeddings (EFE). It stems from methods created for natural language processing, such as word embeddings (<em>Mikolov et al., 2013</em>) , but can be extended to other highly-relational datasets. It is composed of individual terms (originally words, in our case grocery items) that make up a corpus (dictionary or store inventory) and are mutually bound in a context (sentence or a shopping basket) via conditional probability. This link is the probability that a specific item is in this particular basket given all the other items in the same basket, and comes from an exponential distribution, such as Poisson for discrete and Gaussian for real-valued data points. The objective is to maximize these conditional probabilities of the whole corpus, which creates shared embeddings for each term. Through these latent embeddings, we can calculate similarity (and dissimilarity) as the cosine distance between the embedding vectors and thus represent how similar (or disimilar) items are to each other. Moreover, “Poisson embeddings can capture important econometric concepts, such as items that tend not to occur together but occur in the same contexts (substitutes) and items that co-occur, but never one without the other (complements)” (<em>Rudolph et al, 2016</em>).</p>
+<h3 id="Exponential-Family-Embeddings">Exponential Family Embeddings</h3>
+
+<p>Yet better than Poisson factorization is the collection of models called Exponential family embeddings (EFE). It stems from methods created for natural language processing, such as word embeddings (<em>Mikolov et al., 2013</em>) , but can be extended to other highly-relational datasets. It is composed of individual terms (originally words, in our case grocery items) that make up a corpus (dictionary or store inventory) and are mutually bound in a context (sentence or a shopping basket) via conditional probability. This link is the probability that a specific item is in this particular basket given all the other items in the same basket, and comes from an exponential distribution, such as Poisson for discrete and Gaussian for real-valued data points. The objective is to maximize these conditional probabilities of the whole corpus, which creates shared embeddings for each term. Through these latent embeddings, we can calculate similarity (and dissimilarity) as the cosine distance between the embedding vectors and thus represent how similar (or disimilar) items are to each other. Moreover, “Poisson embeddings can capture important econometric concepts, such as items that tend not to occur together but occur in the same contexts (substitutes) and items that co-occur, but never one without the other (complements)” (<em>Rudolph et al, 2016</em>).</p>
 
 </div>
 </div>
@@ -13197,16 +13262,18 @@ It is called hierarchical due to the ordering of both items and users; some prod
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Shopper---What-is-it-and-how-does-it-work?">Shopper - What is it and how does it work?<a class="anchor-link" href="#Shopper---What-is-it-and-how-does-it-work?">&#182;</a></h2>
+<h2 id="Shopper---What-is-it-and-how-does-it-work?">Shopper - What is it and how does it work?</h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img align="center" width="275" height="275" 
+<p>
+  <img align="center" width="275" height="275" 
   src="/blog/img/seminar/group3_shopper/recommendation_comic.jfif" alt="Shopping Recommendations"
   style="display:block;margin:0 auto;"></p>
+
 <p>The SHOPPER algorithm (<em>Blei et al., 2017</em>) is a sequential probabilistic model for market baskets. SHOPPER models how customers place items in their basket when shopping for groceries, taking various factors into account, including seasonal effects, personal preferences, price sensitivities and item-to-item interactions. SHOPPER imposes a structure on customer behaviour and assumes customers behave according to the Random Utility Model, with theory grounded in economics.</p>
 <p>SHOPPER posits that a customer walks into the store and sequentially chooses each item to be placed in the basket. The customer chooses each item based on personal preferences, price, seasonality and overall item popularity. As each item is placed into the basket, the customer then takes the current products in the basket into account when deciding on the next product. One can imagine a typical shopping trip, where the customer goes in with an intent to buy a specific item, e.g. cheese, and later decides to spontaneously purchase complementary products, such as wine and crackers. Although the customer initially had no intention of purchasing wine and crackers, the presence of cheese increased the attractiveness of the complementary products. SHOPPER generates latent variables to model these factors, estimates an overall utility value for each shopping trip and calculates a probability of observing a set of items in a given basket.</p>
 <p>The basics of the model can be summarized with the following 5 equations:</p>
@@ -13273,9 +13340,9 @@ $$max \space U_{t,c}(y_{t, i-1}) = \Psi(c, y_{t, i-1}) + \epsilon_{t,c} $$<p>Tho
 <p>Using the derivation from (<em>Train, 2009</em>) and the assumption of i.i.d error terms that follow a Gumbel distribution, we can show that the probability of choosing item $c$ can be described using a softmax function.</p>
 <br>
 $$p(y_{ti} = c | \mathbf{y}_{t, i-1}) = \frac{exp\{\Psi(c, \mathbf{y}_{t, i-1})\}}{\displaystyle \sum_{c' \notin y_{t, i-1}}exp\{\Psi(c', \mathbf{y}_{t, i-1})\} }$$
-
+<br>
 <figure>
-  <img align="center" width="600" height="400" 
+  <img align="center" width="300" height="300" 
     src="/blog/img/seminar/group3_shopper/full_basket.jpg" alt="Choices"
     style="display:block;margin:0 auto;">
     <figcaption align = "center"><em>An example of all the choices a shopper faces in a shopping trip</em></figcaption>
@@ -13320,14 +13387,16 @@ $$ p(\mathcal{Y}_t | \rho, \alpha) = \displaystyle \sum_{\pi}p(\mathbf{y}_{t, \p
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Generating-Latent-Variables">Generating Latent Variables<a class="anchor-link" href="#Generating-Latent-Variables">&#182;</a></h3>
+<h3 id="Matrix-Factorization">Matrix Factorization</h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Matrix-Factorization">Matrix Factorization<a class="anchor-link" href="#Matrix-Factorization">&#182;</a></h4><p>Now that we have seen how SHOPPER works conceptually, we can look into how the latent variables are actually generated.</p>
+<h4 id="Generating-Latent-Variables">Generating Latent Variables</h4>
+
+<p>Now that we have seen how SHOPPER works conceptually, we can look into how the latent variables are actually generated.</p>
 <p>One option of creating latent variables is to simply create a one-hot encoded matrix. We could create a vector for each shopper that has a 1 for each item they have bought, and a zero for products they did not buy. By repeating this process for all shoppers, we create our one-hot encoded customer-item matrix. The rows of our matrix can actually be considered an embedding for that shopper, as we have now converted a shopper's purchases into a numerical vector. Similarly the columns of our matrix can be considered to be the item embedding, as we now see which shoppers purchased that item. The following shows an example of what an one-hot encoded matrix would look like:</p>
 <br>
 <figure>
@@ -13364,7 +13433,9 @@ To see if our factorization is doing well, we define an error function. In tradi
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Our-Task">Our Task<a class="anchor-link" href="#Our-Task">&#182;</a></h1><p>We will now attempt to replicate the SHOPPER model using the TensorFlow framework. The trick here is to turn SHOPPER, a generative model, into a discriminative model, one that optimizes by making a prediction. We will take a deeper look into the unique challenges of this problem and our corresponding results.</p>
+<h1 id="Our-Task">Our Task</h1>
+
+<p>We will now attempt to replicate the SHOPPER model using the TensorFlow framework. The trick here is to turn SHOPPER, a generative model, into a discriminative model, one that optimizes by making a prediction. We will take a deeper look into the unique challenges of this problem and our corresponding results.</p>
 
 </div>
 </div>
@@ -13372,7 +13443,7 @@ To see if our factorization is doing well, we define an error function. In tradi
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-Exploration">Data Exploration<a class="anchor-link" href="#Data-Exploration">&#182;</a></h2>
+<h2 id="Data-Exploration">Data Exploration</h2>
 </div>
 </div>
 </div>
@@ -14441,7 +14512,7 @@ OhkQkqROBoQkqdP/A+nSMdplWnWRAAAAAElFTkSuQmCC
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-Preparation">Data Preparation<a class="anchor-link" href="#Data-Preparation">&#182;</a></h2>
+<h2 id="Data-Preparation">Data Preparation</h2>
 </div>
 </div>
 </div>
@@ -14776,7 +14847,9 @@ dtype: object</pre>
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Model">Model<a class="anchor-link" href="#Model">&#182;</a></h2><p>As seen in SHOPPER our approach is to build a model for personalized shopping recommendations. The difference compared to SHOPPER is that we want to translate the whole process of SHOPPER into the TensorFlow framework and see if that can yield the desired results as well. 
+<h2 id="Modelling">Modelling</h2>
+
+<p>As seen in SHOPPER our approach is to build a model for personalized shopping recommendations. The difference compared to SHOPPER is that we want to translate the whole process of SHOPPER into the TensorFlow framework and see if that can yield the desired results as well. 
 Most of the maths behind SHOPPER can be found in our approach as well. This can be seen for example with the way the embeddings are calculated. 
 In the model architecture we will pick that thought up again and see what formula from SHOPPER goes where in our model architecture.</p>
 <p>For this attempt we are taking different inputs from the data and then creating embeddings for these inputs. The embeddings can be seen as latent vector representations, and the dot product of two of these embeddings then gives us the combination contribution to the overall utility. The dot product as well as some more embeddings and the price multiplication then add up to the function of the utility and is put through a sigmoid function to calculate our probabilities of purchase.</p>
@@ -15439,7 +15512,10 @@ Epoch 3/3
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h2><p>After training we take a look at our results. First, we see how the model performed on our prediction task by looking at the ROC and the AUC. We use an AUC score of 0.5 as a naive benchmark, to see if our model is at least better than predicting randomly. Recall that the distribution of 1's and 0's is balanced, due to our previous sampling procedure.</p>
+
+<h2 id="Results">Results</h2>
+
+<p>After training we take a look at our results. First, we see how the model performed on our prediction task by looking at the ROC and the AUC. We use an AUC score of 0.5 as a naive benchmark, to see if our model is at least better than predicting randomly. Recall that the distribution of 1's and 0's is balanced, due to our previous sampling procedure.</p>
 
 </div>
 </div>
@@ -15807,7 +15883,9 @@ e+QgGDI2OsAAAAAASUVORK5CYII=
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Item-Embeddings">Item Embeddings<a class="anchor-link" href="#Item-Embeddings">&#182;</a></h3><p>An additional benefit of this model is the embeddings that it generates. These embeddings can give insights into user preferences, seasonal factors and price elasticities. Below we will take a look at the resulting embeddings. First we define a function to extract our embeddings.</p>
+
+<h3 id="Item-Embeddings">Item Embeddings</h3>
+<p>An additional benefit of this model is the embeddings that it generates. These embeddings can give insights into user preferences, seasonal factors and price elasticities. Below we will take a look at the resulting embeddings. First we define a function to extract our embeddings.</p>
 
 </div>
 </div>
@@ -16314,7 +16392,8 @@ var element = $('#b750979e-a7d5-44aa-a152-3c82a3da1e69');
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Seasonality">Seasonality<a class="anchor-link" href="#Seasonality">&#182;</a></h3>
+
+<h3 id="Seasonality">Seasonality</h3>
 </div>
 </div>
 </div>
@@ -16396,7 +16475,9 @@ Name: 12, dtype: float32</pre>
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Price-Elasticities">Price Elasticities<a class="anchor-link" href="#Price-Elasticities">&#182;</a></h3><p>We now consider the price elasticities generated by our model. The goal of generating these is to be able to accurately see the effect price has on the probability of a shopper purchasing a specific item or not. Using this, a retailer could potentially generate personalized coupons that bring the price of an item down to a consumer's maximum willingness to pay. We test this on our model by taking a shopper and an item, hold all other variables constant, and vary only the price of the item.</p>
+<h3 id="Price-Elasticities">Price Elasticities</h3>
+
+<p>We now consider the price elasticities generated by our model. The goal of generating these is to be able to accurately see the effect price has on the probability of a shopper purchasing a specific item or not. Using this, a retailer could potentially generate personalized coupons that bring the price of an item down to a consumer's maximum willingness to pay. We test this on our model by taking a shopper and an item, hold all other variables constant, and vary only the price of the item.</p>
 
 </div>
 </div>
@@ -16540,7 +16621,9 @@ Name: 12, dtype: float32</pre>
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Areas-for-Further-Research">Areas for Further Research<a class="anchor-link" href="#Areas-for-Further-Research">&#182;</a></h3><p>We now discuss areas for future consideration:</p>
+<h3 id="Areas-for-Further-Research">Areas for Further Research</h3>
+
+<p>We now discuss areas for future consideration:</p>
 <ol>
 <li><strong>Number of not-bought samples</strong>: It is not immediately clear if we should only sample one unpurchased item for each purchased item. To make the process of customer choice more believable, we could consider more than one “non-bought” product to be sampled for our model. The dataset would thus become imbalanced, but that is the case in real life - the customer “sees” substantially more products than those that she ends up purchasing. How many she actually considers is not clear.</li>
 <li><strong>Order of item placement in basket</strong>: Currently, we are assuming that the shopper's basket is full and the item we are predicting on is her final, or "checkout" item. We do this because we do not observe the order in which the customer placed items into her basket. In a perfect world, we would have the order items were placed into the basket available to us and we could then iteratively fill the basket. This would give us a better estimation of item-item interactions</li>
@@ -16564,7 +16647,10 @@ Outside of retail, movie and song streaming services also do personal recommenda
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>Our model computes the probability that the given user will purchase a given product at a given price in a given week, given all the other products in her basket (or other products that the customer came to buy). We have shown that it is possible to generate meaningful embeddings and also simulate the effect of price changes on purchase probabilities. We began with discussing current methods of modelling shopper preferences, took a deep look into the SHOPPER model, and final showed how the SHOPPER architecture could be translated using TensorFlow. Our results showed that meaningful embeddings could be extracted from our model and potentially be used to optimize the couponing efforts of a grocery retailer. Our methods and model could potentially be used in other retail settings as well.</p>
+
+<h2 id="Conclusion">Conclusion</h2>
+
+<p>Our model computes the probability that the given user will purchase a given product at a given price in a given week, given all the other products in her basket (or other products that the customer came to buy). We have shown that it is possible to generate meaningful embeddings and also simulate the effect of price changes on purchase probabilities. We began with discussing current methods of modelling shopper preferences, took a deep look into the SHOPPER model, and final showed how the SHOPPER architecture could be translated using TensorFlow. Our results showed that meaningful embeddings could be extracted from our model and potentially be used to optimize the couponing efforts of a grocery retailer. Our methods and model could potentially be used in other retail settings as well.</p>
 
 </div>
 </div>
@@ -16572,14 +16658,16 @@ Outside of retail, movie and song streaming services also do personal recommenda
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">&#182;</a></h2>
+<h2 id="Appendix">Appendix</h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Random-Utility-Model">Random Utility Model<a class="anchor-link" href="#Random-Utility-Model">&#182;</a></h3><p>In the main body we briefly touched on the Random Utility Model. Here we provide more detail on the model and its interpretation.</p>
+<h3 id="Random-Utility-Model">Random Utility Model</h3>
+
+<p>In the main body we briefly touched on the Random Utility Model. Here we provide more detail on the model and its interpretation.</p>
 <p>Let $U_{tc}$ represent the utility a customer receives from choosing item $c$ on trip $t$ and $C$ represent the full set of alternatives ($c = 1, 2, ... ,C$; with $C\geq2$) the customer can choose from.</p>
 <p>The customer then chooses item $c$ from the set of alternatives that provides the highest utilities. The customer chooses item c where $U_{tc} &gt; U_{tc'} \; \forall \: c \neq c' $. Therefore the probability that the customer chooses a specific alternative can be written as $Prob(U_{tc} &gt; U_{tc'} \; \forall \: c \neq c')$. Plugging in our utility function from before (equation 3) results in the following expression:</p>
 <p>$P_c = p(\Psi(c, y_{t, i-1}) + \epsilon_{t,c} &gt; \Psi(c', y_{t, i-1}) + \epsilon_{t,c'}, \; \forall \: c \neq c') $</p>
@@ -16593,7 +16681,7 @@ Outside of retail, movie and song streaming services also do personal recommenda
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Dealing-With-a-Complex-Softmax">Dealing With a Complex Softmax (Noise Contrastive Estimation)<a class="anchor-link" href="#Dealing-With-a-Complex-Softmax">&#182;</a></h3>
+<h3 id="Dealing-With-a-Complex-Softmax">Estimating a Complex Softmax (Noise Contrastive Estimation)</h3>
 <p>From the shopper’s utility maximization problem, we see that the probability of a shopper selecting an item takes the form of a softmax function (see above). This function, however, is difficult to compute, due to the denominator. The denominator is a sum over all of the other items that are available except for the one that we are predicting on. In our case, it is a sum over approximately 35 000 items. One can imagine that each weight update requires a recalculation of the denominator, making the problem computationally difficult.</p>
 <p>We then look to a technique developed by Gutman and Hyvärinen and modified by Mikolov et al. in the seminal word2vec paper (<em>Mikolov et al., 2013</em>). A similar problem, with an expensive softmax function, also occurs in natural language processing. Consider how word2vec generates its embeddings. When predicting the next word in a sentence, word2vec has to compare the probability of the target word to the probability of every other word in the dictionary. As the size of the vocabulary often contains tens of thousands of words, this becomes infeasible to calculate. To get around this problem, word2vec generates a noise sample, consisting of a set of words from the vocabulary that are not the next word in the sentence. It then becomes a binary classification problem between the correct word and “noisy” words.</p>
 <p>The intuition of this method is that a good model should be able to discriminate between the actual data and data generated from a known noise distribution. If the model can tell the difference between actual data and generated noise, then it must have learned some underlying properties of the data. One can think of this as ‘learning by comparison’ (<em>Gouws, S., 2016</em>).</p>
@@ -16614,7 +16702,10 @@ Outside of retail, movie and song streaming services also do personal recommenda
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><p>Ruiz, F. J. R., Athey, S., Blei, D. M. (2017) SHOPPER: A Probabilistic Model of Consumer Choice with Substitutes and Complements.  Annals of Applied Statistics. <a href="https://arxiv.org/abs/1711.03560">https://arxiv.org/abs/1711.03560</a></p>
+
+<h2 id="References">References</h2>
+
+<p>Ruiz, F. J. R., Athey, S., Blei, D. M. (2017) SHOPPER: A Probabilistic Model of Consumer Choice with Substitutes and Complements.  Annals of Applied Statistics. <a href="https://arxiv.org/abs/1711.03560">https://arxiv.org/abs/1711.03560</a></p>
 <p>Gopalan, P., Hofman, J. and Blei, D. M. (2015). Scalable recommendation with hierarchical Poisson factorization. In Uncertainty in Artificial Intelligence.</p>
 <p>Rudolph, M., Ruiz, F. J. R., Mandt, S. and Blei, D. M. (2016). Exponential Family Embeddings. In Advances in Neural Information Processing Systems.</p>
 <p>Iyengar, S. S. and Lepper, M. R. (2000). When Choice is Demotivating: Can One Desire Too Much of a Good Thing?.  Journal of Personality and Social Psychology, Vol. 79, No. 6, 995-1006</p>
