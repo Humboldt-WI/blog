@@ -1,10 +1,10 @@
 +++
 title = "Economic Uncertainty Identification"
-date = "2020-02-06'"
+date = '2020-02-06'
 tags = ["EconomicUncertainty", "Transformers", "NLP","NN", "BERT","ROBERTA","ALBERT","SimpleTransformers", "DeepLearning","Uncertainty","Binary","Classification"]
 categories = ["Course projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
-author = "Seminar Information Systems WiSe 2019/20"
+author = "Seminar Information Systems (WS19/20)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description ="Identification of Economic Uncertainty from Newspaper Articles Using State of the Art Models."
 +++
