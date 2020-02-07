@@ -348,5 +348,23 @@ import numpy as np import pandas as pd 2+3  A Gentle Introduction to Neural Netw
 Imagine the following problem: There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.</description>
     </item>
     
+    <item>
+      <title>Economic Uncertainty Identification</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/uncertainty_identification_transformers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/uncertainty_identification_transformers/</guid>
+      <description>Economic Uncertainty Identification Using Transformers - Improving Current Methods Authors: Siddharth Godbole, Karolina Grubinska &amp;amp; Olivia Kelnreiter   Table of Contents  Introduction Motivation and Literature Theoretical Background
+3.1 Transformers, BERT and BERT-based Models
+3.2 Transformers Architecture 3.3 BERT
+3.4 RoBERTa
+3.5 DistilBERT
+3.6 ALBERT 3.7 Comparing RoBERTa, DistilBERT and ALBERT Application to Economic Policy Uncertainty
+4.1 Data Exploration
+4.1.1 Data Pre-Processing
+4.1.2 Data Imbalance
+4.2 Models Implementation</description>
+    </item>
+    
   </channel>
 </rss>

@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Economic Uncertainty Identification</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Identification of Economic Uncertainty from Newspaper Articles Using State of the Art Models.">
+  
+
+  <meta name="generator" content="Hugo 0.58.1" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="https://humboldt-wi.github.io/blog/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="https://humboldt-wi.github.io/blog/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="https://humboldt-wi.github.io/blog/img/apple-touch-icon.png" />
+  
+
+  <link href="https://humboldt-wi.github.io/blog/css/owl.carousel.css" rel="stylesheet">
+  <link href="https://humboldt-wi.github.io/blog/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://humboldt-wi.github.io/index.xml" type="application/rss+xml" title="Institute of Infomation Systems at HU-Berlin">
+
+  
+  <meta property="og:title" content="Economic Uncertainty Identification" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/research/information_systems_1920/uncertainty_identification_transformers//" />
+  <meta property="og:image" content="img/logoGross.png" />
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://humboldt-wi.github.io/blog/">
+                    <img src="https://humboldt-wi.github.io/blog/img/logo.png" alt="Economic Uncertainty Identification logo" class="hidden-xs hidden-sm">
+                    <img src="https://humboldt-wi.github.io/blog/img/logo-small.png" alt="Economic Uncertainty Identification logo" class="visible-xs visible-sm">
+                    <span class="sr-only">Economic Uncertainty Identification - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/news/">News</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/contributors/">Contributors</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/research/">research</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Economic Uncertainty Identification</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Seminar Information Systems WiSe 2019/20</a> | January 1, 0001</p>
+
+                        <div id="post-content">
+                          
+
+<h1 id="economic-uncertainty-identification-using-transformers-improving-current-methods">Economic Uncertainty Identification Using Transformers - Improving Current Methods</h1>
+
+<h4 id="authors-siddharth-godbole-karolina-grubinska-olivia-kelnreiter">Authors: Siddharth Godbole, Karolina Grubinska &amp; Olivia Kelnreiter</h4>
+
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/background.png" width="850"/> 
+</figure>
+
+
+<h1 id="table-of-contents">Table of Contents</h1>
+
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#motivation">Motivation and Literature</a></li>
+<li><a href="#theory">Theoretical Background</a><br />
+3.1 <a href="#transformers">Transformers, BERT and BERT-based Models</a><br />
+3.2 <a href="#architecture">Transformers Architecture</a> <br />
+3.3 <a href="#bert">BERT</a><br />
+3.4 <a href="#roberta">RoBERTa</a><br />
+3.5 <a href="#distilbert">DistilBERT</a><br />
+3.6 <a href="#albert">ALBERT</a> <br />
+3.7 <a href="#comparison">Comparing RoBERTa, DistilBERT and ALBERT</a></li>
+<li><a href="#app">Application to Economic Policy Uncertainty</a><br />
+4.1 <a href="#dataexploration">Data Exploration</a><br />
+4.1.1 <a href="#preprocessing">Data Pre-Processing</a><br />
+4.1.2 <a href="#imbalance">Data Imbalance</a><br />
+4.2 <a href="#models">Models Implementation</a><br />
+4.2.1 <a href="#transformers">Transformer-Based Models</a><br />
+4.2.2 <a href="#benchmarks">Benchmarks</a><br />
+4.2.3 <a href="#results">Interpretation of Results</a></li>
+<li><a href="#discussion">Further Discussion</a><br />
+5.1 <a href="#threshold">Optimal Threshold Calculation</a><br />
+5.2 <a href="#tokens">Impact of Certain Tokens in Identifying Uncertainty</a></li>
+<li><a href="#conclusions">Conclusions</a></li>
+<li><a href="#references">References</a></li>
+</ol>
+
+<h1 id="1-introduction-a-class-anchor-id-introduction-a">1. Introduction <a class="anchor" id="introduction"></a></h1>
+
+<p>Within the past week, Brexit happened. The U.S. primaries for the next presidential election started. Donald Trump continues to fight for reelection while being acquitted in an impeachment trial. From events like these, economic policy uncertainty rises and households and firms take actions with wider impacts. To better analyze and predict these sentiments of economic policy uncertainty, Baker et al. (2016) built an economic policy uncertainty index. They analyzed whether newspaper articles contained references to economic policy uncertainty - but did so with a relatively simple search term and 12,000 human-labelled articles. Recently, much more complex classification algorithms have emerged in natural language processing (NLP). Researchers in the field are developing new and better language models at an unprecedented speed (Sanh 2019a). Applying these new state of the art models could improve current methods and replace manual labeling tasks for indices such as the economic policy uncertainty index, but also find widespread application in business and other fields. In this project, we want to test this: we apply new transformer models from the BERT-family to improve the current method of binary text classification in the context of economic policy uncertainty. We find that all of our models achieve remarkable results in classifying the given newspaper data (AUC&rsquo;s ranging from 0.87-0.90), with RoBERTa achieving best results compared to BERT, DistilBERT and ALBERT (as well as the non-transformer benchmarks). This indicates that the models are well equipped to take over tasks which researchers have previously solved in less optimal ways. To illustrate this finding, this blogpost is organized as follows: in section <a href="#motivation">2. Motivation and Literature</a> we give context on the case study of economic policy uncertainty, followed by <a href="#theory">3. Theoretical Background</a> where we present and explain how transformers and specifically the four state of the art BERT-models work. In <a href="#app">4. Application to Economic Policy Uncertainty</a>, we demonstrate the implementation of the BERT-models to our case study and present the results. Finally, we highlight important considerations and take-aways in section <a href="#discussion">5. Further Discussion</a>.</p>
+
+<h1 id="2-motivation-and-literature-a-class-anchor-id-motivation-a">2. Motivation and Literature <a class="anchor" id="motivation"></a></h1>
+
+<p>Economic policy uncertainty can have substantial effects on the decisions of individual economic actors, like firms or households. &ldquo;Uncertainty is the No 1 enemy of investment markets&rdquo;, as Huang (2019) put it. To facilitate research on the topic, Baker et al. (2016) developed their Economic Policy Uncertainty (EPU) index. Initially, their analysis was conducted for the United States, but they and other researchers have since extended the methodology to other world markets. Currently, the EPU analyses <a href="https://www.policyuncertainty.com/">on their website</a> can be viewed for 25 countries as well as on a global level. The index is a good case study for applying state of the art NLP models, because the application of such models could improve their methodology and replace human labeling.</p>
+
+<p>The EPU index stems from analyzing different newspaper articles and the coverage of topics related to economic uncertainty. In the original methodology, Baker et al. searched 10 major U.S. newspapers from 1985 - 2013 in the papers&rsquo; digital archives for the keywords &ldquo;economic&rdquo; or &ldquo;economy&rdquo;, &ldquo;policy&rdquo; and &ldquo;uncertain&rdquo; or &ldquo;uncertainty&rdquo;. If an article contains all three keywords (and at least one from a list of words related to policy), it is marked as &ldquo;1&rdquo; (= it contains economic policy uncertainty). Based on the monthly frequency (accounting for the overall volume of articles in that time span), they create the EPU index. Various different keywords could be included here for customized analyses (which Baker et al. also do for several different policy fields). For example, if a Brexit related EPU index is to be calculated then &ldquo;brexit&rdquo; as a keyword could be included and then analyzed. Below is an example of the EPU index for the UK, comparing overall and Brexit-related economic policy uncertainty. The graph, taken from <a href="https://www.policyuncertainty.com/">Baker et al.&rsquo;s website</a>, allows us to analyze trends and major changes during that time.</p>
+
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/index2.png"
+         alt="Brexit and Policy Uncertainty - Image Source: policyuncertainty.com/brexit.html (2016)" width="800"/> <figcaption>
+            <p>Brexit and Policy Uncertainty - Image Source: policyuncertainty.com/brexit.html (2016)</p>
+        </figcaption>
+</figure>
+
+
+<p><br />
+Baker et al. (2016)&rsquo;s approach also involved a human audit study: over an 18-month-period, student-teams manually classified over 12,000 articles for economic policy uncertainty. However, this is a tedious task and such an audit study is not easily replicable.
+With recent advances in the field of NLP in mind, we want to expand this methodology beyond the simple identification of keywords, and replace human classification by reliable, automated methods.</p>
+
+<h1 id="3-theoretical-background-a-class-anchor-id-theory-a">3. Theoretical Background <a class="anchor" id="theory"></a></h1>
+
+<p>In order to use the best methods possible to identify economic uncertainty in the newspaper articles, we decided to apply BERT-based transformers. In a very short time, transformers and specifically BERT have literally transformed the NLP landscape with high performance on a wide variety of tasks. New, improved models are published every few weeks (if not days) and much remains to be researched and developed further. An example of the ongoing scientific discussions in the field is the trend to build ever larger and heavier models to improve performance. The image below shows this trend by plotting selected models by publishing date and parameter size. But do more parameters always increase a model\&rsquo;s performance? What are other ways of improving models? To answer these and other questions, we devote this chapter to laying the theoretical groundwork: we will explain the basic transformer architecture and BERT, and then present three models (RoBERTa, DistilBERT, ALBERT) that promise to outperform BERT on different dimensions, before applying them to our binary text classification task in the next chapter.</p>
+
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/Evolution.png"
+         alt="Evolution of Transformer-Based Models - Image Source: Sanh (2019b)" width="800"/> <figcaption>
+            <p>Evolution of Transformer-Based Models - Image Source: Sanh (2019b)</p>
+        </figcaption>
+</figure>
+
+
+<h2 id="3-1-transformers-bert-and-bert-based-models-a-class-anchor-id-transformers-a">3.1 Transformers, BERT and BERT-based Models <a class="anchor" id="transformers"></a></h2>
+
+<p>Highly complex convolutional and recurrent neural networks (CNNs and RNNs) achieved the best results in language modeling tasks, before Vaswani et al. (2017) proposed a simpler network architecture. The advantages of this newly born transformer were threefold: (1) it allowed for a parallelization of tasks, (2) resulted in simpler operations, and (3) achieved better results overall. How did Vaswani et al. do this? Their idea was to build a model based on attention mechanisms, which some of the CNNs and RNNs at that time used to connect their encoder and decoder. As the BERT family is built on the transformer architecture and it is helpful to have a basic understanding of it, we devote a short subchapter to the attention-based architecture. For a more in-depth explanation, we recommend taking a look at Jay Alammar&rsquo;s <a href="http://jalammar.github.io/illustrated-transformer/">Illustrated Transformer</a> or Harvard NLP&rsquo;s <a href="https://nlp.seas.harvard.edu/2018/04/03/attention.html">Annotated Transformer</a>.</p>
+
+<h2 id="3-2-transformers-architecture-a-class-anchor-id-architecture-a">3.2 Transformers Architecture <a class=?anchor? id=?architecture?></a></h2>
+
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/arch.png"
+         alt="Transformers Architecture - Image Source: Vaswani et al. (2017)"/> <figcaption>
+            <p>Transformers Architecture - Image Source: Vaswani et al. (2017)</p>
+        </figcaption>
+</figure>
+
+
+<p>Adapted from Vaswani et al., the figure above displays a transformer. On the left side is the encoder, next to it on the right the decoder. As in preceding models, the encoder is responsible for forming continuous representations of an input sequence. The decoder in turn maps these representations back to output sequences. Both encoder and decoder consist of several layers (denoted with Nx in the graph) with two and three sub-layers each, respectively:</p>
+
+<ul>
+<li><p><strong>Multi-Head Attention</strong>: here, keys, values and queries (which come from the self-attention - in this case, the previous layer&rsquo;s output) are linearly projected to then perform the attention function in parallel (which Vaswani et al. call the &ldquo;scaled dot-product attention&rdquo;). The multi-head characteristic makes it possible to use &ldquo;different representation subspaces at different positions&rdquo; (Vaswani et al., 4).</p></li>
+
+<li><p><strong>Masked Multi-Head Attention</strong> (only in decoder): as the first sub-layer in the decoder, this layer performs the multi-head attention on the encoder\&rsquo;s output. It is masked in order to prevent predictions based on information that must not be known yet at a certain position.</p></li>
+
+<li><p><strong>Feed Forward Network</strong>: two linear transformations are applied to each position separately and identically.</p></li>
+</ul>
+
+<p>Before information enters the layers, the positional encoding conveys information on the relative position of a token in a sequence and allows the transformer to make use of the token order. Once the layers have performed their attention function and transformations, another two transformations take place: the Linear, applying another linear transformation, and the Softmax, which transforms the output back to probabilities.</p>
+
+<h2 id="3-3-bert-a-class-anchor-id-bert-a">3.3 BERT <a class="anchor" id="bert"></a></h2>
+
+<p>BERT (Bidirectional Encoder Representations from Transformers) was published in 2018 by Devlin et al. from Google and performed so well that - within a year - it inspired a whole model-family to develop. BERT built on the original transformer idea, but used a slightly changed architecture, different training, and (as a result) increased size.</p>
+
+<ul>
+<li><p><strong>Architecture</strong>: BERT\&rsquo;s architecture is largely based on the original transformer but is larger (even in its base version) with more layers, larger feed-forward networks and more attention heads.</p></li>
+
+<li><p><strong>Training</strong>: The real innovation comes in the bidirectional training that BERT performs. There are two pre-training tasks: masked language modeling (MLM) and next sentence prediction (NSP). These are performed on the pre-training data of the BookCorpus (800 million words) and English Wikipedia (2500 million words).</p>
+
+<ul>
+<li><em>Masked Language Modeling (MLM)</em>: to train the model bidirectionally, Devlin et al. (2018) let BERT predict masked words based on the context. They randomly hide 15\% of the tokens in each sequence. Of these 15\% of tokens, however, only 80\% are replaced with a [MASK] token, 10\% are replaced with a random other token, and 10\% are unchanged.</li>
+</ul></li>
+</ul>
+
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/MLM.png" width="850"/> 
+</figure>
+
+
+<ul>
+<li><em>Next Sentence Prediction (NSP)</em>: To also train the model on the relationship between sentences, Devlin et al. (2018) decided to apply a NSP task. BERT has to decide for pairs of sentence segments (each segment can consist of several sentences) whether they actually succeed each other or not (with a 50\% probability of either case being true).</li>
+</ul>
+
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/NSP_BERT.png" width="850"/> 
+</figure>
+
+
+<ul>
+<li><strong>Size</strong>: Overall, the changes result in a larger model with 110 million parameters in the case of BERT-Base and 340 million parameters for BERT-Large.</li>
+</ul>
+
+<p>As mentioned, when published, BERT dominated performance benchmarks and thereby inspired many other authors to experiment with it and publish similar models. This led to the development of a whole BERT-family, each member being specialized on a different task. Take for example SpanBERT which aims to improve pre-training by representing and predicting spans or CamemBERT, a French-language BERT. We chose to apply three particularly prominent BERT-based models, RoBERTa, DistilBERT and ALBERT, each of which was developed with a different goal in mind and brought new insights to the world of NLP models.</p>
+
+<p>Check out the graph below to get an overview of the many BERT-models and their publishing date (not exhaustive!).</p>
+
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/BERT-family_small.png"
+         alt="The Bert Family" width="850"/> <figcaption>
+            <p>The Bert Family</p>
+        </figcaption>
+</figure>
+
+
+<h2 id="3-4-roberta-a-class-anchor-id-roberta-a">3.4 RoBERTA <a class="anchor" id="roberta"></a></h2>
+
+<p>One of the first to follow BERT\&rsquo;s architecture were Liu et al. (2019), a team of researchers from Facebook AI. In July 2019, they published a model called RoBERTa (which stands for Robustly-optimized BERT approach). The authors saw room for improvement in the pre-training, arguing that BERT was significantly undertrained. They changed some pre-training configurations, and RoBERTa outperformed BERT on the GLUE benchmark.</p>
+
+<p>Since RoBERTa was developed based on BERT, the two models share the transformer architecture. However, Liu et al. examined some of  BERT&rsquo;s pre-training settings in an experimental setup and subsequently decided to implement the following changes:</p>
+
+<ul>
+<li><p><strong>Additional Training Data:</strong> As mentioned before, BERT was trained on the BookCorpus and English Wikipedia with the overall size of 16 GB. For RoBERTa, Liu et al. used those two datasets and on top of it three additional sources:</p></li>
+
+<li><p><em>CC-News</em>: collected by the authors from the English portion of the CommonCrawl News dataset in the time period between September 2016 and February 2019. (76GB)</p></li>
+
+<li><p><em>Stories</em>: a dataset containing a subset of CommonCrawl data filtered to match the story-like style of Winograd schemas. (31GB)</p></li>
+
+<li><p><em>OpenWebText</em>:  a web content extracted from URLs shared on Reddit with at least three upvotes. (38GB)</p></li>
+</ul>
+
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/rob_data.png" width="850"/> 
+</figure>
+
+
+<p>In total, the data used to train RoBERTa was a huge English-language uncompressed text corpus 10 times larger than what BERT was trained on: 160 GB of text.</p>
+
+<ul>
+<li><strong>Dynamic Masking Pattern:</strong> BERT\&rsquo;s masking approach relied on performing masking once during data pre-processing, which resulted in one static mask. Liu et al. adjusted this method when trying different versions of masking for RoBERTa: first, they duplicated the data 10 times over 40 epochs of training. This resulted in four masks, where each training sequence was seen only four times during training procedure (once per mask) instead of every time within one mask. Then, the authors also compared this approach with dynamic masking, where the mask is generated every time the sequence is passed to the model.
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/dyn_masking.png" width="800"/> 
+</figure>
+</li>
+</ul>
+
+<p>As shown above, the dynamic masking provided some improvements in performance. The authors also mentioned that using it resulted in efficiency benefits and therefore, they decided to train RoBERTa using the dynamic masking approach.</p>
+
+<ul>
+<li><p><strong>Removing the Next Sentence Prediction Objective (NSP):</strong> Another significant change compared to the original BERT emerged from experimenting with the Next Sentence Prediction objective during the training of a model. Predicting if two segments of text appear together (as in case of BERT) was meant to train the model in capturing the relationships between sentences and learning its context. Liu et al. compared the performance of RoBERTA in four different settings:</p>
+
+<ul>
+<li>The <em>segment pair approach</em> is the original BERT setting trained with NSP loss, where the model takes a pair of segments as input and has to predict if these two appear together. One segment can contain multiple natural sentences (until it reaches 512 tokens).</li>
+<li>The <em>sentence-pair approach</em> is similar to what was originally implemented in BERT, with the difference that instead of segments (which can contain multiple sentences), every pair really consists only of two sentences on which the NSP is applied.</li>
+<li>In the <em>full-sentences</em> case, the training input are full sentences coming from one or more documents. When the input reaches the end of one document it will start sampling from another one (until it reaches 512 tokens).The authors removed the NSP loss from the training objective.</li>
+<li><em>doc-sentences</em> work in the same way as full-sentences, with the difference that the inputs may only come from one document. In this case, the length of tokens may be shorter than 512 tokens. Therefore, the authors decided to increase the batch size in order to achieve a similar number of tokens to the previous cases. Again, there is no training on NSP loss.</li>
+</ul>
+
+<p><figure>
+    <img src="/blog/img/seminar/uncertainty_identification/nsp.png" width="800"/> 
+</figure>
+
+<br />
+As can be seen in the table above, the new settings outperformed the originally published BERT (BASE) results. Removing the NSP loss led to improvements while testing on four different tasks. Doc-Sentences performed best, but resulted in an increased batch size and less comparability - therefore, Liu et al. decided to use Full-Sentences in the remainder of their experiments.</p></li>
+
+<li><p><strong>Training with Larger Batches:</strong> The original BERT (BASE) was trained over 1 million steps with a batch size of 256 sequences. Liu et al. note that training over fewer steps with an increased batch size would be equivalent in terms of computational costs. Experimenting with those settings, they find out that training with bigger batches over fewer steps can indeed improve perplexity for the masked language modeling pattern and also the final accuracy.</p></li>
+</ul>
+
+<h2 id="3-5-distilbert-a-class-anchor-id-distilbert-a">3.5 DistilBERT <a class="anchor" id="distilbert"></a></h2>
+
+<p>An ongoing trend in NLP and the further development of the BERT family has been to create ever heavier and larger models to improve performance (such as RoBERTa). BERT is costly, time-consuming and computationally heavy. Therefore, Sanh et al. (2019) from the NLP company Hugging Face researched how to improve BERT on these aspects while keeping performance high. In the end, they built a distilled version of BERT, which they called DistilBERT.</p>
+
+<p>With DistilBERT, Sanh et al. showed that it is possible to reach and achieve 97\% of BERT\&rsquo;s language understanding capabilities, while reducing the size of BERT model by 40\%. Moreover, this model is 60\% faster. While relying on the BERT architecture and using the same training data, DistilBERT implemented some ideas from RoBERTa and used a knowledge distillation process for the training of the model.</p>
+
+<ul>
+<li><p><strong>Architecture</strong>: DistilBERT has the same transformer architecture as BERT, but a smaller number of layers in order to reduce the model size. Sanh et al. also removed the token-type embeddings and pooler (which BERT uses for the next sentence classification task).</p></li>
+
+<li><p><strong>Training &amp; Knowledge Distillation</strong>:</p></li>
+
+<li><p><em>Knowledge Distillation</em>:  The name &ldquo;DistilBERT&rdquo; is derived from the distillation process, often seen in scientific applications such as separating water and salt. In the context of NLP, distillation refers to knowledge distillation which means to train a student model (DistilBERT) based on an already trained teacher model (BERT). In this case, DistilBERT is trained to replicate the behavior of BERT by matching the output distribution - training through knowledge transfer, so to say. The graph below provides a schematic overview of the DistilBERT training (technically simplified).</p></li>
+</ul>
+
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/db1.png" width="850"/> 
+</figure>
+
+
+<ul>
+<li><p><em>Training losses</em>: Sanh et al. use three training losses for DistilBERT: distillation loss, masked language modeling loss (from the MLM training task) and cosine embedding loss (to align the directions of the student and teacher hidden states vectors). Triple losses ensure the student model learns properly and has efficient transfer of knowledge.</p></li>
+
+<li><p><em>Batch size and next-sentence prediction</em>: Building on what Liu et al. (2019) found for RoBERTa, Sanh et al. removed the NSP task for model training. They also changed the batch size from the original BERT to further increase performance (see &ldquo;Training with Larger Batches&rdquo; in the previous chapter).</p></li>
+</ul>
+
+<p>For a more in-depth explanation, also take a look at <a href="https://medium.com/huggingface/distilbert-8cf3380435b5">Sanh\&rsquo;s blogpost on DistilBERT!</a></p>
+
+<h2 id="3-6-albert-a-class-anchor-id-albert-a">3.6 ALBERT <a class="anchor" id="albert"></a></h2>
+
+<p>Whereas RoBERTa focused on performance and DistilBERT on speed, ALBERT (A Lite BERT) is built to address both. Lan et al. (2019) from Google in their paper achieve better results with lower memory consumption and increased training speed compared to BERT. They claim that BERT is parameter inefficient and apply techniques to reduce the parameters to 1/10th of the original model without substantial performance loss. Building on the BERT architecture, the authors experiment with two methods to reduce the model size: factorized embedding parameterization and cross-layer parameter sharing. In addition, they improve the model training by changing the next-sentence-prediction task for sentence-order-prediction. They keep the same training data as BERT and DistilBERT.</p>
+
+<ul>
+<li><p><strong>Factorized Embedding Parameterization (Architecture)</strong>: In BERT and subsequent models, the size of WordPiece embeddings and the size of the hidden layers is linked. Lan et al. argue that this is inefficient, because each of the two has a different purpose. WordPiece embeddings supposedly capture the general meanings of words, which is <em>context independent</em>, whereas hidden layers map the meaning <em>dependent on the specific context</em>. Hidden layers therefore are much more complex: they need to store more information and be updated more often during the training process. In ALBERT, Lan et al. decompose the large vocabulary matrix into two smaller matrices. Thereby, they separate the size of the layers and reduce the number of model parameters significantly.</p></li>
+
+<li><p><strong>Cross-Layer Parameter Sharing (Architecture)</strong>: Another way to reduce parameter size is by parameter sharing across layers. Lan et al. try three different settings for parameter sharing: sharing the feed-forward network parameters, the attention parameters, and sharing both at the same time. Parameter sharing prevents the number of parameter to grow with the depth of the network. However, there is a payoff between the model size and its performance. The table below (adapted from Lan et al.) shows: the ALBERT model with no parameter sharing has the largest size of parameters and best performance across NLP benchmarks. As the number of parameters decreases (with increasing sharing of parameters), performance also decreases. Lan et al. prefer the gain in efficiency over the highest performance. Therefore, they decide to share parameters across both as a default.
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/albert1.png" width="800"/> 
+</figure>
+</p></li>
+
+<li><p><strong>Sentence Order Prediction (Training)</strong> (SOP): The authors of RoBERTa have already shown that BERT\&rsquo;s NSP might not be the best training task. Lan et al. have a hypothesis why this is the case: NSP aims to teach the model coherence prediction. However, whether two sentences succeed each other can also be predicted from their <em>topics</em> - which for the model is easier to learn and overlaps with the MLM task. Learning to decide whether sentences belong together based on their topics, therefore does not add predictive power. Lan et al. find another coherence training task, which is more different from what the model learns from MLM. They let ALBERT predict sentence order during the training. Now, coherence is separated from topic prediction. As the table below shows, this training task substantially increases the model&rsquo;s performance.
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/albert2.png" width="800"/> 
+</figure>
+</p></li>
+</ul>
+
+<p>With these adjustments, ALBERT did manage to jump the GLUE leaderboard at the time of publication.</p>
+
+<h2 id="3-7-comparing-roberta-distilbert-and-albert-a-class-anchor-id-comparison-a">3.7 Comparing RoBERTa, DistilBERT and ALBERT <a class="anchor" id="comparison"></a></h2>
+
+<p>Summarizing the theory, each of the three presented BERT-based models has their own modifications and promises very good performances - which we will test in the next chapter. For easy comparison, we summarized the model differences in the table below (adapted and extended from Khan&rsquo;s (2019) summary <a href="https://towardsdatascience.com/bert-roberta-distilbert-xlnet-which-one-to-use-3d5ab82ba5f8">here</a>.
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/comparison-table.png" width="850"/> 
+</figure>
+</p>
+
+<h1 id="4-application-to-economic-policy-uncertainty-a-class-anchor-id-app-a">4. Application to Economic Policy Uncertainty <a class="anchor" id="app"></a></h1>
+
+<p>After understanding the transformer-based models in theoretical context, we apply them to our classification problem: to determine if there is economic uncertainty in newspaper articles with the aim of extending and improving the current classification methodologies. For this purpose, we use the package <strong>Simple Transformers</strong>, which was built upon the Transformers package (made by <strong>HuggingFace</strong>). Simple Transformers supports binary classification, multiclass classification and multilabel classification and it\&rsquo;s wrapping the complex architecture of <strong>all</strong> of the previously mentioned models (and even more!). <strong>SimpleTransformers</strong> requires only three essential lines of code to initialize, train and evaluate the model and obtain ready-to-go transformers. Using this package, transformer models can relatively easily be applied in research and business contexts - which we will subsequently demonstrate. For implementation, we recommend the authors\&rsquo; <a href="https://towardsdatascience.com/simple-transformers-introducing-the-easiest-bert-roberta-xlnet-and-xlm-library-58bf8c59b2a3">blogpost</a> as a starting point.</p>
+
+<h2 id="4-1-data-preparation-a-class-anchor-id-dataprep-a">4.1. Data Preparation  <a class="anchor" id="dataprep"></a></h2>
+
+<h3 id="4-1-1-data-exploration-a-class-anchor-id-dataexploration-a">4.1.1 Data Exploration <a class="anchor" id="dataexploration"></a></h3>
+
+<p>The original dataset we used was labelled and consisted of three columns: <br />
+(i) Article ID <br />
+(ii) Article - the newspaper articles in text format <br />
+(iii) label - a binary indicator showing if the article is related to economic policy uncertainty or not. <br />
+The entire dataset contains 50,483 articles and is imbalanced, with only about 5\% of the articles being marked (1), related to economic policy uncertainty.</p>
+
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/expl1.png" width="800"/> 
+</figure>
+
+
+<p>All articles are written completely in English. The average length of the newspaper articles is 534 words (after cleaning).</p>
+
+<p>Overall, after removing punctuations, stop words and fixing the (i&rsquo;d, she&rsquo;d, etc), the following top words appear:
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/expl2.png" width="800"/> 
+</figure>
+</p>
+
+<script type="application/javascript" src="https://gist.github.com/sidgodb/b469eee5e350c70e0280a6dc0db04cd4.js"></script>
+
+
+<h3 id="4-1-2-data-pre-processing-a-class-anchor-id-preprocessing-a">4.1.2 Data Pre-Processing  <a class="anchor" id="preprocessing"></a></h3>
+
+<p>We applied the standard text cleaning procedures to the articles. All text was made lower case, punctuation removed, HTML links/email addresses removed. We also removed numbers.</p>
+
+<p>Since the data originated from a replication of Baker et al.&rsquo;s methodology, the labeling of the data are assumed to come from the presence of either of the three words &ldquo;economic&rdquo; , &ldquo;policy&rdquo;, or &ldquo;uncertainty&rdquo;. Thus, we removed these words from the train set while considering the modeling part. In such scenarios, we believed that the presence of these three tokens while training would cause overfitting.</p>
+
+<p>We restricted the number of words for an article to 200 while modeling, which we discuss further in the modeling section.</p>
+
+<script type="application/javascript" src="https://gist.github.com/karolinagru/6d24d609c6fe0f64c80895fbce0835a8.js"></script>
+
+
+<h3 id="4-1-3-data-imbalance-a-class-anchor-id-imbalance-a">4.1.3 Data Imbalance <a class="anchor" id="imbalance"></a></h3>
+
+<p>The data imbalance in the original dataset was 95\% labeled as &ldquo;0&rdquo; and 5\% as &ldquo;1&rdquo;. However, instead of generating synthetic samples to regenerate the data, we opted to rebalance the dataset. We balanced the training and validation set on almost 80-20 ratio of 0:1. This was to ensure that the models will have enough samples to learn. However, for the test set we maintained the original imbalance ratio which was 95:5. The following table illustrates the rebalancing.</p>
+
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/balance.png" width="800"/> 
+</figure>
+
+
+<script type="application/javascript" src="https://gist.github.com/karolinagru/fd4955cc39afd06e639a324f020474ab.js"></script>
+
+
+<script type="application/javascript" src="https://gist.github.com/karolinagru/156dd0a9d93f6896e1d72527d78556c9.js"></script>
+
+
+<h2 id="4-2-models-implementation-a-class-anchor-id-models-a">4.2. Models Implementation  <a class="anchor" id="models"></a></h2>
+
+<p>For the binary task of economic policy uncertainty determination, we use the previously introduced BERT-based models:
+* BERT
+* DistilBERT
+* RoBERTa
+* ALBERT</p>
+
+<p>We compare their performance to two baseline models: a bidirectional neural network and a SVM classifier.</p>
+
+<h3 id="4-2-1-transformer-based-models-a-class-anchor-id-transformers-a">4.2.1 Transformer-based Models <a class="anchor" id="transformers"></a></h3>
+
+<p>The <strong>Simple Transformers</strong> package lets us train, evaluate and test our models. We show our implementation on the example of RoBERTa. All the steps presented in the notebook below were also applied to BERT, DistilBERT and ALBERT with the same hyper-parameters, differing only in the line of code that specifies the model. For example, the Classification Model function can take in &ldquo;bert&rdquo; instead of &ldquo;roberta&rdquo; and &ldquo;bert-base-uncased&rdquo; instead of &ldquo;roberta-base&rdquo; to run the BERT model.</p>
+
+<p><strong>Parameters in Simple Transformers:</strong></p>
+
+<p>BERT-based models come with a set of hyper-parameters which need to be adjusted properly for the task. With the Simple Transformers package, one is able to set these directly by passing values, as mentioned in the authors&rsquo; blog post. The full list of the setting with detailed description can be found on the author&rsquo;s <a href="https://github.com/ThilinaRajapakse/simpletransformers">website</a>. For our binary classification approach, we replaced the hyper-parameters&rsquo; default values for the most impactful ones:</p>
+
+<ul>
+<li><strong>Number of training epochs</strong>: The epochs were increased from 1 to a number as high as 10. However, increasing the number of epochs also increased the running time of the model intensively. At the end, 4 epochs turned out to be the most optimal number, balancing between running time and giving good results.</li>
+<li><strong>Batch size</strong>: The batch size was increased from 2 till 16, and batch size of 8 gave good results. With a batch size of 4, we observed a certain overfitting.</li>
+<li><strong>Maximum Sequence Level</strong>: Although the model can handle a maximum of 512 tokens, we started off first with 100 tokens, and then opted for <strong>200</strong> tokens. The average length of the articles in the entire dataset was 534, which implies that setting this hyper-parameter to 512 could have been an ideal choice. However, owing to certain computational difficulties it was limited to 200.
+
+<ul>
+<li><strong>Learning Rate</strong>: 4e-5. Changing this learning rate made the model run either faster or slower, results were optimal for this chosen learning rate.</li>
+</ul></li>
+</ul>
+
+<script type="application/javascript" src="https://gist.github.com/karolinagru/579ec9068b8407ecbc1ec365291aa004.js"></script>
+
+
+<h3 id="4-2-2-benchmarks-a-class-anchor-id-benchmarks-a">4.2.2 Benchmarks  <a class="anchor" id="benchmarks"></a></h3>
+
+<p>Transformer based models often come with high training times and the results can be a matter of speculation, depending on the training dataset and if a transfer learning approach has been used. Therefore, we compare the performance to two non-transformer based models as well. We have used a small bidirectional neural network and a SVM classifier.</p>
+
+<script type="application/javascript" src="https://gist.github.com/sidgodb/82c220a8d0a687b44f79f61157d2c9f0.js"></script>
+
+
+<h3 id="4-2-3-interpretation-of-results-a-class-anchor-id-results-a">4.2.3 Interpretation of Results  <a class="anchor" id="results"></a></h3>
+
+<p>In datasets having a high imbalance like the one we used, accuracy is not the right metric to assess model performance with. For example, if all articles are classified as &ldquo;0&rdquo; (not being related to economic policy uncertainty), then the accuracy is 95\%. This seems like a very favorable result, when in reality no single article is classified as &ldquo;1&rdquo; and the model is actually very bad. Therefore, we decided to use the following other metrics for this purpose:</p>
+
+<ul>
+<li><p><strong>Area Under Curve (AUC)</strong> is a measure that takes into account the true and false positives. It measures the area under the (ROC) curve, which plots the false positive rate (specificity)  against the true positive rate (sensitivity). A perfect model would have an AUC of 1, a randomly assigning model would be at 0.5.</p></li>
+
+<li><p><strong>F1-Score (F1)</strong> balances between precision (= True positives /(True positives + False positives) ) and recall (= True positives /(True positives + False negatives) ) and ranges from 0 to 1 - the higher the better.</p></li>
+
+<li><p><strong>Matthew&rsquo;s Correlation Coefficient (MCC)</strong> uses all four measures - true positives, true negatives, false positives and false negatives - in its calculation. The score goes from -1 (everything is wrongly classified) to 1 (everything is correctly classified).</p></li>
+</ul>
+
+<p>The following result table was calculated based on the standard binary cut-off of 0.5. If the probability (converted from the log-odds output of the model) is greater than 0.5, the article is labelled as related to economic policy uncertainty and marked as &ldquo;1&rdquo;, otherwise it is marked as &ldquo;0&rdquo;. This cutoff of 0.5 was maintained across all models to provide a standard comparison. We will address whether this cut-off is optimal or not in the discussion section.</p>
+
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/results.png" width="850"/> 
+</figure>
+
+
+<p>From the table we can see that the BERT-family models all perform better than the benchmark models. While BERT&rsquo;s, DistilBERT&rsquo;s and ALBERT&rsquo;s performance does not differ much from each other across all of our metrics (AUC of around 0.87), RoBERTa largely outperforms them. Their runtimes were similar around 18 minutes, with DistilBERT and ALBERT being slightly faster, and the SVM taking by far the least time with only 5 minutes runtime.</p>
+
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/ROC_final.png" width="800"/> 
+</figure>
+
+
+<p>The benchmarks performed very close to the other BERT family models, apart from RoBERTa. This is indeed very interesting to observe that relatively less &ldquo;complex&rdquo; models have comparable AUC, F1-score and MCC. This might have to do with the parameters of the benchmarks:
+* The first benchmark was a bidirectional neural network with <em>LSTM</em>, where the maximum length was kept to 200, in line with BERT models. The number of layers and maximum length can also be tuned in a way, to perform almost the same as BERT, but this causes overfitting on the test set.
+* The other benchmark was SVM, whose tuning was kept to the minimum. The intention was to observe how the results would be like on default functions, without tuning.</p>
+
+<p>Although the above results are taken for certain hyper-parameters kept constant across all BERT-family models (for example the epoch, training batch size, maximum sequence length), we observed that changing these parameters causes a change in the results. For example, running the models for higher epochs caused heavy overfitting with the difference between the F1-score between training set and test set being more than ~0.5. <em>In view of these considerations, it could be concluded that results are partly dependent on hyper-parameter tuning</em>.</p>
+
+<p>Overall, these observed results theoretically make sense: RoBERTa is the largest model, trained on the largest datasets and can therefore perform very well. DistilBERT and ALBERT both balanced a high performance with size and speed of the model - and their performance is indeed a little lower, while they took less time to run. On the whole, all models perform remarkably well - a promising result for future researchers of economic policy uncertainty!</p>
+
+<h1 id="5-further-discussion-a-class-anchor-id-discussion-a">5. Further Discussion <a class="anchor" id="discussion"></a></h1>
+
+<p>Several choices and observations in our application call for further discussion, because they can still be optimized depending on the application at hand or need to be taken with caution.</p>
+
+<h1 id="5-1-optimal-threshold-calculation-a-class-anchor-id-threshold-a">5.1 Optimal Threshold Calculation <a class="anchor" id="threshold"></a></h1>
+
+<p>The simple transformers library uses a cut off of 0.5 as decision criteria while calculating the results. Probability greater than or equal to 0.5 is labelled as &ldquo;1&rdquo;, else labelled as &ldquo;0&rdquo;. However, the best cutoff heavily depends on the use case (for example, if one wants to identify the 1&rsquo;s more than the 0&rsquo;s would focus on precision). In certain business scenarios, there might be high costs for false negatives or false positives. In our case, rather than high costs with just false positives or false negatives, we think it is necessary to identify both types of articles correctly. Yet the cut-off of 0.5 might not exactly be optimal for highly imbalanced datasets. In order to see how the other metrics would vary with changing the cut-off, we chose the best performing model from above and observed how the metrics varied.</p>
+
+<p>Although the simple transformer library gives result tables for 0.5, for deciding the optimal cutoff we have taken the log-odds output from the model and then converted it into probabilities.</p>
+
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/cutoff.png" width="800"/> 
+</figure>
+
+
+<p>As the cutoff is increased from 0.5 to 0.7, there is some improvement in the F1 Score and MCC. However, if the cutoff is increased to 0.8, both of the metrics show a decline. Similarly, lowering the cut-off from 0.5 to 0.3 also results in a considerably low F1 Score and MCC. If the task involves capturing most of the true positives (articles related to economic policy uncertainty) then a cut off of 0.3 identifies more articles (192 True Positives) than the 0.5 cutoff (182 True Positives). Choosing a right-cutoff will involve trade-off between accuracy, F1-Score and MCC and would highly depend on the task at hand.</p>
+
+<script type="application/javascript" src="https://gist.github.com/sidgodb/da6aac225f0463720c0ce8225079460d.js"></script>
+
+
+<h1 id="5-2-impact-of-certain-tokens-in-identifying-uncertainty-a-class-anchor-id-tokens-a">5.2 Impact of Certain Tokens in Identifying Uncertainty <a class="anchor" id="tokens"></a></h1>
+
+<p>Another step that can largely influence the model results is done at the very beginning: preprocessing of the data. Although these steps involve removing stop words, punctuation and giving ~200 words as input to the models, there is a high chance that certain words might be heavily influencing the identification of economic policy uncertainty related articles. In order to investigate this, we first observed the top occurring words in the training set. Based on the observations, we grouped certain words/tokens into &ldquo;general&rdquo; and &ldquo;data specific&rdquo;.
+- <strong>general</strong> words/tokens-  &ldquo;would&rdquo; , &ldquo;said&rdquo;, &ldquo;year&rdquo; , &ldquo;new&rdquo;, &ldquo;one&rdquo;
+- <strong>data specific</strong> words/tokens- &ldquo;usa&rdquo;, &ldquo;trump&rdquo;, &ldquo;president&rdquo;. <br />
+These word/tokens groups are called &ldquo;general&rdquo; and &ldquo;data specific&rdquo; due to their nature of language. General words/terms would occur in any type of text not related to economic policy uncertainty. However, the &ldquo;data specific&rdquo; terms would occur often in text related to global economic topics. Our aim was to check how the presence and absence of these words/tokens would impact the result metrics. For this purpose we chose RoBERTa, our relatively best performing model and kept all hyper-parameters constant  for tuning, and also a cut off of 0.5 for the decision threshold.</p>
+
+<ul>
+<li><p>In the first case, we drop the &ldquo;general&rdquo; tokens from the training set, which were  &ldquo;would&rdquo; , &ldquo;said&rdquo;, &ldquo;year&rdquo; , &ldquo;new&rdquo;, &ldquo;one&rdquo; and train RoBERTa, but retained the &ldquo;data specific&rdquo; tokens.</p></li>
+
+<li><p>In the second case, we drop the &ldquo;data specific&rdquo; which were &ldquo;usa&rdquo;, &ldquo;trump&rdquo;, &ldquo;president&rdquo;,  tokens from the training set, however retaining the &ldquo;general&rdquo; tokens.</p></li>
+
+<li><p>The following changes are observed on the test set, in which the &ldquo;general&rdquo; or &ldquo;data specific&rdquo; tokens are not dropped in any case.</p></li>
+</ul>
+
+<figure>
+    <img src="/blog/img/seminar/uncertainty_identification/metrics.png" width="800"/> 
+</figure>
+
+
+<p>When certain word/token groups are removed from the training set, we see that there is a drop in all metrics on the test set. The drop is even more significant when the &ldquo;data specific&rdquo; words/tokens are removed. This also partially confirms the original idea, that including &ldquo;economic&rdquo;, &ldquo;policy&rdquo;, and &ldquo;uncertainty&rdquo; keywords would have overfitted the model and give a lot of false positives, after all these words/tokens are also part of &ldquo;data specific&rdquo; tokens.</p>
+
+<p>At this point, it should be noted that the entire newspaper articles are &ldquo;loosely&rdquo; related to economic policy and uncertainty (including ones labelled as &ldquo;1&rdquo; and &ldquo;0&rdquo;), so there would be certain data biases in words and tokens recurring frequently. This word/token group approach opens our minds to infinite possibilities, such as which words or which word groups are really contributing to the overfitting of the model, and lead to other areas of investigation. However, we conclude that presence and absence of certain word/tokens or combinations do have an impact on how good the classifier is.</p>
+
+<p>Lastly, it is important to take into account that in a transfer learning approach, results also depend on the data the original model has been trained on. Since RoBERTa has been trained on a huge English language corpus and our data is in English, it works well. But, if we had a German data set, would these models have given a good result?</p>
+
+<h1 id="6-conclusions-a-class-anchor-id-conclusions-a">6. Conclusions <a class="anchor" id="conclusions"></a></h1>
+
+<p>In this project, we aimed to identify economic policy uncertainty in newspaper articles using state of the art NLP models. Starting off with Baker et al.&rsquo;s (2016) simple and manual method to classify articles, we illustrated how NLP models can compete with other, potentially costly data labeling methods and thereby open up new research possibilities. In order to do so, we explored how BERT and three BERT-based transformer models approach text classification. RoBERTa, DistilBERT, and ALBERT each improve the original model in a different way with regards to performance and speed. In our application, we demonstrated the easiest way to implement transformer models, how to modify the standard settings and what else to pay attention to. On the task of identifying economic uncertainty, RoBERTa - the biggest model with the largest training data - performed best. However, the field of NLP is fast moving - and we are excited to see what the next transformational generation of models will bring.</p>
+
+<h1 id="7-references-a-class-anchor-id-references-a">7. References <a class="anchor" id="references"></a></h1>
+
+<p>Alammar, Jay. 2018a. &ldquo;The Illustrated Transformer.&rdquo; June 27, 2018. <a href="http://jalammar.github.io/illustrated-transformer/">http://jalammar.github.io/illustrated-transformer/</a>.</p>
+
+<p>&mdash;. 2018b. &ldquo;The Illustrated BERT, ELMo, and Co. (How NLP Cracked Transfer Learning).&rdquo; December 3, 2018. <a href="http://jalammar.github.io/illustrated-bert/">http://jalammar.github.io/illustrated-bert/</a>.</p>
+
+<p>&mdash;. 2019. &ldquo;A Visual Guide to Using BERT for the First Time.&rdquo; November 26, 2019. <a href="http://jalammar.github.io/a-visual-guide-to-using-bert-for-the-first-time/">http://jalammar.github.io/a-visual-guide-to-using-bert-for-the-first-time/</a>.</p>
+
+<p>B, Abinesh. 2019. &ldquo;Knowledge Distillation in Deep Learning.&rdquo; Medium. August 30, 2019. <a href="https://medium.com/analytics-vidhya/knowledge-distillation-dark-knowledge-of-neural-network-9c1dfb418e6a">https://medium.com/analytics-vidhya/knowledge-distillation-dark-knowledge-of-neural-network-9c1dfb418e6a</a>.</p>
+
+<p>Baker, Scott, Nicholas Bloom, and Steven Davis. 2016. &ldquo;Measuring Economic Policy Uncertainty.&rdquo; The Quarterly Journal of Economics 131 (4): 1593-1636.</p>
+
+<p>Devlin, Jacob, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. 2019. &ldquo;BERT: Pre-Training of Deep Bidirectional Transformers for Language Understanding.&rdquo; ArXiv:1810.04805 [Cs], May. <a href="http://arxiv.org/abs/1810.04805">http://arxiv.org/abs/1810.04805</a>.</p>
+
+<p>Huang, Cary. 2019. &ldquo;How the Winds of Political Uncertainty Are Battering the Global Economy.&rdquo; South China Morning Post, October 30, 2019. <a href="https://www.scmp.com/comment/opinion/article/3035226/us-china-trade-war-trumps-impeachment-inquiry-and-brexit-record">https://www.scmp.com/comment/opinion/article/3035226/us-china-trade-war-trumps-impeachment-inquiry-and-brexit-record</a>.</p>
+
+<p>Khan, Suleiman. 2019. &ldquo;BERT, RoBERTa, DistilBERT, XLNet - Which One to Use?&rdquo; Medium. September 4, 2019. <a href="https://towardsdatascience.com/bert-roberta-distilbert-xlnet-which-one-to-use-3d5ab82ba5f8">https://towardsdatascience.com/bert-roberta-distilbert-xlnet-which-one-to-use-3d5ab82ba5f8</a>.</p>
+
+<p>&ldquo;Knowledge Distillation - Neural Network Distiller.&rdquo; n.d. Nervanasystems on Github. Accessed December 3, 2019. <a href="https://nervanasystems.github.io/distiller/knowledge_distillation.html">https://nervanasystems.github.io/distiller/knowledge_distillation.html</a>.</p>
+
+<p>Lan, Zhenzhong, Mingda Chen, Sebastian Goodman, Kevin Gimpel, Piyush Sharma, and Radu Soricut. 2019. &ldquo;ALBERT: A Lite BERT for Self-Supervised Learning of Language Representations.&rdquo; ArXiv:1909.11942 [Cs], October. <a href="http://arxiv.org/abs/1909.11942">http://arxiv.org/abs/1909.11942</a>.</p>
+
+<p>Liu, Yinhan, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, and Veselin Stoyanov. 2019.<br />
+ &ldquo;RoBERTa: A Robustly Optimized BERT Pretraining Approach.&rdquo; ArXiv:1907.11692 [Cs], July. <a href="http://arxiv.org/abs/1907.11692">http://arxiv.org/abs/1907.11692</a>.</p>
+
+<p>&ldquo;Pretrained Models - Transformers 2.2.0 Documentation.&rdquo; n.d. Accessed December 3, 2019. <a href="https://huggingface.co/transformers/pretrained_models.html">https://huggingface.co/transformers/pretrained_models.html</a>.</p>
+
+<p>Sanh, Victor. 2019a. &ldquo;The Best and Most Current of Modern Natural Language Processing.&rdquo; Medium (blog). May 22, 2019. <a href="https://medium.com/huggingface/the-best-and-most-current-of-modern-natural-language-processing-5055f409a1d1">https://medium.com/huggingface/the-best-and-most-current-of-modern-natural-language-processing-5055f409a1d1</a>.</p>
+
+<p>&mdash;. 2019b. &ldquo;Smaller, Faster, Cheaper, Lighter: Introducing DilstilBERT, a Distilled Version of BERT.&rdquo; Medium (blog). August 28, 2019. <a href="https://medium.com/huggingface/distilbert-8cf3380435b5">https://medium.com/huggingface/distilbert-8cf3380435b5</a>.</p>
+
+<p>Sanh, Victor, Lysandre Debut, Julien Chaumond, and Thomas Wolf. 2019. &ldquo;DistilBERT, a Distilled Version of BERT: Smaller, Faster, Cheaper and Lighter.&rdquo; ArXiv:1910.01108 [Cs], October. <a href="http://arxiv.org/abs/1910.01108">http://arxiv.org/abs/1910.01108</a>.</p>
+
+<p>Tobback, Ellen, Hans Naudts, Walter Daelemans, Enric Junque de Fortuny, and David Martens. 2018. &ldquo;Belgian Economic Policy Uncertainty Index: Improvement through Text Mining.&rdquo; International Journal of Forecasting 34 (2): 355-65. <a href="https://doi.org/10.1016/j.ijforecast.2016.08.006">https://doi.org/10.1016/j.ijforecast.2016.08.006</a>.</p>
+
+<p>Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. 2017. &ldquo;Attention Is All You Need.&rdquo; ArXiv:1706.03762 [Cs], December. <a href="http://arxiv.org/abs/1706.03762">http://arxiv.org/abs/1706.03762</a>.</p>
+
+<p>&ldquo;What Is Brexit-Related Uncertainty Doing to United Kingdom Growth?&rdquo; 2016. Economic Policy Uncertainty. May 16, 2016. <a href="http://www.policyuncertainty.com/brexit.html">http://www.policyuncertainty.com/brexit.html</a>.</p>
+
+                        </div>
+                        
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (31)</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/instruction">instruction (2)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/a/b-testing"><i class="fa fa-tags"></i> a/b-testing</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/albert"><i class="fa fa-tags"></i> albert</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/attention"><i class="fa fa-tags"></i> attention</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/awd-lstm"><i class="fa fa-tags"></i> awd-lstm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-deep-learning"><i class="fa fa-tags"></i> bayesian-deep-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-topic-modelling"><i class="fa fa-tags"></i> bayesian-topic-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bert"><i class="fa fa-tags"></i> bert</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/binary"><i class="fa fa-tags"></i> binary</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/black-box"><i class="fa fa-tags"></i> black-box</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/blockchain"><i class="fa fa-tags"></i> blockchain</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/causal-inference"><i class="fa fa-tags"></i> causal-inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class17/18"><i class="fa fa-tags"></i> class17/18</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class18/19"><i class="fa fa-tags"></i> class18/19</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class19"><i class="fa fa-tags"></i> class19</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class19/20"><i class="fa fa-tags"></i> class19/20</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/classification"><i class="fa fa-tags"></i> classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/cnn"><i class="fa fa-tags"></i> cnn</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/coarsened-exact-matching"><i class="fa fa-tags"></i> coarsened-exact-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/conversion"><i class="fa fa-tags"></i> conversion</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks"><i class="fa fa-tags"></i> convolutional-neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/credit-risk"><i class="fa fa-tags"></i> credit-risk</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/data-simulation"><i class="fa fa-tags"></i> data-simulation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/deep-learning"><i class="fa fa-tags"></i> deep-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/deeplearning"><i class="fa fa-tags"></i> deeplearning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/distant-transfer-learning"><i class="fa fa-tags"></i> distant-transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/dml"><i class="fa fa-tags"></i> dml</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/doc2vec"><i class="fa fa-tags"></i> doc2vec</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/document-embeddings"><i class="fa fa-tags"></i> document-embeddings</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/economicuncertainty"><i class="fa fa-tags"></i> economicuncertainty</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/explanation"><i class="fa fa-tags"></i> explanation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/fasttext"><i class="fa fa-tags"></i> fasttext</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/fine-tuning"><i class="fa fa-tags"></i> fine-tuning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/genetic-matching"><i class="fa fa-tags"></i> genetic-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/gru"><i class="fa fa-tags"></i> gru</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/hierarchical-network"><i class="fa fa-tags"></i> hierarchical-network</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ice"><i class="fa fa-tags"></i> ice</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-analysis"><i class="fa fa-tags"></i> image-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-captioning"><i class="fa fa-tags"></i> image-captioning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/inference"><i class="fa fa-tags"></i> inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset"><i class="fa fa-tags"></i> keras-imdb-dataset</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/knn-algorithm"><i class="fa fa-tags"></i> knn-algorithm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/language-modelling"><i class="fa fa-tags"></i> language-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lda"><i class="fa fa-tags"></i> lda</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lime"><i class="fa fa-tags"></i> lime</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/long-short-term-memory"><i class="fa fa-tags"></i> long-short-term-memory</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lstm"><i class="fa fa-tags"></i> lstm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/machine-learning"><i class="fa fa-tags"></i> machine-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matching-methods"><i class="fa fa-tags"></i> matching-methods</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matchit"><i class="fa fa-tags"></i> matchit</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/monte-carlo-dropout"><i class="fa fa-tags"></i> monte-carlo-dropout</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/movie-reviews"><i class="fa fa-tags"></i> movie-reviews</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nearest-neighbor"><i class="fa fa-tags"></i> nearest-neighbor</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/neural-network"><i class="fa fa-tags"></i> neural-network</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/neural-networks"><i class="fa fa-tags"></i> neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nlp"><i class="fa fa-tags"></i> nlp</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nn"><i class="fa fa-tags"></i> nn</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/optimal-matching"><i class="fa fa-tags"></i> optimal-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/pdp"><i class="fa fa-tags"></i> pdp</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/pretraining"><i class="fa fa-tags"></i> pretraining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score"><i class="fa fa-tags"></i> propensity-score</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score-weighting"><i class="fa fa-tags"></i> propensity-score-weighting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommendation"><i class="fa fa-tags"></i> recommendation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-system"><i class="fa fa-tags"></i> recommender-system</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-systems"><i class="fa fa-tags"></i> recommender-systems</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/rnn"><i class="fa fa-tags"></i> rnn</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/roberta"><i class="fa fa-tags"></i> roberta</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/rs"><i class="fa fa-tags"></i> rs</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-analysis"><i class="fa fa-tags"></i> sentiment-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-classification"><i class="fa fa-tags"></i> sentiment-classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/share-price-prediction"><i class="fa fa-tags"></i> share-price-prediction</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/simpletransformers"><i class="fa fa-tags"></i> simpletransformers</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/simulation"><i class="fa fa-tags"></i> simulation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/survival-analysis"><i class="fa fa-tags"></i> survival-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-analysis"><i class="fa fa-tags"></i> text-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-mining"><i class="fa fa-tags"></i> text-mining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series"><i class="fa fa-tags"></i> time-series</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series-forecasting"><i class="fa fa-tags"></i> time-series-forecasting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/transfer-learning"><i class="fa fa-tags"></i> transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/transformers"><i class="fa fa-tags"></i> transformers</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/treatment-effect"><i class="fa fa-tags"></i> treatment-effect</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/twitter"><i class="fa fa-tags"></i> twitter</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ulmfit"><i class="fa fa-tags"></i> ulmfit</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uncertainty"><i class="fa fa-tags"></i> uncertainty</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift"><i class="fa fa-tags"></i> uplift</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift-modelling"><i class="fa fa-tags"></i> uplift-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/variational-inference"><i class="fa fa-tags"></i> variational-inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/wikitext-103"><i class="fa fa-tags"></i> wikitext-103</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/word-embeddings"><i class="fa fa-tags"></i> word-embeddings</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<footer id="footer">
+    <div class="container">
+
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            
+
+            
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+            
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-112025566-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+
+<script src="//maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+<script src="https://humboldt-wi.github.io/blog/js/hpneo.gmaps.js"></script>
+<script src="https://humboldt-wi.github.io/blog/js/gmaps.init.js"></script>
+<script src="https://humboldt-wi.github.io/blog/js/front.js"></script>
+
+
+<script src="https://humboldt-wi.github.io/blog/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

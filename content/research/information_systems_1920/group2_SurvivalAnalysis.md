@@ -4,7 +4,7 @@ date = '2020-02-06'
 tags = [ "Deep Learning", "Neural Networks","Survival Analysis","Credit risk", "Class19/20",]
 categories = ["Course projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
-author = "Seminar Information Systems 2019/2020 - Laura Löschmann, Daria Smorodina"
+author = "Seminar Information Systems (WS19/20)"
 disqusShortname = "https-wisample-github-io-blog"
 description = "Credit risk analytics using deep learning survival analysis "
 +++
