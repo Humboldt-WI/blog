@@ -1,6 +1,6 @@
 +++
 title = "Economic Uncertainty Identification"
-date = '2020-02-06'
+date = "2020-02-07'"
 tags = ["EconomicUncertainty", "Transformers", "NLP","NN", "BERT","ROBERTA","ALBERT","SimpleTransformers", "DeepLearning","Uncertainty","Binary","Classification"]
 categories = ["Course projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
@@ -67,7 +67,7 @@ With recent advances in the field of NLP in mind, we want to expand this methodo
 
 # 3. Theoretical Background <a class="anchor" id="theory"></a>
 
-In order to use the best methods possible to identify economic uncertainty in the newspaper articles, we decided to apply BERT-based transformers. In a very short time, transformers and specifically BERT have literally transformed the NLP landscape with high performance on a wide variety of tasks. New, improved models are published every few weeks (if not days) and much remains to be researched and developed further. An example of the ongoing scientific discussions in the field is the trend to build ever larger and heavier models to improve performance. The image below shows this trend by plotting selected models by publishing date and parameter size. But do more parameters always increase a model\'s performance? What are other ways of improving models? To answer these and other questions, we devote this chapter to laying the theoretical groundwork: we will explain the basic transformer architecture and BERT, and then present three models (RoBERTa, DistilBERT, ALBERT) that promise to outperform BERT on different dimensions, before applying them to our binary text classification task in the next chapter.
+In order to use the best methods possible to identify economic uncertainty in the newspaper articles, we decided to apply BERT-based transformers. In a very short time, transformers and specifically BERT have literally transformed the NLP landscape with high performance on a wide variety of tasks. New, improved models are published every few weeks (if not days) and much remains to be researched and developed further. An example of the ongoing scientific discussions in the field is the trend to build ever larger and heavier models to improve performance. The image below shows this trend by plotting selected models by publishing date and parameter size. But do more parameters always increase a model's performance? What are other ways of improving models? To answer these and other questions, we devote this chapter to laying the theoretical groundwork: we will explain the basic transformer architecture and BERT, and then present three models (RoBERTa, DistilBERT, ALBERT) that promise to outperform BERT on different dimensions, before applying them to our binary text classification task in the next chapter.
 
 
 
@@ -92,7 +92,7 @@ Adapted from Vaswani et al., the figure above displays a transformer. On the lef
 
 - **Multi-Head Attention**: here, keys, values and queries (which come from the self-attention - in this case, the previous layer's output) are linearly projected to then perform the attention function in parallel (which Vaswani et al. call the "scaled dot-product attention"). The multi-head characteristic makes it possible to use "different representation subspaces at different positions" (Vaswani et al., 4).
 
-- **Masked Multi-Head Attention** (only in decoder): as the first sub-layer in the decoder, this layer performs the multi-head attention on the encoder\'s output. It is masked in order to prevent predictions based on information that must not be known yet at a certain position.
+- **Masked Multi-Head Attention** (only in decoder): as the first sub-layer in the decoder, this layer performs the multi-head attention on the encoder's output. It is masked in order to prevent predictions based on information that must not be known yet at a certain position.
 
 - **Feed Forward Network**: two linear transformations are applied to each position separately and identically.
 
@@ -101,16 +101,16 @@ Before information enters the layers, the positional encoding conveys informatio
 ## 3.3 BERT <a class="anchor" id="bert"></a>
 BERT (Bidirectional Encoder Representations from Transformers) was published in 2018 by Devlin et al. from Google and performed so well that - within a year - it inspired a whole model-family to develop. BERT built on the original transformer idea, but used a slightly changed architecture, different training, and (as a result) increased size. 
 
-- **Architecture**: BERT\'s architecture is largely based on the original transformer but is larger (even in its base version) with more layers, larger feed-forward networks and more attention heads.
+- **Architecture**: BERT's architecture is largely based on the original transformer but is larger (even in its base version) with more layers, larger feed-forward networks and more attention heads.
 
 - **Training**: The real innovation comes in the bidirectional training that BERT performs. There are two pre-training tasks: masked language modeling (MLM) and next sentence prediction (NSP). These are performed on the pre-training data of the BookCorpus (800 million words) and English Wikipedia (2500 million words).
 
-	- *Masked Language Modeling (MLM)*: to train the model bidirectionally, Devlin et al. (2018) let BERT predict masked words based on the context. They randomly hide 15\% of the tokens in each sequence. Of these 15\% of tokens, however, only 80\% are replaced with a [MASK] token, 10\% are replaced with a random other token, and 10\% are unchanged.
+	- *Masked Language Modeling (MLM)*: to train the model bidirectionally, Devlin et al. (2018) let BERT predict masked words based on the context. They randomly hide 15% of the tokens in each sequence. Of these 15% of tokens, however, only 80% are replaced with a [MASK] token, 10% are replaced with a random other token, and 10% are unchanged.
 
 
 {{< figure src="/blog/img/seminar/uncertainty_identification/MLM.png" width="850" >}}
 		
-- *Next Sentence Prediction (NSP)*: To also train the model on the relationship between sentences, Devlin et al. (2018) decided to apply a NSP task. BERT has to decide for pairs of sentence segments (each segment can consist of several sentences) whether they actually succeed each other or not (with a 50\% probability of either case being true).
+- *Next Sentence Prediction (NSP)*: To also train the model on the relationship between sentences, Devlin et al. (2018) decided to apply a NSP task. BERT has to decide for pairs of sentence segments (each segment can consist of several sentences) whether they actually succeed each other or not (with a 50% probability of either case being true).
 
 
 {{< figure src="/blog/img/seminar/uncertainty_identification/NSP_BERT.png" width="850" >}}
@@ -129,7 +129,7 @@ Check out the graph below to get an overview of the many BERT-models and their p
 
 ## 3.4 RoBERTA <a class="anchor" id="roberta"></a>
 
-One of the first to follow BERT\'s architecture were Liu et al. (2019), a team of researchers from Facebook AI. In July 2019, they published a model called RoBERTa (which stands for Robustly-optimized BERT approach). The authors saw room for improvement in the pre-training, arguing that BERT was significantly undertrained. They changed some pre-training configurations, and RoBERTa outperformed BERT on the GLUE benchmark. 
+One of the first to follow BERT's architecture were Liu et al. (2019), a team of researchers from Facebook AI. In July 2019, they published a model called RoBERTa (which stands for Robustly-optimized BERT approach). The authors saw room for improvement in the pre-training, arguing that BERT was significantly undertrained. They changed some pre-training configurations, and RoBERTa outperformed BERT on the GLUE benchmark. 
 
 Since RoBERTa was developed based on BERT, the two models share the transformer architecture. However, Liu et al. examined some of  BERT's pre-training settings in an experimental setup and subsequently decided to implement the following changes:
 
@@ -146,7 +146,7 @@ Since RoBERTa was developed based on BERT, the two models share the transformer 
 
 In total, the data used to train RoBERTa was a huge English-language uncompressed text corpus 10 times larger than what BERT was trained on: 160 GB of text.
 
-- **Dynamic Masking Pattern:** BERT\'s masking approach relied on performing masking once during data pre-processing, which resulted in one static mask. Liu et al. adjusted this method when trying different versions of masking for RoBERTa: first, they duplicated the data 10 times over 40 epochs of training. This resulted in four masks, where each training sequence was seen only four times during training procedure (once per mask) instead of every time within one mask. Then, the authors also compared this approach with dynamic masking, where the mask is generated every time the sequence is passed to the model. 
+- **Dynamic Masking Pattern:** BERT's masking approach relied on performing masking once during data pre-processing, which resulted in one static mask. Liu et al. adjusted this method when trying different versions of masking for RoBERTa: first, they duplicated the data 10 times over 40 epochs of training. This resulted in four masks, where each training sequence was seen only four times during training procedure (once per mask) instead of every time within one mask. Then, the authors also compared this approach with dynamic masking, where the mask is generated every time the sequence is passed to the model. 
 {{< figure src="/blog/img/seminar/uncertainty_identification/dyn_masking.png" width="800" >}}
 
 
@@ -170,7 +170,7 @@ As can be seen in the table above, the new settings outperformed the originally 
 
 An ongoing trend in NLP and the further development of the BERT family has been to create ever heavier and larger models to improve performance (such as RoBERTa). BERT is costly, time-consuming and computationally heavy. Therefore, Sanh et al. (2019) from the NLP company Hugging Face researched how to improve BERT on these aspects while keeping performance high. In the end, they built a distilled version of BERT, which they called DistilBERT.
 
-With DistilBERT, Sanh et al. showed that it is possible to reach and achieve 97\% of BERT\'s language understanding capabilities, while reducing the size of BERT model by 40\%. Moreover, this model is 60\% faster. While relying on the BERT architecture and using the same training data, DistilBERT implemented some ideas from RoBERTa and used a knowledge distillation process for the training of the model.  
+With DistilBERT, Sanh et al. showed that it is possible to reach and achieve 97% of BERT's language understanding capabilities, while reducing the size of BERT model by 40%. Moreover, this model is 60% faster. While relying on the BERT architecture and using the same training data, DistilBERT implemented some ideas from RoBERTa and used a knowledge distillation process for the training of the model.  
 
 - **Architecture**: DistilBERT has the same transformer architecture as BERT, but a smaller number of layers in order to reduce the model size. Sanh et al. also removed the token-type embeddings and pooler (which BERT uses for the next sentence classification task).
 
@@ -184,7 +184,7 @@ With DistilBERT, Sanh et al. showed that it is possible to reach and achieve 97\
 
 - *Batch size and next-sentence prediction*: Building on what Liu et al. (2019) found for RoBERTa, Sanh et al. removed the NSP task for model training. They also changed the batch size from the original BERT to further increase performance (see "Training with Larger Batches" in the previous chapter). 
 
-For a more in-depth explanation, also take a look at [Sanh\'s blogpost on DistilBERT!](https://medium.com/huggingface/distilbert-8cf3380435b5)
+For a more in-depth explanation, also take a look at [Sanh's blogpost on DistilBERT!](https://medium.com/huggingface/distilbert-8cf3380435b5)
 
 
 ## 3.6 ALBERT <a class="anchor" id="albert"></a>
@@ -197,7 +197,7 @@ Whereas RoBERTa focused on performance and DistilBERT on speed, ALBERT (A Lite B
 {{< figure src="/blog/img/seminar/uncertainty_identification/albert1.png" width="800" >}}
 
 
-- **Sentence Order Prediction (Training)** (SOP): The authors of RoBERTa have already shown that BERT\'s NSP might not be the best training task. Lan et al. have a hypothesis why this is the case: NSP aims to teach the model coherence prediction. However, whether two sentences succeed each other can also be predicted from their *topics* - which for the model is easier to learn and overlaps with the MLM task. Learning to decide whether sentences belong together based on their topics, therefore does not add predictive power. Lan et al. find another coherence training task, which is more different from what the model learns from MLM. They let ALBERT predict sentence order during the training. Now, coherence is separated from topic prediction. As the table below shows, this training task substantially increases the model's performance.
+- **Sentence Order Prediction (Training)** (SOP): The authors of RoBERTa have already shown that BERT's NSP might not be the best training task. Lan et al. have a hypothesis why this is the case: NSP aims to teach the model coherence prediction. However, whether two sentences succeed each other can also be predicted from their *topics* - which for the model is easier to learn and overlaps with the MLM task. Learning to decide whether sentences belong together based on their topics, therefore does not add predictive power. Lan et al. find another coherence training task, which is more different from what the model learns from MLM. They let ALBERT predict sentence order during the training. Now, coherence is separated from topic prediction. As the table below shows, this training task substantially increases the model's performance.
 {{< figure src="/blog/img/seminar/uncertainty_identification/albert2.png" width="800" >}}
 
 With these adjustments, ALBERT did manage to jump the GLUE leaderboard at the time of publication. 
@@ -210,7 +210,7 @@ Summarizing the theory, each of the three presented BERT-based models has their 
 
 # 4. Application to Economic Policy Uncertainty <a class="anchor" id="app"></a>
 
-After understanding the transformer-based models in theoretical context, we apply them to our classification problem: to determine if there is economic uncertainty in newspaper articles with the aim of extending and improving the current classification methodologies. For this purpose, we use the package **Simple Transformers**, which was built upon the Transformers package (made by **HuggingFace**). Simple Transformers supports binary classification, multiclass classification and multilabel classification and it\'s wrapping the complex architecture of **all** of the previously mentioned models (and even more!). **SimpleTransformers** requires only three essential lines of code to initialize, train and evaluate the model and obtain ready-to-go transformers. Using this package, transformer models can relatively easily be applied in research and business contexts - which we will subsequently demonstrate. For implementation, we recommend the authors\' [blogpost](https://towardsdatascience.com/simple-transformers-introducing-the-easiest-bert-roberta-xlnet-and-xlm-library-58bf8c59b2a3) as a starting point.
+After understanding the transformer-based models in theoretical context, we apply them to our classification problem: to determine if there is economic uncertainty in newspaper articles with the aim of extending and improving the current classification methodologies. For this purpose, we use the package **Simple Transformers**, which was built upon the Transformers package (made by **HuggingFace**). Simple Transformers supports binary classification, multiclass classification and multilabel classification and it's wrapping the complex architecture of **all** of the previously mentioned models (and even more!). **SimpleTransformers** requires only three essential lines of code to initialize, train and evaluate the model and obtain ready-to-go transformers. Using this package, transformer models can relatively easily be applied in research and business contexts - which we will subsequently demonstrate. For implementation, we recommend the authors' [blogpost](https://towardsdatascience.com/simple-transformers-introducing-the-easiest-bert-roberta-xlnet-and-xlm-library-58bf8c59b2a3) as a starting point.
 
 ## 4.1. Data Preparation  <a class="anchor" id="dataprep"></a>
 
@@ -221,7 +221,7 @@ The original dataset we used was labelled and consisted of three columns: \
 (i) Article ID \
 (ii) Article - the newspaper articles in text format \
 (iii) label - a binary indicator showing if the article is related to economic policy uncertainty or not. \
-The entire dataset contains 50,483 articles and is imbalanced, with only about 5\% of the articles being marked (1), related to economic policy uncertainty.
+The entire dataset contains 50,483 articles and is imbalanced, with only about 5% of the articles being marked (1), related to economic policy uncertainty.
 
 {{< figure src="/blog/img/seminar/uncertainty_identification/expl1.png" width="800" >}}
 
@@ -247,7 +247,7 @@ We restricted the number of words for an article to 200 while modeling, which we
 
 ### 4.1.3 Data Imbalance <a class="anchor" id="imbalance"></a>
 
-The data imbalance in the original dataset was 95\% labeled as "0" and 5\% as "1". However, instead of generating synthetic samples to regenerate the data, we opted to rebalance the dataset. We balanced the training and validation set on almost 80-20 ratio of 0:1. This was to ensure that the models will have enough samples to learn. However, for the test set we maintained the original imbalance ratio which was 95:5. The following table illustrates the rebalancing. 
+The data imbalance in the original dataset was 95% labeled as "0" and 5% as "1". However, instead of generating synthetic samples to regenerate the data, we opted to rebalance the dataset. We balanced the training and validation set on almost 80-20 ratio of 0:1. This was to ensure that the models will have enough samples to learn. However, for the test set we maintained the original imbalance ratio which was 95:5. The following table illustrates the rebalancing. 
 
 {{< figure src="/blog/img/seminar/uncertainty_identification/balance.png" width="800" >}}
 
@@ -288,7 +288,7 @@ Transformer based models often come with high training times and the results can
 {{< gist sidgodb 82c220a8d0a687b44f79f61157d2c9f0 >}}
 
 ### 4.2.3 Interpretation of Results  <a class="anchor" id="results"></a>
-In datasets having a high imbalance like the one we used, accuracy is not the right metric to assess model performance with. For example, if all articles are classified as "0" (not being related to economic policy uncertainty), then the accuracy is 95\%. This seems like a very favorable result, when in reality no single article is classified as "1" and the model is actually very bad. Therefore, we decided to use the following other metrics for this purpose:
+In datasets having a high imbalance like the one we used, accuracy is not the right metric to assess model performance with. For example, if all articles are classified as "0" (not being related to economic policy uncertainty), then the accuracy is 95%. This seems like a very favorable result, when in reality no single article is classified as "1" and the model is actually very bad. Therefore, we decided to use the following other metrics for this purpose:
 
 - **Area Under Curve (AUC)** is a measure that takes into account the true and false positives. It measures the area under the (ROC) curve, which plots the false positive rate (specificity)  against the true positive rate (sensitivity). A perfect model would have an AUC of 1, a randomly assigning model would be at 0.5.
 
