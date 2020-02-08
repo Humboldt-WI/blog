@@ -12,37 +12,34 @@
     
     
     <item>
+      <title>BERT</title>
+      <link>https://humboldt-wi.github.io/blog/research/bert_blog_post/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/bert_blog_post/</guid>
+      <description>Anti Social Online Behaviour Detection with BERT Comparing Bidirectional Encoder Representations from Transformers (BERT) with DistilBERT and Bidirectional Gated Recurrent Unit (BGRU) R. Evtimov - evtimovr@hu-berlin.de
+M. Falli - fallimar@hu-berlin.de
+A. Maiwald - maiwalam@hu-berlin.de
+Introduction Motivation In 2018, a research paper by Devlin et, al. titled “BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding” took the machine learning world by storm. Pre-trained on massive amounts of text, BERT, or Bidirectional Encoder Representations from Transformers, presented a new type of natural language model.</description>
+    </item>
+    
+    <item>
+      <title>Generating Synthetic Comments to Balance Data for Text Classification</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/text_generation/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/text_generation/</guid>
+      <description>LatexIT.add(&amp;lsquo;p&amp;rsquo;,true);  
+Table of Contents  Introduction Data Exploration Data Pre-Processing Text Generation(1): Language Model - GloVe  Further Text Preparation Modeling Generation  Text Generation(2): Language Model - GPT-2  Why GPT-2? What makes GPT-2 so powerful? The Problem of Long-Term Dependencies GPT-2 Architecture How does GPT-2 create text?  Input Encoding Token Embeddings (wte) Positional Encoding (wpe) GPT-2 - Token Processing Overview Self-Attention Process Query, Key and Value vector Splitting into Attention Heads Scoring Sum Masked Self-Attention Feed-Forward Neural Network Model Output   Byte Pair Encoding  BPE Introduction Byte Pair Encoding in NLP  Comment Classification Task  Relation to Business Case Classification Approach Classification Architecture  RNN Classifier BOW - Logistic Regression-Classifier  Classification Settings  (1) Imbalanced (2) Undersampling (3) Oversampling GloVe (4) Oversampling GPT-2  Drawbacks of Oversampling with Generated Text Classification Task - Limitations Evaluation Including the &amp;ldquo;Not-Sure&amp;rdquo;-Category Different Balancing Ratios for Generated Comments Conclusion and Discussion of Results  References</description>
+    </item>
+    
+    <item>
       <title>SHOPPER: A Probabalistic Consumer Choice Model</title>
       <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/group3_shopper/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group3_shopper/</guid>
       <description>BLOG_POST   /*! * * Twitter Bootstrap * */ /*! * Bootstrap v3.3.7 (http://getbootstrap.com) * Copyright 2011-2016 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */ /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */ html { font-family: sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; } body { margin: 0; } article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; } audio, canvas, progress, video { display: inline-block; vertical-align: baseline; } audio:not([controls]) { display: none; height: 0; } [hidden], template { display: none; } a { background-color: transparent; } a:active, a:hover { outline: 0; } abbr[title] { border-bottom: 1px dotted; } b, strong { font-weight: bold; } dfn { font-style: italic; } h1 { font-size: 2em; margin: 0.</description>
-    </item>
-    
-    <item>
-      <title>Analysis of social media behavior of the 2020 presidential election candidates</title>
-      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</guid>
-      <description>Authors: Georg Velev, Iliyana Pekova Table of Content  Introduction
- Data Retrieval
-2.1. Libraries: GetOldTweets3 vs Tweepy
-2.2. Descriptive Statistics
- Methodology
-3.1. Retrieval of pre-labeled Twitter Data
-3.2. Machine Learning Algorithms
-3.2.1. FastText
-3.2.2. Convolutional Neural Network
-3.2.3. Multinominal Naive Bayes Classifier
- Data Preprocessing
-4.1. Data Cleaning
-4.2. Word Embeddings: GloVe and FastText
-4.3. Model specific Data Preprocessing
- Performance Evaluation
-5.1. Initial Results
-5.2. Hyperparameter Tuning using Bayesian Optimization</description>
     </item>
     
     <item>
@@ -80,6 +77,25 @@ Table of Contents  Introduction  Peer Review Process Motivation   Descriptive An
 4.1.1 Data Pre-Processing
 4.1.2 Data Imbalance
 4.2 Models Implementation</description>
+    </item>
+    
+    <item>
+      <title>State Of The Art Text Summarisation Techniques</title>
+      <link>https://humboldt-wi.github.io/blog/research/seminar_information_systems_1920/group9_summarization_techniques/nlp_text_summarization_techniques/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/seminar_information_systems_1920/group9_summarization_techniques/nlp_text_summarization_techniques/</guid>
+      <description>table.display{ margin-bottom: 25px; margin-top: 25px; } th.display,td.display { border-bottom: 1px solid #ddd; padding: 5px; text-align: left; } tr.display:hover {background-color: #f5f5f5;} .gist { width: 100%; overflow: auto; } .gist .blob-wrapper.data { max-height: 350px; overflow: auto; } * { box-sizing: border-box; } /* Create two equal columns that floats next to each other */ .column { float: left; width: 50%; padding: 10px; } /* Clear floats after the columns */ .</description>
+    </item>
+    
+    <item>
+      <title>Causal Neural Networks</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/group5_causal_neural_networks/</link>
+      <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group5_causal_neural_networks/</guid>
+      <description>Causal Neural Networks - Optimizing Marketing Spendings Effectivness Hasan Reda Alchahwan, Lukas Baumann, Darius Schulz
+Table of Contents:  Introduction Literature Review Descriptive Analysis of the Dataset Estimation of Treatment Effects considering the checkout amount Estimation of Treatment Effects considering conversion Placebo Experiment Conclusion  1. Introduction Targeting the right customers in marketing campaigns has always been a struggle for marketeers. Data-driven approaches allowed to select targets with the highest probability to buy or the greatest revenue expected, if the costs of the activity deter you from targeting every customer.</description>
     </item>
     
     <item>

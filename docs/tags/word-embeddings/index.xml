@@ -6,10 +6,22 @@
     <description>Recent content in Word Embeddings on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 07 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/word-embeddings/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>BERT</title>
+      <link>https://humboldt-wi.github.io/blog/research/bert_blog_post/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/bert_blog_post/</guid>
+      <description>Anti Social Online Behaviour Detection with BERT Comparing Bidirectional Encoder Representations from Transformers (BERT) with DistilBERT and Bidirectional Gated Recurrent Unit (BGRU) R. Evtimov - evtimovr@hu-berlin.de
+M. Falli - fallimar@hu-berlin.de
+A. Maiwald - maiwalam@hu-berlin.de
+Introduction Motivation In 2018, a research paper by Devlin et, al. titled “BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding” took the machine learning world by storm. Pre-trained on massive amounts of text, BERT, or Bidirectional Encoder Representations from Transformers, presented a new type of natural language model.</description>
+    </item>
     
     <item>
       <title>ULMFiT: State-of-the-Art in Text Analysis</title>

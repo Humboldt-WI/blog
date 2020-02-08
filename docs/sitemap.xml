@@ -23,6 +23,16 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/bert/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/research/bert_blog_post/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/categories/</loc>
     <lastmod>2020-02-07T00:00:00+00:00</lastmod>
   </url>
@@ -43,12 +53,57 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/fine-tuning/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1920/text_generation/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/glove/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/gpt-2/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/imbalanced-data/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/</loc>
     <lastmod>2020-02-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/language-model/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/neural-networks/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/nlp/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/oversampling/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/pretraining/</loc>
     <lastmod>2020-02-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -83,22 +138,47 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/text-analysis/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/text-classification/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/text-generation/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/toxic-comments/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/transfer-learning/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/word-embeddings/</loc>
+    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/albert/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</loc>
+    <loc>https://humboldt-wi.github.io/blog/tags/attention/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/awd-lstm/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/bert/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -119,11 +199,6 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/classification/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/cnn/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -163,12 +238,7 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/fasttext/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/fine-tuning/</loc>
+    <loc>https://humboldt-wi.github.io/blog/tags/gru/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -188,12 +258,12 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/nlp/</loc>
+    <loc>https://humboldt-wi.github.io/blog/tags/nn/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/nn/</loc>
+    <loc>https://humboldt-wi.github.io/blog/tags/rnn/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -203,7 +273,7 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</loc>
+    <loc>https://humboldt-wi.github.io/blog/tags/seq2seq/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -213,22 +283,17 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/research/seminar_information_systems_1920/group9_summarization_techniques/nlp_text_summarization_techniques/</loc>
+    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/survival-analysis/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/text-analysis/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/text-classification/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/transfer-learning/</loc>
+    <loc>https://humboldt-wi.github.io/blog/tags/text-summarization/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -250,6 +315,21 @@
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/wikitext-103/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1920/group5_causal_neural_networks/</loc>
+    <lastmod>2020-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/ite/</loc>
+    <lastmod>2020-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/uplift-modeling/</loc>
+    <lastmod>2020-02-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -458,11 +538,6 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/attention/</loc>
-    <lastmod>2019-02-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/bayesian-topic-modelling/</loc>
     <lastmod>2019-02-08T00:00:00+00:00</lastmod>
   </url>
@@ -543,22 +618,7 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/gru/</loc>
-    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/language-modelling/</loc>
-    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/pretraining/</loc>
-    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/rnn/</loc>
     <lastmod>2019-02-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -574,11 +634,6 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/research/information_systems_1819/group4_ulmfit/</loc>
-    <lastmod>2019-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/word-embeddings/</loc>
     <lastmod>2019-02-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -649,6 +704,11 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/research/information_systems_1718/04topicmodels/</loc>
+    <lastmod>2018-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</loc>
     <lastmod>2018-03-15T00:00:00+00:00</lastmod>
   </url>
   

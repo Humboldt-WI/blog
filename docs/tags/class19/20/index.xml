@@ -12,37 +12,24 @@
     
     
     <item>
+      <title>BERT</title>
+      <link>https://humboldt-wi.github.io/blog/research/bert_blog_post/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/bert_blog_post/</guid>
+      <description>Anti Social Online Behaviour Detection with BERT Comparing Bidirectional Encoder Representations from Transformers (BERT) with DistilBERT and Bidirectional Gated Recurrent Unit (BGRU) R. Evtimov - evtimovr@hu-berlin.de
+M. Falli - fallimar@hu-berlin.de
+A. Maiwald - maiwalam@hu-berlin.de
+Introduction Motivation In 2018, a research paper by Devlin et, al. titled “BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding” took the machine learning world by storm. Pre-trained on massive amounts of text, BERT, or Bidirectional Encoder Representations from Transformers, presented a new type of natural language model.</description>
+    </item>
+    
+    <item>
       <title>SHOPPER: A Probabalistic Consumer Choice Model</title>
       <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/group3_shopper/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group3_shopper/</guid>
       <description>BLOG_POST   /*! * * Twitter Bootstrap * */ /*! * Bootstrap v3.3.7 (http://getbootstrap.com) * Copyright 2011-2016 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */ /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */ html { font-family: sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; } body { margin: 0; } article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; } audio, canvas, progress, video { display: inline-block; vertical-align: baseline; } audio:not([controls]) { display: none; height: 0; } [hidden], template { display: none; } a { background-color: transparent; } a:active, a:hover { outline: 0; } abbr[title] { border-bottom: 1px dotted; } b, strong { font-weight: bold; } dfn { font-style: italic; } h1 { font-size: 2em; margin: 0.</description>
-    </item>
-    
-    <item>
-      <title>Analysis of social media behavior of the 2020 presidential election candidates</title>
-      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</guid>
-      <description>Authors: Georg Velev, Iliyana Pekova Table of Content  Introduction
- Data Retrieval
-2.1. Libraries: GetOldTweets3 vs Tweepy
-2.2. Descriptive Statistics
- Methodology
-3.1. Retrieval of pre-labeled Twitter Data
-3.2. Machine Learning Algorithms
-3.2.1. FastText
-3.2.2. Convolutional Neural Network
-3.2.3. Multinominal Naive Bayes Classifier
- Data Preprocessing
-4.1. Data Cleaning
-4.2. Word Embeddings: GloVe and FastText
-4.3. Model specific Data Preprocessing
- Performance Evaluation
-5.1. Initial Results
-5.2. Hyperparameter Tuning using Bayesian Optimization</description>
     </item>
     
     <item>
@@ -62,6 +49,16 @@ Table of Contents  Introduction  Peer Review Process Motivation   Descriptive An
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group2_survivalanalysis/</guid>
       <description>Deep Learning for Survival Analysis Authors: Laura Löschmann, Daria Smorodina Table of content  Motivation - Business case Introduction to Survival Analysis  2.1 Common terms 2.2 Survival function 2.3 Hazard function  Dataset Standard Methods in Survival Analysis  4.1 Kaplan - Meier estimator 4.2 Cox Proportional Hazard Model 4.3 Time-varying Cox regression 4.4 Random survival forests  Deep Learning for Survival Analysis  5.1 DeepSurv 5.2 Deep Hit  Evaluation  6.</description>
+    </item>
+    
+    <item>
+      <title>Causal Neural Networks</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/group5_causal_neural_networks/</link>
+      <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group5_causal_neural_networks/</guid>
+      <description>Causal Neural Networks - Optimizing Marketing Spendings Effectivness Hasan Reda Alchahwan, Lukas Baumann, Darius Schulz
+Table of Contents:  Introduction Literature Review Descriptive Analysis of the Dataset Estimation of Treatment Effects considering the checkout amount Estimation of Treatment Effects considering conversion Placebo Experiment Conclusion  1. Introduction Targeting the right customers in marketing campaigns has always been a struggle for marketeers. Data-driven approaches allowed to select targets with the highest probability to buy or the greatest revenue expected, if the costs of the activity deter you from targeting every customer.</description>
     </item>
     
   </channel>
