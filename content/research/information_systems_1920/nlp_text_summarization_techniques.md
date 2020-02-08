@@ -4,7 +4,7 @@ date = '2020-02-06'
 tags = [ "RNN", "NLP","Text Summarization", "GRU", "Attention", "Seq2Seq", "Deep Learning"]
 categories = ["Course projects"]
 banner = "img/seminar/nn_fundamentals/neuralNetworkKlein.jpg"
-author = "Anna Franziska Bothe, Alex Truesdale, Lukas Kolbe"
+author = "Seminar Information Systems (WS 19/20)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description = "Developing a Sequence-to-Sequence model to generate news headlines – trained on real-world articles from US news publications – and building a text classifier utilising these headlines."
 +++

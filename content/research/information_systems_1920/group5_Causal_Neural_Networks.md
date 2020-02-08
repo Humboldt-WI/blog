@@ -4,9 +4,9 @@ date = '2020-02-05'
 tags = [ "Deep Learning", "Neural Networks", "Class19/20", "Uplift Modeling", "ITE"]
 categories = ["course-projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
-author = "Seminar_Information_Systems Winter Class 2019 / 2020"
+author = "Seminar Information Systems (WS 19/20)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
-description = "Individual Treatment Effect Estimation"
+description = "Individual Treatment Effect Estimation using a Residual Neural Network Architecture"
 +++
 
 # **Causal Neural Networks - Optimizing Marketing Spendings Effectivness**
