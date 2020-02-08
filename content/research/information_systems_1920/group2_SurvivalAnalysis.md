@@ -128,12 +128,12 @@ The data is given in a "snapshot" panel format and represents a collection of US
 
 When a person applies for mortgage, lenders (banks) want to know the value of risk they would take by loaning money. 
 In the given dataset we are able to inspect this process using the key information from following features:
-- various timestamps for loan origination, future maturity and first appearance in the survival study
-- outside factors like gross domestic product (GDP) or unemployment rates at observation time
-- average price index at observation moment
-- FICO score for each individual: the higher the score, the lower the risk (a "good" credit score is considered to be in the 670-739 score range)
-- interest rates for every issued loan
-- since our object of analysis is mortgage data we have some insights for inquired real estate types (home for a single family or not, is this property in area with urban development etc.) which are also playing an important role for loan amount.
+* various timestamps for loan origination, future maturity and first appearance in the survival study
+* outside factors like gross domestic product (GDP) or unemployment rates at observation time
+* average price index at observation moment
+* FICO score for each individual: the higher the score, the lower the risk (a "good" credit score is considered to be in the 670-739 score range)
+* interest rates for every issued loan
+* since our object of analysis is mortgage data we have some insights for inquired real estate types (home for a single family or not, is this property in area with urban development etc.) which are also playing an important role for loan amount.
 
 In order to use our data for survival analysis, we need to specify the characteristic terms. The **birth event** is the time of the initial recognition of the mortgage, the **death event** is the default of the customer. The **duration** is the time between the birth and death event. Some customers have not defaulted yet, so they will be labelled "censored" in further analysis.
 
@@ -152,9 +152,9 @@ The distribution of the event of interest (in graph below) shows that more than 
      src="/blog/img/seminar/group2_SurvivalAnalysis/event_distrib.png">
 <br>
 Survival analysis requires a specific dataset format:
-- $E_i$ is the event indicator such that $E_i=1$, if an event happens and $E_i=0$ in case of censoring (column *default_time*)
-- $T_i$ is the observed duration (*total_obs_time* column)
-- $X_i$ is a $p$−dimensional feature vector (covariates starting from the third column).
+* $E_i$ is the event indicator such that $E_i=1$, if an event happens and $E_i=0$ in case of censoring (column *default_time*)
+* $T_i$ is the observed duration (*total_obs_time* column)
+* $X_i$ is a $p$−dimensional feature vector (covariates starting from the third column).
 
 {{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/subset.png" link="group2_SurvivalAnalysis/subset.png">}}
 
@@ -181,10 +181,10 @@ $$ \hat{S(t)} = \prod_{i: t_i <= t}{\frac{n_i - d_i}{n_i}} ,$$
 where $n_i$ is a number of individuals who are at risk at time point $t_i$ and $d_i$ is a number of subjects that experienced the event at time $t_i$.
 
 When using Kaplan-Meier estimate, some assumptions must be taken into account:
-- All observations - both censored and defaulted - are used in estimation
-- There is no cohort effect on survival, so the subjects have the same survival probability regardless of their nature and time of appearance in study
-- Individuals who are censored have the same survival probabilities as those who are continued to be examined
-- The survival probability is equal for all subjects.
+* All observations - both censored and defaulted - are used in estimation
+* There is no cohort effect on survival, so the subjects have the same survival probability regardless of their nature and time of appearance in study
+* Individuals who are censored have the same survival probabilities as those who are continued to be examined
+* The survival probability is equal for all subjects.
 
 The main disadvantage of this method is that it cannot estimate survival probability considering all covariates in the data (it is an *univariate* approach) which shows no individual estimations but theoverall population survival distribution. In comparison, semi- and parametric models allow to analyse all covariates and estimate $S(t)$ with respect to them.
 
@@ -204,12 +204,14 @@ The Cox proportional hazard model (CoxPH) involves not only time and censorship 
 The Cox proportional hazard model (1972) is widely used in multivariate survival statistics due to a relatively easy implementation and informative interpretation.
 It describes relationships between survival distribution and covariates. The dependent variable is expressed by the hazard function (or default intensity) as follows:
 
-$$ \lambda(t|x) = \lambda_{0}(t) exp(\beta_{1}x_1 + … + \beta_{n}x_n)$$
+<img align="center" 
+     style="display:block;margin:0 auto;" width="300"
+     src="/blog/img/seminar/group2_SurvivalAnalysis/Cox.gif">
 
-- This method is considered as semi-parametric: it contains a parametric set of covariates and a non-parametric component $\lambda_{0}(t)$ which is called `baseline hazard` , the value of hazard when all covariates are equal to 0. 
-- The second component are `partial hazards` or `hazard ratio` and they define the hazard effect of observed covariates on the baseline hazard $\lambda_{0}(t)$
-- These components are estimated by partial likelihood and are time-invariant
-- In general, the Cox model makes an estimation of log-risk function $\lambda(t|x)$ as a linear combination of its static covariates and baseline hazard. 
+* This method is considered as semi-parametric: it contains a parametric set of covariates and a non-parametric component $\lambda_{0}(t)$ which is called `baseline hazard` , the value of hazard when all covariates are equal to 0. 
+* The second component are `partial hazards` or `hazard ratio` and they define the hazard effect of observed covariates on the baseline hazard $\lambda_{0}(t)$
+* These components are estimated by partial likelihood and are time-invariant
+* In general, the Cox model makes an estimation of log-risk function $\lambda(t|x)$ as a linear combination of its static covariates and baseline hazard. 
 
 ##### Practical interpretation of Cox regression:
 The sign of partial hazards (*coef* column) for each covariate plays an important role. A positive sign increases the baseline hazard $\lambda_{0}(t)$ and denotes that this covariate affects a higher risk of experiencing the event of interest. In contrary, a negative sign means that the risk of the event is lower. 
@@ -222,17 +224,17 @@ The sign of partial hazards (*coef* column) for each covariate plays an importan
 The essential component of the CoxPH is the **proportionality assumption**: the hazard functions for any two subjects stay proportional at any point in time and the hazard ratio does not vary with time. As an example, if a customer has a risk of loan default at some initial observation that is twice as low as that of another customer, then for all later time observations the risk of defaulted loan remains twice as low. 
 
 Consequently, more important properties of the CoxPH can be derived:
-- The times when individuals may experience the event of interest are independent from each other
-- Hazard curves of any individuals do not cross with each other
-- There is a multiplicative linear effect of the estimated covariates on the hazard function.
+* The times when individuals may experience the event of interest are independent from each other
+* Hazard curves of any individuals do not cross with each other
+* There is a multiplicative linear effect of the estimated covariates on the hazard function.
 
 ---
 
 However, for the given dataset this proportinality property does not hold due to a violation of some covariates. Some additional methods can overcome this violation. 
-- The first is binning these variables into smaller intervals and stratifying on them. We keep in the model the covariates which do not obey the proportional assumption. The problem that can arise in this case is an information loss (since different values are now binned together)
-- We can expand the time-varying data and apply a special type of Cox regression with continuous variables
-- Random survival forests
-- Extension with neural networks.
+* The first is binning these variables into smaller intervals and stratifying on them. We keep in the model the covariates which do not obey the proportional assumption. The problem that can arise in this case is an information loss (since different values are now binned together)
+* We can expand the time-varying data and apply a special type of Cox regression with continuous variables
+* Random survival forests
+* Extension with neural networks.
 
 ---
 
@@ -277,9 +279,9 @@ Over the past years, a significant amount of research in machine learning has be
 <br>
 <br>
 We can define particular groups of methods regading deep learning in survival analysis. 
-- The first is based on further development of the baseline Cox Proportional hazard model: **DeepSurv** (section 5.1), **Cox-nnet** (extension of CoxPH on specific genetics datasets and regularizations). [16]
-- As an alternative approach, fully parametric survival models which use RNN to sequentially predict a distribution over the time to the next event:  **RNN-SURV** [17],   **Weibull Time-To-Event RNN** [26] etc.
-- On the other hand, there are some new advanced deep learning neural networks, such as **DeepHit**, developed to also process the survival data with competing risks (section 5.2).
+* The first is based on further development of the baseline Cox Proportional hazard model: **DeepSurv** (section 5.1), **Cox-nnet** (extension of CoxPH on specific genetics datasets and regularizations). [16]
+* As an alternative approach, fully parametric survival models which use RNN to sequentially predict a distribution over the time to the next event:  **RNN-SURV**,   **Weibull Time-To-Event RNN** etc. [17] [26] 
+* On the other hand, there are some new advanced deep learning neural networks, such as **DeepHit**, developed to also process the survival data with competing risks (section 5.2).
 
 {{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/overall2.jpg" caption="(source: [18])" link="group2_SurvivalAnalysis/overall2.jpg">}}
 
@@ -302,15 +304,19 @@ A few years ago, the more sophisticated deep learning architecture, DeepSurv, wa
 ---
 Previously, the optimization of the classical Cox regression runs due to a optimization of the Cox **partial likelihood**. This likelihood is defined with the following formula with parametrized weights $\beta$:
 
-$$ L_c(\beta) = \prod_{i: e_i = 1}{\frac{exp(\hat{{h}_\beta}(x_i))}{\sum_{j \in R(t_i)}exp(\hat{{h}_\beta}(x_j))}},$$
+<img align="center" 
+     style="display:block;margin:0 auto;" width="330"
+     src="/blog/img/seminar/group2_SurvivalAnalysis/Loss_DeepSurv.gif">
 
 where $t_i, e_i, x_i$ are time, event, baseline covariate data in the i-th observation respectivelly. More explicitely, this is a product of probabilities at the time $t_i$ for the i-th observation given the set of risk individuals ($R$) that are not censored and have not experienced the event of interest before time $t_i$.
 
 The **loss function** for this network is a negative log partial likelihood $ L_c(\beta)$ from the CoxPH (equation above) with an additional regularization:
 
-$$ l(\theta) = -\frac{1}{N_{e = 1}} \sum_{i: e_i = 1}(\hat{{h}_\beta}(x_i) - log \sum_{j \in R(t_i)}(e^{\hat{{h}_\beta}(x_j)})) + \lambda * ||\theta||_2^2 ,$$
+<img align="center" 
+     style="display:block;margin:0 auto;" width="580"
+     src="/blog/img/seminar/group2_SurvivalAnalysis/Loss_reg_DeepSurv.gif">
 
-where $\lambda$ is the $l_2$ regularization parameter and $N_{e = 1}$ - set of the individuals with observable event.
+where $\lambda$ is the l2 regularization parameter and N(e = 1) - set of the individuals with observable event.
 
 In order to minimize the loss function with this regularization, it is necessary to maximize the part in the large parentheses. For every subject $i$ experiencing the event we increase the risk factor and censored objects $j$, who have not experienced event before time $t_i$ should have a minimized risk. 
 
@@ -330,10 +336,10 @@ To built the DeepSurv model we discovered two implentational options:
 
 {{< gist dariasmorodina 386038e0897aceae337584f8dd331690 >}}
 
->Building the Vanilla MLP with **four hidden layers**
-**Batch normalization** (for stabilization and reducing data noise) 
-**Dropout** 40% between the hidden layers
-**ReLU** were chosen as an optimal activation layer (alternatively, Scaled Exponentioal Linear Units (SELU) can be implemented)
+>Building the Vanilla MLP with **four hidden layers**, 
+**Batch normalization** (for stabilization and reducing data noise), 
+**Dropout** 40% between the hidden layers, 
+**ReLU** were chosen as an optimal activation layer (alternatively, Scaled Exponentioal Linear Units (SELU) can be implemented), 
 **Adam optimizer** was used for model training, without setting initial learning rate value.
 
 {{< gist dariasmorodina b134be43ce5b9d1082c866b64c927658 >}}
@@ -423,10 +429,12 @@ Source: [22a]
 The architecture of the DeepHit model is similar to the conventional multi-task learning architecture of hard parameter sharing, but has two main differences. DeepHit provides a residual connection between the original covariates and the input of the cause-specific sub-networks. This means that the input of the cause-specific sub-networks is not only the output of the preceded shared sub-network but also the original covariates. These additional input allows the cause-specific sub-network to better learn the non-common representation of the multiple causes.
 <br>
 The other difference refers to the final output of the model. DeepHit uses one single softmax output layer so that the model can learn the joint distribution of the competing events instead of their marginal distribution. Thus the output of the DeepHit model is a vector *y* for every subject in the dataset giving the probabilities that the subject with covariates *x* will experience the event *k* for every timestamp *t* within the observation time. The probabilities of one subject sum up to 1.
-
-$$y = [y_{1,1},...,y_{1,Tmax},...,y_{K,1},...,y_{K,Tmax}]$$
-
-
+<br>
+<br>
+<img align="center"
+     style="display:block;margin:0 auto;" width="370"
+     src="/blog/img/seminar/group2_SurvivalAnalysis/DeepHit1.gif">
+<br>
 The visualisation of the DeepHit model shows the architecture for a survival dataset of two competing risks. This architecture can easily be adjusted to more or less competing risks by adding   or removing cause-specific sub-networks. The architecture of the DeepHit model depends on the number of risks.
 
 To implement the model the [DeepHit repository](https://github.com/chl8856/DeepHit) has to be cloned to create a local copy on the computer.
@@ -458,15 +466,19 @@ The chosen parameters are forwarded to the function *get_valid_performance* alon
 DeepHit is build with Xavier initialisation and dropout for all the layers and is trained by back propagation via the Adam optimizer. To train a survival analysis model like DeepHit a loss function has to be minimised that is especially designed to handle censored data.
 The loss function of the DeepHit model is the sum of two terms. 
 
-$$ L_{Total} = L_{1} + L_{2}$$
-
+<img align="center" width="155"
+     style="display:block;margin:0 auto;" 
+     src="/blog/img/seminar/group2_SurvivalAnalysis/DeepHit2.gif">
+     
 $L_{1}$ is the log-likelihood of the joint distribution of the first hitting time and event. This function is modified in a way that it captures censored data and considers competing risks if necessary. 
 The log-likelihood function also consists out of two terms. The first term captures the event and the time, the event occurred, for the uncensored customers. The second term captures the time of censoring for the censored customers giving the information that the customer did not default up to that time.
 
 $L_{2}$ is a combination of cause-specific ranking loss functions since DeepHit is a multi-task learning model and therefore needs cause-specific loss functions for training. The ranking loss function incorporates the *estimated cumulative incidence function* calculated at the time the specific event occurred. The formula of the cumulative incidence function (CIF) is as follows:
 
-$$F_{k^{*}}(t^{*}|x^{*}) = \sum_{s^{*}=0}^{t^{*}}P(s=s^{*},k=k^{*}|x=x^{*})$$
-
+<img align="center" width ="320"
+     style="display:block;margin:0 auto;" 
+     src="/blog/img/seminar/group2_SurvivalAnalysis/DeepHit3.gif">
+     
 This function expresses the probability that a particular event *k* occurs on or before time *t* conditional on covariates *x*. To get the estimated CIF, the sum of the probabilities from the first observation time to the time, the event *k* occurred, is computed.
 
 <img align="center" width="153"
@@ -487,7 +499,8 @@ After the training process the saved optimised hyper-parameters as well as the c
 ## 6.1 Concordance index<a class="anchor" id="cindex"></a>
 
 For the evaluation of survival analysis models the performance measures need to take censored data into account. The most common evaluation metric in survival analysis is the **concordance index**. It shows the model's ability to correctly provide a reliable ranking of the survival times based on the individual risk scores. The idea behind concordance is that a subject that dies at time *t* should have a higher risk at time *t* than a subject who survives beyond time *t*. 
->The concordance index expresses the proportion of concordant pairs in a dataset, thus estimates the probability that, for a random pair of individuals, the predicted survival times of the two individuals have the same ordering as their true survival times. A concordance index of 1 represents a model with perfect prediction, an index of 0.5 is equal to random prediction. [23]
+
+* The concordance index expresses the proportion of concordant pairs in a dataset, thus estimates the probability that, for a random pair of individuals, the predicted survival times of the two individuals have the same ordering as their true survival times. A concordance index of 1 represents a model with perfect prediction, an index of 0.5 is equal to random prediction. [23]
 
 For a better understanding of this definition the concordance index is calculated on some simple example predictions. The following table shows the true default times of four theoretical customers along with default time predictions of three different models.
 
@@ -497,9 +510,9 @@ For a better understanding of this definition the concordance index is calculate
 
 To calculate the concordance index the number of concordant pairs has to be divided by the number of possible ones. By having four customers the following pairs are possible:
 (A,B) , (A,C) , (A,D) , (B,C) , (B,D) , (C,D). The total number of possible pairs is 6. 
-- Model 1 predicts that A defaults before B, and the true default time confirms that A defaults before B. The pair (A,B) is a concordant pair. This comparison needs to be done for every possible pair. For the prediction of Model 1 all possible pairs are concordant, which results in an Concordance index of 1 - perfect prediction.
-- For the prediction of Model 2 there are five concordant pairs, but for the pair (C,D) the model predicts that D defaults before C, whereas the true default times show that C defaults before D. With this the concordance index is 0.83 (5/6).
-- The concordance index of Model 3 is also equal to 1, since the model predicts the correct order of the possible pairs even though the actual default times are not right in isolation.
+* Model 1 predicts that A defaults before B, and the true default time confirms that A defaults before B. The pair (A,B) is a concordant pair. This comparison needs to be done for every possible pair. For the prediction of Model 1 all possible pairs are concordant, which results in an Concordance index of 1 - perfect prediction.
+* For the prediction of Model 2 there are five concordant pairs, but for the pair (C,D) the model predicts that D defaults before C, whereas the true default times show that C defaults before D. With this the concordance index is 0.83 (5/6).
+* The concordance index of Model 3 is also equal to 1, since the model predicts the correct order of the possible pairs even though the actual default times are not right in isolation.
 
 The next example shows the computation of the concordance index in case of right-censoring:
 
@@ -559,10 +572,10 @@ To get a closer look at the individual hazard graphs in order to compare the pre
 <br>
 For the most part the hazard graphs of these customers show that within the first year the probability of default is higher and mostly decreasing within the second year. 
 - Hazard graph 1 also represents this trend. Throughout the rest of the evaluation time the probability values decrease and range between 0.5%  and 2%. In the dataset the customer was censored after 26 months. With regard to the predicted hazard ratio if the customer "survives" beyond the first year he probably does not experience the event of default afterwards.
-- Hazard graph 2 starts with a high default probability after 3 months. With respect to the actual values, the customer defaulted after 3 months, the model could make a precise prediction.
-- Hazard graph 3 shows the highest values within the time of 10 and 13 months after initial recognition of the mortgage which represents the actual values of the customer defaulting after 13 months. 
-- Hazard graph 4 differs from the other graphs since it starts with low risk of default period. The probability is not decreasing until the start of the sixth year of credit time except a little increase at the end of the second year. The model predicts that if the customer will experience the event of default it will be sometime after the fifth year of credit time. The customer was censored after 39 months, he is still repaying his mortgage rates and has not experienced the event yet.
-- The customers of Hazard graph 5 and 6 were censored after a short time interval. They both have an increased risk of default within the first year. For customer 5 the second and third year is a low risk period, followed by years of higher risk of default. 
+* Hazard graph 2 starts with a high default probability after 3 months. With respect to the actual values, the customer defaulted after 3 months, the model could make a precise prediction.
+* Hazard graph 3 shows the highest values within the time of 10 and 13 months after initial recognition of the mortgage which represents the actual values of the customer defaulting after 13 months. 
+* Hazard graph 4 differs from the other graphs since it starts with low risk of default period. The probability is not decreasing until the start of the sixth year of credit time except a little increase at the end of the second year. The model predicts that if the customer will experience the event of default it will be sometime after the fifth year of credit time. The customer was censored after 39 months, he is still repaying his mortgage rates and has not experienced the event yet.
+* The customers of Hazard graph 5 and 6 were censored after a short time interval. They both have an increased risk of default within the first year. For customer 5 the second and third year is a low risk period, followed by years of higher risk of default. 
 Hazard graph 6 shows a decrease in hazard after the second year but like the Hazard Rate 1 and 3 the probabilities vary between low values until the end of evaluation time.
 
 In case of two competing risks the output of DeepHit is a vector of length 144 for every customer. This length comes from 72 probabilities of experiencing event 1 (default) and 72 probabilities of experiencing event 2 (payoff). The vector gives the joint probability distribution of both events, so the sum of a vector of one customer is equal to 1. 
@@ -586,10 +599,10 @@ Looking at selected individual hazard graphs plotting the joint distribution of 
 {{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/HRind_cr.png" width="1050" link="//blog/img/seminar/group2_SurvivalAnalysis/HRind_cr.png">}}
 <br>
 <br>
-- Hazard Graph 1 gives a higher probability of experiencing default than payoff. Moreover the model predicts the default to be at the end of first year, which matches the true default time of the customer experiencing the event of default after 13 months.
-- The Hazard Graph 2 starts with a low risk period of more than two years regarding both events. After 2.5 years the risk of early repayment is increasing but after four years of credit time the model also predicts a strong increased hazard in default. In total the model predicts a slightly higher risk of payoff. The customer was censored after 39 months, which corresponds to the long period of low risk to experience one of these events, but with regard to this customer the model is not able to make a strong prediction to either default or payoff.
-- The Hazard Graph 3 shows a high risk of payoff right in the beginning. The prediction represents the customers true event time of experiencing the event of payoff after 1 months.
-- Hazard Graph 4 is similar to the third graph and also leads to a good prediction of payoff after 4 months which matches the actual values of the customer. The graph shows a sudden increase in payoff risk around 4.5 years that again decreases to a zero risk afterwards which is probably a result of the pattern the model learned, but looks more like an unrealistic outlier.
+* Hazard Graph 1 gives a higher probability of experiencing default than payoff. Moreover the model predicts the default to be at the end of first year, which matches the true default time of the customer experiencing the event of default after 13 months.
+* The Hazard Graph 2 starts with a low risk period of more than two years regarding both events. After 2.5 years the risk of early repayment is increasing but after four years of credit time the model also predicts a strong increased hazard in default. In total the model predicts a slightly higher risk of payoff. The customer was censored after 39 months, which corresponds to the long period of low risk to experience one of these events, but with regard to this customer the model is not able to make a strong prediction to either default or payoff.
+* The Hazard Graph 3 shows a high risk of payoff right in the beginning. The prediction represents the customers true event time of experiencing the event of payoff after 1 months.
+* Hazard Graph 4 is similar to the third graph and also leads to a good prediction of payoff after 4 months which matches the actual values of the customer. The graph shows a sudden increase in payoff risk around 4.5 years that again decreases to a zero risk afterwards which is probably a result of the pattern the model learned, but looks more like an unrealistic outlier.
 
 Mostly the DeepHit models for single as well as for competing risks can already make great predictions on the test dataset. With regard to the initial introduced business case, the predicted probability values of each customer can be used in order to calculate the expected credit loss to set up the provisions as a counterbalance to the recognised values of the loans. The formula of the expected credit loss is:
 
