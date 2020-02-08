@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>State Of The Art Text Summarisation Techniques</title>
+  <meta name="author" content="" />
+
+  
+  <meta name="keywords" content="devows, hugo, go">	
+  
+
+  
+  <meta name="description" content="Developing a Sequence-to-Sequence model to generate news headlines – trained on real-world articles from US news publications – and building a text classifier utilising these headlines.">
+  
+
+  <meta name="generator" content="Hugo 0.58.1" />
+
+  <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/animate.css" rel="stylesheet">
+
+  
+  
+    <link href="https://humboldt-wi.github.io/blog/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
+  
+
+
+  
+  <link href="https://humboldt-wi.github.io/blog/css/custom.css" rel="stylesheet">
+
+  
+  
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+  <link rel="shortcut icon" href="https://humboldt-wi.github.io/blog/img/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="https://humboldt-wi.github.io/blog/img/apple-touch-icon.png" />
+  
+
+  <link href="https://humboldt-wi.github.io/blog/css/owl.carousel.css" rel="stylesheet">
+  <link href="https://humboldt-wi.github.io/blog/css/owl.theme.css" rel="stylesheet">
+
+  <link rel="alternate" href="https://humboldt-wi.github.io/index.xml" type="application/rss+xml" title="Institute of Infomation Systems at HU-Berlin">
+
+  
+  <meta property="og:title" content="State Of The Art Text Summarisation Techniques" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/blog/research/information_systems_1920/nlp_text_summarization_techniques//" />
+  <meta property="og:image" content="img/logoGross.png" />
+
+</head>
+
+
+  <body>
+
+    <div id="all">
+
+        <header>
+
+          <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand home" href="https://humboldt-wi.github.io/blog/">
+                    <img src="https://humboldt-wi.github.io/blog/img/logo.png" alt="State Of The Art Text Summarisation Techniques logo" class="hidden-xs hidden-sm">
+                    <img src="https://humboldt-wi.github.io/blog/img/logo-small.png" alt="State Of The Art Text Summarisation Techniques logo" class="visible-xs visible-sm">
+                    <span class="sr-only">State Of The Art Text Summarisation Techniques - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                      <span class="sr-only">Toggle Navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                </div>
+            </div>
+            
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-right">
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/">Home</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/news/">News</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/contributors/">Contributors</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/research/">research</a>
+                    
+                  </li>
+                  
+                  <li class="dropdown">
+                    
+                    <a href="/blog/contact/">Contact</a>
+                    
+                  </li>
+                  
+                </ul>
+            </div>
+            
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+
+                </span>
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+    </div>
+    
+
+</div>
+
+
+
+
+        </header>
+
+        <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>State Of The Art Text Summarisation Techniques</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <div id="content">
+            <div class="container">
+
+                <div class="row">
+
+                    
+
+                    <div class="col-md-9" id="blog-post">
+
+                        <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Seminar Information Systems (WS 19/20)</a> | February 6, 2020</p>
+
+                        <div id="post-content">
+                          
+
+<style>
+    table.display{
+    margin-bottom: 25px;
+    margin-top: 25px;
+
+
+    }
+    th.display,td.display {
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+    text-align: left;
+    }
+    tr.display:hover {background-color: #f5f5f5;}
+
+.gist {
+    width: 100%;
+    overflow: auto;
+}
+
+.gist .blob-wrapper.data {
+    max-height: 350px;
+    overflow: auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* Create two equal columns that floats next to each other */
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
+
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+img.formula{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+</style>
+
+<h1 id="state-of-the-art-summarisation-techniques">State of the Art Summarisation Techniques</h1>
+
+<h2 id="generating-headlines-as-short-summaries-of-text"><em>Generating Headlines as Short Summaries of Text</em></h2>
+
+<hr />
+
+<p><em>Information Systems Seminar <sup>19</sup>&frasl;<sub>20</sub></em></p>
+
+<p><strong>Anna Franziska Bothe</strong> <br/>
+<strong>Alex Truesdale</strong> <br/>
+<strong>Lukas Kolbe</strong></p>
+
+<h2 id="abstract">Abstract</h2>
+
+<p>This project combines two NLP use cases: generation of text summaries (in the form of short news headlines) and classification of a given article as containing or not containing political / economic uncertainty. The two approaches are joined by generating a set of new headlines alternative to the original headlines for each article in the given article set. The two headlines are then compared in their performance as inputs in a classification model. While the high-level exercise here is to examine the information value of news headlines in this classification task, the bulk of this blog post examines more closely the inner workings of sequence-to-sequence text modeling in the context of summary generation. The seq2seq model produced in this post, even in a relatively basic form, successfully generates coherent headlines for many of the articles provided. While not every single generated headline is of high quality, there are numerous examples where the headline fits the contents of the article quite well. In general, longer inputs to the model produce better output than short inputs, even though they undergo more thorough text cleaning in pre-preparation (i.e. removal of overly common or rare words).</p>
+
+<p>For the classification task, in comparing the performance of a simple classifier neural network across different input data combinations, the input of article text plus the original headline performs best. Using article text without any headlines gives the second best score and provides better classification results than the input of article text plus a generated headline. This demonstrates that the summarisation model in its current state has potential for improvement. As an academic pursuit &amp; practical application, however, the successful application of several NLP principles in producing a working text generation model is an encouraging achievement with promising potential.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The Internet and computer technology make possible low-barrier access to immeasurable amounts of information. While the opportunities here are great and wide-reaching, so too are the challenges, namely the limitations of the human brain to process such large amounts of information in a useful and efficient way.</p>
+
+<p>Additionally, as access to information has grown, so too has the line between factual and fake information begun to blur. Due to the extreme amount of information generated and disseminated on a daily basis, it has become increasingly difficult to identify useful, interesting, and legitimate content. Furthermore, revenue for online publications is very often tied to the amount of page visitors they receive, thereby incentivising article headlines that grab reader attention rather than those that focus solely on conveying information.</p>
+
+<p>In this context, there are many application possibilites for Natural Language Processing (NLP) models to perform tasks that address these challenges: they can, for example (pre-) qualify content through classification, translate text, or, as is the primary focus of this post, serve automatically generated summaries:</p>
+
+<ul>
+<li><p><strong>extractive summarisation</strong> is a more basic solution that extracts the most important words or sentences without &ldquo;writing&rdquo; any new content on its own</p></li>
+
+<li><p>more sophisticated and promising, <strong>abstractive summarisation</strong> models learn to understand language in its nuance (syntax &amp; context) and generate summarizations using &ldquo;its own words&rdquo;.</p></li>
+</ul>
+
+<hr />
+
+<p>This blog post will first provide an overview of contemporary summarisation techniques in the context of <strong>abstractive summarisation</strong>. After introducing the methodology, a detailed walkthrough of construction of a sequence-to-sequence model is given. This model will generate short summaries (headlines) of up to 20 words for news articles.</p>
+
+<p>The quality of the generated headlines will be evaluated via common text-generation performance metrics ROUGE and BLEU as well as looking at the performance of these headlines in the final classification task. The quality of these measurements is then compared to that of the actual headlines written by journalists (original data). Does a trained model pick up the context of a medium-to-long article and condense it into a headline that makes sense? That encapsulates central ideas / themes of an article? Can a generated headline contain less bias than one written by a human? These are the driving questions of this analysis.</p>
+
+<h2 id="outline">Outline</h2>
+
+<ol>
+<li>Model Architecture
+
+<ol>
+<li>Sequence2Sequence</li>
+<li>Encoder-Decoder</li>
+<li>Attention</li>
+</ol></li>
+<li>Dataset
+
+<ol>
+<li>Description &amp; Preparation</li>
+<li>Training strategy</li>
+</ol></li>
+<li>Model Summary &amp; Code Implementation
+
+<ol>
+<li>Encoder-Decoder</li>
+<li>Inference Model</li>
+<li>Sequence Generation</li>
+</ol></li>
+<li>Results &amp; Performance
+
+<ol>
+<li>ROUGE</li>
+<li>BLEU</li>
+<li>Evaluation Results</li>
+<li>Classification Model</li>
+</ol></li>
+<li>Potential Enhancements
+
+<ol>
+<li>Accuracy: Pointer-Generator Network</li>
+<li>No Repetition: Coverage</li>
+<li>Efficiency: Beam Search</li>
+</ol></li>
+</ol>
+
+<h4 id="disclaimer">Disclaimer</h4>
+
+<p>For brevity and reading comprehension, only essential code is contained in this blog post. For the full code please refer to the project&rsquo;s <a href="https://github.com/alextruesdale/seq2seq-headline-generator">GitHub repository.</a></p>
+
+<hr />
+
+<h2 id="model-architecture-sequence-to-sequence-modeling">Model Architecture: Sequence to Sequence Modeling</h2>
+
+<p>The concept of sequence-to-sequence (seq2seq) modeling was first introduced by Sutskever et al. in 2014. [4] In its basic functionality, a Seq2Seq model takes a sequence of objects (words, letters, time series, etc) and outputs another sequence of objects. The &lsquo;black box&rsquo; in between is a complex structure of numerous Recurrent Neural Networks (RNNs) that first transfers an input string (in the case of seq2seq for text transformation) of varying length into a fixed length vector representation, which is then used to generate an output string.</p>
+
+<figure><a href="/blog/img/seminar/is1920_group9/seq2seq_1.png">
+    <img src="/blog/img/seminar/is1920_group9/seq2seq_1.png"
+         alt="Figure 1: Basic Seq2Seq Model – Image Source: https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263" width="800"/> </a><figcaption>
+            <p><em>Figure 1: Basic Seq2Seq Model – Image Source: <a href="https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263">https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263</a></em></p>
+        </figcaption>
+</figure>
+
+
+<p>There are several flavours of seq2seq models, and, depending on the type of problem, the right sub type has to be selected. In this case of text summarisation, the most appropriate application is a &lsquo;many to many&rsquo; model where both the input and output consist of several (many) words.</p>
+
+<figure><a href="/blog/img/seminar/is1920_group9/seq2seq_types.jpg">
+    <img src="/blog/img/seminar/is1920_group9/seq2seq_types.jpg"
+         alt="Figure 2:Different Seq2Seq Model Types – Image Source: http://karpathy.github.io/2015/05/21/rnn-effectiveness" width="800"/> </a><figcaption>
+            <p><em>Figure 2:Different Seq2Seq Model Types – Image Source: <a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness">http://karpathy.github.io/2015/05/21/rnn-effectiveness</a></em></p>
+        </figcaption>
+</figure>
+
+
+<p>Examples:
+* One to one: image classification
+* One to many: image captioning
+* Many to one: text classification
+* Many to many: text translation, text summarisation</p>
+
+<hr />
+
+<h2 id="model-architecture-encoder-decoder">Model Architecture: Encoder-Decoder</h2>
+
+<p>Now, the contents of the &lsquo;black box&rsquo; in the diagram above can be examined. Sequence to sequence models rely on what is called an encoder-decoder architecture – a combination of layered RNNs that are arranged in way that allows them to perform the tasks of encoding a word sequence and then passing that encoded sequence to a decoder network to produce an output [15][16]. The input sequence is first tokenised (transformed from a collection of words into a collection of integers that represent each word) and then fed word-for-word into the <strong>encoder</strong>. The encoder transforms the sequence into a new, abstracted state, which then, after being passed to the <strong>decoder</strong>, becomes the basis of producing an output sequence (e.g. a translated version of the same text, or, in this case a summarised version of the same text).</p>
+
+<h4 id="what-does-the-encoder-do">What does the <strong>Encoder</strong> do?</h4>
+
+<figure><a href="/blog/img/seminar/is1920_group9/encdec_1.png">
+    <img src="/blog/img/seminar/is1920_group9/encdec_1.png"
+         alt="Figure 3: Encoder Decoder Model Scheme – Image Source: https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263" width="800"/> </a><figcaption>
+            <p><em>Figure 3: Encoder Decoder Model Scheme – Image Source: <a href="https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263">https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263</a></em></p>
+        </figcaption>
+</figure>
+
+
+<p>The encoder reads the entire input sequence word by word, producing a sequence of <strong>encoder hidden states</strong>. At each time step, a new token is read and the hidden state is updated with the new information. Upon reaching the end of the input sequence, the encoder puts out a fixed length representation of the input, regardless of input length, which is called the <strong>encoder vector</strong>. The encoder vector is the final hidden state that is used to initialize the decoder.</p>
+
+<h4 id="what-does-the-decoder-do">What does the <strong>Decoder</strong> do?</h4>
+
+<p>In contrast to the encoder, which takes in input data and reflects in a final, abstracted state, the decoder is trained to output a new, fixed-length sequence (word-for-word) given the previous word for each time step. It is initialized by receiving the <strong>encoder vector</strong> as its first hidden state, as well as a &ldquo;start&rdquo;-token, indicating the start point of the output sequence. The true output sequence is unknown to decoder while decoding the input sequence, it only knows the last encoder hidden state and the previous input (the &ldquo;start&rdquo; token or the next token from the input sequence), which it receives at each time step. The decoder has the ability to freely generate words from the vocabulary.</p>
+
+<h4 id="limitations-with-encoder-decoder-architecture">Limitations with Encoder-Decoder Architecture:</h4>
+
+<p>While the LSTM or GRU units in the encoder-decoder architecture are well suited for contextual analysis of inputs, they begin to struggle with this task as inputs grow longer. With long input sequences, the final state vector that is output by the encoder may lose important contextual information from earlier points in the sequence [13][14]. Through every iteration of the encoder RNN, hidden states are updated by new information, slowly moving away from early inputs. The core problem here is that the entire context of the long input text is condensed into one single state vector.</p>
+
+<p><strong><em>Intuition: imagine the challenge of reading a whole text once, then writing a summary from memory – it becomes difficult to remember the early details of the original text.</em></strong></p>
+
+<h2 id="model-architecture-attention">Model Architecture: Attention</h2>
+
+<p>One solution to the above-mentioned issue is called <em>attention</em>. Attention serves to assist the encoder-decoder model in specifically focusing on certain, relevant sections / words in the input text when predicting the next output token. This helps to mitigate the issue of lost context from earlier chunks of an input sequence. With attention, instead of a one-shot context vector based on the last (hidden) state of the encoder, the context vector is constructed using <strong>ALL</strong> hidden states of the encoder.</p>
+
+<p><strong><em>Intuition: imagine the challenge reading a whole text once whilst writing down keywords and then writing a summary – with these notes, it becomes much easier to condense the key ideas from the entirety of the original text.</em></strong></p>
+
+<figure><a href="/blog/img/seminar/is1920_group9/encdec_2.png">
+    <img src="/blog/img/seminar/is1920_group9/encdec_2.png"
+         alt="Figure 4: Encoder Decoder Model with Attention – Image Source: https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263" width="800"/> </a><figcaption>
+            <p><em>Figure 4: Encoder Decoder Model with Attention – Image Source: <a href="https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263">https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263</a></em></p>
+        </figcaption>
+</figure>
+
+
+<p>When combining the hidden states into the final encoder output (decoder input), each vector (state) gets its own random weight. These weights are re-calculated by the <strong>alignment model</strong>, another Neural Network trained parallel to the decoder which checks how well the last decoder output fits to the different states passed over from the encoder. Depending on the respective fit scores, the alignment model weights are optimized via back propagation. Through this dynamic weighting, the importance of the different hidden states varies across input-output instances, allowing the model to pay more attention (weight / importance) to different encoder states based on the input.
+[Source: <a href="https://towardsdatascience.com/attn-illustrated-attention-5ec4ad276ee3">https://towardsdatascience.com/attn-illustrated-attention-5ec4ad276ee3</a>]</p>
+
+<figure><a href="/blog/img/seminar/is1920_group9/attn_gif.gif">
+    <img src="/blog/img/seminar/is1920_group9/attn_gif.gif"
+         alt="Figure 5: Attention Principle – Image Source: https://github.com/google/seq2seq"/> </a><figcaption>
+            <p><em>Figure 5: Attention Principle – Image Source: <a href="https://github.com/google/seq2seq">https://github.com/google/seq2seq</a></em></p>
+        </figcaption>
+</figure>
+
+
+<h2 id="attention-in-detail">Attention in Detail</h2>
+
+<p>In this blog&rsquo;s model, <strong>Additive/&ldquo;Bahdanau&rdquo;</strong> <strong>Attention</strong> [3] is used. This method works as follows:</p>
+
+<figure><a href="/blog/img/seminar/is1920_group9/attn_detail.png">
+    <img src="/blog/img/seminar/is1920_group9/attn_detail.png"
+         alt="Figure 6: Detailed Diagram of Additive Attention – Image Source: https://towardsdatascience.com/attn-illustrated-attention-5ec4ad276ee3" width="800"/> </a><figcaption>
+            <p><em>Figure 6: Detailed Diagram of Additive Attention – Image Source: <a href="https://towardsdatascience.com/attn-illustrated-attention-5ec4ad276ee3">https://towardsdatascience.com/attn-illustrated-attention-5ec4ad276ee3</a></em></p>
+        </figcaption>
+</figure>
+
+
+<ol>
+<li>The encoder reads input text (in both directions in the case of a bi-directional GRU / LSTM) and produces hidden states for each time step</li>
+<li>The combined encoder state is the first input to the decoder</li>
+<li>The decoder puts out the first decoder hidden state</li>
+<li>A score (scalar) is obtained by an <strong>alignment model</strong>, also called score function (blue)
+
+<ol>
+<li>In this blog&rsquo;s model, this is an addition / concatenation of the decoder and encoder hidden states (i.e. tensors)*</li>
+<li>The final scores are then obtained by application of a softmax layer</li>
+</ol></li>
+<li>Each encoder hidden state is then multiplied by its scores/weights</li>
+<li>All weighted encoder hidden states are then added together to form the <strong>context vector</strong> (dark green)</li>
+<li><strong>The input to the next decoder step is the concatenation between the generated word from the previous decoder time step (pink) and context vector from the current time step.</strong></li>
+</ol>
+
+<p>*<em>many other scoring functions are possible</em></p>
+
+<hr />
+
+<h2 id="dataset">Dataset</h2>
+
+<p>The data in this application is a collection of 376.017 news articles from various US newspapers. This collection includes news articles and headlines, date of publication, source publication, and a binary classification score denoting presence of political / economic uncertainty in the article. This classification is done via checking for the presence of certain words in the article text. In preparing the data for modeling, cleaning is performed on headlines and texts needed for supervised training.</p>
+
+<h3 id="data-cleaning">Data Cleaning</h3>
+
+<p>The cleaning process consists of a combination of standard processes and custom, domain-specific cleaning steps. Headlines and body text are processed separately, as they each contain unique sets of impurities. First, duplicate rows are removed, as are any articles of newspapers with less than 100 appearances (these are overwhelmingly noisy data points). Rows with NULL values in either headline or body text are also removed.</p>
+
+<p>The remaining data comprises <em>~300.000 rows</em> (articles) from 10 news sources:
+1. The Washington Post
+1. Pittsburgh Post-Gazette (Pennsylvania)
+1. The Atlanta Journal-Constitution
+1. St. Louis Post-Dispatch (Missouri)
+1. USA Today
+1. Star Tribune (Minneapolis, MN)
+1. The Philadelphia Inquirer (Pennsylvania)
+1. St. Petersburg Times / Tampa Bay Times (Florida)
+1. The Orange County Register (California)
+1. The New York Post</p>
+
+<p>Upon closer inspection, a significant number of very-near-duplicates remain in the data set, hallmarked by having the same article text save an extra space or a deviation of 2 to 3 words. To identify and remove these duplicates, a more sophisticated function based on text content is employed. It is important to do so, as having only unique rows in training produces the best conditions for reducing any learned bias in the final model due to doubling or tripling an article-to-headline pair.</p>
+
+<p>This function identifies any duplicate headlines and then examines their respective articles for text similarity using TF-IDF scores. If two articles share a headline and are more than 90\% similar in their word composition, they are deemed duplicates and one of them is thrown out. In total, this process identifies and removes <strong>~5.000</strong> additional duplicates (function and example output from cleaning handler below).</p>
+
+<script type="application/javascript" src="https://gist.github.com/lukekolbe/1ed658cfec944f19db26039679730bb7.js"></script>
+
+
+<script type="application/javascript" src="https://gist.github.com/lukekolbe/82e847e76e1986f702fb6ff04b99f4e3.js"></script>
+
+
+<p>Specific publications also contain their own nuances in terms of recurring phrases in article headlines. For this, further cleaning steps tailored to each paper are needed. Full code for these cleaner functions can be found in the project notebook, but an example would be explicit indicators that an article is part of a set or series of publications like &lsquo;SUNDAY CONVERSATION&rsquo; or content disclaimers such as &lsquo;POLITICAL&rsquo;. Source-specific cleaner functions are written by manually examining these commonly occurring n-grams (phrases) and removing them. This prevents the text generation model from learning unimportant, repeating phrases that don&rsquo;t reliably carry information. Furthermore, obituaries (Nachrufe) posted in the Pittsburgh Post-Gazette are removed, as they present challenges in their syntax idiosyncrasies (a lot of numbers and punctuation) and do not generalise well (are not found anywhere else in the data).</p>
+
+<p>Following these custom data cleaning solutions, standard and well-established procedures are applied:</p>
+
+<ul>
+<li>Stop- and short word removal</li>
+<li>Case conversion (all lowercase)</li>
+<li>Contraction conversion (manual)</li>
+<li>Remove of punctuation</li>
+<li>Remove of HTML code and URLs</li>
+<li>Conversion of special characters into their verbal representation (e.g. &lsquo;@&rsquo; to &lsquo;at&rsquo;)</li>
+<li>Remove (‘s)</li>
+</ul>
+
+<p>Lastly, rare words and exceedingly common words are removed from both headlines and body text based on word count with thresholds set independently for body text and headlines. This reduces the number of words in the model vocabulary, reducing computation time and complexity, while increasing the chance that the model will be able learn each word&rsquo;s context. With the inclusion of very rare words, the model might have trouble understanding their meaning, not having enough word occurrences to observe. In source papers, an article vocabulary size of 50.000 is recommended as a suitable intersection between maintaining vocabulary density and sufficiently trimming uncommon words. In this case, that results in a removal of 90\% of unique tokens (or &lsquo;words&rsquo;). The threshold for headlines was chosen as a more conservative application of similar logic, as the headline is the target in the seq2seq model – rather than removing 90\% of the headline vocabulary, 60\% is removed.</p>
+
+<p><strong>The measures described above result in the following word distributions.</strong></p>
+
+<table class="display">
+<tbody><tr class="display">
+  <td colspan="2" height="107" width="350" class="display">
+      <b>Word occurrences in Articles</b><br>
+    Total words: 508.657<br>
+    Less than 60 occurrences: 558.693<br>
+    Remaining words: 55.126<br><br>
+   <i>Removing 90\% of words</i></td>
+  <td colspan="2" width="350" class="display"><b>Word
+  occurrences in Headlines</b><br>
+    Total words: 59.841<br>
+    Less than 8 occurrences: 37.691<br>
+    Remaining words: 22.150<br><br>
+    <i>Removing 60\% of words</i></td>
+ <tr class="display">
+  <td class="display">said</td>
+  <td class="display">1.647.581</td>
+  <td class="display">new</td>
+  <td class="display">15.097</td>
+ </tr>
+ <tr class="display">
+  <td class="display">year</td>
+  <td class="display">572.948</td>
+  <td class="display">tax</td>
+  <td class="display">7.708</td>
+ </tr>
+ <tr class="display">
+  <td class="display">new</td>
+  <td class="display">556.554</td>
+  <td class="display">economy</td>
+  <td class="display">7.603</td>
+ </tr>
+ <tr class="display">
+  <td class="display">percent</td>
+  <td class="display">525.136</td>
+  <td class="display">obama</td>
+  <td class="display">7.258</td>
+ </tr>
+ <tr class="display">
+  <td class="display">people</td>
+  <td class="display">436.461</td>
+  <td class="display">says</td>
+  <td class="display">7.035</td>
+ </tr>
+ <tr class="display">
+  <td class="display">years</td>
+  <td class="display">420.477</td>
+  <td class="display">state</td>
+  <td class="display">6.695</td>
+ </tr>
+ <tr class="display">
+  <td class="display">state</td>
+  <td class="display">408.316</td>
+  <td class="display">plan</td>
+  <td class="display">6.353</td>
+ </tr>
+ <tr class="display">
+  <td class="display">million</td>
+  <td class="display">336.585</td>
+  <td class="display">jobs</td>
+  <td class="display">6.043</td>
+ </tr>
+ <tr class="display">
+  <td class="display">economic</td>
+  <td class="display">332.319</td>
+  <td class="display">city</td>
+  <td class="display">5.995</td>
+ </tr>
+ <tr class="display">
+  <td class="display">time</td>
+  <td class="display">330.871</td>
+  <td class="display">big</td>
+  <td class="display">5.437</td>
+ </tr>
+ <tr class="display">
+  <td class="display">president</td>
+  <td class="display">323.103</td>
+  <td class="display">economic</td>
+  <td class="display">5.056</td>
+ </tr>
+</tbody></table>
+
+<p>As final preparation of input texts for their use in modeling, standardised article and headline lengths must be determined. This is because neural networks require a fixed-length input sequence. In the figure below, the distributions of article lengths (frame 1) and that of headlines (frame 3) are plotted to help in selecting these standard values. Frame 2 shows the distribution of article length for trimmed articles, which will be explained in the next section.</p>
+
+<figure><a href="/blog/img/seminar/is1920_group9/article_length.png">
+    <img src="/blog/img/seminar/is1920_group9/article_length.png"
+         alt="Figure 7: Word length distributions for articles and headlines" width="800"/> </a><figcaption>
+            <p><em>Figure 7: Word length distributions for articles and headlines</em></p>
+        </figcaption>
+</figure>
+
+
+<p>The standard article length value of 550 is selected, as 83\% of the articles fall below this number. The idea here is to be conservative in minimising the amount of truncated articles that go on to model training while at the same time restricting article length as much as possible to avoid working with inputs that are too large. In selecting standard headline length, all rows with a length greater than the standard values are removed from the set. For this reason, the value is set high (at 20) to ensure that the maximum number of data points from the incoming data are retained (93\%). Rows with headlines exceeding this value must be removed because each headline must be fitted with start and end tokens at its beginning and end for both model training and, ultimately, text generation.</p>
+
+<h2 id="training-strategy">Training Strategy</h2>
+
+<p>An additional step is the examination of the hypothesis that much of an article&rsquo;s content is present simply in its first x-words and that the remaining text is just further exposition of the already-outlined topic(s). To test this idea, the data is forked at this point to include the aforementioned articles of length 550, as well as a trimmed set where the articles are truncated beyond a maximum length of 80 words (tokens). This approach is inspired by findings in the literature where seq2seq models in similar tasks struggled to beat a baseline model that generated summaries simply by extracting the first three sentences [2].</p>
+
+<p>In the case of the longer articles, extensive removal of rare words is carried out (as explained above). For the trimmed articles, a less strict removal of rare words (reducing the threshold that classifies a word as &lsquo;rare&rsquo;) is applied. The idea here is that a shorter but more complete excerpt of the input text (that in itself effectively captures the context of the article) might be well suited for training the model from which headlines are generated. I.e. if the headline matches the first 80 tokens well, it will likely also be a suitable headline for the whole text. The following two data sets are carried through as inputs for seq2seq models, which are then measured against each other based on validation loss during model training.</p>
+
+<h4 id="1-generous-input-thorough-trimming"><strong>1) &ldquo;Generous input, thorough trimming&rdquo;</strong></h4>
+
+<p>Articles:
+* larger inputs (550 tokens)
+* thorough removal of rare words (fewer than 60 occurrences), leaving 10\%/50k words</p>
+
+<p>Headlines:
+* 20 tokens max.
+* remove words with fewer than 8 occurrences, leaving 35\%/22k words</p>
+
+<h4 id="2-truncated-inputs-little-trimming"><strong>2) &ldquo;Truncated inputs, little trimming&rdquo;</strong></h4>
+
+<p>Articles:
+* small inputs (50 tokens)
+* only removing words with fewer than 10 occurrences: 25\%/40k words</p>
+
+<p><em>Headlines as above</em></p>
+
+<hr />
+
+<h2 id="model-summary-code-implementation">Model Summary &amp; Code Implementation</h2>
+
+<figure><a href="/blog/img/seminar/is1920_group9/architecture_1.png">
+    <img src="/blog/img/seminar/is1920_group9/architecture_1.png"
+         alt="Figure 8: Encoder-Decoder Net with Attention – Image Source: [2] Abigail See 2017" width="800"/> </a><figcaption>
+            <p><em>Figure 8: Encoder-Decoder Net with Attention – Image Source: [2] Abigail See 2017</em></p>
+        </figcaption>
+</figure>
+
+
+<h4 id="seq2seq-model">Seq2Seq Model</h4>
+
+<p>The model architecture employed in this project is inspired by [2] Abigail See et al. (2017) and her similar text summarization task. Also, Aravind Pai&rsquo;s blog post &lsquo;Comprehensive Guide to Text Summarization using Deep Learning in Python&rsquo; [12] was used as a guideline for some parts of the implementation.
+The model in this blog differs in that it uses two bi-directional Gated Recurrent Units (GRUs) instead of one bi-directional Long-Short-Term-Memory (LSTM) Network. GRUs are chosen for their equal performance [5] while providing superior computational efficiency in training. Additionally, bi-directional GRUs are the RNN of choice in experiments by Bahdanau et al. in their introduction of their attention mechanism [3]. Lastly, pre-trained word embeddings are employed instead of training embeddings on local data alongside model training. These pre-trained embeddings come from the <a href="https://openai.com/blog/better-language-models/">GPT-2 project</a>. The GPT-2 embeddings are chosen, as they are likely the most robust and generalisable available. These embeddings are trained on 40GB of Internet text and are part of the most advanced, state-of-the-art transformer model currently in production. Finally, the model is implemented in python, using Tensorflow / Keras.</p>
+
+<p>The <strong>encoder</strong> is set up using two bi-directional GRUs with a latent dimension of 256. The first GRU passes its output to the second, which then processes all previous hidden states and produces an output layer containing the second GRU&rsquo;s step wise hidden states and a final hidden state. Since the GRUs are bi-directional, there is both a forward and a backward state which are combined (concatenated) as the <strong>encoder state</strong>.</p>
+
+<script type="application/javascript" src="https://gist.github.com/lukekolbe/5483b2a695ea8301a43ab8c7143a7b2c.js"></script>
+
+
+<p>Once the input is processed, the <strong>decoder GRU</strong> begins outputting a sequence that is the summary sequence. At each step, it receives the encoder hidden states and the previous decoder output as its input, updates the decoder hidden states, and selects a new token as this step&rsquo;s decoder output. The <strong>decoder</strong> is set up as a single, mono-directional GRU (it produces text only in the forward direction). It receives unique embeddings of the headlines, as they have a different vocabulary than the articles, and is initialized with the combined <strong>encoder state</strong> (final encoder hidden layer).</p>
+
+<script type="application/javascript" src="https://gist.github.com/lukekolbe/f455d8b11209ebc88dd2d72cdb5819e7.js"></script>
+
+
+<h4 id="attention-layer">Attention Layer</h4>
+
+<figure><a href="/blog/img/seminar/is1920_group9/architecture_2.png">
+    <img src="/blog/img/seminar/is1920_group9/architecture_2.png"
+         alt="Figure 9: Encoder-Decoder Net with Attention – Image Source: [2] Abigail See 2017" width="800"/> </a><figcaption>
+            <p><em>Figure 9: Encoder-Decoder Net with Attention – Image Source: [2] Abigail See 2017</em></p>
+        </figcaption>
+</figure>
+
+
+<p>The encoder and decoder outputs (hidden states) are fed into the <strong>attention layer</strong>. The AttentionLayer() function does two things (simplified as &lsquo;attention distribution&rsquo; in the figure above): It checks the alignment of the current decoder hidden state with each encoder hidden state, using concatenation as a <strong>scoring function</strong>, and then runs the obtained attention scores through a softmax layer. Using the attention distribution from the decoder, a weighted sum of the encoder hidden states is produced. This is called the <strong>context vector</strong>. This vector can be regarded as <em>“what has been read from the source text”</em> at this step of the decoder.</p>
+
+<p>In the final step, the context vector and the decoder hidden state are concatenated and fed through a softmax-activated dense layer to receive the <strong>vocabulary distribution</strong>, attaching probabilities to each word in the vocabulary. The word with the highest probability is then chosen as the next output.</p>
+
+<p><em>The code for the AttentionLayer() was sourced from Thushan Ganegedara</em>
+* <em>Blog post: <a href="https://github.com/thushv89/attention_keras">https://github.com/thushv89/attention_keras</a></em>
+* <em>github: <a href="https://towardsdatascience.com/light-on-math-ml-attention-with-keras-dc8dbc1fad3">https://towardsdatascience.com/light-on-math-ml-attention-with-keras-dc8dbc1fad3</a></em></p>
+
+<script type="application/javascript" src="https://gist.github.com/lukekolbe/64dc8b17a25b8d11756788656891665a.js"></script>
+
+
+<h4 id="summary-of-encoder-decoder-model-with-attention">Summary of Encoder-Decoder Model with Attention</h4>
+
+<p>The specifications above result in the following model and training results:</p>
+
+<script type="application/javascript" src="https://gist.github.com/lukekolbe/9b164112ab6392467dee9a613de671e5.js"></script>
+
+
+<h5 id="training-with-long-articles">Training with Long Articles</h5>
+
+<script type="application/javascript" src="https://gist.github.com/lukekolbe/7ac6bcf5e11269254e6d9d814f42649e.js"></script>
+
+
+<h5 id="training-with-short-articles">Training with Short Articles</h5>
+
+<script type="application/javascript" src="https://gist.github.com/lukekolbe/ba02b580634f6646f8daa62a7661e4aa.js"></script>
+
+
+<p>As seen in the two above code blocks, while training was considerably quicker with the shorter inputs, the validation loss is lower for the data subset with the longer articles. Based on this metric, the longer articles are selected as inputs for the language (seq2seq) and classifier models from here forward since we want to maximize performance.</p>
+
+<h4 id="inference-model-text-generation">Inference Model &amp; Text Generation</h4>
+
+<p>For the inference phase, the decoder is set up slightly differently than before. In order to obtain headline predictions for test data, the following steps are necessary:</p>
+
+<ul>
+<li>Encode the input sequence into an encoder vector</li>
+<li>Start with a target sequence of size 1 (just the start-of-sequence token)</li>
+<li>Feed the state vectors and 1-token target sequence to the decoder to produce predictions for the next token</li>
+<li>Sample the next token from the vocabulary using these predictions (greedy search / argmax)</li>
+<li>Append the sampled token to the target sequence</li>
+<li>Repeat until the end-of-sequence token is generated or the maximum headline length is reached</li>
+</ul>
+
+<script type="application/javascript" src="https://gist.github.com/lukekolbe/c6c2044a9c2e619fedccb6b39c0ea292.js"></script>
+
+
+<script type="application/javascript" src="https://gist.github.com/lukekolbe/c074f9e84809f9b84a96bb57f88373d1.js"></script>
+
+
+<p>Below are 10 output examples drawn from the model output data frame:</p>
+
+<table class="display">
+  <tr class="display">
+    <th class="display">Article (first 20 tokens)</th>
+    <th class="display">Original headline</th>
+    <th class="display">Generated headline</th>
+  </tr>
+  <tr class="display">
+    <td class="display"> sweltering afternoon july affordable housing advocates religious leaders new jerseys influential officials arrived mount laurel celebration years making legislature gov corzine </td>
+    <td class="display">affordable housing advocates now calling for delays in nj</td>
+    <td class="display">affordable housing bill is a step in affordable housing</td>
+  </tr>
+  <tr class="display">
+    <td class="display">bankruptcy largely matter semantics know going going bankruptcy outside bankruptcy system benefit courts maryann keller written auto industry decades end day </td>
+    <td class="display">detroit prepare for big changes automakers future paved with pain </td>
+    <td class="display">detroit automakers face tough road to bankruptcy </td>
+  </tr>
+  <tr class="display">
+    <td class="display">confessed pension wars conjure watchdog nerdy high school chemistry teacher terrific crush chant changes half life aloud unison talking radioactivity course</td>
+    <td class="display">pension promises can be altered lawyer says</td>
+    <td class="display">pension reform should be a better way</td>
+  </tr>
+  <tr class="display">
+    <td class="display">chilean dictator gen augusto pinochet target numerous human rights prosecutions suffered heart attack early yesterday morning hospitalized stable condition controversial year</td>
+    <td class="display">pinochet hospitalized after heart attack the former chilean dictator surgeries he is been the target of human rights prosecutions</td>
+    <td class="display">former fed official gets a second term</td>
+  </tr>
+  <tr class="display">
+    <td class="display">minimum wage argue job killer raises costs employers dramatic minimum wage increase solution relieve poverty karen bremer executive director georgia restaurant </td>
+    <td class="display">recession sharpens ga wage war </td>
+    <td class="display">low wage workers are not working </td>
+  </tr>
+  <tr class="display">
+    <td class="display">black gowns square caps wide smiles seniors graduated month bridgewater state college massachusetts appeared perfect slice america lot graduates women men </td>
+    <td class="display">more women graduate why </td>
+    <td class="display">where is the college of the american dream</td>
+  </tr>
+  <tr class="display">
+    <td class="display">today mothers day days miss calendar good son daughter hectic weeks noteworthy moments slipped past finished national awareness day national postal </td>
+    <td class="display">sorry moms no grand proclamation for you</td>
+    <td class="display">our opinion letters readers respond to the editor for march </td>
+  </tr>
+  <tr class="display">
+    <td class="display">great shellacking throw democratic congressional staffers jobs send thousands gleeful republican staffer wannabes overdrive resumes hill fill vacancies envelope look numbers </td>
+    <td class="display">all the unemployed democrats will the soup kitchens have enough</td>
+    <td class="display">for the gop job a chance to be a good thing </td>
+  </tr>
+  <tr class="display">
+    <td class="display">years ago according april edition granite city press record morning remained unemployed relief fund thursday mark end aid granite citys destitute </td>
+    <td class="display">this week in granite city area history </td>
+    <td class="display">st louis county gets million in second quarter </td>
+  </tr>
+</table>
+
+<h2 id="model-results-performance">Model Results &amp; Performance</h2>
+
+<p>To measure the quality of the generated headlines, two popular evaluation metrics are applied: ROUGE &amp; BLEU. With human evaluation being costly and slow, both of these metrics are designed to efficiently evaluate computer-generated texts and compare the similarity of the generated summary to the reference summary, each method scoring similarity between 0 and 1. The closer the score is to 0, the less similar the summaries are. A score of 1 represents a perfect match between summaries. [8][10]</p>
+
+<p>For this application, evaluation of unigrams is most reasonable and produces the most reliable results; it is less likely to have matching n-grams with n $&gt;$ 1 plus correct word order in very short summaries (in contrast to long summaries). For the following, all concepts and formulas will be explained in the context of unigrams.</p>
+
+<p>Note that ROUGE and BLEU are introduced and applied here, as they are classic evaluation tools for measurement of text model efficacy. They do, however, have some limitations in the context of this blog post&rsquo;s application (and abstractive summarisation in general). Namely, the two metrics evaluate summaries based on identical word content, and, as such, miss nuances in context-based similarity (i.e. a model producing qualitatively valuable synonyms). Measuring the above seq2seq model&rsquo;s output with ROUGE and BLEU has some validity but also noteworthy limitations that ideally require some sort of context-based metric for more granular evaluation – something that is not yet available / widely agreed upon in academia or industry.</p>
+
+<h3 id="rouge">ROUGE</h3>
+
+<p>ROUGE (Recall-Oriented Understudy Gisting Evaluation) is a recall-based evaluation metric. Recall measures how much of the reference summary is captured within the generated summary:</p>
+
+<p>\begin{equation}
+    \frac{\mathrm{Number \ of \ overlapping \ words}}{\mathrm{Total \ number \ of \ words \ in \ reference \ summary}}
+\end{equation}</p>
+
+<p>Numerous variations of ROUGE exist. Below is a brief summary of the most relevant and common varieties, which are used for text summarisation. As mentioned, the focus will lie on unigram ROUGE evaluation (ROUGE-1) when evaluating results of the summarization model above.</p>
+
+<p>According to Lin (2004), the methods ROUGE-1, ROUGE-L, ROUGE-W, ROUGE-SU4 and ROUGE-SU9 perform the best on very short summaries such as headlines (average summary about 10 words):</p>
+
+<ul>
+<li>ROUGE-N: measures the n-grams (such as unigrams = ROUGE-1) overlap of words</li>
+<li>ROUGE-S: measures the skip-bigram co-occurrence, which means that every combination of two words in a sentence are counted; the maximum distance between those two words can be set with the parameter d (d = 0 is equal to ROUGE-2)</li>
+<li>ROUGE-SU4: counts unigrams and skip-bigrams with a maximum distance of 4</li>
+<li>ROUGE-SU9: counts unigrams and skip-bigrams with a maximum distance of 9</li>
+<li>ROUGE-L: measures the &ldquo;longest common subsequence&rdquo; (LCS) of words due to the assumption that the longer the matching sequence, the closer the summaries</li>
+<li>ROUGE-W: weights the LCS by counting and comparing the consecutive matches of words; long consectives indicate more similarity between reference and generated sentence</li>
+</ul>
+
+<p>All measures with n-grams with n $&gt;$ 1 are sensitive to word order.</p>
+
+<p>Very short summaries are penalized by dividing the number of overlapping words by the total number of words in the reference summary (see ROUGE-1$_{recall}$ score).</p>
+
+<table class="display" ><tbody>
+  <tr class="display">
+    <th class="display">ID</th>
+    <th class="display">Reference summary</th>
+    <th class="display">Generated summary</th>
+    <th class="display">ROUGE-1<sub>recall</sub></th>
+  </tr>
+  <tr class="display">
+    <td class="display">A</td>
+    <td class="display">the grey mouse eats a piece of apple in the house</td>
+    <td class="display">the mouse eats</td>
+    <td class="display">0.27</td>
+  </tr>
+  <tr class="display">
+    <td class="display">B</td>
+    <td class="display">the mouse eats</td>
+    <td class="display">the grey mouse eats a piece of apple in the house</td>
+    <td class="display">1</td>
+  </tr>
+</tbody>
+</table>
+
+<p>Recall does not penalize very short summaries, though. In case of ID B, the ROUGE-1$_{recall}$ score results in a perfect match which means that the reference and generated summaries are identical. However, by having a look at the example ID B, this is obviously not the case. Therefore, it is always necessary to consider a second metric: precision, which is computed as follows:</p>
+
+<p>\begin{equation}
+    \frac{\mathrm{Number \ of \ overlapping \ words}}{\mathrm{Total \ number \ of \ words \ in \ generated \ summary}}
+\end{equation}</p>
+
+<p>Precision captures the extent to which the content of the generated summary is actually needed. The precision and recall scores are combined by the F$_{1}$-score which is the harmonic mean of both results. [8][9]</p>
+
+<table class="display"><tbody>
+  <tr class="display">
+    <th class="display" width="4%">ID</th>
+    <th class="display" width="30%">Reference summary</th>
+    <th class="display" width="30%">Generated summary</th>
+    <th class="display" width="12%">ROUGE-1<sub>recall</sub></th>
+    <th class="display" width="14%">ROUGE-1<sub>precision</sub></th>
+    <th class="display" width="10%">F<sub>1</sub>-score</th>
+  </tr>
+  <tr class="display">
+    <td class="display">A</td>
+    <td class="display">the grey mouse eats a piece of apple in the house</td>
+    <td class="display">the mouse eats</td>
+    <td class="display">0.27</td>
+    <td class="display">1</td>
+    <td class="display">0.43</td>
+  </tr>
+  <tr class="display">
+    <td class="display">B</td>
+    <td class="display">the mouse eats</td>
+    <td class="display">the grey mouse eats a piece of apple in the house</td>
+    <td class="display">1</td>
+    <td class="display">0.27</td>
+    <td class="display">0.43</td>
+  </tr>
+</tbody>
+</table>
+
+<p>If the length of the reference summary is not penalized, this results in a perfect match (see precision result of ID A) because all words of the generated summary occur in the reference summary. In this case, the precision score receives too much weight. For this reason, in the evaluation of the above model&rsquo;s generated headlines, the F$_{1}$-score of ROUGE-1 is used.</p>
+
+<h3 id="bleu">BLEU</h3>
+
+<p>BLEU (Bilingual Evaluation Understudy) is a precision-based evaluation metric. It was originally developed for machine translation evaluation. The precision score is computed as presented in the introduction to ROUGE. The number of overlapping words is divided by the total number of words of the generated (not reference, like in the case of ROUGE recall) summary. Analogous to ROUGE, the BLEU metric counts matching unigrams of the generated summary in comparison to the reference summary. The specific position of the words in each summary is not important.</p>
+
+<p>A drawback of precision-based evaluation metrics is the tendency to overvalue repeating words in the generated summary, which leads to a high precision score for what may actually be a summary of low qualitative value.</p>
+
+<p>As an example, consider the reference summary of the ROUGE score above (with a new generated summary):</p>
+
+<pre><code>Reference summary: the grey mouse eats a piece of apple in the house
+Generated summary: the the the the the the the the
+</code></pre>
+
+<p>Sometimes, summarisation models tend to repeated themselves (see <code>coverage</code> in the potential enhancements section). Even though the generated summary is very low quality, the precision score here would be 1 ($\frac{8}{8}$ - 8 matching words divided by the 8-word generated summary), which indicates a perfect summary.</p>
+
+<p>In order to prevent this from happening and to avoid giving too much weight to repeated words, BLEU introduces a modified unigram precision score. After a word of the reference summary is matched once, the word is exhausted and cannot be matched or counted again.</p>
+
+<p>The implementation of this approach is performed via the following steps:</p>
+
+<ol>
+<li>The maximum number of times a specific words occurs in the reference summary is counted</li>
+<li>The words of the generated summary are only matched as often as the maximal count of each word from 1. (if there is more than one reference summary, the maximum count is the maximum number of times it occurs in a single one of them)</li>
+<li>The number of eligible, matched words of the generated summary is divided by the total number of words in the generated summary</li>
+</ol>
+
+<p>Consequently, the modified precision score of the example presented above is only 0.5 ($\frac{2}{4}$). The target of modified unigram precision, then, is the improvement of the accuracy of the model evaluation.</p>
+
+<p>An additional challenge occurs if the length of the generated summary deviates substantially from the length of the reference. Very long summaries are captured and penalized by precision. Unfortunately, very short ones are not.</p>
+
+<pre><code>Reference summary: the grey mouse eats a piece of apple in the house
+Generated summary: the apple
+</code></pre>
+
+<p>The precision score of the generated summary is 1 ($\frac{2}{2}$), again an indication of a perfect summary, even though it is a visibly bad one. The solution here is a function that works similarly to recall (presented in the ROUGE section above).</p>
+
+<p>Since BLEU was originally constructed for the evaluation of translated sentences in comparison to multiple reference translations of different word lengths, the metric of recall in its original form could not be implemented. Therefore, a brevity penalty factor has been introduced, which looks for the reference with the most similar length:</p>
+
+<p>\begin{equation}
+       BP =
+        \begin{cases}
+            1 &amp; \text{if $c &gt; \ r$} \\<br />
+            e^{1-\frac{r}{c}} &amp; \text{if $c \leq \ r$}
+        \end{cases}
+\end{equation}</p>
+
+<p>Let c be the candidate (= generated summary) and r the reference. A brevity factor length of 1 (exp(0)) indicates that the reference and generated sentence have the same length.</p>
+
+<p>Finally, the BLEU metric score is computed as follows:</p>
+
+<p>\begin{equation}
+BLEU = BP * exp(\sum<em>{n=1}^{N}w</em>{n}log \ p_{n})
+\end{equation}</p>
+
+<p>With p being the precision score. [10]</p>
+
+<p>In this project&rsquo;s analysis, only one reference is available, making the weights unnecessary. In this case, the BLEU score is calculated simply with:</p>
+
+<p>\begin{equation}
+BLEU = BP * exp(log \ p)
+\end{equation}</p>
+
+<h3 id="evaluation-results">Evaluation Results</h3>
+
+<p>The ROUGE and BLEU evaluation output as well as headline results with the given scores are shown and discussed below:</p>
+
+<table class="display"><tbody>
+  <tr class="display">
+    <th class="display"></th>
+    <th class="display">ROUGE-1</th>
+    <th class="display">BLEU</th>
+  </tr>
+  <tr class="display">
+    <td class="display">Min. / Max.</td>
+    <td class="display">0/1</td>
+    <td class="display">0/1</td>
+  </tr>
+  <tr class="display">
+    <td class="display">Mean</td>
+    <td class="display">0.10912</td>
+    <td class="display">0.9002</td>
+  </tr>
+  <tr class="display">
+    <td class="display">Median</td>
+    <td class="display">0.09091</td>
+    <td class="display">0.05936</td>
+  </tr>
+</tbody>
+</table>
+
+<p>Reminder: for both methods, the evaluation scores are based on unigrams. In average the mean of ROUGE scores is somewhat higher than that of BLEU scores. In contrast, the median is 0.03155 lower and thereby deviates from the mean by 0.84084. This indicates that BLEU has some outlier scores. Additionally, both evaluation metrics show a right-skewed distribution and evaluate some summaries as fully identically (1) and completely different (0).</p>
+
+<p>Below are some selected results of the text summarisation task. In general, it can be observed that the ROUGE score is mostly greater or equal to the BLEU score which is the result of a less severe evaluation of the ROUGE metric. Since ROUGE divides the matched words by the total number of words of the original summary, it sometimes has a lower evaluation score than BLEU if the generated summary is shorter than the original.</p>
+
+<table class="display">
+  <tr class="display">
+    <th class="display">ID</th>
+    <th class="display">Original</th>
+    <th class="display">Generated</th>
+    <th class="display">Score ROUGE</th>
+    <th class="display">Score BLEU</th>
+  </tr>
+  <tr class="display">
+    <td class="display">1</td>
+    <td class="display">state representative district democrat</td>
+    <td class="display">state representative district democrat</td>
+    <td class="display">1</td>
+    <td class="display">1</td>
+  </tr>
+  <tr class="display">
+    <td class="display">2</td>
+    <td class="display">general mills to cut more jobs</td>
+    <td class="display">general mills to cut jobs</td>
+    <td class="display">0.8333333</td>
+    <td class="display">0.8187308</td>
+  </tr>
+  <tr class="display">
+    <td class="display">3</td>
+    <td class="display">at and t to purchase t mobile</td>
+    <td class="display">gm and t to buy t mobile</td>
+    <td class="display">0.6666667</td>
+    <td class="display">0.7142857</td>
+  </tr>
+  <tr class="display">
+    <td class="display">4</td>
+    <td class="display">your views letters to the editor feb</td>
+    <td class="display">letters to the editor may</td>
+    <td class="display">0.5714286</td>
+    <td class="display">0.5362560</td>
+  </tr>
+  <tr class="display">
+    <td class="display">5</td>
+    <td class="display">romney to stress foreign policy</td>
+    <td class="display">foreign policy foreign policy</td>
+    <td class="display">0.40000000</td>
+    <td class="display">0.3894004</td>
+  </tr>
+  <tr class="display">
+    <td class="display">6</td>
+    <td class="display">the iraq war will cost us trillion and much more</td>
+    <td class="display">myths about iraq war</td>
+    <td class="display">0.2000000</td>
+    <td class="display">0.1115651</td>
+  </tr>
+  <tr class="display">
+    <td class="display">7</td>
+    <td class="display">turning up the heat on climate issue years ago a degree day illustrated scientists warning</td>
+    <td class="display">climate change is a hot issue</td>
+    <td class="display">0.2000000</td>
+    <td class="display">0.1115651</td>
+  </tr>
+  <tr class="display">
+    <td class="display">8</td>
+    <td class="display">editorial rio olympics tainted by dark clouds darker waters</td>
+    <td class="display">rio rio rio and the rio of the rio</td>
+    <td class="display">0.1111111</td>
+    <td class="display">0.1111111</td>
+  </tr>
+  <tr class="display">
+    <td class="display">9</td>
+    <td class="display">clean energy is inevitable</td>
+    <td class="display">letters to the editor letters to the editor</td>
+    <td class="display">0</td>
+    <td class="display">0</td>
+  </tr>
+  <tr class="display">
+    <td class="display">10</td>
+    <td class="display">existing plan for mercury pollution should work well</td>
+    <td class="display">clean air is a good thing</td>
+    <td class="display">0</td>
+    <td class="display">0</td>
+  </tr>
+  <tr class="display">
+    <td class="display">11</td>
+    <td class="display">joblessness worse here than year ago</td>
+    <td class="display">unemployment in region is percent in the month</td>
+    <td class="display">0</td>
+    <td class="display">0</td>
+  </tr>
+</table>
+
+<p>The model produces summaries that are nearly identical to the original summary (IDs 1 &amp; 2), while also producing some that are nonsensical (ID 9). However, the model also produces good summaries that are not evaluated as such because the evaluation metrics search for equal words and words of semantic similarity. Take, for example, the words <code>joblessness</code> and <code>unemployment</code> (ID 11). Furthermore, sometimes the content is very similar even though the sentence structure (and length) deviates quite a bit (ID 7 &amp; 10). Especially interesting from a headline research perspective are the plausible shifts in headline content such as in example ID 6.</p>
+
+<p>In the beginning of this blog, the idea was introduced that headlines might be sensational in nature for the purpose of drawing attention, while not providing actual information, necessarily. The model produced in this case generates its predictions based on article content (though, worth noting, evaluated using the original headlines). Ideally, this means that the model was sufficiently trained to be informative rather than sensational. Take again ID 6 as an example: the original headline of is &ldquo;The Iraq war will cost us trillion and much more&rdquo;. The model in this post model summed up the article as &ldquo;Myths about Iraq war&rdquo;. In this case, manual examination of the article content is required to evaluate whether this is an exceptional summary or one that fails to capture the content of the related news story.</p>
+
+<p>Note as well the following two cases in the results table above: some summaries contain falsely exchanged names or single letters (ID 3 &amp; 4), and some contain repetitions of words (ID 5 &amp; 8). In the final section of this post, Potential Enhancements, these and other problems will be discussed.</p>
+
+<h1 id="classifier">Classifier</h1>
+
+<p>As mentioned in the introduction and throughout this blog post, the guiding purpose of this examination of language modeling is ultimately to determine the usefulness or lack of value contained news article headlines, that is, are headlines really written to act as highly condensed summaries of the articles that they tease? With new headlines generated for each article in the original data via the above sequence-to-sequence model, it is now time to examine this question in practice. In the context of the previous section on metrics, it is worth noting that this classification test might also be considered a, albeit somewhat rough, practical, third metric of model output quality – that is, should an increase in classification ability result from using generated headlines, it can be gathered to some degree that the model has indeed been effective in a certain sense.</p>
+
+<p>For this classification exercise, a relatively simple neural network is employed three times, each with different inputs, and subsequently evaluated on AUC value:</p>
+
+<ul>
+<li>Article text + original headline (headline prepended to article text)</li>
+<li>Article text + generate headline (headline prepended to article text)</li>
+<li>Article text alone</li>
+</ul>
+
+<p>Before the models can be trained, however, some basic further cleaning must occur, namely precautions against target leak. As mentioned in the introduction, the classification logic for the binary target centered mainly around the presence or absence of the words <em>uncertainty</em>, <em>uncertain</em>, and <em>policy</em>. A quick function to remove these words from all potential inputs ensures that they don&rsquo;t indicate unfairly hint the target in training.</p>
+
+<script type="application/javascript" src="https://gist.github.com/lukekolbe/173e05fe4dcb7f3133bb3ded4bf62730.js"></script>
+
+
+<p>In this neural network a single bi-directional GRU process the input sequence, with a dropout layer to mitigate overfitting, and an attention layer to assist the model further in appropriately attributing importance to words / article segments which effectively indicate presence or absence of the target.</p>
+
+<script type="application/javascript" src="https://gist.github.com/lukekolbe/9ee83a1be8e04a78cf6afe9543099a5c.js"></script>
+
+
+<script type="application/javascript" src="https://gist.github.com/lukekolbe/28b09bd45722d9537544877c1076a0ef.js"></script>
+
+
+<p>Run 3 times with the above-3 input combinations, the resulting AUC values are produced and displayed in the table below:</p>
+
+<h3 id="classifier-auc-scores">Classifier AUC Scores</h3>
+
+<table class="display"><tbody>
+  <tr class="display">
+    <th class="display">Model</th>
+    <th class="display">Original Headlines</th>
+    <th class="display">Generated Headlines</th>
+    <th class="display">No Headlines</th>
+  </tr>
+  <tr class="display">
+    <td class="display">AUC</td>
+    <td class="display">0.9546</td>
+    <td class="display">0.9369</td>
+    <td class="display">0.9434</td>
+  </tr>
+</tbody>
+</table>
+
+<p>These results show that the seq2seq generation model could not provide inputs that improve the classifier but rather decrease the AUC (and thereby the model&rsquo;s efficacy). The implication here is that the headlines produced by the generation model actually introduce noise into the data set. There are several possible causes of this:</p>
+
+<p>Firstly, during the cleaning and preparation process, choices regarding the optimal fixed length of headlines and articles have to be made. Here, it is a trade off between information loss, introducing noise, and computational resources. While the decision in this stage was made with confidence, further testing with more bracketing of values (akin to some kind of manual grid search) would be ideal.</p>
+
+<p>At a higher level, it is worth considering that the original headlines, used as targets in training the language (seq2seq) model, contained a degree of bias that limits the degree to which the newly generated headlines can break free from this suspected paradigm – that is, that human-produced headlines generally seek to draw attention at the expense of carrying valuable information about the article. This hypothesis can be discounted to some degree, however, as the AUC results for article text + original headlines proved to be the best of the three iterations. This in mind, the coming section on model enhancements provides indications of the next steps to take before running a similar experiment with an improved language model.</p>
+
+<hr />
+
+<hr />
+
+<h2 id="outlook-potential-enhancements">Outlook: Potential Enhancements</h2>
+
+<p>There are notable improvements that can made to the model produced earlier in this post. The three primary modifications that would result in model efficacy are the following concepts: beam search, transforming the model into a pointer-generator network, and the addition of a coverage layer.</p>
+
+<p>Beam search improves the quality of the decoder network, a pointer-generator network improves the accuracy of the model&rsquo;s performance, and the coverage layer helps to avoid token repetition in generated summaries.</p>
+
+<h3 id="increase-efficiency-beam-search">Increase Efficiency: Beam Search</h3>
+
+<p>At each time step, the decoder network calculates the probability distribution of the occurrence of the next word in the sequence. Then, it selects the token with the greatest probability. This is greedy search. Greedy search, however, does not consider the probabilities of words in subsequent time steps and thus may fail in producing the best overall output by being too &lsquo;near-sighted&rsquo;. [7]</p>
+
+<div class="row">
+  <div class="column">
+      <figure><a href="/blog/img/seminar/is1920_group9/GreedySearch.png">
+    <img src="/blog/img/seminar/is1920_group9/GreedySearch.png"
+         alt="Figure 10: Greedy Search considers one possibility per time step" width="350"/> </a><figcaption>
+            <p><em>Figure 10: Greedy Search considers one possibility per time step</em></p>
+        </figcaption>
+</figure>
+
+  </div>
+  <div class="column">
+<figure><a href="/blog/img/seminar/is1920_group9/BeamSearch.png">
+    <img src="/blog/img/seminar/is1920_group9/BeamSearch.png"
+         alt="Figure 11: With a beam width of 2, beam search considers 2 possibilities per time step" width="350"/> </a><figcaption>
+            <p><em>Figure 11: With a beam width of 2, beam search considers 2 possibilities per time step</em></p>
+        </figcaption>
+</figure>
+
+  </div>
+</div>
+
+<p>Because greedy search only considers a subset of the data, it does not recognize that the BBB branch is overall a better choice than the ABB branch. For the most part, beam search solves this problem by considering several paths simultaneously at each time step. The number of paths is defined by the beam width b, which can be chosen accordingly in respect to what is known about the data at hand.</p>
+
+<p>The choice between greedy- and beam search is a trade off between accuracy of prediction and computation time. Depending on the complexity of the data, it is not possible to check all possible paths. A beam search with b = 1 is equal to greedy search. [6]</p>
+
+<h3 id="increase-accuracy-pointer-generator-network">Increase Accuracy: Pointer-Generator Network</h3>
+
+<p>A common problem of text summarisation models is that they tend to reproduce inaccurate results when it comes to out-of-vocabulary or rare words because simply copying is not possible for a “normal” Seq2Seq model.</p>
+
+<p>Out-of-vocabulary words can be very important for the context of a sequence but do not occur in the vocabulary. This can include names or locations, for instance. Even a model&rsquo;s word embedding can be quite good for words like Obama or Trump, they tend to be clustered together and are not distinguishable to the model (though they are obviously different in reality). Thus, it might happen that the model just exchanges two names in generating output (example output from this blog&rsquo;s model summaries):</p>
+
+<pre><code>Reference: henry p armwood jr
+Generated: robert g age re
+</code></pre>
+
+<p>The name “henry” was exchanged with the name “robert” because they are clustered closely in the underlying word embeddings. As a result, the model can not distinguish between these two names as significantly different entities.</p>
+
+<p>In another case, very rare words (a case for aggressive removal of rare words from the vocabulary) appear infrequently during training and therefore have a poor word embeddings. It is thus highly improbable that it will be picked as the most probable next token by the decoder network. Rare words are clustered together with completely unrelated words which also have poor embeddings [11].</p>
+
+<p>The pointer-generator network solves this problem of generating false synonyms and that of not being able to generate a next word at all. This is done by simply copying words that are out-of-vocabulary or rare directly into output. It is a hybrid network that is able to copy a word from the original vocabulary instead of generating a new one. By introducing a generating probability $p<em>{gen}$ , the probability of generating a given word from the vocabulary as the next token is computed. The probability of copying the word from the source (attention distribution a) is weighted as well as the probability of generating the word from the vocabulary (vocabulary distribution $P</em>{vocab}$). These are then summed up to a final distribution ($P_{final}$):</p>
+
+<p>\begin{equation}
+ P<em>{final} = p</em>{gen}P<em>{vocab}(w)+(1-p</em>{gen}) \sum<em>{i:w</em>{i}=w} a_{i}
+\end{equation}</p>
+
+<p>With $p_{gen}$ [0,1].</p>
+
+<p>At each time step, $p_{gen}$ is calculated by the context vector, the decoder state, and the decoder input.</p>
+
+<figure><a href="/blog/img/seminar/is1920_group9/architecture_3.png">
+    <img src="/blog/img/seminar/is1920_group9/architecture_3.png"
+         alt="Figure 12: Model architecture with Pointer Layer added" width="800"/> </a><figcaption>
+            <p><em>Figure 12: Model architecture with Pointer Layer added</em></p>
+        </figcaption>
+</figure>
+
+
+<p>Apart from the increase in accuracy, the pointer-generator network also reduces training time and reduces the storage needs during training, as the model needs less vocabulary in order to create quality summaries. Most importantly, it combines the best of both worlds from extractive and abstractive summarisation. [2]</p>
+
+<p>To date, code for this network exists in TensorFlow <a href="https://github.com/abisee/pointer-generator">here</a>. There is no implementation of this yet for Keras.</p>
+
+<h3 id="punish-repetition-coverage">Punish Repetition: Coverage</h3>
+
+<p>Repetition is a routinely occurring issue in text generation. This occurs especially in multi-sentence text summaries but also in short summaries as well. This happens due to the decoder’s over-reliance on the decoder input or rather the previous summary word. Unlike the encoder state, the decoder state does not store long term information (only that of the current step). A repeated word often begins an endless cycle of repetition due to the fact that the decoder does not &lsquo;know&rsquo; that the contextual information leading to the initial generation of the word has already been exhausted.</p>
+
+<p>The idea of coverage is to make use of the attention distribution to track already used, or rather already summarised content and to penalise the network if it is selecting the same values again.</p>
+
+<p>\begin{equation}
+    c^{t} = \sum_{t^{&lsquo;} = 0}^{t-1}a^{t&rsquo;}
+\end{equation}</p>
+
+<p>With $c^{t}$ being an unnormalised distribution over the source document vocabulary that represents the degree of coverage received from the attention mechanism so far. Thus, the sum of $a^{t&rsquo;}$ is all the attention that it has received in the previous time steps. In order to compute the coverage of a single word, the following formula can be applied:</p>
+
+<p>\begin{equation}
+    covloss<em>{t} = \sum</em>{i} min (a<em>{i}^{t},c</em>{i}^{t})
+\end{equation}</p>
+
+<p>$covloss_{t}$ gives the amount of attention a particular word has received until time step t. Here, coverage is an add-on to the attention mechanism introduced earlier on:</p>
+
+<p>\begin{equation}
+    e<em>{i}^{t} = v^{T} tanh(w</em>{h} h<em>{i} + w</em>{s} s<em>{t} + w</em>{c} c<em>{i}^{t} + b</em>{attn})
+\end{equation}</p>
+
+<p>At time step t = 0 the vector $c^{0}$ is a zero vector because no words have been covered yet. [2]</p>
+
+<h3 id="closing-comment">Closing Comment</h3>
+
+<p>This blog post has given an introduction to text summarisation with neural networks and applied the concept to real-world data. The sequence2sequence model using bi-directional GRUs and an attention layer has shown potential in generating useful summaries. At the same time, some shortcomings were identified in both model architecture as well as evaluation methods. Implementation of sophisticated methods such as beam search, pointer-generator networks, and coverage offer great potential to further improve results.</p>
+
+<h2 id="references">References</h2>
+
+<h3 id="papers">Papers</h3>
+
+<p>[1] Lopyrev, Konstantin. &ldquo;Generating news headlines with recurrent neural networks.&rdquo; arXiv preprint arXiv:1512.01712 (2015).</p>
+
+<p>[2] See, Abigail, Peter J. Liu, and Christopher D. Manning. &ldquo;Get to the point: Summarization with pointer-generator networks.&rdquo; arXiv preprint arXiv:1704.04368 (2017).</p>
+
+<p>[3] Bahdanau, Dzmitry, Kyunghyun Cho, and Yoshua Bengio. &ldquo;Neural machine translation by jointly learning to align and translate.&rdquo; arXiv preprint arXiv:1409.0473 (2014).</p>
+
+<p>[4] Sutskever, Ilya, Oriol Vinyals, and Quoc V. Le. &ldquo;Sequence to sequence learning with neural networks.&rdquo; Advances in neural information processing systems. 2014.</p>
+
+<p>[5] Chung, J., Gulcehre, C., Cho, K., &amp; Bengio, Y. (2014). Empirical evaluation of gated recurrent neural networks on sequence modeling. arXiv preprint arXiv:1412.3555.</p>
+
+<p>[6] Ni, O. (2019). Seq2Seq (Encoder-Decoder) Model [PowerPoint presentation].
+Available at: <a href="Accessed: 14 January 2020">https://de.slideshare.net/ssuser2e52e8/seq2seq-encoder-decoder-model-191729511</a>.</p>
+
+<p>[7] Kumar, A., Vembu, S., Menon, A. K., &amp; Elkan, C. (2013). Beam search algorithms for multilabel learning. Machine learning, 92(1), 65-89.</p>
+
+<p>[8] Lin, C. Y. (2004). ROUGE: A package for automatic evaluation of summaries. In Text summarization branches out (pp. 74-81).</p>
+
+<p>[9] Conroy, J. M., Schlesinger, J. D., &amp; O&rsquo;Leary, D. P. (2011). Nouveau-rouge: A novelty metric for update summarization. Computational Linguistics, 37(1), 1-8.</p>
+
+<p>[10] Papineni, K., Roukos, S., Ward, T., &amp; Zhu, W. J. (2002, July). BLEU: a method for automatic evaluation of machine translation. In Proceedings of the 40th annual meeting on association for computational linguistics (pp. 311-318). Association for Computational Linguistics.</p>
+
+<p>[11] Mermoud, M.: The most unusual words you’ll ever find in English.
+Available at: <a href="https://culturesconnection.com/unusual-words-in-english/">https://culturesconnection.com/unusual-words-in-english/</a> (Accessed: February 2020).</p>
+
+<p>[12] Aravind P.: Comprehensive Guide to Text Summarization using Deep Learning in Python
+Available at: <a href="https://www.analyticsvidhya.com/blog/2019/06/comprehensive-guide-text-summarization-using-deep-learning-python/">https://www.analyticsvidhya.com/blog/2019/06/comprehensive-guide-text-summarization-using-deep-learning-python/</a> (Accessed: February 2020)</p>
+
+<p>[13] Raimi, K.: Attn: Illustrated Attention
+Available at: <a href="https://towardsdatascience.com/attn-illustrated-attention-5ec4ad276ee3">https://towardsdatascience.com/attn-illustrated-attention-5ec4ad276ee3</a> (Accessed: February 2020)</p>
+
+<p>[14] Ganegedara, T.: Attention in Deep Networks with Keras
+Available at: <a href="https://towardsdatascience.com/light-on-math-ml-attention-with-keras-dc8dbc1fad39">https://towardsdatascience.com/light-on-math-ml-attention-with-keras-dc8dbc1fad39</a> (Accessed: February 2020)</p>
+
+<p>[15] Dugar, P.: Attention — Seq2Seq Models
+Available at: <a href="https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263">https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263</a> (Accessed: February 2020)</p>
+
+<p>[16] Cho, K., Van Merriënboer, B., Gulcehre, C., Bahdanau, D., Bougares, F., Schwenk, H., &amp; Bengio, Y. (2014). Learning phrase representations using RNN encoder-decoder for statistical machine translation. arXiv preprint arXiv:1406.1078.</p>
+
+<h3 id="further-readings">Further Readings</h3>
+
+<p>On Backpropagation, gradient issues:
+- <a href="https://r2rt.com/written-memories-understanding-deriving-and-extending-the-lstm.html#information-morphing-and-vanishing-and-exploding-sensitivity">https://r2rt.com/written-memories-understanding-deriving-and-extending-the-lstm.html#information-morphing-and-vanishing-and-exploding-sensitivity</a>
+- <a href="https://medium.com/learn-love-ai/the-curious-case-of-the-vanishing-exploding-gradient-bf58ec6822eb">https://medium.com/learn-love-ai/the-curious-case-of-the-vanishing-exploding-gradient-bf58ec6822eb</a></p>
+
+<p>On LSTM:
+- <a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">http://colah.github.io/posts/2015-08-Understanding-LSTMs/</a>
+- <a href="https://medium.com/learn-love-ai/and-of-course-lstm-part-i-b226880fb287">https://medium.com/learn-love-ai/and-of-course-lstm-part-i-b226880fb287</a>
+- <a href="https://medium.com/learn-love-ai/and-of-course-lstm-part-ii-3337ce3aafa0">https://medium.com/learn-love-ai/and-of-course-lstm-part-ii-3337ce3aafa0</a>
+- <a href="https://medium.com/datadriveninvestor/a-high-level-introduction-to-lstms-34f81bfa262d">https://medium.com/datadriveninvestor/a-high-level-introduction-to-lstms-34f81bfa262d</a></p>
+
+<p>Sequence2Sequence:
+- <a href="https://blog.keras.io/a-ten-minute-introduction-to-sequence-to-sequence-learning-in-keras.html">https://blog.keras.io/a-ten-minute-introduction-to-sequence-to-sequence-learning-in-keras.html</a></p>
+
+<p>On Encoder/Decoder:
+- <a href="https://towardsdatascience.com/understanding-encoder-decoder-sequence-to-sequence-model-679e04af4346">https://towardsdatascience.com/understanding-encoder-decoder-sequence-to-sequence-model-679e04af4346</a>
+- <a href="https://machinelearningmastery.com/encoder-decoder-models-text-summarization-keras/">https://machinelearningmastery.com/encoder-decoder-models-text-summarization-keras/</a>
+- <a href="https://machinelearningmastery.com/encoder-decoder-long-short-term-memory-networks/">https://machinelearningmastery.com/encoder-decoder-long-short-term-memory-networks/</a></p>
+
+<p>Attention:
+- <a href="https://towardsdatascience.com/intuitive-understanding-of-attention-mechanism-in-deep-learning-6c9482aecf4f">https://towardsdatascience.com/intuitive-understanding-of-attention-mechanism-in-deep-learning-6c9482aecf4f</a>
+- <a href="https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263">https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65df3f49e263</a>
+- <a href="http://www.wildml.com/2016/01/attention-and-memory-in-deep-learning-and-nlp/">http://www.wildml.com/2016/01/attention-and-memory-in-deep-learning-and-nlp/</a>
+- <a href="http://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">http://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/</a>
+- <a href="https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html">https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html</a>
+- <a href="https://guillaumegenthial.github.io/sequence-to-sequence.html">https://guillaumegenthial.github.io/sequence-to-sequence.html</a></p>
+
+<p>Pointers, Coverage:
+- <a href="http://www.abigailsee.com/2017/04/16/taming-rnns-for-better-summarization.html">http://www.abigailsee.com/2017/04/16/taming-rnns-for-better-summarization.html</a>
+- Video Tutorial: <a href="https://www.coursera.org/lecture/language-processing/get-to-the-point-summarization-with-pointer-generator-networks-RhxPO">https://www.coursera.org/lecture/language-processing/get-to-the-point-summarization-with-pointer-generator-networks-RhxPO</a></p>
+
+<p>Beam Search:
+- <a href="https://hackernoon.com/beam-search-attention-for-text-summarization-made-easy-tutorial-5-3b7186df7086">https://hackernoon.com/beam-search-attention-for-text-summarization-made-easy-tutorial-5-3b7186df7086</a>
+- <a href="https://www.analyticsvidhya.com/blog/2018/03/essentials-of-deep-learning-sequence-to-sequence-modelling-with-attention-part-i/">https://www.analyticsvidhya.com/blog/2018/03/essentials-of-deep-learning-sequence-to-sequence-modelling-with-attention-part-i/</a></p>
+
+<p>Rouge:
+- <a href="https://rxnlp.com/how-rouge-works-for-evaluation-of-summarization-tasks/#.Xg34AC1oTLY">https://rxnlp.com/how-rouge-works-for-evaluation-of-summarization-tasks/#.Xg34AC1oTLY</a></p>
+
+<p>BLEU:
+- <a href="https://machinelearningmastery.com/calculate-bleu-score-for-text-python/">https://machinelearningmastery.com/calculate-bleu-score-for-text-python/</a>
+- <a href="http://ssli.ee.washington.edu/~mhwang/pub/loan/bleu.pdf">http://ssli.ee.washington.edu/~mhwang/pub/loan/bleu.pdf</a></p>
+
+                        </div>
+                        
+                        
+
+                    </div>
+                    
+
+                    
+
+                    
+
+                    <div class="col-md-3">
+
+                        
+
+                        
+
+
+
+
+
+
+
+
+<div class="panel panel-default sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Categories</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (36)</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/categories/instruction">instruction (2)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="panel-title">Tags</h3>
+    </div>
+
+    <div class="panel-body">
+        <ul class="tag-cloud">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/a/b-testing"><i class="fa fa-tags"></i> a/b-testing</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/albert"><i class="fa fa-tags"></i> albert</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/attention"><i class="fa fa-tags"></i> attention</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/awd-lstm"><i class="fa fa-tags"></i> awd-lstm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-deep-learning"><i class="fa fa-tags"></i> bayesian-deep-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bayesian-topic-modelling"><i class="fa fa-tags"></i> bayesian-topic-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bert"><i class="fa fa-tags"></i> bert</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/bilm"><i class="fa fa-tags"></i> bilm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/binary"><i class="fa fa-tags"></i> binary</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/black-box"><i class="fa fa-tags"></i> black-box</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/blockchain"><i class="fa fa-tags"></i> blockchain</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/causal-inference"><i class="fa fa-tags"></i> causal-inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class17/18"><i class="fa fa-tags"></i> class17/18</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class18/19"><i class="fa fa-tags"></i> class18/19</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class19"><i class="fa fa-tags"></i> class19</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/class19/20"><i class="fa fa-tags"></i> class19/20</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/classification"><i class="fa fa-tags"></i> classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/coarsened-exact-matching"><i class="fa fa-tags"></i> coarsened-exact-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/conversion"><i class="fa fa-tags"></i> conversion</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks"><i class="fa fa-tags"></i> convolutional-neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/credit-risk"><i class="fa fa-tags"></i> credit-risk</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/data-simulation"><i class="fa fa-tags"></i> data-simulation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/deep-learning"><i class="fa fa-tags"></i> deep-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/deeplearning"><i class="fa fa-tags"></i> deeplearning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/distant-transfer-learning"><i class="fa fa-tags"></i> distant-transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/dml"><i class="fa fa-tags"></i> dml</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/doc2vec"><i class="fa fa-tags"></i> doc2vec</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/document-embeddings"><i class="fa fa-tags"></i> document-embeddings</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/economicuncertainty"><i class="fa fa-tags"></i> economicuncertainty</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/elmo"><i class="fa fa-tags"></i> elmo</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/embeddings"><i class="fa fa-tags"></i> embeddings</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/explanation"><i class="fa fa-tags"></i> explanation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/fine-tuning"><i class="fa fa-tags"></i> fine-tuning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/genetic-matching"><i class="fa fa-tags"></i> genetic-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/glove"><i class="fa fa-tags"></i> glove</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/gpt-2"><i class="fa fa-tags"></i> gpt-2</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/gru"><i class="fa fa-tags"></i> gru</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/hierarchical-network"><i class="fa fa-tags"></i> hierarchical-network</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ice"><i class="fa fa-tags"></i> ice</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-analysis"><i class="fa fa-tags"></i> image-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/image-captioning"><i class="fa fa-tags"></i> image-captioning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/imbalanced-data"><i class="fa fa-tags"></i> imbalanced-data</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/inference"><i class="fa fa-tags"></i> inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ite"><i class="fa fa-tags"></i> ite</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset"><i class="fa fa-tags"></i> keras-imdb-dataset</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/knn-algorithm"><i class="fa fa-tags"></i> knn-algorithm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/language-model"><i class="fa fa-tags"></i> language-model</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/language-modeling"><i class="fa fa-tags"></i> language-modeling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/language-modelling"><i class="fa fa-tags"></i> language-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lda"><i class="fa fa-tags"></i> lda</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lime"><i class="fa fa-tags"></i> lime</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/long-short-term-memory"><i class="fa fa-tags"></i> long-short-term-memory</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/lstm"><i class="fa fa-tags"></i> lstm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/machine-learning"><i class="fa fa-tags"></i> machine-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matching-methods"><i class="fa fa-tags"></i> matching-methods</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/matchit"><i class="fa fa-tags"></i> matchit</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/monte-carlo-dropout"><i class="fa fa-tags"></i> monte-carlo-dropout</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/movie-reviews"><i class="fa fa-tags"></i> movie-reviews</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nearest-neighbor"><i class="fa fa-tags"></i> nearest-neighbor</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/neural-network"><i class="fa fa-tags"></i> neural-network</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/neural-networks"><i class="fa fa-tags"></i> neural-networks</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nlp"><i class="fa fa-tags"></i> nlp</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/nn"><i class="fa fa-tags"></i> nn</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/optimal-matching"><i class="fa fa-tags"></i> optimal-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/oversampling"><i class="fa fa-tags"></i> oversampling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/pdp"><i class="fa fa-tags"></i> pdp</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/pretraining"><i class="fa fa-tags"></i> pretraining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score"><i class="fa fa-tags"></i> propensity-score</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/propensity-score-weighting"><i class="fa fa-tags"></i> propensity-score-weighting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommendation"><i class="fa fa-tags"></i> recommendation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-system"><i class="fa fa-tags"></i> recommender-system</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/recommender-systems"><i class="fa fa-tags"></i> recommender-systems</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/rnn"><i class="fa fa-tags"></i> rnn</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/roberta"><i class="fa fa-tags"></i> roberta</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/rs"><i class="fa fa-tags"></i> rs</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-analysis"><i class="fa fa-tags"></i> sentiment-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-classification"><i class="fa fa-tags"></i> sentiment-classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/seq2seq"><i class="fa fa-tags"></i> seq2seq</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/share-price-prediction"><i class="fa fa-tags"></i> share-price-prediction</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/simpletransformers"><i class="fa fa-tags"></i> simpletransformers</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/simulation"><i class="fa fa-tags"></i> simulation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/survival-analysis"><i class="fa fa-tags"></i> survival-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-analysis"><i class="fa fa-tags"></i> text-analysis</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-classification"><i class="fa fa-tags"></i> text-classification</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-generation"><i class="fa fa-tags"></i> text-generation</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-mining"><i class="fa fa-tags"></i> text-mining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-summarization"><i class="fa fa-tags"></i> text-summarization</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series"><i class="fa fa-tags"></i> time-series</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/time-series-forecasting"><i class="fa fa-tags"></i> time-series-forecasting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/toxic-comments"><i class="fa fa-tags"></i> toxic-comments</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/transfer-learning"><i class="fa fa-tags"></i> transfer-learning</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/transformers"><i class="fa fa-tags"></i> transformers</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/treatment-effect"><i class="fa fa-tags"></i> treatment-effect</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/twitter"><i class="fa fa-tags"></i> twitter</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ulmfit"><i class="fa fa-tags"></i> ulmfit</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uncertainty"><i class="fa fa-tags"></i> uncertainty</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift"><i class="fa fa-tags"></i> uplift</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift-modeling"><i class="fa fa-tags"></i> uplift-modeling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift-modelling"><i class="fa fa-tags"></i> uplift-modelling</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/variational-inference"><i class="fa fa-tags"></i> variational-inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/wikitext-103"><i class="fa fa-tags"></i> wikitext-103</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/word-embeddings"><i class="fa fa-tags"></i> word-embeddings</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+
+                    </div>
+                    
+
+                    
+
+                </div>
+                
+
+            </div>
+            
+        </div>
+        
+
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<footer id="footer">
+    <div class="container">
+
+        
+
+        <div class="col-md-4 col-sm-6">
+
+             
+            
+
+            
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+                
+                    
+                        
+                          
+                            
+                          
+                        
+                    
+                    
+                        
+                    
+                
+                
+            
+
+            <hr class="hidden-md hidden-lg">
+             
+
+        </div>
+        
+
+        
+
+    </div>
+    
+</footer>
+
+
+
+
+
+
+
+<div id="copyright">
+    <div class="container">
+        <div class="col-md-12">
+            
+            <p class="pull-left">Copyright (c) 2017, Chair of Information System at HU-Berlin; all rights reserved.</p>
+            
+            <p class="pull-right">
+              Template by <a href="http://bootstrapious.com/free-templates">Bootstrapious</a>.
+              
+
+              Ported to Hugo by <a href="https://github.com/devcows/hugo-universal-theme">DevCows</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    </div>
+    
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-112025566-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="//code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0/jquery.counterup.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax.js"></script>
+
+<script src="//maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+<script src="https://humboldt-wi.github.io/blog/js/hpneo.gmaps.js"></script>
+<script src="https://humboldt-wi.github.io/blog/js/gmaps.init.js"></script>
+<script src="https://humboldt-wi.github.io/blog/js/front.js"></script>
+
+
+<script src="https://humboldt-wi.github.io/blog/js/owl.carousel.min.js"></script>
+
+
+  </body>
+</html>

@@ -28,7 +28,7 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/research/bert_blog_post/</loc>
+    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1920/bert_blog_post/</loc>
     <lastmod>2020-02-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -168,11 +168,6 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/albert/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/attention/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
@@ -193,37 +188,12 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/binary/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/classification/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/credit-risk/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/research/information_systems_1920/group2_survivalanalysis/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/deeplearning/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1920/uncertainty_identification_transformers/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/economicuncertainty/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -258,17 +228,7 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/nn/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/rnn/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/roberta/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -278,12 +238,7 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/simpletransformers/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/research/seminar_information_systems_1920/group9_summarization_techniques/nlp_text_summarization_techniques/</loc>
+    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1920/nlp_text_summarization_techniques/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -298,17 +253,7 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/transformers/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/ulmfit/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/uncertainty/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
   
@@ -554,6 +499,11 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/class17/18/</loc>
+    <lastmod>2019-02-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/classification/</loc>
     <lastmod>2019-02-08T00:00:00+00:00</lastmod>
   </url>
   
@@ -808,7 +758,51 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/albert/</loc>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</loc>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/binary/</loc>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/deeplearning/</loc>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1920/uncertainty_identification_transformers/</loc>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/economicuncertainty/</loc>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/nn/</loc>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/roberta/</loc>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/simpletransformers/</loc>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/transformers/</loc>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/uncertainty/</loc>
   </url>
   
 </urlset>

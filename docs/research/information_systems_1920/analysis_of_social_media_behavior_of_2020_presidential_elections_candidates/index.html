@@ -14,7 +14,7 @@
   
 
   
-  <meta name="description" content="This blog post analyzes the tweets of the 2020 presidential candidates using Fasttext and CNN">
+  <meta name="description" content="Site template made by devcows using hugo">	
   
 
   <meta name="generator" content="Hugo 0.58.1" />
@@ -174,10 +174,21 @@
 
                     <div class="col-md-9" id="blog-post">
 
-                        <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Seminar Information Systems (WS19/20)</a> | February 6, 2020</p>
+                        <p class="text-muted text-uppercase mb-small text-right">January 1, 0001</p>
 
                         <div id="post-content">
                           
+
+<p>+++
+title = &ldquo;Analysis of social media behavior of the 2020 presidential election candidates&rdquo;
+date = &lsquo;2020-02-07&rsquo;
+tags = [ &ldquo;Fasttext&rdquo;, &ldquo;CNN&rdquo;, &ldquo;Class19/20&rdquo;, &ldquo;Sentiment Analysis&rdquo;]
+categories = [&ldquo;course projects&rdquo;]
+banner = &ldquo;img/seminar/sample/hu-logo.jpg&rdquo;
+author = &ldquo;Seminar Information Systems (WS19/20)&rdquo;
+disqusShortname = &ldquo;https-humbodt-wi-github-io-blog&rdquo;
+description = &ldquo;This blog post analyzes the tweets of the 2020 presidential candidates using Fasttext and CNN&rdquo;
++++</p>
 
 <h4 id="authors-georg-velev-iliyana-pekova">Authors: Georg Velev, Iliyana Pekova</h4>
 
@@ -202,13 +213,14 @@
 5.1. <a href="#initial">Initial Results</a><br>
 5.2. <a href="#tuning">Hyperparameter Tuning using Bayesian Optimization</a><br></li>
 <li><a href="#results">Analysis of the Results on unlabeled Twitter Data</a><br></li>
+<li><a href="#references">References</a><br></li>
 </ol>
 
 <h2 id="introduction-a-class-anchor-id-introduction-a">Introduction <a class="anchor" id="introduction"></a></h2>
 
-<p>The aim of the current project is to firstly examine the way presidential candidates talk about topics of high social importance. Afterwards the public opinion in regard of the same topics is considered. Finally, a presidential campaign manual based on the results of the performed analysis is created. The social media platform used for the purpose is Twitter.
+<p>The aim of the current project is to examine the way presidential candidates talk about a topic of high social importance - gun control/violence - and to derive recommendations for the future candidates from the results. The social media platform used for the purpose is Twitter.
 The presidential candidates whose tweets the project is based on, are the following ones:
-1. Republican Party: Donald Trump, Joe Walsh, Bill Weld
+1. Republican Party: Donald Trump
 2. Democratic Party: Cory Booker, Elizabeth Warren, Joe Biden, Bernie Sanders
 The explored topics of interest are gun control, climate change and immigration.</p>
 
@@ -216,15 +228,45 @@ The explored topics of interest are gun control, climate change and immigration.
 
 <h3 id="libraries-getoldtweets3-vs-tweepy-a-class-anchor-id-libraries-a">Libraries: GetOldTweets3 vs Tweepy <a class="anchor" id="libraries"></a></h3>
 
-<p>The following section will briefly present the not so popular data retrieval package GetOldTweets3. The most widely used library for this purpose is Tweepy, which is developed by Twitter. However, GetOldTweets3 suits better the needs of the current project. The project requires the tweets of the presidential candidates from the past four years. Tweepy only allows the extraction of tweets from the past seven days. GetOldTweets3 on the other hand has no limitation regarding the amount of the retrieved data. In addition, GetOldTweets3 requires no authentification data like API-key and tockens (unlike Tweepy) and is robust and fast, making &ldquo;try-except&rdquo; blocks unnecessary (unlike in the case of Tweepy). Within this context is must be mentioned that Tweepy has various other advantages towards GetOldTweets3, but these are simply not relevant for this project. Some of them are the Tweepy&rsquo;s wide functionality like retrieving the most extensive information provided for each tweet or posting tweets, sending and receiving messages and following users through the API. When it comes to amount of accessible data GetOldTweets3 is inarguably the better library.</p>
+<p>The following section will briefly present the not so popular data retrieval package GetOldTweets3. The most widely used library for this purpose is Tweepy, which is developed by Twitter. However, GetOldTweets3 suits better the needs of the current project. The project requires the tweets of the presidential candidates from the past four years. Tweepy only allows the extraction of tweets from the past seven days. GetOldTweets3 on the other hand has no limitation regarding the amount of the retrieved data. In addition, GetOldTweets3 requires no authentification data like API-key and tockens (unlike Tweepy) and is robust and fast, making &ldquo;try-except&rdquo; blocks unnecessary (unlike in the case of Tweepy). Within this context is must be mentioned that Tweepy has various other advantages towards GetOldTweets3, but these are simply not relevant for this project. Some of them are the Tweepy&rsquo;s wide functionality like retrieving the most extensive information provided for each tweet or posting tweets, sending and receiving messages and following users through the API. When it comes to amount of accessible data GetOldTweets3 is inarguably the better library. The code for the data retrieval with GetOldTweets3 looks as follows:</p>
+
+<pre><code class="language-python">!pip install GetOldTweets3
+import GetOldTweets3 as got
+
+def collect_history_twitter_data(presidential_candidate):
+  tweetCriteria = got.manager.TweetCriteria().setUsername(presidential_candidate).setSince(&quot;2017-01-01&quot;).setUntil(&quot;2019-12-14&quot;)
+  tweets=got.manager.TweetManager.getTweets(tweetCriteria)
+
+  tweet_text=[]
+  tweet_username=[]
+  tweet_id=[]
+  tweet_date=[]
+  tweet_nr_retweets=[]
+  tweet_nr_favorites=[]
+  tweet_hashtags=[]
+  tweet_mentions=[]
+  for tweet in tweets:
+    tweet_text.append(tweet.text)
+    tweet_username.append(tweet.username)
+    tweet_id.append(tweet.id)
+    tweet_date.append(str(tweet.date).split(&quot; &quot;)[0])
+    tweet_nr_retweets.append(tweet.retweets)
+    tweet_nr_favorites.append(tweet.favorites)
+    tweet_hashtags.append(tweet.hashtags)
+    tweet_mentions.append(tweet.mentions)
+
+  twitter_data = pd.DataFrame({&quot;tweets&quot;:tweet_text,&quot;ids&quot;:tweet_id,'username':tweet_username,'date':tweet_date,'number_retweets':tweet_nr_retweets,'number_favorites':tweet_nr_favorites,'hashtags':tweet_hashtags,'mentions':tweet_mentions},
+                              columns = ['tweets' , 'ids','username','date','number_retweets','number_favorites','hashtags','mentions'])
+
+  return twitter_data
+</code></pre>
 
 <h3 id="descriptive-statistics-of-retrieved-tweets">Descriptive Statistics of retrieved Tweets</h3>
 
-<p>Figure 1 represents the tweets&rsquo; descriptive statistics for 2019 aggregated by topic and presidential candidate. Regarding the Twitter activity of the candidates, the most active one (when considering average activity related to all topics) is Elizabeth Warren, who has tweeted mostly about climate change. The least active candidate is Bill Weld, who has also tweeted mostly about the same topic. Regarding the popularity of the topics among the candidates, the most popular topic (on average) is gun control/violence with Cory Booker being the politician who has tweeted about it most intensively. As shown, the amount of his tweets referring to this topic are more than all other candidates&rsquo; tweets regarding any of the other issues. The second and the third most popular issues (on average) are climate change and immigration respectively. An interesting discovery is that the current president of the US - Donald Trump - has tweeted mostly about the least popular topic (immigration) and the least of everybody about the most popular one (gun control/violence). In addition, he hasn&rsquo;t tweeted at all about climate change.</p>
+<p>Figure 1 represents the tweets&rsquo; descriptive statistics for 2019 aggregated by topic and presidential candidate. Regarding the Twitter activity of the candidates, the most active one (when considering average activity related to all topics) is Cory Booker. An interesting discovery is that the current president of the US - Donald Trump - is the most inactive candidate regarding the topic.</p>
 
-<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Capture.PNG?raw=true" width= "900" /></p>
-
-<p><strong>Figure 1</strong></p>
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Descriptive_Statistics.png?raw=true" width= "600" /> <br>
+<strong>Figure 1</strong></p>
 
 <h2 id="methodology-a-class-anchor-id-methodology-a">Methodology <a class="anchor" id="methodology"></a></h2>
 
@@ -256,50 +298,128 @@ The explored topics of interest are gun control, climate change and immigration.
 
 <h5 id="fasttext-for-text-classification">FastText for Text Classification</h5>
 
-<p>FastText can be regarded as a shallow neural network that consists of three layers as shown in Figure ???: an input layer, a single hidden layer and an output one. Each of the documents  (in this research: tweets) in the input file is first tokenized into single words and all unique words are saved by the model. Later  the vector containing all unique words is filtered in order to ensure that only words having a pre-defined minimum number of occurances will be included in the further preprocessing. Then the character n-grams are generated for each word. The hyperparameter maxn controls for the maximal length of the subwords retrieved from the initial words. If maxn is set to 0, then the model does not use character n-grams. For example if the word “voting” is taken and maxn is set to 2, then the resulting character bigrams would be “vo”,”ot”,”ti”,”in” and “ng”. <br>
+<p>FastText can be regarded as a shallow neural network that consists of three layers as shown in Figure 2: an input layer, a single hidden layer and an output one. Each of the documents  (in this research: tweets) in the input file is first tokenized into single words and all unique words are saved by the model. Later  the vector containing all unique words is filtered in order to ensure that only words having a pre-defined minimum number of occurances will be included in the further preprocessing. Then the character n-grams are generated for each word. The hyperparameter maxn controls for the maximal length of the subwords retrieved from the initial words. If maxn is set to 0, then the model does not use character n-grams. For example if the word “voting” is taken and maxn is set to 2, then the resulting character bigrams would be “vo”,”ot”,”ti”,”in” and “ng”. <br>
 Afterwards, the embedding matrix is created. If the parameter pretrainedVectors receives an input file containing pre-trained embeddings, then the embedding matrix is initialized with them. Otherwise, the matrix is randomly initialized with values between -1/dim and 1/dim. Dim is the size of the word vectors. The embedding matrix has a dimension of the size (n_words + bucket) x dim. Bucket stands for the maximal number of character n-grams and word n-grams and n_words for the maximal number of unique words. It is important to mention that only if the hyperparameter wordNgrams is set to a value higher than 1, for example 2 or 3, then FastText additionally would generate bi-grams or tri-grams for each pair of words in each sentence. For example if the sentence “I post a lot on social media” is taken and wordNgram is set to 3, the resulting word n-grams would be “I post a”, “post a lot”,”a lot on”,”on social media”. <br>
 The words, character n-grams as well as the word n-grams are regarded as the features of each sentence fed to the input layer of FastText. The indices of each of these features per sentence are used in order to retrieve the corrersponding embedding vectors. The latter are averaged together into a sentence vector which is passed to the hidden layer of the model. The output of the hidden layer which is a linear transformation of the document vector is then fed to the final softmax layer. The softmax function computes the probability that the preprocessed record get assigned to the pre-defined classes and also the log-loss. For a pre-specified number of iterations the performance of the model is optimized using Stochastic Gradient Descent.</p>
 
-<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/FastText_Architecture.png?raw=true" width= "450" /></p>
-
-<p><strong>Figure</strong></p>
-
-<p>Source:
-<a href="https://medium.com/@mariamestre/fasttext-stepping-through-the-code-259996d6ebc4">https://medium.com/@mariamestre/fasttext-stepping-through-the-code-259996d6ebc4</a></p>
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/FastText_Architecture.png?raw=true" width= "450" > <br>
+<strong>Figure 2</strong></p>
 
 <h5 id="fasttext-for-word-reresentation">FastText for Word Reresentation</h5>
 
-<p>FastText can also be used in order to generate embedding vectors instead of taking pre-trained ones. Two models are supported for that: CBOW (Continuous Bag of Words) and Skipgram. Figure ??? shows that both of these models are neural networks with a single hidden layer: w(t-1) and w(t-2) are the context words that come before the target word w(t) that has to be predicted, w(t+1) and w(t+2) are the context words that come after the target one. The difference between the two models is that CBOW tries to predict a target word given the surrounding / context words and skipgram takes as an input the target word and tries to predict the neighbours of that word. During the training process of the both models the weights are adjusted and optimized. Once the training process is over, the weights are taken and used as the trained word vectors. Therefore, the actual output of the training process is not relevant for the generation of word embeddings.</p>
+<p>FastText can also be used in order to generate embedding vectors instead of taking pre-trained ones. Two models are supported for that: CBOW (Continuous Bag of Words) and Skipgram. Figure 3 shows that both of these models are neural networks with a single hidden layer: w(t-1) and w(t-2) are the context words that come before the target word w(t) that has to be predicted, w(t+1) and w(t+2) are the context words that come after the target one. The difference between the two models is that CBOW tries to predict a target word given the surrounding / context words and skipgram takes as an input the target word and tries to predict the neighbours of that word. During the training process of the both models the weights are adjusted and optimized. Once the training process is over, the weights are taken and used as the trained word vectors. Therefore, the actual output of the training process is not relevant for the generation of word embeddings.</p>
 
-<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Cbow%20and%20Skipgram.png?raw=true" width= "500" /></p>
-
-<p>Source: <a href="https://towardsdatascience.com/nlp-101-word2vec-skip-gram-and-cbow-93512ee24314">https://towardsdatascience.com/nlp-101-word2vec-skip-gram-and-cbow-93512ee24314</a></p>
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Cbow%20and%20Skipgram.png?raw=true" width= "500" /> <br>
+<strong>Figure 3</strong></p>
 
 <h4 id="convolutional-neural-network-a-class-anchor-id-cnn-a">Convolutional Neural Network <a class="anchor" id="cnn"></a></h4>
 
-<p>The second algorithm this project implements is a convolutional neural network (CNN). The most often application of CNNs is in the field of image recognition, where an image is decomposed in its pixels, which together form a matrix. A kernel (filter, feature detector) then convolves over the matrix, which results into a feature map of the pixel matrix. The process is visualized in Figure 1.</p>
+<p>The second algorithm this project implements is a convolutional neural network (CNN). The most often application of CNNs is in the field of image recognition, where an image is decomposed in its pixels, which together form a matrix. A kernel (filter, feature detector) then convolves over the matrix, which results into a feature map of the pixel matrix. The process is visualized in Figure 4.</p>
 
-<p><img src="http://deeplearning.stanford.edu/wiki/images/6/6c/Convolution_schematic.gif" alt="Figure 1" /></p>
+<p><img src="http://deeplearning.stanford.edu/wiki/images/6/6c/Convolution_schematic.gif" alt="Figure 1" /> <br>
+<strong>Figure 4</strong></p>
 
-<p><strong>Figure 2</strong></p>
+<p>In the case of natural language processing the process is similar in its nature. Instead of having a pixel matrix resulting from an image, one has an embedding matrix resulting from a natural language sentence. Similarly to the kernel convolving over the pixel matrix, the kernel in the context of NLP convolves over the embedding matrix. An important difference is that as shown in Figure 4, the kernel slides along both dimensions (x and y) of the matrix. Thus, the kernel itself is also two-dimensional, meaning its size is defined by two numbers. This is due to the fact the location of the single pixels within the pixel matrix is often of high relevance. Also similarities/differences between neighboring pixels also reflect in similarities/difference in the actual image, so it makes sense to let the kernel convolve over multiple neighboring pixels in both dimensions. Thus, a layer of two or more dimensions makes sense regarding the neural network architecture. Figrue 2 is a step-by-step visualization of the convolutional process when having an embedding matrix as input. Each row of the embedding matrix is a numerical representation of a word from the input text. Unlike in the case of image recognition, a similarity/difference between neighboring numbers, contained in the same row of the embedding matrix, is of low relevance, since one cannot base any assumptions on it. Accordingly, the kernel then only convolves over the embedding matrix vertically, meaning over only one dimension. For this reason, 1D layers (instead of layers of two or more dimensions) are mostly considered when determining the neural network architecture. As seen from Figure 5, six kernels - two for region sizes 2,3 and 4 (&ndash;&gt; only dimension y changes, x remains of size 5, which is the number of columns in the embedding matrix) respectively - slide along the embedding matrix. After the application of the activation function, the convolution of the six kernels over the input matrix results into 2 feature maps for each region size of the kernels - in total six featurs maps. Afterwards, a 1-max pooling layer is added. The output is six univariate vectors (one for each feature map), which together form a single feature vector to be fed to the softmax activation function in the last neural network layer.</p>
 
-<p>In the case of natural language processing the process is similar in its nature. Instead of having a pixel matrix resulting from an image, one has an embedding matrix resulting from a natural language sentence. Similarly to the kernel convolving over the pixel matrix, the kernel in the context of NLP convolves over the embedding matrix. An important difference is that as shown in Figure 1, the kernel slides along both dimensions (x and y) of the matrix. Thus, the kernel itself is also two-dimensional, meaning its size is defined by two numbers. This is due to the fact the location of the single pixels within the pixel matrix is often of high relevance. Also similarities/differences between neighboring pixels also reflect in similarities/difference in the actual image, so it makes sense to let the kernel convolve over multiple neighboring pixels in both dimensions. Thus, a layer of two or more dimensions makes sense regarding the neural network architecture. Figrue 2 is a step-by-step visualization of the convolutional process when having an embedding matrix as input. Each row of the embedding matrix is a numerical representation of a word from the input text. Unlike in the case of image recognition, a similarity/difference between neighboring numbers, contained in the same row of the embedding matrix, is of low relevance, since one cannot base any assumptions on it. Accordingly, the kernel then only convolves over the embedding matrix vertically, meaning over only one dimension. For this reason, 1D layers (instead of layers of two or more dimensions) are mostly considered when determining the neural network architecture. As seen from Figure 2, six kernels - two for region sizes 2,3 and 4 (&ndash;&gt; only dimension y changes, x remains of size 5, which is the number of columns in the embedding matrix) respectively - slide along the embedding matrix. After the application of the activation function, the convolution of the six kernels over the input matrix results into 2 feature maps for each region size of the kernels - in total six featurs maps. Afterwards, a 1-max pooling layer is added. The output is six univariate vectors (one for each feature map), which together form a single feature vector to be fed to the softmax activation function in the last neural network layer.</p>
-
-<p><img src="http://www.wildml.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-06-at-12.05.40-PM-1024x937.png" width="600" /></p>
-
-<p><strong>Figure 3</strong></p>
+<p><img src="http://www.wildml.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-06-at-12.05.40-PM-1024x937.png" width="600" /> <br>
+<strong>Figure 5</strong></p>
 
 <h4 id="multinominal-naive-bayes-a-class-anchor-id-bayes-a">Multinominal Naive Bayes <a class="anchor" id="bayes"></a></h4>
 
-<p>The algorithm used to create a benchmark is Multinominal Naive Bayes (MNB). MNB is an approach going one step further that the binomial Bernoulli Naive Bayes (BNB). BNB is a discrete data Naive Bayes classification algorithm, requiring binary input exclusively, meaning it can be only applied to data, consisting of boolean features. In the context of text classification a possible application of BNB would be in case of having data which consists of binary feature vectores (0 &amp; 1), where 0 would mean that a word occurs in a document and 1 would that a word does not occur in a document. Thus, the BNB explicitly takes account of the absence of a certain feature i from class y. On the other hand, MNB&rsquo;s applicability is not limited to binary data - meaning a MNB can be used when having a feature vector consisting of the count of each word in a document (instead of solely a binary representation of a word&rsquo;s presence or absence in this document).</p>
+<p>The algorithm used to create a benchmark is Multinominal Naive Bayes (MNB). MNB is an approach going one step further that the binomial Bernoulli Naive Bayes (BNB). BNB is a discrete data Naive Bayes classification algorithm, requiring binary input exclusively, meaning it can be only applied to data, consisting of boolean features. In the context of text classification a possible application of BNB would be in case of having data which consists of binary feature vectores (0 &amp; 1), where 0 would mean that a word occurs in a document and 1 would that a word does not occur in a document. On the other hand, MNB&rsquo;s applicability is not limited to binary data - meaning a MNB can be used when having a feature vector consisting of the count of each word in a document (instead of solely a binary representation of a word&rsquo;s presence or absence in this document). An example of such vectors can be seen in Figure 6, which represents the so called document term matrix. The matrix contains all the words (or a predefined threshold which only considers the 200,300 etc. most frequent words) found in all documents, which in the current case are tweets and how often a word can be found in each document (tweet), meaning each row of the matrix is a tweet in the context of this project. In the case of BNB such matrix would be binary and filled with 0 and 1 only. To create the matrix, the method &ldquo;fit_transform&rdquo; from CountVectorizer is used. It learns the vocabulary from the train set and returns the corresponding document term matrix. Afterwards the test set is transformed to a document term matrix by the function &ldquo;transform&rdquo; (also from CountVectorizer). Both matrices are then fed to the MNB Classifier. The algorithm has the parameters “alpha”, “fit_prior” and “class_prior”. “Alpha” is a smoothing parameter, which implies no smoothing if assigned 0 and maximal smoothing if assigned 1. The “fit_prior” determines whether the model should learn class prior possibilities or not. The default setting is TRUE. If set to FALSE, a uniform prior is assumed. Finally, “class_prior” contains the prior probabilities of the classes. If no probabilities are handed, the priors are adjusted according to the data, which is the current case. The accuracy reached with MBN is 75%, which is lower than the accuracy reached by FastText (81.8%) and the CNN (79.8) after hyperparameter optimization.</p>
 
-<p><img src="http://www.darrinbishop.com/wp-content/uploads/2017/10/Document-Term-Matrix.png" width="600" /></p>
+<p><img src="http://www.darrinbishop.com/wp-content/uploads/2017/10/Document-Term-Matrix.png" width="500" /> <br>
+<strong>Figure 6</strong></p>
 
 <h2 id="data-preprocessing-a-class-anchor-id-preprocessing-a">Data preprocessing <a class="anchor" id="preprocessing"></a></h2>
 
 <h3 id="data-cleaning-a-class-anchor-id-cleaning-a">Data Cleaning <a class="anchor" id="cleaning"></a></h3>
 
-<p>The first step of the data preprocessing is to clean the gathered pre-labeled tweets.  This involves converting all words in the tweets to lower case, unfolding contractions (for example couldn”t to could not), removing special characters, numbers, hashtags, mentions as well as punctuation. Furthermore, the emojis are also removed from the combined dataset. This is done in order to prevent potential overfitting. One part of the entire dataset consists of tweets labeled based on the emojis as already mentioned in Section???. Thus, not removing the emojis could lead to good results on the labeled data but poor ones on the unlabeled tweets. Next, each of the tweets is lemmatized. In natural language processing (NLP), lemmatization refers to reducing the different forms of the words in a sentence to the core root (for example the words “walking” and “walked” are transformed to “walk”). Afterward, the stop words are removed from the tweets. Stop words are commonly used words which introduce noise in the data in NLP tasks as they have no informative-value. The library nltk is used in order to retrieve a set of stopwords. It is important to highlight that this set is adjusted by removing the negations from it. The reason for this is that negations like “not” or “no” could have an  impact on the correct prediction of the positive and negative sentiment of the tweets. For example several negations in a tweet could serve as an indication for a negative sentiment. Therefore, the reduced set of stop words is used in the cleaning process of the tweets.</p>
+<p>The first step of the data preprocessing is to clean the gathered pre-labeled tweets.  This involves converting all words in the tweets to lower case, unfolding contractions (for example couldn”t to could not), removing special characters, numbers, hashtags, mentions as well as punctuation. Furthermore, the emojis are also removed from the combined dataset. This is done in order to prevent potential overfitting. One part of the entire dataset consists of tweets labeled based on the emojis as already mentioned. Thus, not removing the emojis could lead to good results on the labeled data but poor ones on the unlabeled tweets. Next, each of the tweets is lemmatized. In natural language processing (NLP), lemmatization refers to reducing the different forms of the words in a sentence to the core root (for example the words “walking” and “walked” are transformed to “walk”). Afterward, the stop words are removed from the tweets. Stop words are commonly used words which introduce noise in the data in NLP tasks as they have no informative-value. The library nltk is used in order to retrieve a set of stopwords. It is important to highlight that this set is adjusted by removing the negations from it. The reason for this is that negations like “not” or “no” could have an  impact on the correct prediction of the positive and negative sentiment of the tweets. For example several negations in a tweet could serve as an indication for a negative sentiment. Therefore, the reduced set of stop words is used in the cleaning process of the tweets.</p>
+
+<p>Several self-defined functions implement what has been described in the paragraph above. To extract only the text from the tweets and leave HTML characters out, the package BeautifulSoup is used. This package finds application when one needs to pull only text data out of HTML or XML files, using the integrated &ldquo;get_text&rdquo; method. <br>
+The second issue the cleaning function handles is replacing the &ldquo;\x92&rdquo; with a reverse single quote (which is meant to be an apostrophe in texts). It is important explaining briefly why the &ldquo;\x92&rdquo; is in the text in a first place. &ldquo;&lsquo;&rdquo; is encoded as &ldquo;\x92&rdquo; in CP-1252/Windows-1252 (a single-byte character encoding system). However, &ldquo;\x92&rdquo; in CP-1252 encoding is &ldquo;\x2019&rdquo; in Unicode Strings encoding, which is a single reverse quote. Since Python 3.0 uses Unicode Strings instead of Bytecode Strings, it does not recognize the encoding and does not show it as &ldquo;&lsquo;&rdquo;. Thus, the replacement need to take place manually, as it does via the replace() function, which is inbuilt in Python. <br>
+The hashtags, the account name, the URLs and the punctuation in a tweet are removed with the sub() method of the &ldquo;re&rdquo; module. This function makes makes replacements of regular expressions. A regular expression is a set of strings that match a criteria. It can also be seen as the opposite of a perfect match to a criteria. The first argument of &ldquo;re.sub()&rdquo; is the regular expression, the second one the replacement to be made and the third one the string to be processed (the tweets in this case).<br>
+Finally, the cleaning method deals with emojis and contractions. A part of the list of contractions looks as follows:</p>
+
+<pre><code class="language-python">def load_dict_contractions():
+
+    return {
+        &quot;ain't&quot;:&quot;is not&quot;,
+        &quot;amn't&quot;:&quot;am not&quot;,
+        &quot;aren't&quot;:&quot;are not&quot;,
+        &quot;can't&quot;:&quot;cannot&quot;,
+        &quot;'cause&quot;:&quot;because&quot;,
+        &quot;couldn't&quot;:&quot;could not&quot;,
+        &quot;couldn't've&quot;:&quot;could not have&quot;,
+        &quot;could've&quot;:&quot;could have&quot;,
+        &quot;daren't&quot;:&quot;dare not&quot;,
+        &quot;daresn't&quot;:&quot;dare not&quot;,
+        }
+</code></pre>
+
+<p>This dictionary is then used in the cleaning function in order to replace any abbreviations and slang with the grammatically correct and complete form of an expression.
+A part of the list of emojis looks as follows:</p>
+
+<pre><code class="language-python">def load_dict_smileys():
+
+    return {
+        &quot;:‑)&quot;:&quot;&quot;,
+        &quot;:-]&quot;:&quot;&quot;,#&quot;smiley&quot;,
+        &quot;:-3&quot;:&quot;&quot;,#&quot;smiley&quot;,
+        &quot;:-&gt;&quot;:&quot;&quot;,#&quot;smiley&quot;,
+        &quot;8-)&quot;:&quot;&quot;,#&quot;smiley&quot;,
+        &quot;:-}&quot;:&quot;&quot;,#&quot;smiley&quot;,
+        &quot;:)&quot;:&quot;&quot;,#&quot;smiley&quot;,
+        &quot;:]&quot;:&quot;&quot;,#&quot;smiley&quot;,
+        &quot;:3&quot;:&quot;&quot;,#&quot;smiley&quot;,
+        &quot;:&gt;&quot;:&quot;&quot;,#&quot;smiley&quot;,
+        &quot;8)&quot;:&quot;&quot;,#&quot;smiley&quot;,
+        &quot;:}&quot;:&quot;&quot;,#&quot;smiley&quot;,
+        &quot;:o)&quot;:&quot;&quot;,#&quot;smiley&quot;,
+        }
+</code></pre>
+
+<p>It serves as a dictionary of actually inexisting (unintentionally wrongly written) emojis. The dictionary is afterwards used in the cleaning function to replace the inexisting emoji with a natural language word (e.g. smiley, sad etc.), which summarizes the emotion the emoji was supposed to express, its actual meaning which is relevant for the sentiment analysis. Last, the function replace() of the library demoji is used to remove all the emojis predefined in the Unicode Consortium&rsquo;s emoji code repository (needs to be downloaded first by demoji.download_codes()).</p>
+
+<pre><code class="language-python">def tweet_cleaning_for_sentiment_analysis(tweet):    
+
+    #Escaping HTML characters
+    tweet = BeautifulSoup(tweet).get_text()
+
+    #Special case not handled previously: Reverse single quote
+    tweet = tweet.replace('\x92',&quot;'&quot;)
+
+    #Removal of hastags/account
+    tweet = ' '.join(re.sub(&quot;(@[A-Za-z0-9]+)|(#[A-Za-z0-9]+)&quot;, &quot; &quot;, tweet).split())
+
+    #Removal of address (URL)
+    tweet = ' '.join(re.sub(&quot;(\w+:\/\/\S+)&quot;, &quot; &quot;, tweet).split())
+
+    #Removal of Punctuation
+    tweet = ' '.join(re.sub(&quot;[\.\,\!\?\:\;\-\=\*\)\(]&quot;, &quot; &quot;, tweet).split())
+
+    #CONTRACTIONS source: https://en.wikipedia.org/wiki/Contraction_%28grammar%29
+    CONTRACTIONS = load_dict_contractions()
+    tweet = tweet.replace(&quot;’&quot;,&quot;'&quot;)
+    words = tweet.split()
+    reformed = [CONTRACTIONS[word] if word in CONTRACTIONS else word for word in words]
+    tweet = &quot; &quot;.join(reformed)
+
+    #Deal with emoticons source: https://en.wikipedia.org/wiki/List_of_emoticons
+    SMILEY = load_dict_smileys()  
+    words = tweet.split()
+    reformed = [SMILEY[word] if word in SMILEY else word for word in words]
+    tweet = &quot; &quot;.join(reformed)
+
+    #Deal with emojis
+    tweet=demoji.replace(tweet,&quot;&quot;)
+    tweet=remove_emoji(tweet)
+
+    tweet = ' '.join(tweet.split())
+
+    return tweet
+</code></pre>
 
 <h3 id="word-embeddings-glove-and-fasttext-a-class-anchor-id-embeddings-a">Word Embeddings: GloVe and FastText <a class="anchor" id="embeddings"></a></h3>
 
@@ -323,11 +443,13 @@ corresponding training record that can be fed to FastText looks in the following
 
 <h3 id="initial-results-a-class-anchor-id-initial-a">Initial Results <a class="anchor" id="initial"></a></h3>
 
-<p>Both CNN and FastText are tested with the embedding matrices described in Section 4  in order to examine which word vectors should be used in the next steps. Figure ??? and ??? provide an overview of the initial results. It is important to mention that FastText is also trained without providing any input to the parameter pretrainedVectors. This implies that the embedding matrix is randomly initialized with values between -<sup>1</sup>&frasl;<sub>200</sub> and <sup>1</sup>&frasl;<sub>200</sub>. Both analytical models achieve the best performance in terms of accuracy with the Twitter pre-trained embeddings from GloVe. Therefore, the GloVe word representations are used in the further analysis of the results.</p>
+<p>Both CNN and FastText are tested with the embedding matrices described in Section 4  in order to examine which word vectors should be used in the next steps. Figure 7 and 8 provide an overview of the initial results. It is important to mention that FastText is also trained without providing any input to the parameter pretrainedVectors. This implies that the embedding matrix is randomly initialized with values between -<sup>1</sup>&frasl;<sub>200</sub> and <sup>1</sup>&frasl;<sub>200</sub>. Both analytical models achieve the best performance in terms of accuracy with the Twitter pre-trained embeddings from GloVe. Therefore, the GloVe word representations are used in the further analysis of the results.</p>
 
-<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Initial_Results_CNN.png?raw=true" width="400" /> <br></p>
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Initial_Results_CNN.png?raw=true" width="500" /> <br>
+<strong>Figure 7</strong></p>
 
-<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Initial_Results_FastText.png?raw=true" width="400" /></p>
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Initial_Results_FastText.png?raw=true" width="500" /> <br>
+<strong>Figure 8</strong></p>
 
 <h3 id="hyperparameter-tuning-using-bayesian-optimization-a-class-anchor-id-tuning-a">Hyperparameter Tuning using Bayesian Optimization <a class="anchor" id="tuning"></a></h3>
 
@@ -337,9 +459,111 @@ corresponding training record that can be fed to FastText looks in the following
 
 <h4 id="hyperparameter-optimization-fasttext">Hyperparameter Optimization FastText</h4>
 
-<p>Figure ??? contains the five tested hyperparameters of FastText, the corresponding value ranges, the final optimal set of configurations and the highest achieved accuracy. It can be seen that the model developed by Facebook performs best when the feature space of each sentence contains not only words, but also trigrams and character n-grams of a maximal length of 1. Furthermore, the optimal hyperparameters lead to a slight increase in the accuracy of 1.5% compared to the initial results of FastText using the GloVe embeddings.</p>
+<p>Figure 9 contains the five tested hyperparameters of FastText, the corresponding value ranges, the final optimal set of configurations and the highest achieved accuracy. It can be seen that the model developed by Facebook performs best when the feature space of each sentence contains not only words, but also trigrams and character n-grams of a maximal length of 1. Furthermore, the optimal hyperparameters lead to a slight increase in the accuracy of 1.5% compared to the initial results of FastText using the GloVe embeddings.</p>
 
-<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/HO_fastText.png?raw=true" width="400" /></p>
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/HO_fastText.png?raw=true" width="500" /> <br>
+<strong>Figure 9</strong></p>
+
+<h4 id="hyperparameter-optimization-cnn">Hyperparameter Optimization CNN</h4>
+
+<p>The following function is used to generate the CNN architecture while looping through the different sets of tested configurations.</p>
+
+<pre><code class="language-python">def CNN_architecture(number_conv_layers,number_filters,pooling_layers,kernel_regularizers_cv,kernel_regularizer_prefinal_dense,
+                            units_dense,dp_dense,weight_decay,learning_rate,kernel_size,
+                            nb_words, embed_dim,embedding_matrix,max_seq_len):
+
+  model = Sequential()
+  # Add the Embedding layer first:
+  model.add(Embedding(nb_words, embed_dim,
+            weights=[embedding_matrix], input_length=max_seq_len, trainable=False))
+  #Make a loop that keeps on adding convolutional layers according to a pre-specified amount.
+  for i in range(0,number_conv_layers):
+    #Choose between applying L2 Regularization in the convolutional layers or not:
+    if kernel_regularizers_cv==True:
+      model.add(Conv1D(number_filters,kernel_size, activation='relu',kernel_regularizer=regularizers.l2(weight_decay)))
+    else:
+      model.add(Conv1D(number_filters,kernel_size,activation='relu'))
+    #Make sure that in case maxpooling layers should be added,
+    #this is done till the pre-last convolutional layer is reached.
+    #For example if 4 convolutional layers have to be added, then 1-3 convolutional layers
+    #will be followed by a maxpooling layer, the forth one: not
+    last_index_loop=number_conv_layers-1
+    if i &lt; last_index_loop:
+      if pooling_layers==True:
+        model.add(MaxPooling1D(2))
+
+  #Add a global maxpooling layer after the last convolutional layer.    
+  model.add(GlobalMaxPooling1D())
+  #Choose between applying L2 Regularization in the pre-final dense layer or not:
+  if kernel_regularizer_prefinal_dense==True:
+    model.add(Dense(units_dense, activation='relu',kernel_regularizer=regularizers.l2(weight_decay)))#, kernel_regularizer=regularizers.l2(weight_decay)))
+  else:
+    model.add(Dense(units_dense, activation='relu'))
+
+  #Choose between adding a dropout layer after the pre-final dense layer or not:
+  if dp_dense==True:
+    model.add(Dropout(0.2))
+
+  model.add(Dense(1, activation='sigmoid'))
+  #Use Adams for the training process:
+  opt=optimizers.Adam(lr=learning_rate)
+  model.compile(optimizer=opt,loss='binary_crossentropy', metrics=['accuracy'])
+
+  return model
+</code></pre>
+
+<p>Figure 10 contains the tested hyperparameters of CNN. It can be seen that the CNN performs best with two convolutional layers. There is an increase of 1.6% in the accuracy compared to the initial performance of the CNN with the GloVe Embeddings.</p>
+
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/HO_CNN.png?raw=true" width="500" /> <br>
+<strong>Figure 10</strong></p>
+
+<h2 id="analysis-of-the-results-on-unlabeled-twitter-data-a-class-anchor-id-results-a">Analysis of the Results on unlabeled Twitter Data <a class="anchor" id="results"></a></h2>
+
+<p>Figure 11 shows how the sentiments are classified. For each tweet the probabilities resulting from FastText are printed. Both labels with their respective probabilities are printed. The label, which has the higher probability is considered to be the correct one by the algoritm. This also makes sense when looking at the tweets in Figure 11. These examples show the best the difference between a positive and negative sentiment. Thus, one must be careful when using this method for opinion modeling.</p>
+
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/results.PNG?raw=true" width="600" /> <br>
+<strong>Figure 11</strong></p>
+
+<p>Figure 12 to 16 show the ratio of positive and negative sentiments for all candidates as classified by FastText in the way described above.</p>
+
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Trump.png?raw=true" width="500" /> <br>
+<strong>Figure 12</strong></p>
+
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Sanders.png?raw=true" width="500" /> <br>
+<strong>Figure 13</strong></p>
+
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/warren.png?raw=true" width="500" /> <br>
+<strong>Figure 14</strong></p>
+
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Biden.png?raw=true" width="500" /> <br>
+<strong>Figure 15</strong></p>
+
+<p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Booker.png?raw=true" width="500" /> <br>
+<strong>Figure 16</strong></p>
+
+<h2 id="references-a-class-anchor-id-references-a">References <a class="anchor" id="references"></a></h2>
+
+<ul>
+<li><p>FastText: stepping through the code, Maria Mestre , 12 August 2018
+<a href="https://medium.com/@mariamestre/fasttext-stepping-through-the-code-259996d6ebc4">https://medium.com/@mariamestre/fasttext-stepping-through-the-code-259996d6ebc4</a></p></li>
+
+<li><p>NLP 101: Word2Vec — Skip-gram and CBOW, Ria Kulshrestha, 24 November 2019
+<a href="https://towardsdatascience.com/nlp-101-word2vec-skip-gram-and-cbow-93512ee24314">https://towardsdatascience.com/nlp-101-word2vec-skip-gram-and-cbow-93512ee24314</a></p></li>
+
+<li><p>Understanding Convolutional Neural Networks for NLP, Denny Britz, 7 November 2015
+<a href="http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/">http://www.wildml.com/2015/11/understanding-convolutional-neural-networks-for-nlp/</a></p></li>
+
+<li><p>Building a convolutional neural network for natural language processing, David Bressler, 11 December 2011
+<a href="https://towardsdatascience.com/how-to-build-a-gated-convolutional-neural-network-gcnn-for-natural-language-processing-nlp-5ba3ee730bfb">https://towardsdatascience.com/how-to-build-a-gated-convolutional-neural-network-gcnn-for-natural-language-processing-nlp-5ba3ee730bfb</a></p></li>
+
+<li><p>Naive Bayes and Text Classification – Introduction and Theory, Sebastian Raschka, 4 October 2014
+<a href="http://sebastianraschka.com/Articles/2014_naive_bayes_1.html#3_3_multivariate">http://sebastianraschka.com/Articles/2014_naive_bayes_1.html#3_3_multivariate</a></p></li>
+
+<li><p>Text Analytics – Document Term Matrix, Darrin Bishop, 10 February 2017
+<a href="http://www.darrinbishop.com/blog/2017/10/text-analytics-document-term-matrix/">http://www.darrinbishop.com/blog/2017/10/text-analytics-document-term-matrix/</a></p></li>
+
+<li><p><a href="https://gist.github.com/sdoshi579/aae8c5520639c0dd86411d619c1df129">https://gist.github.com/sdoshi579/aae8c5520639c0dd86411d619c1df129</a></p></li>
+</ul>
 
                         </div>
                         
@@ -373,7 +597,7 @@ corresponding training record that can be fed to FastText looks in the following
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
-            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (33)</a>
+            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (36)</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/categories/instruction">instruction (2)</a>
@@ -452,9 +676,6 @@ corresponding training record that can be fed to FastText looks in the following
             <li><a href="https://humboldt-wi.github.io/blog/tags/classification"><i class="fa fa-tags"></i> classification</a>
             </li>
             
-            <li><a href="https://humboldt-wi.github.io/blog/tags/cnn"><i class="fa fa-tags"></i> cnn</a>
-            </li>
-            
             <li><a href="https://humboldt-wi.github.io/blog/tags/coarsened-exact-matching"><i class="fa fa-tags"></i> coarsened-exact-matching</a>
             </li>
             
@@ -500,13 +721,16 @@ corresponding training record that can be fed to FastText looks in the following
             <li><a href="https://humboldt-wi.github.io/blog/tags/explanation"><i class="fa fa-tags"></i> explanation</a>
             </li>
             
-            <li><a href="https://humboldt-wi.github.io/blog/tags/fasttext"><i class="fa fa-tags"></i> fasttext</a>
-            </li>
-            
             <li><a href="https://humboldt-wi.github.io/blog/tags/fine-tuning"><i class="fa fa-tags"></i> fine-tuning</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/genetic-matching"><i class="fa fa-tags"></i> genetic-matching</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/glove"><i class="fa fa-tags"></i> glove</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/gpt-2"><i class="fa fa-tags"></i> gpt-2</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/gru"><i class="fa fa-tags"></i> gru</a>
@@ -524,13 +748,22 @@ corresponding training record that can be fed to FastText looks in the following
             <li><a href="https://humboldt-wi.github.io/blog/tags/image-captioning"><i class="fa fa-tags"></i> image-captioning</a>
             </li>
             
+            <li><a href="https://humboldt-wi.github.io/blog/tags/imbalanced-data"><i class="fa fa-tags"></i> imbalanced-data</a>
+            </li>
+            
             <li><a href="https://humboldt-wi.github.io/blog/tags/inference"><i class="fa fa-tags"></i> inference</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/ite"><i class="fa fa-tags"></i> ite</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset"><i class="fa fa-tags"></i> keras-imdb-dataset</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/knn-algorithm"><i class="fa fa-tags"></i> knn-algorithm</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/language-model"><i class="fa fa-tags"></i> language-model</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/language-modeling"><i class="fa fa-tags"></i> language-modeling</a>
@@ -584,6 +817,9 @@ corresponding training record that can be fed to FastText looks in the following
             <li><a href="https://humboldt-wi.github.io/blog/tags/optimal-matching"><i class="fa fa-tags"></i> optimal-matching</a>
             </li>
             
+            <li><a href="https://humboldt-wi.github.io/blog/tags/oversampling"><i class="fa fa-tags"></i> oversampling</a>
+            </li>
+            
             <li><a href="https://humboldt-wi.github.io/blog/tags/pdp"><i class="fa fa-tags"></i> pdp</a>
             </li>
             
@@ -620,6 +856,9 @@ corresponding training record that can be fed to FastText looks in the following
             <li><a href="https://humboldt-wi.github.io/blog/tags/sentiment-classification"><i class="fa fa-tags"></i> sentiment-classification</a>
             </li>
             
+            <li><a href="https://humboldt-wi.github.io/blog/tags/seq2seq"><i class="fa fa-tags"></i> seq2seq</a>
+            </li>
+            
             <li><a href="https://humboldt-wi.github.io/blog/tags/share-price-prediction"><i class="fa fa-tags"></i> share-price-prediction</a>
             </li>
             
@@ -638,13 +877,22 @@ corresponding training record that can be fed to FastText looks in the following
             <li><a href="https://humboldt-wi.github.io/blog/tags/text-classification"><i class="fa fa-tags"></i> text-classification</a>
             </li>
             
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-generation"><i class="fa fa-tags"></i> text-generation</a>
+            </li>
+            
             <li><a href="https://humboldt-wi.github.io/blog/tags/text-mining"><i class="fa fa-tags"></i> text-mining</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/text-summarization"><i class="fa fa-tags"></i> text-summarization</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/time-series"><i class="fa fa-tags"></i> time-series</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/time-series-forecasting"><i class="fa fa-tags"></i> time-series-forecasting</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/toxic-comments"><i class="fa fa-tags"></i> toxic-comments</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/transfer-learning"><i class="fa fa-tags"></i> transfer-learning</a>
@@ -666,6 +914,9 @@ corresponding training record that can be fed to FastText looks in the following
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/uplift"><i class="fa fa-tags"></i> uplift</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/tags/uplift-modeling"><i class="fa fa-tags"></i> uplift-modeling</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/uplift-modelling"><i class="fa fa-tags"></i> uplift-modelling</a>
@@ -693,6 +944,26 @@ corresponding training record that can be fed to FastText looks in the following
 
 
 
+
+
+<div class="panel panel-default sidebar-menu">
+
+    <div class="panel-heading">
+      <h3 class="panel-title"> NEWS </h3>
+    </div>
+
+    <div class="panel-body">
+          <ul class="nav nav-pills nav-stacked">
+            
+            <li><a href="https://humboldt-wi.github.io/blog/month/2018-02">2018-02 (1)</a>
+            </li>
+            
+            <li><a href="https://humboldt-wi.github.io/blog/month/2019-03">2019-03 (4)</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
 
 
 

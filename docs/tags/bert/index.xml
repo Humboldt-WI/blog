@@ -13,10 +13,10 @@
     
     <item>
       <title>BERT</title>
-      <link>https://humboldt-wi.github.io/blog/research/bert_blog_post/</link>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/bert_blog_post/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://humboldt-wi.github.io/blog/research/bert_blog_post/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/bert_blog_post/</guid>
       <description>Anti Social Online Behaviour Detection with BERT Comparing Bidirectional Encoder Representations from Transformers (BERT) with DistilBERT and Bidirectional Gated Recurrent Unit (BGRU) R. Evtimov - evtimovr@hu-berlin.de
 M. Falli - fallimar@hu-berlin.de
 A. Maiwald - maiwalam@hu-berlin.de
@@ -26,7 +26,7 @@ Introduction Motivation In 2018, a research paper by Devlin et, al. titled “BE
     <item>
       <title>Economic Uncertainty Identification</title>
       <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/uncertainty_identification_transformers/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/uncertainty_identification_transformers/</guid>
       <description>Economic Uncertainty Identification Using Transformers - Improving Current Methods Authors: Siddharth Godbole, Karolina Grubinska &amp;amp; Olivia Kelnreiter   Table of Contents  Introduction Motivation and Literature Theoretical Background

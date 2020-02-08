@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Fine-tuning on Institute of Infomation Systems at HU-Berlin</title>
+    <title>Fine-Tuning on Institute of Infomation Systems at HU-Berlin</title>
     <link>https://humboldt-wi.github.io/blog/tags/fine-tuning/</link>
-    <description>Recent content in Fine-tuning on Institute of Infomation Systems at HU-Berlin</description>
+    <description>Recent content in Fine-Tuning on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 07 Feb 2020 00:00:00 +0000</lastBuildDate>
@@ -13,10 +13,10 @@
     
     <item>
       <title>BERT</title>
-      <link>https://humboldt-wi.github.io/blog/research/bert_blog_post/</link>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/bert_blog_post/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://humboldt-wi.github.io/blog/research/bert_blog_post/</guid>
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/bert_blog_post/</guid>
       <description>Anti Social Online Behaviour Detection with BERT Comparing Bidirectional Encoder Representations from Transformers (BERT) with DistilBERT and Bidirectional Gated Recurrent Unit (BGRU) R. Evtimov - evtimovr@hu-berlin.de
 M. Falli - fallimar@hu-berlin.de
 A. Maiwald - maiwalam@hu-berlin.de
