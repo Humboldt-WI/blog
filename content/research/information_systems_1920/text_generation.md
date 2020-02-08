@@ -1,6 +1,6 @@
 +++
 title = "Generating Synthetic Comments to Balance Data for Text Classification"
-date = '2020-02-07'
+date = "2020-02-07"
 tags = [ "Text Generation", "NLP", "GPT-2", "GloVe", "Text Classification", "Oversampling", "Language Model", "Imbalanced Data" ]
 categories = ["Course Projects"]
 banner = "img/seminar/sample/hu-logo.jpg"

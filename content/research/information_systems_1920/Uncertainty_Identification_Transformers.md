@@ -1,6 +1,6 @@
 +++
 title = "Economic Uncertainty Identification"
-date = "2020-02-07'"
+date = "2020-02-07"
 tags = ["EconomicUncertainty", "Transformers", "NLP","NN", "BERT","ROBERTA","ALBERT","SimpleTransformers", "DeepLearning","Uncertainty","Binary","Classification"]
 categories = ["Course projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
