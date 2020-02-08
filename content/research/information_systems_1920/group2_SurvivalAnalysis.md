@@ -128,6 +128,7 @@ The data is given in a "snapshot" panel format and represents a collection of US
 
 When a person applies for mortgage, lenders (banks) want to know the value of risk they would take by loaning money. 
 In the given dataset we are able to inspect this process using the key information from following features:
+
 * various timestamps for loan origination, future maturity and first appearance in the survival study
 * outside factors like gross domestic product (GDP) or unemployment rates at observation time
 * average price index at observation moment
@@ -152,6 +153,7 @@ The distribution of the event of interest (in graph below) shows that more than 
      src="/blog/img/seminar/group2_SurvivalAnalysis/event_distrib.png">
 <br>
 Survival analysis requires a specific dataset format:
+
 * $E_i$ is the event indicator such that $E_i=1$, if an event happens and $E_i=0$ in case of censoring (column *default_time*)
 * $T_i$ is the observed duration (*total_obs_time* column)
 * $X_i$ is a $p$−dimensional feature vector (covariates starting from the third column).
@@ -181,6 +183,7 @@ $$ \hat{S(t)} = \prod_{i: t_i <= t}{\frac{n_i - d_i}{n_i}} ,$$
 where $n_i$ is a number of individuals who are at risk at time point $t_i$ and $d_i$ is a number of subjects that experienced the event at time $t_i$.
 
 When using Kaplan-Meier estimate, some assumptions must be taken into account:
+
 * All observations - both censored and defaulted - are used in estimation
 * There is no cohort effect on survival, so the subjects have the same survival probability regardless of their nature and time of appearance in study
 * Individuals who are censored have the same survival probabilities as those who are continued to be examined
@@ -224,6 +227,7 @@ The sign of partial hazards (*coef* column) for each covariate plays an importan
 The essential component of the CoxPH is the **proportionality assumption**: the hazard functions for any two subjects stay proportional at any point in time and the hazard ratio does not vary with time. As an example, if a customer has a risk of loan default at some initial observation that is twice as low as that of another customer, then for all later time observations the risk of defaulted loan remains twice as low. 
 
 Consequently, more important properties of the CoxPH can be derived:
+
 * The times when individuals may experience the event of interest are independent from each other
 * Hazard curves of any individuals do not cross with each other
 * There is a multiplicative linear effect of the estimated covariates on the hazard function.
@@ -231,6 +235,7 @@ Consequently, more important properties of the CoxPH can be derived:
 ---
 
 However, for the given dataset this proportinality property does not hold due to a violation of some covariates. Some additional methods can overcome this violation. 
+
 * The first is binning these variables into smaller intervals and stratifying on them. We keep in the model the covariates which do not obey the proportional assumption. The problem that can arise in this case is an information loss (since different values are now binned together)
 * We can expand the time-varying data and apply a special type of Cox regression with continuous variables
 * Random survival forests
@@ -279,6 +284,7 @@ Over the past years, a significant amount of research in machine learning has be
 <br>
 <br>
 We can define particular groups of methods regading deep learning in survival analysis. 
+
 * The first is based on further development of the baseline Cox Proportional hazard model: **DeepSurv** (section 5.1), **Cox-nnet** (extension of CoxPH on specific genetics datasets and regularizations). [16]
 * As an alternative approach, fully parametric survival models which use RNN to sequentially predict a distribution over the time to the next event:  **RNN-SURV**,   **Weibull Time-To-Event RNN** etc. [17] [26] 
 * On the other hand, there are some new advanced deep learning neural networks, such as **DeepHit**, developed to also process the survival data with competing risks (section 5.2).
@@ -325,6 +331,7 @@ In order to minimize the loss function with this regularization, it is necessary
 #### Practical implementation:
 
 To built the DeepSurv model we discovered two implentational options:
+
 1. https://github.com/jaredleekatzman/DeepSurv - official repository from the discussed paper. However, the packages inside were not updated recently and range of useful functions is not available.
 2. https://github.com/havakv/pycox - based on PyTorch environment, computationaly fast approach to run survival analysis models. This package is used for DeepSurv.
 
@@ -336,11 +343,11 @@ To built the DeepSurv model we discovered two implentational options:
 
 {{< gist dariasmorodina 386038e0897aceae337584f8dd331690 >}}
 
->Building the Vanilla MLP with **four hidden layers**, 
-**Batch normalization** (for stabilization and reducing data noise), 
-**Dropout** 40% between the hidden layers, 
-**ReLU** were chosen as an optimal activation layer (alternatively, Scaled Exponentioal Linear Units (SELU) can be implemented), 
-**Adam optimizer** was used for model training, without setting initial learning rate value.
+- Building the Vanilla MLP with **four hidden layers** 
+- **Batch normalization** (for stabilization and reducing data noise), 
+- **Dropout** 40% between the hidden layers, 
+- **ReLU** were chosen as an optimal activation layer (alternatively, Scaled Exponentioal Linear Units (SELU) can be implemented), 
+- **Adam optimizer** was used for model training, without setting initial learning rate value.
 
 {{< gist dariasmorodina b134be43ce5b9d1082c866b64c927658 >}}
 
@@ -510,6 +517,7 @@ For a better understanding of this definition the concordance index is calculate
 
 To calculate the concordance index the number of concordant pairs has to be divided by the number of possible ones. By having four customers the following pairs are possible:
 (A,B) , (A,C) , (A,D) , (B,C) , (B,D) , (C,D). The total number of possible pairs is 6. 
+
 * Model 1 predicts that A defaults before B, and the true default time confirms that A defaults before B. The pair (A,B) is a concordant pair. This comparison needs to be done for every possible pair. For the prediction of Model 1 all possible pairs are concordant, which results in an Concordance index of 1 - perfect prediction.
 * For the prediction of Model 2 there are five concordant pairs, but for the pair (C,D) the model predicts that D defaults before C, whereas the true default times show that C defaults before D. With this the concordance index is 0.83 (5/6).
 * The concordance index of Model 3 is also equal to 1, since the model predicts the correct order of the possible pairs even though the actual default times are not right in isolation.
@@ -571,7 +579,8 @@ To get a closer look at the individual hazard graphs in order to compare the pre
 <br>
 <br>
 For the most part the hazard graphs of these customers show that within the first year the probability of default is higher and mostly decreasing within the second year. 
-- Hazard graph 1 also represents this trend. Throughout the rest of the evaluation time the probability values decrease and range between 0.5%  and 2%. In the dataset the customer was censored after 26 months. With regard to the predicted hazard ratio if the customer "survives" beyond the first year he probably does not experience the event of default afterwards.
+
+* Hazard graph 1 also represents this trend. Throughout the rest of the evaluation time the probability values decrease and range between 0.5%  and 2%. In the dataset the customer was censored after 26 months. With regard to the predicted hazard ratio if the customer "survives" beyond the first year he probably does not experience the event of default afterwards.
 * Hazard graph 2 starts with a high default probability after 3 months. With respect to the actual values, the customer defaulted after 3 months, the model could make a precise prediction.
 * Hazard graph 3 shows the highest values within the time of 10 and 13 months after initial recognition of the mortgage which represents the actual values of the customer defaulting after 13 months. 
 * Hazard graph 4 differs from the other graphs since it starts with low risk of default period. The probability is not decreasing until the start of the sixth year of credit time except a little increase at the end of the second year. The model predicts that if the customer will experience the event of default it will be sometime after the fifth year of credit time. The customer was censored after 39 months, he is still repaying his mortgage rates and has not experienced the event yet.
@@ -599,6 +608,7 @@ Looking at selected individual hazard graphs plotting the joint distribution of 
 {{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/HRind_cr.png" width="1050" link="//blog/img/seminar/group2_SurvivalAnalysis/HRind_cr.png">}}
 <br>
 <br>
+
 * Hazard Graph 1 gives a higher probability of experiencing default than payoff. Moreover the model predicts the default to be at the end of first year, which matches the true default time of the customer experiencing the event of default after 13 months.
 * The Hazard Graph 2 starts with a low risk period of more than two years regarding both events. After 2.5 years the risk of early repayment is increasing but after four years of credit time the model also predicts a strong increased hazard in default. In total the model predicts a slightly higher risk of payoff. The customer was censored after 39 months, which corresponds to the long period of low risk to experience one of these events, but with regard to this customer the model is not able to make a strong prediction to either default or payoff.
 * The Hazard Graph 3 shows a high risk of payoff right in the beginning. The prediction represents the customers true event time of experiencing the event of payoff after 1 months.
