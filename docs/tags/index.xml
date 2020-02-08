@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>ALBERT</title>
+      <link>https://humboldt-wi.github.io/blog/tags/albert/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/albert/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>BERT</title>
       <link>https://humboldt-wi.github.io/blog/tags/bert/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
@@ -21,11 +30,29 @@
     </item>
     
     <item>
+      <title>Binary</title>
+      <link>https://humboldt-wi.github.io/blog/tags/binary/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/binary/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Class19/20</title>
       <link>https://humboldt-wi.github.io/blog/tags/class19/20/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/class19/20/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Classification</title>
+      <link>https://humboldt-wi.github.io/blog/tags/classification/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/classification/</guid>
       <description></description>
     </item>
     
@@ -44,6 +71,24 @@
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DeepLearning</title>
+      <link>https://humboldt-wi.github.io/blog/tags/deeplearning/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/deeplearning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EconomicUncertainty</title>
+      <link>https://humboldt-wi.github.io/blog/tags/economicuncertainty/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/economicuncertainty/</guid>
       <description></description>
     </item>
     
@@ -120,6 +165,15 @@
     </item>
     
     <item>
+      <title>NN</title>
+      <link>https://humboldt-wi.github.io/blog/tags/nn/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/nn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Oversampling</title>
       <link>https://humboldt-wi.github.io/blog/tags/oversampling/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
@@ -165,11 +219,29 @@
     </item>
     
     <item>
+      <title>ROBERTA</title>
+      <link>https://humboldt-wi.github.io/blog/tags/roberta/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/roberta/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Sentiment Analysis</title>
       <link>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SimpleTransformers</title>
+      <link>https://humboldt-wi.github.io/blog/tags/simpletransformers/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/simpletransformers/</guid>
       <description></description>
     </item>
     
@@ -215,6 +287,24 @@
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/transfer-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Transformers</title>
+      <link>https://humboldt-wi.github.io/blog/tags/transformers/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/transformers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Uncertainty</title>
+      <link>https://humboldt-wi.github.io/blog/tags/uncertainty/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/uncertainty/</guid>
       <description></description>
     </item>
     
@@ -633,15 +723,6 @@
     </item>
     
     <item>
-      <title>Classification</title>
-      <link>https://humboldt-wi.github.io/blog/tags/classification/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/classification/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Explanation</title>
       <link>https://humboldt-wi.github.io/blog/tags/explanation/</link>
       <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
@@ -863,87 +944,6 @@
       <pubDate>Fri, 02 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/blockchain/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ALBERT</title>
-      <link>https://humboldt-wi.github.io/blog/tags/albert/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/albert/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Binary</title>
-      <link>https://humboldt-wi.github.io/blog/tags/binary/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/binary/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>DeepLearning</title>
-      <link>https://humboldt-wi.github.io/blog/tags/deeplearning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/deeplearning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>EconomicUncertainty</title>
-      <link>https://humboldt-wi.github.io/blog/tags/economicuncertainty/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/economicuncertainty/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>NN</title>
-      <link>https://humboldt-wi.github.io/blog/tags/nn/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/nn/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ROBERTA</title>
-      <link>https://humboldt-wi.github.io/blog/tags/roberta/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/roberta/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SimpleTransformers</title>
-      <link>https://humboldt-wi.github.io/blog/tags/simpletransformers/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/simpletransformers/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Transformers</title>
-      <link>https://humboldt-wi.github.io/blog/tags/transformers/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/transformers/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Uncertainty</title>
-      <link>https://humboldt-wi.github.io/blog/tags/uncertainty/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/uncertainty/</guid>
       <description></description>
     </item>
     
