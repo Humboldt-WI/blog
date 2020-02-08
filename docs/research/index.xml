@@ -12,6 +12,31 @@
     
     
     <item>
+      <title>Analysis of social media behavior of the 2020 presidential election candidates</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</guid>
+      <description>Authors: Georg Velev, Iliyana Pekova Table of Content  Introduction
+ Data Retrieval
+2.1. Libraries: GetOldTweets3 vs Tweepy
+2.2. Descriptive Statistics
+ Methodology
+3.1. Retrieval of pre-labeled Twitter Data
+3.2. Machine Learning Algorithms
+3.2.1. FastText
+3.2.2. Convolutional Neural Network
+3.2.3. Multinominal Naive Bayes Classifier
+ Data Preprocessing
+4.1. Data Cleaning
+4.2. Word Embeddings: GloVe and FastText
+4.3. Model specific Data Preprocessing
+ Performance Evaluation
+5.1. Initial Results
+5.2. Hyperparameter Tuning using Bayesian Optimization</description>
+    </item>
+    
+    <item>
       <title>BERT</title>
       <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/bert_blog_post/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
@@ -381,16 +406,6 @@ A very common way to accomplish that is by using an API.</description>
       <description>TEST #hugo
 import numpy as np import pandas as pd 2+3  A Gentle Introduction to Neural Network Fundamentals 
 Imagine the following problem: There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.</description>
-    </item>
-    
-    <item>
-      <title>Analysis of social media behavior of the 2020 presidential election candidates</title>
-      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</guid>
-      <description>+++ title = &amp;ldquo;Analysis of social media behavior of the 2020 presidential election candidates&amp;rdquo; date = &amp;lsquo;2020-02-07&amp;rsquo; tags = [ &amp;ldquo;Fasttext&amp;rdquo;, &amp;ldquo;CNN&amp;rdquo;, &amp;ldquo;Class19/20&amp;rdquo;, &amp;ldquo;Sentiment Analysis&amp;rdquo;] categories = [&amp;ldquo;course projects&amp;rdquo;] banner = &amp;ldquo;img/seminar/sample/hu-logo.jpg&amp;rdquo; author = &amp;ldquo;Seminar Information Systems (WS19/20)&amp;rdquo; disqusShortname = &amp;ldquo;https-humbodt-wi-github-io-blog&amp;rdquo; description = &amp;ldquo;This blog post analyzes the tweets of the 2020 presidential candidates using Fasttext and CNN&amp;rdquo; +++
-Authors: Georg Velev, Iliyana Pekova Table of Content  Introduction</description>
     </item>
     
     <item>

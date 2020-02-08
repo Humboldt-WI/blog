@@ -30,11 +30,29 @@
     </item>
     
     <item>
+      <title>CNN</title>
+      <link>https://humboldt-wi.github.io/blog/tags/cnn/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/cnn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Deep Learning</title>
       <link>https://humboldt-wi.github.io/blog/tags/deep-learning/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fasttext</title>
+      <link>https://humboldt-wi.github.io/blog/tags/fasttext/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/fasttext/</guid>
       <description></description>
     </item>
     
@@ -129,7 +147,16 @@
     </item>
     
     <item>
-      <title>recommender system</title>
+      <title>Recommender Systems</title>
+      <link>https://humboldt-wi.github.io/blog/tags/recommender-systems/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/recommender-systems/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recommender-System</title>
       <link>https://humboldt-wi.github.io/blog/tags/recommender-system/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
@@ -138,11 +165,11 @@
     </item>
     
     <item>
-      <title>Recommender Systems</title>
-      <link>https://humboldt-wi.github.io/blog/tags/recommender-systems/</link>
+      <title>Sentiment Analysis</title>
+      <link>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://humboldt-wi.github.io/blog/tags/recommender-systems/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</guid>
       <description></description>
     </item>
     
@@ -782,15 +809,6 @@
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/movie-reviews/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Sentiment Analysis</title>
-      <link>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</guid>
       <description></description>
     </item>
     
