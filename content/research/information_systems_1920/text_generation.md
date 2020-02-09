@@ -45,7 +45,8 @@ LatexIT.add('p',true);
 6. [Byte Pair Encoding](#bpe)
     1. [BPE Introduction](#bpe_intro)
     2. [Byte Pair Encoding in NLP](#bpe_nlp)
-7. [Comment Classification Task](#class)
+7. [Comparison of Generated Text](#compare)
+8. [Comment Classification Task](#class)
     1. [Relation to Business Case](#class_business)
     2. [Classification Approach](#class_approach)
     3. [Classification Architecture](#class_architecture)
@@ -62,7 +63,7 @@ LatexIT.add('p',true);
     8. [Including the "Not-Sure"-Category](#class_not_sure)
     9. [Different Balancing Ratios for Generated Comments](#class_ratios)
     10. [Conclusion and Discussion of Results](#class_conclusion)
-5. [References](#ref1)    
+9. [References](#ref1)    
 
 
 
@@ -685,6 +686,19 @@ style="display:block;margin:0 auto;"
 src="/blog/img/seminar/text_generation/classification/subword_units.png"
 alt = "bpe subword units">
 
+
+
+# Comparing Generated Text <a name="compare"></a>
+
+When comparing the comments generated with the first Language Model with those generated with GPT-2, it is noticeable that GPT-2 performance significantly better. The following table shows examples of good and bad generated comments.
+
+<img align="center" width="600"
+style="display:block;margin:0 auto;" 
+src="/blog/img/seminar/text_generation/text_compare.png"
+alt = "bpe subword units">
+
+
+
 # Comment Classification Task <a name="class"></a>
 
 ## Relation to Business Case <a name="class_business"></a>
@@ -707,7 +721,7 @@ For our binary classification problem, we first construct a recurrent neural net
 <br>
 <img align="center" width="600"
 style="display:block;margin:0 auto;" 
-src="/blog/img/seminar/text_generation/classification/model_summary.PNG"
+src="/blog/img/seminar/text_generation/classification/model_summary.png"
 alt = "model summary">
 
 ### BOW - Logistic Regression-Classifier <a name="class_bow"></a>
