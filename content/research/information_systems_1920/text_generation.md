@@ -692,7 +692,7 @@ alt = "bpe subword units">
 
 When comparing the comments generated with the first Language Model with those generated with GPT-2, it is noticeable that GPT-2 performance significantly better. The following table shows examples of good and bad generated comments.
 
-<img align="center" width="600"
+<img align="center" width="750"
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/text_compare.png"
 alt = "bpe subword units">
