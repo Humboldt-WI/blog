@@ -170,6 +170,8 @@ style="display:block;margin:0 auto;"
 src="/blog/img/seminar/text_generation/embedding_overview.png"
 alt = "Overview Embeddings">
 
+*Image Source 1)*
+
 
 
 ### Language Model - GloVe<a name="textgen2"></a>
@@ -298,7 +300,9 @@ style="display:block;margin:0 auto;"
 src="/blog/img/seminar/text_generation/RNN_state1.png"
 alt = "RNN State1">
 
+*Image Source 2)*
 
+<br>
 
 In this case, the relevant information and the word to predict are close, RNNs (or CNN) can learn to use past information and find out what is likely to be the next word for this sequence. 
 Now, with a longer sentence. Let´s say we are predicting the next word in “**I grew up in Spain… I speak fluent…**”. 
@@ -310,6 +314,9 @@ style="display:block;margin:0 auto;"
 src="/blog/img/seminar/text_generation/RNN_state2.png"
 alt = "RNN State2">
 
+*Image Source 3)*
+
+<br>
 
 RNNs (or CNN) are having a hard time dealing with that since the information needs to be passed at each step and the longer the sequence is, the more likely the information is lost along the sequence. Because when adding a new word to the sequence, all existing information is being transformed by applying a function, effectively modifying what is deemed important in the sequence. 
 
@@ -339,6 +346,10 @@ style="display:block;margin:0 auto;"
 src="/blog/img/seminar/text_generation/gpt2-sizes-hyperparameters-3.png"
 alt = "GPT-2 model sizes">
 
+*Image Source 4)*
+
+<br>
+
 
 We used the smallest version of GPT-2 because of computational and time restrictions with Google Colaboratory. For this project, it made sense to leverage the GPU processing capabilities supported by Google Colaboratory. 
 
@@ -348,6 +359,10 @@ GPT-2 (Small) has 12 Decoder Blocks. Each Decoder block has a Masked Self-Attent
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/gpt2-decoder-structure.png"
 alt = "GPT-2 Decoder structure">
+
+*Image Source 5)*
+
+<br>
 
 The bigger versions of GPT-2 work the same in their inner mechanisms. The only two differences are that the bigger models have a higher model dimensionality and stack more Decoder blocks on top of each other. 
 
@@ -368,6 +383,10 @@ In the follwing explanations, I will use "token" and "word" interchangeably.
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/gpt-2-autoregression-2.gif"
 alt = "gpt2-autoregresison">
+
+*Image Source 6)*
+
+<br>
 
 
 #### Input Encoding <a name="gpt2_6"></a>
@@ -400,6 +419,9 @@ style="display:block;margin:0 auto;"
 src="/blog/img/seminar/text_generation/gpt2-embedding-positional_encoding.png"
 alt = "embeddings_positional_encoding">
 
+*Image Source 7)*
+
+<br>
 
 
 The embedding matrix will be handed together with the positional encoding matrix to the Masked Self-Attention layer of our first Decoder block. 
@@ -425,6 +447,10 @@ style="display:block;margin:0 auto;"
 src="/blog/img/seminar/text_generation/gpt2-transformer-block-vectors-2.png"
 alt = "gpt2-token-processing-overview">
 
+*Image Source 8)*
+
+<br>
+
 
 
 
@@ -445,6 +471,9 @@ These vectors are created by multiplying (dot product) the embedding by the quer
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/gpt2-self-attention-2.png"
 alt = "gpt2-self-attention-creating_q_k_v">
+
+*Image Source 9)*
+
 <br>
 
 
@@ -460,6 +489,9 @@ We proceed with splitting our **query**, **key** and **value** vectors in such a
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/gpt2-self-attention-split-attention-heads-1.png"
 alt = "gpt2-splitting-attention-heads">
+
+*Image Source 10)*
+
 <br>
 
 This procedure improves the performance of the Attention layer in two ways:
@@ -481,6 +513,9 @@ This is done for every of the 12 attention heads.
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/gpt2-self-attention-scoring-2.png"
 alt = "gpt2-attention-head-scoring">
+
+*Image Source 11)*
+
 <br>
 
 The score impacts how much focus to place on other parts of the input sentence as we encode a word at a certain position.
@@ -517,6 +552,10 @@ style="display:block;margin:0 auto;"
 src="/blog/img/seminar/text_generation/gpt2-self-attention-merge-heads-1-2.png"
 alt = "gpt2-merging-heads">
 
+*Image Source 12)*
+
+<br>
+
 
 The resulting vector is still not ready to be feed to the following Neural Network and thus we multiply (dot product) it with yet another weight matrix (learned while training). This transforms the results of the 12 attention heads to the output vector of the Self-Attention layer which can be sent to the Feed-Forward Neural Network. 
 
@@ -524,6 +563,10 @@ The resulting vector is still not ready to be feed to the following Neural Netwo
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/gpt2-self-attention-project-2.png"
 alt = "gpt2-self-attention-projection">
+
+*Image Source 13)*
+
+<br>
 
 The respective code:
 
@@ -537,6 +580,9 @@ The following example should clarify that:
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/attention_sentence_example.png"
 alt = "attention_sentence_example">
+
+*Image Source 14)*
+
 <br>
 
 
@@ -554,6 +600,9 @@ style="display:block;margin:0 auto;"
 src="/blog/img/seminar/text_generation/Self-Attentin vs Masked Self-Attention.png"
 alt = "Self-Attention vs. Masked Self-Attention">
 
+*Image Source 15)*
+
+<br>
 
 The respective code:
 
@@ -569,6 +618,10 @@ Let us look at the following example:
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/Attention_mask_example.png"
 alt = "attention_mask_example">
+
+*Image Source 16)*
+
+<br>
 
 
 We consider an input sequence of 4 words. The Query vector of each word is multiplied (dot product) by the Key vector of each word in that input sequence. This results in an intermediate score, which again gets divided by the square root of the dimension length to produce the “Scores (before softmax)”. 
@@ -592,6 +645,10 @@ style="display:block;margin:0 auto;"
 src="/blog/img/seminar/text_generation/gpt2-mlp1.gif"
 alt = "FFNN_Layer1">
 
+*Image Source 17)*
+
+<br>
+
 
 
 As in any other Neural Network inputs get multiplied by some weights. In this case the input is the resulting self-attention vector which is multiplied (dot product) with the weight matrix of the first Neural Network layer. 
@@ -602,6 +659,10 @@ The second layer transforms the result of the first layer back into a vector of 
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/gpt2-mlp-2.gif"
 alt = "FFNN_Layer2">
+
+*Image Source 18)*
+
+<br>
 
 The whole procedure starts again but with other weights for the Self-Attention layer and the Feed-Forward Neural Networks of our next Decoder blocks. 
 
@@ -626,6 +687,10 @@ style="display:block;margin:0 auto;"
 src="/blog/img/seminar/text_generation/Linear_Softmax_Output.png"
 alt = "GPT2 Output token">
 
+*Image Source 19)*
+
+<br>
+
 
 The respective code: 
 
@@ -647,6 +712,10 @@ style="display:block;margin:0 auto;"
 src="/blog/img/seminar/text_generation/classification/data_compression.png"
 alt = "data compression">
 
+*Image Source 20)*
+
+<br>
+
 
 ## Byte Pair Encoding for NLP <a name="bpe_nlp"></a>
 
@@ -658,6 +727,10 @@ In general, there are three levels, in which words can be included into a vocabu
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/classification/word_emebdding_levels.png"
 alt = "word splitting options">
+
+*Image Source 21)*
+
+<br>
 
 Additionally to the reduction of vocabulary size, there are several more advantages of splitting words into subwords. These are primarily important for our application, i.e. the generation of German text by using an “English”-language model (GPT-2). First, the language model does not fall into out-of-vocabulary-error, when a German word is presented to it. Words from the German vocabulary can be perceived as unknown to the vocabulary of the English language model. Although GPT-2 was not provided with German text during training, there exists a number of subwords that are equal in German and English. An example is given in the figure below. Since single characters are also included into the GPT-2 vocabulary, German words that cannot be constructed out of multi-character subwords are simply represented at single-character level. 
 
@@ -679,12 +752,20 @@ style="display:block;margin:0 auto;"
 src="/blog/img/seminar/text_generation/classification/bpe.png"
 alt = "bpe steps">
 
+*Image Source 22)*
+
+<br>
+
 The BPE-based subword tokenization helps us to explain, why German words are part of the GPT-2 vocabulary and does not lead to an out-of-vocabulary error. However, since the meaning of subword tokens are in most cases completely different across both languages, it cannot be explained how pre-trained language information from GPT-2 can be transferred to our German text generation process. It is not even clear whether any semantical or gramatical knowledge is transferred at all. For example, the German word “die” as female article and the English verb “(to) die” have a completely different meaning. Therefore, the pre-trained word vectors from GPT-2 are expected to be more or less useless to capture the meaning of German subwords from our comment texts (although exceptions exist, e.g. alphabet, film, hotel). That means that the majority of knowledge about grammatical and semantical dependencies of the German language has to be learned during the fine-tuning of the GPT-2 model.
 
 <img align="center" width="600"
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/classification/subword_units.png"
 alt = "bpe subword units">
+
+*Image Source 23)*
+
+<br>
 
 
 
@@ -696,6 +777,7 @@ When comparing the comments generated with the first Language Model with those g
 style="display:block;margin:0 auto;" 
 src="/blog/img/seminar/text_generation/text_compare.png"
 alt = "bpe subword units">
+
 
 
 
@@ -987,11 +1069,101 @@ Further, there are several possible changes to our approach that might influence
 * Hochreiter & Schmidhuber (1997) (https://www.bioinf.jku.at/publications/older/2604.pdf)
  hat lukas 
 * Jelinek & Mercer (1980). Interpolated estimation of Markov source parameters from sparse data.
+* Blog Post: "https://medium.com/data-science-bootcamp/understand-cross-entropy-loss-in-minutes-9fb263caee9a" by Uniqtech Co.
 
+## Image Sources
 
-## Picture References
+1) Embeddings Overview<br>
+Blog Post: FROM Pre-trained Word Embeddings TO Pre-trained Language Models — Focus on BERT<br>
+https://towardsdatascience.com/from-pre-trained-word-embeddings-to-pre-trained-language-models-focus-on-bert-343815627598
 
-*   Data Compression: https://developer.apple.com/documentation/compression
-*   Byte Pair Encoding: https://www.thoughtvector.io/blog/subword-tokenization/
-*   Word-Splitting: https://mc.ai/trends-in-input-representation-for-state-of-art-nlp-models-2019/
+2) RNN_State1<br>
+Blog Post: “Crash Course in LSTM Networks” by Jilvan Pinheiro<br>
+https://medium.com/@jilvanpinheiro/crash-course-in-lstm-networks-fbd242231873
 
+3)RNN_State2<br>
+Blog Post: “Crash Course in LSTM Networks” by Jilvan Pinheiro<br>
+https://medium.com/@jilvanpinheiro/crash-course-in-lstm-networks-fbd242231873
+
+4) GPT-2 Sizes<br>
+Blog Post: “The Illustrated GPT-2” by Jay Alammar<br>
+ http://jalammar.github.io/images/gpt2/gpt2-sizes-hyperparameters-3.png
+
+5) GPT-2 Decoder<br>
+Adapted from Blog Post: “The Illustrated GPT-2” By Jay Alammar<br>
+http://jalammar.github.io/images/xlnet/transformer-decoder-intro.png
+
+6) GPT-2 Autoregression<br>
+Blog Post: “The Illustrated GPT-2” by Jay Alammar<br> 
+http://jalammar.github.io/images/xlnet/gpt-2-autoregression-2.gif
+
+7) GPT-2 Token Embedding & Positional Encoding <br>
+Adapted from Blog Post: “The Illustrated GPT-2” by Jay Alammar<br> 
+http://jalammar.github.io/images/gpt2/gpt2-token-embeddings-wte-2.png<br>
+http://jalammar.github.io/images/gpt2/gpt2-positional-encoding.png
+
+8) GPT-2  Self-Attention Overview<br>
+Blog Post: “The Illustrated GPT-2” by Jay Alammar<br> 
+http://jalammar.github.io/images/gpt2/gpt2-transformer-block-vectors-2.png
+
+9) GPT-2  creating query, key and value vector<br>
+Blog Post: “The Illustrated GPT-2” by Jay Alammar<br>
+http://jalammar.github.io/images/gpt2/gpt2-self-attention-2.png
+
+10) GPT-2 Splitting Attention Heads<br> 
+Blog Post: “The Illustrated GPT-2” by Jay Alammar<br> 
+http://jalammar.github.io/images/gpt2/gpt2-self-attention-split-attention-heads-1.png
+
+11) GPT-2 Scoring<br>
+Blog Post: “The Illustrated GPT-2” by Jay Alammar<br>
+http://jalammar.github.io/images/gpt2/gpt2-self-attention-scoring-2.png
+
+12) GPT-2 Merging Attention Heads<br>
+Blog Post: “The Illustrated GPT-2” by Jay Alammar<br> 
+http://jalammar.github.io/images/gpt2/gpt2-self-attention-merge-heads-1.png
+
+13) GPT-2 projection/ self-attention output<br>
+Blog Post: “The Illustrated GPT-2” by Jay Alammar<br> 
+http://jalammar.github.io/images/gpt2/gpt2-self-attention-project-2.png
+
+14) Self-Attention sentence example<br>
+Blog Post: “Illustrated Transformer” by Jay Alammar<br>
+http://jalammar.github.io/images/t/transformer_self-attention_visualization.png
+
+15) GPT-2 Self-Attention vs. Masked Self-Attention<br>
+Blog Post: “The Illustrated GPT-2” by Jay Alammar<br>
+http://jalammar.github.io/images/gpt2/self-attention-and-masked-self-attention.png
+
+16) Masked self-attention scoring example<br>
+Adapted from: “The Illustrated GPT-2” by Jay Alammar<br>
+http://jalammar.github.io/images/gpt2/queries-keys-attention-mask.png<br>
+http://jalammar.github.io/images/gpt2/transformer-attention-mask.png<br>
+http://jalammar.github.io/images/gpt2/transformer-attention-masked-scores-softmax.png
+
+17) FFNN1<br>
+Blog Post: “The Illustrated GPT-2” by Jay Alammar<br>
+http://jalammar.github.io/images/gpt2/gpt2-mlp1.gif
+
+18) FFNN2<br>
+Blog Post: “The Illustrated GPT-2” by Jay Alammar<br>
+http://jalammar.github.io/images/gpt2/gpt2-mlp2.gif
+
+19) Output_linear_softmax<br>
+Blog Post: The Illustrated Transformer” by Jay Alammar<br>
+http://jalammar.github.io/images/t/transformer_decoder_output_softmax.png
+
+20) Data Compression<br>
+Apple Developer Documentation: "Compression"<br>
+https://developer.apple.com/documentation/compression
+
+21) Word Splitting Options<br>
+Blog Post: "Trends in input representation for state-of-art NLP models (2019)"<br>
+https://mc.ai/trends-in-input-representation-for-state-of-art-nlp-models-2019/
+
+22) Subword Tokenization<br>
+Blog Post: "Subword Tokenization - Handling Misspellings and Multilingual Data" by Stuart Axelbrooke<br>
+https://www.thoughtvector.io/blog/subword-tokenization/
+
+23) Subword Tokenization<br>
+Blog Post: "Subword Tokenization - Handling Misspellings and Multilingual Data" by Stuart Axelbrooke<br>
+https://www.thoughtvector.io/blog/subword-tokenization/
