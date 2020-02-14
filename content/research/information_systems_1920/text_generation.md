@@ -1081,7 +1081,7 @@ https://towardsdatascience.com/from-pre-trained-word-embeddings-to-pre-trained-l
 Blog Post: “Crash Course in LSTM Networks” by Jilvan Pinheiro<br>
 https://medium.com/@jilvanpinheiro/crash-course-in-lstm-networks-fbd242231873
 
-3)RNN_State2<br>
+3) RNN_State2<br>
 Blog Post: “Crash Course in LSTM Networks” by Jilvan Pinheiro<br>
 https://medium.com/@jilvanpinheiro/crash-course-in-lstm-networks-fbd242231873
 
