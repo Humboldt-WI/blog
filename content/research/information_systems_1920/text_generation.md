@@ -1069,7 +1069,7 @@ Further, there are several possible changes to our approach that might influence
 * Hochreiter & Schmidhuber (1997) (https://www.bioinf.jku.at/publications/older/2604.pdf)
  hat lukas 
 * Jelinek & Mercer (1980). Interpolated estimation of Markov source parameters from sparse data.
-* Blog Post: "https://medium.com/data-science-bootcamp/understand-cross-entropy-loss-in-minutes-9fb263caee9a" by Uniqtech Co.
+* Blog Post: "https://medium.com/data-science-bootcamp/understand-cross-entropy-loss-in-minutes-9fb263caee9a" by Uniqtech Co. (Accessed January 2020)
 
 ## Image Sources
 
