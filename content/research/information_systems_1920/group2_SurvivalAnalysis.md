@@ -31,7 +31,7 @@ description = "Credit risk analytics using deep learning survival analysis "
     * [4.4 Random survival forests](#rsf)
 5. [Deep Learning for Survival Analysis](#deeplearning_sa)
     * [5.1 DeepSurv](#deepsurv)
-    * [5.2 Deep Hit](#deephit)
+    * [5.2 DeepHit](#deephit)
 6. [Evaluation](#evaluation) 
     * [6.1 Concordance index](#cindex)
     * [6.2 DeepSurv - Survival curves](#deepsurv_curves)
@@ -53,7 +53,7 @@ To implement the new accounting rules banks need to build models that can evalua
 
 # 2. Introduction to Survival Analysis <a class="anchor" id="introduction_sa"></a>
 
-Survival analysis also called *time to event analysis* refers to the set of statistical analyses that takes a series of observations and attempts to estimate the time it takes for an event of interest to occur. 
+Survival analysis also called *time-to-event analysis* refers to the set of statistical analyses that takes a series of observations and attempts to estimate the time it takes for an event of interest to occur. 
 
 The development of survival analysis dates back to the 17th century with the first life table ever produced by English statistician John Graunt in 1662. The name "Survival Analysis" comes from the longstanding application of these methods since throughout centuries they were solely linked to investigating mortality rates. However, during the last decades the applications of the statistical methods of survival analysis have been extended beyond medical research to other fields [4].
 
@@ -67,7 +67,7 @@ The methods of survival analysis can also be applied in the field of engineering
 Survival analysis is a collection of data analysis methods with the outcome variable of interest time to event. In general event describes the event of interest, also called **death event**, time refers to the point of time of first observation, also called **birth event**, and time to event is the **duration** between the first observation and the time the event occurs [5].
 The subjects whose data were collected for survival analysis usually do not have the same time of first observation. A subject can enter the study at any time. Using durations ensure a necessary relativeness [6]. Referring to the business case the birth event is the initial recognition of a loan, the death event, consequently the event of interest, describes the time a customer defaulted and the duration is the time between the initial recognition and the event of default.
 
-During the observation time not every subject will experience the event of interest. Consequently it is unknown if the subjects will experience the event of interest in the future. The computation of the duration, the time from the first observation to the event of interest, is impossible. This special type kind of missing data can emerge due to two reasons:
+During the observation time not every subject will experience the event of interest. Consequently it is unknown if the subjects will experience the event of interest in the future. The computation of the duration, the time from the first observation to the event of interest, is impossible. This special type of missing data can emerge due to two reasons:
 
 1. The subject is still part of the study but has not experienced the event of interest yet.
 2. The subject experienced a different event which also led to the end of study for this subject.
@@ -76,7 +76,7 @@ In survival analysis this missing data is called **censorship** which refers to 
 
 Since for the censored subjects the death event could not be observed, the type of censorship is called right censoring which is the most common one in survival analysis. As opposed to this there is left censoring in case the birth event could not be observed. 
 
-The first reason for censored cases regarding the use case are loans that have not matured yet and did not experience default by this time at the the moment of data gathering.
+The first reason for censored cases regarding the use case are loans that have not matured yet and did not experience default at the moment of data gathering.
 
 The second reason for censorship refers to loans that did not experience the event of default but the event of early repayment. With this the loan is paid off which results in the end of observation for this loan. This kind of censoring is used in models with one event of interest [7].
 
@@ -261,7 +261,7 @@ Before running the Cox regression model including new covariates it is necessary
  
 ---
 
-## 4.4 Random Survival Forests<a class="anchor" id="rsf"></a>
+## 4.4 Random survival forests<a class="anchor" id="rsf"></a>
 
 Another feasible machine learning approach which can be used to avoid the proportional constraint of the Cox proportional hazard model is a random survival forest (RSF). 
 The random survival forest is defined as a tree method that constructs an ensemble estimate for the cumulative hazard function. Constructing the ensembles from base learners, such as trees, can substantially improve the prediction performance. [13]
@@ -494,7 +494,7 @@ This function expresses the probability that a particular event *k* occurs on or
 
 The cause-specific ranking loss function adapts the idea of concordance. A customer that experienced the event *k* on a specific time *t* should have a higher probability than a customer that will experience the event sometime after this specific time *t*. The ranking loss function therefore compares pairs of customers that experienced the same event of interest and penalizes an incorrect ordering of pairs.
 
-After the training process the saved optimised hyper-parameters as well as the corresponding trained model can be used for the final prediction on the test dataset.
+After the training process the saved optimised hyperparameters as well as the corresponding trained model can be used for the final prediction on the test dataset.
 
 {{< gist dariasmorodina e428f7edfe75ca254b73bb20b88cd721 >}}
 
@@ -505,7 +505,7 @@ After the training process the saved optimised hyper-parameters as well as the c
 
 ## 6.1 Concordance index<a class="anchor" id="cindex"></a>
 
-For the evaluation of survival analysis models the performance measures need to take censored data into account. The most common evaluation metric in survival analysis is the **concordance index**. It shows the model's ability to correctly provide a reliable ranking of the survival times based on the individual risk scores. The idea behind concordance is that a subject that dies at time *t* should have a higher risk at time *t* than a subject who survives beyond time *t*. 
+For the evaluation of survival analysis models the performance measures need to take censored data into account. The most common evaluation metric in survival analysis is the **concordance index** (c-index). It shows the model's ability to correctly provide a reliable ranking of the survival times based on the individual risk scores. The idea behind concordance is that a subject that dies at time *t* should have a higher risk at time *t* than a subject who survives beyond time *t*. 
 
 * The concordance index expresses the proportion of concordant pairs in a dataset, thus estimates the probability that, for a random pair of individuals, the predicted survival times of the two individuals have the same ordering as their true survival times. A concordance index of 1 represents a model with perfect prediction, an index of 0.5 is equal to random prediction. [23]
 
@@ -535,12 +535,13 @@ The second step is to check if these possible pairs are concordant. The first th
 The dataset used for the blog post features the case of right-censoring but the reason for censoring is that these customers are still in the phase of repaying and their loans have not matured yet. Therefore the time of censoring is equal to the last observation time. Due to this the case that some customer default after a customer was censored is not possible. The example of the concordance index in case of right-censoring is shown for the sake of completeness since other survival datasets can have this case. A medical dataset for example can have data about patients with a heart disease. If a patient dies due to different reasons than a heart disease this patient would be censored. This can happen during the observation time and other patients can die due to a heart disease at a later time.
 <br>
 <center><b>Model evaluation</b></center>
-<img align="center" width="615" height="405"
+<img align="center" width="615" height="400"
      style="display:block;margin:0 auto;" 
-     src="/blog/img/seminar/group2_SurvivalAnalysis/Evaluation.png">
+     src="/blog/img/seminar/group2_SurvivalAnalysis/evaluation_table.png">
 <br>
 <br>
-The table shows the concordance indices of the models trained with the mortgage dataset. The benchmark models, Cox Proportional Hazard and Random Survival Forest, start with a convenient performance but are outperformed by the deep learning models whereas the DeepHit model achieved the highest concordance index. 
+The table shows the concordance indices of the models trained with the mortgage dataset. The benchmark models, Cox Proportional Hazard and Random survival forests, start with a convenient performance but are outperformed by the deep learning models whereas the DeepHit model achieved the highest concordance index. 
+<br>
 <br>
 After evaluating the performance of the models we have a look into the output of the two best performing models, DeepSurv and DeepHit.
 
@@ -621,6 +622,8 @@ Mostly the DeepHit models for single as well as for competing risks can already 
      src="/blog/img/seminar/group2_SurvivalAnalysis/ECLformula.png">
 <br>
 <br>
+Source [27]
+
 The output of survival analysis provides the probability values to fill the part of the formula in the above red box. The more precise the prediction of the survival analysis models the more exact calculations of the expected credit losses is possible which has an impact on the bank's income statement.
 
 ---
@@ -708,3 +711,5 @@ Eugene H. Blackstone and Michael S. Lauer (2008): Random Survival Forests - http
 [25] David Faraggi  Richard Simon (1995): A neural network model for survival data - https://onlinelibrary.wiley.com/doi/abs/10.1002/sim.4780140108
 
 [26] WTTE-RNN - Less hacky churn prediction - https://ragulpr.github.io/2016/12/22/WTTE-RNN-Hackless-churn-modeling/
+
+[27] Bernd Engelmann (April 2018) - Calculating Lifetime Expected Loss for IFRS 9: Which Formula is Correct? 
