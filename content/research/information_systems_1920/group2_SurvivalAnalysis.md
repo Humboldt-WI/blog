@@ -24,9 +24,9 @@ description = "Credit risk analytics using deep learning survival analysis "
     * [2.2 Survival function](#survival_function)
     * [2.3 Hazard function](#hazard_function)
 3. [Dataset](#dataset)
-4. [Standard Methods in Survival Analysis](#standard_methods)
+4. [Standard methods in Survival Analysis](#standard_methods)
     * [4.1 Kaplan - Meier estimator](#kmf)
-    * [4.2 Cox Proportional Hazard Model](#coxph)
+    * [4.2 Cox proportional hazards model](#coxph)
     * [4.3 Time-varying Cox regression](#time_cox)
     * [4.4 Random survival forests](#rsf)
 5. [Deep Learning for Survival Analysis](#deeplearning_sa)
@@ -87,7 +87,7 @@ Following there are a few examples of birth and death events as well as possible
 
 ---
 
-## 2.2 Survival Function<a class="anchor" id="survival_function"></a>
+## 2.2 Survival function<a class="anchor" id="survival_function"></a>
 
 The set of statistic methods related to survival analysis has the goal to estimate the survival function from survival data. The survival function $S(t)$ defines the probability that a subject of interest will survive beyond time $t$, or equivalently, the probability that the duration will be at least $t$ [8]. The survival function of a population is defined as follows:
 
@@ -100,7 +100,7 @@ At the start of the study ($t=0$), no subject has experienced the event yet. The
 
 ---
 
-## 2.3 Hazard Function<a class="anchor" id="hazard_function"></a>
+## 2.3 Hazard function<a class="anchor" id="hazard_function"></a>
 
 Derived from the survival function the hazard function $h(t)$ gives the probability of the death event occurring at time $t$, given that the subject did not experience the death event until time $t$. It describes the instantaneous potential per unit time for the event to occur [10].
 
@@ -124,17 +124,17 @@ The main goal of survival analysis is to estimate and interpret survival and/or 
 # 3. Dataset<a class="anchor" id="dataset"></a>
 
 We used the real-world dataset of 50.000 US mortgage borrowers which was provided by International Financial Research (www.internationalfinancialresearch.org). 
-The data is given in a "snapshot" panel format and represents a collection of US residential mortgage portfolios over 60 periods. Loan can originate before the initial start of this study and paid after it will be finished as well.
+The data is given as a "snapshot" in panel format and represents a collection of US residential mortgage portfolios over 60 periods. Loan can originate before the initial start of this study and be paid after it will be finished as well.
 
 When a person applies for mortgage, lenders (banks) want to know the value of risk they would take by loaning money. 
-In the given dataset we are able to inspect this process using the key information from following features:
+In the given dataset we are able to inspect this process using the key information from the following features:
 
-* various timestamps for loan origination, future maturity and first appearance in the survival study
-* outside factors like gross domestic product (GDP) or unemployment rates at observation time
-* average price index at observation moment
-* FICO score for each individual: the higher the score, the lower the risk (a "good" credit score is considered to be in the 670-739 score range)
-* interest rates for every issued loan
-* since our object of analysis is mortgage data we have some insights for inquired real estate types (home for a single family or not, is this property in area with urban development etc.) which are also playing an important role for loan amount.
+* various timestamps for loan origination, future maturity and first appearance in the survival study,
+* outside factors like gross domestic product (GDP) or unemployment rates at observation time,
+* average price index at observation moment,
+* FICO score for each individual: the higher the score, the lower the risk (a "good" credit score is considered to be in the 670-739 score range),
+* interest rates for every issued loan,
+* since our object of analysis is mortgage data we have some insights for inquired real estate types (home for a single family or not, is this property in area with urban development etc.) which are also playing an important role for prospective loan amount.
 
 In order to use our data for survival analysis, we need to specify the characteristic terms. The **birth event** is the time of the initial recognition of the mortgage, the **death event** is the default of the customer. The **duration** is the time between the birth and death event. Some customers have not defaulted yet, so they will be labelled "censored" in further analysis.
 
@@ -154,7 +154,7 @@ The distribution of the event of interest (in graph below) shows that more than 
 <br>
 Survival analysis requires a specific dataset format:
 
-* $E_i$ is the event indicator such that $E_i=1$, if an event happens and $E_i=0$ in case of censoring (column *default_time*)
+* $E_i$ is the event indicator such that $E_i = 1$, if an event happens, and $E_i = 0$ in case of censoring (column *default_time*)
 * $T_i$ is the observed duration (*total_obs_time* column)
 * $X_i$ is a $p$−dimensional feature vector (covariates starting from the third column).
 
@@ -162,7 +162,7 @@ Survival analysis requires a specific dataset format:
 
 ---
 
-# 4. Standard Methods in Survival Analysis<a class="anchor" id="standard_methods_sa"></a>
+# 4. Standard methods in Survival Analysis<a class="anchor" id="standard_methods_sa"></a>
 
 The standard ways for estimation can be classified into the three main groups: **non-parametric**, **semi-parametric**, and **parametric** approaches. The choice which method to use should be guided by the dataset design and the research question of interest. It is feasible to use more than one approach.
 
@@ -182,7 +182,7 @@ The key idea of the Kaplan-Meier estimator is to break the estimation of the sur
 $$ \hat{S(t)} = \prod_{i: t_i <= t}{\frac{n_i - d_i}{n_i}} ,$$
 where $n_i$ is a number of individuals who are at risk at time point $t_i$ and $d_i$ is a number of subjects that experienced the event at time $t_i$.
 
-When using Kaplan-Meier estimate, some assumptions must be taken into account:
+When using Kaplan-Meier estimator, some assumptions must be taken into account:
 
 * All observations - both censored and defaulted - are used in estimation
 * There is no cohort effect on survival, so the subjects have the same survival probability regardless of their nature and time of appearance in study
@@ -200,11 +200,11 @@ As an example, in the plot below, it is clear that for time $t = 10$ months the 
 
 ---
 
-## 4.2 Cox Proportional Hazard Model<a class="anchor" id="coxph"></a>
+## 4.2 Cox proportional hazards Model<a class="anchor" id="coxph"></a>
 
-The Cox proportional hazard model (CoxPH) involves not only time and censorship features but also additional data as covariates (for our research all features of the dataset were used). 
+The Cox proportional hazards model (CoxPH) involves not only time and censorship features but also additional data as covariates (for our research all features of the dataset were used). 
 
-The Cox proportional hazard model (1972) is widely used in multivariate survival statistics due to a relatively easy implementation and informative interpretation.
+The Cox proportional hazards model (1972) is widely used in multivariate survival statistics due to a relatively easy implementation and informative interpretation.
 It describes relationships between survival distribution and covariates. The dependent variable is expressed by the hazard function (or default intensity) as follows:
 
 <img align="center" 
@@ -263,7 +263,7 @@ Before running the Cox regression model including new covariates it is necessary
 
 ## 4.4 Random survival forests<a class="anchor" id="rsf"></a>
 
-Another feasible machine learning approach which can be used to avoid the proportional constraint of the Cox proportional hazard model is a random survival forest (RSF). 
+Another feasible machine learning approach which can be used to avoid the proportional constraint of the Cox proportional hazards model is a random survival forest (RSF). 
 The random survival forest is defined as a tree method that constructs an ensemble estimate for the cumulative hazard function. Constructing the ensembles from base learners, such as trees, can substantially improve the prediction performance. [13]
 
 - Basically, RSF computes a random forest using the log-rank test as the splitting criterion. It calculates the cumulative hazards of the leaf nodes in each tree and averages them in following ensemble
@@ -285,7 +285,7 @@ Over the past years, a significant amount of research in machine learning has be
 <br>
 We can define particular groups of methods regading deep learning in survival analysis. 
 
-* The first is based on further development of the baseline Cox Proportional hazard model: **DeepSurv** (section 5.1), **Cox-nnet** (extension of CoxPH on specific genetics datasets and regularizations). [16]
+* The first is based on further development of the baseline Cox proportional hazards model: **DeepSurv** (section 5.1), **Cox-nnet** (extension of CoxPH on specific genetics datasets and regularizations). [16]
 * As an alternative approach, fully parametric survival models which use RNN to sequentially predict a distribution over the time to the next event:  **RNN-SURV**,   **Weibull Time-To-Event RNN** etc. [17] [26] 
 * On the other hand, there are some new advanced deep learning neural networks, such as **DeepHit**, developed to also process the survival data with competing risks (section 5.2).
 
@@ -293,11 +293,11 @@ We can define particular groups of methods regading deep learning in survival an
 
 ## 5.1 DeepSurv<a class="anchor" id="deepsurv"></a>
 
-The initial adaptation of survival analysis to meet neural networks (Farragi and Simon, 1995) was based on generalization of the Cox proportional hazard model with only a single hidden layer. The main focus of the initial model was to learn relationships between primary covariates and the corresponding hazard risk function. Following development of the neural network architecture with Cox regression proved that in real-world large datasets with non-linear interactions between variables it is rather complicated to keep the main proportionality assumption of Cox regression model. However, Farragi and Simon's network extended this non-linearity quality. [25] 
+The initial adaptation of survival analysis to meet neural networks (Farragi and Simon, 1995) was based on generalization of the Cox proportional hazards model with only a single hidden layer. The main focus of the initial model was to learn relationships between primary covariates and the corresponding hazard risk function. Following development of the neural network architecture with Cox regression proved that in real-world large datasets with non-linear interactions between variables it is rather complicated to keep the main proportionality assumption of Cox regression model. However, Farragi and Simon's network extended this non-linearity quality. [25] 
 
 ---
 
-A few years ago, the more sophisticated deep learning architecture, DeepSurv, was proposed by J.L. Katzman et al. as an addition to Simon-Farragi's network. It showed improvements of the Cox PH model and the performance metrics when dealing with non-linear data [12]. This architecture was able to handle the main proportional hazards constraint. In addition to that, while estimating the log-risk function $h(X)$ with the Cox PH model we used the linear combination of static features from given data $X$ and the baseline hazards. With DeepSurv we can also drop this assumption out.
+A few years ago, the more sophisticated deep learning architecture, DeepSurv, was proposed by J.L. Katzman et al. as an addition to Simon-Farragi's network. It showed improvements of the CoxPH model and the performance metrics when dealing with non-linear data [12]. This architecture was able to handle the main proportional hazards constraint. In addition to that, while estimating the log-risk function $h(X)$ with the CoxPH model we used the linear combination of static features from given data $X$ and the baseline hazards. With DeepSurv we can also drop this assumption out.
 
 >**DeepSurv is a deep feed-forward neural network** which estimates each individual's effect on their *hazard rates* with respect to parametrized weigths of the network $\theta$. Generally, the structure of this neural network is quite straightforward. Comparing to Simon-Farragi network, DeepSurv is a configurable with multiple number of hidden layers.
 
@@ -550,7 +550,7 @@ After evaluating the performance of the models we have a look into the output of
 
 ## 6.2 DeepSurv - Survival curves<a class="anchor" id="deepsurv_curves"></a>
 
-As we have already learned before in part 4.1 about Kaplan-Meier estimate, **survival curve** represents a statistical graphical interpetation of the survival behaviour of subjects (i.e. mortgage borrowers) in the form of a graph showing percentage surviving vs time. This allows to examine and compare estimated survival times for each individual (except Kaplan-Meier model) and define global patterns in data (in example, sharp lines which go close to 0% propability may have certain explaination). 
+As we have already learned before in part 4.1 about Kaplan-Meier estimator, **survival curve** represents a statistical graphical interpetation of the survival behaviour of subjects (i.e. mortgage borrowers) in the form of a graph showing percentage surviving vs time. This allows to examine and compare estimated survival times for each individual (except Kaplan-Meier model) and define global patterns in data (in example, sharp lines which go close to 0% propability may have certain explaination). 
 
 The graph below represents the estimated survival lifetimes for 15 individual mortgage borrowers from the test dataset using the output of the DeepSurv model. According to the graph, for a significant amount of customers the predicted survival times decrease within the first two years. For instance, for the customer with ID 5 the survival function shows that after 15 months he has a probability of roughly 50% to survive beyond 15 months. Whereas the survival function of customer with ID 9 at the same point in time shows that he has only 25% chance to survive beyond this time.
 
@@ -630,13 +630,13 @@ The output of survival analysis provides the probability values to fill the part
 
 # 7. Conclusion<a class="anchor" id="conclusion"></a>
 
-We hope that our blog post gives everyone a clear overview of survival analysis and probably inspires to use it in further academic or professional work. The standard survival statistics, such as the Cox PH model, already allows to gain a meaningful insight from data without any sophisticated implementation of the model. 
+We hope that our blog post gives everyone a clear overview of survival analysis and probably inspires to use it in further academic or professional work. The standard survival statistics, such as the CoxPH model, already allows to gain a meaningful insight from data without any sophisticated implementation of the model. 
 
-The advanced extension of survival analysis models using machine learning techniques gives more methodological freedom. With proper hyperparameter tuning process it is possible to achieve more precise predictions of the time-to-event target variable. 
+The advanced extension of survival analysis models using machine learning practices gives more methodological freedom. With proper hyperparameter tuning process it is possible to achieve more precise predictions of the time-to-event target variable. 
 
 The format of the dataset is exceptionally important. In order to apply survival analysis techinques, the data has to meet the requirements of the characteristic survival analysis data points: event, duration and valuable features.
 
-The implementation of more sophisticated survival analysis models in Python is still in development. With increasing popularity of this methods in different industries we hope that it is just a question of time that the variety of functions within the survival analysis packages will rise. 
+The implementation of more complex survival analysis models in Python is still in development. With increasing popularity of this methods in different industries we hope that it is just a question of time that the variety of functions within the survival analysis packages will rise. 
 
 *Thanks for reading our blogpost and surviving it :)*
 
