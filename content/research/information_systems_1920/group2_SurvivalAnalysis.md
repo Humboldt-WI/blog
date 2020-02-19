@@ -480,7 +480,7 @@ The loss function of the DeepHit model is the sum of two terms.
 $L_{1}$ is the log-likelihood of the joint distribution of the first hitting time and event. This function is modified in a way that it captures censored data and considers competing risks if necessary. 
 The log-likelihood function also consists out of two terms. The first term captures the event and the time, the event occurred, for the uncensored customers. The second term captures the time of censoring for the censored customers giving the information that the customer did not default up to that time.
 
-$L_{2}$ is a combination of cause-specific ranking loss functions since DeepHit is a multi-task learning model and therefore needs cause-specific loss functions for training. The ranking loss function incorporates the ** estimated cumulative incidence **  function calculated at the time the specific event occurred. The formula of the cumulative incidence function (CIF) is as follows:
+$L_{2}$ is a combination of cause-specific ranking loss functions since DeepHit is a multi-task learning model and therefore needs cause-specific loss functions for training. The ranking loss function incorporates the ** estimated cumulative incidence function ** calculated at the time the specific event occurred. The formula of the cumulative incidence function (CIF) is as follows:
 
 <img align="center" width ="320"
      style="display:block;margin:0 auto;" 
