@@ -281,9 +281,8 @@ Here is a simple example of building RSF to test this model on our survival data
 # 5. Deep Learning for Survival Analysis<a class="anchor" id="deeplearning_sa"></a>
 
 Over the past years, a significant amount of research in machine learning has been conducted in combining survival analysis with neural networks (the picture below helps to get an insight of this great scope of methods)[18]. With the development of deep learning technologies and computational capacities it is possible to achieve outstanding results and implement a range of architectures on sizeable datasets with different underlying processes and more individual learning inside.
-<br>
-<br>
-We can define particular groups of methods regading deep learning in survival analysis. 
+
+We can define particular groups of methods regading deep learning in survival analysis: 
 
 * The first is based on further development of the baseline Cox proportional hazards model: **DeepSurv** (section 5.1), **Cox-nnet** (extension of CoxPH on specific genetics datasets and regularizations). [16]
 * As an alternative approach, fully parametric survival models which use RNN to sequentially predict a distribution over the time to the next event:  **RNN-SURV**,   **Weibull Time-To-Event RNN** etc. [17] [26] 
@@ -299,16 +298,17 @@ The initial adaptation of survival analysis to meet neural networks (Farragi and
 
 A few years ago, the more sophisticated deep learning architecture, DeepSurv, was proposed by J.L. Katzman et al. as an addition to Simon-Farragi's network. It showed improvements of the CoxPH model and the performance metrics when dealing with non-linear data [12]. This architecture was able to handle the main proportional hazards constraint. In addition to that, while estimating the log-risk function $h(X)$ with the CoxPH model we used the linear combination of static features from given data $X$ and the baseline hazards. With DeepSurv we can also drop this assumption out.
 
->**DeepSurv is a deep feed-forward neural network** which estimates each individual's effect on their *hazard rates* with respect to parametrized weigths of the network $\theta$. Generally, the structure of this neural network is quite straightforward. Comparing to Simon-Farragi network, DeepSurv is a configurable with multiple number of hidden layers.
+**DeepSurv is a deep feed-forward neural network** which estimates each individual's effect on their *hazard rates* with respect to parametrized weigths of the network $\theta$. Generally, the structure of this neural network is quite straightforward. Comparing to Simon-Farragi network, DeepSurv is a configurable with multiple number of hidden layers.
 
-- The input data $X$ is represented as set of observed covariates
-- Hidden layers in this model are fully-connected nonlinear activation layers with not necessarily the same number of nodes in each of them, followed by dropout layers
+- The input data $X$ is represented as set of observed covariates,
+- Hidden layers in this model are fully-connected nonlinear activation layers with not necessarily the same number of nodes in each of them, followed by dropout layers,
 - The output layer has only one node with a linear activation function which gives the output $\hat{h}_{\theta}$ (log-risk hazard estimations).
 
 {{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/deep_surv_arch.jpg" width="900" link="group2_SurvivalAnalysis/deep_surv_arch.jpg">}}
 
 ---
-Previously, the optimization of the classical Cox regression runs due to a optimization of the Cox **partial likelihood**. This likelihood is defined with the following formula with parametrized weights $\beta$:
+
+Previously, the optimization of the classical Cox regression runs due to a optimization of the Cox `partial likelihood`. This likelihood is defined with the following formula with parametrized weights $\beta$:
 
 <img align="center" 
      style="display:block;margin:0 auto;" width="330"
@@ -316,7 +316,7 @@ Previously, the optimization of the classical Cox regression runs due to a optim
 
 where $t_i, e_i, x_i$ are time, event, baseline covariate data in the i-th observation respectivelly. More explicitely, this is a product of probabilities at the time $t_i$ for the i-th observation given the set of risk individuals ($R$) that are not censored and have not experienced the event of interest before time $t_i$.
 
-The **loss function** for this network is a negative log partial likelihood $ L_c(\beta)$ from the CoxPH (equation above) with an additional regularization:
+The `loss function` for this network is a negative log partial likelihood $ L_c(\beta)$ from the CoxPH (equation above) with an additional regularization:
 
 <img align="center" 
      style="display:block;margin:0 auto;" width="580"
@@ -335,31 +335,30 @@ To built the DeepSurv model we discovered two implentational options:
 1. https://github.com/jaredleekatzman/DeepSurv - official repository from the discussed paper. However, the packages inside were not updated recently and range of useful functions is not available.
 2. https://github.com/havakv/pycox - based on PyTorch environment, computationaly fast approach to run survival analysis models. This package is used for DeepSurv.
 
->Firstly, we split survival dataset into *train*, *test*, *validation* subsets, then standardize the given data (only the continuous variables) since our output layer is a linear Cox regression activation and convert these subsets into arrays:
+Firstly, we split survival dataset into *train*, *test*, *validation* subsets, then standardize the given data (only the continuous variables) since our output layer is a linear Cox regression activation and convert these subsets into arrays:
 
 {{< gist dariasmorodina b132e43fcc603645ad01cf60960481ee >}}
 
->Some transformations of the target variable with *event* and *duration* information:
+Some transformations of the target variable with *event* and *duration* information:
 
 {{< gist dariasmorodina 386038e0897aceae337584f8dd331690 >}}
 
-- Building the Vanilla MLP with **four hidden layers** 
-- **Batch normalization** (for stabilization and reducing data noise), 
-- **Dropout** 40% between the hidden layers, 
-- **ReLU** were chosen as an optimal activation layer (alternatively, Scaled Exponentioal Linear Units (SELU) can be implemented), 
-- **Adam optimizer** was used for model training, without setting initial learning rate value.
+- Building the Vanilla MLP with four hidden layers, 
+- Batch normalization (for stabilization and reducing data noise), 
+- Dropout 40% between the hidden layers, 
+- ReLU were chosen as an optimal activation layer (alternatively, Scaled Exponentioal Linear Units (SELU) can be implemented), 
+- Adam optimizer was used for model training, without setting initial learning rate value.
 
 {{< gist dariasmorodina b134be43ce5b9d1082c866b64c927658 >}}
 
->However, the learning rate was too high and, hence, we put a 0.001 value, in order to improve the performance. 
-
 {{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/deepsurv_train.png" width="860" link="group2_SurvivalAnalysis/deepsurv_train.png">}}
+
+However, the learning rate was too high and, hence, we put a 0.001 value, in order to improve the performance: 
 
 {{< gist dariasmorodina b8257c12a8646a61efbffe006c40654e >}}
 
->The table below shows the set of hyperparameters used in the training and optimization. Since there was no built-in hyperparameter search option in *pycox* package, this parameters were derived manually.
-<br>
-<br>
+The table below shows the set of hyperparameters used in the training and optimization. Since there was no built-in hyperparameter search option in *pycox* package, this parameters were derived manually.
+
 The final choice (lr = 0.001, batch_size = 128, number_nodes = 256) was based on the smallest loss value (it equals -7.2678223). Comparing to the standard CoxPH (where the loss was $\approx$ -14.1) it is a significant improvement.
 
 <img align="center" width="475" height="300"
@@ -471,6 +470,7 @@ The chosen parameters are forwarded to the function *get_valid_performance* alon
 {{< gist dariasmorodina 0daf888f51e96df907e1a378f0cf052b >}}
 
 DeepHit is build with Xavier initialisation and dropout for all the layers and is trained by back propagation via the Adam optimizer. To train a survival analysis model like DeepHit a loss function has to be minimised that is especially designed to handle censored data.
+
 The loss function of the DeepHit model is the sum of two terms. 
 
 <img align="center" width="155"
@@ -630,7 +630,7 @@ The output of survival analysis provides the probability values to fill the part
 
 # 7. Conclusion<a class="anchor" id="conclusion"></a>
 
-We hope that our blog post gives everyone a clear overview of survival analysis and probably inspires to use it in further academic or professional work. The standard survival statistics, such as the CoxPH model, already allows to gain a meaningful insight from data without any sophisticated implementation of the model. 
+We hope that our blog post gives everyone a clear overview of survival analysis and probably inspires to use it in further academic or professional work. The standard survival statistics, such as the Cox proportional hazards model, already allows to gain a meaningful insight from data without any sophisticated implementation of the model. 
 
 The advanced extension of survival analysis models using machine learning practices gives more methodological freedom. With proper hyperparameter tuning process it is possible to achieve more precise predictions of the time-to-event target variable. 
 
