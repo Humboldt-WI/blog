@@ -541,9 +541,9 @@ The dataset used for the blog post features the case of right-censoring but the 
      src="/blog/img/seminar/group2_SurvivalAnalysis/evaluation_table.png">
 <br>
 <br>
-The table shows the concordance indices of the models trained with the mortgage dataset. The benchmark models, Cox Proportional Hazard and Random survival forests, start with a convenient performance but are outperformed by the deep learning models whereas the DeepHit model achieved the highest concordance index. 
-<br>
-<br>
+
+The table shows the concordance indices of the models trained with the mortgage dataset. The benchmark models, CoxPH and Random survival forests, start with a convenient performance but are outperformed by the deep learning models whereas the DeepHit model achieved the highest concordance index. 
+
 After evaluating the performance of the models we have a look into the output of the two best performing models, DeepSurv and DeepHit.
 
 
