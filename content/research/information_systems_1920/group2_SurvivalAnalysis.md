@@ -94,6 +94,7 @@ The set of statistic methods related to survival analysis has the goal to estima
 $$S(t) = Pr(T > t)$$
 
 $T$ is the random lifetime taken from the population under study and cannot be negative. With regard to the business case it is the amount of time a customer is able to pay his loan rates, he is not defaulting. The survival function $S(t)$ outputs values between 0 and 1 and is a non-increasing function of $t$.
+
 At the start of the study ($t=0$), no subject has experienced the event yet. Therefore the probability $S(0)$ of surviving beyond time zero is 1. $S(\infty) = 0$ since if the study period were limitless, presumably everyone eventually would experience the event of interest and the probability of surviving would ultimately fall to 0. In theory the survival function is smooth, in practice the events are observed on a concrete time scale, e.g. days, weeks, months, etc., such that the graph of the survival function is like a step function [9].
 
 {{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/survival_function.png" width="800" caption="(Source: [9a])" link="//blog/img/seminar/group2_SurvivalAnalysis/survival_function.png">}}
@@ -124,17 +125,17 @@ The main goal of survival analysis is to estimate and interpret survival and/or 
 # 3. Dataset<a class="anchor" id="dataset"></a>
 
 We used the real-world dataset of 50.000 US mortgage borrowers which was provided by International Financial Research (www.internationalfinancialresearch.org). 
-The data is given as a "snapshot" in panel format and represents a collection of US residential mortgage portfolios over 60 periods. Loan can originate before the initial start of this study and be paid after it will be finished as well.
+The data is given as a "snapshot" in a panel format and represents a collection of US residential mortgage portfolios over 60 periods. Loan can originate before the initial start of this study and be paid after it will be finished as well.
 
 When a person applies for mortgage, lenders (banks) want to know the value of risk they would take by loaning money. 
 In the given dataset we are able to inspect this process using the key information from the following features:
 
-* various timestamps for loan origination, future maturity and first appearance in the survival study,
-* outside factors like gross domestic product (GDP) or unemployment rates at observation time,
-* average price index at observation moment,
-* FICO score for each individual: the higher the score, the lower the risk (a "good" credit score is considered to be in the 670-739 score range),
-* interest rates for every issued loan,
-* since our object of analysis is mortgage data we have some insights for inquired real estate types (home for a single family or not, is this property in area with urban development etc.) which are also playing an important role for prospective loan amount.
+* Various timestamps for loan origination, future maturity and first appearance in the survival study.
+* Outside factors like gross domestic product (GDP) or unemployment rates at observation time.
+* Average price index at observation moment.
+* FICO score for each individual: the higher the score, the lower the risk (a "good" credit score is considered to be in the 670-739 score range).
+* Interest rates for every issued loan.
+* Since our object of analysis is mortgage data we have some insights for inquired real estate types (home for a single family or not, is this property in area with urban development etc.) which are also playing an important role for prospective loan amount.
 
 In order to use our data for survival analysis, we need to specify the characteristic terms. The **birth event** is the time of the initial recognition of the mortgage, the **death event** is the default of the customer. The **duration** is the time between the birth and death event. Some customers have not defaulted yet, so they will be labelled "censored" in further analysis.
 
@@ -170,7 +171,7 @@ The standard ways for estimation can be classified into the three main groups: *
 - In the **non-parametric** methods there are no dependencies on the form of parameters in underlying distributions. Mostly, the non-parametric approach is used to describe survival probabilities as function of time and to give an average view of individual's population. The most popular univariate method is the **Kaplan-Meier estimator** and used as first step in survival descriptive analysis (section 4.1).
 - To the **semi-parametric** methods corresponds the **Cox regression model** which is based both on parametric and non-parametric components (section 4.2).
 
-Generally, the range of available statistical methods which can be implemented in survival analysis is very extensive and a selection of them is introduced in the scope of our blog post. The diagram below helps to briefly familarize with them.
+Generally, the range of available statistical methods which can be implemented in survival analysis is very extensive and a selection of them is introduced in the scope of our blog post. The diagram below helps to briefly familarize with them:
 
 {{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/overall1.jpg"  caption="(Source: [18])" link="group2_SurvivalAnalysis/overall1.jpg">}}
 
@@ -184,16 +185,16 @@ where $n_i$ is a number of individuals who are at risk at time point $t_i$ and $
 
 When using Kaplan-Meier estimator, some assumptions must be taken into account:
 
-* All observations - both censored and defaulted - are used in estimation
-* There is no cohort effect on survival, so the subjects have the same survival probability regardless of their nature and time of appearance in study
-* Individuals who are censored have the same survival probabilities as those who are continued to be examined
+* All observations - both censored and defaulted - are used in estimation.
+* There is no cohort effect on survival, so the subjects have the same survival probability regardless of their nature and time of appearance in study.
+* Individuals who are censored have the same survival probabilities as those who are continued to be examined.
 * The survival probability is equal for all subjects.
 
-The main disadvantage of this method is that it cannot estimate survival probability considering all covariates in the data (it is an *univariate* approach) which shows no individual estimations but theoverall population survival distribution. In comparison, semi- and parametric models allow to analyse all covariates and estimate $S(t)$ with respect to them.
+The main disadvantage of this method is that it cannot estimate survival probability considering all covariates in the data (it is an *univariate* approach) which shows no individual estimations but the overall population survival distribution. In comparison, semi- and parametric models allow to analyse all covariates and estimate $S(t)$ with respect to them.
 
 {{< gist dariasmorodina d2734217afc6a5585451cbefa2526fcb >}}
 
->The estimated $S(t)$ can be plotted as a stepwise function of overall population of individuals.
+The estimated $S(t)$ can be plotted as a stepwise function of overall population of individuals.
 As an example, in the plot below, it is clear that for time $t = 10$ months the probability that borrowers survive beyond this time is about 75%.
 
 {{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/kmf.png" width="850" height="450" link="group2_SurvivalAnalysis/kmf.png">}}
@@ -212,8 +213,8 @@ It describes relationships between survival distribution and covariates. The dep
      src="/blog/img/seminar/group2_SurvivalAnalysis/Cox.gif">
 
 * This method is considered as semi-parametric: it contains a parametric set of covariates and a non-parametric component $\lambda_{0}(t)$ which is called `baseline hazard` , the value of hazard when all covariates are equal to 0. 
-* The second component are `partial hazards` or `hazard ratio` and they define the hazard effect of observed covariates on the baseline hazard $\lambda_{0}(t)$
-* These components are estimated by partial likelihood and are time-invariant
+* The second component are `partial hazards` or `hazard ratio` and they define the hazard effect of observed covariates on the baseline hazard $\lambda_{0}(t)$.
+* These components are estimated by partial likelihood and are time-invariant.
 * In general, the Cox model makes an estimation of log-risk function $\lambda(t|x)$ as a linear combination of its static covariates and baseline hazard. 
 
 ##### Practical interpretation of Cox regression:
@@ -228,17 +229,17 @@ The essential component of the CoxPH is the **proportionality assumption**: the 
 
 Consequently, more important properties of the CoxPH can be derived:
 
-* The times when individuals may experience the event of interest are independent from each other
-* Hazard curves of any individuals do not cross with each other
+* The times when individuals may experience the event of interest are independent from each other.
+* Hazard curves of any individuals do not cross with each other.
 * There is a multiplicative linear effect of the estimated covariates on the hazard function.
 
 ---
 
-However, for the given dataset this proportinality property does not hold due to a violation of some covariates. Some additional methods can overcome this violation. 
+However, for the given dataset this proportinality property does not hold due to a violation of some covariates. Some additional methods can overcome this violation:
 
-* The first is binning these variables into smaller intervals and stratifying on them. We keep in the model the covariates which do not obey the proportional assumption. The problem that can arise in this case is an information loss (since different values are now binned together)
-* We can expand the time-varying data and apply a special type of Cox regression with continuous variables
-* Random survival forests
+* The first is binning these variables into smaller intervals and stratifying on them. We keep in the model the covariates which do not obey the proportional assumption. The problem that can arise in this case is an information loss (since different values are now binned together).
+* We can expand the time-varying data and apply a special type of Cox regression with continuous variables.
+* Random survival forests.
 * Extension with neural networks.
 
 ---
@@ -255,7 +256,7 @@ Before running the Cox regression model including new covariates it is necessary
 
 {{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/subset_data_time.png" width="900" link="group2_SurvivalAnalysis/subset_data_time.png">}}
 
->Fitting the Cox model on modified time-varying data involves using gradient descent (as well as for standard proportional hazard model). Special built-in functions in *lifelines* package take extra effort to help with the convergence of the data (high collinearity between some variables). [8]
+Fitting the Cox model on modified time-varying data involves using gradient descent (as well as for standard proportional hazard model). Special built-in functions in *lifelines* package take extra effort to help with the convergence of the data (high collinearity between some variables). [8]
 
 {{< gist dariasmorodina 7e0e3f5f0c639fa77aec23f4b119236d >}}
  
@@ -266,11 +267,11 @@ Before running the Cox regression model including new covariates it is necessary
 Another feasible machine learning approach which can be used to avoid the proportional constraint of the Cox proportional hazards model is a random survival forest (RSF). 
 The random survival forest is defined as a tree method that constructs an ensemble estimate for the cumulative hazard function. Constructing the ensembles from base learners, such as trees, can substantially improve the prediction performance. [13]
 
-- Basically, RSF computes a random forest using the log-rank test as the splitting criterion. It calculates the cumulative hazards of the leaf nodes in each tree and averages them in following ensemble
-- The tree is grown to full size under the condition that each terminal node have no less than a prespecified number of deaths [18]
-- The out-of-bag samples are then used to compute the prediction error of the ensemble cumulative hazard function
+- Basically, RSF computes a random forest using the log-rank test as the splitting criterion. It calculates the cumulative hazards of the leaf nodes in each tree and averages them in following ensemble.
+- The tree is grown to full size under the condition that each terminal node have no less than a prespecified number of deaths. [18]
+- The out-of-bag samples are then used to compute the prediction error of the ensemble cumulative hazard function.
 
-Further technical implementation is based on *scikit-survival* package, which was built on top of *scikit-learn*: that allows the implementation of survival analysis while utilizing the power of scikit-learn. [14]
+Further technical implementation is based on *scikit-survival* package, which was built on top of *scikit-learn*: that allows the implementation of survival analysis while utilizing the power of *scikit-learn*. [14]
 
 {{< gist dariasmorodina d6a5f7ce77e8208dc83ed76ae595e9f7 >}}
 
@@ -300,8 +301,8 @@ A few years ago, the more sophisticated deep learning architecture, DeepSurv, wa
 
 **DeepSurv is a deep feed-forward neural network** which estimates each individual's effect on their *hazard rates* with respect to parametrized weigths of the network $\theta$. Generally, the structure of this neural network is quite straightforward. Comparing to Simon-Farragi network, DeepSurv is a configurable with multiple number of hidden layers.
 
-- The input data $X$ is represented as set of observed covariates,
-- Hidden layers in this model are fully-connected nonlinear activation layers with not necessarily the same number of nodes in each of them, followed by dropout layers,
+- The input data $X$ is represented as set of observed covariates.
+- Hidden layers in this model are fully-connected nonlinear activation layers with not necessarily the same number of nodes in each of them, followed by dropout layers.
 - The output layer has only one node with a linear activation function which gives the output $\hat{h}_{\theta}$ (log-risk hazard estimations).
 
 {{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/deep_surv_arch.jpg" width="900" link="group2_SurvivalAnalysis/deep_surv_arch.jpg">}}
