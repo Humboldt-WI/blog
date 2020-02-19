@@ -96,7 +96,7 @@ $$S(t) = Pr(T > t)$$
 $T$ is the random lifetime taken from the population under study and cannot be negative. With regard to the business case it is the amount of time a customer is able to pay his loan rates, he is not defaulting. The survival function $S(t)$ outputs values between 0 and 1 and is a non-increasing function of $t$.
 At the start of the study ($t=0$), no subject has experienced the event yet. Therefore the probability $S(0)$ of surviving beyond time zero is 1. $S(\infty) = 0$ since if the study period were limitless, presumably everyone eventually would experience the event of interest and the probability of surviving would ultimately fall to 0. In theory the survival function is smooth, in practice the events are observed on a concrete time scale, e.g. days, weeks, months, etc., such that the graph of the survival function is like a step function [9].
 
-{{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/survival_function.png" width="800" caption="Source: [9a]" link="//blog/img/seminar/group2_SurvivalAnalysis/survival_function.png">}}
+{{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/survival_function.png" width="800" caption="(Source: [9a])" link="//blog/img/seminar/group2_SurvivalAnalysis/survival_function.png">}}
 
 ---
 
@@ -111,7 +111,7 @@ Therefore the hazard function models which periods have the highest or lowest ch
 <img align="center" 
      style="display:block;margin:0 auto;" width="510" height="375" 
      src="/blog/img/seminar/group2_SurvivalAnalysis/hazard_function.png">
-Source: [10a]
+(Source: [10a])
 
 The above shown graph is a theoretical example for a hazard function [11]. This specific hazard function is also called bathtub curve due to its form. This graph shows the probability of an event of interest to occur over time. 
 
@@ -289,7 +289,7 @@ We can define particular groups of methods regading deep learning in survival an
 * As an alternative approach, fully parametric survival models which use RNN to sequentially predict a distribution over the time to the next event:  **RNN-SURV**,   **Weibull Time-To-Event RNN** etc. [17] [26] 
 * On the other hand, there are some new advanced deep learning neural networks, such as **DeepHit**, developed to also process the survival data with competing risks (section 5.2).
 
-{{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/overall2.jpg" caption="(source: [18])" link="group2_SurvivalAnalysis/overall2.jpg">}}
+{{< figure src="/blog/img/seminar/group2_SurvivalAnalysis/overall2.jpg" caption="(Source: [18])" link="group2_SurvivalAnalysis/overall2.jpg">}}
 
 ## 5.1 DeepSurv<a class="anchor" id="deepsurv"></a>
 
@@ -398,7 +398,7 @@ In the context of deep learning models, multiple models could be trained, each m
 <img align="center" width="500" height="510"
      style="display:block;margin:0 auto;" 
      src="/blog/img/seminar/group2_SurvivalAnalysis/multitask1.png">
-Source: [20a]
+(Source: [20a])
 
 Multi-task learning is similar to transfer learning but has some significant differences. Transfer learning models use several source tasks in order to improve the performance on the target task. Multi-task learning models treat all tasks equally, there is no task importance hierarchy. There is no attention focus on one specific task. The goal of multi-task learning models is to improve the performance of all tasks.
 
@@ -408,7 +408,7 @@ For the sake of completeness another approach to multi-task learning is soft par
 <img align="center" width="500" height="410"
      style="display:block;margin:0 auto;" 
      src="/blog/img/seminar/group2_SurvivalAnalysis/multitask2.png">
-Source: [20b]
+(Source: [20b])
 
 To train a multi-task learning model just as many loss functions as tasks are required. The model is then trained by backpropagation. The fact that the task-specific sub-networks share common hidden layers, allows comprehensive learning. Through the shared hidden layers, features that are developed in the hidden layers of one task can also be used by other tasks. Multi-task learning enables features to be developed to support several tasks which would not be possible if multiple singe-task learning models would be trained on the related tasks in isolation. Also some hidden units can specialise on one task, providing information that are not important for the other tasks. By keeping the weights to these hidden units small gives these tasks the opportunity to ignore these hidden units. [21] 
 
@@ -430,7 +430,7 @@ In addition different related tasks can treat each other as a form of regularisa
      src="/blog/img/seminar/group2_SurvivalAnalysis/deephit.png">
 <br>
 <br>
-Source: [22a]
+(Source: [22a])
 <br>
 <br>
 The architecture of the DeepHit model is similar to the conventional multi-task learning architecture of hard parameter sharing, but has two main differences. DeepHit provides a residual connection between the original covariates and the input of the cause-specific sub-networks. This means that the input of the cause-specific sub-networks is not only the output of the preceded shared sub-network but also the original covariates. These additional input allows the cause-specific sub-network to better learn the non-common representation of the multiple causes.
@@ -622,7 +622,7 @@ Mostly the DeepHit models for single as well as for competing risks can already 
      src="/blog/img/seminar/group2_SurvivalAnalysis/ECLformula.png">
 <br>
 <br>
-Source [27]
+(Source: [27])
 
 The output of survival analysis provides the probability values to fill the part of the formula in the above red box. The more precise the prediction of the survival analysis models the more exact calculations of the expected credit losses is possible which has an impact on the bank's income statement.
 
