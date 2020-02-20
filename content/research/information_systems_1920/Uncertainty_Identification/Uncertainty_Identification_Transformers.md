@@ -59,7 +59,7 @@ The EPU index stems from analyzing different newspaper articles and the coverage
 
 
 
-{{< figure src="/blog/img/seminar/uncertainty_identification/index2.png" width="800" caption="Brexit and Policy Uncertainty - Image Source: policyuncertainty.com/brexit.html (2016)" >}}
+{{< figure src="/blog/img/seminar/uncertainty_identification/index2.png" width="800" caption="Brexit and Policy Uncertainty. From "What is Brexit-Related Uncertainty Doing to United Kingdom Growth?" 2016. http://www.policyuncertainty.com/brexit.html. " >}}
 
 \
 Baker et al. (2016)'s approach also involved a human audit study: over an 18-month-period, student-teams manually classified over 12,000 articles for economic policy uncertainty. However, this is a tedious task and such an audit study is not easily replicable.
@@ -127,7 +127,7 @@ Check out the graph below to get an overview of the many BERT-models and their p
 
 
 
-## 3.4 RoBERTA <a class="anchor" id="roberta"></a>
+## 3.4 RoBERTa <a class="anchor" id="roberta"></a>
 
 One of the first to follow BERT's architecture were Liu et al. (2019), a team of researchers from Facebook AI. In July 2019, they published a model called RoBERTa (which stands for Robustly-optimized BERT approach). The authors saw room for improvement in the pre-training, arguing that BERT was significantly undertrained. They changed some pre-training configurations, and RoBERTa outperformed BERT on the GLUE benchmark. 
 
