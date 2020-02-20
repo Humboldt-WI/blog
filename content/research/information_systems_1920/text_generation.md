@@ -1,11 +1,13 @@
-+++ title = "Generating Synthetic Comments to Balance Data for Text Classification" 
++++ 
+title = "Generating Synthetic Comments to Balance Data for Text Classification" 
 date = "2020-02-07" 
 tags = [ "Text Generation", "NLP", "GPT-2", "GloVe", "Text Classification", "Oversampling", "Language Model", "Imbalanced Data" ] 
 categories = ["Course Projects"] 
 banner = "img/seminar/sample/hu-logo.jpg" 
 author = "Seminar Information Systems (WS 19/20)"
 disqusShortname = "https-wisample-github-io-blog" 
-description = "Blog Post for Seminar Information Systems WS 2019/20" +++
+description = "Blog Post for Seminar Information Systems WS 2019/20" 
++++
 
 <head>
 <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
