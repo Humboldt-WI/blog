@@ -63,7 +63,14 @@ LatexIT.add('p',true);
     8. [Including the "Not-Sure"-Category](#class_not_sure)
     9. [Different Balancing Ratios for Generated Comments](#class_ratios)
     10. [Conclusion and Discussion of Results](#class_conclusion)
-9. [References](#ref1)    
+9. [References](#ref1)   
+
+
+# Generating Synthetic Comments to Balance Data for Text Classification
+
+**Lukas Faulbrück** <br/>
+**Asmir Muminovic** <br/> 
+**Tim Peschenz** <br/> 
 
 
 
