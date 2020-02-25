@@ -59,7 +59,11 @@ The EPU index stems from analyzing different newspaper articles and the coverage
 
 
 
+<<<<<<< HEAD
 {{< figure src="/blog/img/seminar/uncertainty_identification/index2.png" width="800" caption="Brexit and Policy Uncertainty. From ,,What is Brexit-Related Uncertainty Doing to United Kingdom Growth?'' 2016. http://www.policyuncertainty.com/brexit.html" >}}
+=======
+{{< figure src="/blog/img/seminar/uncertainty_identification/index2.png" width="800" caption="Brexit and Policy Uncertainty. From "What is Brexit-Related Uncertainty Doing to United Kingdom Growth?" 2016. http://www.policyuncertainty.com/brexit.html. " >}}
+>>>>>>> d05d6864df37ad94347fa84aa000764528db07d0
 
 \
 Baker et al. (2016)'s approach also involved a human audit study: over an 18-month-period, student-teams manually classified over 12,000 articles for economic policy uncertainty. However, this is a tedious task and such an audit study is not easily replicable.
