@@ -49,7 +49,7 @@ description ="Identification of Economic Uncertainty from Newspaper Articles Usi
 
 # 1. Introduction <a class="anchor" id="introduction"></a>
 
-Within the past week, Brexit happened. The U.S. primaries for the next presidential election started. Donald Trump continues to fight for reelection while being acquitted in an impeachment trial. From events like these, economic policy uncertainty rises and households and firms take actions with wider impacts. To better analyze and predict these sentiments of economic policy uncertainty, Baker et al. (2016) built an economic policy uncertainty index. They analyzed whether newspaper articles contained references to economic policy uncertainty - but did so with a relatively simple search term and 12,000 human-labelled articles. Recently, much more complex classification algorithms have emerged in natural language processing (NLP). Researchers in the field are developing new and better language models at an unprecedented speed (Sanh 2019a). Applying these new state of the art models could improve current methods and replace manual labeling tasks for indices such as the economic policy uncertainty index, but also find widespread application in business and other fields. In this project, we want to test this: we apply new transformer models from the BERT-family to improve the current method of binary text classification in the context of economic policy uncertainty. We find that all of our models achieve remarkable results in classifying the given newspaper data (AUC's ranging from 0.87-0.90), with RoBERTa achieving best results compared to BERT, DistilBERT and ALBERT (as well as the non-transformer benchmarks). This indicates that the models are well equipped to take over tasks which researchers have previously solved in less optimal ways. To illustrate this finding, this blogpost is organized as follows: in section [2. Motivation and Literature](#motivation) we give context on the case study of economic policy uncertainty, followed by [3. Theoretical Background](#theory) where we present and explain how transformers and specifically the four state of the art BERT-models work. In [4. Application to Economic Policy Uncertainty](#app), we demonstrate the implementation of the BERT-models to our case study and present the results. Finally, we highlight important considerations and take-aways in section [5. Further Discussion](#discussion). 
+Within the past week, Brexit happened. The U.S. primaries for the next presidential election started. Donald Trump continues to fight for reelection while being acquitted in an impeachment trial. From events like these, economic policy uncertainty rises and households and firms take actions with wider impacts. To better analyze and predict these sentiments of economic policy uncertainty, Baker et al. (2016) built an economic policy uncertainty index. They analyzed whether newspaper articles contained references to economic policy uncertainty - but did so with a relatively simple search term and 12,000 human-labeled articles. Recently, much more complex classification algorithms have emerged in natural language processing (NLP). Researchers in the field are developing new and better language models at an unprecedented speed (Sanh 2019a). Applying these new state of the art models could improve current methods and replace manual labeling tasks for indices such as the economic policy uncertainty index, but also find widespread application in business and other fields. In this project, we want to test this: we apply new transformer models from the BERT-family to improve the current method of binary text classification in the context of economic policy uncertainty. We find that all of our models achieve remarkable results in classifying the given newspaper data (AUC's ranging from 0.87-0.90), with RoBERTa achieving best results compared to BERT, DistilBERT and ALBERT (as well as the non-transformer benchmarks). This indicates that the models are well equipped to take over tasks which researchers have previously solved in less optimal ways. To illustrate this finding, this blogpost is organized as follows: in section [2. Motivation and Literature](#motivation) we give context on the case study of economic policy uncertainty, followed by [3. Theoretical Background](#theory) where we present and explain how transformers and specifically the four state of the art BERT-models work. In [4. Application to Economic Policy Uncertainty](#app), we demonstrate the implementation of the BERT-models to our case study and present the results. Finally, we highlight important considerations and take-aways in section [5. Further Discussion](#discussion). 
 
 # 2. Motivation and Literature <a class="anchor" id="motivation"></a>
 
@@ -61,6 +61,7 @@ The EPU index stems from analyzing different newspaper articles and the coverage
 
 {{< figure src="/blog/img/seminar/uncertainty_identification/index2.png" width="800" caption="Brexit and Policy Uncertainty. From "What is Brexit-Related Uncertainty Doing to United Kingdom Growth?" 2016. http://www.policyuncertainty.com/brexit.html. " >}}
 
+
 \
 Baker et al. (2016)'s approach also involved a human audit study: over an 18-month-period, student-teams manually classified over 12,000 articles for economic policy uncertainty. However, this is a tedious task and such an audit study is not easily replicable.
 With recent advances in the field of NLP in mind, we want to expand this methodology beyond the simple identification of keywords, and replace human classification by reliable, automated methods.
@@ -70,9 +71,7 @@ With recent advances in the field of NLP in mind, we want to expand this methodo
 In order to use the best methods possible to identify economic uncertainty in the newspaper articles, we decided to apply BERT-based transformers. In a very short time, transformers and specifically BERT have literally transformed the NLP landscape with high performance on a wide variety of tasks. New, improved models are published every few weeks (if not days) and much remains to be researched and developed further. An example of the ongoing scientific discussions in the field is the trend to build ever larger and heavier models to improve performance. The image below shows this trend by plotting selected models by publishing date and parameter size. But do more parameters always increase a model's performance? What are other ways of improving models? To answer these and other questions, we devote this chapter to laying the theoretical groundwork: we will explain the basic transformer architecture and BERT, and then present three models (RoBERTa, DistilBERT, ALBERT) that promise to outperform BERT on different dimensions, before applying them to our binary text classification task in the next chapter.
 
 
-
-{{< figure src="/blog/img/seminar/uncertainty_identification/Evolution.png" width="800"  caption="Evolution of Transformer-Based Models - Image Source: Sanh (2019b)" >}}
-
+{{< figure src="/blog/img/seminar/uncertainty_identification/Evolution.png" width="800"  caption="Evolution of Transformer-Based Models. Created by Victor Sanh. 2019. From ,,Smaller, Faster, Cheaper, Lighter: Introducing DilstilBERT, a Distilled Version of BERT.'' Medium (blog). https://medium.com/huggingface/distilbert-8cf3380435b5" >}}
 
 
 
@@ -81,11 +80,7 @@ Highly complex convolutional and recurrent neural networks (CNNs and RNNs) achie
  
 ## 3.2 Transformers Architecture <a class=?anchor? id=?architecture?></a>
 
-
-{{< figure src="/blog/img/seminar/uncertainty_identification/arch.png" caption="Transformers Architecture - Image Source: Vaswani et al. (2017)" >}}
-
-
-
+{{< figure src="/blog/img/seminar/uncertainty_identification/arch.png" caption="Transformers Architecture. Created by Vaswani et al. 2017. From ,,Attention is All You Need.'' http://arxiv.org/abs/1706.03762" >}}
 
 
 Adapted from Vaswani et al., the figure above displays a transformer. On the left side is the encoder, next to it on the right the decoder. As in preceding models, the encoder is responsible for forming continuous representations of an input sequence. The decoder in turn maps these representations back to output sequences. Both encoder and decoder consist of several layers (denoted with Nx in the graph) with two and three sub-layers each, respectively:
@@ -217,7 +212,7 @@ After understanding the transformer-based models in theoretical context, we appl
 
 ### 4.1.1 Data Exploration <a class="anchor" id="dataexploration"></a>
 
-The original dataset we used was labelled and consisted of three columns: \
+The original dataset we used was labeled and consisted of three columns: \
 (i) Article ID \
 (ii) Article - the newspaper articles in text format \
 (iii) label - a binary indicator showing if the article is related to economic policy uncertainty or not. \
@@ -296,7 +291,7 @@ In datasets having a high imbalance like the one we used, accuracy is not the ri
 
 - **Matthew's Correlation Coefficient (MCC)** uses all four measures - true positives, true negatives, false positives and false negatives - in its calculation. The score goes from -1 (everything is wrongly classified) to 1 (everything is correctly classified).
 
-The following result table was calculated based on the standard binary cut-off of 0.5. If the probability (converted from the log-odds output of the model) is greater than 0.5, the article is labelled as related to economic policy uncertainty and marked as "1", otherwise it is marked as "0". This cutoff of 0.5 was maintained across all models to provide a standard comparison. We will address whether this cut-off is optimal or not in the discussion section. 
+The following result table was calculated based on the standard binary cut-off of 0.5. If the probability (converted from the log-odds output of the model) is greater than 0.5, the article is labeled as related to economic policy uncertainty and marked as "1", otherwise it is marked as "0". This cutoff of 0.5 was maintained across all models to provide a standard comparison. We will address whether this cut-off is optimal or not in the discussion section. 
 
 {{< figure src="/blog/img/seminar/uncertainty_identification/results.png" width="850" >}}
 
@@ -318,7 +313,7 @@ Several choices and observations in our application call for further discussion,
 
 # 5.1 Optimal Threshold Calculation <a class="anchor" id="threshold"></a>
 
-The simple transformers library uses a cut off of 0.5 as decision criteria while calculating the results. Probability greater than or equal to 0.5 is labelled as "1", else labelled as "0". However, the best cutoff heavily depends on the use case (for example, if one wants to identify the 1's more than the 0's would focus on precision). In certain business scenarios, there might be high costs for false negatives or false positives. In our case, rather than high costs with just false positives or false negatives, we think it is necessary to identify both types of articles correctly. Yet the cut-off of 0.5 might not exactly be optimal for highly imbalanced datasets. In order to see how the other metrics would vary with changing the cut-off, we chose the best performing model from above and observed how the metrics varied. 
+The simple transformers library uses a cut off of 0.5 as decision criteria while calculating the results. Probability greater than or equal to 0.5 is labeled as "1", else labeled as "0". However, the best cutoff heavily depends on the use case (for example, if one wants to identify the 1's more than the 0's would focus on precision). In certain business scenarios, there might be high costs for false negatives or false positives. In our case, rather than high costs with just false positives or false negatives, we think it is necessary to identify both types of articles correctly. Yet the cut-off of 0.5 might not exactly be optimal for highly imbalanced datasets. In order to see how the other metrics would vary with changing the cut-off, we chose the best performing model from above and observed how the metrics varied. 
 
 Although the simple transformer library gives result tables for 0.5, for deciding the optimal cutoff we have taken the log-odds output from the model and then converted it into probabilities. 
 
@@ -348,7 +343,7 @@ These word/tokens groups are called "general" and "data specific" due to their n
 
 When certain word/token groups are removed from the training set, we see that there is a drop in all metrics on the test set. The drop is even more significant when the "data specific" words/tokens are removed. This also partially confirms the original idea, that including "economic", "policy", and "uncertainty" keywords would have overfitted the model and give a lot of false positives, after all these words/tokens are also part of "data specific" tokens.
 
-At this point, it should be noted that the entire newspaper articles are "loosely" related to economic policy and uncertainty (including ones labelled as "1" and "0"), so there would be certain data biases in words and tokens recurring frequently. This word/token group approach opens our minds to infinite possibilities, such as which words or which word groups are really contributing to the overfitting of the model, and lead to other areas of investigation. However, we conclude that presence and absence of certain word/tokens or combinations do have an impact on how good the classifier is.
+At this point, it should be noted that the entire newspaper articles are "loosely" related to economic policy and uncertainty (including ones labeled as "1" and "0"), so there would be certain data biases in words and tokens recurring frequently. This word/token group approach opens our minds to infinite possibilities, such as which words or which word groups are really contributing to the overfitting of the model, and lead to other areas of investigation. However, we conclude that presence and absence of certain word/tokens or combinations do have an impact on how good the classifier is.
  
 Lastly, it is important to take into account that in a transfer learning approach, results also depend on the data the original model has been trained on. Since RoBERTa has been trained on a huge English language corpus and our data is in English, it works well. But, if we had a German data set, would these models have given a good result? 
 
