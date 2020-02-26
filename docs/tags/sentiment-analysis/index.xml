@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sentiment Analysis on Institute of Infomation Systems at HU-Berlin</title>
@@ -6,35 +6,10 @@
     <description>Recent content in Sentiment Analysis on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Mar 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/sentiment-analysis/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Analysis of social media behavior of the 2020 presidential election candidates</title>
-      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</link>
-      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</guid>
-      <description>Authors: Georg Velev, Iliyana Pekova Table of Content  Introduction
- Data Retrieval
-2.1. Libraries: GetOldTweets3 vs Tweepy
-2.2. Descriptive Statistics
- Methodology
-3.1. Retrieval of pre-labeled Twitter Data
-3.2. Machine Learning Algorithms
-3.2.1. FastText
-3.2.2. Convolutional Neural Network
-3.2.3. Multinominal Naive Bayes Classifier
- Data Preprocessing
-4.1. Data Cleaning
-4.2. Word Embeddings: GloVe and FastText
-4.3. Model specific Data Preprocessing
- Performance Evaluation
-5.1. Initial Results
-5.2. Hyperparameter Tuning using Bayesian Optimization</description>
-    </item>
     
     <item>
       <title>Text Mining - Sentiment Analysis</title>
@@ -42,11 +17,7 @@
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/05sentimentanalysis/</guid>
-      <description>Sentiment Analysis using Deep Learning Authors: Katja Metzger, Aydin Sader Fosalaie, Ninos Yonan Outline  Sentiment Analysis Introduction  Case Study  Keras IMDB Dataset
- Data Analysis
- Word Embeddings
- Convolutional Neural Network
-  Summary  Sentiment Analysis Introduction Sentiment analysis is a very beneficial approach to automate the classification of the polarity of a given text. A helpful indication to decide if the customers on amazon like a product or not is for example the star rating.</description>
+      <description>Sentiment Analysis using Deep Learning Authors: Katja Metzger, Aydin Sader Fosalaie, Ninos Yonan Outline   Sentiment Analysis Introduction    Case Study  Keras IMDB Dataset Data Analysis Word Embeddings Convolutional Neural Network    Summary    Sentiment Analysis Introduction Sentiment analysis is a very beneficial approach to automate the classification of the polarity of a given text. A helpful indication to decide if the customers on amazon like a product or not is for example the star rating.</description>
     </item>
     
   </channel>

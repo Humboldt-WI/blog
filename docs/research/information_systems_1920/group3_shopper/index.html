@@ -17,7 +17,7 @@
   <meta name="description" content="Estimating shopper preferences and price elasticities in a retail grocery setting.">
   
 
-  <meta name="generator" content="Hugo 0.58.1" />
+  <meta name="generator" content="Hugo 0.65.3" />
 
   <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
 
@@ -13351,8 +13351,7 @@ div#notebook {
     <li><a href="#Matrix-Factorization">Matrix Factorization</a></li>
     <li><a href="#Our-Task">Our Task</a></li>
     <ul>
-      <li><a href="#Data-Exploration">Data Exploration</a></li>
-      <li><a href="#Data-Preparation">Data Preparation</a></li>
+      <li><a href="#Data-Exploration">Data Exploration and Preparation</a></li>
     </ul>    
     <li><a href="#Modelling">Modelling</a></li>
     <li><a href="#Results">Results</a></li>
@@ -13378,7 +13377,7 @@ div#notebook {
 <p>It's no secret that consumers today are faced with more product choices than ever before. While having many choices can be beneficial to a point, eventually it can become overwhelming and consumers may become paralysed in the face of so many options (<em>Iyengar, Lepper, 2000</em>). For this reason, many online, and offline, businesses have created tools and methods to recommend certain products to certain groups of consumers, thereby reducing the number of products a consumer has to consider. Of course, recommendation is no easy task, and much has been written about the best method to use (<em>Koren et al., 2009</em>).</p>
 <p>Many recommendation algorithms focus on latent variables that seek to describe underlying user preferences and item attributes. Most, however, do not include external factors such as price or seasonality. From a retailer's perspective, it would be ideal to know the maximum price each customer is willing to pay for each item. Retailers could then potentially have personalized per-item prices for each consumer, which would maximize the retailer's revenue.</p>
 <p>One way this could be achieved is if all products were unpurchasable by default, or simply more expensive than anyone’s willingness to pay (WTP). Then all customers entering the store receive a coupon for all the products they came to buy, that is exactly equal to the difference between their maximum WTP and the item price. Though unrealistic, this example illustrates how one could achieve personalized pricing, as actively displaying different prices to each individual customer in a store is unfeasible, and if possible, would lead to customer dissatisfaction.</p>
-<p>In this blog, we will build an interpretable network that estimates latent user preferences, seasonal effects and price sensitivities, with the goal of predicting consumer choices. The focus will be placed particularly on the grocery industry. We begin with an overview of techniques currently used in industry, namely Poisson Factorization and Exponential Family Embeddings. Then we detail a model combining and further extending the features of these two models, a sequential probabilistic model called SHOPPER. Finally, we proceed to build our own predictive model based on SHOPPER using the TensorFlow architecture.</p>
+<p>We begin our blog with an overview of user preference estimation techniques currently used in industry, namely Poisson Factorization and Exponential Family Embeddings. Then we detail a model combining and further extending the features of these two models, a sequential probabilistic model called SHOPPER. Finally, we proceed to build our own predictive model based on SHOPPER (<em>Ruiz et al., 2017</em>) using the TensorFlow architecture, with the goal of predicting consumer choices. The focus will be placed particularly on the grocery industry. We</p>
 
 </div>
 </div>
@@ -13394,7 +13393,7 @@ div#notebook {
   
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>What are the current trends in retail marketing to maximize stores’ revenue? To name a few, firms perform demand-sensitive pricing through estimating price elasticity (<em>Skyscanner</em>), or identify which of their (and their competitors’) products are substitutes or complements to allow for product differentiation. This is commonly performed in the industry through econometric models such as regression or various forms of matrix factorization. Further, marketing departments aim to capture customer heterogeneity by splitting customers into a number of clusters and developing products or services customized for these segments (e.g. pet owners, vegetarians). For such tasks analysts may opt for clustering techniques, such as principal components analysis, k-means clustering, or discrete choice models, including questionnaire-based conjoint analysis. Traditional choice models require that products are restricted to a small subset of items, or grouped into a handful of categories, in order to make computations feasible (<em>Nevo, 1998</em>). One step beyond clustering is individual personalization - serving each customer according to their needs. This will be our aim in the grocery store setting. So what are the current state-of-the-art models for personalized item predictions?</p>
+<p>What are the current trends in retail marketing to maximize stores’ revenue? To name a few, firms perform demand-sensitive pricing through estimating price elasticity (<em>Skyscanner, 2019</em>), or identify which of their (and their competitors’) products are substitutes or complements to allow for product differentiation. This is commonly performed in the industry through econometric models such as regression or various forms of matrix factorization. Further, marketing departments aim to capture customer heterogeneity by splitting customers into a number of clusters and developing products or services customized for these segments (e.g. pet owners, vegetarians). For such tasks analysts may opt for clustering techniques, such as principal components analysis (<em>Jolliffe, 2011</em>), k-means clustering (<em>Lloyd, 1982</em>), or discrete choice models, including questionnaire-based conjoint analysis. Traditional choice models require that products are restricted to a small subset of items, or grouped into a handful of categories, in order to make computations feasible (<em>Nevo, 1998</em>). One step beyond clustering is individual personalization - serving each customer according to their needs. This will be our aim in the grocery store setting. So what are the current state-of-the-art models for personalized item predictions?</p>
 
 </div>
 </div>
@@ -13404,8 +13403,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Poisson-factorization">Poisson factorization</h3>
 
-<p>Widely used in E-commerce settings, Hierarchical Poisson factorization (HPF) captures user-to-item interaction, extracting user preferences for recommendation of previously unpurchased products through past purchases of other similar customers. The mathematics underlying this model are straightforward: users’ preferences are Gamma distributed based on their past activity (number of shopping trips) and items’ attributes are Gamma distributed based on their popularity (number of purchases). The user-item interaction is expressed in the rating (either a points scale, such as 1-5 stars, or binary dummy for purchase), which is Poisson distributed according to the user’s preference and item’s attribute. As a simple example, imagine a customer who has only bought vegetables in her five previous shopping trips (activity). This customer’s preference would thus be classified as vegetarian. On the other hand, the shop has a variety of frequently bought (popular) vegetables (which is an attribute of those items). As other customers with the preference “vegetarian” have bought asparagus, the resulting “rating” will be high, and thus this customer would receive a recommendation to buy asparagus. 
-It is called hierarchical due to the ordering of both items and users; some products are bought more frequently than others (are more popular), and some customers purchase more than others (are more active).</p>
+<p>Widely used in E-commerce settings, Hierarchical Poisson factorization (HPF) (<em>Gopolan et al., 2015</em>) captures user-to-item interaction, extracting user preferences for recommendation of previously unpurchased products through past purchases of other similar customers. The mathematics underlying this model are straightforward: users’ preferences are Gamma distributed based on their past activity (number of shopping trips) and items’ attributes are Gamma distributed based on their popularity (number of purchases). The user-item interaction is expressed in the rating (either a points scale, such as 1-5 stars, or binary dummy for purchase), which is Poisson distributed according to the user’s preference and item’s attribute. As a simple example, imagine a customer who has only bought vegetables in her five previous shopping trips (activity). This customer’s preference would thus be classified as vegetarian. On the other hand, the shop has a variety of frequently bought (popular) vegetables (which is an attribute of those items). As other customers with the preference “vegetarian” have bought asparagus, the resulting “rating” will be high, and thus this customer would receive a recommendation to buy asparagus.</p>
 
 </div>
 </div>
@@ -13438,12 +13436,14 @@ It is called hierarchical due to the ordering of both items and users; some prod
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>
-  <img align="center" width="275" height="275" 
-  src="/blog/img/seminar/group3_shopper/recommendation_comic.jfif" alt="Shopping Recommendations"
-  style="display:block;margin:0 auto;"></p>
+  <figure>
+    <img align="center" width="300" height="300" 
+      src="/blog/img/seminar/group3_shopper/recommendation_comic.jfif" alt="Comic"
+      style="display:block;margin:0 auto;">
+      <figcaption align = "center"><a href="http://www.salemmarafi.com/code/market-basket-analysis-with-r/"><em>Source</em></a></figcaption>
+    </figure>
 
-<p>The SHOPPER algorithm (<em>Blei et al., 2017</em>) is a sequential probabilistic model for market baskets. SHOPPER models how customers place items in their basket when shopping for groceries, taking various factors into account, including seasonal effects, personal preferences, price sensitivities and item-to-item interactions. SHOPPER imposes a structure on customer behaviour and assumes customers behave according to the Random Utility Model, a model founded in economic principles.</p>
+<p>The SHOPPER algorithm (<em>Ruiz et al., 2017</em>) is a sequential probabilistic model for market baskets. SHOPPER models how customers place items in their basket when shopping for groceries, taking various factors into account, including seasonal effects, personal preferences, price sensitivities and item-to-item interactions. SHOPPER imposes a structure on customer behaviour and assumes customers behave according to the Random Utility Model, a model founded in economic principles.</p>
 
 <p>SHOPPER posits that a customer walks into the store and sequentially chooses each item to be placed in the basket. The customer chooses each item based on personal preferences, price, seasonality and overall item popularity. As each item is placed into the basket, the customer then takes the current products in the basket into account when deciding on the next product. One can imagine a typical shopping trip, where the customer goes in with an intent to buy a specific item, e.g. cheese, and later decides to spontaneously purchase complementary products, such as wine and crackers. Although the customer initially had no intention of purchasing wine and crackers, the presence of cheese increased the attractiveness of the complementary products. SHOPPER generates latent variables to model these factors, estimates an overall utility value for each shopping trip and calculates a probability of observing a set of items in a given basket.</p>
 <p>The basics of the model can be summarized with the following 5 equations:</p>
@@ -13494,9 +13494,9 @@ $$\psi_{tc} = \lambda_{c} + \theta_{ut}^T \alpha_{c} - \gamma_{ut}^T \beta_{c} l
 </h3>
 <br>
 $$\Psi(c, y_{t, i-1}) = \psi_{tc} + \rho_{c}^T(\frac{1}{i-1} \displaystyle\sum_{j=1}^{i-1} \alpha_{y_{tj}} )$$<p>Equation 1 calculates the utility a customer receives from a specific item $c$ by itself. However, this ignores important item-to-item interaction effects. For example, if a customer has already placed crackers in their basket, then the utility obtained by buying cheese would be greater than if the cheese was purchased without crackers. To model these item to item interactions, SHOPPER introduces the term $\rho_c$.</p>
-<p>If we consider two items $c$ and $c'$, then $\rho_c$ represents the interaction effects of product $c$ and $c'$. Using the item attribute vector, $\alpha_{c'}$ estimated earlier in equation 1 we can estimate the complementary and substitution effects of different products. If $\rho_{c}^T \alpha_{c'}$ is large, then the presence of item $c'$ in the basket increases the benefit choosing item $c$. These two products would be considered complements. Conversely, when $\rho_{c}^T \alpha_{c'}$ is small, we can interpret these items as substitutes. Even if the latent item vectors are similar, the two products can still be substitutes, i.e. crackers and crispbread (Knäckebrot).</p>
+<p>If we consider two items $c$ and $c'$, then $\rho_c$ represents the interaction effects of product $c$ and $c'$. Using the item attribute vector, $\alpha_{c'}$ estimated earlier in equation 1 we can estimate the complementary and substitution effects of different products. If $\rho_{c}^T \alpha_{c'}$ is large, then the presence of item $c'$ in the basket increases the benefit choosing item $c$. These two products would be considered complements. Conversely, when $\rho_{c}^T \alpha_{c'}$ is negative, we can interpret these items as substitutes. Even if the latent item vectors are similar, the two products can still be substitutes, i.e. crackers and crispbread (Knäckebrot).</p>
 <p>In the SHOPPER model, when the customer is deciding whether to put item $c$ in the basket, they do not consider the item-to-item interaction of every single item individually. Instead SHOPPER takes the average value of the latent item vectors of the products already in the basket and calculates the scaler product with $\rho_{c}$. The scaling factor $ \frac{1}{(i - 1)}$ captures the idea that in larger baskets each individual item has a smaller effect on the addition of a new product in the basket.</p>
-<p>Additionally, the utility function is additive in the other items in the basket, meaning SHOPPER assumes that item interactions within the basket are linear. This is a point to be studied for future work.</p>
+<p>Additionally, the utility function is additive in the other items in the basket, meaning SHOPPER assumes that item interactions within the basket are linear. This assumption may not be completely realistic. Conversely, by using a neural network architecture, there is no prior assumption placed on the behaviour of item to item interactions. Both linear and non-linear interactions can be captured.</p>
 
 </div>
 </div>
@@ -13507,7 +13507,7 @@ $$\Psi(c, y_{t, i-1}) = \psi_{tc} + \rho_{c}^T(\frac{1}{i-1} \displaystyle\sum_{
 <h3 id="Equation-3-&amp;-4-(Utility-and-Choice-Probabilities)">Equation 3 &amp; 4 (Utility and Choice Probabilities)<a class="anchor-link" href="#Equation-3-&amp;-4-(Utility-and-Choice-Probabilities)">&#182;</a></h3><p>From equations 1 and 2 we calculate the term $\Psi(c, y_{t, i-1})$, which is interpreted as the utility a customer receives from item $c$, given the week, price, and other items in the basket. The customer's problem then becomes:</p>
 <br>
 $$max \space U_{t,c}(y_{t, i-1}) = \Psi(c, y_{t, i-1}) + \epsilon_{t,c} $$<p>Those familiar with discrete choice modelling will quickly recognize the above formula as a Random Utlity Model (<em>Mcfadden, 1978</em>). Upon entering the store, the customer is presented with a set of alternatives they must choose from. The customer chooses the alternative that maximizes her utility, i.e. if item $c$ generates a higher utility than item $c'$, the customer chooses item $c$. The full utility $U$ is known to the customer, but has a random component that is not observable by an outsider (for example how hungry they are during the shopping trip). In SHOPPER, $\Psi(c, y_{t, i-1})$ represents the deterministic portion of the customer's utility, the portion that can be modelled, and $\epsilon_{t,c}$ represents the random portion of utility. See the <a href="#Appendix">Appendix</a> for a further explanation of the Random Utility Model.</p>
-<p>Using the derivation from (<em>Train, 2009</em>) and the assumption of i.i.d error terms that follow a Gumbel distribution, we can show that the probability of a shopper choosing item $c$ can be described using a softmax function.</p>
+<p>Using the derivation from Train (<em>2009</em>) and the assumption of i.i.d error terms that follow a Gumbel distribution, we can show that the probability of a shopper choosing item $c$ can be described using a softmax function.</p>
 <br>
 $$p(y_{ti} = c | \mathbf{y}_{t, i-1}) = \frac{exp\{\Psi(c, \mathbf{y}_{t, i-1})\}}{\displaystyle \sum_{c' \notin y_{t, i-1}}exp\{\Psi(c', \mathbf{y}_{t, i-1})\} }$$
 <br>
@@ -13515,7 +13515,7 @@ $$p(y_{ti} = c | \mathbf{y}_{t, i-1}) = \frac{exp\{\Psi(c, \mathbf{y}_{t, i-1})\
   <img align="center" width="300" height="300" 
     src="/blog/img/seminar/group3_shopper/full_basket.jpg" alt="Choices"
     style="display:block;margin:0 auto;">
-    <figcaption align = "center"><em>An example of all the choices a shopper faces in a shopping trip</em></figcaption>
+    <figcaption align = "center"><em>An example of all the choices a shopper faces in a shopping trip </figcaption><figcaption align = "center"><a href="https://www.dw.com/en/survival-guide-to-german-supermarkets/a-46312578">Source</a></em></figcaption>
   </figure>
 
 </div>
@@ -13549,7 +13549,7 @@ $$ p(\mathcal{Y}_t | \rho, \alpha) = \displaystyle \sum_{\pi}p(\mathbf{y}_{t, \p
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="How-is-SHOPPER-different">How is SHOPPER different<a class="anchor-link" href="#How-is-SHOPPER-different">&#182;</a></h4><p>As we have seen, SHOPPER combines modern machine learning techniques with economic theory to create a generative model that takes user preferences, seasonal factors, and price elasticities into account. SHOPPER uses the Random Utility Model to model customer behaviour and matrix factorization to generate user and item embeddings. By combining these two techniques, SHOPPER can generate shopper preferences for large-scale shopping data.</p>
+<h4 id="How-is-SHOPPER-different">How is SHOPPER different<a class="anchor-link" href="#How-is-SHOPPER-different">&#182;</a></h4><p>As we have seen, SHOPPER combines modern machine learning techniques with economic theory to create a generative model that takes user preferences, seasonal factors, and price elasticities into account. SHOPPER uses the Random Utility Model to model customer behaviour and matrix factorization to generate user and item embeddings. By combining these two techniques, SHOPPER can generate shopper preferences for shopping data. One potential point of concern is the scale of data SHOPPER can handle. SHOPPER was trained on just under 6 million item purchases from 3206 unique customers and 5590 unique items, but a large store from a large grocery chain can be expected to have significantly more items and customers. </p>
 
 </div>
 </div>
@@ -13576,7 +13576,7 @@ $$ p(\mathcal{Y}_t | \rho, \alpha) = \displaystyle \sum_{\pi}p(\mathbf{y}_{t, \p
   <figcaption align = "center"><em>An example of a one-hot encoded shopper-item matrix</em></figcaption>
 </figure>
 
-<p>We can see that it is easy to summarize across shoppers or products, but it is difficult to see any underlying patterns among users or products. A large number of shoppers and products can also cause memory problems. The dimensions of the matrix are $ \# \ unique \ shoppers * \# \ unique \ items$ and much of the matrix is also sparse, meaning most entries are 0. This is because most shoppers do not purchase or even consider all of the unique products for sale. For our small example, this is not a problem but larger datasets with thousands of unique shoppers and thousands of unique products require a higher memory capacity. It also becomes difficult to optimize our model using this structure, since we would have to update weights for each individual item-shopper combination.</p>
+<p>We can see that it is easy to summarize across shoppers or products, but it is difficult to see any underlying patterns among users or products. A large number of shoppers and products can also cause memory problems. The dimensions of the matrix are $ \# \ unique \ shoppers * \# \ unique \ items$ and much of the matrix is also sparse, meaning most entries are 0. This is because most shoppers do not purchase or even consider all of the unique products for sale. For our small example, this is not a problem but larger datasets with thousands of unique shoppers and thousands of unique products require a higher memory capacity. It also becomes difficult to optimize our model using this structure, since we would have to update weights for each individual item-shopper combination. It is also impossible to estimate a coefficient value from shoppers with little to no purchases at all.</p>
 <p>To solve this problem we turn to matrix factorization (MF). MF posits that there is a set of latent variables (unobservable features) that describe each shopper and each item, such that when multiplied together the resulting product is our observed shopper-item matrix. In our small example, we believe that there are 5 latent variables that can accurately describe shoppers and items. Therefore we create two matrices $Shoppers$ and $Items$, that hold our shoppers' latent variables and items' latent variables, respectively. To begin with, we initialize the matrices randomly. An example can be seen below, where $l_i$ represents latent variable $i$:</p>
 
 <br>
@@ -13605,7 +13605,7 @@ To see if our factorization is doing well, we define an error function. In tradi
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Our-Task">Our Task</h1>
 
-<p>We will now attempt to replicate the SHOPPER model using the TensorFlow framework. The trick here is to turn SHOPPER, a generative model, into a discriminative model, one that optimizes by making a prediction. We will take a deeper look into the unique challenges of this problem and our corresponding results.</p>
+<p>We will now replicate the SHOPPER model by using maximum likeliehood estimation with stochastic gradient descent as an optimiztion technique. The trick here is to turn SHOPPER, a generative model, into a discriminative model, one that optimizes by making a prediction. We will take a deeper look into the unique challenges of this problem and our corresponding results.</p>
 
 </div>
 </div>
@@ -13613,7 +13613,7 @@ To see if our factorization is doing well, we define an error function. In tradi
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-Exploration">Data Exploration</h2>
+<h2 id="Data-Exploration">Data Exploration and Preparation</h2>
 </div>
 </div>
 </div>
@@ -13628,15 +13628,7 @@ To see if our factorization is doing well, we define an error function. In tradi
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The top five bestselling items in the dataset are the following:</p>
-<ol>
-<li>Pfand (Bottle deposit)</li>
-<li>Newspapers</li>
-<li>Bananas</li>
-<li>Bread rolls</li>
-<li>Shopping bags</li>
-</ol>
-<p>We will discuss in a later section that not all of these items are useful for our couponing task. As these bestsellers were present in many baskets, their purchase probability would be extremely high for every customer unless we take precautionary measures.</p>
+<p>The best selling products include the bottle deposit (“Pfand”) and shopping bags. These do not have much value for our predictive model, as in the prices for these are set by law and hence coupons are not applicable. Therefore we preemptively remove these two product subcategories. Without these, the best-sellers were newspapers, bananas and bread rolls. </p>
 
 </div>
 </div>
@@ -14681,17 +14673,15 @@ OhkQkqROBoQkqdP/A+nSMdplWnWRAAAAAElFTkSuQmCC
 </div>
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-Preparation">Data Preparation</h2>
-</div>
+
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Before we can feed our data to any model, we need to enforce a clean-up. First of all, we drop rows that have no value for item name or user ID, as we always need to be able to identify the product and the customer in each purchase. Then, since we are predicting only which items the customer is going to buy, regardless of quantity, we disregard all duplicate entries (originally, if a customer bought three bananas, we would have three identical rows in our dataset).</p>
-<p>Additionally, we do not want to consider all products for couponing. As we have seen, the bestselling products include the “Pfand” (the deposit for bottles and cans) and shopping bags. These do not have much value for our predictive model, as in most cases the prices for these are set by law and hence coupons are not applicable. Therefore we preemptively remove these two product subcategories. Likewise, the category “other”, that contains items not typical for groceries such as socks and sweaters, is treated as noise.</p>
-<p>Apart from the specific products, we make a few assumptions about general shopping trends. First, we assume that good personal recommendations can only be made for loyal customers, so we restrict our dataset to customers who have visited the store at least 10 times, dropping infrequent visitors. Secondly, to be able to extract reasonable item-to-item interactions, we allow only baskets with at least two items, and at most 40 items.</p>
+<p>Before we can feed our data to any model, we need to further clean our data. First, we drop rows that have no value for item name or user ID, as we always need to be able to identify the product and the customer in each purchase. Then, since we are predicting only which items the customer is going to buy, regardless of quantity, we disregard all duplicate entries in the same basket. Likewise, the product category “other”, that contains items not typical for groceries such as socks and sweaters, is removed. </p>
+
+<p>In addition, we make two assumptions about general shopping trends. First, we assume that good personal recommendations can only be made for loyal customers, so we restrict our dataset to customers who have visited the store at least 10 times, dropping infrequent visitors. Secondly, to be able to extract reasonable item-to-item interactions, we allow only baskets with at least two items, and at most 40 items.</p>
 
 </div>
 </div>
@@ -14703,13 +14693,13 @@ OhkQkqROBoQkqdP/A+nSMdplWnWRAAAAAElFTkSuQmCC
 <p>One problem that occurs when facing such a task with actual shopping data is that we can only see products that were bought by customers, and not products that were considered but not bought. However, when building a model based on shopper preferences, we require products that were not bought, in order to accurately generate these preferences.</p>
 <p>A solution for this problem is to add products that are not bought into the data. Training on this allows the model to distinguish which products a shopper is more likely to buy and those she will not buy, thereby generating the preferences of that shopper. Such a process needs some assumptions and to factor in the specifics of grocery shopping in order to sample new products into the data.</p>
 <p>The "most correct" way for us to model shopper choices would be to treat the problem as a discrete choice problem. We would have to calculate the probability that a specific item was chosen by the shopper over all available products. This would essentially become a softmax function over 35 000 items in our case. Since this is not technically feasible, we use a simplification inspired by the authors of word2vec (<em>Mikolov et al. 2013</em>).</p>
-<p>Instead of considering one item against all other items, we instead sample items that the shopper did not place in their basket, assign them a "bought" value of 0, and predict whether or not the shopper bought the item. The problem then becomes a binary choice problem, "bought" or "not bought", over bought items and our sampled not-bought items. This speeds up our calculations and should also generate robust results, as seen in other applications (<em>Mikolov et al, 2013</em>)(<em>Titsias, 2016</em>)</p>
+<p>Instead of considering one item against all other items, we instead sample items that the shopper did not place in their basket, assign them a "bought" value of 0, and predict whether or not the shopper bought the item. The problem then becomes a binary choice problem, "bought" or "not bought", over bought items and our sampled not-bought items. This speeds up our calculations and should also generate robust results, as seen in other applications (<em>Mikolov et al, 2013, Titsias, 2016</em>)</p>
 <p>For our sampling procedure, we make the following assumptions:</p>
 <ol>
 <li>A shopper considers products from the same subcategories as the items in her basket. For example, if the customer buys spaghetti she also considered penne or maybe spaghetti from a different brand on the shelf.</li>
 <li>The price of the product that was not bought will be equal to the most frequent price the particular product was bought at in the respective week and year</li>
 </ol>
-<p>These assumptions lead to a certain expectation about the shopping habits of customers. We assume that if a shopper has bought a product, then she must have at least seen other products from the same sub-category and chosen not to purchase them. For our model we sample one not-bought item for every bought item. This assumption leaves room for optimisation, as it is debatable if the customer only considers one other product for every product she bought. In general, customers most likely consider more than one item when shopping. The optimal number of not-bought products sampled is an area for further discussion. Nevertheless, we move forward.</p>
+<p>These two assumptions lead to a certain expectation about the shopping habits of customers. We assume that if a shopper has bought a product, then she must have at least seen other products from the same sub-category and chosen not to purchase them. For our model we sample one not-bought item for every bought item. This gives us an equal representation of bought and not-bought products, so our model training is not overwhlemed by one class. It can be debated if the customer only considers one other product for every product she bought. In general, customers most likely consider more than one item when shopping. The optimal number of not-bought samples should allow the model to accurately estimate preferences, but not be overwhlemed by the majority class. That is an area for further discussion.</p>
 <p>Below we describe our sampling procedure for not-bought items:</p>
 <ol>
 <li>Group all products by subcategory name, year, and week.</li>
@@ -15019,7 +15009,7 @@ dtype: object</pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Modelling">Modelling</h2>
 
-<p>As seen in SHOPPER our approach is to build a model for personalized shopping recommendations. Our goal is to translate the SHOPPER model into the TensorFlow framework and see if that can yield the desired results. 
+<p>As seen in SHOPPER our approach is to build a model for personalized shopping recommendations. Our goal is to translate the SHOPPER model into the TensorFlow framework and see if that can yield accurate purchase predictions and useful embeddings. 
 Most of the maths behind SHOPPER can be found in our approach as well. This can be seen for example with the way our embeddings are calculated. 
 Later we will pick that thought up again and see what formula from SHOPPER goes where in our model architecture.</p>
 
@@ -15642,7 +15632,7 @@ Epoch 3/3
 <div class="cell border-box-sizing text_cell rendered">
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We train for a small number of epochs with a low learning rate because, during experimentation, we found our model to overfit on the training set very quickly. This is likely because the data is individualized (we are using unique identifiers for users and items), so the model can not inherently generalize well. One option to be discussed in future research could be to see the effect of adding a regularization parameter to the loss function.</p>
+<p>We train for a small number of epochs with a low learning rate because, during experimentation, we found our model to overfit on the training set very quickly. This is likely because the data is individualized (we are using unique identifiers for users and items). One option to be discussed in future research could be to see the effect of adding a regularization parameter to the loss function.</p>
 
 </div>
 </div>
@@ -16781,9 +16771,11 @@ Name: 12, dtype: float32</pre>
   <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Our above example shows an example use-case of our model. Consider a grocery retailer who wishes to induce user 859 into purchasing the Danone Activia Muesli pack. The probability of the shopper purchasing the item is 0.07 at a price of 2 euros, which results in an expected revenue of 0.14 euros for the store. Offering the shopper a discount of 0.75 euros increases the probability of purchase to 0.10, which results in an expected revenue of 0.125 euros for the store. In this case, it is not in the store's interest to give the customer a discount, unless the item would go to waste anyways. Grocery items have a relatively short shelf-life compared to other goods, and cannot be sold after their expiry date has passed. Using this method, retailers could encourage shoppers to buy these expiring groceries, as opposed to simply throwing them out.</p>
+
+<h3 id="Discussion">Discussion<a class="anchor-link" href="#Discussion">&#182;</a></h3>
 <p>Regarding the initial question of designing the coupons that maximize revenue: when the customer enters the store in a given week, we would compute the maximum price this customer is willing to pay (by running the model over the same product but multiple prices and taking the highest price whose probability is still over a certain threshold*), and then print coupons for the products that have highest probabilities of purchase under their maximum price. We can also incorporate other products in the basket in this reasoning: first, the product with the highest probability would be assumed as already being in the basket when computing the second most probable product, then these two would comprise the basket for selection of the third product, and so on. This would be iterated as long as the purchase probability is over a certain threshold. If our model is right, the customer will use all printed coupons during their store visit.</p>
 <p>*As the price with highest probability would most certainly be very low, and far from the WTP.</p>
-<h3 id="Concerns">Concerns<a class="anchor-link" href="#Concerns">&#182;</a></h3><p>An error may occur in several ways. During the first run of the model, when determining the maximum willingness to pay, the calculated price can be either too high or too low. If too low, the store is losing additional revenue from the price difference, but if it is too high, the customer will not buy at all. As the “sunk” revenue is expected to be generally higher than the potential loss from setting a low price (unless the cost is lower than the customer’s WTP), it is more profitable to minimize the probability of overestimating the WTP, and so the management should choose a high enough probability threshold for price. Recall that in our example, customers may buy a product only with a personalized coupon.</p>
+<p>An error may occur in several ways. During the first run of the model, when determining the maximum willingness to pay, the calculated price can be either too high or too low. If too low, the store is losing additional revenue from the price difference, but if it is too high, the customer will not buy at all. As the “sunk” revenue is expected to be generally higher than the potential loss from setting a low price (unless the cost is lower than the customer’s WTP), it is more profitable to minimize the probability of overestimating the WTP, and so the management should choose a high enough probability threshold for price. Recall that in our example, customers may buy a product only with a personalized coupon.</p>
 <p>Even if the calculated WTP is right, our model may still misjudge the probability of buying the product. Issuing a coupon for a product that will not be purchased only costs the firm the printing expenses, but not issuing a coupon for a product that would otherwise be bought is again a sunken revenue. Therefore the management should consider to print sufficiently many coupons. Although then psychological barriers could arise, when the customer is pressured to buy too many things and so ends up not purchasing anything, but that is outside the scope of our model.</p>
 
 </div>
@@ -16842,7 +16834,7 @@ Outside of retail, movie and song streaming services also do personal recommenda
 <p>Let $U_{tc}$ represent the utility a customer receives from choosing item $c$ on trip $t$ and $C$ represent the full set of alternatives ($c = 1, 2, ... ,C$; with $C\geq2$) the customer can choose from.</p>
 <p>The customer then chooses item $c$ from the set of alternatives that provides the highest utilities. The customer chooses item $c$ such that $U_{tc} &gt; U_{tc'} \; \forall \: c \neq c' $. Therefore the probability that the customer chooses a specific alternative can be written as $Prob(U_{tc} &gt; U_{tc'} \; \forall \: c \neq c')$. Plugging in our utility function from before (equation 3) results in the following expression:</p>
 <p>$P_c = p(\Psi(c, y_{t, i-1}) + \epsilon_{t,c} &gt; \Psi(c', y_{t, i-1}) + \epsilon_{t,c'}, \; \forall \: c \neq c') $</p>
-<p>Using the derivation from (<em>Train, K., 2009</em>) and the assumption of i.i.d error terms  that follow a Gumbel distribution we can show that the probability of choosing item $c$ can be described using a softmax function.</p>
+<p>Using the derivation from Train (<em>2009</em>) and the assumption of i.i.d error terms  that follow a Gumbel distribution we can show that the probability of choosing item $c$ can be described using a softmax function.</p>
 <p>$p(y_{ti} = c | \mathbf{y}_{t, i-1}) = \frac{exp\{\Psi(c, \mathbf{y}_{t, i-1})\}}{\displaystyle \sum_{c' \notin y_{t, i-1}}exp\{\Psi(c', \mathbf{y}_{t, i-1})\} } $</p>
 <p>To calculate the probability item $c$ is chosen we exponentiate the customer's utility in trip $t$ with respect to item $c$ and divide that by the sum of all other utilites raised to base $e$. Keen observers will note that this is simply a softmax function over all possible items. This can be difficult to costly to calculate, so an alternate method is used instead, see below.</p>
 
@@ -16863,6 +16855,7 @@ Outside of retail, movie and song streaming services also do personal recommenda
     src="/blog/img/seminar/group3_shopper/negative_sampling.png" alt="Negative sampling"
     style="display:block;margin:0 auto;">
     <figcaption align = "center"><em>Diagram of negative sampling approach</em></figcaption>
+    <figcaption align = "center"><a href = "https://scholar.sun.ac.za/handle/10019.1/98758"><em>Source</em></a></figcaption>
   </figure>
 
 <p>We apply a similar strategy with our sampling procedure. The optimal number of negative samples required for training is not clear. Further research is required to determine that number.</p>
@@ -16883,7 +16876,7 @@ Outside of retail, movie and song streaming services also do personal recommenda
 <p>Koren, Y., Bell, R., Volinsky, C. (2009) Matrix Factorization Techniques for Recommender Systems. IEEE Computer, 42(8):30–37</p>
 <p>Nevo, A. (1998). Measuring Market Power in the Ready-To-Eat Cereal Industry. Food Marketing Policy Center Research Report No. 37</p>
 <p>Molnar, F. J., Hutton, B., and Fergusson, D. (2008) Does analysis using “last observation carried forward” introduce bias in dementia research? Canadian Medical Association Journal, 179(8):751–753</p>
-<p>Mcfadden D. (1978) Modeling the Choice of Residential Location. Transportation Research Record, 1978</p>
+<p>Mcfadden D. (1978) Modeling the Choice of Residential Location. Transportation Research Record</p>
 <p>Train K. E. (2009) Discrete Choice Methods With Simulation. Cambridge University Press. Ch 3, 34-75</p>
 <p>Serrano, L. How Does Netflix Recommend Movies? Matrix Factorization. <a href="https://www.youtube.com/watch?v=ZspR5PZemcs">https://www.youtube.com/watch?v=ZspR5PZemcs</a> (accessed Nov 2019)</p>
 <p>McInnes, L., Healy, J., and Melville, J. (2018) UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction <a href="https://arxiv.org/abs/1802.03426">https://arxiv.org/abs/1802.03426</a></p>
@@ -16893,6 +16886,8 @@ Outside of retail, movie and song streaming services also do personal recommenda
 <p>Mikolov, T., Chen, K., Corrado, G., Dean, J. (2013) Efficient Estimation of Word Representations in Vector Space. <a href="https://arxiv.org/abs/1301.3781">https://arxiv.org/abs/1301.3781</a></p>
 <p>Salem, M. Market Basket Analysis with R. <a href="http://www.salemmarafi.com/code/market-basket-analysis-with-r/">http://www.salemmarafi.com/code/market-basket-analysis-with-r/</a> (accessed Jan 2020)</p>
 <p>Grenier, E. Survival Guide to German Supermarkets. <a href="https://www.dw.com/en/survival-guide-to-german-supermarkets/a-46312578">https://www.dw.com/en/survival-guide-to-german-supermarkets/a-46312578</a> (accessed Jan 2020)</p>
+<p>Jolliffe, I. (2011). Principal Component Analysis. In Lovric M. (eds) International Encyclopedia of Statistical Science. Springer, Berlin, Heidelberg </p>
+<p>Lloyd, S. (1982). Least squares quantization in PCM. In IEEE Transactions on Information Theory, Vol. 28, No. 2, 129-137</p>
 
 </div>
 </div>
@@ -16944,7 +16939,7 @@ Outside of retail, movie and song streaming services also do personal recommenda
     <div class="panel-body">
         <ul class="nav nav-pills nav-stacked">
             
-            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (37)</a>
+            <li><a href="https://humboldt-wi.github.io/blog/categories/course-projects">course-projects (36)</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/categories/instruction">instruction (2)</a>
@@ -17023,9 +17018,6 @@ Outside of retail, movie and song streaming services also do personal recommenda
             <li><a href="https://humboldt-wi.github.io/blog/tags/classification"><i class="fa fa-tags"></i> classification</a>
             </li>
             
-            <li><a href="https://humboldt-wi.github.io/blog/tags/cnn"><i class="fa fa-tags"></i> cnn</a>
-            </li>
-            
             <li><a href="https://humboldt-wi.github.io/blog/tags/coarsened-exact-matching"><i class="fa fa-tags"></i> coarsened-exact-matching</a>
             </li>
             
@@ -17069,9 +17061,6 @@ Outside of retail, movie and song streaming services also do personal recommenda
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/explanation"><i class="fa fa-tags"></i> explanation</a>
-            </li>
-            
-            <li><a href="https://humboldt-wi.github.io/blog/tags/fasttext"><i class="fa fa-tags"></i> fasttext</a>
             </li>
             
             <li><a href="https://humboldt-wi.github.io/blog/tags/fine-tuning"><i class="fa fa-tags"></i> fine-tuning</a>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
@@ -28,11 +28,6 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</loc>
-    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/bert/</loc>
     <lastmod>2020-02-07T00:00:00+00:00</lastmod>
   </url>
@@ -53,17 +48,12 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/class19/20/</loc>
+    <loc>https://humboldt-wi.github.io/blog/tags/class19/</loc>
     <lastmod>2020-02-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/classification/</loc>
-    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/cnn/</loc>
     <lastmod>2020-02-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -93,11 +83,6 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/fasttext/</loc>
-    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/fine-tuning/</loc>
     <lastmod>2020-02-07T00:00:00+00:00</lastmod>
   </url>
@@ -123,12 +108,12 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/</loc>
+    <loc>https://humboldt-wi.github.io/blog/tags/language-model/</loc>
     <lastmod>2020-02-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/language-model/</loc>
+    <loc>https://humboldt-wi.github.io/blog/tags/neural-network/</loc>
     <lastmod>2020-02-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -179,11 +164,6 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/roberta/</loc>
-    <lastmod>2020-02-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</loc>
     <lastmod>2020-02-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -298,11 +278,6 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/neural-network/</loc>
-    <lastmod>2020-02-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/rnn/</loc>
     <lastmod>2020-02-06T00:00:00+00:00</lastmod>
   </url>
@@ -348,22 +323,17 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/uplift/</loc>
+    <lastmod>2020-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/uplift-modeling/</loc>
     <lastmod>2020-02-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/a/b-testing/</loc>
-    <lastmod>2019-08-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/causal-inference/</loc>
-    <lastmod>2019-08-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/class19/</loc>
     <lastmod>2019-08-18T00:00:00+00:00</lastmod>
   </url>
   
@@ -434,11 +404,6 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/tags/simulation/</loc>
-    <lastmod>2019-08-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/uplift/</loc>
     <lastmod>2019-08-18T00:00:00+00:00</lastmod>
   </url>
   
@@ -538,11 +503,6 @@
   </url>
   
   <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/class18/19/</loc>
-    <lastmod>2019-02-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/monte-carlo-dropout/</loc>
     <lastmod>2019-02-09T00:00:00+00:00</lastmod>
   </url>
@@ -569,11 +529,6 @@
   
   <url>
     <loc>https://humboldt-wi.github.io/blog/research/information_systems_1819/is_lda_final/</loc>
-    <lastmod>2019-02-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://humboldt-wi.github.io/blog/tags/class17/18/</loc>
     <lastmod>2019-02-08T00:00:00+00:00</lastmod>
   </url>
   
@@ -728,6 +683,11 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/sentiment-analysis/</loc>
+    <lastmod>2018-03-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/tags/share-price-prediction/</loc>
     <lastmod>2018-03-15T00:00:00+00:00</lastmod>
   </url>
@@ -813,6 +773,11 @@
   </url>
   
   <url>
+    <loc>https://humboldt-wi.github.io/blog/</loc>
+    <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://humboldt-wi.github.io/blog/contributors/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
   </url>
@@ -820,6 +785,26 @@
   <url>
     <loc>https://humboldt-wi.github.io/blog/member/</loc>
     <lastmod>2017-01-01T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/a/b-testing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates_final/</loc>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/class17/18/</loc>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/class18/19/</loc>
+  </url>
+  
+  <url>
+    <loc>https://humboldt-wi.github.io/blog/tags/class19/20/</loc>
   </url>
   
   <url>

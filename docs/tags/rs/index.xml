@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>RS on Institute of Infomation Systems at HU-Berlin</title>
@@ -17,7 +17,7 @@
       <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/causalrecommendersystem/</guid>
-      <description>Correcting for Self-selection in Product Rating: Causal Recommender Systems Authors: Karolina Grubinska &amp;amp; Médéric Thomas Table of Contents  An Introduction to Recommender Systems Motivation Overview of Methods Matrix Completion Problem Singular Value Decomposition Problem Definition The Missing-at-Random Assumption Does MAR really hold? Our Goal in This Framework In Mathematical Terms A proposal for Causal Recommender System: Causal Embeddings Causal Setup Results Comparison Conclusions Bibliography  An Introduction to Recommender Systems  One of the main characteristics of a modern, digital society that we currently live in is the heterogeneity of available items.</description>
+      <description>Correcting for Self-selection in Product Rating: Causal Recommender Systems Authors: Karolina Grubinska &amp;amp; Médéric Thomas Table of Contents  An Introduction to Recommender Systems [Motivation] (#motivation) [Overview of Methods] (#methods)   [Matrix Completion Problem] (#matrix) [Singular Value Decomposition] (#svd)  [Problem Definition] (#problem)   [The Missing-at-Random Assumption] (#mar) [Does MAR really hold?] (#marhold)  [Our Goal in This Framework] (#goal)   [In Mathematical Terms] (#maths)  [A proposal for Causal Recommender System: Causal Embeddings] (#cause)   [Causal Setup] (#causal) [Results Comparison] (#results)  [Conclusions] (#conclusions) [Bibliography] (#bibliography)  An Introduction to Recommender Systems  One of the main characteristics of a modern, digital society that we currently live in is the heterogeneity of available items.</description>
     </item>
     
   </channel>

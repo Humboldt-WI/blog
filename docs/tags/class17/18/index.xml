@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Class17/18 on Institute of Infomation Systems at HU-Berlin</title>
@@ -6,7 +6,6 @@
     <description>Recent content in Class17/18 on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 08 Feb 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/class17/18/index.xml" rel="self" type="application/rss+xml" />
     
@@ -26,7 +25,7 @@
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/02convolutionalneuralnetworks/</guid>
-      <description>Convolutional Neural Networks Authors: Elias Baumann, Franko Maximilian Hölzig, Josef Lorenz Rumberger Table of Content  Motivation Images Artificial Neural Networks Convolutional Neural Networks  Architecture Overview Layers Convolutional Layer  Filters Convolution for Functions Mathematical 2D convolution Back to 2D convolution Stride Padding Local receptive fields Parameter Sharing Weight Initialization im2col Convolution using im2col  Activation Function Layer  Why is a non-linear function needed? Logistic sigmoid function hyperbolic tangent function Rectified Linear Units  Pooling Layer  Max Pooling Average Pooling  Fully-connected Layer Forward pass in a convolutional neural network using im2col  The backpropagation algorithm  Backpropagation for Pooling layers The gradient descent algorithm The Vanishing Gradient Problem  Optimizing gradient descent  Stochastic gradient descent Mini-batch gradient descent Learning Rate  Transfer Learning Other interesting use cases for CNNs  Videos Neural language processing Variant calling   Motivation Within the last few years we observed a large increase of visual data.</description>
+      <description>Convolutional Neural Networks Authors: Elias Baumann, Franko Maximilian Hölzig, Josef Lorenz Rumberger Table of Content  Motivation Images Artificial Neural Networks Convolutional Neural Networks Architecture Overview Layers 7. Convolutional Layer 8. Filters 9. Convolution for Functions 10. Mathematical 2D convolution 11. Back to 2D convolution 12. Stride 13. Padding 14. Local receptive fields 15. Parameter Sharing 16. Weight Initialization 17. im2col 18. Convolution using im2col 19. Activation Function Layer 20. Why is a non-linear function needed?</description>
     </item>
     
     <item>
@@ -44,7 +43,7 @@
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/03imageanalysis/</guid>
-      <description>Image Analysis: Introduction to deep learning for computer vision Authors: Nargiz Bakhshaliyeva, Robert Kittel In this blog, we present the practical use of deep learning in computer vision. You will see how Convolutional Neural Networks are being applied to process the visual data, generating some valuable knowledge. In particular, we focused on the object recognition task, aiming to classify what kind of an object (a dog or a cat) is presented within a particular image by using the notion of Transfer Learning.</description>
+      <description>Image Analysis: Introduction to deep learning for computer vision Authors: Nargiz Bakhshaliyeva, Robert Kittel In this blog, we present the practical use of deep learning in computer vision. You will see how Convolutional Neural Networksare being applied to process the visual data, generating some valuable knowledge. In particular, we focused on the object recognition task, aiming to classify what kind of an object (a dog or a cat) is presented within a particular image by using the notion of Transfer Learning.</description>
     </item>
     
     <item>
@@ -62,11 +61,7 @@
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/05sentimentanalysis/</guid>
-      <description>Sentiment Analysis using Deep Learning Authors: Katja Metzger, Aydin Sader Fosalaie, Ninos Yonan Outline  Sentiment Analysis Introduction  Case Study  Keras IMDB Dataset
- Data Analysis
- Word Embeddings
- Convolutional Neural Network
-  Summary  Sentiment Analysis Introduction Sentiment analysis is a very beneficial approach to automate the classification of the polarity of a given text. A helpful indication to decide if the customers on amazon like a product or not is for example the star rating.</description>
+      <description>Sentiment Analysis using Deep Learning Authors: Katja Metzger, Aydin Sader Fosalaie, Ninos Yonan Outline   Sentiment Analysis Introduction    Case Study  Keras IMDB Dataset Data Analysis Word Embeddings Convolutional Neural Network    Summary    Sentiment Analysis Introduction Sentiment analysis is a very beneficial approach to automate the classification of the polarity of a given text. A helpful indication to decide if the customers on amazon like a product or not is for example the star rating.</description>
     </item>
     
     <item>
@@ -75,8 +70,7 @@
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/08recommendation/</guid>
-      <description>Recommendation Systems Authors: Jingyi Liu, Brijesh Nanavati, Bharathi Srinivasan 
-Introduction The explosion of information with the advent of the Internet and the multitude of choices available to customers introduces complexity in a customer’s decision processes. Recommender system is a useful information-filtering tool, which guides customers to a narrower selection of products and consequently helps them make better decisions. Matching users to the right products saves customers time and effort leading to increased user satisfaction, which in turn earns customer loyalty.</description>
+      <description>Recommendation Systems Authors: Jingyi Liu, Brijesh Nanavati, Bharathi Srinivasan The explosion of information with the advent of the Internet and the multitude of choices available to customers introduces complexity in a customer’s decision processes. Recommender system is a useful information-filtering tool, which guides customers to a narrower selection of products and consequently helps them make better decisions. Matching users to the right products saves customers time and effort leading to increased user satisfaction, which in turn earns customer loyalty.</description>
     </item>
     
     <item>
@@ -123,8 +117,7 @@ A very common way to accomplish that is by using an API.</description>
       
       <guid>https://humboldt-wi.github.io/blog/research/instruction/00samplepost/</guid>
       <description>TEST #hugo
-import numpy as np import pandas as pd 2+3  A Gentle Introduction to Neural Network Fundamentals 
-Imagine the following problem: There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.</description>
+import numpy as np import pandas as pd 2+3 A Gentle Introduction to Neural Network Fundamentals There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.</description>
     </item>
     
   </channel>

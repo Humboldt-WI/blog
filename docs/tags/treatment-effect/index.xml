@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>treatment effect on Institute of Infomation Systems at HU-Berlin</title>
@@ -17,9 +17,7 @@
       <pubDate>Tue, 18 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/double_machine_learning/</guid>
-      <description>Double Machine Learning Implementation  
-Christopher Ketzler, Guillermo Morishige
-  Abstract: The aim of this paper is to replicate and apply the approach provided by Chernozhukov et al. (2016) to get the causal estimand of interest: average treatment effect (ATE) $\ \eta_0 $ using Neyman orthogonality and cross-fitting. For observational data, we will estimate the causal relationship between the eligibility and participation in the 401(k) and its effect on net financial assets; as well to apply it to other datasets, to find the effect of the Pennsylvania Reemployment Bonus on the unemployment duration and the effect of smoking on medical costs.</description>
+      <description>Double Machine Learning Implementation  Keywords:Double machine learning, average treatment effect, Neyman-orthogonality, cross-fitting, partially linear regression model.  School of Business and Economics, Humboldt Universität zu Berlin, Spandauer Str. 1, 10178, Berlin, Germany.  1) Introduction People in the fields of econometrics, epidemiology, philosophy, just to name a few, have been interested into modelling causality: drawing conclusion through statistical analyses from associations between measurements. Although getting inferences from these statistical analyses could be tricky since the association (correlation) doesn’t imply causation.</description>
     </item>
     
   </channel>

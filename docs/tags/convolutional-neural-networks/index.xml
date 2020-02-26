@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Convolutional Neural Networks on Institute of Infomation Systems at HU-Berlin</title>
@@ -17,7 +17,7 @@
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/02convolutionalneuralnetworks/</guid>
-      <description>Convolutional Neural Networks Authors: Elias Baumann, Franko Maximilian Hölzig, Josef Lorenz Rumberger Table of Content  Motivation Images Artificial Neural Networks Convolutional Neural Networks  Architecture Overview Layers Convolutional Layer  Filters Convolution for Functions Mathematical 2D convolution Back to 2D convolution Stride Padding Local receptive fields Parameter Sharing Weight Initialization im2col Convolution using im2col  Activation Function Layer  Why is a non-linear function needed? Logistic sigmoid function hyperbolic tangent function Rectified Linear Units  Pooling Layer  Max Pooling Average Pooling  Fully-connected Layer Forward pass in a convolutional neural network using im2col  The backpropagation algorithm  Backpropagation for Pooling layers The gradient descent algorithm The Vanishing Gradient Problem  Optimizing gradient descent  Stochastic gradient descent Mini-batch gradient descent Learning Rate  Transfer Learning Other interesting use cases for CNNs  Videos Neural language processing Variant calling   Motivation Within the last few years we observed a large increase of visual data.</description>
+      <description>Convolutional Neural Networks Authors: Elias Baumann, Franko Maximilian Hölzig, Josef Lorenz Rumberger Table of Content  Motivation Images Artificial Neural Networks Convolutional Neural Networks Architecture Overview Layers 7. Convolutional Layer 8. Filters 9. Convolution for Functions 10. Mathematical 2D convolution 11. Back to 2D convolution 12. Stride 13. Padding 14. Local receptive fields 15. Parameter Sharing 16. Weight Initialization 17. im2col 18. Convolution using im2col 19. Activation Function Layer 20. Why is a non-linear function needed?</description>
     </item>
     
   </channel>

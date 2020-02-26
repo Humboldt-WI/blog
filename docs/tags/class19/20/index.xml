@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Class19/20 on Institute of Infomation Systems at HU-Berlin</title>
@@ -6,35 +6,9 @@
     <description>Recent content in Class19/20 on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/class19/20/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Analysis of social media behavior of the 2020 presidential election candidates</title>
-      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</link>
-      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</guid>
-      <description>Authors: Georg Velev, Iliyana Pekova Table of Content  Introduction
- Data Retrieval
-2.1. Libraries: GetOldTweets3 vs Tweepy
-2.2. Descriptive Statistics
- Methodology
-3.1. Retrieval of pre-labeled Twitter Data
-3.2. Machine Learning Algorithms
-3.2.1. FastText
-3.2.2. Convolutional Neural Network
-3.2.3. Multinominal Naive Bayes Classifier
- Data Preprocessing
-4.1. Data Cleaning
-4.2. Word Embeddings: GloVe and FastText
-4.3. Model specific Data Preprocessing
- Performance Evaluation
-5.1. Initial Results
-5.2. Hyperparameter Tuning using Bayesian Optimization</description>
-    </item>
     
     <item>
       <title>BERT</title>
@@ -64,7 +38,7 @@ Introduction Motivation In 2018, a research paper by Devlin et, al. titled “BE
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group11_peer_reviews/</guid>
       <description>Big Peer Review Challenge Asena Ciloglu &amp;amp; Melike Merdan Abstract This blog post studies the first public dataset of scientific peer reviews available for research purposes PeerRead applying state-of-the-art NLP models ELMo and ULMFit to a text classification task [1]. It aims to examine the importance of the peer reviews on paper’s acceptance or rejection decision in well-known conferences of computational linguistics, AI and NLP.
-Table of Contents  Introduction  Peer Review Process Motivation   Descriptive Analytics  A Dataset of Peer Reviews  Approach and Data Extraction  Google Scholarly Data Cleaning Data &amp;amp; Insights   Application  Our Approach  Content-based Classification Review-based Classification Analysis with Auxiliary Data  Transfer Learning and Recent Applications Embedding for Language Models (ELMo)  Methodology  Deep Contextualized Word Representations Model Architecture   Universal Language Model Fine Tuning (ULMFit)  Methodology  General Knowledge Domain Training Target Task Language Model Fine Tuning Target Task Classifier   Support Vector Machine (SVM)   Empirical Results &amp;amp; Conclusion  Results Discussion and Conclusion   Reference List  1.</description>
+Table of Contents   Introduction  Peer Review Process Motivation    Descriptive Analytics  A Dataset of Peer Reviews  Approach and Data Extraction   Google Scholarly Data Cleaning Data &amp;amp; Insights    Application  Our Approach  Content-based Classification Review-based Classification Analysis with Auxiliary Data   Transfer Learning and Recent Applications Embedding for Language Models (ELMo)  Methodology  Deep Contextualized Word Representations Model Architecture     Universal Language Model Fine Tuning (ULMFit)  Methodology  General Knowledge Domain Training Target Task Language Model Fine Tuning Target Task Classifier     Support Vector Machine (SVM)    Empirical Results &amp;amp; Conclusion  Results Discussion and Conclusion    Reference List  1.</description>
     </item>
     
     <item>
@@ -73,7 +47,7 @@ Table of Contents  Introduction  Peer Review Process Motivation   Descriptive An
       <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group2_survivalanalysis/</guid>
-      <description>Deep Learning for Survival Analysis Authors: Laura Löschmann, Daria Smorodina Table of content  Motivation - Business case Introduction to Survival Analysis  2.1 Common terms 2.2 Survival function 2.3 Hazard function  Dataset Standard Methods in Survival Analysis  4.1 Kaplan - Meier estimator 4.2 Cox Proportional Hazard Model 4.3 Time-varying Cox regression 4.4 Random survival forests  Deep Learning for Survival Analysis  5.1 DeepSurv 5.2 Deep Hit  Evaluation  6.</description>
+      <description>Deep Learning for Survival Analysis Authors: Laura Löschmann, Daria Smorodina  Table of content  Motivation - Business case Introduction to Survival Analysis  2.1 Common terms 2.2 Survival function 2.3 Hazard function   Dataset Standard methods in Survival Analysis  4.1 Kaplan - Meier estimator 4.2 Cox proportional hazards model 4.3 Time-varying Cox regression 4.4 Random survival forests   Deep Learning for Survival Analysis  5.1 DeepSurv 5.</description>
     </item>
     
     <item>
@@ -82,7 +56,7 @@ Table of Contents  Introduction  Peer Review Process Motivation   Descriptive An
       <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group5_causal_neural_networks/</guid>
-      <description>Causal Neural Networks - Optimizing Marketing Spendings Effectivness Hasan Reda Alchahwan, Lukas Baumann, Darius Schulz
+      <description>Causal Neural Networks - Optimizing Marketing Spendings Effectivness Hasan Reda Alchahwan, Lukas	Baumann, Darius Schulz
 Table of Contents:  Introduction Literature Review Descriptive Analysis of the Dataset Estimation of Treatment Effects considering the checkout amount Estimation of Treatment Effects considering conversion Placebo Experiment Conclusion  1. Introduction Targeting the right customers in marketing campaigns has always been a struggle for marketeers. Data-driven approaches allowed to select targets with the highest probability to buy or the greatest revenue expected, if the costs of the activity deter you from targeting every customer.</description>
     </item>
     

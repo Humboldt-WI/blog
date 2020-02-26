@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Course projects on Institute of Infomation Systems at HU-Berlin</title>
@@ -10,31 +10,6 @@
     
 	<atom:link href="https://humboldt-wi.github.io/blog/categories/course-projects/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Analysis of social media behavior of the 2020 presidential election candidates</title>
-      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</link>
-      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates/</guid>
-      <description>Authors: Georg Velev, Iliyana Pekova Table of Content  Introduction
- Data Retrieval
-2.1. Libraries: GetOldTweets3 vs Tweepy
-2.2. Descriptive Statistics
- Methodology
-3.1. Retrieval of pre-labeled Twitter Data
-3.2. Machine Learning Algorithms
-3.2.1. FastText
-3.2.2. Convolutional Neural Network
-3.2.3. Multinominal Naive Bayes Classifier
- Data Preprocessing
-4.1. Data Cleaning
-4.2. Word Embeddings: GloVe and FastText
-4.3. Model specific Data Preprocessing
- Performance Evaluation
-5.1. Initial Results
-5.2. Hyperparameter Tuning using Bayesian Optimization</description>
-    </item>
     
     <item>
       <title>BERT</title>
@@ -56,14 +31,17 @@ Introduction Motivation In 2018, a research paper by Devlin et, al. titled “BE
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/uncertainty_identification_transformers/</guid>
       <description>Economic Uncertainty Identification Using Transformers - Improving Current Methods Authors: Siddharth Godbole, Karolina Grubinska &amp;amp; Olivia Kelnreiter   Table of Contents  Introduction Motivation and Literature Theoretical Background
 3.1 Transformers, BERT and BERT-based Models
-3.2 Transformers Architecture 3.3 BERT
+3.2 Transformers Architecture
+3.3 BERT
 3.4 RoBERTa
 3.5 DistilBERT
-3.6 ALBERT 3.7 Comparing RoBERTa, DistilBERT and ALBERT Application to Economic Policy Uncertainty
+3.6 ALBERT
+3.7 Comparing RoBERTa, DistilBERT and ALBERT Application to Economic Policy Uncertainty
 4.1 Data Exploration
 4.1.1 Data Pre-Processing
 4.1.2 Data Imbalance
-4.2 Models Implementation</description>
+4.2 Models Implementation
+4.2.1 Transformer-Based Models</description>
     </item>
     
     <item>
@@ -72,8 +50,7 @@ Introduction Motivation In 2018, a research paper by Devlin et, al. titled “BE
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/text_generation/</guid>
-      <description>LatexIT.add(&amp;lsquo;p&amp;rsquo;,true);  
-Table of Contents  Generating Synthetic Comments to Balance Data for Text Classification  Introduction  Data Exploration  Data Pre-Processing Text Generation Language Model - GloVe  Further Text Preparation  Modeling  Generation   Language Model GPT-2  Why GPT-2?  What makes GPT-2 so powerful?  The Problem of Long-Term Dependencies  GPT-2 Architecture  How does GPT-2 create text?   Input Encoding  Token Embeddings (wte)  Positional Encoding (wpe)  GPT-2 - Token Processing Overview  Self-Attention Process  Query, Key and Value vector  Splitting into Attention Heads  Scoring  Sum  Masked Self-Attention  Feed-Forward Neural Network  Model Output    Byte Pair Encoding   Byte Pair Encoding - Introduction  Byte Pair Encoding for NLP   Comment Classification Task   Relation to Business Case  Classification Approach  Classification Architecture  RNN Classifier  BOW - Logistic Regression-Classifier  Classification Settings  (1) Imbalanced  (2) Undersampling  (3) Oversampling GloVe  (4) Oversampling GPT-2  Drawbacks of Oversampling with Generated Text  Classification Task - Limitations  Evaluation  Including the &amp;ldquo;Not-Sure&amp;rdquo;-Category  Different Balancing Ratios for Generated Comments  Conclusion and Discussion of Results   References   Picture References   Generating Synthetic Comments to Balance Data for Text Classification Lukas Faulbrück  Asmir Muminovic  Tim Peschenz</description>
+      <description>Table of Contents  Introduction Data Exploration Data Pre-Processing Text Generation(1): Language Model - GloVe  Further Text Preparation Modeling Generation   Text Generation(2): Language Model - GPT-2  Why GPT-2? What makes GPT-2 so powerful? The Problem of Long-Term Dependencies GPT-2 Architecture How does GPT-2 create text? Input Encoding 1. Token Embeddings (wte) 2. Positional Encoding (wpe) GPT-2 - Token Processing Overview Self-Attention Process 1. Query, Key and Value vector 2.</description>
     </item>
     
     <item>
@@ -92,7 +69,7 @@ Table of Contents  Generating Synthetic Comments to Balance Data for Text Classi
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group11_peer_reviews/</guid>
       <description>Big Peer Review Challenge Asena Ciloglu &amp;amp; Melike Merdan Abstract This blog post studies the first public dataset of scientific peer reviews available for research purposes PeerRead applying state-of-the-art NLP models ELMo and ULMFit to a text classification task [1]. It aims to examine the importance of the peer reviews on paper’s acceptance or rejection decision in well-known conferences of computational linguistics, AI and NLP.
-Table of Contents  Introduction  Peer Review Process Motivation   Descriptive Analytics  A Dataset of Peer Reviews  Approach and Data Extraction  Google Scholarly Data Cleaning Data &amp;amp; Insights   Application  Our Approach  Content-based Classification Review-based Classification Analysis with Auxiliary Data  Transfer Learning and Recent Applications Embedding for Language Models (ELMo)  Methodology  Deep Contextualized Word Representations Model Architecture   Universal Language Model Fine Tuning (ULMFit)  Methodology  General Knowledge Domain Training Target Task Language Model Fine Tuning Target Task Classifier   Support Vector Machine (SVM)   Empirical Results &amp;amp; Conclusion  Results Discussion and Conclusion   Reference List  1.</description>
+Table of Contents   Introduction  Peer Review Process Motivation    Descriptive Analytics  A Dataset of Peer Reviews  Approach and Data Extraction   Google Scholarly Data Cleaning Data &amp;amp; Insights    Application  Our Approach  Content-based Classification Review-based Classification Analysis with Auxiliary Data   Transfer Learning and Recent Applications Embedding for Language Models (ELMo)  Methodology  Deep Contextualized Word Representations Model Architecture     Universal Language Model Fine Tuning (ULMFit)  Methodology  General Knowledge Domain Training Target Task Language Model Fine Tuning Target Task Classifier     Support Vector Machine (SVM)    Empirical Results &amp;amp; Conclusion  Results Discussion and Conclusion    Reference List  1.</description>
     </item>
     
     <item>
@@ -101,7 +78,7 @@ Table of Contents  Introduction  Peer Review Process Motivation   Descriptive An
       <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group2_survivalanalysis/</guid>
-      <description>Deep Learning for Survival Analysis Authors: Laura Löschmann, Daria Smorodina Table of content  Motivation - Business case Introduction to Survival Analysis  2.1 Common terms 2.2 Survival function 2.3 Hazard function  Dataset Standard Methods in Survival Analysis  4.1 Kaplan - Meier estimator 4.2 Cox Proportional Hazard Model 4.3 Time-varying Cox regression 4.4 Random survival forests  Deep Learning for Survival Analysis  5.1 DeepSurv 5.2 Deep Hit  Evaluation  6.</description>
+      <description>Deep Learning for Survival Analysis Authors: Laura Löschmann, Daria Smorodina  Table of content  Motivation - Business case Introduction to Survival Analysis  2.1 Common terms 2.2 Survival function 2.3 Hazard function   Dataset Standard methods in Survival Analysis  4.1 Kaplan - Meier estimator 4.2 Cox proportional hazards model 4.3 Time-varying Cox regression 4.4 Random survival forests   Deep Learning for Survival Analysis  5.1 DeepSurv 5.</description>
     </item>
     
     <item>
@@ -110,7 +87,9 @@ Table of Contents  Introduction  Peer Review Process Motivation   Descriptive An
       <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/nlp_text_summarization_techniques/</guid>
-      <description>table.display{ margin-bottom: 25px; margin-top: 25px; } th.display,td.display { border-bottom: 1px solid #ddd; padding: 5px; text-align: left; } tr.display:hover {background-color: #f5f5f5;} .gist { width: 100%; overflow: auto; } .gist .blob-wrapper.data { max-height: 350px; overflow: auto; } * { box-sizing: border-box; } /* Create two equal columns that floats next to each other */ .column { float: left; width: 50%; padding: 10px; } /* Clear floats after the columns */ .</description>
+      <description>State of the Art Summarisation Techniques Generating Headlines as Short Summaries of Text  Information Systems Seminar 19/20
+Anna Franziska Bothe Alex Truesdale Lukas Kolbe
+Abstract This project combines two NLP use cases: generation of text summaries (in the form of short news headlines) and classification of a given article as containing or not containing political / economic uncertainty. The two approaches are joined by generating a set of new headlines alternative to the original headlines for each article in the given article set.</description>
     </item>
     
     <item>
@@ -119,7 +98,7 @@ Table of Contents  Introduction  Peer Review Process Motivation   Descriptive An
       <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group5_causal_neural_networks/</guid>
-      <description>Causal Neural Networks - Optimizing Marketing Spendings Effectivness Hasan Reda Alchahwan, Lukas Baumann, Darius Schulz
+      <description>Causal Neural Networks - Optimizing Marketing Spendings Effectivness Hasan Reda Alchahwan, Lukas	Baumann, Darius Schulz
 Table of Contents:  Introduction Literature Review Descriptive Analysis of the Dataset Estimation of Treatment Effects considering the checkout amount Estimation of Treatment Effects considering conversion Placebo Experiment Conclusion  1. Introduction Targeting the right customers in marketing campaigns has always been a struggle for marketeers. Data-driven approaches allowed to select targets with the highest probability to buy or the greatest revenue expected, if the costs of the activity deter you from targeting every customer.</description>
     </item>
     
@@ -156,10 +135,7 @@ Table of Contents:  Introduction Literature Review Descriptive Analysis of the D
       <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/multiple_treatments_uplift/</guid>
-      <description>Applications of Causal Inference for Marketing: Estimating Treatment Effects for multiple Treatments Authors: Jan Krol and Matthias Becher Table of Contents  Introduction
- Common Marketing Challenges
- Models  3.1 Decision Trees Rzepakowski &amp;amp; Jaroszewicz  3.1.1 Basic Rzepakowski &amp;amp; Jaroszewicz  3.1.2 Simple Splitting Criterion  3.2 Causal Tree and Causal Forest  3.3 Separate Model  Evaluation Methods
-4.1 Uplift Curves 4.2 Expected Outcome Experimental Setup  Results Outlook References  1.</description>
+      <description>Applications of Causal Inference for Marketing: Estimating Treatment Effects for multiple Treatments Authors: Jan Krol and Matthias Becher Table of Contents  Introduction Common Marketing Challenges Models 3.1 Decision Trees Rzepakowski &amp;amp; Jaroszewicz 3.1.1 Basic Rzepakowski &amp;amp; Jaroszewicz 3.1.2 Simple Splitting Criterion 3.2 Causal Tree and Causal Forest 3.3 Separate Model  Evaluation Methods4.1 Uplift Curves4.2 Expected Outcome Experimental Setup  Results Outlook References  1. Introduction  Nowadays marketing practitioners face a multitude of challenges.</description>
     </item>
     
     <item>
@@ -168,7 +144,7 @@ Table of Contents:  Introduction Literature Review Descriptive Analysis of the D
       <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/microfinance-policy/</guid>
-      <description>Microfinance Policies  Impact of Microfinance on The Social Well-being Authors: Edanur Kahvecioglu and Yu-Tang Wu Abstract Is microcredit a miracle or just a hype? While more and more researches were conducted to study microcredits, people started to question the effectiveness of microcredit program. This project explores the heterogeneity of treatment effect on microcredit to households&amp;rsquo; well-being. Causuall Random Forest and Two-model approach are used to analyze treatment effects on the household level and identify the important variables that separate households with higher treatment effect.</description>
+      <description>Microfinance Policies Impact of Microfinance on The Social Well-being Authors: Edanur Kahvecioglu and Yu-Tang Wu Abstract Is microcredit a miracle or just a hype? While more and more researches were conducted to study microcredits, people started to question the effectiveness of microcredit program. This project explores the heterogeneity of treatment effect on microcredit to households&amp;rsquo; well-being. Causuall Random Forest and Two-model approach are used to analyze treatment effects on the household level and identify the important variables that separate households with higher treatment effect.</description>
     </item>
     
     <item>
@@ -178,8 +154,7 @@ Table of Contents:  Introduction Literature Review Descriptive Analysis of the D
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/social_pressure/</guid>
       <description>Revisiting Social Pressure and Voter Turnout: Causal Inference with Supervised Learning Methods Julius Reimer &amp;amp; Toby Chelton
-
-[Source: https://paulkiser.com/2016/02/04/five-fixes-for-our-primarycaucus-fiasco/] Table of contents 1. Introduction
+Table of contents 1. Introduction
 2. Original Study and Our Objectives
 3. Data and Random Assignment
 4. Modelling
@@ -195,9 +170,7 @@ Table of Contents:  Introduction Literature Review Descriptive Analysis of the D
       <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/01marketing_campaign_optimization/</guid>
-      <description>Marketing Campaign Optimization 
-Causal Inference in Profit Uplift Modeling Authors: Asmir Muminovic, Lukas Kolbe 
-Motivation The global spending on advertising amounts to more than 540 billion US dollars for 2018 only, and the spending for 2019 is predicted to reach over 560 billion US dollars. The marketing spendings have continuously increased since 2010 [17], and this trend does not seem to brittle in the near future. Although marketing is such an integral part of most businesses, marketers often fail to maximize the profitability of their marketing efforts.</description>
+      <description>Marketing Campaign Optimization The global spending on advertising amounts to more than 540 billion US dollars for 2018 only, and the spending for 2019 is predicted to reach over 560 billion US dollars. The marketing spendings have continuously increased since 2010 [17], and this trend does not seem to brittle in the near future. Although marketing is such an integral part of most businesses, marketers often fail to maximize the profitability of their marketing efforts.</description>
     </item>
     
     <item>
@@ -206,8 +179,7 @@ Motivation The global spending on advertising amounts to more than 540 billion U
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</guid>
-      <description>LatexIT.add(&amp;lsquo;p&amp;rsquo;,true);  
-Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbour algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
+      <description>Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbour algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
     </item>
     
     <item>
@@ -216,7 +188,7 @@ Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall 
       <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/causalrecommendersystem/</guid>
-      <description>Correcting for Self-selection in Product Rating: Causal Recommender Systems Authors: Karolina Grubinska &amp;amp; Médéric Thomas Table of Contents  An Introduction to Recommender Systems Motivation Overview of Methods Matrix Completion Problem Singular Value Decomposition Problem Definition The Missing-at-Random Assumption Does MAR really hold? Our Goal in This Framework In Mathematical Terms A proposal for Causal Recommender System: Causal Embeddings Causal Setup Results Comparison Conclusions Bibliography  An Introduction to Recommender Systems  One of the main characteristics of a modern, digital society that we currently live in is the heterogeneity of available items.</description>
+      <description>Correcting for Self-selection in Product Rating: Causal Recommender Systems Authors: Karolina Grubinska &amp;amp; Médéric Thomas Table of Contents  An Introduction to Recommender Systems [Motivation] (#motivation) [Overview of Methods] (#methods)   [Matrix Completion Problem] (#matrix) [Singular Value Decomposition] (#svd)  [Problem Definition] (#problem)   [The Missing-at-Random Assumption] (#mar) [Does MAR really hold?] (#marhold)  [Our Goal in This Framework] (#goal)   [In Mathematical Terms] (#maths)  [A proposal for Causal Recommender System: Causal Embeddings] (#cause)   [Causal Setup] (#causal) [Results Comparison] (#results)  [Conclusions] (#conclusions) [Bibliography] (#bibliography)  An Introduction to Recommender Systems  One of the main characteristics of a modern, digital society that we currently live in is the heterogeneity of available items.</description>
     </item>
     
     <item>
@@ -225,9 +197,7 @@ Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall 
       <pubDate>Tue, 18 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/double_machine_learning/</guid>
-      <description>Double Machine Learning Implementation  
-Christopher Ketzler, Guillermo Morishige
-  Abstract: The aim of this paper is to replicate and apply the approach provided by Chernozhukov et al. (2016) to get the causal estimand of interest: average treatment effect (ATE) $\ \eta_0 $ using Neyman orthogonality and cross-fitting. For observational data, we will estimate the causal relationship between the eligibility and participation in the 401(k) and its effect on net financial assets; as well to apply it to other datasets, to find the effect of the Pennsylvania Reemployment Bonus on the unemployment duration and the effect of smoking on medical costs.</description>
+      <description>Double Machine Learning Implementation  Keywords:Double machine learning, average treatment effect, Neyman-orthogonality, cross-fitting, partially linear regression model.  School of Business and Economics, Humboldt Universität zu Berlin, Spandauer Str. 1, 10178, Berlin, Germany.  1) Introduction People in the fields of econometrics, epidemiology, philosophy, just to name a few, have been interested into modelling causality: drawing conclusion through statistical analyses from associations between measurements. Although getting inferences from these statistical analyses could be tricky since the association (correlation) doesn’t imply causation.</description>
     </item>
     
     <item>
@@ -236,13 +206,7 @@ Christopher Ketzler, Guillermo Morishige
       <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/uncertainty-and-credit-scoring/</guid>
-      <description>Uncertainty in Profit Scoring (Bayesian Deep Learning) Djordje Dotlic, Batuhan Ipekci, Julia Dullin Contents  Introduction Literature Review Theory
-A. Bayesian Inference
-B. Variational Inference
-C. Monte Carlo Dropout
- Data Exploration
- Results and Evaluation
-  Introduction  The problem of credit scoring is a very standard one in Machine Learning literature and applications. Predicting whether or not a loan applicant will go default is one of the typical examples of classification problem, and usually serves as a good ground for application and comparison of various machine learning techniques- which, over the years, became very precise in making a binary prediction.</description>
+      <description>Uncertainty in Profit Scoring (Bayesian Deep Learning) Djordje Dotlic, Batuhan Ipekci, Julia Dullin Contents  Introduction Literature Review TheoryA. Bayesian InferenceB. Variational InferenceC. Monte Carlo Dropout Data Exploration Results and Evaluation  Introduction  The problem of credit scoring is a very standard one in Machine Learning literature and applications. Predicting whether or not a loan applicant will go default is one of the typical examples of classification problem, and usually serves as a good ground for application and comparison of various machine learning techniques- which, over the years, became very precise in making a binary prediction.</description>
     </item>
     
     <item>
@@ -287,7 +251,7 @@ C. Monte Carlo Dropout
       <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/group5_han/</guid>
-      <description>Text Classification with Hierarchical Attention Networks How to assign documents to classes or topics Authors: Maria Kränkel, Hee-Eun Lee - Seminar Information System 18&amp;frasl;19 After reading this blog post, you will know:
+      <description>Text Classification with Hierarchical Attention Networks How to assign documents to classes or topics Authors: Maria Kränkel, Hee-Eun Lee - Seminar Information System 18/19  After reading this blog post, you will know:
  What text classification is and what it is used for What hierarchical attention networks are and how their architecture looks like How to classify documents by implementing a hierarchical attention network  Introduction Imagine you work for a company that sells cameras and you would like to find out what customers think about the latest release.</description>
     </item>
     
@@ -306,8 +270,7 @@ C. Monte Carlo Dropout
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/group4_ulmfit/</guid>
-      <description>Universal Language Model Fine-Tuning (ULMFiT) State-of-the-Art in Text Analysis Authors: Sandra Faltl, Michael Schimpke &amp;amp; Constantin Hackober 
-Table of Contents  Introduction  Literature Review and Motivation Inductive Transfer Learning Our Datasets Overview ULMFiT   General-Domain Language Model Pretraining  Word Embeddings Example of a Forward Pass through the LM Preparations for Fine-Tuning  Matching Process for the Embedding Matrix Variable Length Backpropagation Sequences Adam Optimizer Dropout    Target Task Language Model Fine-Tuning  Freezing Learning Rate Schedule Discriminative Fine-Tuning   Target Task Classifier  Concat Pooling Linear Decoder Gradual Unfreezing Benchmarks Example of a Forward Pass through the Classifier   Our Model Extension  Results Without Vocabulary Reduction   Conclusion  Reference List  1.</description>
+      <description>Universal Language Model Fine-Tuning (ULMFiT) State-of-the-Art in Text Analysis  Authors: Sandra Faltl, Michael Schimpke &amp;amp; Constantin Hackober Table of Contents   Introduction  Literature Review and Motivation Inductive Transfer Learning Our Datasets Overview ULMFiT    General-Domain Language Model Pretraining  Word Embeddings Example of a Forward Pass through the LM Preparations for Fine-Tuning  Matching Process for the Embedding Matrix Variable Length Backpropagation Sequences Adam Optimizer Dropout      Target Task Language Model Fine-Tuning  Freezing Learning Rate Schedule Discriminative Fine-Tuning    Target Task Classifier  Concat Pooling Linear Decoder Gradual Unfreezing Benchmarks Example of a Forward Pass through the Classifier    Our Model Extension  Results Without Vocabulary Reduction    Conclusion  Reference List  1.</description>
     </item>
     
     <item>
@@ -325,7 +288,7 @@ Table of Contents  Introduction  Literature Review and Motivation Inductive Tran
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/02convolutionalneuralnetworks/</guid>
-      <description>Convolutional Neural Networks Authors: Elias Baumann, Franko Maximilian Hölzig, Josef Lorenz Rumberger Table of Content  Motivation Images Artificial Neural Networks Convolutional Neural Networks  Architecture Overview Layers Convolutional Layer  Filters Convolution for Functions Mathematical 2D convolution Back to 2D convolution Stride Padding Local receptive fields Parameter Sharing Weight Initialization im2col Convolution using im2col  Activation Function Layer  Why is a non-linear function needed? Logistic sigmoid function hyperbolic tangent function Rectified Linear Units  Pooling Layer  Max Pooling Average Pooling  Fully-connected Layer Forward pass in a convolutional neural network using im2col  The backpropagation algorithm  Backpropagation for Pooling layers The gradient descent algorithm The Vanishing Gradient Problem  Optimizing gradient descent  Stochastic gradient descent Mini-batch gradient descent Learning Rate  Transfer Learning Other interesting use cases for CNNs  Videos Neural language processing Variant calling   Motivation Within the last few years we observed a large increase of visual data.</description>
+      <description>Convolutional Neural Networks Authors: Elias Baumann, Franko Maximilian Hölzig, Josef Lorenz Rumberger Table of Content  Motivation Images Artificial Neural Networks Convolutional Neural Networks Architecture Overview Layers 7. Convolutional Layer 8. Filters 9. Convolution for Functions 10. Mathematical 2D convolution 11. Back to 2D convolution 12. Stride 13. Padding 14. Local receptive fields 15. Parameter Sharing 16. Weight Initialization 17. im2col 18. Convolution using im2col 19. Activation Function Layer 20. Why is a non-linear function needed?</description>
     </item>
     
     <item>
@@ -343,7 +306,7 @@ Table of Contents  Introduction  Literature Review and Motivation Inductive Tran
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/03imageanalysis/</guid>
-      <description>Image Analysis: Introduction to deep learning for computer vision Authors: Nargiz Bakhshaliyeva, Robert Kittel In this blog, we present the practical use of deep learning in computer vision. You will see how Convolutional Neural Networks are being applied to process the visual data, generating some valuable knowledge. In particular, we focused on the object recognition task, aiming to classify what kind of an object (a dog or a cat) is presented within a particular image by using the notion of Transfer Learning.</description>
+      <description>Image Analysis: Introduction to deep learning for computer vision Authors: Nargiz Bakhshaliyeva, Robert Kittel In this blog, we present the practical use of deep learning in computer vision. You will see how Convolutional Neural Networksare being applied to process the visual data, generating some valuable knowledge. In particular, we focused on the object recognition task, aiming to classify what kind of an object (a dog or a cat) is presented within a particular image by using the notion of Transfer Learning.</description>
     </item>
     
     <item>
@@ -361,11 +324,7 @@ Table of Contents  Introduction  Literature Review and Motivation Inductive Tran
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/05sentimentanalysis/</guid>
-      <description>Sentiment Analysis using Deep Learning Authors: Katja Metzger, Aydin Sader Fosalaie, Ninos Yonan Outline  Sentiment Analysis Introduction  Case Study  Keras IMDB Dataset
- Data Analysis
- Word Embeddings
- Convolutional Neural Network
-  Summary  Sentiment Analysis Introduction Sentiment analysis is a very beneficial approach to automate the classification of the polarity of a given text. A helpful indication to decide if the customers on amazon like a product or not is for example the star rating.</description>
+      <description>Sentiment Analysis using Deep Learning Authors: Katja Metzger, Aydin Sader Fosalaie, Ninos Yonan Outline   Sentiment Analysis Introduction    Case Study  Keras IMDB Dataset Data Analysis Word Embeddings Convolutional Neural Network    Summary    Sentiment Analysis Introduction Sentiment analysis is a very beneficial approach to automate the classification of the polarity of a given text. A helpful indication to decide if the customers on amazon like a product or not is for example the star rating.</description>
     </item>
     
     <item>
@@ -374,8 +333,7 @@ Table of Contents  Introduction  Literature Review and Motivation Inductive Tran
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/08recommendation/</guid>
-      <description>Recommendation Systems Authors: Jingyi Liu, Brijesh Nanavati, Bharathi Srinivasan 
-Introduction The explosion of information with the advent of the Internet and the multitude of choices available to customers introduces complexity in a customer’s decision processes. Recommender system is a useful information-filtering tool, which guides customers to a narrower selection of products and consequently helps them make better decisions. Matching users to the right products saves customers time and effort leading to increased user satisfaction, which in turn earns customer loyalty.</description>
+      <description>Recommendation Systems Authors: Jingyi Liu, Brijesh Nanavati, Bharathi Srinivasan The explosion of information with the advent of the Internet and the multitude of choices available to customers introduces complexity in a customer’s decision processes. Recommender system is a useful information-filtering tool, which guides customers to a narrower selection of products and consequently helps them make better decisions. Matching users to the right products saves customers time and effort leading to increased user satisfaction, which in turn earns customer loyalty.</description>
     </item>
     
     <item>

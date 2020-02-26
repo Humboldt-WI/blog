@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Class19 on Institute of Infomation Systems at HU-Berlin</title>
@@ -6,10 +6,60 @@
     <description>Recent content in Class19 on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 07 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/tags/class19/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>BERT</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/bert_blog_post/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/bert_blog_post/</guid>
+      <description>Anti Social Online Behaviour Detection with BERT Comparing Bidirectional Encoder Representations from Transformers (BERT) with DistilBERT and Bidirectional Gated Recurrent Unit (BGRU) R. Evtimov - evtimovr@hu-berlin.de
+M. Falli - fallimar@hu-berlin.de
+A. Maiwald - maiwalam@hu-berlin.de
+Introduction Motivation In 2018, a research paper by Devlin et, al. titled “BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding” took the machine learning world by storm. Pre-trained on massive amounts of text, BERT, or Bidirectional Encoder Representations from Transformers, presented a new type of natural language model.</description>
+    </item>
+    
+    <item>
+      <title>SHOPPER: A Probabalistic Consumer Choice Model</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/group3_shopper/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group3_shopper/</guid>
+      <description>BLOG_POST   /*! * * Twitter Bootstrap * */ /*! * Bootstrap v3.3.7 (http://getbootstrap.com) * Copyright 2011-2016 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */ /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */ html { font-family: sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; } body { margin: 0; } article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; } audio, canvas, progress, video { display: inline-block; vertical-align: baseline; } audio:not([controls]) { display: none; height: 0; } [hidden], template { display: none; } a { background-color: transparent; } a:active, a:hover { outline: 0; } abbr[title] { border-bottom: 1px dotted; } b, strong { font-weight: bold; } dfn { font-style: italic; } h1 { font-size: 2em; margin: 0.</description>
+    </item>
+    
+    <item>
+      <title>Big Peer Review Challenge</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/group11_peer_reviews/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group11_peer_reviews/</guid>
+      <description>Big Peer Review Challenge Asena Ciloglu &amp;amp; Melike Merdan Abstract This blog post studies the first public dataset of scientific peer reviews available for research purposes PeerRead applying state-of-the-art NLP models ELMo and ULMFit to a text classification task [1]. It aims to examine the importance of the peer reviews on paper’s acceptance or rejection decision in well-known conferences of computational linguistics, AI and NLP.
+Table of Contents   Introduction  Peer Review Process Motivation    Descriptive Analytics  A Dataset of Peer Reviews  Approach and Data Extraction   Google Scholarly Data Cleaning Data &amp;amp; Insights    Application  Our Approach  Content-based Classification Review-based Classification Analysis with Auxiliary Data   Transfer Learning and Recent Applications Embedding for Language Models (ELMo)  Methodology  Deep Contextualized Word Representations Model Architecture     Universal Language Model Fine Tuning (ULMFit)  Methodology  General Knowledge Domain Training Target Task Language Model Fine Tuning Target Task Classifier     Support Vector Machine (SVM)    Empirical Results &amp;amp; Conclusion  Results Discussion and Conclusion    Reference List  1.</description>
+    </item>
+    
+    <item>
+      <title>Deep Learning for Survival Analysis</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/group2_survivalanalysis/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group2_survivalanalysis/</guid>
+      <description>Deep Learning for Survival Analysis Authors: Laura Löschmann, Daria Smorodina  Table of content  Motivation - Business case Introduction to Survival Analysis  2.1 Common terms 2.2 Survival function 2.3 Hazard function   Dataset Standard methods in Survival Analysis  4.1 Kaplan - Meier estimator 4.2 Cox proportional hazards model 4.3 Time-varying Cox regression 4.4 Random survival forests   Deep Learning for Survival Analysis  5.1 DeepSurv 5.</description>
+    </item>
+    
+    <item>
+      <title>Causal Neural Networks</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/group5_causal_neural_networks/</link>
+      <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group5_causal_neural_networks/</guid>
+      <description>Causal Neural Networks - Optimizing Marketing Spendings Effectivness Hasan Reda Alchahwan, Lukas	Baumann, Darius Schulz
+Table of Contents:  Introduction Literature Review Descriptive Analysis of the Dataset Estimation of Treatment Effects considering the checkout amount Estimation of Treatment Effects considering conversion Placebo Experiment Conclusion  1. Introduction Targeting the right customers in marketing campaigns has always been a struggle for marketeers. Data-driven approaches allowed to select targets with the highest probability to buy or the greatest revenue expected, if the costs of the activity deter you from targeting every customer.</description>
+    </item>
     
     <item>
       <title>Data Generating Process Simulation: The opossum package</title>
@@ -35,10 +85,7 @@
       <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/multiple_treatments_uplift/</guid>
-      <description>Applications of Causal Inference for Marketing: Estimating Treatment Effects for multiple Treatments Authors: Jan Krol and Matthias Becher Table of Contents  Introduction
- Common Marketing Challenges
- Models  3.1 Decision Trees Rzepakowski &amp;amp; Jaroszewicz  3.1.1 Basic Rzepakowski &amp;amp; Jaroszewicz  3.1.2 Simple Splitting Criterion  3.2 Causal Tree and Causal Forest  3.3 Separate Model  Evaluation Methods
-4.1 Uplift Curves 4.2 Expected Outcome Experimental Setup  Results Outlook References  1.</description>
+      <description>Applications of Causal Inference for Marketing: Estimating Treatment Effects for multiple Treatments Authors: Jan Krol and Matthias Becher Table of Contents  Introduction Common Marketing Challenges Models 3.1 Decision Trees Rzepakowski &amp;amp; Jaroszewicz 3.1.1 Basic Rzepakowski &amp;amp; Jaroszewicz 3.1.2 Simple Splitting Criterion 3.2 Causal Tree and Causal Forest 3.3 Separate Model  Evaluation Methods4.1 Uplift Curves4.2 Expected Outcome Experimental Setup  Results Outlook References  1. Introduction  Nowadays marketing practitioners face a multitude of challenges.</description>
     </item>
     
     <item>
@@ -47,7 +94,7 @@
       <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/microfinance-policy/</guid>
-      <description>Microfinance Policies  Impact of Microfinance on The Social Well-being Authors: Edanur Kahvecioglu and Yu-Tang Wu Abstract Is microcredit a miracle or just a hype? While more and more researches were conducted to study microcredits, people started to question the effectiveness of microcredit program. This project explores the heterogeneity of treatment effect on microcredit to households&amp;rsquo; well-being. Causuall Random Forest and Two-model approach are used to analyze treatment effects on the household level and identify the important variables that separate households with higher treatment effect.</description>
+      <description>Microfinance Policies Impact of Microfinance on The Social Well-being Authors: Edanur Kahvecioglu and Yu-Tang Wu Abstract Is microcredit a miracle or just a hype? While more and more researches were conducted to study microcredits, people started to question the effectiveness of microcredit program. This project explores the heterogeneity of treatment effect on microcredit to households&amp;rsquo; well-being. Causuall Random Forest and Two-model approach are used to analyze treatment effects on the household level and identify the important variables that separate households with higher treatment effect.</description>
     </item>
     
     <item>
@@ -56,9 +103,7 @@
       <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/01marketing_campaign_optimization/</guid>
-      <description>Marketing Campaign Optimization 
-Causal Inference in Profit Uplift Modeling Authors: Asmir Muminovic, Lukas Kolbe 
-Motivation The global spending on advertising amounts to more than 540 billion US dollars for 2018 only, and the spending for 2019 is predicted to reach over 560 billion US dollars. The marketing spendings have continuously increased since 2010 [17], and this trend does not seem to brittle in the near future. Although marketing is such an integral part of most businesses, marketers often fail to maximize the profitability of their marketing efforts.</description>
+      <description>Marketing Campaign Optimization The global spending on advertising amounts to more than 540 billion US dollars for 2018 only, and the spending for 2019 is predicted to reach over 560 billion US dollars. The marketing spendings have continuously increased since 2010 [17], and this trend does not seem to brittle in the near future. Although marketing is such an integral part of most businesses, marketers often fail to maximize the profitability of their marketing efforts.</description>
     </item>
     
     <item>
@@ -67,8 +112,7 @@ Motivation The global spending on advertising amounts to more than 540 billion U
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</guid>
-      <description>LatexIT.add(&amp;lsquo;p&amp;rsquo;,true);  
-Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbour algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
+      <description>Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbour algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
     </item>
     
     <item>
@@ -77,7 +121,7 @@ Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall 
       <pubDate>Mon, 15 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/causalrecommendersystem/</guid>
-      <description>Correcting for Self-selection in Product Rating: Causal Recommender Systems Authors: Karolina Grubinska &amp;amp; Médéric Thomas Table of Contents  An Introduction to Recommender Systems Motivation Overview of Methods Matrix Completion Problem Singular Value Decomposition Problem Definition The Missing-at-Random Assumption Does MAR really hold? Our Goal in This Framework In Mathematical Terms A proposal for Causal Recommender System: Causal Embeddings Causal Setup Results Comparison Conclusions Bibliography  An Introduction to Recommender Systems  One of the main characteristics of a modern, digital society that we currently live in is the heterogeneity of available items.</description>
+      <description>Correcting for Self-selection in Product Rating: Causal Recommender Systems Authors: Karolina Grubinska &amp;amp; Médéric Thomas Table of Contents  An Introduction to Recommender Systems [Motivation] (#motivation) [Overview of Methods] (#methods)   [Matrix Completion Problem] (#matrix) [Singular Value Decomposition] (#svd)  [Problem Definition] (#problem)   [The Missing-at-Random Assumption] (#mar) [Does MAR really hold?] (#marhold)  [Our Goal in This Framework] (#goal)   [In Mathematical Terms] (#maths)  [A proposal for Causal Recommender System: Causal Embeddings] (#cause)   [Causal Setup] (#causal) [Results Comparison] (#results)  [Conclusions] (#conclusions) [Bibliography] (#bibliography)  An Introduction to Recommender Systems  One of the main characteristics of a modern, digital society that we currently live in is the heterogeneity of available items.</description>
     </item>
     
     <item>
@@ -86,9 +130,7 @@ Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall 
       <pubDate>Tue, 18 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/double_machine_learning/</guid>
-      <description>Double Machine Learning Implementation  
-Christopher Ketzler, Guillermo Morishige
-  Abstract: The aim of this paper is to replicate and apply the approach provided by Chernozhukov et al. (2016) to get the causal estimand of interest: average treatment effect (ATE) $\ \eta_0 $ using Neyman orthogonality and cross-fitting. For observational data, we will estimate the causal relationship between the eligibility and participation in the 401(k) and its effect on net financial assets; as well to apply it to other datasets, to find the effect of the Pennsylvania Reemployment Bonus on the unemployment duration and the effect of smoking on medical costs.</description>
+      <description>Double Machine Learning Implementation  Keywords:Double machine learning, average treatment effect, Neyman-orthogonality, cross-fitting, partially linear regression model.  School of Business and Economics, Humboldt Universität zu Berlin, Spandauer Str. 1, 10178, Berlin, Germany.  1) Introduction People in the fields of econometrics, epidemiology, philosophy, just to name a few, have been interested into modelling causality: drawing conclusion through statistical analyses from associations between measurements. Although getting inferences from these statistical analyses could be tricky since the association (correlation) doesn’t imply causation.</description>
     </item>
     
   </channel>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>EconomicUncertainty on Institute of Infomation Systems at HU-Berlin</title>
@@ -19,14 +19,17 @@
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/uncertainty_identification_transformers/</guid>
       <description>Economic Uncertainty Identification Using Transformers - Improving Current Methods Authors: Siddharth Godbole, Karolina Grubinska &amp;amp; Olivia Kelnreiter   Table of Contents  Introduction Motivation and Literature Theoretical Background
 3.1 Transformers, BERT and BERT-based Models
-3.2 Transformers Architecture 3.3 BERT
+3.2 Transformers Architecture
+3.3 BERT
 3.4 RoBERTa
 3.5 DistilBERT
-3.6 ALBERT 3.7 Comparing RoBERTa, DistilBERT and ALBERT Application to Economic Policy Uncertainty
+3.6 ALBERT
+3.7 Comparing RoBERTa, DistilBERT and ALBERT Application to Economic Policy Uncertainty
 4.1 Data Exploration
 4.1.1 Data Pre-Processing
 4.1.2 Data Imbalance
-4.2 Models Implementation</description>
+4.2 Models Implementation
+4.2.1 Transformer-Based Models</description>
     </item>
     
   </channel>
