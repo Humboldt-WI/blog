@@ -1,3 +1,8 @@
+---
+layout: "post"
+title: "Analysis of social media behavior of the 2020 presidential election candidates"
+date: "2020-01-25 18:25"
+---
 +++
 title = "Analysis of social media behavior of the 2020 presidential election candidates"
 date = '2020-02-07'
