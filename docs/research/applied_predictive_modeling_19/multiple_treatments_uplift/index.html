@@ -306,22 +306,22 @@ penalize attributes with large numbers of values by summing the test entropy ove
 treatment and control datasets.</br></p>
 <p>Lastly, pruning based on a validation set is also implemented. The pruning algorithm goes through the entire tree starting at the bottom. For each subtree the algorithm checks if the outcome divergence in the leafs is greater than in the root for the validation set. If yes, than the algorithm continues, if no the subtree is pruned and the root becomes a new leaf. </br></p>
 <p>On the basis of this tree, we also implemented a function which allows to build a forest instead of just one tree. There are two main parameters which can be set when building a forest. The number of trees and the number of covariates considered in each tree. For each tree a random subset of the covariates with the specified number of covariates is used. Below is the process in pseudo code.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">Forest building<span style="color:#f92672">:</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">Forest building:
 
-n_tree <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span> <span style="color:#75715e">#The number of trees in the forest</span>
-n_features <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> <span style="color:#75715e">#The number of covariates used in each tree</span>
-forest <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>()
+n_tree = 100 <span style="color:#008000">#The number of trees in the forest</span>
+n_features = 3 <span style="color:#008000">#The number of covariates used in each tree</span>
+forest = list()
 
-Repeat <span style="color:#75715e">#n_tree times:</span>
-  Randomly select <span style="color:#75715e">#n_features of the covariates in the data and create a new subset of the data with those covariates</span>
+Repeat <span style="color:#008000">#n_tree times:</span>
+  Randomly select <span style="color:#008000">#n_features of the covariates in the data and create a new subset of the data with those covariates</span>
   Build a tree based on this subset
   Add the tree to the list of trees
 
-For predictions<span style="color:#f92672">:</span>
+For predictions:
 
-predictions <span style="color:#f92672">=</span> <span style="color:#a6e22e">list</span>()
+predictions = list()
 
-For each tree in forest<span style="color:#f92672">:</span>
+For each tree in forest:
   Make a prediction for the new sample and add it to the list
 
 Return the average of all predictions
@@ -337,19 +337,19 @@ $n_{il}$ and $n_{ir}$  are the number of samples with treatment i in the left an
 \end{equation}
 </br>
 Pseudo code for the simple tree:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">Build_tree</span>(data){
-  For each split<span style="color:#f92672">:</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">Build_tree(data){
+  For each split:
     Split the data
-    Calculate and save the <span style="color:#a6e22e">gain </span>(equation above)
-  If <span style="color:#a6e22e">max</span>(gains) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>{
+    Calculate and save the gain (equation above)
+  If max(gains) &gt; 0{
     Select split with highest gain
     Split the data according to the split in data_left and data_right
-    Left leaf <span style="color:#f92672">=</span> <span style="color:#a6e22e">Build_tree</span>(data_left)
-    Right leaf <span style="color:#f92672">=</span> <span style="color:#a6e22e">Build_tree</span>(data_right)
+    Left leaf = Build_tree(data_left)
+    Right leaf = Build_tree(data_right)
   }
   Else{
-    Calculate mean outcomes for all treatments and <span style="color:#a6e22e">control </span>(these outcomes serve as predictions)
-    <span style="color:#a6e22e">Return</span>(outcomes)
+    Calculate mean outcomes for all treatments and control (these outcomes serve as predictions)
+    Return(outcomes)
   }
 }
 </code></pre></div><h2 id="32-causal-tree-and-causal-forest-a-classanchor-idcausaltreea">3.2 Causal Tree and Causal Forest <a class="anchor" id="causaltree"></a></h2>

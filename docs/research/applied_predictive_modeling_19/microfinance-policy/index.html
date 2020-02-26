@@ -314,8 +314,8 @@ only the data collected in the first endline survey will be used in
 this project.</p>
 <p>The helper functions that is used in this project can be found
 <a href="https://github.com/thmstang/apa19-microfinance">here</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">endline1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">load_endline1</span>()
-<span style="color:#a6e22e">str</span>(endline1)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">endline1 &lt;- load_endline1()
+str(endline1)
 </code></pre></div><pre><code>'data.frame':	6036 obs. of  54 variables:
 $ hhid                      : int  1 2 3 4 5 6 7 8 9 11 ...
 $ areaid                    : int  1 1 1 1 1 1 1 1 1 1 ...
@@ -688,13 +688,13 @@ around 35-50 tend to have higher conditional treatment effect.</p>
 </li>
 </ol>
 <h3 id="women-empowerment-index">Women Empowerment Index</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">target_index <span style="color:#f92672">&lt;-</span> <span style="color:#e6db74">&#34;women_emp_index_1&#34;</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">target_index &lt;- <span style="color:#a31515">&#34;women_emp_index_1&#34;</span>
 
-endline1_woemp <span style="color:#f92672">&lt;-</span> endline1 <span style="color:#f92672">%&gt;%</span>
-  <span style="color:#a6e22e">select</span>(<span style="color:#a6e22e">everything</span>(),
-         <span style="color:#f92672">-</span>hhid,
-         <span style="color:#f92672">-</span><span style="color:#a6e22e">contains</span>(<span style="color:#e6db74">&#34;index&#34;</span>), <span style="color:#75715e"># exclude all index variables</span>
-         target_index)       <span style="color:#75715e"># add back the target index variable</span>
+endline1_woemp &lt;- endline1 %&gt;%
+  select(everything(),
+         -hhid,
+         -contains(<span style="color:#a31515">&#34;index&#34;</span>), <span style="color:#008000"># exclude all index variables</span>
+         target_index)       <span style="color:#008000"># add back the target index variable</span>
 </code></pre></div><ol>
 <li>
 <p>Heterogeneity of Treament Effect on Business Index</p>

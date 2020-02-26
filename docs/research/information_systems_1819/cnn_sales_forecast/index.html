@@ -310,59 +310,59 @@ The notion of tensor in machine learning is, therefore, quite simple and we will
 <script src="https://gist.github.com/Kiwi45/d48cc11f1e71f51bd3327f62b63b0764.js"></script>
 <h1 id="summary--results">Summary &amp; Results</h1>
 <p>To summarize, the results of our CNN model can be derived in the following.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(model<span style="color:#f92672">.</span>evaluate(x_test,y_test))
-<span style="color:#66d9ef">print</span>(model<span style="color:#f92672">.</span>metrics_names)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">print</span>(model.evaluate(x_test,y_test))
+<span style="color:#00f">print</span>(model.metrics_names)
 
-<span style="color:#75715e">#batch size 500 epochs 50 unit 300</span>
-<span style="color:#75715e">#1 layer 5677.9359 MAE</span>
+<span style="color:#008000">#batch size 500 epochs 50 unit 300</span>
+<span style="color:#008000">#1 layer 5677.9359 MAE</span>
 
-<span style="color:#75715e">#batch size 250, epochs 30, units 300</span>
-<span style="color:#75715e">#1 layer 5677.9359</span>
+<span style="color:#008000">#batch size 250, epochs 30, units 300</span>
+<span style="color:#008000">#1 layer 5677.9359</span>
 
-<span style="color:#75715e">#batch size 50, epochs 30, units 300</span>
-<span style="color:#75715e">#1 layer 5677.9359</span>
+<span style="color:#008000">#batch size 50, epochs 30, units 300</span>
+<span style="color:#008000">#1 layer 5677.9359</span>
 
-<span style="color:#75715e">#batch size 500, epochs 30, units 300 kernel (7,1) !!!</span>
-<span style="color:#75715e">#1 layer 790.93658</span>
+<span style="color:#008000">#batch size 500, epochs 30, units 300 kernel (7,1) !!!</span>
+<span style="color:#008000">#1 layer 790.93658</span>
 
-<span style="color:#75715e">#great strides bring nothing</span>
-<span style="color:#75715e">#batch size 500, epochs 80, units 300 kernel (7,1) , stride 7!!!</span>
-<span style="color:#75715e">#1 layer 778.0873</span>
+<span style="color:#008000">#great strides bring nothing</span>
+<span style="color:#008000">#batch size 500, epochs 80, units 300 kernel (7,1) , stride 7!!!</span>
+<span style="color:#008000">#1 layer 778.0873</span>
 
-<span style="color:#75715e">#bs 250, epochs 76, unit 300, (14,1), stride 7</span>
-<span style="color:#75715e">#1 layer 730.569597</span>
+<span style="color:#008000">#bs 250, epochs 76, unit 300, (14,1), stride 7</span>
+<span style="color:#008000">#1 layer 730.569597</span>
 
-<span style="color:#75715e">#bs (smaller) improves the results</span>
-<span style="color:#75715e">#bs 100, epochs 34, unit 300, (14,1), stride 7</span>
-<span style="color:#75715e">#1 layer 741.61</span>
+<span style="color:#008000">#bs (smaller) improves the results</span>
+<span style="color:#008000">#bs 100, epochs 34, unit 300, (14,1), stride 7</span>
+<span style="color:#008000">#1 layer 741.61</span>
 
-<span style="color:#75715e">#bs 100, epochs 34, unit 300, (14,1), stride 7</span>
-<span style="color:#75715e">#1 layer 741.61</span>
+<span style="color:#008000">#bs 100, epochs 34, unit 300, (14,1), stride 7</span>
+<span style="color:#008000">#1 layer 741.61</span>
 
-<span style="color:#75715e">#bs 50, epochs 65 (25 patience), unit 300, (14,1), stride 7</span>
-<span style="color:#75715e">#1 layer 726</span>
+<span style="color:#008000">#bs 50, epochs 65 (25 patience), unit 300, (14,1), stride 7</span>
+<span style="color:#008000">#1 layer 726</span>
 
-<span style="color:#75715e">#kernel size seems to b pretty decisive</span>
+<span style="color:#008000">#kernel size seems to b pretty decisive</span>
 
-<span style="color:#75715e">#bs 50, epochs 100 (25 patience), unit 300, (21,1), stride 7</span>
-<span style="color:#75715e">#1 layer 729.57215</span>
+<span style="color:#008000">#bs 50, epochs 100 (25 patience), unit 300, (21,1), stride 7</span>
+<span style="color:#008000">#1 layer 729.57215</span>
 
-<span style="color:#75715e">#bs 50, epochs 94 (25 patience), unit 300, (21,1), stride 7</span>
-<span style="color:#75715e">#1 layer 719.2241</span>
+<span style="color:#008000">#bs 50, epochs 94 (25 patience), unit 300, (21,1), stride 7</span>
+<span style="color:#008000">#1 layer 719.2241</span>
 
-<span style="color:#75715e">#bs 200, epochs 100 (25 patience), unit 300, (14,20)!!!, stride 7</span>
-<span style="color:#75715e">#1 layer 709.901245</span>
+<span style="color:#008000">#bs 200, epochs 100 (25 patience), unit 300, (14,20)!!!, stride 7</span>
+<span style="color:#008000">#1 layer 709.901245</span>
 
-<span style="color:#75715e">#bs 200, epochs 178 (100 patience), unit 300, (14,20)!!!, stride 7</span>
-<span style="color:#75715e">#1 layer 713.1515</span>
+<span style="color:#008000">#bs 200, epochs 178 (100 patience), unit 300, (14,20)!!!, stride 7</span>
+<span style="color:#008000">#1 layer 713.1515</span>
 
-<span style="color:#75715e">#batch size 500 epochs 50 unit 300</span>
-<span style="color:#75715e">#2 layers 782.8316 MAE</span>
+<span style="color:#008000">#batch size 500 epochs 50 unit 300</span>
+<span style="color:#008000">#2 layers 782.8316 MAE</span>
 
 
-<span style="color:#ae81ff">500</span><span style="color:#f92672">/</span><span style="color:#ae81ff">500</span> [<span style="color:#f92672">==============================</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">8</span>s <span style="color:#ae81ff">15</span>ms<span style="color:#f92672">/</span>step
-[<span style="color:#ae81ff">782.831650390625</span>, <span style="color:#ae81ff">782.831650390625</span>]
-[<span style="color:#e6db74">&#39;loss&#39;</span>, <span style="color:#e6db74">&#39;mean_absolute_error&#39;</span>]
+500/500 [==============================] - 8s 15ms/step
+[782.831650390625, 782.831650390625]
+[<span style="color:#a31515">&#39;loss&#39;</span>, <span style="color:#a31515">&#39;mean_absolute_error&#39;</span>]
 </code></pre></div><p>From the results we can conclude that kernel size played an imporant role with respect to the prediciton of sales. We found out empiricaly that the best length of kernel is 14, which represents the time period of two weeks. Also, to our surprise the kernel of size (7x1) delivered similar results to a kernel size (7x20), although this kernel does not take into account more complex relations between the features.</p>
 <p>The number of neurons of 300 proved to be the best choice even with respect to this complex problem. In addition we tested different batch sizes and epochs to achieve even better results, however, these parameters did not influence the results as much as we thought. Another approach we used was to add more layers to our CNN model, this did not have the effect we wanted to achieve, but instead increased computational time highly.</p>
 <p>The benchmark model, which we took into account, estimated following days of 500 same test time series (although without taking into account other features except sales), using some seperate automatically estimated ARIMA models for each time series. The derived mean absolute error from the benchmark model was 2.629,253.</p>

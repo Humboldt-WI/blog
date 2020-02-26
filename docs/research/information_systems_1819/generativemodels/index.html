@@ -185,17 +185,17 @@
 <p>One way to diminish the negative effect of the imbalanced feature is to create synthetic data to fill up the dataset so that the numbers of positive and negative observations are the same or comparable. Sampling strategies which try to over- or undersample data from the original dataset using different algorithms have received much attention and are commonly applied (e.g. Han et al., 2005; Chawla, 2009; López, 2013). Lately, as generative models have become increasingly more fashionable, they are used to deal with imbalanced dataset problems as well (e.g. Wan et al., 2017; Buitrago et al., 2018). The merits of generative models rest in the fact that they are capable to generate high-dimensional data, e.g. images, in comparison to the classical sampling methods.</p>
 <h4 id="what-this-blog-post-is-all-about">What this blog post is all about</h4>
 <p>In this blog post, we are going to apply two types of generative models, the Variational Autoencoder (VAE) and the Generative Adversarial Network (GAN), to the problem of imbalanced datasets in the sphere of credit ratings. More precisely, we will use the “Give Me Some Credit”-dataset from Kaggle, which consists of ten feature variables, e.g. the customer´s age or income, and one target variable. This target variable denotes whether a customer has experienced a two-year past due delinquency or not. While 93% of all 12,000 cases recorded by the dataset have not experienced such delinquency, only 7% were rated as not credible in this regard, making the dataset fairly imbalanced. As mentioned before, this imbalance can harm the performance of predictive models. To tackle this issue, we are going to generate artificial data points from the minority class by implementing a VAE and a GAN. After that, we use the artificially balanced dataset to train the following simple neural network:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model <span style="color:#f92672">=</span> Sequential()
-model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">10</span>, kernel_regularizer<span style="color:#f92672">=</span>l2(<span style="color:#ae81ff">0.01</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>, input_dim <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>))
-model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">16</span>, kernel_regularizer<span style="color:#f92672">=</span>l2(<span style="color:#ae81ff">0.01</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
-model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">8</span>, kernel_regularizer<span style="color:#f92672">=</span>l2(<span style="color:#ae81ff">0.01</span>), activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
-model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">1</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sigmoid&#39;</span>))
-model<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span>Adam(lr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0001</span>), loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;binary_crossentropy&#39;</span>, metrics<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;accuracy&#39;</span>])
-model<span style="color:#f92672">.</span>fit(x <span style="color:#f92672">=</span> X_train, y <span style="color:#f92672">=</span> y_train, validation_data<span style="color:#f92672">=</span>[X_test, y_test], epochs <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model = Sequential()
+model.add(Dense(10, kernel_regularizer=l2(0.01), activation=<span style="color:#a31515">&#39;relu&#39;</span>, input_dim = 10))
+model.add(Dense(16, kernel_regularizer=l2(0.01), activation=<span style="color:#a31515">&#39;relu&#39;</span>))
+model.add(Dense(8, kernel_regularizer=l2(0.01), activation=<span style="color:#a31515">&#39;relu&#39;</span>))
+model.add(Dense(1, activation=<span style="color:#a31515">&#39;sigmoid&#39;</span>))
+model.compile(optimizer=Adam(lr = 0.0001), loss=<span style="color:#a31515">&#39;binary_crossentropy&#39;</span>, metrics=[<span style="color:#a31515">&#39;accuracy&#39;</span>])
+model.fit(x = X_train, y = y_train, validation_data=[X_test, y_test], epochs = 4, batch_size=20)
 </code></pre></div><p>Throughout the blog post, we will use the AUC as the performance measure. To have a natural benchmark, we first train this neural network on the original, imbalanced dataset. After implementing basic data cleaning steps and standardizing all feature variables, we observe the following performance of the model:</p>
 <img align="center" width="300" height="200" style="display:block;margin:0 auto;" src="https://i.imgur.com/csx5cOD.png">
 <p>To have a further benchmark performance, we also implement a popular algorithm called the Synthetic Minority Oversampling Technique (SMOTE) to balance the dataset, such that both classes contain the same amount of data points. In its most basic form, the SMOTE algorithm randomly picks one data point from the minority class and one of its k nearest neighbours from the feature space. After that, the distance vector between these two points is computed and multiplied with a random number between zero and one. The resulting vector is then added to the original data point, leading to a new, artificial data point of the minority class.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">X_smote, y_smote <span style="color:#f92672">=</span> SMOTE(random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">12</span>, ratio <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span>)<span style="color:#f92672">.</span>fit_sample(X, y)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">X_smote, y_smote = SMOTE(random_state=12, ratio = 1.0).fit_sample(X, y)
 </code></pre></div><p>Indeed, when training the neural network based on the SMOTE-balanced dataset, we can improve the performance of the model:</p>
 <p><img
 align="center"
@@ -221,16 +221,16 @@ style="display:block;margin:0 auto;" src="https://i.imgur.com/JI8xIQR.png"></p>
 <p>The total loss is then the sum of the losses for each data point:</p>
 <img align="center" width="80" height="35" style="display:block;margin:0 auto;" src="https://i.imgur.com/3H5uwh8.png">
 <p>In code, the definition of this loss function looks as follows:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># reconstruction loss</span>
-reconstruction_loss <span style="color:#f92672">=</span> mse(inputs, outputs)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#008000"># reconstruction loss</span>
+reconstruction_loss = mse(inputs, outputs)
 
-<span style="color:#75715e"># Kullback-Leibler divergence</span>
-kl_loss <span style="color:#f92672">=</span> (K<span style="color:#f92672">.</span>square(z_mean) <span style="color:#f92672">+</span> K<span style="color:#f92672">.</span>square(z_sd) <span style="color:#f92672">-</span> K<span style="color:#f92672">.</span>log(K<span style="color:#f92672">.</span>square(z_sd)) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
-kl_loss <span style="color:#f92672">=</span> K<span style="color:#f92672">.</span>sum(kl_loss, axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+<span style="color:#008000"># Kullback-Leibler divergence</span>
+kl_loss = (K.square(z_mean) + K.square(z_sd) - K.log(K.square(z_sd)) - 1)/2
+kl_loss = K.sum(kl_loss, axis=-1)
 
-<span style="color:#75715e"># loss function = reconstruction loss + Kullback-Leibler divergence</span>
-vae_loss <span style="color:#f92672">=</span> K<span style="color:#f92672">.</span>mean(reconstruction_loss <span style="color:#f92672">+</span> kl_loss)
-vae<span style="color:#f92672">.</span>add_loss(vae_loss)
+<span style="color:#008000"># loss function = reconstruction loss + Kullback-Leibler divergence</span>
+vae_loss = K.mean(reconstruction_loss + kl_loss)
+vae.add_loss(vae_loss)
 </code></pre></div><p>Despite having defined the loss function, however, the VAE still can&rsquo;t be trained yet. We need to implement one final adjustment to the model, the so-called “reparameterization trick”.</p>
 <p>Let’s look at our current computation graph of the VAE:</p>
 <img align="center" width="140" height="150" style="display:block;margin:0 auto;" src="https://i.imgur.com/QjSGnuQ.png">
@@ -243,45 +243,45 @@ vae<span style="color:#f92672">.</span>add_loss(vae_loss)
 <img align="center" width="140" height="150" style="display:block;margin:0 auto;" src="https://i.imgur.com/P7iKzQT.png">
 <p>Instead of having one purely stochastic node which blocks all gradients, the node is split into a non-stochastic part and a stochastic part. While we aim to learn the network parameters within the non-stochastic part, there is no need to learn any parameter within the stochastic part, as we already know that the epsilons are drawn from a standard multinormal distribution. In other words, the stochastic nature of one node´s part does not interfere with our goal anymore.</p>
 <p>In code, creating a VAE with a six-dimensional latent space by building the encoder, the decoder, and implementing the reparameterization trick, looks as follows:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#set the dimensions of the hidden layers</span>
-hiddendim <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>
-latentdim <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#008000">#set the dimensions of the hidden layers</span>
+hiddendim = 8
+latentdim = 6
 
-<span style="color:#75715e"># build encoder (first step)</span>
-inputs <span style="color:#f92672">=</span> Input(shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>, ), name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;encoder_input&#39;</span>)
-x <span style="color:#f92672">=</span> Dense(hiddendim, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>)(inputs)
-z_mean <span style="color:#f92672">=</span> Dense(latentdim, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;z_mean&#39;</span>)(x)
-z_sd <span style="color:#f92672">=</span> Dense(latentdim, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;z_sd&#39;</span>)(x)
+<span style="color:#008000"># build encoder (first step)</span>
+inputs = Input(shape=(10, ), name=<span style="color:#a31515">&#39;encoder_input&#39;</span>)
+x = Dense(hiddendim, activation=<span style="color:#a31515">&#39;relu&#39;</span>)(inputs)
+z_mean = Dense(latentdim, name=<span style="color:#a31515">&#39;z_mean&#39;</span>)(x)
+z_sd = Dense(latentdim, name=<span style="color:#a31515">&#39;z_sd&#39;</span>)(x)
 
-<span style="color:#75715e"># implement reparametrization trick</span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sampling</span>(args):
-    z_mean, z_sd <span style="color:#f92672">=</span> args
-    epsilon <span style="color:#f92672">=</span> K<span style="color:#f92672">.</span>random_normal(shape<span style="color:#f92672">=</span>(K<span style="color:#f92672">.</span>shape(z_mean)[<span style="color:#ae81ff">0</span>], K<span style="color:#f92672">.</span>int_shape(z_mean)[<span style="color:#ae81ff">1</span>]))
-    <span style="color:#66d9ef">return</span> z_mean <span style="color:#f92672">+</span> K<span style="color:#f92672">.</span>square(z_sd) <span style="color:#f92672">*</span> epsilon
-z <span style="color:#f92672">=</span> Lambda(sampling, output_shape<span style="color:#f92672">=</span>(latentdim,), name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;z&#39;</span>)([z_mean, z_sd])
+<span style="color:#008000"># implement reparametrization trick</span>
+<span style="color:#00f">def</span> sampling(args):
+    z_mean, z_sd = args
+    epsilon = K.random_normal(shape=(K.shape(z_mean)[0], K.int_shape(z_mean)[1]))
+    <span style="color:#00f">return</span> z_mean + K.square(z_sd) * epsilon
+z = Lambda(sampling, output_shape=(latentdim,), name=<span style="color:#a31515">&#39;z&#39;</span>)([z_mean, z_sd])
 
-<span style="color:#75715e"># build encoder (second step)</span>
-encoder <span style="color:#f92672">=</span> Model(inputs, [z_mean, z_sd, z], name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;encoder&#39;</span>)
+<span style="color:#008000"># build encoder (second step)</span>
+encoder = Model(inputs, [z_mean, z_sd, z], name=<span style="color:#a31515">&#39;encoder&#39;</span>)
 
-<span style="color:#75715e"># build decoder (first step)</span>
-latent_inputs <span style="color:#f92672">=</span> Input(shape<span style="color:#f92672">=</span>(latentdim,), name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;z_sampling&#39;</span>)
-x <span style="color:#f92672">=</span> Dense(hiddendim, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>)(latent_inputs)
-outputs <span style="color:#f92672">=</span> Dense(<span style="color:#ae81ff">10</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tanh&#39;</span>)(x)
+<span style="color:#008000"># build decoder (first step)</span>
+latent_inputs = Input(shape=(latentdim,), name=<span style="color:#a31515">&#39;z_sampling&#39;</span>)
+x = Dense(hiddendim, activation=<span style="color:#a31515">&#39;relu&#39;</span>)(latent_inputs)
+outputs = Dense(10, activation=<span style="color:#a31515">&#39;tanh&#39;</span>)(x)
 
-<span style="color:#75715e"># build decoder (second step)</span>
-decoder <span style="color:#f92672">=</span> Model(latent_inputs, outputs, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;decoder&#39;</span>)
+<span style="color:#008000"># build decoder (second step)</span>
+decoder = Model(latent_inputs, outputs, name=<span style="color:#a31515">&#39;decoder&#39;</span>)
 
-<span style="color:#75715e"># build VAE model</span>
-outputs <span style="color:#f92672">=</span> decoder(encoder(inputs)[<span style="color:#ae81ff">2</span>])
-vae <span style="color:#f92672">=</span> Model(inputs, outputs, name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;vae_model&#39;</span>)
+<span style="color:#008000"># build VAE model</span>
+outputs = decoder(encoder(inputs)[2])
+vae = Model(inputs, outputs, name=<span style="color:#a31515">&#39;vae_model&#39;</span>)
 </code></pre></div><p>Finally, we are able to train the VAE. As we are only interested in generating data from the minority class, we only use the data points from this class as training data, which we call <code>baddata</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vae<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;adam&#39;</span>)
-vae<span style="color:#f92672">.</span>fit(baddata, epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>, validation_data<span style="color:#f92672">=</span>(baddata, None))
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vae.compile(optimizer=<span style="color:#a31515">&#39;adam&#39;</span>)
+vae.fit(baddata, epochs=5, batch_size=6, validation_data=(baddata, None))
 </code></pre></div><p>Equipped with the trained VAE, we can now generate synthetic data of the minority class. To obtain a completely balanced dataset, we create 103,555 random samples from a multinormal standard distribution of six dimensions and feed them to the decoder to create the artificial data points.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mean <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>]
-cov <span style="color:#f92672">=</span> [[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>],[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>],[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>],[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>],[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>],[<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>]]
-nd <span style="color:#f92672">=</span> <span style="color:#ae81ff">103555</span>
-decoder<span style="color:#f92672">.</span>predict(np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>multivariate_normal(mean,cov,nd))
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mean = [0,0,0,0,0,0]
+cov = [[1,0,0,0,0,0],[0,1,0,0,0,0],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0],[0,0,0,0,0,1]]
+nd = 103555
+decoder.predict(np.random.multivariate_normal(mean,cov,nd))
 </code></pre></div><p>This artificial data is then added to the original dataset. Training the neural network again using this augmented dataset leads to the following performance:</p>
 <img align="center" width="300" height="200" style="display:block;margin:0 auto;" src="https://i.imgur.com/jzfuJNI.png">
 <p>Using the VAE, we managed to obtain a result that is competitive to the benchmark SMOTE-algorithm!</p>
@@ -327,113 +327,113 @@ Secondly, based on these points, we can calculate the divergence between <img sr
 <img src="https://latex.codecogs.com/gif.latex?$$\nabla_{\theta_g}\frac{1}{m}\sum_{i=1}^m\left(\mathop{\log}(1-D(G(z^{(i)})))\right)$$" title="$$\nabla_{\theta_g}\frac{1}{m}\sum_{i=1}^m\left(\mathop{\log}(1-D(G(z^{(i)})))\right)$$" /></li>
 </ul>
 <p>For application, we will start with defining the latent samples based on a normal distrubution:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">make_latent_samples</span>(n_samples, sample_size):
-    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(loc<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, scale<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, size<span style="color:#f92672">=</span>(n_samples, sample_size))
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">def</span> make_latent_samples(n_samples, sample_size):
+    <span style="color:#00f">return</span> np.random.normal(loc=0, scale=1, size=(n_samples, sample_size))
 </code></pre></div><p>Similar to the previous settings, we build the network structure using Keras, where the number of the features of the generated data as well as the real data are 10:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">make_GAN</span>(sample_size,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">def</span> make_GAN(sample_size,
              g_hidden_size,
              d_hidden_size,
              g_learning_rate,
              d_learning_rate):
-    K<span style="color:#f92672">.</span>clear_session()
+    K.clear_session()
 
-    generator <span style="color:#f92672">=</span> Sequential([
-        Dense(g_hidden_size, input_shape<span style="color:#f92672">=</span>(sample_size,)),
-        Activation(<span style="color:#e6db74">&#39;relu&#39;</span>),
-        Dense(<span style="color:#ae81ff">10</span>),
-        Activation(<span style="color:#e6db74">&#39;sigmoid&#39;</span>)
-    ], name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;generator&#39;</span>)
+    generator = Sequential([
+        Dense(g_hidden_size, input_shape=(sample_size,)),
+        Activation(<span style="color:#a31515">&#39;relu&#39;</span>),
+        Dense(10),
+        Activation(<span style="color:#a31515">&#39;sigmoid&#39;</span>)
+    ], name=<span style="color:#a31515">&#39;generator&#39;</span>)
 
-    discriminator <span style="color:#f92672">=</span> Sequential([
-        Dense(d_hidden_size, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,)),
-        Activation(<span style="color:#e6db74">&#39;relu&#39;</span>),
-        Dense(<span style="color:#ae81ff">1</span>),
-        Activation(<span style="color:#e6db74">&#39;sigmoid&#39;</span>)
-    ], name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;discriminator&#39;</span>)
+    discriminator = Sequential([
+        Dense(d_hidden_size, input_shape=(10,)),
+        Activation(<span style="color:#a31515">&#39;relu&#39;</span>),
+        Dense(1),
+        Activation(<span style="color:#a31515">&#39;sigmoid&#39;</span>)
+    ], name=<span style="color:#a31515">&#39;discriminator&#39;</span>)
 
-    gan <span style="color:#f92672">=</span> Sequential([
+    gan = Sequential([
         generator,
         discriminator
     ])
 
-    discriminator<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span>Adam(lr<span style="color:#f92672">=</span>d_learning_rate), loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;binary_crossentropy&#39;</span>)
-    gan<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span>Adam(lr<span style="color:#f92672">=</span>g_learning_rate), loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;binary_crossentropy&#39;</span>)
+    discriminator.compile(optimizer=Adam(lr=d_learning_rate), loss=<span style="color:#a31515">&#39;binary_crossentropy&#39;</span>)
+    gan.compile(optimizer=Adam(lr=g_learning_rate), loss=<span style="color:#a31515">&#39;binary_crossentropy&#39;</span>)
 
-    <span style="color:#66d9ef">return</span> gan, generator, discriminator
+    <span style="color:#00f">return</span> gan, generator, discriminator
 </code></pre></div><p>To ensure that <img src="https://latex.codecogs.com/gif.latex?$G$" title="$G$" /> or <img src="https://latex.codecogs.com/gif.latex?$D$" title="$D$" /> is fixed, that is, is not affected, while training another, we can define the following function:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">make_trainable</span>(model, trainable):
-    <span style="color:#66d9ef">for</span> layer <span style="color:#f92672">in</span> model<span style="color:#f92672">.</span>layers:
-        layer<span style="color:#f92672">.</span>trainable <span style="color:#f92672">=</span> trainable
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">def</span> make_trainable(model, trainable):
+    <span style="color:#00f">for</span> layer <span style="color:#00f">in</span> model.layers:
+        layer.trainable = trainable
 </code></pre></div><p>Furthermore, we define labels for the batch size and test size:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">make_labels</span>(size):
-    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>ones([size, <span style="color:#ae81ff">1</span>]), np<span style="color:#f92672">.</span>zeros([size, <span style="color:#ae81ff">1</span>])
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">def</span> make_labels(size):
+    <span style="color:#00f">return</span> np.ones([size, 1]), np.zeros([size, 1])
 </code></pre></div><p>Some hyperparameters should be determined as well. We make 100 latent samples and set the number of neurons of the hidden layer to 6. In addition, the number of labels for both the batch size and test size will also be provided using the function above:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Hyperparameters</span>
-sample_size     <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>    <span style="color:#75715e"># latent sample size</span>
-g_hidden_size   <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
-d_hidden_size   <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
-g_learning_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0001</span>  <span style="color:#75715e"># learning rate for the generator</span>
-d_learning_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0001</span>   <span style="color:#75715e"># learning rate for the discriminator</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#008000"># Hyperparameters</span>
+sample_size     = 100    <span style="color:#008000"># latent sample size</span>
+g_hidden_size   = 6
+d_hidden_size   = 6
+g_learning_rate = 0.0001  <span style="color:#008000"># learning rate for the generator</span>
+d_learning_rate = 0.0001   <span style="color:#008000"># learning rate for the discriminator</span>
 
-epochs          <span style="color:#f92672">=</span> <span style="color:#ae81ff">200</span>
-batch_size      <span style="color:#f92672">=</span> <span style="color:#ae81ff">64</span>      <span style="color:#75715e"># train batch size</span>
-eval_size       <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>      <span style="color:#75715e"># evaluate size</span>
-smooth          <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>
+epochs          = 200
+batch_size      = 64      <span style="color:#008000"># train batch size</span>
+eval_size       = 16      <span style="color:#008000"># evaluate size</span>
+smooth          = 0.1
 
-<span style="color:#75715e"># Make labels for the batch size and the test size</span>
-y_train_real, y_train_fake <span style="color:#f92672">=</span> make_labels(batch_size)
-y_eval_real,  y_eval_fake  <span style="color:#f92672">=</span> make_labels(eval_size)
+<span style="color:#008000"># Make labels for the batch size and the test size</span>
+y_train_real, y_train_fake = make_labels(batch_size)
+y_eval_real,  y_eval_fake  = make_labels(eval_size)
 </code></pre></div><p>Let&rsquo;s begin training the two networks and see how they can learn during the procedure:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">gan, generator, discriminator <span style="color:#f92672">=</span> make_GAN(
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">gan, generator, discriminator = make_GAN(
     sample_size,
     g_hidden_size,
     d_hidden_size,
     g_learning_rate,
     d_learning_rate)
 
-losses <span style="color:#f92672">=</span> []
-<span style="color:#66d9ef">for</span> e <span style="color:#f92672">in</span> range(epochs):
-    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(baddata<span style="color:#f92672">.</span>values)<span style="color:#f92672">//</span>batch_size):
-        <span style="color:#75715e"># Real data (minority class)</span>
-        X_batch_real <span style="color:#f92672">=</span> baddata<span style="color:#f92672">.</span>values[i<span style="color:#f92672">*</span>batch_size:(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">*</span>batch_size]
+losses = []
+<span style="color:#00f">for</span> e <span style="color:#00f">in</span> range(epochs):
+    <span style="color:#00f">for</span> i <span style="color:#00f">in</span> range(len(baddata.values)//batch_size):
+        <span style="color:#008000"># Real data (minority class)</span>
+        X_batch_real = baddata.values[i*batch_size:(i+1)*batch_size]
 
-        <span style="color:#75715e"># Latent samples</span>
-        latent_samples <span style="color:#f92672">=</span> make_latent_samples(batch_size, sample_size)
-        <span style="color:#75715e"># Fake data (on minibatches)</span>
-        X_batch_fake <span style="color:#f92672">=</span> generator<span style="color:#f92672">.</span>predict_on_batch(latent_samples)
+        <span style="color:#008000"># Latent samples</span>
+        latent_samples = make_latent_samples(batch_size, sample_size)
+        <span style="color:#008000"># Fake data (on minibatches)</span>
+        X_batch_fake = generator.predict_on_batch(latent_samples)
 
-        <span style="color:#75715e"># Train the discriminator</span>
+        <span style="color:#008000"># Train the discriminator</span>
         make_trainable(discriminator, True)
-        discriminator<span style="color:#f92672">.</span>train_on_batch(X_batch_real, y_train_real <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> smooth))
-        discriminator<span style="color:#f92672">.</span>train_on_batch(X_batch_fake, y_train_fake)
+        discriminator.train_on_batch(X_batch_real, y_train_real * (1 - smooth))
+        discriminator.train_on_batch(X_batch_fake, y_train_fake)
 
-        <span style="color:#75715e"># Train the generator (the discriminator is fixed)</span>
+        <span style="color:#008000"># Train the generator (the discriminator is fixed)</span>
         make_trainable(discriminator, False)
-        gan<span style="color:#f92672">.</span>train_on_batch(latent_samples, y_train_real)
+        gan.train_on_batch(latent_samples, y_train_real)
 
-    <span style="color:#75715e"># Evaluate</span>
-    X_eval_real <span style="color:#f92672">=</span> baddata<span style="color:#f92672">.</span>values[np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>choice(len(baddata<span style="color:#f92672">.</span>values), eval_size, replace<span style="color:#f92672">=</span>False)]
+    <span style="color:#008000"># Evaluate</span>
+    X_eval_real = baddata.values[np.random.choice(len(baddata.values), eval_size, replace=False)]
 
-    latent_samples <span style="color:#f92672">=</span> make_latent_samples(eval_size, sample_size)
-    X_eval_fake <span style="color:#f92672">=</span> generator<span style="color:#f92672">.</span>predict_on_batch(latent_samples)
+    latent_samples = make_latent_samples(eval_size, sample_size)
+    X_eval_fake = generator.predict_on_batch(latent_samples)
 
-    d_loss  <span style="color:#f92672">=</span> discriminator<span style="color:#f92672">.</span>test_on_batch(X_eval_real, y_eval_real)
-    d_loss <span style="color:#f92672">+=</span> discriminator<span style="color:#f92672">.</span>test_on_batch(X_eval_fake, y_eval_fake)
-    g_loss  <span style="color:#f92672">=</span> gan<span style="color:#f92672">.</span>test_on_batch(latent_samples, y_eval_real)
+    d_loss  = discriminator.test_on_batch(X_eval_real, y_eval_real)
+    d_loss += discriminator.test_on_batch(X_eval_fake, y_eval_fake)
+    g_loss  = gan.test_on_batch(latent_samples, y_eval_real)
 
-    losses<span style="color:#f92672">.</span>append((d_loss, g_loss))
+    losses.append((d_loss, g_loss))
 
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Epoch: {:&gt;3}/{} Discriminator Loss: {:&gt;6.4f} Generator Loss: {:&gt;6.4f}&#34;</span><span style="color:#f92672">.</span>format(
-        e<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, epochs, d_loss, g_loss))
+    <span style="color:#00f">print</span>(<span style="color:#a31515">&#34;Epoch: {:&gt;3}/{} Discriminator Loss: {:&gt;6.4f} Generator Loss: {:&gt;6.4f}&#34;</span>.format(
+        e+1, epochs, d_loss, g_loss))
 </code></pre></div><p>The following graph shows the training loss of both the generator and the discriminator:</p>
 <p><img src="https://imgur.com/7YwIYhV.png" alt="traininglosses"></p>
 <p>We could see that the trend of the training loss of the discriminator is going down at the late stage, which means the discriminator is learning more and more efficiently. However, the training loss of the generator is increasing. In the late stage, there is a converging trend of both losses. Althogh both losses begin to diverge in the end, a balance in the confrontation between the generator and the discriminator seems to be reached for a period of time.</p>
 <p>Let&rsquo;s now take a look whether the new data created from the trained generator can help us improve the performance of the basic neural network model. First of all, we generate data to fill up the minority class (n = 103555, as previous showed in VAE approach), so that the number of each class is equal:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Generate data to fill baddata</span>
-latent_samples <span style="color:#f92672">=</span> make_latent_samples(<span style="color:#ae81ff">103555</span>, sample_size) 
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#008000"># Generate data to fill baddata</span>
+latent_samples = make_latent_samples(103555, sample_size) 
 
-generated_data <span style="color:#f92672">=</span> generator<span style="color:#f92672">.</span>predict(latent_samples)
-generated_data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(generated_data)
+generated_data = generator.predict(latent_samples)
+generated_data = pd.DataFrame(generated_data)
 </code></pre></div><p>In the next step, we add this synthetic data to the original dataset and use it to make predictions following the routine in the earlier sections. The AUC score of the neural network model this time using the GAN is about 0.801, which is as good as that of the VAE approach.</p>
 <p><img src="https://imgur.com/fcVueRm.png" alt="GAN auc"></p>
 <p>To conclude, we have introduced two types of generative models, i.e. the VAE and the GAN, by demonstrating a practical example of a credit dataset, with the purpose to generate synthetic data and to counteract the negative effect of the imbalance of the dataset. The performance of the basic neural network model was indeed improved by using the synthetic data from both approaches. Stemming from the intention of clearly explaining the fundamentals of these generative models, we illustrated only the elementary applications in python codes. However, improvements in their training process can be achieved by using more sophisticated skills. We would be pleased if our blog post could excite your interest in these practical generative models and explore their further potential.</p>

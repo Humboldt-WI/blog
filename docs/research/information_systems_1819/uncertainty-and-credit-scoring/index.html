@@ -224,8 +224,8 @@ p(x_{new}|X) = \int p(x_{new}| \omega)p(\omega | X) d\omega
 p(X) = \int p(X,\omega)d\omega
 \end{equation}</p>
 <p>As we see, the evidence, i.e. the denominator of the posterior function, represents a high-dimensional integral that lacks a general analytic solution. Therefore, calculating the posterior usually means <strong>approximating</strong> it. There is a whole literature out there on how to approximate the posterior as we also discussed in the previous section. After we are done with approximating the posterior, our neural network in a regression problem will look like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> warnings
-warnings<span style="color:#f92672">.</span>filterwarnings(<span style="color:#e6db74">&#39;ignore&#39;</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">import</span> warnings
+warnings.filterwarnings(<span style="color:#a31515">&#39;ignore&#39;</span>)
 </code></pre></div><img src=https://i.imgur.com/WY3Elcf.png width=800>
 <p>Observe that for each point in the graph, we have a number of fits. The variance of fitted functions are the highest at the region where we don&rsquo;t have data and it is the lowest where we have a concentration of data. We can also interpret it during prediction in a way that we have the
 highest aleatoric uncertainty at the region where we have the least clue about our data.</p>
@@ -282,13 +282,13 @@ ELBO(\theta)=\mathop{\mathbb{E}}[logp(x,\omega)-logq(\omega;\theta)]
 <h3 id="lending-club-loan-data">Lending Club Loan Data</h3>
 <p>The lending club loan data set (accessible on kaggle.com: <a href="https://www.kaggle.com/wendykan/lending-club-loan-data">https://www.kaggle.com/wendykan/lending-club-loan-data</a>) contains data for loans in the period of 2007 - 2015. It includes, among others, information about current payments, the loan status (current, late, fully paid etc.) and data about the borrower such as state, annual income and home ownership. The complete data set consists of approximately 890.000 rows and 74 columns.</p>
 <p>Before we implement the Bayesian neural network, we will explore and clean the data. We are interested in past loans, therefore we have chosen only &lsquo;Fully Paid&rsquo;,&lsquo;Default&rsquo;, or &lsquo;Charged Off&rsquo; loans among all.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
-<span style="color:#f92672">import</span> seaborn <span style="color:#f92672">as</span> sns
-<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
-loan <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;data/loan.csv&#34;</span>, low_memory<span style="color:#f92672">=</span>False)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">loan <span style="color:#f92672">=</span> loan[loan<span style="color:#f92672">.</span>loan_status<span style="color:#f92672">.</span>isin([<span style="color:#e6db74">&#39;Fully Paid&#39;</span>,<span style="color:#e6db74">&#39;Default&#39;</span>,<span style="color:#e6db74">&#39;Charged Off&#39;</span>])]
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(loan<span style="color:#f92672">.</span>shape)
-loan<span style="color:#f92672">.</span>head()
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">import</span> pandas <span style="color:#00f">as</span> pd
+<span style="color:#00f">import</span> seaborn <span style="color:#00f">as</span> sns
+<span style="color:#00f">import</span> matplotlib.pyplot <span style="color:#00f">as</span> plt
+loan = pd.read_csv(<span style="color:#a31515">&#34;data/loan.csv&#34;</span>, low_memory=False)
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">loan = loan[loan.loan_status.isin([<span style="color:#a31515">&#39;Fully Paid&#39;</span>,<span style="color:#a31515">&#39;Default&#39;</span>,<span style="color:#a31515">&#39;Charged Off&#39;</span>])]
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">print</span>(loan.shape)
+loan.head()
 
 </code></pre></div><pre><code>(254190, 74)
 </code></pre>
@@ -459,12 +459,12 @@ loan<span style="color:#f92672">.</span>head()
 <p>5 rows × 74 columns</p>
 </div>
 <p>The first few rows of the data set show that some of the columns seem to have quite a lot of missing values. In order to obtain a better overview, we start by creating a data set loan_missing which contains boolean values for missing data. We then sum those missing values by column and calculate the percentage. Lastly, we order the dataframe by the percentage of missing values, with the highest percentage on top.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">loan_missing <span style="color:#f92672">=</span> loan<span style="color:#f92672">.</span>isna()
-loan_missing_count <span style="color:#f92672">=</span> loan_missing<span style="color:#f92672">.</span>sum()
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">loan_missing = loan.isna()
+loan_missing_count = loan_missing.sum()
 
-loan_missing_percentage <span style="color:#f92672">=</span> (loan_missing_count <span style="color:#f92672">/</span> len(loan))<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">4</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
-loan_missing_sorted <span style="color:#f92672">=</span> loan_missing_percentage<span style="color:#f92672">.</span>sort_values(ascending<span style="color:#f92672">=</span>False)
-loan_missing_sorted<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">20</span>)
+loan_missing_percentage = (loan_missing_count / len(loan)).round(4) * 100
+loan_missing_sorted = loan_missing_percentage.sort_values(ascending=False)
+loan_missing_sorted.head(20)
 </code></pre></div><pre><code>annual_inc_joint               100.00
 dti_joint                      100.00
 verification_status_joint      100.00
@@ -488,28 +488,28 @@ mths_since_last_major_derog     81.17
 dtype: float64
 </code></pre>
 <p>The resulting table proves that a lot of columns are almost completely empty. For further data exploration, we set a threshold of 50% and remove each column above this threshold. We now have 52 columns left.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">temp <span style="color:#f92672">=</span> [i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> loan<span style="color:#f92672">.</span>count()<span style="color:#f92672">&lt;</span>len(loan)<span style="color:#f92672">*</span><span style="color:#ae81ff">0.50</span>]
-loan<span style="color:#f92672">.</span>drop(loan<span style="color:#f92672">.</span>columns[temp],axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,inplace<span style="color:#f92672">=</span>True)
-loan<span style="color:#f92672">.</span>shape
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">temp = [i <span style="color:#00f">for</span> i <span style="color:#00f">in</span> loan.count()&lt;len(loan)*0.50]
+loan.drop(loan.columns[temp],axis=1,inplace=True)
+loan.shape
 
 </code></pre></div><pre><code>(254190, 52)
 </code></pre>
 <p>Since there is no profit column existing in our data set yet, we define a target variable profit containing the profit rate of each loan. Then we have a look at the distribution of profits in order to find out if there are any imbalances in our target variable. We classify the target values as positive / negative profit and count the occurences in each class.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">loan[<span style="color:#e6db74">&#34;profit_rate&#34;</span>] <span style="color:#f92672">=</span> loan<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: ((x[<span style="color:#e6db74">&#39;total_pymnt&#39;</span>] <span style="color:#f92672">-</span> x[<span style="color:#e6db74">&#39;loan_amnt&#39;</span>])<span style="color:#f92672">/</span>x[<span style="color:#e6db74">&#39;loan_amnt&#39;</span>]), axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">loan[<span style="color:#a31515">&#34;profit_rate&#34;</span>] = loan.apply(<span style="color:#00f">lambda</span> x: ((x[<span style="color:#a31515">&#39;total_pymnt&#39;</span>] - x[<span style="color:#a31515">&#39;loan_amnt&#39;</span>])/x[<span style="color:#a31515">&#39;loan_amnt&#39;</span>]), axis = 1)
 
-target_class <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(columns<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;class&#34;</span>])
-target_class[<span style="color:#e6db74">&#34;class&#34;</span>] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span> <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> loan[<span style="color:#e6db74">&#34;profit_rate&#34;</span>]]
-target_class[<span style="color:#e6db74">&#34;class&#34;</span>]<span style="color:#f92672">.</span>value_counts()
+target_class = pd.DataFrame(columns=[<span style="color:#a31515">&#34;class&#34;</span>])
+target_class[<span style="color:#a31515">&#34;class&#34;</span>] = [1 <span style="color:#00f">if</span> i &gt; 0 <span style="color:#00f">else</span> 0 <span style="color:#00f">for</span> i <span style="color:#00f">in</span> loan[<span style="color:#a31515">&#34;profit_rate&#34;</span>]]
+target_class[<span style="color:#a31515">&#34;class&#34;</span>].value_counts()
 </code></pre></div><pre><code>1    207700
 0     46490
 Name: class, dtype: int64
 </code></pre>
 <p>The profit classes show that there are far more instances of positive profit than negative profit, meaning that our data set is imbalanced. But since we are going to apply a regression problem, this is less of an issue now. Now, we will have a look at what variables have the highest positive and negative correlation with our target variable.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">loan<span style="color:#f92672">.</span>head()
-corr <span style="color:#f92672">=</span> loan<span style="color:#f92672">.</span>corr()[<span style="color:#e6db74">&#34;profit_rate&#34;</span>]<span style="color:#f92672">.</span>sort_values(ascending<span style="color:#f92672">=</span>False)
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;most positive correlations:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>, corr<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">10</span>))
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">loan.head()
+corr = loan.corr()[<span style="color:#a31515">&#34;profit_rate&#34;</span>].sort_values(ascending=False)
+<span style="color:#00f">print</span>(<span style="color:#a31515">&#39;most positive correlations:</span><span style="color:#a31515">\n</span><span style="color:#a31515">&#39;</span>, corr.head(10))
 
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;most negative correlations:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>, corr<span style="color:#f92672">.</span>tail(<span style="color:#ae81ff">10</span>))
+<span style="color:#00f">print</span>(<span style="color:#a31515">&#39;most negative correlations:</span><span style="color:#a31515">\n</span><span style="color:#a31515">&#39;</span>, corr.tail(10))
 </code></pre></div><pre><code>most positive correlations:
  profit_rate         1.000000
 total_rec_prncp     0.473400
@@ -537,41 +537,41 @@ Name: profit_rate, dtype: float64
 </code></pre>
 <p>The columns total_rec_prncp (prinicpal received to date), total_pymnt (payments received to date for total amount funded) and total_pymnt_inv (payments received to date for portion of total amount funded by investors) have the highest positive correlation with our target column. The columnsout_prncp (remaining outstanding principal for total amount funded) and out_prncp_i (remaining outstanding principal for portion of total amount funded by investors) have the highest negative correlation with the target column.
 This certainly seems feasible for our past loans, but if we think about using the model for real world predictions, these variables may not be as significant.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">loan[<span style="color:#e6db74">&#34;int_rate_dec&#34;</span>] <span style="color:#f92672">=</span> loan<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x: (x[<span style="color:#e6db74">&#34;int_rate&#34;</span>]<span style="color:#f92672">/</span><span style="color:#ae81ff">100</span>), axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
-fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure(figsize <span style="color:#f92672">=</span> (<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">8</span>))
-ax1 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">221</span>)
-g <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>distplot(loan[<span style="color:#e6db74">&#34;loan_amnt&#34;</span>], ax<span style="color:#f92672">=</span>ax1)
-g<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#34;Loan Amount&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">12</span>)
-g<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#34;Frequency&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">12</span>)
-ax1<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;Loan Amount Distribution&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">loan[<span style="color:#a31515">&#34;int_rate_dec&#34;</span>] = loan.apply(<span style="color:#00f">lambda</span> x: (x[<span style="color:#a31515">&#34;int_rate&#34;</span>]/100), axis = 1)
+fig = plt.figure(figsize = (10,8))
+ax1 = fig.add_subplot(221)
+g = sns.distplot(loan[<span style="color:#a31515">&#34;loan_amnt&#34;</span>], ax=ax1)
+g.set_xlabel(<span style="color:#a31515">&#34;Loan Amount&#34;</span>, fontsize=12)
+g.set_ylabel(<span style="color:#a31515">&#34;Frequency&#34;</span>, fontsize=12)
+ax1.set_title(<span style="color:#a31515">&#34;Loan Amount Distribution&#34;</span>, fontsize=14)
 
 
-ax2 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">222</span>)
-g1 <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>distplot(loan[<span style="color:#e6db74">&#39;int_rate_dec&#39;</span>], ax<span style="color:#f92672">=</span>ax2)
-g1<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#34;Interest Rate&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">12</span>)
-g1<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#34;Frequency&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">12</span>)
-ax2<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;Interest Rate Distribution&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>)
+ax2 = fig.add_subplot(222)
+g1 = sns.distplot(loan[<span style="color:#a31515">&#39;int_rate_dec&#39;</span>], ax=ax2)
+g1.set_xlabel(<span style="color:#a31515">&#34;Interest Rate&#34;</span>, fontsize=12)
+g1.set_ylabel(<span style="color:#a31515">&#34;Frequency&#34;</span>, fontsize=12)
+ax2.set_title(<span style="color:#a31515">&#34;Interest Rate Distribution&#34;</span>, fontsize=14)
 
 
-ax3 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">223</span>)
-g2 <span style="color:#f92672">=</span> sns<span style="color:#f92672">.</span>distplot(loan[<span style="color:#e6db74">&#34;profit_rate&#34;</span>])
-g2<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#34;Profit&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">12</span>)
-g2<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#34;Frequency&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">12</span>)
-ax3<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;Profit Frequency Distribution&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>)
+ax3 = fig.add_subplot(223)
+g2 = sns.distplot(loan[<span style="color:#a31515">&#34;profit_rate&#34;</span>])
+g2.set_xlabel(<span style="color:#a31515">&#34;Profit&#34;</span>, fontsize=12)
+g2.set_ylabel(<span style="color:#a31515">&#34;Frequency&#34;</span>, fontsize=12)
+ax3.set_title(<span style="color:#a31515">&#34;Profit Frequency Distribution&#34;</span>, fontsize=14)
 
-fig<span style="color:#f92672">.</span>tight_layout()
+fig.tight_layout()
 
 </code></pre></div><p><img src="/blog/img/seminar/group7_BayesianNN_Uncertainty/output_81_0.png" alt="png"></p>
 <p>The above plots show the distributions of loan amount, interest rate and profit frequency. The majority of loans amount to 5.000 - 15.000$ each. Interest rates are mostly distributed between 0.10 - .20 %. The distribution of profit rates shows that there are only a few loans in the negative range. The profit distribution spikes between 0.00 - 0.25 %.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">22</span>,<span style="color:#ae81ff">6</span>))
-sns<span style="color:#f92672">.</span>kdeplot(loan<span style="color:#f92672">.</span>loc[loan[<span style="color:#e6db74">&#39;profit_rate&#39;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#39;total_rec_prncp&#39;</span>], label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;profit rate &gt; 0&#39;</span>)
-sns<span style="color:#f92672">.</span>kdeplot(loan<span style="color:#f92672">.</span>loc[loan[<span style="color:#e6db74">&#39;profit_rate&#39;</span>] <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#39;total_rec_prncp&#39;</span>], label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;profit rate &lt;= 0&#39;</span>);
-plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Principal Received&#39;</span>,fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>)
-plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Density&#39;</span>,fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>)
-plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Distribution of Principal Received to Date&#39;</span>,fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>);
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig = plt.figure(figsize=(22,6))
+sns.kdeplot(loan.loc[loan[<span style="color:#a31515">&#39;profit_rate&#39;</span>] &gt; 0, <span style="color:#a31515">&#39;total_rec_prncp&#39;</span>], label = <span style="color:#a31515">&#39;profit rate &gt; 0&#39;</span>)
+sns.kdeplot(loan.loc[loan[<span style="color:#a31515">&#39;profit_rate&#39;</span>] &lt;= 0, <span style="color:#a31515">&#39;total_rec_prncp&#39;</span>], label = <span style="color:#a31515">&#39;profit rate &lt;= 0&#39;</span>);
+plt.xlabel(<span style="color:#a31515">&#39;Principal Received&#39;</span>,fontsize=15)
+plt.ylabel(<span style="color:#a31515">&#39;Density&#39;</span>,fontsize=15)
+plt.title(<span style="color:#a31515">&#39;Distribution of Principal Received to Date&#39;</span>,fontsize=20);
 </code></pre></div><p><img src="/blog/img/seminar/group7_BayesianNN_Uncertainty/output_83_0.png" alt="png"></p>
 <p>The distribution of principal received to date shows that most instances with negative profits appear in the range of 0 - 10,000$, whereas instances with positive profits are more widely distributed. Next, we will see if there are any borrowers who have taken more than one loan to see if their member ID could be an indicator of the profit rate.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">loan[<span style="color:#e6db74">&#39;member_id&#39;</span>]<span style="color:#f92672">.</span>value_counts()<span style="color:#f92672">.</span>head()
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">loan[<span style="color:#a31515">&#39;member_id&#39;</span>].value_counts().head()
 
 </code></pre></div><pre><code>5246974    1
 1821228    1
@@ -581,59 +581,59 @@ plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Di
 Name: member_id, dtype: int64
 </code></pre>
 <p>There are no members who have taken more than one loan. Consequently, the member id does not indicate whether the borrower is likely to pay back their loan. Hence, the column does not need to be considered for predictions.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">profit_by_purpose <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(loan[loan[<span style="color:#e6db74">&#39;profit_rate&#39;</span>]<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;purpose&#39;</span>)[<span style="color:#e6db74">&#39;profit_rate&#39;</span>]<span style="color:#f92672">.</span>count()<span style="color:#f92672">.</span>sort_values())
-profit_by_purpose[<span style="color:#e6db74">&#34;profit_neg&#34;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(loan[loan[<span style="color:#e6db74">&#39;profit_rate&#39;</span>]<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;purpose&#39;</span>)[<span style="color:#e6db74">&#39;profit_rate&#39;</span>]<span style="color:#f92672">.</span>count()<span style="color:#f92672">.</span>sort_values())[<span style="color:#e6db74">&#34;profit_rate&#34;</span>]
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">profit_by_purpose = pd.DataFrame(loan[loan[<span style="color:#a31515">&#39;profit_rate&#39;</span>]&gt;0].groupby(<span style="color:#a31515">&#39;purpose&#39;</span>)[<span style="color:#a31515">&#39;profit_rate&#39;</span>].count().sort_values())
+profit_by_purpose[<span style="color:#a31515">&#34;profit_neg&#34;</span>] = pd.DataFrame(loan[loan[<span style="color:#a31515">&#39;profit_rate&#39;</span>]&lt;=0].groupby(<span style="color:#a31515">&#39;purpose&#39;</span>)[<span style="color:#a31515">&#39;profit_rate&#39;</span>].count().sort_values())[<span style="color:#a31515">&#34;profit_rate&#34;</span>]
 
-fig, ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">14</span>, <span style="color:#ae81ff">10</span>))
-profit_by_purpose<span style="color:#f92672">.</span>plot(kind<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bar&#34;</span>, ax<span style="color:#f92672">=</span>ax)
-plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Number of loans&#39;</span>,fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>)
-plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Purpose&#39;</span>,fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">15</span>)
-plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Number of loans by purpose&#39;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>);
-L<span style="color:#f92672">=</span>plt<span style="color:#f92672">.</span>legend()
-L<span style="color:#f92672">.</span>get_texts()[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>set_text(<span style="color:#e6db74">&#39;positive profit&#39;</span>)
-L<span style="color:#f92672">.</span>get_texts()[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>set_text(<span style="color:#e6db74">&#39;negative profit&#39;</span>)
+fig, ax = plt.subplots(figsize=(14, 10))
+profit_by_purpose.plot(kind=<span style="color:#a31515">&#34;bar&#34;</span>, ax=ax)
+plt.ylabel(<span style="color:#a31515">&#39;Number of loans&#39;</span>,fontsize=15)
+plt.xlabel(<span style="color:#a31515">&#39;Purpose&#39;</span>,fontsize=15)
+plt.title(<span style="color:#a31515">&#39;Number of loans by purpose&#39;</span>, fontsize=20);
+L=plt.legend()
+L.get_texts()[0].set_text(<span style="color:#a31515">&#39;positive profit&#39;</span>)
+L.get_texts()[1].set_text(<span style="color:#a31515">&#39;negative profit&#39;</span>)
 
 </code></pre></div><p><img src="/blog/img/seminar/group7_BayesianNN_Uncertainty/output_87_0.png" alt="png"></p>
 <p>The barplot shows the number of loans issued per purpose category. Most loans are issued for debt consolidation and credit cards - these are also the categories with the highest amount of loans with negative profit. There is no category where the amount of loans with negative profits exceeds loans with positive profits. However, there certainly are categories where the share of negative profits is very small, such as house, car or wedding.</p>
 <p>Returning back to data preprocessing, we applied a feature selection by temporarily recasting the regression problem as a binary decision problem between positive and negative profit rates. Then we calculated Information Value for all columns. Nevertheless, there were many columns in our dataset that can be influenced by the target variable. Therefore, we selected only the useful, but not too predictive variables.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">features <span style="color:#f92672">=</span> loan[[<span style="color:#e6db74">&#39;annual_inc&#39;</span>,<span style="color:#e6db74">&#39;int_rate&#39;</span>,<span style="color:#e6db74">&#39;purpose&#39;</span>,<span style="color:#e6db74">&#39;dti&#39;</span>,<span style="color:#e6db74">&#39;term&#39;</span>,<span style="color:#e6db74">&#39;grade&#39;</span>]]
-features <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>get_dummies(features)
-target <span style="color:#f92672">=</span> loan[[<span style="color:#e6db74">&#39;profit_rate&#39;</span>]]
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">features = loan[[<span style="color:#a31515">&#39;annual_inc&#39;</span>,<span style="color:#a31515">&#39;int_rate&#39;</span>,<span style="color:#a31515">&#39;purpose&#39;</span>,<span style="color:#a31515">&#39;dti&#39;</span>,<span style="color:#a31515">&#39;term&#39;</span>,<span style="color:#a31515">&#39;grade&#39;</span>]]
+features = pd.get_dummies(features)
+target = loan[[<span style="color:#a31515">&#39;profit_rate&#39;</span>]]
 </code></pre></div><p>In order to obtain comparable and reliable results, we have sampled 100k rows from the remaining dataset and split it into a test set with 33k rows, and a training set with 67k rows. To do this, we use the train_test_split() function by sklearn. Furthermore, we used the profit rate we have calculated before as our target variable.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> random
-random<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">100</span>)
-idx <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>sample(range(features<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]), <span style="color:#ae81ff">100000</span>)
-f_sampled <span style="color:#f92672">=</span> features<span style="color:#f92672">.</span>iloc[idx,:]
-t_sampled <span style="color:#f92672">=</span> target<span style="color:#f92672">.</span>iloc[idx]
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">import</span> random
+random.seed(100)
+idx = random.sample(range(features.shape[0]), 100000)
+f_sampled = features.iloc[idx,:]
+t_sampled = target.iloc[idx]
 
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> warnings
-warnings<span style="color:#f92672">.</span>filterwarnings(<span style="color:#e6db74">&#39;ignore&#39;</span>)
-<span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> train_test_split
-<span style="color:#f92672">from</span> sklearn <span style="color:#f92672">import</span> preprocessing
-<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">import</span> warnings
+warnings.filterwarnings(<span style="color:#a31515">&#39;ignore&#39;</span>)
+<span style="color:#00f">from</span> sklearn.model_selection <span style="color:#00f">import</span> train_test_split
+<span style="color:#00f">from</span> sklearn <span style="color:#00f">import</span> preprocessing
+<span style="color:#00f">import</span> numpy <span style="color:#00f">as</span> np
 
-X_train, X_test, y_train, y_test <span style="color:#f92672">=</span> train_test_split(f_sampled, t_sampled, test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.33</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)
+X_train, X_test, y_train, y_test = train_test_split(f_sampled, t_sampled, test_size=0.33, random_state=42)
 
-scaler_trx <span style="color:#f92672">=</span> preprocessing<span style="color:#f92672">.</span>StandardScaler()<span style="color:#f92672">.</span>fit(X_train)
-X_train <span style="color:#f92672">=</span> scaler_trx<span style="color:#f92672">.</span>transform(X_train)
+scaler_trx = preprocessing.StandardScaler().fit(X_train)
+X_train = scaler_trx.transform(X_train)
 
-scaler_try <span style="color:#f92672">=</span> preprocessing<span style="color:#f92672">.</span>StandardScaler()<span style="color:#f92672">.</span>fit(y_train)
-y_train <span style="color:#f92672">=</span> scaler_try<span style="color:#f92672">.</span>transform(y_train)
+scaler_try = preprocessing.StandardScaler().fit(y_train)
+y_train = scaler_try.transform(y_train)
 
-scaler_testx <span style="color:#f92672">=</span> preprocessing<span style="color:#f92672">.</span>StandardScaler()<span style="color:#f92672">.</span>fit(X_test)
-X_test <span style="color:#f92672">=</span> scaler_testx<span style="color:#f92672">.</span>transform(X_test)
+scaler_testx = preprocessing.StandardScaler().fit(X_test)
+X_test = scaler_testx.transform(X_test)
 
-scaler_testy <span style="color:#f92672">=</span> preprocessing<span style="color:#f92672">.</span>StandardScaler()<span style="color:#f92672">.</span>fit(y_test)
-y_test <span style="color:#f92672">=</span> scaler_testy<span style="color:#f92672">.</span>transform(y_test)
+scaler_testy = preprocessing.StandardScaler().fit(y_test)
+y_test = scaler_testy.transform(y_test)
 </code></pre></div><h2 id="model">Model</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
-<span style="color:#f92672">from</span> keras <span style="color:#f92672">import</span> Model <span style="color:#66d9ef">as</span> Model
-<span style="color:#f92672">from</span> keras <span style="color:#f92672">import</span> Input <span style="color:#66d9ef">as</span> Input
-<span style="color:#f92672">from</span> keras.layers <span style="color:#f92672">import</span> Dropout
-<span style="color:#f92672">from</span> keras.layers <span style="color:#f92672">import</span> Dense
-<span style="color:#f92672">from</span> keras.regularizers <span style="color:#f92672">import</span> l2
-<span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_squared_error
-<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">import</span> pandas <span style="color:#00f">as</span> pd
+<span style="color:#00f">from</span> keras <span style="color:#00f">import</span> Model <span style="color:#00f">as</span> Model
+<span style="color:#00f">from</span> keras <span style="color:#00f">import</span> Input <span style="color:#00f">as</span> Input
+<span style="color:#00f">from</span> keras.layers <span style="color:#00f">import</span> Dropout
+<span style="color:#00f">from</span> keras.layers <span style="color:#00f">import</span> Dense
+<span style="color:#00f">from</span> keras.regularizers <span style="color:#00f">import</span> l2
+<span style="color:#00f">from</span> sklearn.metrics <span style="color:#00f">import</span> mean_squared_error
+<span style="color:#00f">import</span> numpy <span style="color:#00f">as</span> np
 </code></pre></div><pre><code>Using TensorFlow backend.
 </code></pre>
 <p>The following function defines the architecture of our model. It passes the following four parameters:</p>
@@ -645,20 +645,20 @@ y_test <span style="color:#f92672">=</span> scaler_testy<span style="color:#f926
 </ul>
 <p>Next, we instantiate our model. The dropout technique is usually done only during training, but not during test time. Therefore, the usual Keras Sequential() model automatically switches off the dropout during test time. In order to get around this issue, we build a functional model in Keras. We start with the input layer using the Keras Input() function and pass the input dimensions. Using Dropout(), we apply the dropout technique to our inputs. Lastly, we instatiate a regular densely-connected layer using the Dense() function. Here we pass the dimensionality as an argument using the first value of the n_hidden vector. We use the tanh activation function and pass the regularization function, which will be explained in more detail below. We use a weight regularizer (called W_regularizer), with the l2 weight regularization penalty - this corresponds to the weight decay.</p>
 <p>Now, for each hidden layer (using the length of the n_hidden vector), we instantiate the dropout function and a dense layer, as described above. Lastly, we create the output layer in the same way. The dimensionality of our output layer is one, since we only predict one target variable - the profit rate.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">architecture</span>(model_type, n_hidden, input_dim, dropout_prob, reg):
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">def</span> architecture(model_type, n_hidden, input_dim, dropout_prob, reg):
     
-    inputs <span style="color:#f92672">=</span> Input(shape<span style="color:#f92672">=</span>(input_dim,))
-    inter <span style="color:#f92672">=</span> Dropout(dropout_prob)(inputs, training<span style="color:#f92672">=</span>True)
-    inter <span style="color:#f92672">=</span> Dense(n_hidden[<span style="color:#ae81ff">0</span>], activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tanh&#39;</span>,
-                  W_regularizer<span style="color:#f92672">=</span>l2(reg))(inter)
-    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(n_hidden) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>):
-        inter <span style="color:#f92672">=</span> Dropout(dropout_prob)(inter, training<span style="color:#f92672">=</span>True)
-        inter <span style="color:#f92672">=</span> Dense(n_hidden[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>], activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tanh&#39;</span>,
-                      W_regularizer<span style="color:#f92672">=</span>l2(reg))(inter)
-        inter <span style="color:#f92672">=</span> Dropout(dropout_prob)(inter, training<span style="color:#f92672">=</span>True)
-        outputs <span style="color:#f92672">=</span> Dense(<span style="color:#ae81ff">1</span>, W_regularizer<span style="color:#f92672">=</span>l2(reg))(inter) 
-        model <span style="color:#f92672">=</span> Model(inputs, outputs)
-    <span style="color:#66d9ef">return</span> model
+    inputs = Input(shape=(input_dim,))
+    inter = Dropout(dropout_prob)(inputs, training=True)
+    inter = Dense(n_hidden[0], activation=<span style="color:#a31515">&#39;tanh&#39;</span>,
+                  W_regularizer=l2(reg))(inter)
+    <span style="color:#00f">for</span> i <span style="color:#00f">in</span> range(len(n_hidden) - 1):
+        inter = Dropout(dropout_prob)(inter, training=True)
+        inter = Dense(n_hidden[i+1], activation=<span style="color:#a31515">&#39;tanh&#39;</span>,
+                      W_regularizer=l2(reg))(inter)
+        inter = Dropout(dropout_prob)(inter, training=True)
+        outputs = Dense(1, W_regularizer=l2(reg))(inter) 
+        model = Model(inputs, outputs)
+    <span style="color:#00f">return</span> model
 </code></pre></div><p>In the following step, we define a function that runs our model. Before we do so, we pre-process our test data so we can use it as a default argument for our predictions.</p>
 <p>The function model_runner() takes the following arguments:</p>
 <ul>
@@ -672,25 +672,25 @@ y_test <span style="color:#f92672">=</span> scaler_testy<span style="color:#f926
 <li>n_hidden: a vector containing the number of neurons per layer, which is passed on to the model as well</li>
 </ul>
 <p>We now define the input dimension to equal the number of columns in the training set. We also define a value N, which corresponds to the number of rows in the training set and is used for the regularization function. The regularization is carried out in a variable reg. The regularization function used here is the same function we introduced in the theory part, section Monte Carlo Dropout. Now we simply build the model using the architecture() function implemented above. Compile() configures the model for training. We then train our model using the function fit(), where we pass our training data, as well as the batch size and the number of epochs. The argument verbose = 1 results in a progress bar being shown during training. We keep it 0 for now to save spacing.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">model_runner</span>(X_train, y_train,
-                dropout_prob<span style="color:#f92672">=</span><span style="color:#ae81ff">0.20</span>, n_epochs<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, tau<span style="color:#f92672">=</span><span style="color:#ae81ff">1.0</span>, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">500</span>, 
-                lengthscale<span style="color:#f92672">=</span><span style="color:#ae81ff">1e-2</span>, n_hidden<span style="color:#f92672">=</span>[<span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">100</span>]):
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">def</span> model_runner(X_train, y_train,
+                dropout_prob=0.20, n_epochs=100, tau=1.0, batch_size=500, 
+                lengthscale=1e-2, n_hidden=[100,100]):
   
-    input_dim <span style="color:#f92672">=</span> X_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]
-    N <span style="color:#f92672">=</span> X_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>]
-    reg <span style="color:#f92672">=</span> lengthscale<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> dropout_prob) <span style="color:#f92672">/</span> (<span style="color:#ae81ff">2.</span> <span style="color:#f92672">*</span> N <span style="color:#f92672">*</span> tau)
+    input_dim = X_train.shape[1]
+    N = X_train.shape[0]
+    reg = lengthscale**2 * (1 - dropout_prob) / (2. * N * tau)
 
 
-    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;McDropout NN fit&#39;</span>)
+    <span style="color:#00f">print</span>(<span style="color:#a31515">&#39;McDropout NN fit&#39;</span>)
 
-    model_mc_dropout <span style="color:#f92672">=</span> architecture(model_type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;mcDropout&#39;</span>, 
-                                    n_hidden<span style="color:#f92672">=</span>n_hidden, input_dim<span style="color:#f92672">=</span>input_dim, 
-                                    dropout_prob<span style="color:#f92672">=</span>dropout_prob, reg<span style="color:#f92672">=</span>reg)
-    model_mc_dropout<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sgd&#39;</span>, loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mse&#39;</span>, metrics<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;mae&#39;</span>])
-    model_mc_dropout<span style="color:#f92672">.</span>fit(X_train, y_train, batch_size<span style="color:#f92672">=</span>batch_size, nb_epoch<span style="color:#f92672">=</span>n_epochs, verbose<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+    model_mc_dropout = architecture(model_type = <span style="color:#a31515">&#39;mcDropout&#39;</span>, 
+                                    n_hidden=n_hidden, input_dim=input_dim, 
+                                    dropout_prob=dropout_prob, reg=reg)
+    model_mc_dropout.compile(optimizer=<span style="color:#a31515">&#39;sgd&#39;</span>, loss=<span style="color:#a31515">&#39;mse&#39;</span>, metrics=[<span style="color:#a31515">&#39;mae&#39;</span>])
+    model_mc_dropout.fit(X_train, y_train, batch_size=batch_size, nb_epoch=n_epochs, verbose=0)
 
 
-    <span style="color:#66d9ef">return</span> model_mc_dropout
+    <span style="color:#00f">return</span> model_mc_dropout
 </code></pre></div><h2 id="prediction">Prediction</h2>
 <p>It is now time to use the model to make predictions. We implement another function called predictor(), which takes the following arguments:</p>
 <ul>
@@ -699,17 +699,17 @@ y_test <span style="color:#f92672">=</span> scaler_testy<span style="color:#f926
 <li>T: the number of predictions made for each observation</li>
 </ul>
 <p>We now use T in a for loop to run the predictions as many times as we specified. The results are added to a list called probs_mc_dropout. This results in a two-dimensional list with T items in each list. In other words, for each row in the test set, we now have a set of T predictions, enabling us to calculate uncertainty, and other measures such as variance, mean or skewness.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predictor</span>(model_mc_dropout, 
-              X_test <span style="color:#f92672">=</span> X_test, y_test <span style="color:#f92672">=</span> y_test, T <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>):
-    probs_mc_dropout <span style="color:#f92672">=</span> []
-    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(T):
-        probs_mc_dropout <span style="color:#f92672">+=</span> [model_mc_dropout<span style="color:#f92672">.</span>predict(X_test,verbose<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)]
-    predictive_mean <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>mean(probs_mc_dropout, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
-    predictive_variance <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>var(probs_mc_dropout, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
-    mse_mc_dropout <span style="color:#f92672">=</span> mean_squared_error(predictive_mean, y_test)
-    <span style="color:#66d9ef">print</span>(mse_mc_dropout)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">def</span> predictor(model_mc_dropout, 
+              X_test = X_test, y_test = y_test, T = 100):
+    probs_mc_dropout = []
+    <span style="color:#00f">for</span> _ <span style="color:#00f">in</span> range(T):
+        probs_mc_dropout += [model_mc_dropout.predict(X_test,verbose=0)]
+    predictive_mean = np.mean(probs_mc_dropout, axis=0)
+    predictive_variance = np.var(probs_mc_dropout, axis=0)
+    mse_mc_dropout = mean_squared_error(predictive_mean, y_test)
+    <span style="color:#00f">print</span>(mse_mc_dropout)
   
-    <span style="color:#66d9ef">return</span> probs_mc_dropout
+    <span style="color:#00f">return</span> probs_mc_dropout
 </code></pre></div><h1 id="results-and-evaluation-a-classanchor-idresultsa">Results and Evaluation <a class="anchor" id="results"></a></h1>
 <p>In the introduction it was mentioned that we are going to use Sharpe Ratio adjusted for skewness and kurtosis as a measure of loan application &ldquo;goodness&rdquo;.</p>
 <p>The Sharpe Ratio (Sharpe (1966)) is defined as:</p>
@@ -720,123 +720,123 @@ y_test <span style="color:#f92672">=</span> scaler_testy<span style="color:#f926
 <p>$ASKSR = SR[1 + \frac{S}{6}SR - \frac{K - 3}{24} SR^{2}]$</p>
 <p>Where K stands for kurtosis and S for skewness.</p>
 <p>Now let&rsquo;s see how our models perform. We calculated ASKSR for each applicant in our test dataset of 33k observations. Then, on the first half of the test dataset, we found an optimal cutoff point for ASKSR. We did it by summing the profit that is above some assumed ASKSR level. Then, we evaluate the optimal cutoff on the second part of the test sample. We are expressing the result as a percantage of the maximum possible profit (i.e. sum of possitive profits). The ASKSR is evaluated for MC Dropout and Variational Inference. As a benchmark three measures are used: maximal profit (in case of a perfect prediction so that all profits are positive)m naive profit (the actual profit from the dataset), and the profit from deterministic feed-forward neural network. In the case of the last one we look for the profit-maximizing cut-off as well.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pickle
-<span style="color:#f92672">import</span> numpy  <span style="color:#f92672">as</span> np
-<span style="color:#f92672">from</span> scipy.stats <span style="color:#f92672">import</span> kurtosis, skew, mode
-<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
-<span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> train_test_split
-<span style="color:#f92672">import</span> glob
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">import</span> pickle
+<span style="color:#00f">import</span> numpy  <span style="color:#00f">as</span> np
+<span style="color:#00f">from</span> scipy.stats <span style="color:#00f">import</span> kurtosis, skew, mode
+<span style="color:#00f">import</span> pandas <span style="color:#00f">as</span> pd
+<span style="color:#00f">from</span> sklearn.model_selection <span style="color:#00f">import</span> train_test_split
+<span style="color:#00f">import</span> glob
 </code></pre></div><p>The following function helps us find the profit-maximizing cut-off. The arguments are x and y, for the cutoff array and profit arrey, respectively.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">optimalCut</span> (x,y):
-        max_y <span style="color:#f92672">=</span> max(y)
-        max_x <span style="color:#f92672">=</span> x[y<span style="color:#f92672">.</span>index(max_y)]
-        <span style="color:#66d9ef">return</span> (max_x)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">def</span> optimalCut (x,y):
+        max_y = max(y)
+        max_x = x[y.index(max_y)]
+        <span style="color:#00f">return</span> (max_x)
 </code></pre></div><p>Now, we load the absolute profit (real values) defined as the difference between total payment and the loan amount:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">profit <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(pickle<span style="color:#f92672">.</span>load(open( <span style="color:#e6db74">&#34;data/y_test_abs.pickle&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span> )))
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">profit = np.array(pickle.load(open( <span style="color:#a31515">&#34;data/y_test_abs.pickle&#34;</span>, <span style="color:#a31515">&#34;rb&#34;</span> )))
 </code></pre></div><p>Next, we are using those 100 predictions per application to find the shape measures of distribution- mean, variance, skewness, and kurtosis. ASKSR is calculated and optimal cut-off point is found. We decide to accept all the loans above this level of ASKSR. First we calculate the results of MC Dropout, than Variational Inference, and, finally, the results from deterministicly weighted Neural Network.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">method <span style="color:#f92672">=</span> []
-stacked_res <span style="color:#f92672">=</span> []
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">method = []
+stacked_res = []
 
-results <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(pickle<span style="color:#f92672">.</span>load(open( <span style="color:#e6db74">&#34;results/bayesian/mc_dropout.pickle&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span> )))
+results = np.array(pickle.load(open( <span style="color:#a31515">&#34;results/bayesian/mc_dropout.pickle&#34;</span>, <span style="color:#a31515">&#34;rb&#34;</span> )))
 
-df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(
-     {<span style="color:#e6db74">&#39;mean&#39;</span>: np<span style="color:#f92672">.</span>mean(results, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)[:,<span style="color:#ae81ff">0</span>],
-      <span style="color:#e6db74">&#39;variance&#39;</span>: np<span style="color:#f92672">.</span>var(results, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)[:,<span style="color:#ae81ff">0</span>],
-      <span style="color:#e6db74">&#39;skewness&#39;</span>: skew(results, axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)[:,<span style="color:#ae81ff">0</span>],
-      <span style="color:#e6db74">&#39;kurtosis&#39;</span>: kurtosis(results, axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)[:,<span style="color:#ae81ff">0</span>],
-      <span style="color:#e6db74">&#39;Returns&#39;</span>: profit
+df = pd.DataFrame(
+     {<span style="color:#a31515">&#39;mean&#39;</span>: np.mean(results, axis=0)[:,0],
+      <span style="color:#a31515">&#39;variance&#39;</span>: np.var(results, axis=0)[:,0],
+      <span style="color:#a31515">&#39;skewness&#39;</span>: skew(results, axis = 0)[:,0],
+      <span style="color:#a31515">&#39;kurtosis&#39;</span>: kurtosis(results, axis = 0)[:,0],
+      <span style="color:#a31515">&#39;Returns&#39;</span>: profit
      })
 
-df[<span style="color:#e6db74">&#39;standardDeviation&#39;</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(df[<span style="color:#e6db74">&#39;variance&#39;</span>])
-df[<span style="color:#e6db74">&#39;SR_mean&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;mean&#39;</span>]<span style="color:#f92672">/</span>df[<span style="color:#e6db74">&#39;standardDeviation&#39;</span>]
-df[<span style="color:#e6db74">&#39;ASKSR_mean&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;SR_mean&#39;</span>] <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> df[<span style="color:#e6db74">&#39;skewness&#39;</span>] <span style="color:#f92672">*</span> df[<span style="color:#e6db74">&#39;SR_mean&#39;</span>]<span style="color:#f92672">/</span><span style="color:#ae81ff">6</span> <span style="color:#f92672">-</span> (df[<span style="color:#e6db74">&#39;kurtosis&#39;</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">3</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">24</span> <span style="color:#f92672">*</span> (df[<span style="color:#e6db74">&#39;SR_mean&#39;</span>] <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>))
+df[<span style="color:#a31515">&#39;standardDeviation&#39;</span>] = np.sqrt(df[<span style="color:#a31515">&#39;variance&#39;</span>])
+df[<span style="color:#a31515">&#39;SR_mean&#39;</span>] = df[<span style="color:#a31515">&#39;mean&#39;</span>]/df[<span style="color:#a31515">&#39;standardDeviation&#39;</span>]
+df[<span style="color:#a31515">&#39;ASKSR_mean&#39;</span>] = df[<span style="color:#a31515">&#39;SR_mean&#39;</span>] * (1 + df[<span style="color:#a31515">&#39;skewness&#39;</span>] * df[<span style="color:#a31515">&#39;SR_mean&#39;</span>]/6 - (df[<span style="color:#a31515">&#39;kurtosis&#39;</span>] - 3)/24 * (df[<span style="color:#a31515">&#39;SR_mean&#39;</span>] ** 2))
 
     
-df, df_test <span style="color:#f92672">=</span> train_test_split(df, test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)
+df, df_test = train_test_split(df, test_size=0.5, random_state=42)
 
-ASKSR_cutoff_mean <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(min(df[<span style="color:#e6db74">&#39;ASKSR_mean&#39;</span>]), max(df[<span style="color:#e6db74">&#39;ASKSR_mean&#39;</span>]), <span style="color:#ae81ff">10000</span>)
+ASKSR_cutoff_mean = np.linspace(min(df[<span style="color:#a31515">&#39;ASKSR_mean&#39;</span>]), max(df[<span style="color:#a31515">&#39;ASKSR_mean&#39;</span>]), 10000)
 
-ASKSR_profit_mean <span style="color:#f92672">=</span> []
+ASKSR_profit_mean = []
 
-<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, len(ASKSR_cutoff_mean) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>):
-    ASKSR_profit_mean<span style="color:#f92672">.</span>append(df<span style="color:#f92672">.</span>loc[df[<span style="color:#e6db74">&#39;ASKSR_mean&#39;</span>] <span style="color:#f92672">&gt;</span> ASKSR_cutoff_mean[i], <span style="color:#e6db74">&#39;Returns&#39;</span>]<span style="color:#f92672">.</span>sum())   
+<span style="color:#00f">for</span> i <span style="color:#00f">in</span> range(0, len(ASKSR_cutoff_mean) - 1, 1):
+    ASKSR_profit_mean.append(df.loc[df[<span style="color:#a31515">&#39;ASKSR_mean&#39;</span>] &gt; ASKSR_cutoff_mean[i], <span style="color:#a31515">&#39;Returns&#39;</span>].sum())   
         
     
-ASKSR_mean_Optimal <span style="color:#f92672">=</span> optimalCut(x <span style="color:#f92672">=</span> ASKSR_cutoff_mean, y <span style="color:#f92672">=</span> ASKSR_profit_mean)
+ASKSR_mean_Optimal = optimalCut(x = ASKSR_cutoff_mean, y = ASKSR_profit_mean)
 
-ASKSR_profit_optimal_mean <span style="color:#f92672">=</span> []
-ASKSR_profit_optimal_mean<span style="color:#f92672">.</span>append(df_test<span style="color:#f92672">.</span>loc[df_test[<span style="color:#e6db74">&#39;ASKSR_mean&#39;</span>] <span style="color:#f92672">&gt;</span> ASKSR_mean_Optimal, <span style="color:#e6db74">&#39;Returns&#39;</span>]<span style="color:#f92672">.</span>sum())    
+ASKSR_profit_optimal_mean = []
+ASKSR_profit_optimal_mean.append(df_test.loc[df_test[<span style="color:#a31515">&#39;ASKSR_mean&#39;</span>] &gt; ASKSR_mean_Optimal, <span style="color:#a31515">&#39;Returns&#39;</span>].sum())    
     
-method<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34;MC Droput&#34;</span>)
-stacked_res<span style="color:#f92672">.</span>append(ASKSR_profit_optimal_mean)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">            
-results <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(pickle<span style="color:#f92672">.</span>load(open( <span style="color:#e6db74">&#34;results/bayesian/VariationalInference.pickle&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span> )))
+method.append(<span style="color:#a31515">&#34;MC Droput&#34;</span>)
+stacked_res.append(ASKSR_profit_optimal_mean)
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">            
+results = np.array(pickle.load(open( <span style="color:#a31515">&#34;results/bayesian/VariationalInference.pickle&#34;</span>, <span style="color:#a31515">&#34;rb&#34;</span> )))
 
-df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(
-    {<span style="color:#e6db74">&#39;mean&#39;</span>: np<span style="color:#f92672">.</span>mean(results, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>),
-    <span style="color:#e6db74">&#39;variance&#39;</span>: np<span style="color:#f92672">.</span>var(results, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>),
-    <span style="color:#e6db74">&#39;skewness&#39;</span>: skew(results, axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>),
-    <span style="color:#e6db74">&#39;kurtosis&#39;</span>: kurtosis(results, axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>),
-    <span style="color:#e6db74">&#39;Returns&#39;</span>: profit
+df = pd.DataFrame(
+    {<span style="color:#a31515">&#39;mean&#39;</span>: np.mean(results, axis=0),
+    <span style="color:#a31515">&#39;variance&#39;</span>: np.var(results, axis=0),
+    <span style="color:#a31515">&#39;skewness&#39;</span>: skew(results, axis = 0),
+    <span style="color:#a31515">&#39;kurtosis&#39;</span>: kurtosis(results, axis = 0),
+    <span style="color:#a31515">&#39;Returns&#39;</span>: profit
     })
 
-df[<span style="color:#e6db74">&#39;standardDeviation&#39;</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(df[<span style="color:#e6db74">&#39;variance&#39;</span>])
-df[<span style="color:#e6db74">&#39;SR_mean&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;mean&#39;</span>]<span style="color:#f92672">/</span>df[<span style="color:#e6db74">&#39;standardDeviation&#39;</span>]
-df[<span style="color:#e6db74">&#39;ASKSR_mean&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;SR_mean&#39;</span>] <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> df[<span style="color:#e6db74">&#39;skewness&#39;</span>] <span style="color:#f92672">*</span> df[<span style="color:#e6db74">&#39;SR_mean&#39;</span>]<span style="color:#f92672">/</span><span style="color:#ae81ff">6</span> <span style="color:#f92672">-</span> (df[<span style="color:#e6db74">&#39;kurtosis&#39;</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">3</span>)<span style="color:#f92672">/</span><span style="color:#ae81ff">24</span> <span style="color:#f92672">*</span> (df[<span style="color:#e6db74">&#39;SR_mean&#39;</span>] <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>))
+df[<span style="color:#a31515">&#39;standardDeviation&#39;</span>] = np.sqrt(df[<span style="color:#a31515">&#39;variance&#39;</span>])
+df[<span style="color:#a31515">&#39;SR_mean&#39;</span>] = df[<span style="color:#a31515">&#39;mean&#39;</span>]/df[<span style="color:#a31515">&#39;standardDeviation&#39;</span>]
+df[<span style="color:#a31515">&#39;ASKSR_mean&#39;</span>] = df[<span style="color:#a31515">&#39;SR_mean&#39;</span>] * (1 + df[<span style="color:#a31515">&#39;skewness&#39;</span>] * df[<span style="color:#a31515">&#39;SR_mean&#39;</span>]/6 - (df[<span style="color:#a31515">&#39;kurtosis&#39;</span>] - 3)/24 * (df[<span style="color:#a31515">&#39;SR_mean&#39;</span>] ** 2))
 
     
-df, df_test <span style="color:#f92672">=</span> train_test_split(df, test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)
+df, df_test = train_test_split(df, test_size=0.5, random_state=42)
 
-ASKSR_cutoff_mean <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(min(df[<span style="color:#e6db74">&#39;ASKSR_mean&#39;</span>]), max(df[<span style="color:#e6db74">&#39;ASKSR_mean&#39;</span>]), <span style="color:#ae81ff">10000</span>)
+ASKSR_cutoff_mean = np.linspace(min(df[<span style="color:#a31515">&#39;ASKSR_mean&#39;</span>]), max(df[<span style="color:#a31515">&#39;ASKSR_mean&#39;</span>]), 10000)
 
-ASKSR_profit_mean <span style="color:#f92672">=</span> []
+ASKSR_profit_mean = []
 
-<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, len(ASKSR_cutoff_mean) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>):
-    ASKSR_profit_mean<span style="color:#f92672">.</span>append(df<span style="color:#f92672">.</span>loc[df[<span style="color:#e6db74">&#39;ASKSR_mean&#39;</span>] <span style="color:#f92672">&gt;</span> ASKSR_cutoff_mean[i], <span style="color:#e6db74">&#39;Returns&#39;</span>]<span style="color:#f92672">.</span>sum())   
+<span style="color:#00f">for</span> i <span style="color:#00f">in</span> range(0, len(ASKSR_cutoff_mean) - 1, 1):
+    ASKSR_profit_mean.append(df.loc[df[<span style="color:#a31515">&#39;ASKSR_mean&#39;</span>] &gt; ASKSR_cutoff_mean[i], <span style="color:#a31515">&#39;Returns&#39;</span>].sum())   
         
     
-ASKSR_mean_Optimal <span style="color:#f92672">=</span> optimalCut(x <span style="color:#f92672">=</span> ASKSR_cutoff_mean, y <span style="color:#f92672">=</span> ASKSR_profit_mean)
+ASKSR_mean_Optimal = optimalCut(x = ASKSR_cutoff_mean, y = ASKSR_profit_mean)
 
-ASKSR_profit_optimal_mean <span style="color:#f92672">=</span> []
-ASKSR_profit_optimal_mean<span style="color:#f92672">.</span>append(df_test<span style="color:#f92672">.</span>loc[df_test[<span style="color:#e6db74">&#39;ASKSR_mean&#39;</span>] <span style="color:#f92672">&gt;</span> ASKSR_mean_Optimal, <span style="color:#e6db74">&#39;Returns&#39;</span>]<span style="color:#f92672">.</span>sum())    
+ASKSR_profit_optimal_mean = []
+ASKSR_profit_optimal_mean.append(df_test.loc[df_test[<span style="color:#a31515">&#39;ASKSR_mean&#39;</span>] &gt; ASKSR_mean_Optimal, <span style="color:#a31515">&#39;Returns&#39;</span>].sum())    
     
-method<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34;Variational Inference&#34;</span>)
-stacked_res<span style="color:#f92672">.</span>append(ASKSR_profit_optimal_mean)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">results <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(pickle<span style="color:#f92672">.</span>load(open( <span style="color:#e6db74">&#34;results/deterministic/Regularized.pickle&#34;</span>, <span style="color:#e6db74">&#34;rb&#34;</span> )))
+method.append(<span style="color:#a31515">&#34;Variational Inference&#34;</span>)
+stacked_res.append(ASKSR_profit_optimal_mean)
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">results = np.array(pickle.load(open( <span style="color:#a31515">&#34;results/deterministic/Regularized.pickle&#34;</span>, <span style="color:#a31515">&#34;rb&#34;</span> )))
 
-df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(
-        {<span style="color:#e6db74">&#39;mean&#39;</span>: results[:,<span style="color:#ae81ff">0</span>],
-         <span style="color:#e6db74">&#39;Returns&#39;</span>: profit
+df = pd.DataFrame(
+        {<span style="color:#a31515">&#39;mean&#39;</span>: results[:,0],
+         <span style="color:#a31515">&#39;Returns&#39;</span>: profit
         })
 
-df, df_test <span style="color:#f92672">=</span> train_test_split(df, test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)
+df, df_test = train_test_split(df, test_size=0.5, random_state=42)
 
-deterministic_cutoff_mean <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(min(df[<span style="color:#e6db74">&#39;mean&#39;</span>]), max(df[<span style="color:#e6db74">&#39;mean&#39;</span>]), <span style="color:#ae81ff">10000</span>)
+deterministic_cutoff_mean = np.linspace(min(df[<span style="color:#a31515">&#39;mean&#39;</span>]), max(df[<span style="color:#a31515">&#39;mean&#39;</span>]), 10000)
 
-deterministic_profit_mean <span style="color:#f92672">=</span> []
+deterministic_profit_mean = []
 
-<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, len(deterministic_cutoff_mean) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>):
-    deterministic_profit_mean<span style="color:#f92672">.</span>append(df<span style="color:#f92672">.</span>loc[df[<span style="color:#e6db74">&#39;mean&#39;</span>] <span style="color:#f92672">&gt;</span> deterministic_cutoff_mean[i], <span style="color:#e6db74">&#39;Returns&#39;</span>]<span style="color:#f92672">.</span>sum())   
+<span style="color:#00f">for</span> i <span style="color:#00f">in</span> range(0, len(deterministic_cutoff_mean) - 1, 1):
+    deterministic_profit_mean.append(df.loc[df[<span style="color:#a31515">&#39;mean&#39;</span>] &gt; deterministic_cutoff_mean[i], <span style="color:#a31515">&#39;Returns&#39;</span>].sum())   
 
-deterministic_mean_Optimal <span style="color:#f92672">=</span> optimalCut(x <span style="color:#f92672">=</span> deterministic_cutoff_mean, y <span style="color:#f92672">=</span> deterministic_profit_mean)
+deterministic_mean_Optimal = optimalCut(x = deterministic_cutoff_mean, y = deterministic_profit_mean)
 
-deterministic_profit_optimal_mean <span style="color:#f92672">=</span> []
-deterministic_profit_optimal_mean<span style="color:#f92672">.</span>append(df_test<span style="color:#f92672">.</span>loc[df_test[<span style="color:#e6db74">&#39;mean&#39;</span>] <span style="color:#f92672">&gt;</span> deterministic_mean_Optimal, <span style="color:#e6db74">&#39;Returns&#39;</span>]<span style="color:#f92672">.</span>sum())    
+deterministic_profit_optimal_mean = []
+deterministic_profit_optimal_mean.append(df_test.loc[df_test[<span style="color:#a31515">&#39;mean&#39;</span>] &gt; deterministic_mean_Optimal, <span style="color:#a31515">&#39;Returns&#39;</span>].sum())    
     
-method<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34;Deterministic&#34;</span>)
-stacked_res<span style="color:#f92672">.</span>append(deterministic_profit_optimal_mean)    
+method.append(<span style="color:#a31515">&#34;Deterministic&#34;</span>)
+stacked_res.append(deterministic_profit_optimal_mean)    
     
 </code></pre></div><p>Including naive and maximum profit as benchmarks:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">method<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34;Naive&#34;</span>)
-stacked_res<span style="color:#f92672">.</span>append(sum(df_test[<span style="color:#e6db74">&#39;Returns&#39;</span>]))
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">method.append(<span style="color:#a31515">&#34;Naive&#34;</span>)
+stacked_res.append(sum(df_test[<span style="color:#a31515">&#39;Returns&#39;</span>]))
 
-method<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34;Max&#34;</span>)
-stacked_res<span style="color:#f92672">.</span>append(df_test<span style="color:#f92672">.</span>loc[df_test[<span style="color:#e6db74">&#39;Returns&#39;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#39;Returns&#39;</span>]<span style="color:#f92672">.</span>sum())
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">results_Compare <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(
-        {<span style="color:#e6db74">&#39;method&#39;</span>: method,
-         <span style="color:#e6db74">&#39;result&#39;</span>: stacked_res
+method.append(<span style="color:#a31515">&#34;Max&#34;</span>)
+stacked_res.append(df_test.loc[df_test[<span style="color:#a31515">&#39;Returns&#39;</span>] &gt; 0, <span style="color:#a31515">&#39;Returns&#39;</span>].sum())
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">results_Compare = pd.DataFrame(
+        {<span style="color:#a31515">&#39;method&#39;</span>: method,
+         <span style="color:#a31515">&#39;result&#39;</span>: stacked_res
         })
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">results_Compare
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">results_Compare
 </code></pre></div><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -888,12 +888,12 @@ stacked_res<span style="color:#f92672">.</span>append(df_test<span style="color:
   </tbody>
 </table>
 </div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range (<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">3</span>):
-    results_Compare[<span style="color:#e6db74">&#39;result&#39;</span>][j] <span style="color:#f92672">=</span> results_Compare[<span style="color:#e6db74">&#39;result&#39;</span>][j][<span style="color:#ae81ff">0</span>] 
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> m <span style="color:#f92672">in</span> range (<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">4</span>):
-    results_Compare[<span style="color:#e6db74">&#39;result&#39;</span>][m] <span style="color:#f92672">=</span> results_Compare[<span style="color:#e6db74">&#39;result&#39;</span>][m]<span style="color:#f92672">/</span>results_Compare[<span style="color:#e6db74">&#39;result&#39;</span>][<span style="color:#ae81ff">4</span>]   
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">for</span> j <span style="color:#00f">in</span> range (0,3):
+    results_Compare[<span style="color:#a31515">&#39;result&#39;</span>][j] = results_Compare[<span style="color:#a31515">&#39;result&#39;</span>][j][0] 
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">for</span> m <span style="color:#00f">in</span> range (0,4):
+    results_Compare[<span style="color:#a31515">&#39;result&#39;</span>][m] = results_Compare[<span style="color:#a31515">&#39;result&#39;</span>][m]/results_Compare[<span style="color:#a31515">&#39;result&#39;</span>][4]   
 </code></pre></div><p>Finally, results. They are expressed as a share of the maximal profit.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">results_Compare
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">results_Compare
 </code></pre></div><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {

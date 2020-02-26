@@ -211,35 +211,35 @@ The presidential candidates whose tweets the project is based on, are the follow
 <h2 id="data-retrieval-a-classanchor-iddata_retrievala">Data Retrieval <a class="anchor" id="data_retrieval"></a></h2>
 <h3 id="libraries-getoldtweets3-vs-tweepy-a-classanchor-idlibrariesa">Libraries: GetOldTweets3 vs Tweepy <a class="anchor" id="libraries"></a></h3>
 <p>The following section will briefly present the not so popular data retrieval package GetOldTweets3. The most widely used library for this purpose is Tweepy, which is developed by Twitter. However, GetOldTweets3 suits better the needs of the current project. The project requires the tweets of the presidential candidates from the past four years. Tweepy only allows the extraction of tweets from the past seven days. GetOldTweets3 on the other hand has no limitation regarding the amount of the retrieved data. In addition, GetOldTweets3 requires no authentification data like API-key and tockens (unlike Tweepy) and is robust and fast, making &ldquo;try-except&rdquo; blocks unnecessary (unlike in the case of Tweepy). Within this context is must be mentioned that Tweepy has various other advantages towards GetOldTweets3, but these are simply not relevant for this project. Some of them are the Tweepy&rsquo;s wide functionality like retrieving the most extensive information provided for each tweet or posting tweets, sending and receiving messages and following users through the API. When it comes to amount of accessible data GetOldTweets3 is inarguably the better library. The code for the data retrieval with GetOldTweets3 looks as follows:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#960050;background-color:#1e0010">!</span>pip install GetOldTweets3
-<span style="color:#f92672">import</span> GetOldTweets3 <span style="color:#f92672">as</span> got
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="">!</span>pip install GetOldTweets3
+<span style="color:#00f">import</span> GetOldTweets3 <span style="color:#00f">as</span> got
 
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">collect_history_twitter_data</span>(presidential_candidate):
-  tweetCriteria <span style="color:#f92672">=</span> got<span style="color:#f92672">.</span>manager<span style="color:#f92672">.</span>TweetCriteria()<span style="color:#f92672">.</span>setUsername(presidential_candidate)<span style="color:#f92672">.</span>setSince(<span style="color:#e6db74">&#34;2017-01-01&#34;</span>)<span style="color:#f92672">.</span>setUntil(<span style="color:#e6db74">&#34;2019-12-14&#34;</span>)
-  tweets<span style="color:#f92672">=</span>got<span style="color:#f92672">.</span>manager<span style="color:#f92672">.</span>TweetManager<span style="color:#f92672">.</span>getTweets(tweetCriteria)
+<span style="color:#00f">def</span> collect_history_twitter_data(presidential_candidate):
+  tweetCriteria = got.manager.TweetCriteria().setUsername(presidential_candidate).setSince(<span style="color:#a31515">&#34;2017-01-01&#34;</span>).setUntil(<span style="color:#a31515">&#34;2019-12-14&#34;</span>)
+  tweets=got.manager.TweetManager.getTweets(tweetCriteria)
 
-  tweet_text<span style="color:#f92672">=</span>[]
-  tweet_username<span style="color:#f92672">=</span>[]
-  tweet_id<span style="color:#f92672">=</span>[]
-  tweet_date<span style="color:#f92672">=</span>[]
-  tweet_nr_retweets<span style="color:#f92672">=</span>[]
-  tweet_nr_favorites<span style="color:#f92672">=</span>[]
-  tweet_hashtags<span style="color:#f92672">=</span>[]
-  tweet_mentions<span style="color:#f92672">=</span>[]
-  <span style="color:#66d9ef">for</span> tweet <span style="color:#f92672">in</span> tweets:
-    tweet_text<span style="color:#f92672">.</span>append(tweet<span style="color:#f92672">.</span>text)
-    tweet_username<span style="color:#f92672">.</span>append(tweet<span style="color:#f92672">.</span>username)
-    tweet_id<span style="color:#f92672">.</span>append(tweet<span style="color:#f92672">.</span>id)
-    tweet_date<span style="color:#f92672">.</span>append(str(tweet<span style="color:#f92672">.</span>date)<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34; &#34;</span>)[<span style="color:#ae81ff">0</span>])
-    tweet_nr_retweets<span style="color:#f92672">.</span>append(tweet<span style="color:#f92672">.</span>retweets)
-    tweet_nr_favorites<span style="color:#f92672">.</span>append(tweet<span style="color:#f92672">.</span>favorites)
-    tweet_hashtags<span style="color:#f92672">.</span>append(tweet<span style="color:#f92672">.</span>hashtags)
-    tweet_mentions<span style="color:#f92672">.</span>append(tweet<span style="color:#f92672">.</span>mentions)
+  tweet_text=[]
+  tweet_username=[]
+  tweet_id=[]
+  tweet_date=[]
+  tweet_nr_retweets=[]
+  tweet_nr_favorites=[]
+  tweet_hashtags=[]
+  tweet_mentions=[]
+  <span style="color:#00f">for</span> tweet <span style="color:#00f">in</span> tweets:
+    tweet_text.append(tweet.text)
+    tweet_username.append(tweet.username)
+    tweet_id.append(tweet.id)
+    tweet_date.append(str(tweet.date).split(<span style="color:#a31515">&#34; &#34;</span>)[0])
+    tweet_nr_retweets.append(tweet.retweets)
+    tweet_nr_favorites.append(tweet.favorites)
+    tweet_hashtags.append(tweet.hashtags)
+    tweet_mentions.append(tweet.mentions)
 
-  twitter_data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({<span style="color:#e6db74">&#34;tweets&#34;</span>:tweet_text,<span style="color:#e6db74">&#34;ids&#34;</span>:tweet_id,<span style="color:#e6db74">&#39;username&#39;</span>:tweet_username,<span style="color:#e6db74">&#39;date&#39;</span>:tweet_date,<span style="color:#e6db74">&#39;number_retweets&#39;</span>:tweet_nr_retweets,<span style="color:#e6db74">&#39;number_favorites&#39;</span>:tweet_nr_favorites,<span style="color:#e6db74">&#39;hashtags&#39;</span>:tweet_hashtags,<span style="color:#e6db74">&#39;mentions&#39;</span>:tweet_mentions},
-                              columns <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;tweets&#39;</span> , <span style="color:#e6db74">&#39;ids&#39;</span>,<span style="color:#e6db74">&#39;username&#39;</span>,<span style="color:#e6db74">&#39;date&#39;</span>,<span style="color:#e6db74">&#39;number_retweets&#39;</span>,<span style="color:#e6db74">&#39;number_favorites&#39;</span>,<span style="color:#e6db74">&#39;hashtags&#39;</span>,<span style="color:#e6db74">&#39;mentions&#39;</span>])
+  twitter_data = pd.DataFrame({<span style="color:#a31515">&#34;tweets&#34;</span>:tweet_text,<span style="color:#a31515">&#34;ids&#34;</span>:tweet_id,<span style="color:#a31515">&#39;username&#39;</span>:tweet_username,<span style="color:#a31515">&#39;date&#39;</span>:tweet_date,<span style="color:#a31515">&#39;number_retweets&#39;</span>:tweet_nr_retweets,<span style="color:#a31515">&#39;number_favorites&#39;</span>:tweet_nr_favorites,<span style="color:#a31515">&#39;hashtags&#39;</span>:tweet_hashtags,<span style="color:#a31515">&#39;mentions&#39;</span>:tweet_mentions},
+                              columns = [<span style="color:#a31515">&#39;tweets&#39;</span> , <span style="color:#a31515">&#39;ids&#39;</span>,<span style="color:#a31515">&#39;username&#39;</span>,<span style="color:#a31515">&#39;date&#39;</span>,<span style="color:#a31515">&#39;number_retweets&#39;</span>,<span style="color:#a31515">&#39;number_favorites&#39;</span>,<span style="color:#a31515">&#39;hashtags&#39;</span>,<span style="color:#a31515">&#39;mentions&#39;</span>])
 
-  <span style="color:#66d9ef">return</span> twitter_data
+  <span style="color:#00f">return</span> twitter_data
 </code></pre></div><h3 id="descriptive-statistics-of-retrieved-tweets">Descriptive Statistics of retrieved Tweets</h3>
 <p>Figure 1 represents the tweets&rsquo; descriptive statistics for 2019 aggregated by topic and presidential candidate. Regarding the Twitter activity of the candidates, the most active one (when considering average activity related to all topics) is Cory Booker. An interesting discovery is that the current president of the US - Donald Trump - is the most inactive candidate regarding the topic.</p>
 <p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Descriptive_Statistics.png?raw=true" width= "750" /> <br>
@@ -286,77 +286,77 @@ The words, character n-grams as well as the word n-grams are regarded as the fea
 The second issue the cleaning function handles is replacing the &ldquo;\x92&rdquo; with a reverse single quote (which is meant to be an apostrophe in texts). It is important explaining briefly why the &ldquo;\x92&rdquo; is in the text in a first place. &ldquo;'&rdquo; is encoded as &ldquo;\x92&rdquo; in CP-1252/Windows-1252 (a single-byte character encoding system). However, &ldquo;\x92&rdquo; in CP-1252 encoding is &ldquo;\x2019&rdquo; in Unicode Strings encoding, which is a single reverse quote. Since Python 3.0 uses Unicode Strings instead of Bytecode Strings, it does not recognize the encoding and does not show it as &ldquo;'&quot;. Thus, the replacement need to take place manually, as it does via the replace() function, which is inbuilt in Python. <br>
 The hashtags, the account name, the URLs and the punctuation in a tweet are removed with the sub() method of the &ldquo;re&rdquo; module. This function makes makes replacements of regular expressions. A regular expression is a set of strings that match a criteria. It can also be seen as the opposite of a perfect match to a criteria. The first argument of &ldquo;re.sub()&rdquo; is the regular expression, the second one the replacement to be made and the third one the string to be processed (the tweets in this case).<br>
 Finally, the cleaning method deals with emojis and contractions. A part of the list of contractions looks as follows:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_dict_contractions</span>():
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">def</span> load_dict_contractions():
 
-    <span style="color:#66d9ef">return</span> {
-        <span style="color:#e6db74">&#34;ain&#39;t&#34;</span>:<span style="color:#e6db74">&#34;is not&#34;</span>,
-        <span style="color:#e6db74">&#34;amn&#39;t&#34;</span>:<span style="color:#e6db74">&#34;am not&#34;</span>,
-        <span style="color:#e6db74">&#34;aren&#39;t&#34;</span>:<span style="color:#e6db74">&#34;are not&#34;</span>,
-        <span style="color:#e6db74">&#34;can&#39;t&#34;</span>:<span style="color:#e6db74">&#34;cannot&#34;</span>,
-        <span style="color:#e6db74">&#34;&#39;cause&#34;</span>:<span style="color:#e6db74">&#34;because&#34;</span>,
-        <span style="color:#e6db74">&#34;couldn&#39;t&#34;</span>:<span style="color:#e6db74">&#34;could not&#34;</span>,
-        <span style="color:#e6db74">&#34;couldn&#39;t&#39;ve&#34;</span>:<span style="color:#e6db74">&#34;could not have&#34;</span>,
-        <span style="color:#e6db74">&#34;could&#39;ve&#34;</span>:<span style="color:#e6db74">&#34;could have&#34;</span>,
-        <span style="color:#e6db74">&#34;daren&#39;t&#34;</span>:<span style="color:#e6db74">&#34;dare not&#34;</span>,
-        <span style="color:#e6db74">&#34;daresn&#39;t&#34;</span>:<span style="color:#e6db74">&#34;dare not&#34;</span>,
+    <span style="color:#00f">return</span> {
+        <span style="color:#a31515">&#34;ain&#39;t&#34;</span>:<span style="color:#a31515">&#34;is not&#34;</span>,
+        <span style="color:#a31515">&#34;amn&#39;t&#34;</span>:<span style="color:#a31515">&#34;am not&#34;</span>,
+        <span style="color:#a31515">&#34;aren&#39;t&#34;</span>:<span style="color:#a31515">&#34;are not&#34;</span>,
+        <span style="color:#a31515">&#34;can&#39;t&#34;</span>:<span style="color:#a31515">&#34;cannot&#34;</span>,
+        <span style="color:#a31515">&#34;&#39;cause&#34;</span>:<span style="color:#a31515">&#34;because&#34;</span>,
+        <span style="color:#a31515">&#34;couldn&#39;t&#34;</span>:<span style="color:#a31515">&#34;could not&#34;</span>,
+        <span style="color:#a31515">&#34;couldn&#39;t&#39;ve&#34;</span>:<span style="color:#a31515">&#34;could not have&#34;</span>,
+        <span style="color:#a31515">&#34;could&#39;ve&#34;</span>:<span style="color:#a31515">&#34;could have&#34;</span>,
+        <span style="color:#a31515">&#34;daren&#39;t&#34;</span>:<span style="color:#a31515">&#34;dare not&#34;</span>,
+        <span style="color:#a31515">&#34;daresn&#39;t&#34;</span>:<span style="color:#a31515">&#34;dare not&#34;</span>,
         }
 </code></pre></div><p>This dictionary is then used in the cleaning function in order to replace any abbreviations and slang with the grammatically correct and complete form of an expression.
 A part of the list of emojis looks as follows:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_dict_smileys</span>():
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">def</span> load_dict_smileys():
 
-    <span style="color:#66d9ef">return</span> {
-        <span style="color:#e6db74">&#34;:‑)&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,
-        <span style="color:#e6db74">&#34;:-]&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#75715e">#&#34;smiley&#34;,</span>
-        <span style="color:#e6db74">&#34;:-3&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#75715e">#&#34;smiley&#34;,</span>
-        <span style="color:#e6db74">&#34;:-&gt;&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#75715e">#&#34;smiley&#34;,</span>
-        <span style="color:#e6db74">&#34;8-)&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#75715e">#&#34;smiley&#34;,</span>
-        <span style="color:#e6db74">&#34;:-}&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#75715e">#&#34;smiley&#34;,</span>
-        <span style="color:#e6db74">&#34;:)&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#75715e">#&#34;smiley&#34;,</span>
-        <span style="color:#e6db74">&#34;:]&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#75715e">#&#34;smiley&#34;,</span>
-        <span style="color:#e6db74">&#34;:3&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#75715e">#&#34;smiley&#34;,</span>
-        <span style="color:#e6db74">&#34;:&gt;&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#75715e">#&#34;smiley&#34;,</span>
-        <span style="color:#e6db74">&#34;8)&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#75715e">#&#34;smiley&#34;,</span>
-        <span style="color:#e6db74">&#34;:}&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#75715e">#&#34;smiley&#34;,</span>
-        <span style="color:#e6db74">&#34;:o)&#34;</span>:<span style="color:#e6db74">&#34;&#34;</span>,<span style="color:#75715e">#&#34;smiley&#34;,</span>
+    <span style="color:#00f">return</span> {
+        <span style="color:#a31515">&#34;:‑)&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>,
+        <span style="color:#a31515">&#34;:-]&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>,<span style="color:#008000">#&#34;smiley&#34;,</span>
+        <span style="color:#a31515">&#34;:-3&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>,<span style="color:#008000">#&#34;smiley&#34;,</span>
+        <span style="color:#a31515">&#34;:-&gt;&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>,<span style="color:#008000">#&#34;smiley&#34;,</span>
+        <span style="color:#a31515">&#34;8-)&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>,<span style="color:#008000">#&#34;smiley&#34;,</span>
+        <span style="color:#a31515">&#34;:-}&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>,<span style="color:#008000">#&#34;smiley&#34;,</span>
+        <span style="color:#a31515">&#34;:)&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>,<span style="color:#008000">#&#34;smiley&#34;,</span>
+        <span style="color:#a31515">&#34;:]&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>,<span style="color:#008000">#&#34;smiley&#34;,</span>
+        <span style="color:#a31515">&#34;:3&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>,<span style="color:#008000">#&#34;smiley&#34;,</span>
+        <span style="color:#a31515">&#34;:&gt;&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>,<span style="color:#008000">#&#34;smiley&#34;,</span>
+        <span style="color:#a31515">&#34;8)&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>,<span style="color:#008000">#&#34;smiley&#34;,</span>
+        <span style="color:#a31515">&#34;:}&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>,<span style="color:#008000">#&#34;smiley&#34;,</span>
+        <span style="color:#a31515">&#34;:o)&#34;</span>:<span style="color:#a31515">&#34;&#34;</span>,<span style="color:#008000">#&#34;smiley&#34;,</span>
         }
 </code></pre></div><p>It serves as a dictionary of actually inexisting (unintentionally wrongly written) emojis. The dictionary is afterwards used in the cleaning function to replace the inexisting emoji with a natural language word (e.g. smiley, sad etc.), which summarizes the emotion the emoji was supposed to express, its actual meaning which is relevant for the sentiment analysis. Last, the function replace() of the library demoji is used to remove all the emojis predefined in the Unicode Consortium&rsquo;s emoji code repository (needs to be downloaded first by demoji.download_codes()).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tweet_cleaning_for_sentiment_analysis</span>(tweet):    
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">def</span> tweet_cleaning_for_sentiment_analysis(tweet):    
 
-   <span style="color:#75715e">#Escaping HTML characters</span>
-   tweet <span style="color:#f92672">=</span> BeautifulSoup(tweet)<span style="color:#f92672">.</span>get_text()
+   <span style="color:#008000">#Escaping HTML characters</span>
+   tweet = BeautifulSoup(tweet).get_text()
 
-   <span style="color:#75715e">#Special case not handled previously: Reverse single quote</span>
-   tweet <span style="color:#f92672">=</span> tweet<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x92</span><span style="color:#e6db74">&#39;</span>,<span style="color:#e6db74">&#34;&#39;&#34;</span>)
+   <span style="color:#008000">#Special case not handled previously: Reverse single quote</span>
+   tweet = tweet.replace(<span style="color:#a31515">&#39;</span><span style="color:#a31515">\x92</span><span style="color:#a31515">&#39;</span>,<span style="color:#a31515">&#34;&#39;&#34;</span>)
 
-   <span style="color:#75715e">#Removal of hastags/account</span>
-   tweet <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">.</span>join(re<span style="color:#f92672">.</span>sub(<span style="color:#e6db74">&#34;(@[A-Za-z0-9]+)|(#[A-Za-z0-9]+)&#34;</span>, <span style="color:#e6db74">&#34; &#34;</span>, tweet)<span style="color:#f92672">.</span>split())
+   <span style="color:#008000">#Removal of hastags/account</span>
+   tweet = <span style="color:#a31515">&#39; &#39;</span>.join(re.sub(<span style="color:#a31515">&#34;(@[A-Za-z0-9]+)|(#[A-Za-z0-9]+)&#34;</span>, <span style="color:#a31515">&#34; &#34;</span>, tweet).split())
 
-   <span style="color:#75715e">#Removal of address (URL)</span>
-   tweet <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">.</span>join(re<span style="color:#f92672">.</span>sub(<span style="color:#e6db74">&#34;(\w+:\/\/\S+)&#34;</span>, <span style="color:#e6db74">&#34; &#34;</span>, tweet)<span style="color:#f92672">.</span>split())
+   <span style="color:#008000">#Removal of address (URL)</span>
+   tweet = <span style="color:#a31515">&#39; &#39;</span>.join(re.sub(<span style="color:#a31515">&#34;(\w+:\/\/\S+)&#34;</span>, <span style="color:#a31515">&#34; &#34;</span>, tweet).split())
 
-   <span style="color:#75715e">#Removal of Punctuation</span>
-   tweet <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">.</span>join(re<span style="color:#f92672">.</span>sub(<span style="color:#e6db74">&#34;[\.\,\!\?\:\;\-\=\*\)\(]&#34;</span>, <span style="color:#e6db74">&#34; &#34;</span>, tweet)<span style="color:#f92672">.</span>split())
+   <span style="color:#008000">#Removal of Punctuation</span>
+   tweet = <span style="color:#a31515">&#39; &#39;</span>.join(re.sub(<span style="color:#a31515">&#34;[\.\,\!\?\:\;\-\=\*\)\(]&#34;</span>, <span style="color:#a31515">&#34; &#34;</span>, tweet).split())
 
-   <span style="color:#75715e">#CONTRACTIONS source: https://en.wikipedia.org/wiki/Contraction_%28grammar%29</span>
-   CONTRACTIONS <span style="color:#f92672">=</span> load_dict_contractions()
-   tweet <span style="color:#f92672">=</span> tweet<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;’&#34;</span>,<span style="color:#e6db74">&#34;&#39;&#34;</span>)
-   words <span style="color:#f92672">=</span> tweet<span style="color:#f92672">.</span>split()
-   reformed <span style="color:#f92672">=</span> [CONTRACTIONS[word] <span style="color:#66d9ef">if</span> word <span style="color:#f92672">in</span> CONTRACTIONS <span style="color:#66d9ef">else</span> word <span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> words]
-   tweet <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join(reformed)
+   <span style="color:#008000">#CONTRACTIONS source: https://en.wikipedia.org/wiki/Contraction_%28grammar%29</span>
+   CONTRACTIONS = load_dict_contractions()
+   tweet = tweet.replace(<span style="color:#a31515">&#34;’&#34;</span>,<span style="color:#a31515">&#34;&#39;&#34;</span>)
+   words = tweet.split()
+   reformed = [CONTRACTIONS[word] <span style="color:#00f">if</span> word <span style="color:#00f">in</span> CONTRACTIONS <span style="color:#00f">else</span> word <span style="color:#00f">for</span> word <span style="color:#00f">in</span> words]
+   tweet = <span style="color:#a31515">&#34; &#34;</span>.join(reformed)
 
-   <span style="color:#75715e">#Deal with emoticons source: https://en.wikipedia.org/wiki/List_of_emoticons</span>
-   SMILEY <span style="color:#f92672">=</span> load_dict_smileys()  
-   words <span style="color:#f92672">=</span> tweet<span style="color:#f92672">.</span>split()
-   reformed <span style="color:#f92672">=</span> [SMILEY[word] <span style="color:#66d9ef">if</span> word <span style="color:#f92672">in</span> SMILEY <span style="color:#66d9ef">else</span> word <span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> words]
-   tweet <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34; &#34;</span><span style="color:#f92672">.</span>join(reformed)
+   <span style="color:#008000">#Deal with emoticons source: https://en.wikipedia.org/wiki/List_of_emoticons</span>
+   SMILEY = load_dict_smileys()  
+   words = tweet.split()
+   reformed = [SMILEY[word] <span style="color:#00f">if</span> word <span style="color:#00f">in</span> SMILEY <span style="color:#00f">else</span> word <span style="color:#00f">for</span> word <span style="color:#00f">in</span> words]
+   tweet = <span style="color:#a31515">&#34; &#34;</span>.join(reformed)
 
-   <span style="color:#75715e">#Deal with emojis</span>
-   tweet<span style="color:#f92672">=</span>demoji<span style="color:#f92672">.</span>replace(tweet,<span style="color:#e6db74">&#34;&#34;</span>)
-   tweet<span style="color:#f92672">=</span>remove_emoji(tweet)
+   <span style="color:#008000">#Deal with emojis</span>
+   tweet=demoji.replace(tweet,<span style="color:#a31515">&#34;&#34;</span>)
+   tweet=remove_emoji(tweet)
 
-   tweet <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; &#39;</span><span style="color:#f92672">.</span>join(tweet<span style="color:#f92672">.</span>split())
+   tweet = <span style="color:#a31515">&#39; &#39;</span>.join(tweet.split())
 
-   <span style="color:#66d9ef">return</span> tweet
+   <span style="color:#00f">return</span> tweet
 </code></pre></div><h3 id="word-embeddings-glove-and-fasttext-a-classanchor-idembeddingsa">Word Embeddings: GloVe and FastText <a class="anchor" id="embeddings"></a></h3>
 <p>In NLP tasks machine learning models preprocess textual data with the help of the numerical representation of the words contained in it. In this context, word embeddings are regarded as the dominant approach. They consist of numerical vectors that capture the linguistic meaning of the textual data.
 In this research two models are used to obtain the word embeddings for the retrieved twitter data. The first one is GloVe that among others provides word embeddings trained on twitter data. The dimension size of the GloVe twitter embeddings is 200. The second model is FastText. It is trained on the cleaned pre-labeled tweets in the unsupervised mode with both CBOW and Skipgram. The dimension of the trained embeddings is also set to 200 in order to ensure comparability of the results.
@@ -383,48 +383,48 @@ corresponding training record that can be fed to FastText looks in the following
 <strong>Figure 9: FastText Hyperparameters</strong></p>
 <h4 id="hyperparameter-optimization-cnn">Hyperparameter Optimization CNN</h4>
 <p>The following function is used to generate the CNN architecture while looping through the different sets of tested configurations.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">CNN_architecture</span>(number_conv_layers,number_filters,pooling_layers,kernel_regularizers_cv,kernel_regularizer_prefinal_dense,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">def</span> CNN_architecture(number_conv_layers,number_filters,pooling_layers,kernel_regularizers_cv,kernel_regularizer_prefinal_dense,
                             units_dense,dp_dense,weight_decay,learning_rate,kernel_size,
                             nb_words, embed_dim,embedding_matrix,max_seq_len):
 
-  model <span style="color:#f92672">=</span> Sequential()
-  <span style="color:#75715e"># Add the Embedding layer first:</span>
-  model<span style="color:#f92672">.</span>add(Embedding(nb_words, embed_dim,
-            weights<span style="color:#f92672">=</span>[embedding_matrix], input_length<span style="color:#f92672">=</span>max_seq_len, trainable<span style="color:#f92672">=</span>False))
-  <span style="color:#75715e">#Make a loop that keeps on adding convolutional layers according to a pre-specified amount.</span>
-  <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,number_conv_layers):
-    <span style="color:#75715e">#Choose between applying L2 Regularization in the convolutional layers or not:</span>
-    <span style="color:#66d9ef">if</span> kernel_regularizers_cv<span style="color:#f92672">==</span>True:
-      model<span style="color:#f92672">.</span>add(Conv1D(number_filters,kernel_size, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>,kernel_regularizer<span style="color:#f92672">=</span>regularizers<span style="color:#f92672">.</span>l2(weight_decay)))
-    <span style="color:#66d9ef">else</span>:
-      model<span style="color:#f92672">.</span>add(Conv1D(number_filters,kernel_size,activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
-    <span style="color:#75715e">#Make sure that in case maxpooling layers should be added,</span>
-    <span style="color:#75715e">#this is done till the pre-last convolutional layer is reached.</span>
-    <span style="color:#75715e">#For example if 4 convolutional layers have to be added, then 1-3 convolutional layers</span>
-    <span style="color:#75715e">#will be followed by a maxpooling layer, the forth one: not</span>
-    last_index_loop<span style="color:#f92672">=</span>number_conv_layers<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
-    <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&lt;</span> last_index_loop:
-      <span style="color:#66d9ef">if</span> pooling_layers<span style="color:#f92672">==</span>True:
-        model<span style="color:#f92672">.</span>add(MaxPooling1D(<span style="color:#ae81ff">2</span>))
+  model = Sequential()
+  <span style="color:#008000"># Add the Embedding layer first:</span>
+  model.add(Embedding(nb_words, embed_dim,
+            weights=[embedding_matrix], input_length=max_seq_len, trainable=False))
+  <span style="color:#008000">#Make a loop that keeps on adding convolutional layers according to a pre-specified amount.</span>
+  <span style="color:#00f">for</span> i <span style="color:#00f">in</span> range(0,number_conv_layers):
+    <span style="color:#008000">#Choose between applying L2 Regularization in the convolutional layers or not:</span>
+    <span style="color:#00f">if</span> kernel_regularizers_cv==True:
+      model.add(Conv1D(number_filters,kernel_size, activation=<span style="color:#a31515">&#39;relu&#39;</span>,kernel_regularizer=regularizers.l2(weight_decay)))
+    <span style="color:#00f">else</span>:
+      model.add(Conv1D(number_filters,kernel_size,activation=<span style="color:#a31515">&#39;relu&#39;</span>))
+    <span style="color:#008000">#Make sure that in case maxpooling layers should be added,</span>
+    <span style="color:#008000">#this is done till the pre-last convolutional layer is reached.</span>
+    <span style="color:#008000">#For example if 4 convolutional layers have to be added, then 1-3 convolutional layers</span>
+    <span style="color:#008000">#will be followed by a maxpooling layer, the forth one: not</span>
+    last_index_loop=number_conv_layers-1
+    <span style="color:#00f">if</span> i &lt; last_index_loop:
+      <span style="color:#00f">if</span> pooling_layers==True:
+        model.add(MaxPooling1D(2))
 
-  <span style="color:#75715e">#Add a global maxpooling layer after the last convolutional layer.    </span>
-  model<span style="color:#f92672">.</span>add(GlobalMaxPooling1D())
-  <span style="color:#75715e">#Choose between applying L2 Regularization in the pre-final dense layer or not:</span>
-  <span style="color:#66d9ef">if</span> kernel_regularizer_prefinal_dense<span style="color:#f92672">==</span>True:
-    model<span style="color:#f92672">.</span>add(Dense(units_dense, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>,kernel_regularizer<span style="color:#f92672">=</span>regularizers<span style="color:#f92672">.</span>l2(weight_decay)))<span style="color:#75715e">#, kernel_regularizer=regularizers.l2(weight_decay)))</span>
-  <span style="color:#66d9ef">else</span>:
-    model<span style="color:#f92672">.</span>add(Dense(units_dense, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>))
+  <span style="color:#008000">#Add a global maxpooling layer after the last convolutional layer.    </span>
+  model.add(GlobalMaxPooling1D())
+  <span style="color:#008000">#Choose between applying L2 Regularization in the pre-final dense layer or not:</span>
+  <span style="color:#00f">if</span> kernel_regularizer_prefinal_dense==True:
+    model.add(Dense(units_dense, activation=<span style="color:#a31515">&#39;relu&#39;</span>,kernel_regularizer=regularizers.l2(weight_decay)))<span style="color:#008000">#, kernel_regularizer=regularizers.l2(weight_decay)))</span>
+  <span style="color:#00f">else</span>:
+    model.add(Dense(units_dense, activation=<span style="color:#a31515">&#39;relu&#39;</span>))
 
-  <span style="color:#75715e">#Choose between adding a dropout layer after the pre-final dense layer or not:</span>
-  <span style="color:#66d9ef">if</span> dp_dense<span style="color:#f92672">==</span>True:
-    model<span style="color:#f92672">.</span>add(Dropout(<span style="color:#ae81ff">0.2</span>))
+  <span style="color:#008000">#Choose between adding a dropout layer after the pre-final dense layer or not:</span>
+  <span style="color:#00f">if</span> dp_dense==True:
+    model.add(Dropout(0.2))
 
-  model<span style="color:#f92672">.</span>add(Dense(<span style="color:#ae81ff">1</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sigmoid&#39;</span>))
-  <span style="color:#75715e">#Use Adams for the training process:</span>
-  opt<span style="color:#f92672">=</span>optimizers<span style="color:#f92672">.</span>Adam(lr<span style="color:#f92672">=</span>learning_rate)
-  model<span style="color:#f92672">.</span>compile(optimizer<span style="color:#f92672">=</span>opt,loss<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;binary_crossentropy&#39;</span>, metrics<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;accuracy&#39;</span>])
+  model.add(Dense(1, activation=<span style="color:#a31515">&#39;sigmoid&#39;</span>))
+  <span style="color:#008000">#Use Adams for the training process:</span>
+  opt=optimizers.Adam(lr=learning_rate)
+  model.compile(optimizer=opt,loss=<span style="color:#a31515">&#39;binary_crossentropy&#39;</span>, metrics=[<span style="color:#a31515">&#39;accuracy&#39;</span>])
 
-  <span style="color:#66d9ef">return</span> model
+  <span style="color:#00f">return</span> model
 </code></pre></div><p>Figure 10 contains the tested hyperparameters of CNN. It can be seen that the CNN performs best with two convolutional layers. There is an increase of 1.6% in the accuracy compared to the initial performance of the CNN with the GloVe Embeddings.</p>
 <p><img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/HO_CNN.png?raw=true" width="600" /> <br>
 <strong>Figure 10: CNN Hyperparameters</strong></p>
