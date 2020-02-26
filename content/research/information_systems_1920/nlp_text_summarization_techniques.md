@@ -105,21 +105,23 @@ The quality of the generated headlines will be evaluated via common text-generat
     1. Encoder-Decoder
     1. Attention
 1. Dataset
-    1. Description & Preparation
-    1. Training strategy
+    1. Data Cleaning
+    1. Training Strategy
 1. Model Summary & Code Implementation
-    1. Encoder-Decoder
-    1. Inference Model
-    1. Sequence Generation
-1. Results & Performance
+    1. Sequence2Sequence
+    1. Attention
+    1. Encoder-Decoder with Attention
+    1. Inference Model & Text Generation
+1. Model Results & Performance
     1. ROUGE
     1. BLEU
     1. Evaluation Results
-    1. Classification Model
-1. Potential Enhancements
-    1. Accuracy: Pointer-Generator Network
-    1. No Repetition: Coverage
-    1. Efficiency: Beam Search
+1. Classification Model
+1. Outlook: Potential Enhancements
+    1. Increase Efficiency: Beam Search
+    1. Increase Accuracy: Pointer-Generator Network
+    1. Penalize Repetition: Coverage
+1. Closing Comment 
 
 #### Disclaimer
 
@@ -127,7 +129,9 @@ For brevity and reading comprehension, only essential code is contained in this 
 
 ---
 
-## Model Architecture: Sequence to Sequence Modeling
+## Model Architecture
+
+### Sequence2Sequence
 
 The concept of sequence-to-sequence (seq2seq) modeling was first introduced by Sutskever et al. in 2014. [4] In its basic functionality, a Seq2Seq model takes a sequence of objects (words, letters, time series, etc) and outputs another sequence of objects. The 'black box' in between is a complex structure of numerous Recurrent Neural Networks (RNNs) that first transfers an input string (in the case of seq2seq for text transformation) of varying length into a fixed length vector representation, which is then used to generate an output string.
 
@@ -144,7 +148,7 @@ Examples:
 * Many to many: text translation, text summarisation
 
 ---
-## Model Architecture: Encoder-Decoder
+### Encoder-Decoder
 
 Now, the contents of the 'black box' in the diagram above can be examined. Sequence to sequence models rely on what is called an encoder-decoder architecture – a combination of layered RNNs that are arranged in way that allows them to perform the tasks of encoding a word sequence and then passing that encoded sequence to a decoder network to produce an output [15][16]. The input sequence is first tokenised (transformed from a collection of words into a collection of integers that represent each word) and then fed word-for-word into the **encoder**. The encoder transforms the sequence into a new, abstracted state, which then, after being passed to the **decoder**, becomes the basis of producing an output sequence (e.g. a translated version of the same text, or, in this case a summarised version of the same text).
 
@@ -164,7 +168,7 @@ While the LSTM or GRU units in the encoder-decoder architecture are well suited 
 
 ***Intuition: imagine the challenge of reading a whole text once, then writing a summary from memory – it becomes difficult to remember the early details of the original text.***
 
-## Model Architecture: Attention
+### Attention
 
 One solution to the above-mentioned issue is called _attention_. Attention serves to assist the encoder-decoder model in specifically focusing on certain, relevant sections / words in the input text when predicting the next output token. This helps to mitigate the issue of lost context from earlier chunks of an input sequence. With attention, instead of a one-shot context vector based on the last (hidden) state of the encoder, the context vector is constructed using **ALL** hidden states of the encoder.
 
@@ -177,7 +181,7 @@ When combining the hidden states into the final encoder output (decoder input), 
 
 {{< figure src="/blog/img/seminar/is1920_group9/attn_gif.gif" caption="*Figure 5: Attention Principle – Image Source: https://github.com/google/seq2seq*" link="/blog/img/seminar/is1920_group9/attn_gif.gif">}}
 
-## Attention in Detail
+### Attention in Detail
 
 In this blog's model, **Additive/"Bahdanau"** **Attention** [3] is used. This method works as follows:
 
@@ -329,7 +333,7 @@ As final preparation of input texts for their use in modeling, standardised arti
 
 The standard article length value of 550 is selected, as 83\% of the articles fall below this number. The idea here is to be conservative in minimising the amount of truncated articles that go on to model training while at the same time restricting article length as much as possible to avoid working with inputs that are too large. In selecting standard headline length, all rows with a length greater than the standard values are removed from the set. For this reason, the value is set high (at 20) to ensure that the maximum number of data points from the incoming data are retained (93\%). Rows with headlines exceeding this value must be removed because each headline must be fitted with start and end tokens at its beginning and end for both model training and, ultimately, text generation.
 
-## Training Strategy
+### Training Strategy
 
 An additional step is the examination of the hypothesis that much of an article's content is present simply in its first x-words and that the remaining text is just further exposition of the already-outlined topic(s). To test this idea, the data is forked at this point to include the aforementioned articles of length 550, as well as a trimmed set where the articles are truncated beyond a maximum length of 80 words (tokens). This approach is inspired by findings in the literature where seq2seq models in similar tasks struggled to beat a baseline model that generated summaries simply by extracting the first three sentences [2].
 
@@ -359,11 +363,10 @@ _Headlines as above_
 
 {{< figure src="/blog/img/seminar/is1920_group9/architecture_1.png" width="800" caption="*Figure 8: Encoder-Decoder Net with Attention – Image Source: [2] Abigail See 2017*" link="/blog/img/seminar/is1920_group9/architecture_1.png">}}
 
-#### Seq2Seq Model
+### Sequence2Sequence Model
 
-The model architecture employed in this project is inspired by [2] Abigail See et al. (2017) and her similar text summarization task. Also, Aravind Pai's blog post 'Comprehensive Guide to Text Summarization using Deep Learning in Python' [12] was used as a guideline for some parts of the implementation. 
+The model architecture employed in this project is inspired by [2] Abigail See et al. (2017) and her similar text summarisation task. Also, Aravind Pai's blog post 'Comprehensive Guide to Text Summarization using Deep Learning in Python' [12] was used as a guideline for some parts of the implementation. 
 The model in this blog differs in that it uses two bi-directional Gated Recurrent Units (GRUs) instead of one bi-directional Long-Short-Term-Memory (LSTM) Network. GRUs are chosen for their equal performance [5] while providing superior computational efficiency in training. Additionally, bi-directional GRUs are the RNN of choice in experiments by Bahdanau et al. in their introduction of their attention mechanism [3]. Lastly, pre-trained word embeddings are employed instead of training embeddings on local data alongside model training. These pre-trained embeddings come from the [GPT-2 project](https://openai.com/blog/better-language-models/). The GPT-2 embeddings are chosen, as they are likely the most robust and generalisable available. These embeddings are trained on 40GB of Internet text and are part of the most advanced, state-of-the-art transformer model currently in production. Finally, the model is implemented in python, using Tensorflow / Keras.
-
 
 The **encoder** is set up using two bi-directional GRUs with a latent dimension of 256. The first GRU passes its output to the second, which then processes all previous hidden states and produces an output layer containing the second GRU's step wise hidden states and a final hidden state. Since the GRUs are bi-directional, there is both a forward and a backward state which are combined (concatenated) as the **encoder state**.
 
@@ -373,7 +376,7 @@ Once the input is processed, the **decoder GRU** begins outputting a sequence th
 
 {{< gist lukekolbe f455d8b11209ebc88dd2d72cdb5819e7 >}}
 
-#### Attention Layer
+### Attention
 {{< figure src="/blog/img/seminar/is1920_group9/architecture_2.png" width="800" caption="*Figure 9: Encoder-Decoder Net with Attention – Image Source: [2] Abigail See 2017*" link="/blog/img/seminar/is1920_group9/architecture_2.png">}}
 
 The encoder and decoder outputs (hidden states) are fed into the **attention layer**. The AttentionLayer() function does two things (simplified as 'attention distribution' in the figure above): It checks the alignment of the current decoder hidden state with each encoder hidden state, using concatenation as a **scoring function**, and then runs the obtained attention scores through a softmax layer. Using the attention distribution from the decoder, a weighted sum of the encoder hidden states is produced. This is called the **context vector**. This vector can be regarded as *“what has been read from the source text”* at this step of the decoder.
@@ -386,7 +389,7 @@ In the final step, the context vector and the decoder hidden state are concatena
 
 {{< gist lukekolbe 64dc8b17a25b8d11756788656891665a >}}
 
-#### Summary of Encoder-Decoder Model with Attention
+### Encoder-Decoder Model with Attention
 
 The specifications above result in the following model and training results:
 
@@ -402,7 +405,7 @@ The specifications above result in the following model and training results:
 
 As seen in the two above code blocks, while training was considerably quicker with the shorter inputs, the validation loss is lower for the data subset with the longer articles. Based on this metric, the longer articles are selected as inputs for the language (seq2seq) and classifier models from here forward since we want to maximize performance.
 
-#### Inference Model & Text Generation
+### Inference Model & Text Generation
 
 For the inference phase, the decoder is set up slightly differently than before. In order to obtain headline predictions for test data, the following steps are necessary:
 
@@ -487,7 +490,7 @@ ROUGE (Recall-Oriented Understudy Gisting Evaluation) is a recall-based evaluati
     \frac{\mathrm{Number \ of \ overlapping \ words}}{\mathrm{Total \ number \ of \ words \ in \ reference \ summary}}
 \end{equation}
 
-Numerous variations of ROUGE exist. Below is a brief summary of the most relevant and common varieties, which are used for text summarisation. As mentioned, the focus will lie on unigram ROUGE evaluation (ROUGE-1) when evaluating results of the summarization model above.
+Numerous variations of ROUGE exist. Below is a brief summary of the most relevant and common varieties, which are used for text summarisation. As mentioned, the focus will lie on unigram ROUGE evaluation (ROUGE-1) when evaluating results of the summarisation model above.
 
 According to Lin (2004), the methods ROUGE-1, ROUGE-L, ROUGE-W, ROUGE-SU4 and ROUGE-SU9 perform the best on very short summaries such as headlines (average summary about 10 words):
 
@@ -604,7 +607,7 @@ Since BLEU was originally constructed for the evaluation of translated sentences
 
 Let c be the candidate (= generated summary) and r the reference. A brevity factor length of 1 (exp(0)) indicates that the reference and generated sentence have the same length.
 
-Finally, the BLEU metric score is computed as follows:
+Finally, the BLEU metric score is computed as follows
 
 \begin{equation}
 BLEU = BP * exp(\sum_{n=1}^{N}w_{n}log \ p_{n})
@@ -612,7 +615,7 @@ BLEU = BP * exp(\sum_{n=1}^{N}w_{n}log \ p_{n})
 
 With p being the precision score. [10]
 
-In this project's analysis, only one reference is available, making the weights unnecessary. In this case, the BLEU score is calculated simply with:
+In this project's analysis, only one reference is available, making the weights unnecessary. In this case, the BLEU score is calculated simply with
 
 \begin{equation}
 BLEU = BP * exp(log \ p)
@@ -636,7 +639,7 @@ The ROUGE and BLEU evaluation output as well as headline results with the given 
   <tr class="display">
     <td class="display">Mean</td>
     <td class="display">0.10912</td>
-    <td class="display">0.9002</td>
+    <td class="display">0.09002</td>
   </tr>
   <tr class="display">
     <td class="display">Median</td>
@@ -743,7 +746,7 @@ In the beginning of this blog, the idea was introduced that headlines might be s
 
 Note as well the following two cases in the results table above: some summaries contain falsely exchanged names or single letters (ID 3 & 4), and some contain repetitions of words (ID 5 & 8). In the final section of this post, Potential Enhancements, these and other problems will be discussed.
 
-# Classifier
+## Classification Model
 
 As mentioned in the introduction and throughout this blog post, the guiding purpose of this examination of language modeling is ultimately to determine the usefulness or lack of value contained news article headlines, that is, are headlines really written to act as highly condensed summaries of the articles that they tease? With new headlines generated for each article in the original data via the above sequence-to-sequence model, it is now time to examine this question in practice. In the context of the previous section on metrics, it is worth noting that this classification test might also be considered a, albeit somewhat rough, practical, third metric of model output quality – that is, should an increase in classification ability result from using generated headlines, it can be gathered to some degree that the model has indeed been effective in a certain sense.
 
@@ -765,7 +768,7 @@ In this neural network a single bi-directional GRU process the input sequence, w
 
 Run 3 times with the above-3 input combinations, the resulting AUC values are produced and displayed in the table below:
 
-### Classifier AUC Scores
+#### Classifier AUC Scores
 
 <table class="display"><tbody>
   <tr class="display">
@@ -804,13 +807,13 @@ At each time step, the decoder network calculates the probability distribution o
 
 <div class="row">
   <div class="column">
-      {{< figure src="/blog/img/seminar/is1920_group9/GreedySearch.png" width="350" caption="*Figure 10: Greedy Search considers one possibility per time step*" link="/blog/img/seminar/is1920_group9/GreedySearch.png">}}
+      {{< figure src="/blog/img/seminar/is1920_group9/GreedySearch.png" width="350" caption="*Figure 10: Greedy Search considers one possibility per time step – Image Source: [6] O. Ni 2019 (adapted)*" link="/blog/img/seminar/is1920_group9/GreedySearch.png">}}
   </div>
   <div class="column">
-{{< figure src="/blog/img/seminar/is1920_group9/BeamSearch.png" width="350" caption="*Figure 11: With a beam width of 2, beam search considers 2 possibilities per time step*" link="/blog/img/seminar/is1920_group9/BeamSearch.png">}}
+{{< figure src="/blog/img/seminar/is1920_group9/BeamSearch.png" width="350" caption="*Figure 11: With a beam width of 2, beam search considers 2 possibilities per time step – Image Source: [6] O. Ni 2019 (adapted)*" link="/blog/img/seminar/is1920_group9/BeamSearch.png">}}
   </div>
 </div>
-
+      
 Because greedy search only considers a subset of the data, it does not recognize that the BBB branch is overall a better choice than the ABB branch. For the most part, beam search solves this problem by considering several paths simultaneously at each time step. The number of paths is defined by the beam width b, which can be chosen accordingly in respect to what is known about the data at hand.
 
 The choice between greedy- and beam search is a trade off between accuracy of prediction and computation time. Depending on the complexity of the data, it is not possible to check all possible paths. A beam search with b = 1 is equal to greedy search. [6]
@@ -828,23 +831,23 @@ The name “henry” was exchanged with the name “robert” because they are c
 
 In another case, very rare words (a case for aggressive removal of rare words from the vocabulary) appear infrequently during training and therefore have a poor word embeddings. It is thus highly improbable that it will be picked as the most probable next token by the decoder network. Rare words are clustered together with completely unrelated words which also have poor embeddings [11].
 
-The pointer-generator network solves this problem of generating false synonyms and that of not being able to generate a next word at all. This is done by simply copying words that are out-of-vocabulary or rare directly into output. It is a hybrid network that is able to copy a word from the original vocabulary instead of generating a new one. By introducing a generating probability $p_{gen}$ , the probability of generating a given word from the vocabulary as the next token is computed. The probability of copying the word from the source (attention distribution a) is weighted as well as the probability of generating the word from the vocabulary (vocabulary distribution $P_{vocab}$). These are then summed up to a final distribution ($P_{final}$):
+The pointer-generator network solves this problem of generating false synonyms and that of not being able to generate a next word at all. This is done by simply copying words that are out-of-vocabulary or rare directly into output. It is a hybrid network that is able to copy a word from the original vocabulary instead of generating a new one. By introducing a generating probability $p_{gen}$, the probability of generating a given word from the vocabulary as the next token is computed. The probability of copying the word from the source (attention distribution a) is weighted as well as the probability of generating the word from the vocabulary (vocabulary distribution $P_{vocab}$). These are then summed up to a final distribution ($P_{final}$).
 
 \begin{equation}
- P_{final} = p_{gen}P_{vocab}(w)+(1-p_{gen}) \sum_{i:w_{i}=w} a_{i}
+    P_{final} = p_{gen}P_{vocab}(w)+(1-p_{gen}) \sum_{i:w_{i}=w} a_{i}
 \end{equation}
 
 With $p_{gen}$ [0,1].
 
 At each time step, $p_{gen}$ is calculated by the context vector, the decoder state, and the decoder input.
 
-{{< figure src="/blog/img/seminar/is1920_group9/architecture_3.png" width="800" caption="*Figure 12: Model architecture with Pointer Layer added*" link="/blog/img/seminar/is1920_group9/architecture_3.png">}}
+{{< figure src="/blog/img/seminar/is1920_group9/architecture_3.png" width="800" caption="*Figure 12: Model architecture with Pointer Layer added – Image Source: [2] Abigail See 2017*" link="/blog/img/seminar/is1920_group9/architecture_3.png">}}
 
 Apart from the increase in accuracy, the pointer-generator network also reduces training time and reduces the storage needs during training, as the model needs less vocabulary in order to create quality summaries. Most importantly, it combines the best of both worlds from extractive and abstractive summarisation. [2]
 
 To date, code for this network exists in TensorFlow [here](https://github.com/abisee/pointer-generator). There is no implementation of this yet for Keras.
 
-### Punish Repetition: Coverage
+### Penalize Repetition: Coverage
 
 Repetition is a routinely occurring issue in text generation. This occurs especially in multi-sentence text summaries but also in short summaries as well. This happens due to the decoder’s over-reliance on the decoder input or rather the previous summary word. Unlike the encoder state, the decoder state does not store long term information (only that of the current step). A repeated word often begins an endless cycle of repetition due to the fact that the decoder does not 'know' that the contextual information leading to the initial generation of the word has already been exhausted.
 
@@ -854,13 +857,13 @@ The idea of coverage is to make use of the attention distribution to track alrea
     c^{t} = \sum_{t^{'} = 0}^{t-1}a^{t'}
 \end{equation}
 
-With $c^{t}$ being an unnormalised distribution over the source document vocabulary that represents the degree of coverage received from the attention mechanism so far. Thus, the sum of $a^{t'}$ is all the attention that it has received in the previous time steps. In order to compute the coverage of a single word, the following formula can be applied:
+With $c^{t}$ being an unnormalised distribution over the source document vocabulary that represents the degree of coverage received from the attention mechanism so far. Thus, the sum of $a^{t'}$ is all the attention that it has received in the previous time steps. In order to compute the coverage of a single word, the following formula can be applied.
 
 \begin{equation}
     covloss_{t} = \sum_{i} min (a_{i}^{t},c_{i}^{t})
 \end{equation}
 
-$covloss_{t}$ gives the amount of attention a particular word has received until time step t. Here, coverage is an add-on to the attention mechanism introduced earlier on:
+$covloss_{t}$ gives the amount of attention a particular word has received until time step t. Here, coverage is an add-on to the attention mechanism introduced earlier on.
 
 \begin{equation}
     e_{i}^{t} = v^{T} tanh(w_{h} h_{i} + w_{s} s_{t} + w_{c} c_{i}^{t} + b_{attn})
@@ -868,7 +871,7 @@ $covloss_{t}$ gives the amount of attention a particular word has received until
 
 At time step t = 0 the vector $c^{0}$ is a zero vector because no words have been covered yet. [2]
 
-### Closing Comment
+## Closing Comment
 
 This blog post has given an introduction to text summarisation with neural networks and applied the concept to real-world data. The sequence2sequence model using bi-directional GRUs and an attention layer has shown potential in generating useful summaries. At the same time, some shortcomings were identified in both model architecture as well as evaluation methods. Implementation of sophisticated methods such as beam search, pointer-generator networks, and coverage offer great potential to further improve results.
 
@@ -917,11 +920,11 @@ Available at: https://towardsdatascience.com/day-1-2-attention-seq2seq-models-65
 
 ### Further Readings
 
-On Backpropagation, gradient issues:
+Backpropagation & Gradient Issues:
 - https://r2rt.com/written-memories-understanding-deriving-and-extending-the-lstm.html#information-morphing-and-vanishing-and-exploding-sensitivity
 - https://medium.com/learn-love-ai/the-curious-case-of-the-vanishing-exploding-gradient-bf58ec6822eb
 
-On LSTM:
+LSTM:
 - http://colah.github.io/posts/2015-08-Understanding-LSTMs/
 - https://medium.com/learn-love-ai/and-of-course-lstm-part-i-b226880fb287
 - https://medium.com/learn-love-ai/and-of-course-lstm-part-ii-3337ce3aafa0
@@ -930,7 +933,7 @@ On LSTM:
 Sequence2Sequence:
 - https://blog.keras.io/a-ten-minute-introduction-to-sequence-to-sequence-learning-in-keras.html
 
-On Encoder/Decoder:
+Encoder & Decoder:
 - https://towardsdatascience.com/understanding-encoder-decoder-sequence-to-sequence-model-679e04af4346
 - https://machinelearningmastery.com/encoder-decoder-models-text-summarization-keras/
 - https://machinelearningmastery.com/encoder-decoder-long-short-term-memory-networks/
@@ -943,7 +946,7 @@ Attention:
 - https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html
 - https://guillaumegenthial.github.io/sequence-to-sequence.html
 
-Pointers, Coverage:
+Pointers & Coverage:
 - http://www.abigailsee.com/2017/04/16/taming-rnns-for-better-summarization.html
 - Video Tutorial: https://www.coursera.org/lecture/language-processing/get-to-the-point-summarization-with-pointer-generator-networks-RhxPO
 
@@ -951,7 +954,7 @@ Beam Search:
 - https://hackernoon.com/beam-search-attention-for-text-summarization-made-easy-tutorial-5-3b7186df7086
 - https://www.analyticsvidhya.com/blog/2018/03/essentials-of-deep-learning-sequence-to-sequence-modelling-with-attention-part-i/
 
-Rouge:
+ROUGE:
 - https://rxnlp.com/how-rouge-works-for-evaluation-of-summarization-tasks/#.Xg34AC1oTLY
 
 BLEU:
