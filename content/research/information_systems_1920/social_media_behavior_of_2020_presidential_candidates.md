@@ -2,12 +2,13 @@
 title = "Analysis of social media behavior of the 2020 presidential election candidates"
 date = '2020-02-07'
 tags = [ "Fasttext", "CNN", "Class19/20", "Sentiment Analysis"]
-categories = ["course projects"]
+categories = ["Course projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
 author = "Seminar Information Systems (WS19/20)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description = "This blog post analyzes the tweets of the 2020 presidential candidates using Fasttext and CNN"
 +++
+
 
 #### Authors: Georg Velev, Iliyana Pekova
 

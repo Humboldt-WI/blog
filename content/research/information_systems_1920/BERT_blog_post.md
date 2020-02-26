@@ -1,12 +1,12 @@
 +++
-title = "BERT"
+title = "Bidirectional Encoder Representations from Transformers (BERT)"
 date = '2020-02-07'
 tags = [ "Deep Learning", "Neural Networks", "Class19/20", "BERT", "NLP", "Transfer Learning", "Word Embeddings", "Pretraining", "Fine-tuning", "Text Analysis", "Toxic Comments"]
 categories = ["Course projects"]
 banner = "img/banners/bert_head_2.png"
 author = "Seminar Information Systems (WS19/20)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
-description = "Bidirectional Encoder Representations from Transformers "
+description = "Comparing Bidirectional Encoder Representations from Transformers (BERT) with DistilBERT and Bidirectional Gated Recurrent Unit (BGRU) for anti-social online behavior detection"
 +++
 
 # **Anti Social Online Behaviour Detection with BERT**
