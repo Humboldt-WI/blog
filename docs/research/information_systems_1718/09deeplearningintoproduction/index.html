@@ -197,10 +197,10 @@
 </ul>
 <h3 id="creating-new-environments">Creating new environments</h3>
 <p>Our environment will be called <code>dl-in-production</code>. It will use Python version 3.6.4 and we install the packages <code>keras</code>, <code>pandas</code> and <code>flask</code>. To do that, run the following command:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda create --name dl-in-production python=3.6.4 keras flask jupyter pandas
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">conda create --name dl-in-production <span style="color:#a00">python</span>=3.6.4 keras flask jupyter pandas
 </code></pre></div><p>After doing that, you will be presented with the list of dependencies which need also to be installed. Agree to install them by typing <code>yes</code> and the installation will begin.</p>
 <p>After few minutes, our newly created environment should be ready to use. To enter it, run the command below if you are using macOS or Linux:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">source activate dl-in-production
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0aa">source</span> activate dl-in-production
 </code></pre></div><p>For Windows users, the command must be the:</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">activate dl-in-production
 </code></pre></div><p>To make sure you are using a complete independent version of Python, run the commands:</p>
@@ -226,27 +226,27 @@ python --version
 <p>We will deploy our model with Flask. Flask is a lightweight web framework written in Python. But before deploying our real model, we will create a toy application, so the reader can have a quick glimpse at how Flask works.</p>
 <h3 id="toy-app">Toy App</h3>
 <p>To create our very first Flask app, copy and paste the following code into a file and name it <code>toy-app.py</code>.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">from</span> flask <span style="color:#00f">import</span> Flask
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">flask</span> <span style="color:#00a">import</span> Flask
 
 app = Flask(__name__)
 
 
-@app.route(<span style="color:#a31515">&#39;/&#39;</span>)
-<span style="color:#00f">def</span> hello():
-    <span style="color:#00f">return</span> <span style="color:#a31515">&#39;Hello World!&#39;</span>
+<span style="color:#888">@app.route</span>(<span style="color:#a50">&#39;/&#39;</span>)
+<span style="color:#00a">def</span> <span style="color:#0a0">hello</span>():
+    <span style="color:#00a">return</span> <span style="color:#a50">&#39;Hello World!&#39;</span>
 
 
-@app.route(<span style="color:#a31515">&#39;/another-greeting&#39;</span>)
-<span style="color:#00f">def</span> hi_there():
-    <span style="color:#00f">return</span> <span style="color:#a31515">&#39;Hi there!&#39;</span>
+<span style="color:#888">@app.route</span>(<span style="color:#a50">&#39;/another-greeting&#39;</span>)
+<span style="color:#00a">def</span> <span style="color:#0a0">hi_there</span>():
+    <span style="color:#00a">return</span> <span style="color:#a50">&#39;Hi there!&#39;</span>
 
 
-@app.route(<span style="color:#a31515">&#39;/square/&lt;number&gt;&#39;</span>)
-<span style="color:#00f">def</span> square(number):
-    number = float(number)
-    <span style="color:#00f">return</span> f<span style="color:#a31515">&#34;The square of {number} is {number**2}&#34;</span>
+<span style="color:#888">@app.route</span>(<span style="color:#a50">&#39;/square/&lt;number&gt;&#39;</span>)
+<span style="color:#00a">def</span> <span style="color:#0a0">square</span>(number):
+    number = <span style="color:#0aa">float</span>(number)
+    <span style="color:#00a">return</span> f<span style="color:#a50">&#34;The square of {number} is {number**2}&#34;</span>
 </code></pre></div><p>Then got to the terminal and run:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">FLASK_APP=toy-app.py flask run
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#a00">FLASK_APP</span>=toy-app.py flask run
 </code></pre></div><p>The command will spin up a server on your machine and you will be able to access it though your browser by going to this URL <code>http://localhost:5000/</code>. That&rsquo;s it. We have implemented our first application. Our mini web application has three endpoints that can be accessed with any browser. You can go to:</p>
 <ul>
 <li><code>http://localhost:5000/</code> and receive a nice Hello World! or to</li>
@@ -258,39 +258,39 @@ app = Flask(__name__)
 </code></pre></div><h3 id="real-app">Real App</h3>
 <p>Awesome. Now that we have an app running and got a first grasp of how Flask works, we can adapt the structure of the code to make it serve our deep learning model.</p>
 <p>It takes around 30 lines of code to create an Flask app that serves our model:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00f">from</span> flask <span style="color:#00f">import</span> Flask, jsonify, request
-<span style="color:#00f">from</span> keras.models <span style="color:#00f">import</span> load_model
-<span style="color:#00f">import</span> numpy <span style="color:#00f">as</span> np
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">flask</span> <span style="color:#00a">import</span> Flask, jsonify, request
+<span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">keras.models</span> <span style="color:#00a">import</span> load_model
+<span style="color:#00a">import</span> <span style="color:#0aa;text-decoration:underline">numpy</span> <span style="color:#00a">as</span> <span style="color:#0aa;text-decoration:underline">np</span>
 
 app = Flask(__name__)
 
-model = load_model(<span style="color:#a31515">&#39;model.h5&#39;</span>)
+model = load_model(<span style="color:#a50">&#39;model.h5&#39;</span>)
 
 
-@app.route(<span style="color:#a31515">&#39;/home&#39;</span>, methods=[<span style="color:#a31515">&#39;GET&#39;</span>])
-<span style="color:#00f">def</span> home():
-    <span style="color:#00f">return</span> <span style="color:#a31515">&#34;&#34;&#34;
-</span><span style="color:#a31515">    Hi! This is a Flask app.
-</span><span style="color:#a31515">    You can get some predictions by hitting the /predictions endpoint.
-</span><span style="color:#a31515">    &#34;&#34;&#34;</span>
+<span style="color:#888">@app.route</span>(<span style="color:#a50">&#39;/home&#39;</span>, methods=[<span style="color:#a50">&#39;GET&#39;</span>])
+<span style="color:#00a">def</span> <span style="color:#0a0">home</span>():
+    <span style="color:#00a">return</span> <span style="color:#a50">&#34;&#34;&#34;
+</span><span style="color:#a50">    Hi! This is a Flask app.
+</span><span style="color:#a50">    You can get some predictions by hitting the /predictions endpoint.
+</span><span style="color:#a50">    &#34;&#34;&#34;</span>
 
 
-@app.route(<span style="color:#a31515">&#39;/predict&#39;</span>, methods=[<span style="color:#a31515">&#39;POST&#39;</span>])
-<span style="color:#00f">def</span> predict():
-    <span style="color:#008000"># get all the data passed by the client in the request</span>
+<span style="color:#888">@app.route</span>(<span style="color:#a50">&#39;/predict&#39;</span>, methods=[<span style="color:#a50">&#39;POST&#39;</span>])
+<span style="color:#00a">def</span> <span style="color:#0a0">predict</span>():
+    <span style="color:#aaa;font-style:italic"># get all the data passed by the client in the request</span>
     data_client = request.get_json()
 
-    input_data = data_client[<span style="color:#a31515">&#39;input&#39;</span>]
+    input_data = data_client[<span style="color:#a50">&#39;input&#39;</span>]
 
-    input_array = np.array(input_data, dtype=float)/255
+    input_array = np.array(input_data, dtype=<span style="color:#0aa">float</span>)/<span style="color:#099">255</span>
     out = model.predict(input_array)
     out = np.ndarray.tolist(out)
 
-    <span style="color:#00f">return</span> jsonify(out)
+    <span style="color:#00a">return</span> jsonify(out)
 
 
-<span style="color:#00f">if</span> __name__ == <span style="color:#a31515">&#39;main&#39;</span>:
-    app.run(port=8080, debug=True)
+<span style="color:#00a">if</span> __name__ == <span style="color:#a50">&#39;main&#39;</span>:
+    app.run(port=<span style="color:#099">8080</span>, debug=True)
 </code></pre></div><p>First, the necessary packages are imported and a Flask app object is instantiated. Also, the trained model is loaded to memory. The model, which was saved in the <code>model.h5</code> file, is now available across the Flask application and can be called from anywhere to deliver its predictions.</p>
 <p>Our API has two endpoints:</p>
 <ul>
@@ -300,133 +300,133 @@ model = load_model(<span style="color:#a31515">&#39;model.h5&#39;</span>)
 <p>The first thing to notice is that the method for this endpoint is <code>POST</code> instead of <code>GET</code>. This is necessary since the <code>prediciton</code> endpoint is expecting to receive the image&rsquo;s pixels as JSON in the body of the request. The correct way to it is to make a <code>POST</code> request according to <a href="https://tools.ietf.org/html/rfc2616">HTTP</a>.</p>
 <p>Once the endpoint is activated by an incoming request, it calls the <code>get_json</code> function from Flask&rsquo;s <code>request</code> submodule and transforms the JSON body of the request into a Python dictionary. Our API was designed in such a way that it expects the data to be passed in a field called <code>input</code>. In case we were to make our API available to the public, this should definitely be documented, so other developers know <em>how</em> to pass the data. The next step is to isolate the input and transform it into a numpy array.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    data_client = request.get_json()
-    input_data = data_client[<span style="color:#a31515">&#39;input&#39;</span>]
-    input_array = np.array(input_data, dtype=float)/255
+    input_data = data_client[<span style="color:#a50">&#39;input&#39;</span>]
+    input_array = np.array(input_data, dtype=<span style="color:#0aa">float</span>)/<span style="color:#099">255</span>
 </code></pre></div><p>Then, we run the predictions on the received data, transform it into a list, transform the list to JSON and finally send it back to the client in the response.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    out = model.predict(input_array)
     out = np.ndarray.tolist(out)
 
-    <span style="color:#00f">return</span> jsonify(out)
+    <span style="color:#00a">return</span> jsonify(out)
 </code></pre></div><p>That&rsquo;s it. We have just written a fully functioning API and we are ready to test it. First, let&rsquo;s spin it up by running:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export FLASK_APP=app.py
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0aa">export</span> <span style="color:#a00">FLASK_APP</span>=app.py
 flask run
 </code></pre></div><p>Test if the app&rsquo;s basic functionalities by going to <code>http://localhost:5000/home</code>. Did you get the expected message? Does everything work fine?</p>
 <p>Let&rsquo;s then test the core function of our API, namely the prediction endpoint. To do that, we will use R. It doesn&rsquo;t matter which tool we use to test our API. It could as well be a React app written in JavaScript making the requests (which would likely be the case in the fashion online shop example above). What is important to notice is that our API is capable of communicating with any application that can send HTTP requests. We chose R here because it is likely that data scientist will have some familiarity with it.</p>
 <p>This is the code we will use to test the <code>prediction</code> endpoint of our API.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">library(httr)
-library(tidyverse)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#0a0">library</span>(httr)
+<span style="color:#0a0">library</span>(tidyverse)
 
-<span style="color:#008000"># Read in the MNIST test dataset</span>
-test &lt;- read_csv(<span style="color:#a31515">&#34;./data/mnist_test.csv&#34;</span>, col_names = <span style="color:#00f">FALSE</span>)
+<span style="color:#aaa;font-style:italic"># Read in the MNIST test dataset</span>
+test &lt;- <span style="color:#0a0">read_csv</span>(<span style="color:#a50">&#34;./data/mnist_test.csv&#34;</span>, col_names = <span style="color:#00a">FALSE</span>)
 
-<span style="color:#008000"># Rename the first column to name and add id</span>
+<span style="color:#aaa;font-style:italic"># Rename the first column to name and add id</span>
 test &lt;- test %&gt;%
-  rename(labels = X1) %&gt;%
-  mutate(ids = 1:nrow(.)) %&gt;%
-  select(ids, labels, everything())
+  <span style="color:#0a0">rename</span>(labels = X1) %&gt;%
+  <span style="color:#0a0">mutate</span>(ids = <span style="color:#099">1</span>:<span style="color:#0a0">nrow</span>(.)) %&gt;%
+  <span style="color:#0a0">select</span>(ids, labels, <span style="color:#0a0">everything</span>())
 
-<span style="color:#008000"># Pick one digit and sample n_samples of it to get prediction for</span>
-digit &lt;- 2L
-n_samples &lt;- 500
+<span style="color:#aaa;font-style:italic"># Pick one digit and sample n_samples of it to get prediction for</span>
+digit &lt;- <span style="color:#099">2L</span>
+n_samples &lt;- <span style="color:#099">500</span>
 
 test_filtered &lt;- test %&gt;%
-  filter(labels == digit) %&gt;%
-  sample_n(n_samples)
+  <span style="color:#0a0">filter</span>(labels == digit) %&gt;%
+  <span style="color:#0a0">sample_n</span>(n_samples)
 
 ids &lt;- test_filtered$ids
 labels &lt;- test_filtered$labels
 
 features &lt;- test_filtered %&gt;%
-  select(matches(<span style="color:#a31515">&#34;X\\d{1,3}&#34;</span>)) %&gt;%
-  as.matrix()
+  <span style="color:#0a0">select</span>(<span style="color:#0a0">matches</span>(<span style="color:#a50">&#34;X\\d{1,3}&#34;</span>)) %&gt;%
+  <span style="color:#0a0">as.matrix</span>()
 
-body &lt;- list(input = features)
-r &lt;- httr::POST(<span style="color:#a31515">&#34;http://localhost:5000/predict&#34;</span>,
+body &lt;- <span style="color:#0a0">list</span>(input = features)
+r &lt;- httr::<span style="color:#0a0">POST</span>(<span style="color:#a50">&#34;http://localhost:5000/predict&#34;</span>,
                 body = body,
-                encode = <span style="color:#a31515">&#34;json&#34;</span>)
-r_content &lt;- content(r)
+                encode = <span style="color:#a50">&#34;json&#34;</span>)
+r_content &lt;- <span style="color:#0a0">content</span>(r)
 
 prediction_prob &lt;- r_content %&gt;%
-  map(~ unlist(.x)) %&gt;%
-  unlist()
+  <span style="color:#0a0">map</span>(~ <span style="color:#0a0">unlist</span>(.x)) %&gt;%
+  <span style="color:#0a0">unlist</span>()
 
-df &lt;- data_frame(
+df &lt;- <span style="color:#0a0">data_frame</span>(
   prediction_prob,
   digit,
   ids = ids %&gt;%
-    map(~ rep(.x, 10)) %&gt;%
-    unlist()
+    <span style="color:#0a0">map</span>(~ <span style="color:#0a0">rep</span>(.x, <span style="color:#099">10</span>)) %&gt;%
+    <span style="color:#0a0">unlist</span>()
   ) %&gt;%
-  group_by(ids) %&gt;%
-  mutate(
-    is_max_prob = prediction_prob == max(prediction_prob),
-    pred_label = as.integer(row_number() - 1)
+  <span style="color:#0a0">group_by</span>(ids) %&gt;%
+  <span style="color:#0a0">mutate</span>(
+    is_max_prob = prediction_prob == <span style="color:#0a0">max</span>(prediction_prob),
+    pred_label = <span style="color:#0a0">as.integer</span>(<span style="color:#0a0">row_number</span>() - <span style="color:#099">1</span>)
   ) %&gt;%
-  ungroup()
+  <span style="color:#0a0">ungroup</span>()
 </code></pre></div><p>Let&rsquo;s go through the code to understand what it is doing. First, we need to load the MNIST test dataset into R and slightly transform it. We add an <code>id</code> column and rename the label column from <code>X1</code> to <code>labels</code>.</p>
 <p>Then we filter some observations to get predictions for. Here we chose 500 images of the digit 2 to send to the API. We are sending only the pixel values for each picture. Labels and ids are kept out, since the model is neither allowed to see the digits &ndash; that&rsquo;s the whole point of the prediction &ndash; nor is it expecting to have a label or id column in the request body. The <code>features</code> matrix is the data we are going to send over.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#008000"># Pick one digit and sample n_samples of it to get prediction for</span>
-digit &lt;- 2L
-n_samples &lt;- 500
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#aaa;font-style:italic"># Pick one digit and sample n_samples of it to get prediction for</span>
+digit &lt;- <span style="color:#099">2L</span>
+n_samples &lt;- <span style="color:#099">500</span>
 
 test_filtered &lt;- test %&gt;%
-  filter(labels == digit) %&gt;%
-  sample_n(n_samples)
+  <span style="color:#0a0">filter</span>(labels == digit) %&gt;%
+  <span style="color:#0a0">sample_n</span>(n_samples)
 
 ids &lt;- test_filtered$ids
 labels &lt;- test_filtered$labels
 
 features &lt;- test_filtered %&gt;%
-  select(matches(<span style="color:#a31515">&#34;X\\d{1,3}&#34;</span>)) %&gt;%
-  as.matrix()
+  <span style="color:#0a0">select</span>(<span style="color:#0a0">matches</span>(<span style="color:#a50">&#34;X\\d{1,3}&#34;</span>)) %&gt;%
+  <span style="color:#0a0">as.matrix</span>()
 </code></pre></div><p>The <code>httr</code> package makes it very simple to send HTTP requests. We wrap the <code>feature</code> matrix in a named list under the <code>input</code> field, which is the field in the request body our API is expecting to find the data. We use the <code>POST</code> function and pass &ldquo;json&rdquo; to the <code>encode</code> argument. <code>httr</code> converts out data automatically from a list to JSON and sends it over to the API.</p>
 <p>The API processes the request and send back a prediction, which is stored in a response object <code>r</code>. We can access the response sent by the API by applying the <code>content</code> function to it.</p>
 <p>The response came back as JSON and was automatically transformed into a hairy, nested R list. Some data wrangling is necessary to finally get to a vector of probabilities. The vector has 10 entries for each observation, each entry corresponds to the probability associated to one of the nine possible digits.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">body &lt;- list(input = features)
-r &lt;- httr::POST(<span style="color:#a31515">&#34;http://localhost:5000/predict&#34;</span>,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">body &lt;- <span style="color:#0a0">list</span>(input = features)
+r &lt;- httr::<span style="color:#0a0">POST</span>(<span style="color:#a50">&#34;http://localhost:5000/predict&#34;</span>,
                 body = body,
-                encode = <span style="color:#a31515">&#34;json&#34;</span>)
-r_content &lt;- content(r)
+                encode = <span style="color:#a50">&#34;json&#34;</span>)
+r_content &lt;- <span style="color:#0a0">content</span>(r)
 
 prediction_prob &lt;- r_content %&gt;%
-  map(~ unlist(.x)) %&gt;%
-  unlist()
+  <span style="color:#0a0">map</span>(~ <span style="color:#0a0">unlist</span>(.x)) %&gt;%
+  <span style="color:#0a0">unlist</span>()
 </code></pre></div><p>We construct a dataframe to have predicted probabilities, ids and real digit label
 all in one place.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">df &lt;- data_frame(
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">df &lt;- <span style="color:#0a0">data_frame</span>(
   prediction_prob,
   digit,
   ids = ids %&gt;%
-    map(~ rep(.x, 10)) %&gt;%
-    unlist()
+    <span style="color:#0a0">map</span>(~ <span style="color:#0a0">rep</span>(.x, <span style="color:#099">10</span>)) %&gt;%
+    <span style="color:#0a0">unlist</span>()
   ) %&gt;%
-  group_by(ids) %&gt;%
-  mutate(
-    is_max_prob = prediction_prob == max(prediction_prob),
-    pred_label = as.integer(row_number() - 1)
+  <span style="color:#0a0">group_by</span>(ids) %&gt;%
+  <span style="color:#0a0">mutate</span>(
+    is_max_prob = prediction_prob == <span style="color:#0a0">max</span>(prediction_prob),
+    pred_label = <span style="color:#0a0">as.integer</span>(<span style="color:#0a0">row_number</span>() - <span style="color:#099">1</span>)
   ) %&gt;%
-  ungroup()
+  <span style="color:#0a0">ungroup</span>()
 </code></pre></div><p>We are finally able to inspect how good a predictor our deployed model is. From the 500 digits, 492 were correctly classified as 2.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">df %&gt;%
-  filter(is_max_prob) %&gt;%
-  mutate(is_correct_prediction = digit == pred_label) %&gt;%
-  pull(is_correct_prediction) %&gt;%
-  table()
-</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008000"># FALSE  TRUE</span>
-<span style="color:#008000">#     8   492</span>
+  <span style="color:#0a0">filter</span>(is_max_prob) %&gt;%
+  <span style="color:#0a0">mutate</span>(is_correct_prediction = digit == pred_label) %&gt;%
+  <span style="color:#0a0">pull</span>(is_correct_prediction) %&gt;%
+  <span style="color:#0a0">table</span>()
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#aaa;font-style:italic"># FALSE  TRUE</span>
+<span style="color:#aaa;font-style:italic">#     8   492</span>
 </code></pre></div><p>Three times has our model labelled a <code>2</code> as a <code>3</code> and twice as a <code>0</code>. The plot below shows <em>how</em> the <code>2</code>s were misclassified.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">p &lt;- df %&gt;%
-  filter(is_max_prob) %&gt;%
-  count(pred_label) %&gt;%
-  filter(n != max(n)) %&gt;%
-  mutate(pred_label = factor(pred_label, levels = 0:9)) %&gt;%
-  ggplot(aes(x = pred_label, y = n)) +
-  geom_col() +
-  scale_x_discrete(drop = <span style="color:#00f">FALSE</span>) +
-  labs(title = glue::glue(<span style="color:#a31515">&#34;Wrong predictions count for digit {digit}&#34;</span>),
-       y = <span style="color:#00f">NULL</span>,
-       x = <span style="color:#a31515">&#34;Predicted Label&#34;</span>) +
-  theme_minimal()
+  <span style="color:#0a0">filter</span>(is_max_prob) %&gt;%
+  <span style="color:#0a0">count</span>(pred_label) %&gt;%
+  <span style="color:#0a0">filter</span>(n != <span style="color:#0a0">max</span>(n)) %&gt;%
+  <span style="color:#0a0">mutate</span>(pred_label = <span style="color:#0a0">factor</span>(pred_label, levels = <span style="color:#099">0</span>:<span style="color:#099">9</span>)) %&gt;%
+  <span style="color:#0a0">ggplot</span>(<span style="color:#0a0">aes</span>(x = pred_label, y = n)) +
+  <span style="color:#0a0">geom_col</span>() +
+  <span style="color:#0a0">scale_x_discrete</span>(drop = <span style="color:#00a">FALSE</span>) +
+  <span style="color:#0a0">labs</span>(title = glue::<span style="color:#0a0">glue</span>(<span style="color:#a50">&#34;Wrong predictions count for digit {digit}&#34;</span>),
+       y = <span style="color:#00a">NULL</span>,
+       x = <span style="color:#a50">&#34;Predicted Label&#34;</span>) +
+  <span style="color:#0a0">theme_minimal</span>()
 p
 </code></pre></div><img align="center" width="800" height="400" src="/blog/img/seminar/nn_fundamentals/img/wrong_predictions.jpeg">
 <h2 id="deploy-to-heroku">Deploy to Heroku</h2>
@@ -466,7 +466,7 @@ heroku git:remote -a flask-digit-classifier
 </ul>
 <p>That&rsquo;s it. Add and commit the files and push it to Heroku&rsquo;s remote branch.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git add Procfile app.py model.h5 requirements.txt
-git commit -m <span style="color:#a31515">&#39;initial commit&#39;</span>
+git commit -m <span style="color:#a50">&#39;initial commit&#39;</span>
 git push --set-upstream heroku master
 </code></pre></div><p>The files will be uploaded and the application deployed. You can follow the status of the deployment in the command line or in the browser with Heroku&rsquo;s dashboard.</p>
 <p>In our case, our app was deployed to <code>https://flask-digit-classifier.herokuapp.com/</code>. You can run all the test we implemented before (both with the browser and with R) simply by changing <code>http://localhost:5000/</code> for your newly deployed app&rsquo;s URL.</p>

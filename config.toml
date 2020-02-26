@@ -13,11 +13,11 @@ googleAnalytics = "UA-112025566-1"
 
 # Fix issues with html in blog posts
 [markup]
-[markup.highlight]
-    style = "vs" # Color on white background
-[markup.goldmark]
-[markup.goldmark.renderer] 
-unsafe = true
+  [markup.goldmark]
+  [markup.goldmark.renderer] 
+    unsafe = true
+  [markup.highlight]
+    style = "autumn" # Color on white background
 
 # Define the number of posts per page
 paginate = 10

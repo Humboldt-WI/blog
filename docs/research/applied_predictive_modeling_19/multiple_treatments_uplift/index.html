@@ -308,18 +308,18 @@ treatment and control datasets.</br></p>
 <p>On the basis of this tree, we also implemented a function which allows to build a forest instead of just one tree. There are two main parameters which can be set when building a forest. The number of trees and the number of covariates considered in each tree. For each tree a random subset of the covariates with the specified number of covariates is used. Below is the process in pseudo code.</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">Forest building:
 
-n_tree = 100 <span style="color:#008000">#The number of trees in the forest</span>
-n_features = 3 <span style="color:#008000">#The number of covariates used in each tree</span>
-forest = list()
+n_tree = <span style="color:#099">100</span> <span style="color:#aaa;font-style:italic">#The number of trees in the forest</span>
+n_features = <span style="color:#099">3</span> <span style="color:#aaa;font-style:italic">#The number of covariates used in each tree</span>
+forest = <span style="color:#0a0">list</span>()
 
-Repeat <span style="color:#008000">#n_tree times:</span>
-  Randomly select <span style="color:#008000">#n_features of the covariates in the data and create a new subset of the data with those covariates</span>
+Repeat <span style="color:#aaa;font-style:italic">#n_tree times:</span>
+  Randomly select <span style="color:#aaa;font-style:italic">#n_features of the covariates in the data and create a new subset of the data with those covariates</span>
   Build a tree based on this subset
   Add the tree to the list of trees
 
 For predictions:
 
-predictions = list()
+predictions = <span style="color:#0a0">list</span>()
 
 For each tree in forest:
   Make a prediction for the new sample and add it to the list
@@ -337,19 +337,19 @@ $n_{il}$ and $n_{ir}$  are the number of samples with treatment i in the left an
 \end{equation}
 </br>
 Pseudo code for the simple tree:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">Build_tree(data){
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#0a0">Build_tree</span>(data){
   For each split:
     Split the data
-    Calculate and save the gain (equation above)
-  If max(gains) &gt; 0{
+    Calculate and save the <span style="color:#0a0">gain </span>(equation above)
+  If <span style="color:#0a0">max</span>(gains) &gt; <span style="color:#099">0</span>{
     Select split with highest gain
     Split the data according to the split in data_left and data_right
-    Left leaf = Build_tree(data_left)
-    Right leaf = Build_tree(data_right)
+    Left leaf = <span style="color:#0a0">Build_tree</span>(data_left)
+    Right leaf = <span style="color:#0a0">Build_tree</span>(data_right)
   }
   Else{
-    Calculate mean outcomes for all treatments and control (these outcomes serve as predictions)
-    Return(outcomes)
+    Calculate mean outcomes for all treatments and <span style="color:#0a0">control </span>(these outcomes serve as predictions)
+    <span style="color:#0a0">Return</span>(outcomes)
   }
 }
 </code></pre></div><h2 id="32-causal-tree-and-causal-forest-a-classanchor-idcausaltreea">3.2 Causal Tree and Causal Forest <a class="anchor" id="causaltree"></a></h2>
