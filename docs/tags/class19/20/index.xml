@@ -11,6 +11,31 @@
     
     
     <item>
+      <title>Analysis of social media behavior of the 2020 presidential election candidates</title>
+      <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates_final/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/analysis_of_social_media_behavior_of_2020_presidential_elections_candidates_final/</guid>
+      <description>Authors: Georg Velev, Iliyana Pekova Table of Content  Introduction
+ Data Retrieval
+2.1. Libraries: GetOldTweets3 vs Tweepy
+2.2. Descriptive Statistics
+ Methodology
+3.1. Retrieval of pre-labeled Twitter Data
+3.2. Machine Learning Algorithms
+3.2.1. FastText
+3.2.2. Convolutional Neural Network
+3.2.3. Multinominal Naive Bayes Classifier
+ Data Preprocessing
+4.1. Data Cleaning
+4.2. Word Embeddings: GloVe and FastText
+4.3. Model specific Data Preprocessing
+ Performance Evaluation
+5.1. Initial Results
+5.2. Hyperparameter Tuning using Bayesian Optimization</description>
+    </item>
+    
+    <item>
       <title>BERT</title>
       <link>https://humboldt-wi.github.io/blog/research/information_systems_1920/bert_blog_post/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
