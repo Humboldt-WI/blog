@@ -209,7 +209,7 @@ and do-not-disturbs (see Figure below which was taken from Devriendt et. al. 201
 <p><figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/Figure1.png" width="600"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <p>Since the group membership can not be observed individually for every customer, the class transformation method takes the information observed in the past and transforms it into a new target variable to predict group membership as best as possible. (Devriendt 2008)</p>
 <p>What we know from previous data is whether a customer was targeted and whether the customer responded. As proposed by Lai (2006) all control nonresponders (CN) and all treatment responders (TR) are labeled as positive targets, because they contain all persuadables (customers who respond only if they are targeted). Control responders (CR) and treated nonresponders (TN) are labeled as negative targets, because they only contain do-not-disturbs (respond only when not treated), lost causes (never responds) and sure things (always respond) - groups that never create additional revenue when targeted. In this way the uplift modeling problem is transformed into a binary classification problem and the treatment effect is obtained by subtracting the probability to be negative from the probability to be positive.</p>
 <p>$$ Uplift_{Lai}(x) = P(TR \cup CN|x) - P(TN \cup CR|x) $$</p>
@@ -235,20 +235,20 @@ significant effect on the conversion. In the control group only 7 % of the sessi
 <p><figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/download%20%282%29.png" width="600"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <p>The mean checkout amount of the converted sessions is approximately 94 dollars. When considering the whole data set, the mean checkout amount drops to approximately 10 dollars because of the many non-converted sessions.</p>
 <p>Moreover, at first sight it seems that the treatment has no direct impact on the value of the purchase. Considering only converted sessions, the mean checkout amount of the treatment group (93.60) is surprisingly lower than the mean checkout amount of the control group (94.22). But this could also be explained
 by other effects, for example, that treated customers that decided to buy something instead of buying nothing, will probably don&rsquo;t spend as much money as customers who planned to buy something anyways.</p>
 <p><figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/Checkout%20Amounts%20of%20CONVERTED%20customers-2.png" width="600"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <p>When taking a look into the simulated original treatment effects, it becomes clear that the e-coupon has an impact in the checkout amount of the customer. The mean treatment effect on the purchase value is approximately 4.6 dollars.
 For some sessions the treatment effect even exceeds 20 dollars, but on the other hand there are also negative treatment effects. One could assume that there are indeed customers, who do not want to be disturbed during the session and could let off from the purchase when offered an e-coupon.</p>
 <p><figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/Original%20treatment%20effects.png" width="600"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <h1 id="4-estimation-of-treatment-effects-considering-the-checkout-amount">4. Estimation of treatment effects considering the checkout amount</h1>
 <h2 id="41-preprocessing">4.1 Preprocessing</h2>
 <p>Before we were able to start the actual modeling process, we had to prepare the data described above. We started separating the variables <em>“TREATMENT EFFECT RESPONSE”</em> and <em>“TREATMENT EFFECT CONVERSION”</em> from the dataset we used for training, since these
@@ -261,7 +261,7 @@ using undersampling. Doing so, the size of training data was reduced from 118.62
 <p>$$ f^{uplift} (X_i) = \mathbb{E}(y_i \mid x_i, T_i = 1) - \mathbb{E}(y_i \mid x_i, T_i = 0)  $$</p>
 <p>The subjects are  randomized to either a treatment group (T = 1) or a control group (T = 0). We will consider only the case in which T is binary. The treatment represents the group to which some type of experimental manipulation or action is performed, and the control represents the complementary group that receives no treatment. Say we are a clothing company that would like to start a marketing campaign by giving customers 20% reductions in form of cupons. In this case the company has done it&rsquo;s data analysis and found who are the customers who will get the cupons (Treatment group) and who won&rsquo;t receive them (Control group). In such situations, the main interest might be in estimating the net impact of the action on an individual’s response. This is precisely the objective of uplift models.
 This formulation is motivated by the assumption that subjects are sensitive to the action T in different ways, and so an accurate choice of the
-action at the individual-subject level is essential. Even in cases when there is no global better action, in the sense that the treatment is not effective overall, there might be a subgroup of subjects for whom the treatment has positive effects, but it is being offset by negative effects on the other subgroup. <!-- raw HTML omitted --></p>
+action at the individual-subject level is essential. Even in cases when there is no global better action, in the sense that the treatment is not effective overall, there might be a subgroup of subjects for whom the treatment has positive effects, but it is being offset by negative effects on the other subgroup. <br></p>
 <p>The formula above can also be presented in a shorter version, namely:</p>
 <p>$$ \tau(x) = \mu_1 (x_i) - \mu_0 (x_i) $$</p>
 <p>In this equation from Farrell, Liang and Misra (2019), $\tau $ is the conditional average treatment effect, $ \mu_1 $ is the spending of the customer when he is treated and $ \mu_0 $ is the spending of the customer when he is not treated.</p>
@@ -337,13 +337,13 @@ Since we do have the actual treatment effects in our data and we are able to use
 <p><figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/RFReg.png" width="600"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <h3 id="423-linear-regression---two-model-approach">4.2.3 Linear Regression - Two Model Approach</h3>
 <p>In this approach we might think it&rsquo;s performing similar to the previous model by looking at the histogram but in reality it isn&rsquo;t. This model has a mean absolute error of 5439257.73 and a mean squared error of 1.76e+17 and the reason for that is because it&rsquo;s predicting some extremely negative values.</p>
 <p><figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/Linearreg.png" width="600"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <h3 id="424-neural-network---two-model-approach">4.2.4 Neural Network - Two Model Approach</h3>
 <p>As we decided to use pytorch to build our model to be more flexible in adapting it later on, we had to define our class for the neural network.
 To be able to build different types of models with the same class, it was implemented in a way that the number of layers can be given as an
@@ -363,7 +363,7 @@ these linear layers are always connected with a relu function and the output lay
 <p><figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/ITE%20%20-%20TM%20Reg.png" width="600"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <h2 id="43-residual-model">4.3 Residual Model</h2>
 <h3 id="431-theory">4.3.1 Theory</h3>
 <p>Using and training two models for predicting one value comes with much computation and many lines of code. Inspired by Farrell, Liang and Misra (2019), we tried to implement a model,
@@ -390,7 +390,7 @@ customer and do not have to subtract different models as we have seen in the ben
 <p><figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/ResidualReg.png" width="600"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <h2 id="44-summary-treatment-effects-considering-the-checkout-amount">4.4 Summary Treatment Effects considering the checkout amount</h2>
 <p>Even though the histogram for the regression looked promising, some extremely negative predictions lead to tremendously bad scores for the mean absolute error and mean squared error. Besides that, the large difference between the two model approach for the neural network and the Residual model was surprising,
 since they are equivalent theoretically.</p>
@@ -411,11 +411,11 @@ It seems like training $\mu_0 (x_i)$ and $ \tau(x_i)$ jointly reduces the total 
 <p><figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/table-reg.png" width="800"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <p><figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/Summary-reg.png" width="600"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <h1 id="5-estimation-of-treatment-effects-considering-conversion">5. Estimation of Treatment Effects considering conversion</h1>
 <h2 id="51-benchmark-models">5.1 Benchmark Models</h2>
 <h4 id="evaluation-metrics-1">Evaluation Metrics</h4>
@@ -434,19 +434,19 @@ In addition we are going to present a new evaluation metrics called Qini curves 
 <figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/Qini-RF.png" width="600"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <h3 id="512-logistic-regression---two-model-approach">5.1.2 Logistic Regression - Two Model Approach</h3>
 <p>For the Logistic regression model we did also predict probabilities for the single models to be able to calculate the treatment effects. The two model logistic regression approach didn&rsquo;t perform good on the Qini curve since the uplift gains that we can get from the random model were higher than our benchmark. This model&rsquo;s mean squared error 0.11 and mean absolute error 0.24.
 <figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/Qini-Log.png" width="600"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <h3 id="513-neural-network---two-model-approach">5.1.3 Neural Network - Two Model Approach</h3>
 <p>Having a look at the two model approach using two neural nets, we see that the approach is gaining a bit more uplift than the random model and is actually performing good on the evaluation metrics we&rsquo;re using. It scored a mean squared error of 0.11 and a mean absolute error of 0.16.</p>
 <p><figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/Qini-nn.png" width="600"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <h2 id="52-residual-model---classification">5.2 Residual Model - Classification</h2>
 <h3 id="521-theory">5.2.1 Theory</h3>
 <p>As shown above, the approach using only one model to predict the individual treatment effects worked. Facing a classification problem, this model architecture comes with a weakness, as the results of two models are added up together.</p>
@@ -461,18 +461,18 @@ In addition we are going to present a new evaluation metrics called Qini curves 
 <p><figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/Qini-res.png" width="600"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <h3 id="53-summary-treatment-effects-considering-conversion">5.3 Summary Treatment Effects considering conversion</h3>
 <p>Comparing the results of the benchmark models with the Residual approach we can see that all of them are close to each other concerning the MSE and MAE. Nevertheless, for MSE the Residual model performs slightly better than the  benchmark models. Both neural networks models, the Residual and the two model approach, are performing better than the two other models on the MAE with the two model approach neural network having a slight advantage. From the boxplot below we can tell that the mean of the predicted individual treatment effect for our validation data is around 0.05 and the logistic regression and the random forest seem to have overestimated the treatment effect.
 For the Residual model the mean of the estimated treatment effects is slightly above the true individual treatment effect while the two model neural network approach seems to underestimate the treatment effect.</p>
 <p><figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/table-cla.png" width="800"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <p><figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/allmodels.png" width="800"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <p>Even though the result of the Residual model are looking very promising,the values might differ from the actual individual treatment effects, as for the prediction only the second model <em>nn_ite</em> that was trained to predict the
 treatment effects during the training of the residual model was used for the predictions. Since both models in the residual model were wrapped into the sigmoid function, using the models predictions without passing them through the sigmoid function might also
 change the values of the treatment effects.</p>
@@ -482,7 +482,7 @@ One can see easily in the plot beneath on the right side, that the Residual mode
 <p><figure>
     <img src="/blog/img/seminar/05_Causal_Neural_Network/placebo.png" width="600"/> 
 </figure>
- <!-- raw HTML omitted --></p>
+ <br></p>
 <h1 id="7-conclusion">7. Conclusion</h1>
 <p>In this blogpost, we gave a brief literature overview about the topic of uplift modeling and treatment effects. We then described the dataset used for the tests of the residual model. We trained the Residual model on two different tasks,
 namely the estimation of treatment effects considering the checkout amount of a customer, and estimating the individual treatment effects considering the probability of a customer to finally buy something (conversion).

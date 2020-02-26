@@ -11,6 +11,12 @@ disqusShortname = ""
 # Enable Google Analytics by entering your tracking code
 googleAnalytics = "UA-112025566-1"
 
+# Fix issues with html in blog posts
+[markup] 
+[markup.goldmark]
+[markup.goldmark.renderer] 
+unsafe = true
+
 # Define the number of posts per page
 paginate = 10
 

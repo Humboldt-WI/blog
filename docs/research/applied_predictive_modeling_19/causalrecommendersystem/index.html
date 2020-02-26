@@ -213,9 +213,9 @@
 <li>[Conclusions] (#conclusions)</li>
 <li>[Bibliography] (#bibliography)</li>
 </ol>
-<h2 id="an-introduction-to-recommender-systems-a-nameintroa">An Introduction to Recommender Systems <!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
+<h2 id="an-introduction-to-recommender-systems-a-nameintroa">An Introduction to Recommender Systems <a name="intro"></a></h2>
 <p>One of the main characteristics of a modern, digital society that we currently live in is the heterogeneity of available items. In the past few years, the extension of the online market surpassed the traditional retail (Bonner &amp; Vasile, 2018), causing an evolution of business models. The customers now have access to an abundant number of resources, which is no longer limited by the size of a physical store and the companies needed to respond to those changes. Because no shop assistant would support the process of decision-making, new challenges arose together with easier access to goods and services. It created a need to implement Recommendation Systems (RS), that would leverage customers’ data to create personalized suggestions for products and identify relevant information for them. The basic idea in the functionality of such a system is to infer users’ preferences based on their historical data and then target the additional products that the customer will like.</p>
-<h2 id="motivation-a-namemotivationa">Motivation <!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
+<h2 id="motivation-a-namemotivationa">Motivation <a name="motivation"></a></h2>
 <p>The application of the recommendation engine can not only make the process of decision-making more easy for the customers by providing them with personalized content. Following Bonner &amp; Vasile (2018), product recommendation systems have become the key driver of demand on today&rsquo;s’ market. Some recent research has shown that the most well-known e-commerce companies could increase their up-selling revenue from <strong>10</strong> to <strong>50 percent</strong> by implementing Recommender Systems. In the case of Amazon, one of the leaders on the online market, roughly <strong>35 percent of sales are driven by personalized product suggestions</strong> (McKinsey &amp; Company, 2016). Furthermore, firms can have growth not only in sales but also in consumer&rsquo;s usage. Continuous responding to customers preferences by providing them with personalized content increases the likelihood to stay loyal subscribers of firms’ service and strengthens the habits in their usage patterns and buying behavior.</p>
 <p>The classical Recommendation Systems are based on the observational data which carry two types of information: the items that each user interacted with and their feedback on how much they enjoyed such an item (Liang, Charlin &amp; Blei, 2016).</p>
 <ul>
@@ -224,33 +224,39 @@
 </ul>
 <p>However, the observed feedback requires interaction in the first place and therefore, it is the result of users preferences and <strong>product selection</strong>. Knowing this, the absence of some feedback carries useful insights that are the object of research in the field of causal inference. The causal framework in this context examines the influence of unobserved confounders. Those are some underlying factors that may affect both users’ <strong>exposure</strong> to products and their <strong>feedback</strong> about it. The recent research has shown that not taking this influence into account while generating recommendations is leading to <strong>biased conclusions</strong> about recommendation effect, meaning <strong>self-selection bias</strong> caused by the user or the actions of recommender system itself (Schnabel et al., 2017).</p>
 <p>The aim of the following work is to present and measure the causal effect of recommendation. In the further sections, we will present to this extent an existing model, <strong>CausE</strong>, which was introduced by Bonner and Vasile (2018) as a strategy to leverage the classical recommendation approach. The two nodes of observational feedback explained above will require the introduction of some assumptions to present causal problem of recommendation in more detail.</p>
-<h2 id="overview-of-methods-a-namemethodsa">Overview of Methods <!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
-<!-- raw HTML omitted -->
+<h2 id="overview-of-methods-a-namemethodsa">Overview of Methods <a name="methods"></a></h2>
+<p align="center">
+  <img width="600" src="/blog/img/seminar/causal_rec/overview.png">
+</p>
 <p>The graph above illustrates the three fundamental methods to build a Recommender System.
 The first method, <strong>Content-based filtering</strong> (CB) is based on users’ history. The idea of this approach is to create a profile for each user and all items with a description of its main characteristics. Then, the algorithm is choosing the most liked products and recommends to the user the item with the most similar content.
 Another approach is called <strong>Collaborative Filtering</strong> (CF) and it relies on past users’ behavior, meaning given ratings or clicked items without requiring the creation user and item&rsquo;s profiles. It aims to identify new user-item associations by analyzing relationships between user and interdependencies among products.
 The two main areas of Collaborative Filtering are the <strong>Memory-based</strong> and <strong>Model-based</strong> Techniques. The first approach concentrates on the computation of relationships across products <strong>or</strong> items separately, while the Model-based approach is investigating both items <strong>and</strong> ratings by characterizing them. The last method is combining both of the techniques, CB and CF. In the following lines, we will concentrate on Collaborative Filtering, which can be globally thought as a matrix-completion problem (Koren, Bell &amp; Volinsky, 2009).</p>
-<h3 id="matrix-completion-problem-a-namematrixa">Matrix Completion Problem <!-- raw HTML omitted --><!-- raw HTML omitted --></h3>
-<!-- raw HTML omitted -->
+<h3 id="matrix-completion-problem-a-namematrixa">Matrix Completion Problem <a name="matrix"></a></h3>
+<p align="center">
+  <img width="800" src="/blog/img/seminar/causal_rec/rating_prediction.png">
+</p>
 <p>The matrix on the left side of the equation represents the initial setting that one has to face while preparing the data to apply a CF algorithm. In the rating matrix $R_{ui}$, the rows are representing items from the dataset and each column represents a user. The numbers inside the matrix are the ratings. Filling the empty cells that have been replaced by “?” symbol, can be seen as a matrix completion problem where one tries to estimate the missing numbers. This problem can be solved using a wide range of Matrix Factorization methods. The main idea behind those techniques is to describe both items and users by vectors of factors that would approximately replicate the initial user-item matrix after multiplication (Koren, Bell &amp; Volinsky, 2009).</p>
-<h3 id="singular-value-decomposition-a-namesvda">Singular Value Decomposition <!-- raw HTML omitted --><!-- raw HTML omitted --></h3>
+<h3 id="singular-value-decomposition-a-namesvda">Singular Value Decomposition <a name="svd"></a></h3>
 <p>Before we will introduce the causal framework for recommendation, in the notebook below we will present the application of Collaborative Filtering using Singular Value Decomposition algorithm as our benchmark model.</p>
-<!-- raw HTML omitted -->
-<h2 id="problem-definition-a-nameproblema">Problem Definition <!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
+<script src="https://gist.github.com/Mede33-gdb/a8c3d90151a59bf3261b98579b7717d4.js"></script>
+<h2 id="problem-definition-a-nameproblema">Problem Definition <a name="problem"></a></h2>
 <p>The first goal of our Recommender System is to infer users’ preferences for an item and based on that, to predict the products that should be recommended. As mentioned in the chapter about our motivation, in the recommendation setting we face two types of information: about the interaction and click or rating. The traditional RS use the rating or click data alone to infer customers preferences. However, the implicit assumption behind models trained and evaluated only on the observed data is that the absence of some feedback carries no information, meaning the unobserved ratings or clicks are <strong>missing at random</strong> (MAR) (Kula, 2009). But are they really ?</p>
-<h3 id="the-missing-at-random-assumption-a-namemara">The Missing-at-Random Assumption <!-- raw HTML omitted --><!-- raw HTML omitted --></h3>
+<h3 id="the-missing-at-random-assumption-a-namemara">The Missing-at-Random Assumption <a name="mar"></a></h3>
 <p>Following the thoughts from the previous section, we want to investigate the validity of the MAR assumption on our dataset.</p>
 <p>Our Data comes from the [Yahoo! R3 Dataset] (<a href="https://webscope.sandbox.yahoo.com/catalog.php?datatype=r&amp;guccounter=1)">https://webscope.sandbox.yahoo.com/catalog.php?datatype=r&amp;guccounter=1)</a>. It consists of explicit feedback by users, where one can directly observe how a user rates a song giving it 1-5 Stars. The songs from this dataset come from two different sources. The first source consists of ratings supplied by users during normal interaction with Yahoo! Music services and the other source consists of ratings for randomly selected songs collected during an online survey conducted by Yahoo! Research. Scaling this dataset provided us 157K ratings given by 1000 users and concerning 995 songs, coming only from the normal interaction scheme.</p>
-<h3 id="does-mar-really-hold-a-namemarholda">Does <strong>MAR</strong> really hold? <!-- raw HTML omitted --><!-- raw HTML omitted --></h3>
+<h3 id="does-mar-really-hold-a-namemarholda">Does <strong>MAR</strong> really hold? <a name="marhold"></a></h3>
 <p>Following the [Kulas presentation] (<a href="https://resources.bibblio.org/hubfs/share/2018-01-24-RecSysLDN-Ravelin.pdf),">https://resources.bibblio.org/hubfs/share/2018-01-24-RecSysLDN-Ravelin.pdf),</a> if the ratings are randomly missing, the following has to hold:</p>
 <p>How much a user likes a song will not influence the likelihood of leaving a rating.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img width="400" src="/blog/img/seminar/causal_rec/ratings_percent.png">
+</p>
 <p>As it can be seen in the graph above, users tend to leave more &ldquo;1&rdquo; (really dislike) or &ldquo;5&rdquo; (really like) ratings than the ratings in between. This is a clear evidence that a strong preference or aversion for a song by a user leads him to a higher probability of leaving a rating.</p>
 <p>There are more sentences that could be derived from the MAR assumption, but this one should be enough to show the problematic behind it.</p>
 <p>Ignoring the effect of unobserved ratings means ignoring some latent factors that influence the rating but also the probability that an item will receive a rating in the first place. Therefore, the assumption that the users consider each item independently at random does not hold in the reality and ratings are <strong>Missing Not at Random</strong> (MNAR). Consequently, the previously mentioned approach is biased by the <strong>exposure</strong> data.</p>
-<h2 id="our-goal-in-this-framework-a-namegoala">Our Goal in This Framework <!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
+<h2 id="our-goal-in-this-framework-a-namegoala">Our Goal in This Framework <a name="goal"></a></h2>
 <p>As Bonner and Vasile (2018) argued in their work, building a Recommender System should only aim to model customers’ preferences and to predict most suitable suggestions for new products. Many of the recent research works fall short to optimally model and measure the effect of influential nature of RS, meaning the change in users’ behaviour or their certain activity. We will follow these thoughts and steps to try to obtain the optimal treatment policy which aims to maximize the reward coming from each user with respect to the control recommendation policy. In other words, we want to maximize the <strong>Individual Treatment Effect</strong> (ITE). In our case, the control recommendation was the classical CF approach presented earlier, using Singular Value Decomposition with Stochastic Gradient Descent algorithm to solve the matrix completion problem.</p>
-<h3 id="in-mathematical-terms-a-namemathsa">In Mathematical Terms <!-- raw HTML omitted --><!-- raw HTML omitted --></h3>
+<h3 id="in-mathematical-terms-a-namemathsa">In Mathematical Terms <a name="maths"></a></h3>
 <p>To present learning recommendation policies as an optimization problem with respect to the Individual Treatment Effect requires the introduction of the following terms:</p>
 <ul>
 <li>$\Pi_x$ : stochastic policy, associating to each user $u_i$ and product $p_j$ a probability to be exposed to a recommendation</li>
@@ -269,18 +275,20 @@ $$\Pi^* = argmax_{\Pi_x} ITE^{\Pi_x}$$ where $$ITE^{\Pi_x}=\sum_{i,j}ITE_{ij}^{\
 <p>However, one of the main critics about this approach lays in the fact, that in effect, the products with low probability under the logging policy $\Pi_c$ will receive higher estimated reward. But using simply uniform exposure would result in low quality of recommendation, because we usually don’t have large datasets about it, since many items come with only a few interactions.</p>
 <p>The proposed solution is to use the biased data from the latest control policy and let the algorithm learn to predict the outcomes under under a randomized policy and use this transformation to rank the products by their estimated outcomes</p>
 <p>The effect of this approach will be measured against the Matrix Factorization approach presented in the previous section</p>
-<h2 id="a-proposal-for-causal-recommender-system-causal-embeddings-a-namecausea">A Proposal for Causal Recommender System: Causal Embeddings <!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
+<h2 id="a-proposal-for-causal-recommender-system-causal-embeddings-a-namecausea">A Proposal for Causal Recommender System: Causal Embeddings <a name="cause"></a></h2>
 <p>We based this part on the paper and code from Bonner &amp; Vasile (2017), Causal Embeddings for Recommendation. [Source : https://arxiv.org/abs/1706.07639]</p>
-<h3 id="causal-setup-a-namecausala">Causal Setup <!-- raw HTML omitted --><!-- raw HTML omitted --></h3>
+<h3 id="causal-setup-a-namecausala">Causal Setup <a name="causal"></a></h3>
 <p>We are interested in building a predictor for recommendation under random exposure of users to a song, because this is the way we can generate more value to the user by having a unbiased prediction model. As we said earlier, using a uniform exposure to recommendation ratings is resulting in low prediction quality, because we then have only a small portion of data, which would produce less stable estimators. In this framework, the authors have developed a way to use both randomized treatment exposure and control policy data together, to build a more robust predictor, which would still aim to maximize the sum of individual treatment effects.</p>
 <p>To this extent, we are assuming the existence of two training samples :</p>
 <ul>
 <li>A very large group of interactions collected by exposure to the original control recommendation policy $c$.</li>
 <li>A smaller group of interactions collected with a fully uniform randomized policy $t$.</li>
 </ul>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/Mede33-gdb/c7b5b8f1dff5dc3a816ccd8f63968811.js"></script>
 <p>Those two samples are selected from the same group of users $U$. Our other - and principal - hypothesis is that the expected control and treatment rewards can be approximated as linear predictors over the shared user embedding representation.</p>
-<!-- raw HTML omitted -->
+<p align="center">
+  <img width="600" src="/blog/img/seminar/causal_rec/matrix_representation.png">
+</p>
 <p>Following the framework introduced in the above section, we want to approximate the Indivual Treatment Effect, in order to be able to maximize it in our Recommendation policy. From the latest hypothesis, we have :</p>
 <p>$$\hat{ITE}_{i,j}=\langle p_j^t,u_i\rangle-\langle p_j^c,u_i\rangle$$</p>
 <p>And by letting $W^{\delta}$ be the difference between $P^t$ and $P^c$, we can also have :</p>
@@ -299,14 +307,14 @@ $$\Pi^* = argmax_{\Pi_x} ITE^{\Pi_x}$$ where $$ITE^{\Pi_x}=\sum_{i,j}ITE_{ij}^{\
 </ul>
 <p>We can also replace $P^c$ or $P^t$ by $W^{\delta}$ and have only one penalization function to include.</p>
 <p>$$L_{CausE}^{Prod}=L(P^t,W^{\delta})+\Omega(W^{\delta})+\Omega (P^t)=L(P^t,W^{\delta})+\Omega_{embed}(P^t,W^{\delta})$$</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/Mede33-gdb/4023a76b755dcb85478b0442ba5974ec.js"></script>
 <p>The reason why the authors expected this algorithm to be more powerful and safer than a strict computation on a uniformly-exposed dataset, is that here the User embeddings are strengthened by the data we have on the original control policy. Therefore the embeddings that vary in this framework are only the Product ones, and the penalization on the difference between the two matrix representations should help to prevent any suspectful big change.</p>
-<h3 id="results-comparison-a-nameresultsa">Results Comparison <!-- raw HTML omitted --><!-- raw HTML omitted --></h3>
-<!-- raw HTML omitted -->
+<h3 id="results-comparison-a-nameresultsa">Results Comparison <a name="results"></a></h3>
+<script src="https://gist.github.com/Mede33-gdb/57303355d79e6c229e43224ea938e7c9.js"></script>
 <p>Those conclusions are subject to the hyperparameters we entered. We have tried several combinations about it but we cannot guarantee that their optimization is perfect. More work would be needed to see how those results are influenced by the choices we made, such as the embedding size for example, or how the algorithms would react with a different dataset.</p>
-<h2 id="conclusions-a-nameconclusionsa">Conclusions <!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
+<h2 id="conclusions-a-nameconclusionsa">Conclusions <a name="conclusions"></a></h2>
 <p>In the following project, we presented the current methods and approaches to build a Recommender System on Yahoo! R3 Dataset for songs recommendation. In the first part, we introduced Collaborative Filtering as our baseline method. We described a solution to this approach as the matrix factorization problem to evaluate the suggestions for a recommendation based on past users behavior and predict the missing entries in the user-item matrix. We used the classical Collaborative Filtering approach with the Singular Value Decomposition algorithm as our benchmark, noncausal model and optimized it using Stochastic Gradient Descent. Furthermore, we presented the limitations behind the MAR assumption on our dataset and how it leads to the presence of self-selection bias. In the main part, we followed the work of Bonner and Vasile (2018) and concentrated on the implementation of their approach to our dataset to obtain an unbiased predictor for recommendations. The proposed algorithm is an extension of matrix factorization which predicts the recommendation according to uniform exposure by learning from logged data containing outcomes from the biased recommendation policy. In the last section, we compared the performance of both models and it could be seen that the CausE algorithm outperformed the classical CF measured in both, ROC and RMSE metrics and with every parameter setup that has been tested. However, because the implementation of CausE required more steps and was more time costly a higher accuracy was expected. However, when it comes to deciding about the implementation of one of the models there is the tradeoff between complexity and efficiency, which is currently also one of the subjects of discussion in Data Science.</p>
-<h2 id="bibliography-a-namebibliographya">Bibliography <!-- raw HTML omitted --><!-- raw HTML omitted --></h2>
+<h2 id="bibliography-a-namebibliographya">Bibliography <a name="bibliography"></a></h2>
 <p>Bonner, S. &amp; Vasile, F. (2018). Causal Embeddings for Recommendation. Proceedings of the 12th ACM Conference on Recommender Systems, pages 102-112.</p>
 <p>Koren, Y., Bell, R. &amp; Volinsky, C. (2009). Matrix Factorization Techniques for Recommender Systems. Computer, pages 30-37.</p>
 <p>Liang, D., Charlin, L. &amp; Blei, D. M. (2016). Causal Inference for Recommendation.</p>

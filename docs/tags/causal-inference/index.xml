@@ -44,7 +44,10 @@
       <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/multiple_treatments_uplift/</guid>
-      <description>Applications of Causal Inference for Marketing: Estimating Treatment Effects for multiple Treatments Authors: Jan Krol and Matthias Becher Table of Contents  Introduction Common Marketing Challenges Models 3.1 Decision Trees Rzepakowski &amp;amp; Jaroszewicz 3.1.1 Basic Rzepakowski &amp;amp; Jaroszewicz 3.1.2 Simple Splitting Criterion 3.2 Causal Tree and Causal Forest 3.3 Separate Model  Evaluation Methods4.1 Uplift Curves4.2 Expected Outcome Experimental Setup  Results Outlook References  1. Introduction  Nowadays marketing practitioners face a multitude of challenges.</description>
+      <description>Applications of Causal Inference for Marketing: Estimating Treatment Effects for multiple Treatments Authors: Jan Krol and Matthias Becher Table of Contents  Introduction
+ Common Marketing Challenges
+ Models  3.1 Decision Trees Rzepakowski &amp;amp; Jaroszewicz  3.1.1 Basic Rzepakowski &amp;amp; Jaroszewicz  3.1.2 Simple Splitting Criterion  3.2 Causal Tree and Causal Forest  3.3 Separate Model  Evaluation Methods
+4.1 Uplift Curves 4.2 Expected Outcome Experimental Setup  Results Outlook References  1.</description>
     </item>
     
     <item>
@@ -53,7 +56,7 @@
       <pubDate>Thu, 15 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/microfinance-policy/</guid>
-      <description>Microfinance Policies Impact of Microfinance on The Social Well-being Authors: Edanur Kahvecioglu and Yu-Tang Wu Abstract Is microcredit a miracle or just a hype? While more and more researches were conducted to study microcredits, people started to question the effectiveness of microcredit program. This project explores the heterogeneity of treatment effect on microcredit to households&amp;rsquo; well-being. Causuall Random Forest and Two-model approach are used to analyze treatment effects on the household level and identify the important variables that separate households with higher treatment effect.</description>
+      <description>Microfinance Policies  Impact of Microfinance on The Social Well-being Authors: Edanur Kahvecioglu and Yu-Tang Wu Abstract Is microcredit a miracle or just a hype? While more and more researches were conducted to study microcredits, people started to question the effectiveness of microcredit program. This project explores the heterogeneity of treatment effect on microcredit to households&amp;rsquo; well-being. Causuall Random Forest and Two-model approach are used to analyze treatment effects on the household level and identify the important variables that separate households with higher treatment effect.</description>
     </item>
     
     <item>
@@ -63,7 +66,7 @@
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/social_pressure/</guid>
       <description>Revisiting Social Pressure and Voter Turnout: Causal Inference with Supervised Learning Methods Julius Reimer &amp;amp; Toby Chelton
-Table of contents 1. Introduction
+[Source: https://paulkiser.com/2016/02/04/five-fixes-for-our-primarycaucus-fiasco/] Table of contents 1. Introduction
 2. Original Study and Our Objectives
 3. Data and Random Assignment
 4. Modelling
@@ -79,7 +82,7 @@ Table of contents 1. Introduction
       <pubDate>Mon, 12 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/01marketing_campaign_optimization/</guid>
-      <description>Marketing Campaign Optimization The global spending on advertising amounts to more than 540 billion US dollars for 2018 only, and the spending for 2019 is predicted to reach over 560 billion US dollars. The marketing spendings have continuously increased since 2010 [17], and this trend does not seem to brittle in the near future. Although marketing is such an integral part of most businesses, marketers often fail to maximize the profitability of their marketing efforts.</description>
+      <description>Marketing Campaign Optimization ## Causal Inference in Profit Uplift Modeling #### Authors: Asmir Muminovic, Lukas Kolbe ### Motivation The global spending on advertising amounts to more than 540 billion US dollars for 2018 only, and the spending for 2019 is predicted to reach over 560 billion US dollars. The marketing spendings have continuously increased since 2010 [17], and this trend does not seem to brittle in the near future. Although marketing is such an integral part of most businesses, marketers often fail to maximize the profitability of their marketing efforts.</description>
     </item>
     
     <item>
@@ -88,7 +91,7 @@ Table of contents 1. Introduction
       <pubDate>Thu, 01 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/blog_post_causal_knn/</guid>
-      <description>Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbour algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
+      <description>LatexIT.add(&#39;p&#39;,true);   Applied Predictive Analytics Seminar - Causal KNN Beyond estimating the overall effect of a treatment, the uplift, econometric and statistical literature have set their eyes on estimating the personal treatment effect for each individual. This blogpost highly relates to the paper of Hitsch &amp;amp; Misra (2018), where a novel, direct uplift modeling approach is introduced, called Causal KNN. The k-nearest neighbour algorithm provides an interesting opportunity for the estimation of treatment effects in small groups.</description>
     </item>
     
     <item>

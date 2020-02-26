@@ -188,17 +188,17 @@
 <h2 id="problem-statement">Problem Statement</h2>
 <p>The best way to understand how neural networks work is to build one yourself from scratch.
 The understanding becomes even more comprehensive if there is a particular problem that can be solved using NNs. Therefore let&rsquo;s start our work by taking a look at the picture below.</p>
-<!-- raw HTML omitted -->
+<img src="/blog/img/seminar/nn_fundamentals/pics/problem.png" alt="Drawing" style="width: 600px;"/>
 <p>There are handwritten numbers that you want computer to correctly classify. This would be an easy task for a person but at least for a long period of time was an extremely complicated one for a machine.</p>
 <p>Even though the computer is faster than the human brain in numeric computations, the brain outperforms the computer in some other tasks. Many of those tasks are related to the human ability for sentience (which is a concept different from intelligence). The trick is to find a way, so that the computer could apply its numeric computation skills to solve these later tasks (at least to some degree).</p>
 <p>The first step would be to limit the scope of the task. In our particular case the broad task of image recognition will be addressed as a classification problem - a task of giving an object a label from a given set of labels.</p>
 <p>As we will see during the process of building our own NN, its output is based almost exclusively on application of linear algebra methods. Despite the name (which is sometimes related to the fear of artificial intelligence), neural networks in fact are much more related to statistical methods (like regression analysis or curve fitting) than to the way human brain works [<a href="http://www.turingfinance.com/misconceptions-about-neural-networks/">Stuart Reid, 2014</a>].</p>
 <p>NNs are inspired by human brain only to certain extent. For instance the main element that makes them similar is a multilayer net structure of simple elements that are connected in some way, receiving and transmitting information. But the structure of the human brain is much more complicated, besides it is self-organizing and adaptive in contrast to the fixed manually designed architecture of a NN. Hence, there is a good reason to stop being afraid of neural networks and instead to create one ourselves.</p>
-<!-- raw HTML omitted -->
+<img src="/blog/img/seminar/nn_fundamentals/pics/neurons_net3.png" alt="Drawing" style="width: 500px;"/>
 <p>[Source: <a href="https://pixabay.com/">Pixabay.com</a>]</p>
 <h2 id="schematic-representation">Schematic Representation</h2>
 <p>A complex multilayer structure that all neural networks have in common in a simplified way can be depicted using the following picture.</p>
-<!-- raw HTML omitted -->
+<img src="/blog/img/seminar/nn_fundamentals/pics//neural_network1.jpg" alt="Drawing" style="width: 800px;"/>
 <p>All we need in order to implement such a structure is base Python and numpy, a library for numerical computation, which we will be using to do linear algebra.</p>
 <p>First let&rsquo;s determine the elements of a neural network depicted above: nodes, layers, weights across nodes and activation functions.</p>
 <p><strong>Nodes.</strong> A node is basically a point where data points are received, processed and then transferred to the node. A node could be either an endpoint or a redistribution point or even both when iterations are done through the learning algorithm. The number of nodes to use is optional.</p>
@@ -295,7 +295,7 @@ mpp<span style="color:#f92672">.</span>imshow(image, cmap<span style="color:#f92
 input <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(np<span style="color:#f92672">.</span>asfarray(observation[<span style="color:#ae81ff">1</span>:]), ndmin<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>T <span style="color:#75715e"># save necessary elements in a vertical vector shape.</span>
 </code></pre></div><h2 id="fitting-the-structure-of-the-nn-to-the-data">Fitting the structure of the NN to the Data</h2>
 <p>Let&rsquo;s take a look once again at the NN&rsquo;s structure we have created at the beginning of the tutorial.</p>
-<!-- raw HTML omitted -->
+<img src="/blog/img/seminar/nn_fundamentals/pics/neural_network1.jpg" alt="Drawing" style="width: 800px;"/>
 <p>After inspecting the data, we can conclude that the structure with 3-5-2 nodes is probably not optimal and therefore should be updated in order to fit the data we have and peculiarities of the classification problem:</p>
 <ul>
 <li>For each observation we have 784 elements as an input (label element is excluded). Accordingly, instead of 3 input nodes we should better have 784.</li>
@@ -342,8 +342,8 @@ w_i_h<span style="color:#f92672">.</span>shape, input<span style="color:#f92672"
 <p>A sequence of this steps should be repeated n-1 times (where n corresponds to the number of layers). The output of the previous layer will always be the input vector for the next layer. In our case the procedure will happen twice.</p>
 <p>In the picture bellow, you can see the procedure necessary to obtain the output of the hidden layer. The result of matrix multiplication here is called &ldquo;Hidden_Input&rdquo;. Result of the transformation of &ldquo;Hidden_Input&rdquo; through activation function is called &ldquo;Hidden_Output&rdquo;.</p>
 <p>This output will be used as the input vector that should be multiplied by the next weight matrix and transformed through activation function in order to calculate the final output of the NN. If our NN would have more than one hidden layer, the procedure would be repeated more times.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<img src="/blog/img/seminar/nn_fundamentals/pics/multiplication.png" alt="Drawing" style="width: 800px;"/>
+<img src="/blog/img/seminar/nn_fundamentals/pics/activation.jpg" alt="Drawing" style="width: 800px;"/>
 <p>Below you can see the code implementation of all the steps for all layers of the NN.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Calculate the output of hidden and output layers of our NN:</span>
 h_input <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>dot(w_i_h, input) <span style="color:#75715e"># dot() performs matrix multiplication; &#34;h_input&#34; stands for &#34;Hidden_Input&#34;.</span>
@@ -466,11 +466,11 @@ o_errors
 <p>Calculate how much error has been brought by every link to this node.</p>
 </li>
 </ol>
-<p>For instance if weight w<!-- raw HTML omitted -->11<!-- raw HTML omitted --> is 0,6 and w<!-- raw HTML omitted -->21<!-- raw HTML omitted --> is 0,4 then they are associated with an error of -0,79 multiplied by 0,6 and -0,79 multiplied by 0,4 respectively (see Pictures below).</p>
-<!-- raw HTML omitted -->
+<p>For instance if weight w<sub>11</sub> is 0,6 and w<sub>21</sub> is 0,4 then they are associated with an error of -0,79 multiplied by 0,6 and -0,79 multiplied by 0,4 respectively (see Pictures below).</p>
+<img src="/blog/img/seminar/nn_fundamentals/pics/bp.jpg" alt="Drawing" style="width: 800px;"/>
 <p>After calculation of how much error is associated with every weight we can obtain the errors for the nodes in the proceeding layer.</p>
 <p>For instance error term for node 1 in the hidden layer will be equal to:</p>
-<p>the sum of errors associated with all the weights (w<!-- raw HTML omitted -->11<!-- raw HTML omitted --> and w<!-- raw HTML omitted -->12<!-- raw HTML omitted --> in our case) that link this node with the next layer (see Picture above).</p>
+<p>the sum of errors associated with all the weights (w<sub>11</sub> and w<sub>12</sub> in our case) that link this node with the next layer (see Picture above).</p>
 <p>Once we repeat this procedure for all the nodes in all layers we can find out how much every node should be changed.</p>
 <p>To do so in Python we just need to make multiplication of vector that contain errors by corresponding matrix of weights.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Find the errors associated with hidden layer output:</span>
@@ -492,17 +492,18 @@ h_errors[<span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">10</sp
 <p>To understand the concept of gradient descent we should ask ourselves the following question: What can be done to improve the weights we have assigned randomly at the beginning, so that the overall result improves?</p>
 <p>To change the output of any node we should change the weights that connect it with the previous layer. Basically we want to find out how much error in every node changes once we change associated weights. Next we want to select the weights that would lead to a minimal error in the output layer. That can be achieved by differentiation of the cost function and search for its minimum.</p>
 <p>Given multidimensionality of the function, which we need to differentiate, the search for its minimum can be a complicated task. This task is similar to some extent to the search of the path in the darkness from the top of a mountain to its valley. Because it is dark it is almost impossible to reach the valley immediately. The only way to achieve the goal is by exploring the neighbourhood (the radius you are able to see) and tacking small steps in the direction that leads downhill and constantly updating the path for the next steps. This process is illustrated below:</p>
-<!-- raw HTML omitted -->
-<p>[Source: Giphy.com]<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
-<p>Mathematically the differentiation process can be illustrated on the example of weights between output and hidden layers (w<!-- raw HTML omitted -->ho<!-- raw HTML omitted -->). The same process but with corresponding values should be applied for the weights between input and hidden layers (w<!-- raw HTML omitted -->ih<!-- raw HTML omitted -->).</p>
-<p>As it can be seen from the formulas below the error we want to minimize (E) can be defined as the sum of squared differences between the target (t<!-- raw HTML omitted -->n<!-- raw HTML omitted -->) and output (o<!-- raw HTML omitted -->n<!-- raw HTML omitted -->) values of the NN. The sum of differences for all the nodes in the layer is relevant but when doing calculation for a particular node this sum can be omitted - only the difference between particular output (o<!-- raw HTML omitted -->o<!-- raw HTML omitted -->) and target (t<!-- raw HTML omitted -->o<!-- raw HTML omitted -->) matters.</p>
-<p>Target value is constant. Output value depends on weights and is obtained after applying sigmoid function to the sum of inputs (outputs of the previous layer - o<!-- raw HTML omitted -->h<!-- raw HTML omitted -->) multiplied by corresponding weights (w<!-- raw HTML omitted -->ho<!-- raw HTML omitted -->).</p>
-<!-- raw HTML omitted -->
-<p>The formula for derivative of the sigmoid function is provided below. It is necessary to keep in mind that the sum to which we apply sigmoid function also depends on the change of weights (w<!-- raw HTML omitted -->ho<!-- raw HTML omitted -->). Therefore one should follow the chain rule for derivation.</p>
-<!-- raw HTML omitted -->
+<iframe src="https://giphy.com/embed/8tvzvXhB3wcmI" width="1000" height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<p><a href="https://giphy.com/gifs/deep-learning-8tvzvXhB3wcmI">
+<p>[Source: Giphy.com]</a></p></p>
+<p>Mathematically the differentiation process can be illustrated on the example of weights between output and hidden layers (w<sub>ho</sub>). The same process but with corresponding values should be applied for the weights between input and hidden layers (w<sub>ih</sub>).</p>
+<p>As it can be seen from the formulas below the error we want to minimize (E) can be defined as the sum of squared differences between the target (t<sub>n</sub>) and output (o<sub>n</sub>) values of the NN. The sum of differences for all the nodes in the layer is relevant but when doing calculation for a particular node this sum can be omitted - only the difference between particular output (o<sub>o</sub>) and target (t<sub>o</sub>) matters.</p>
+<p>Target value is constant. Output value depends on weights and is obtained after applying sigmoid function to the sum of inputs (outputs of the previous layer - o<sub>h</sub>) multiplied by corresponding weights (w<sub>ho</sub>).</p>
+<img src="/blog/img/seminar/nn_fundamentals/pics/formula2.png"  alt="Drawing" style="width: 1000px;"/>
+<p>The formula for derivative of the sigmoid function is provided below. It is necessary to keep in mind that the sum to which we apply sigmoid function also depends on the change of weights (w<sub>ho</sub>). Therefore one should follow the chain rule for derivation.</p>
+<img src="/blog/img/seminar/nn_fundamentals/pics/formula3.png"  alt="Drawing" style="width: 1000px;"/>
 <p>The formula we derive is for one particular node. We can however apply it to all the nodes in the layer. In order to do so the only thing we need is to consider this formula in matrix notation. Thus, necessary update of weights linked to all the nodes in a layer will be calculated.</p>
 <p>After solving the minimization problem we can update the weights we have assigned before.</p>
-<!-- raw HTML omitted -->
+<img src="/blog/img/seminar/nn_fundamentals/pics/formula5.png"  alt="Drawing" style="width: 1000px;"/>
 <p>In code this can be represented as follows:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Update the matrix for weights between hidden and output layers:</span>
 w_h_o <span style="color:#f92672">+=</span> np<span style="color:#f92672">.</span>dot((o_errors <span style="color:#f92672">*</span> o_output <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> o_output)), np<span style="color:#f92672">.</span>transpose(h_output))
@@ -510,7 +511,7 @@ w_h_o <span style="color:#f92672">+=</span> np<span style="color:#f92672">.</spa
 w_i_h <span style="color:#f92672">+=</span> np<span style="color:#f92672">.</span>dot((h_errors <span style="color:#f92672">*</span> h_output <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> h_output)), np<span style="color:#f92672">.</span>transpose(input))
 </code></pre></div><h2 id="learning-rate">Learning Rate</h2>
 <p>Now, there is something else, we should add in the weights updating procedure. If we completely change our weights with every new observation - our model learns to predict only the last input. Instead of updating weights 100 % every time we can change them only partially - this way every new observation will bring some new knowledge while the previous one will still be in memory even though updated to certain extent. The bigger the learning rate the more importance has the last observation, the smaller it is the more important is all the previous knowledge. The smaller the steps - the more accurate will be the prediction. At the same time it might take more time to learn.</p>
-<!-- raw HTML omitted -->
+<img src="/blog/img/seminar/nn_fundamentals/pics/learning_rate.png" alt="Drawing" style="width: 400px;"/>
 <p>[Source: &ldquo;Business Analytics &amp; Data Science Course by Professor S. Lessmann, Chapter 5:
 Artificial Neural Networks&rdquo;]</p>
 <p>Below is the code for weight&rsquo;s update procedure with learning rate included.</p>

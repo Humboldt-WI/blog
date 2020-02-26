@@ -182,39 +182,43 @@
 <h1 id="introduction">Introduction</h1>
 <p>Natural language processing (NLP) received a lot of attention from academia and industry over the recent decade, benefiting from the introduction of new algorithms for processing the vast corpora of digitized text. A set of language modeling and feature learning techniques called word embeddings became increasingly popular for NLP tasks. Word2vec (Mikolov et al, 2013) became one of the most famous algorithms for word embeddings, offering a numeric representations of any word, followed by doc2vec (Le et al, 2014), which performed the same task for a paragraph or document.</p>
 <p>The area of application is wide and encompasses online advertisement, automated translation, voice recognition, sentiment analysis, topic modeling and dialog agents like chat bots. Academia also received an efficient tool allowing to tap into the vast corpus of digital texts, from Shakespeare works to social media.</p>
-<p><!-- raw HTML omitted --></p>
+<p><img style=" width:100%;display:block;margin:0 auto;"
+src="/blog/img/seminar/topic_models/vectors.png"></p>
 <p>Regardless of the specific task at hand, its overarching goal is to obtain numeric representation of a document that reflects its content and, possibly, some latent semantic relationships within.New machine learning algorithms are often not well documented or miss in-depth explanation of the processes under the hood. One of the possible explanations suggests that  many were developed by teams from technology companies like Facebook or Google, that would rather focus on application aspect. Doc2vec is no exception in this regard, however we believe that thorough understanding of the method is crucial for evaluation of results and comparison with other methods.</p>
 <p>This blog post is dedicated to explaining the underlying processes of doc2vec algorithm using an empirical example of facebook posts of German political candidates, gathered during the year before elections to Bundestag.</p>
-<p><!-- raw HTML omitted --></p>
+<p><img style=" width:100%;display:block;margin:0 auto;"
+src="/blog/img/seminar/topic_models/oprah.png"></p>
 <p>We will start by providing some <strong>desciptive statistics</strong> of the dataset, followed with some <strong>theoretical backgound</strong> to embedding algorithms, in particular, word2vec&rsquo;s <strong>SkipGram</strong> and doc2vec&rsquo;s <strong>PV-DBOW</strong>, moving on to step-by-step <strong>implemetation</strong> in python, followed by the same actions performed using the gensim package. We will finish this blog by showing the <strong>application</strong> of the discussed methods on the political data, also touching <strong>vizualisation</strong> techniques.</p>
 <h1 id="preparatory-steps">Preparatory steps</h1>
 <p>In preparation for the following steps, we need to specify which packages to load and where we have stored the data:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/jgmill/0dd8e0691df5622869c53c5da2f38159.js"></script>
 <h1 id="descriptive-statistics">Descriptive Statistics</h1>
 <p>The dataset consists of 177.307 Facebook posts from 1008 candidates and 7 major political parties who ran for the German Bundestag in the 2017 election. We collected all messages posted between 1 January and the election date on 24 September 2017, covering the entire campaigning period. The parties are included in order to later compare the candidates to them, but computationally they are treated no different then the candidates.</p>
 <p>Sahra Wagenknecht, with a mean of 99.63 words per post, publishes quite long posts compared to Joachim Herrmann and Cem Özdemir who use on average less than half the amount of words in their posts.</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/jgmill/2cccc7c1752f862b7ce3cd3951e36464.js"></script>
 <p>Words per post by party: AfD and Die Linke candidates write longer posts on average than the candidates from the other parties.</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/jgmill/1ef09fd002e985e494ccf04599234091.js"></script>
 <p>A histogram of the words per post across all parties: A large majority of posts has less than 50 words</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/jgmill/d58de0607d4eed89f61af1f1059288ad.js"></script>
 <h1 id="theory">Theory</h1>
 <p>The goal of the empirical case study is to generate a concept space for each candidate, thus offering a visual representation of German political landscape. For this purpose we need an algorithm to construct an embedding layer that will contain the numeric representation of the semantic content of each candidate&rsquo;s Facebook posts.</p>
 <p>PV-DBOW is similar to the Skip-gram model for word vectors (Mikolov et al, 2013), we will revisit the word2vec algorithms to facilitate the methodological transition.</p>
-<p><!-- raw HTML omitted --></p>
+<p><img style=" width:100%;display:block;margin:0 auto;"
+src="/blog/img/seminar/topic_models/skipgram.png"></p>
 <p>Word2vec is built around the notions of &ldquo;context&rdquo; and &ldquo;target&rdquo;. While CBOW predicts a target word from a given context, Skip-gram predicts the context around a given word. Using an example from our dataset, we would try to get &ldquo;teilweise&rdquo;, &ldquo;laute&rdquo;, &ldquo;Gesetzentwurf&rdquo; by giving &ldquo;Diskussion&rdquo; to the network (originally &ldquo;teilweise laute Diskussion um den Gesetzentwurf&rdquo;).</p>
 <p>PV-DBOW performs a very similar task with the only difference of supplying a paragraph id instead of the target word and training a paragraph vector. Unlike PV-DM, PV-DBOW only derives embeddings for documents and does not store word embeddings.</p>
-<p><!-- raw HTML omitted --></p>
+<p><img style="display:block;margin:0 auto;"
+src="/blog/img/seminar/topic_models/pvdbow.png"></p>
 <p>Let&rsquo;s try to train embedding vectors for each candidate in our dataset, using his or her facebook posts as one big text document.</p>
 <p><strong>Some preparation</strong></p>
 <p>We combined all the posts issued by the same candidate/party in order to obtain one document per candidate. By doing this, we ended up with 1015 text documents (1008 polititians and 7 parties) each containing the rhetorics of one candidate during campaigning.These paragraphs became the &ldquo;docs&rdquo; in our implementation of doc2vec and led us to giving the project the &ldquo;candidate2vec&rdquo; nickname. Each document is further tokenized in order to allow distinguishing individual words. Finally, we filter out stop words of the German language.</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/jgmill/4ce0cab852d0e599a5f700af2a998c37.js"></script>
 <p><strong>Some more preparation</strong></p>
 <p>A few more preparatory steps are required before the actual training: As a first step, a list of the <strong>m</strong> unique words appearing in the set of documents has to be compiled. This is called the  vocabulary. Similarly, a list of of the documents is needed. In our case, these are the <strong>n</strong> aggregated corpora of Facebook posts of every candidate and the political parties.</p>
 <p>For every training iteration, one document is sampled from the corpus and from that document, a word window or context is selected randomly.</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/jgmill/b84e33ac74de8bae4dc369b5ace27794.js"></script>
 <p>In order to explain the internal structure, we need to get a clear understanding of the PV-DBOW workflow:</p>
-<!-- raw HTML omitted -->
+<img src="/blog/img/seminar/topic_models/networkstructure.png">
 <p><strong>Input Layer</strong></p>
 <p>The input vector <strong>d</strong> is a one-hot encoded list of paragraph IDs of length <strong>n</strong>, with a node turning into 1 when the supplied ID matches the selected document.</p>
 <p><strong>Hidden layer</strong></p>
@@ -222,27 +226,28 @@
 <p>After the training, <strong>D</strong> will constitute a lookup matrix for the candidates, containing weights for the paragraph vector <strong>e</strong> (standing for embeddings). The latter will contain the estimated features of every document.</p>
 <p><strong>Output layer</strong></p>
 <p>In the output layer, the matrix <strong>U</strong> projects the paragraph vector <strong>e</strong> to the output activation vector <strong>k</strong> which contains <strong>m</strong> rows, representing the words in vocabulary. <strong>U</strong> has dimension <strong>m__x__p</strong> and is initialized randomly similar to <strong>D</strong>.</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/jgmill/d5d8fdf62d350cc634fd87da7cd0bca3.js"></script>
 <p><strong>Softmax</strong></p>
 <p>The process of predicting the words from the context given the supplied paragraph ID is done through a multiclass classifier called softmax, which provides a probability distribution over the words for an input document.</p>
 <p><strong>k</strong> is then passed to the softmax function in order to obtain __t__^, the vector of the predicted probabilities of each word in the vocabulary to appear in the document</p>
-<!-- raw HTML omitted -->
+<img style=" width:20%;display:block;margin:0 auto;" src="/blog/img/seminar/topic_models/softmax.png">
 <p><strong>Backpropagation and cross-entropy</strong></p>
 <p>In the last step, the softmax probabilities <strong>t^</strong> are compared with the actual words from the selected context. We can compute the cross entropy loss function, which sums up the products of the component-wise logarithm of <strong>t^</strong> and the actual one-hot encoded vectors <strong>t</strong>. Since <strong>t</strong> is zero for the words outside the context, only the prediction error for the context word is taken into account.</p>
-<p><!-- raw HTML omitted --></p>
+<p><img style=" width:25%;display:block;margin:0 auto;"
+src="/blog/img/seminar/topic_models/lossfunction.png"></p>
 <p>The goal of the SGD is then to gradually reduce the loss function, minimizing the resulting difference with every iteration.</p>
 <p>The gradients of the loss function on the  matrices <strong>D</strong> and <strong>U</strong> will tell us how we need to update the weights that connect the neurons in order to reduce the loss function. They are obtained by taking the derivative of <strong>E</strong> with regard to the components of matrices <strong>D</strong> and <strong>U</strong>. For Skip-gram, \textcite{rong_word2vec_2014} shows how we need to update the weights by passing the prediction error back through the network, which cab be adapted to PV-DBOW as well. We therefore compute the output prediction error <strong>o</strong> of length <strong>m</strong> by substracting <strong>t</strong> from <strong>t^</strong> and the error from the embedding layer <strong>h</strong> by projecting <strong>o</strong> into the embedding space by means of right-multiplying it onto <strong>U&rsquo;</strong>.</p>
 <p>The errors are computed for each of the <strong>c</strong> words in the given context and summed up before passing them back through the network. The sum of the output errors is right-multiplied with the transposed embedding vector <strong>e&rsquo;</strong> in order to obtain the update values for <strong>U</strong>, while the sum of the embedding-layer errors gets right-multiplied by <strong>d&rsquo;</strong>. Before updating <strong>U</strong> and <strong>D</strong>, the updates are multiplied with learning rate <strong>alpha</strong> which limits how much the weights are adjusted at each step. A common choice is to start with <strong>alpha=0.025</strong>, gradually reducing it to <strong>0.001</strong>.</p>
 <p>The backpropagation concludes the training iteration for one document. Repeating these steps for all documents once would then constitute one epoch.</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/jgmill/e6296db5df46394a23c15f7e8426fd06.js"></script>
 <p><strong>A note on efficiency</strong></p>
 <p>As running softmax on the whole vocabulary would be computationally inefficient, the following techniques are usually considered: hierarchical softmax (indexing the words in vocab) and negative sampling (output layer will contain correct words and only a bunch of incorrect ones to compare to).</p>
 <p><strong>Putting everythin in one loop</strong></p>
 <p>Here, we combine all the steps previously explained in order to complete the training for 1 epoch (or more if you want)</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/jgmill/8aedbef371e7ae5d22881612a2f64140.js"></script>
 <p><strong>Visualisation with t-SNE</strong></p>
 <p>The paragraph vectors contain 100 components, which makes them hard to visualize and compare. A t-Distributed Stochastic Neighbor Embedding (t-SNE)(Maaten, 2008) is a popular technique for dimensionality reduction that is used widely in NLP. The concept follows the paradigm of visualizing similarities as proximity by minimizing an objective function that signifies discrepancies in the initial multidimensional format and final visual representation. Retention of information remains an obvious challenge when reducing the dimensions. t-SNE manages to preserve the clustering of similar components (unlike Principal Component Analysis, which focuses on preserving dissimilar components far apart). The algorithm assigns a probability-based similarity score to every point in high dimensional space, then performs a similar measurement in low dimensional space. Discrepancies between the actual and simplified representations are reflected in different probability scores and get minimized by applying SGD to the Kullback-Leibler divergence function, containing both scores (Kullback, 1951). The &ldquo;t&rdquo; in the name refers to the student distribution that is used instead of the Gaussian distribution when estimating probability scores, as the thicker tails allow to maintain larger distance between the dissimilar points during the score assignment, thus allowing to preserve local structure.</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/jgmill/43fecbedb42be8663f4e7a017656a75d.js"></script>
 <p>As we see, the simple model does not show any pattern among the candidates yet. In the following section, we use the python package gensim which allows run many more trining iterations in less time.</p>
 <h1 id="application-of-doc2vec-in-gensim">Application of doc2vec in gensim</h1>
 <p>we apply <strong>doc2vec</strong> on facebook posts from politicans in the German election 2017</p>
@@ -263,70 +268,70 @@ one post = one doc</p>
 </ul>
 <p>For clarity we omit some of the code here, but you can check out the full code <a href="https://gist.github.com/panoptikum/d3023bc7619814fcea5235e0f472052c">here</a>. Due to the copyrights of Facebook we cannot provide the data set here.</p>
 <p>If you want to use the interactive plotly library in your jupyter notebook, you have to put the following lines at the beginning of your notebook:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/b534310edb163cf48e5681d26b1ee8e3.js"></script>
 <p>Some other libraries are needed as well:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/e3a6774155c2e93e64f253d5faf2e1ad.js"></script>
 <p>we set our working, data and model directory:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/31d6fbf4ea29fd80c307812dcd7d041e.js"></script>
 <p>we load the data that we&rsquo;ve cleaned a bit before (e.g. removal of facebook posts without text):</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/6afdf5ce59b0b6b7ec1f6fe8c2766065.js"></script>
 <p>Party names are a quite distinctive pattern, so we remove them beforehand:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/cc4c3f5371a7c0fac944edf04dd687b5.js"></script>
 <p>this code chunk tokenizes and tags each posts with the candidate&rsquo;s name:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/17f05f9dfc26f48575540fda76e26ffd.js"></script>
 <p>doc2vec has a fast version which we activate with the following code:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/0dc7ca4687141448c1ca5480983ee25b.js"></script>
 <h2 id="doc2vec-model">doc2vec model</h2>
 <p>sets the parameters of the models:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/40cab8f6435e9b57998b9e312fd54950.js"></script>
 <p>builds the vocabulary once and transfer it to all models:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/f0d9a839ce1025bd5402430e411c795b.js"></script>
 <p>to be able to call the models by their name we use an ordered dictionary:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/cc038f4c7351ee12c27882a0318151d7.js"></script>
 <h3 id="training-the-models">training the models</h3>
 <p>here you can set the epochs of your choice. For debugging reasons We only ran one value of epochs at a time and not several:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/f41b2745cfc74986d2ae1542f8ce514e.js"></script>
 <p>We recommend to save the models for later use and if you test a set of parameters:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/6b8b40298c2f8b6afe4304872fb31d40.js"></script>
 <h3 id="a-look-on-the-resulting-embeddings">a look on the resulting embeddings</h3>
 <p>To do some graphical analysis or to compute something with the model, we need candidate specific data such as party affiliation:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/103fe5b5085929e1881a2965d177291e.js"></script>
 <p>next we define some colors for the parties that we can identify the candidates in our graphs later on. Furthermore, we create an array that contains the party leaders that we can use a different shape for them. We do the same for the Party accounts:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/39fae3bdab4058d97085abe8765b5c43.js"></script>
 <h4 id="plots">plots</h4>
 <p>now we need the plotly graphic library and some other libraries. In addition, we load our trained models of PV-DM and PV-DBOW with 20 epochs:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/095f4daab1d97b5745722f5147e7bd0c.js"></script>
 <p>you can compare the models directly with each other, if you create a subplot. The following code chunks does this job, access the candidate embeddings (vector) reduces the dimensionality them to two dimensions and plots them:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/c7e3db70799548b1c33e5daab8ddafc3.js"></script>
 <p>let&rsquo;s finally look at the candidate embeddings (vectors) mapped into two dimensions:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/ca40fcf7c0da73c829ce6b58f9ce161f.js"></script>
 <p>In the graph below every point represents a candidate. You can hover over one to get the name of the candidate. Parties are drawn as squares and leader of parties as hexagons:</p>
-<!-- raw HTML omitted -->
+<iframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~Stipe/122.embed"></iframe>
 <p>The following analysis is based on the PV-DBOW with 20 epochs well, but was equally applied to the 11 models as well.</p>
 <h4 id="is-a-candidate-most-similiar-to-own-or-different-party">Is a candidate most similiar to own or different party?</h4>
 <p>We are interested in whether a candidate is most similar to her own party or not according to the model. In order to determine this, we compute the cosine similarity between a candidate with each party and consider the party sharing the highest similarity with the candidate most similar. Be aware that the embeddings of the model may not present the actual semantic relationships between candidates and parties:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/342e67f72a0fa59c6dc8357d4b5bd6e9.js"></script>
 <p>Now we have a pandas data frame that contains the similarities of one candidate with all parties and a column that indicates which party is most similar:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/05d41932a8c71e888afa994e4482665f.js"></script>
 <h5 id="how-many-candidates-are-most-similar-to-their-own-party">How many candidates are most similar to their own party?</h5>
 <p>Let&rsquo;s do a quick crosstab in order to obtain a number of candidates for each possible pair:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/a9b5ee047fce3588f785c65a4540b7d0.js"></script>
 <h5 id="whats-the-average-similarity-of-candidates-from-one-party">What&rsquo;s the average similarity of candidates from one party?</h5>
 <p>Another interesting way to examine the models is to compute the average similarity of all candidates from one party to the semantic of their own party and to the other parties. We calculate this part with the following code chunk:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/7c6b893f1653d4730271c3c452219c4e.js"></script>
 <p>The resulting table looks as follows:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/7b7dc5ce0a88a8092f2ef0a6448a7131.js"></script>
 <h5 id="model-comparison">Model comparison</h5>
 <p>Yes, we do not know the actual semantics of the politicians&rsquo; Facebook posts, but we may assume that candidates use similar rhetorics like their party as a whole and share less rhetorics with other parties. If we compute the average of the diagonal elements and the average of the off-diagonal elements, we capture these two dimensions. The different of the the two means tells us how good the model captures the two dimensions:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/fca5cfbbfa8e5006c0c91633b36a63d4.js"></script>
 <p>We calculated this difference for all 12 models and we received the following results. You see that an increase in epochs do not change this metric significantly beyond 20 epochs:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/09c58895fdbf299f015c703776b5885c.js"></script>
 <h1 id="playing-around-with-the-model">Playing around with the model</h1>
 <p>In reference to the famous king-queen example in the doc2vec literature, we test whether the models capture similar analogies. If we subtract &lsquo;Frau&rsquo; from &lsquo;Bundskanzlerin&rsquo; and add &lsquo;Mann&rsquo; to it, we receive &lsquo;martinschulz&rsquo; in the results. The similarity which the resulting vector shares with the word is rather weak:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/b169f1984641b19c72f637bd8af0a5aa.js"></script>
 <h2 id="similar-words">similar words</h2>
 <p>Another nice feature is the fact that you can obtain the most similar word vectors for a word vector. We queried the model for several words that are shown next:</p>
-<!-- raw HTML omitted -->
+<script src="https://gist.github.com/panoptikum/0ff36e31f32d835131d909d37cbac09a.js"></script>
 <h1 id="the-end">The end</h1>
 <p>If you made it till here, you have digested a lot of information, well done! We hope that our introduction to doc2vec gives you a better understanding of how PV-DBOW works. We would be happy, if you feel encouraged to apply doc2vec to some data on your own.</p>
 

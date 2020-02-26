@@ -428,7 +428,7 @@ all in one place.</p>
        x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Predicted Label&#34;</span>) <span style="color:#f92672">+</span>
   <span style="color:#a6e22e">theme_minimal</span>()
 p
-</code></pre></div><!-- raw HTML omitted -->
+</code></pre></div><img align="center" width="800" height="400" src="/blog/img/seminar/nn_fundamentals/img/wrong_predictions.jpeg">
 <h2 id="deploy-to-heroku">Deploy to Heroku</h2>
 <p>We are finally ready for the last step: deploy our API on the web so anyone with an Internet connection can have access to it.</p>
 <p>There are many options on the market to accomplish that. We chose to use <a href="https://www.heroku.com/">Heroku</a> here because it is very simple and it allows us to deploy our API for free (at least until it reaches a certain limit of resource consumption).</p>
@@ -472,8 +472,8 @@ git push --set-upstream heroku master
 <p>In our case, our app was deployed to <code>https://flask-digit-classifier.herokuapp.com/</code>. You can run all the test we implemented before (both with the browser and with R) simply by changing <code>http://localhost:5000/</code> for your newly deployed app&rsquo;s URL.</p>
 <h2 id="shiny-app">Shiny App</h2>
 <p>Whew! We hope you made thus far. As a surprise we have developed a slightly more sophisticated client for our API. We created a Shiny App to help you visualize how the model makes its predictions and where it falls short.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<img align="center" width="800" height="400" src="/blog/img/seminar/nn_fundamentals/img/shiny-app-digit-recognition.png">
+<!-- ![Shiny App for Digit Recognition](/blog/img/seminar/nn_fundamentals/img/shiny-app-digit-recognition.png) -->
 <p>Here you have links for:</p>
 <ul>
 <li><strong>Shiny App</strong>: <a href="https://denismaciel.shinyapps.io/digit-classification">https://denismaciel.shinyapps.io/digit-classification</a></li>

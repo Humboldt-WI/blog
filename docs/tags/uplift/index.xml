@@ -17,7 +17,10 @@
       <pubDate>Sun, 18 Aug 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/applied_predictive_modeling_19/multiple_treatments_uplift/</guid>
-      <description>Applications of Causal Inference for Marketing: Estimating Treatment Effects for multiple Treatments Authors: Jan Krol and Matthias Becher Table of Contents  Introduction Common Marketing Challenges Models 3.1 Decision Trees Rzepakowski &amp;amp; Jaroszewicz 3.1.1 Basic Rzepakowski &amp;amp; Jaroszewicz 3.1.2 Simple Splitting Criterion 3.2 Causal Tree and Causal Forest 3.3 Separate Model  Evaluation Methods4.1 Uplift Curves4.2 Expected Outcome Experimental Setup  Results Outlook References  1. Introduction  Nowadays marketing practitioners face a multitude of challenges.</description>
+      <description>Applications of Causal Inference for Marketing: Estimating Treatment Effects for multiple Treatments Authors: Jan Krol and Matthias Becher Table of Contents  Introduction
+ Common Marketing Challenges
+ Models  3.1 Decision Trees Rzepakowski &amp;amp; Jaroszewicz  3.1.1 Basic Rzepakowski &amp;amp; Jaroszewicz  3.1.2 Simple Splitting Criterion  3.2 Causal Tree and Causal Forest  3.3 Separate Model  Evaluation Methods
+4.1 Uplift Curves 4.2 Expected Outcome Experimental Setup  Results Outlook References  1.</description>
     </item>
     
     <item>

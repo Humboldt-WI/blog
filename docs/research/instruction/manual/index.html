@@ -178,7 +178,7 @@
 
                         <div id="post-content">
                           <p>The Website of the Institute of Information Systems is based on a framework called Hugo. Hugo is a static website generator, which allows us to easily present your content of your deep learning projects. In order to present results in the best way, we combine this tool with another tool called Gist. Within this documentation you will learn how to work with those tools.
-<!-- raw HTML omitted -->
+<br>
 The manual is composed of following sections:</p>
 <h5 id="1-getting-started-installation-of-hugo-framework">1. Getting Started: Installation of Hugo framework</h5>
 <h5 id="2-getting-started-github">2. Getting Started: Github</h5>
@@ -186,39 +186,72 @@ The manual is composed of following sections:</p>
 <h5 id="4-how-to-create-a-blog-post-with-markdown">4. How to create a blog post with Markdown</h5>
 <h5 id="5-code-integration-tool-gist">5. Code Integration Tool: Gist</h5>
 <p>Besides this manual, we also created a <a href="https://humboldt-wi.github.io/blog/research/instruction/00samplepost/">sample post</a> based on materials from group NN Fundamentals for your reference.
-<!-- raw HTML omitted --></p>
+<br></p>
 <h2 id="1-getting-started-installation-of-hugo-framework-1">1) Getting Started: Installation of Hugo framework</h2>
 <p>Hugo offers a good manual on how to install all the necessary files depending on which operating system you use. Follow these links:</p>
-<!-- raw HTML omitted -->
+<br>
+https://gohugo.io/getting-started/installing/
+<br>
+<br>
 <p>After a successful installation, you can download the complete content of the website via Github in step 2).
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br>
+<br></p>
 <h2 id="2-getting-started-github-1">2) Getting Started: Github</h2>
-<!-- raw HTML omitted -->
+<br>
+All of the data that is used by hugo to build the website is stored in our Github repository. Use the following link:
+<br>
+<br>
+https://github.com/Humboldt-WI/blog
+<br>
+<br>
 <p>In order to contribute to the blog, we ask you to please:</p>
 <ul>
 <li>Fork the repository (create a copy on your account)</li>
 <li>Clone the repository (create a copy of the files on your computer)</li>
 <li>Save all your post and images in the corresponding folders</li>
 <li>Create a pull request
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></li>
+<br>
+<br></li>
 </ul>
 <p>If you need help forking the repository, follow this link:
 <a href="https://help.github.com/articles/fork-a-repo/">https://help.github.com/articles/fork-a-repo/</a>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<br>
+<br>
 Once you have all the files of the website on you local device, you will learn how to use Hugo to build, change and develop your blog post.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br>
+<br></p>
 <h2 id="3-hugo-basics-1">3) Hugo Basics</h2>
-<!-- raw HTML omitted -->
+<br>
+Open your git bash (if it isn’t already open) and make sure you are in the correct folder. In this case the folder should be called ``blog`` and what you should see should look like the following folder structure.
+<br>
+<br>
+```
+blog
+├── .git
+├── archetypes
+├── config.toml
+├── content
+├── data
+├── layouts
+├── static
+└── themes
+```
+<br>
+<br>
+With the following command, you are building your Hugo website in draft mode and are able to view it in your browser, while it is still running on a local host
+<br>
+<br>
+```
+hugo server -D
+```
+<br>
+<br>
 <p>The following code tells you that your web server is available at
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<br>
+<br>
 http://localhost:1313/blog/
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br>
+<br></p>
 <pre><code>$ hugo server -D
 Started building sites ...
 
@@ -239,44 +272,95 @@ Serving pages from memory
 Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
 Web Server is available at 127.0.0.1:1313 (bind address 127.0.0.1)
 Press Ctrl+C to stop
-</code></pre><!-- raw HTML omitted -->
+</code></pre><br>
+<br>
+Quit this running process with ``Ctrl + C``, if you are done or want to restart building the website. The later can be necessary after inserting folders or images.
 <p>Not every folder is relevant for you as an editor (Hugo of course needs all of them, so do not delete the other ones). If you are only interested in creating a blog post, then you only have to be concerned about <code>content</code> and <code>static</code>. If you are curious for information about all of the folders follow this link. If not, just continue reading.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<br>
+<br>
 <a href="https://gohugo.io/getting-started/directory-structure/">https://gohugo.io/getting-started/directory-structure/</a>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<br>
+<br>
 <code>content</code> as the name says is where the files are stored for each site of the overall website. Hugo works with html code that can be exported from jupyter notebooks directly and with markdown files, which you will learn in more detail in 4).</p>
 <p>When working with Hugo it is essential to know where which information is stored. Within the content folder, you can see two folders and two markdown files. The folders represent a group of sites. The mardown files represent a single site of the website. From these files, Hugo is building the menu of the website.</p>
 <p>File structure of the content folder:
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br>
+<br></p>
 <pre><code>content
 ├── member
 ├── news
 ├── research
 ├── contact.md
 └── contributors.md
-</code></pre><!-- raw HTML omitted -->
+</code></pre><br>
+<br>
 <p>Website Look:
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
-<p><!-- raw HTML omitted --></p>
-<!-- raw HTML omitted -->
+<br>
+<br></p>
+<p><img style=" width:800px;display:block;margin:0 auto;"
+src="/blog/img/manual/website.png"></p>
+<br>
+<br>
+Going deeper, within the folder ``research`` you can find corresponding pages that present results of the chair of information systems. We distinguish here between work that has been conducted within the seminar and work outside of the seminar, i.e. as a results of dissertations. At the current time the later folder is empty and is only a proposal.
+<br>
+<br>
+```
+content
+├── member
+├── news
+├── research
+│   ├── _index.md
+│   ├── seminar
+│   └── instruction
+├── contact.md
+└── contributors.md
+```
+<br>
+<br>
+Within the seminar folder you can find markdown files already created for your respective topics.
+<br>
+<br>
+```
+research
+├── _index.md
+├── seminar
+│   ├── 01NeuralNetworkFundamentals.md
+│   ├── 02ConvolutionalNeuralNetworks.md
+│   ├── 03ImageAnalysis.md
+│   ├── 04TopicModels.md
+│   ├── 05SentimentAnalysis.md
+│   ├── 06FinancialTime Series.md
+│   ├── 07ImageCaptioning.md
+│   └── 08Recommendation.md
+└── instruction
+```
+<br>
+<br>
+Website look:
+<br>
+<br>
+<p><img style=" width:800px;display:block;margin:0 auto;"
+src="/blog/img/manual/seminar_folder.png"></p>
+<br>
+<br>
+From an marketing point of view it is good to make use of the following features:
 <ul>
 <li>Visually appealing images that fit well to the content of the post</li>
 <li>Catchy headlines that create curiosity about the subject</li>
 <li>Adding tags to refer to certain topics (just like hashtags)</li>
 </ul>
-<!-- raw HTML omitted -->
+<br>
+## 4) How to create a blog post
+<br>
+You can use any text editor to edit your html or Markdown file. If you create a html file, you will need to copy the Markdown header
+below to the beginning of your document.
+(I personally use Atom. Some packages, such as Markdown Writer and Markdown Preview, make it easier to write Markdown.)
 <p>Here you can find a simple guide of Markdown syntax:
 <a href="https://guides.github.com/features/mastering-markdown/">Mastering Markdown</a></p>
 <p>As we mentioned in the last section, we have already created a draft for each group in the seminar folder.
 Once opening your draft, you will see the header as following:
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br>
+<br></p>
 <pre><code>+++
 title = &quot;Sample Post&quot;
 date = '2017-12-14'
@@ -287,7 +371,11 @@ author = &quot;Class of Winter Term 2017 / 2018&quot;
 disqusShortname = &quot;https-wisample-github-io-blog&quot;
 description = &quot; A Sample Post&quot;
 +++
-</code></pre><!-- raw HTML omitted -->
+</code></pre><br>
+<br>
+Although we have pre-defined some of the variables in the header, there are many variables you still need to customize.
+<br>
+<b>Varibles that have to be customized:</b>
 <ul>
 <li><code>author</code> Use the class description as the author here and state your individual names at the beginning of your blog post.</li>
 <li><code>date</code>
@@ -296,26 +384,27 @@ The time you publish your post; should follow the format <code>'YYYY-MM-DD'</cod
 One sentence description of your post</li>
 <li><code>banner</code>A image represents your topic the most; will show up in the content list page; details see below</li>
 </ul>
-<p><!-- raw HTML omitted -->Varibles that can be modified:<!-- raw HTML omitted --></p>
+<p><b>Varibles that can be modified:</b></p>
 <ul>
 <li><code>title</code>
 The title of your post.</li>
 <li><code>tags</code>
 We have predined tags for each topic. You can add or change some, if you feel neccessary.</li>
 </ul>
-<p><!-- raw HTML omitted -->Varibles don&rsquo;t need to be modified:<!-- raw HTML omitted --></p>
+<p><b>Varibles don&rsquo;t need to be modified:</b></p>
 <ul>
 <li><code>categories</code></li>
 <li><code>disqusShortname</code></li>
 </ul>
-<!-- raw HTML omitted -->
+<br>
+#### How to customize the banner and other images in your post:
 <p>You can see the variable <code>banner</code> displays as following in the header:</p>
 <pre><code>banner = &quot;img/seminar/sample/hu-logo.jpg&quot;
 </code></pre><p>In order to customize the banner, you should change the path <code>img/seminar/hu-logo.jpg</code></p>
 <p>All images are saved under the <code>static</code> section.
 We have created image folders for each group in the <code>seminar</code> folder under <code>static</code>.</p>
 <p>File structure of the static folder:
-<!-- raw HTML omitted --></p>
+<br></p>
 <pre><code>static
 └── img
     ├── banner
@@ -335,8 +424,18 @@ We have created image folders for each group in the <code>seminar</code> folder 
     ├── sign
     ├── team
     └── teaching
-</code></pre><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+</code></pre><br>
+All the pictures in your blog post should be saved in the corresponding folder.
+<br>
+Thus, the ``banner`` should be modified as
+``
+banner = "img/seminar/your_group_folder/your_image.jpg"
+``
+in the header.
+<br>
+<br> 
+#### Some highlights of Markdown Syntax
+<br>
 <h4 id="headlines">Headlines</h4>
 <p>Formatting headlines is very easy. By using &lsquo;#&rsquo; you can adjust the order of your headline. Check out the following example:</p>
 <pre><code>
@@ -352,31 +451,53 @@ We have created image folders for each group in the <code>seminar</code> folder 
 <h4 id="h4">H4</h4>
 <h5 id="h5">H5</h5>
 <h6 id="h6">H6</h6>
-<!-- raw HTML omitted -->
+<br>
+<br>
 <h4 id="image">Image</h4>
 <p>In order to embed images in the markdown file, you should do the following:
-<!-- raw HTML omitted --></p>
+<br></p>
 <pre><code>![](/blog/img/seminar/your_group_folder/your_image.jpg)
 
 </code></pre><p>Slightly different from the <code>banner</code>, you also have to include <code>/blog</code> before the path <code>/img</code>.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<br>
+<br>
 For example:
-<!-- raw HTML omitted --></p>
+<br></p>
 <pre><code>![example](/blog/img/seminar/sample/hu-logo.jpg)
-</code></pre><!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+</code></pre><br>
+<br>
+![example](/blog/img/seminar/sample/hu-logo.jpg)
+<br>
+<br>
+You can use HTML to control the size and alignment of the image
+<br>
+<br>
+```
+![hu logo]<img align="center" width="200" height="200" src="/blog/img/seminar/sample/hu-logo.jpg">
+```
 <p>&lt;img style=&rdquo; width:800px;display:block;margin:0 auto;&rdquo; src=&rdquo;/blog/img/seminar/sample/hu-logo.jpg&rdquo;</p>
-<!-- raw HTML omitted -->
+<br>
+<br>
+<img align="center" width="200" height="200" src="/blog/img/seminar/sample/hu-logo.jpg">
+<br>
+<br>
+<br>
+<br>
+We also recommend to add some more style information:
 <pre><code>&lt;img align=&quot;center&quot; width=&quot;200&quot; height=&quot;200&quot;
      style=&quot;display:block;margin:0 auto;&quot; 
 	 src=&quot;/blog/img/seminar/sample/hu-logo.jpg&quot;&gt;
-</code></pre><!-- raw HTML omitted -->
+</code></pre><br>
+<br>
+<br>
+<img align="center" width="200" height="200"
+     style="display:block;margin:0 auto;" 
+	 src="/blog/img/seminar/sample/hu-logo.jpg">
 <h4 id="blank-line">Blank Line</h4>
 <p>To add blank line within texts, you can simply add <code>&lt;br&gt;</code> in your file.</p>
 <p>For example:
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br>
+<br></p>
 <pre><code>##### Inspect the Data
 It seems like all the elements of our neural network structure are ready. Can we use this structure to tackle the problem?
 Let's take a look at our data.
@@ -386,16 +507,17 @@ Let's take a look at our data.
 &lt;br&gt;
 &lt;br&gt;
 ##### Fit draft of the NN to the Data
-</code></pre><!-- raw HTML omitted -->
+</code></pre><br>
+<br>
 <blockquote>
 <h5 id="inspect-the-data">Inspect the Data</h5>
 <p>It seems like all the elements of our neural network structure are ready. Can we use this structure to tackle the problem?
 Let&rsquo;s take a look at our data.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<br>
+<br>
 1,2,3,4,5
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br>
+<br></p>
 <h5 id="fit-draft-of-the-nn-to-the-data">Fit draft of the NN to the Data</h5>
 </blockquote>
 <p>There is a lot more syntax when it comes to markdown files. Our goal is to only give you some basics to start off.
@@ -403,8 +525,8 @@ For more about markdown syntax, please follow the links:</p>
 <p><a href="https://guides.github.com/features/mastering-markdown/">Mastering Markdown</a></p>
 <p><a href="https://daringfireball.net/projects/markdown/">Markdown Syntax</a></p>
 <p><a href="https://en.wikipedia.org/wiki/Markdown">https://en.wikipedia.org/wiki/Markdown</a>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted --></p>
+<br>
+<br></p>
 <h2 id="5-code-integration-tool-gist-1">5) Code Integration Tool: Gist</h2>
 <p>Exporting the Jupyter Notebook into Gist involves the following steps:</p>
 <ol>
@@ -413,19 +535,23 @@ For more about markdown syntax, please follow the links:</p>
 <li>Copy the content</li>
 <li>Paste the content into Gist (remember to include the .ipynb extension in the filename)</li>
 </ol>
-<p>You also can use <!-- raw HTML omitted -->the Unofficial Jupyter Notebook Extensions<!-- raw HTML omitted --> to create Gist automatically.
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<p>You also can use <b>the Unofficial Jupyter Notebook Extensions</b> to create Gist automatically.
+<br>
+<br>
 More details here:
 <a href="http://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions/gist_it/readme.html">jupyter-contrib-nbextensions</a></p>
 <p>The nice thing about Gist is its easy integration into the blog post.
 The Gist can be embedded in the Markdown file by only one line of code:
-<!-- raw HTML omitted --></p>
+<br></p>
 <pre><code>&lt;script src=&quot;https://gist.github.com/HsueanL/7356b55ef381ee05012c798be0c6ef2a.js&quot;&gt;&lt;/script&gt;
-</code></pre><!-- raw HTML omitted -->
+</code></pre><br>
+It looks like:
+<br>
+<br>
+<script src="https://gist.github.com/HsueanL/7356b55ef381ee05012c798be0c6ef2a.js"></script>
 <p>To better understand how Markdown and Gist work, you can further check the <a href="https://humboldt-wi.github.io/blog/research/instruction/00samplepost/">sample post</a>.
 The Markdown files for this post and the sample post are saved in the instrucion folder.
-<!-- raw HTML omitted --></p>
+<br></p>
 <pre><code>content
 ├── member
 ├── news
@@ -437,12 +563,17 @@ The Markdown files for this post and the sample post are saved in the instrucion
 │       └──Manual.md
 ├── contact.md
 └── contributors.md
-</code></pre><!-- raw HTML omitted -->
+</code></pre><br>
+### Finally
+##### Out best practice that we would like to recommend looks like this:
+Write a multiple theoretical parts. In between these parts use helpful images to underline your theory / formula and so on. 
 <p>Create multiple Gist boxes instead of only one and fit them at the right places within you post. This way the reader will find a diversified and entertaining articles.</p>
 <h5 id="note-that-there-are-no-limits-to-create-blog-posts-be-creative-use-whatever-you-like-to-make-it-as-interesting-as-possible">Note that there are no limits to create blog posts. Be creative, use whatever you like to make it as interesting as possible!</h5>
 <h4 id="lets-go">Let&rsquo;s Go!</h4>
-<!-- raw HTML omitted -->
-
+<br>
+<br>
+<iframe src="https://giphy.com/embed/5ntdy5Ban1dIY" width="480" height="463" frameBorder="0"      style="display:block;margin:0 auto;" 
+ class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/coding-5ntdy5Ban1dIY">via GIPHY</a></p>
                         </div>
                         
                         

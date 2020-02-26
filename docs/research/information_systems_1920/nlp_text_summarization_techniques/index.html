@@ -177,14 +177,65 @@
                         <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Seminar Information Systems (WS 19/20)</a> | February 6, 2020</p>
 
                         <div id="post-content">
-                          <!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+                          <style>
+    table.display{
+    margin-bottom: 25px;
+    margin-top: 25px;
+
+
+    }
+    th.display,td.display {
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+    text-align: left;
+    }
+    tr.display:hover {background-color: #f5f5f5;}
+
+.gist {
+    width: 100%;
+    overflow: auto;
+}
+
+.gist .blob-wrapper.data {
+    max-height: 350px;
+    overflow: auto;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* Create two equal columns that floats next to each other */
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
+
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+img.formula{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+</style>
 <h1 id="state-of-the-art-summarisation-techniques">State of the Art Summarisation Techniques</h1>
 <h2 id="_generating-headlines-as-short-summaries-of-text_"><em>Generating Headlines as Short Summaries of Text</em></h2>
 <hr>
 <p><em>Information Systems Seminar 19/20</em></p>
-<p><strong>Anna Franziska Bothe</strong> <!-- raw HTML omitted -->
-<strong>Alex Truesdale</strong> <!-- raw HTML omitted -->
+<p><strong>Anna Franziska Bothe</strong> <br/>
+<strong>Alex Truesdale</strong> <br/>
 <strong>Lukas Kolbe</strong></p>
 <h2 id="abstract">Abstract</h2>
 <p>This project combines two NLP use cases: generation of text summaries (in the form of short news headlines) and classification of a given article as containing or not containing political / economic uncertainty. The two approaches are joined by generating a set of new headlines alternative to the original headlines for each article in the given article set. The two headlines are then compared in their performance as inputs in a classification model. While the high-level exercise here is to examine the information value of news headlines in this classification task, the bulk of this blog post examines more closely the inner workings of sequence-to-sequence text modeling in the context of summary generation. The seq2seq model produced in this post, even in a relatively basic form, successfully generates coherent headlines for many of the articles provided. While not every single generated headline is of high quality, there are numerous examples where the headline fits the contents of the article quite well. In general, longer inputs to the model produce better output than short inputs, even though they undergo more thorough text cleaning in pre-preparation (i.e. removal of overly common or rare words).</p>
@@ -366,7 +417,87 @@
 </ul>
 <p>Lastly, rare words and exceedingly common words are removed from both headlines and body text based on word count with thresholds set independently for body text and headlines. This reduces the number of words in the model vocabulary, reducing computation time and complexity, while increasing the chance that the model will be able learn each word&rsquo;s context. With the inclusion of very rare words, the model might have trouble understanding their meaning, not having enough word occurrences to observe. In source papers, an article vocabulary size of 50.000 is recommended as a suitable intersection between maintaining vocabulary density and sufficiently trimming uncommon words. In this case, that results in a removal of 90% of unique tokens (or &lsquo;words&rsquo;). The threshold for headlines was chosen as a more conservative application of similar logic, as the headline is the target in the seq2seq model – rather than removing 90% of the headline vocabulary, 60% is removed.</p>
 <p><strong>The measures described above result in the following word distributions.</strong></p>
-<!-- raw HTML omitted -->
+<table class="display">
+<tbody><tr class="display">
+  <td colspan="2" height="107" width="350" class="display">
+      <b>Word occurrences in Articles</b><br>
+    Total words: 508.657<br>
+    Less than 60 occurrences: 558.693<br>
+    Remaining words: 55.126<br><br>
+   <i>Removing 90\% of words</i></td>
+  <td colspan="2" width="350" class="display"><b>Word
+  occurrences in Headlines</b><br>
+    Total words: 59.841<br>
+    Less than 8 occurrences: 37.691<br>
+    Remaining words: 22.150<br><br>
+    <i>Removing 60\% of words</i></td>
+ <tr class="display">
+  <td class="display">said</td>
+  <td class="display">1.647.581</td>
+  <td class="display">new</td>
+  <td class="display">15.097</td>
+ </tr>
+ <tr class="display">
+  <td class="display">year</td>
+  <td class="display">572.948</td>
+  <td class="display">tax</td>
+  <td class="display">7.708</td>
+ </tr>
+ <tr class="display">
+  <td class="display">new</td>
+  <td class="display">556.554</td>
+  <td class="display">economy</td>
+  <td class="display">7.603</td>
+ </tr>
+ <tr class="display">
+  <td class="display">percent</td>
+  <td class="display">525.136</td>
+  <td class="display">obama</td>
+  <td class="display">7.258</td>
+ </tr>
+ <tr class="display">
+  <td class="display">people</td>
+  <td class="display">436.461</td>
+  <td class="display">says</td>
+  <td class="display">7.035</td>
+ </tr>
+ <tr class="display">
+  <td class="display">years</td>
+  <td class="display">420.477</td>
+  <td class="display">state</td>
+  <td class="display">6.695</td>
+ </tr>
+ <tr class="display">
+  <td class="display">state</td>
+  <td class="display">408.316</td>
+  <td class="display">plan</td>
+  <td class="display">6.353</td>
+ </tr>
+ <tr class="display">
+  <td class="display">million</td>
+  <td class="display">336.585</td>
+  <td class="display">jobs</td>
+  <td class="display">6.043</td>
+ </tr>
+ <tr class="display">
+  <td class="display">economic</td>
+  <td class="display">332.319</td>
+  <td class="display">city</td>
+  <td class="display">5.995</td>
+ </tr>
+ <tr class="display">
+  <td class="display">time</td>
+  <td class="display">330.871</td>
+  <td class="display">big</td>
+  <td class="display">5.437</td>
+ </tr>
+ <tr class="display">
+  <td class="display">president</td>
+  <td class="display">323.103</td>
+  <td class="display">economic</td>
+  <td class="display">5.056</td>
+ </tr>
+</tbody></table>
 <p>As final preparation of input texts for their use in modeling, standardised article and headline lengths must be determined. This is because neural networks require a fixed-length input sequence. In the figure below, the distributions of article lengths (frame 1) and that of headlines (frame 3) are plotted to help in selecting these standard values. Frame 2 shows the distribution of article length for trimmed articles, which will be explained in the next section.</p>
 <figure><a href="/blog/img/seminar/is1920_group9/article_length.png">
     <img src="/blog/img/seminar/is1920_group9/article_length.png"
@@ -458,7 +589,58 @@ The model in this blog differs in that it uses two bi-directional Gated Recurren
 <script type="application/javascript" src="https://gist.github.com/lukekolbe/c074f9e84809f9b84a96bb57f88373d1.js"></script>
 
 <p>Below are 10 output examples drawn from the model output data frame:</p>
-<!-- raw HTML omitted -->
+<table class="display">
+  <tr class="display">
+    <th class="display">Article (first 20 tokens)</th>
+    <th class="display">Original headline</th>
+    <th class="display">Generated headline</th>
+  </tr>
+  <tr class="display">
+    <td class="display"> sweltering afternoon july affordable housing advocates religious leaders new jerseys influential officials arrived mount laurel celebration years making legislature gov corzine </td>
+    <td class="display">affordable housing advocates now calling for delays in nj</td>
+    <td class="display">affordable housing bill is a step in affordable housing</td>
+  </tr>
+  <tr class="display">
+    <td class="display">bankruptcy largely matter semantics know going going bankruptcy outside bankruptcy system benefit courts maryann keller written auto industry decades end day </td>
+    <td class="display">detroit prepare for big changes automakers future paved with pain </td>
+    <td class="display">detroit automakers face tough road to bankruptcy </td>
+  </tr>
+  <tr class="display">
+    <td class="display">confessed pension wars conjure watchdog nerdy high school chemistry teacher terrific crush chant changes half life aloud unison talking radioactivity course</td>
+    <td class="display">pension promises can be altered lawyer says</td>
+    <td class="display">pension reform should be a better way</td>
+  </tr>
+  <tr class="display">
+    <td class="display">chilean dictator gen augusto pinochet target numerous human rights prosecutions suffered heart attack early yesterday morning hospitalized stable condition controversial year</td>
+    <td class="display">pinochet hospitalized after heart attack the former chilean dictator surgeries he is been the target of human rights prosecutions</td>
+    <td class="display">former fed official gets a second term</td>
+  </tr>
+  <tr class="display">
+    <td class="display">minimum wage argue job killer raises costs employers dramatic minimum wage increase solution relieve poverty karen bremer executive director georgia restaurant </td>
+    <td class="display">recession sharpens ga wage war </td>
+    <td class="display">low wage workers are not working </td>
+  </tr>
+  <tr class="display">
+    <td class="display">black gowns square caps wide smiles seniors graduated month bridgewater state college massachusetts appeared perfect slice america lot graduates women men </td>
+    <td class="display">more women graduate why </td>
+    <td class="display">where is the college of the american dream</td>
+  </tr>
+  <tr class="display">
+    <td class="display">today mothers day days miss calendar good son daughter hectic weeks noteworthy moments slipped past finished national awareness day national postal </td>
+    <td class="display">sorry moms no grand proclamation for you</td>
+    <td class="display">our opinion letters readers respond to the editor for march </td>
+  </tr>
+  <tr class="display">
+    <td class="display">great shellacking throw democratic congressional staffers jobs send thousands gleeful republican staffer wannabes overdrive resumes hill fill vacancies envelope look numbers </td>
+    <td class="display">all the unemployed democrats will the soup kitchens have enough</td>
+    <td class="display">for the gop job a chance to be a good thing </td>
+  </tr>
+  <tr class="display">
+    <td class="display">years ago according april edition granite city press record morning remained unemployed relief fund thursday mark end aid granite citys destitute </td>
+    <td class="display">this week in granite city area history </td>
+    <td class="display">st louis county gets million in second quarter </td>
+  </tr>
+</table>
 <h2 id="model-results--performance">Model Results &amp; Performance</h2>
 <p>To measure the quality of the generated headlines, two popular evaluation metrics are applied: ROUGE &amp; BLEU. With human evaluation being costly and slow, both of these metrics are designed to efficiently evaluate computer-generated texts and compare the similarity of the generated summary to the reference summary, each method scoring similarity between 0 and 1. The closer the score is to 0, the less similar the summaries are. A score of 1 represents a perfect match between summaries. [8][10]</p>
 <p>For this application, evaluation of unigrams is most reasonable and produces the most reliable results; it is less likely to have matching n-grams with n $&gt;$ 1 plus correct word order in very short summaries (in contrast to long summaries). For the following, all concepts and formulas will be explained in the context of unigrams.</p>
@@ -480,13 +662,59 @@ The model in this blog differs in that it uses two bi-directional Gated Recurren
 </ul>
 <p>All measures with n-grams with n $&gt;$ 1 are sensitive to word order.</p>
 <p>Very short summaries are penalized by dividing the number of overlapping words by the total number of words in the reference summary (see ROUGE-1$_{recall}$ score).</p>
-<!-- raw HTML omitted -->
+<table class="display" ><tbody>
+  <tr class="display">
+    <th class="display">ID</th>
+    <th class="display">Reference summary</th>
+    <th class="display">Generated summary</th>
+    <th class="display">ROUGE-1<sub>recall</sub></th>
+  </tr>
+  <tr class="display">
+    <td class="display">A</td>
+    <td class="display">the grey mouse eats a piece of apple in the house</td>
+    <td class="display">the mouse eats</td>
+    <td class="display">0.27</td>
+  </tr>
+  <tr class="display">
+    <td class="display">B</td>
+    <td class="display">the mouse eats</td>
+    <td class="display">the grey mouse eats a piece of apple in the house</td>
+    <td class="display">1</td>
+  </tr>
+</tbody>
+</table>
 <p>Recall does not penalize very short summaries, though. In case of ID B, the ROUGE-1$_{recall}$ score results in a perfect match which means that the reference and generated summaries are identical. However, by having a look at the example ID B, this is obviously not the case. Therefore, it is always necessary to consider a second metric: precision, which is computed as follows:</p>
 <p>\begin{equation}
 \frac{\mathrm{Number \ of \ overlapping \ words}}{\mathrm{Total \ number \ of \ words \ in \ generated \ summary}}
 \end{equation}</p>
 <p>Precision captures the extent to which the content of the generated summary is actually needed. The precision and recall scores are combined by the F$_{1}$-score which is the harmonic mean of both results. [8][9]</p>
-<!-- raw HTML omitted -->
+<table class="display"><tbody>
+  <tr class="display">
+    <th class="display" width="4%">ID</th>
+    <th class="display" width="30%">Reference summary</th>
+    <th class="display" width="30%">Generated summary</th>
+    <th class="display" width="12%">ROUGE-1<sub>recall</sub></th>
+    <th class="display" width="14%">ROUGE-1<sub>precision</sub></th>
+    <th class="display" width="10%">F<sub>1</sub>-score</th>
+  </tr>
+  <tr class="display">
+    <td class="display">A</td>
+    <td class="display">the grey mouse eats a piece of apple in the house</td>
+    <td class="display">the mouse eats</td>
+    <td class="display">0.27</td>
+    <td class="display">1</td>
+    <td class="display">0.43</td>
+  </tr>
+  <tr class="display">
+    <td class="display">B</td>
+    <td class="display">the mouse eats</td>
+    <td class="display">the grey mouse eats a piece of apple in the house</td>
+    <td class="display">1</td>
+    <td class="display">0.27</td>
+    <td class="display">0.43</td>
+  </tr>
+</tbody>
+</table>
 <p>If the length of the reference summary is not penalized, this results in a perfect match (see precision result of ID A) because all words of the generated summary occur in the reference summary. In this case, the precision score receives too much weight. For this reason, in the evaluation of the above model&rsquo;s generated headlines, the F$_{1}$-score of ROUGE-1 is used.</p>
 <h3 id="bleu">BLEU</h3>
 <p>BLEU (Bilingual Evaluation Understudy) is a precision-based evaluation metric. It was originally developed for machine translation evaluation. The precision score is computed as presented in the introduction to ROUGE. The number of overlapping words is divided by the total number of words of the generated (not reference, like in the case of ROUGE recall) summary. Analogous to ROUGE, the BLEU metric counts matching unigrams of the generated summary in comparison to the reference summary. The specific position of the words in each summary is not important.</p>
@@ -529,10 +757,117 @@ BLEU = BP * exp(log \ p)
 \end{equation}</p>
 <h3 id="evaluation-results">Evaluation Results</h3>
 <p>The ROUGE and BLEU evaluation output as well as headline results with the given scores are shown and discussed below:</p>
-<!-- raw HTML omitted -->
+<table class="display"><tbody>
+  <tr class="display">
+    <th class="display"></th>
+    <th class="display">ROUGE-1</th>
+    <th class="display">BLEU</th>
+  </tr>
+  <tr class="display">
+    <td class="display">Min. / Max.</td>
+    <td class="display">0/1</td>
+    <td class="display">0/1</td>
+  </tr>
+  <tr class="display">
+    <td class="display">Mean</td>
+    <td class="display">0.10912</td>
+    <td class="display">0.09002</td>
+  </tr>
+  <tr class="display">
+    <td class="display">Median</td>
+    <td class="display">0.09091</td>
+    <td class="display">0.05936</td>
+  </tr>
+</tbody>
+</table>
 <p>Reminder: for both methods, the evaluation scores are based on unigrams. In average the mean of ROUGE scores is somewhat higher than that of BLEU scores. In contrast, the median is 0.03155 lower and thereby deviates from the mean by 0.84084. This indicates that BLEU has some outlier scores. Additionally, both evaluation metrics show a right-skewed distribution and evaluate some summaries as fully identically (1) and completely different (0).</p>
 <p>Below are some selected results of the text summarisation task. In general, it can be observed that the ROUGE score is mostly greater or equal to the BLEU score which is the result of a less severe evaluation of the ROUGE metric. Since ROUGE divides the matched words by the total number of words of the original summary, it sometimes has a lower evaluation score than BLEU if the generated summary is shorter than the original.</p>
-<!-- raw HTML omitted -->
+<table class="display">
+  <tr class="display">
+    <th class="display">ID</th>
+    <th class="display">Original</th>
+    <th class="display">Generated</th>
+    <th class="display">Score ROUGE</th>
+    <th class="display">Score BLEU</th>
+  </tr>
+  <tr class="display">
+    <td class="display">1</td>
+    <td class="display">state representative district democrat</td>
+    <td class="display">state representative district democrat</td>
+    <td class="display">1</td>
+    <td class="display">1</td>
+  </tr>
+  <tr class="display">
+    <td class="display">2</td>
+    <td class="display">general mills to cut more jobs</td>
+    <td class="display">general mills to cut jobs</td>
+    <td class="display">0.8333333</td>
+    <td class="display">0.8187308</td>
+  </tr>
+  <tr class="display">
+    <td class="display">3</td>
+    <td class="display">at and t to purchase t mobile</td>
+    <td class="display">gm and t to buy t mobile</td>
+    <td class="display">0.6666667</td>
+    <td class="display">0.7142857</td>
+  </tr>
+  <tr class="display">
+    <td class="display">4</td>
+    <td class="display">your views letters to the editor feb</td>
+    <td class="display">letters to the editor may</td>
+    <td class="display">0.5714286</td>
+    <td class="display">0.5362560</td>
+  </tr>
+  <tr class="display">
+    <td class="display">5</td>
+    <td class="display">romney to stress foreign policy</td>
+    <td class="display">foreign policy foreign policy</td>
+    <td class="display">0.40000000</td>
+    <td class="display">0.3894004</td>
+  </tr>
+  <tr class="display">
+    <td class="display">6</td>
+    <td class="display">the iraq war will cost us trillion and much more</td>
+    <td class="display">myths about iraq war</td>
+    <td class="display">0.2000000</td>
+    <td class="display">0.1115651</td>
+  </tr>
+  <tr class="display">
+    <td class="display">7</td>
+    <td class="display">turning up the heat on climate issue years ago a degree day illustrated scientists warning</td>
+    <td class="display">climate change is a hot issue</td>
+    <td class="display">0.2000000</td>
+    <td class="display">0.1115651</td>
+  </tr>
+  <tr class="display">
+    <td class="display">8</td>
+    <td class="display">editorial rio olympics tainted by dark clouds darker waters</td>
+    <td class="display">rio rio rio and the rio of the rio</td>
+    <td class="display">0.1111111</td>
+    <td class="display">0.1111111</td>
+  </tr>
+  <tr class="display">
+    <td class="display">9</td>
+    <td class="display">clean energy is inevitable</td>
+    <td class="display">letters to the editor letters to the editor</td>
+    <td class="display">0</td>
+    <td class="display">0</td>
+  </tr>
+  <tr class="display">
+    <td class="display">10</td>
+    <td class="display">existing plan for mercury pollution should work well</td>
+    <td class="display">clean air is a good thing</td>
+    <td class="display">0</td>
+    <td class="display">0</td>
+  </tr>
+  <tr class="display">
+    <td class="display">11</td>
+    <td class="display">joblessness worse here than year ago</td>
+    <td class="display">unemployment in region is percent in the month</td>
+    <td class="display">0</td>
+    <td class="display">0</td>
+  </tr>
+</table>
 <p>The model produces summaries that are nearly identical to the original summary (IDs 1 &amp; 2), while also producing some that are nonsensical (ID 9). However, the model also produces good summaries that are not evaluated as such because the evaluation metrics search for equal words and words of semantic similarity. Take, for example, the words <code>joblessness</code> and <code>unemployment</code> (ID 11). Furthermore, sometimes the content is very similar even though the sentence structure (and length) deviates quite a bit (ID 7 &amp; 10). Especially interesting from a headline research perspective are the plausible shifts in headline content such as in example ID 6.</p>
 <p>In the beginning of this blog, the idea was introduced that headlines might be sensational in nature for the purpose of drawing attention, while not providing actual information, necessarily. The model produced in this case generates its predictions based on article content (though, worth noting, evaluated using the original headlines). Ideally, this means that the model was sufficiently trained to be informative rather than sensational. Take again ID 6 as an example: the original headline of is &ldquo;The Iraq war will cost us trillion and much more&rdquo;. The model in this post model summed up the article as &ldquo;Myths about Iraq war&rdquo;. In this case, manual examination of the article content is required to evaluate whether this is an exceptional summary or one that fails to capture the content of the related news story.</p>
 <p>Note as well the following two cases in the results table above: some summaries contain falsely exchanged names or single letters (ID 3 &amp; 4), and some contain repetitions of words (ID 5 &amp; 8). In the final section of this post, Potential Enhancements, these and other problems will be discussed.</p>
@@ -554,7 +889,21 @@ BLEU = BP * exp(log \ p)
 
 <p>Run 3 times with the above-3 input combinations, the resulting AUC values are produced and displayed in the table below:</p>
 <h4 id="classifier-auc-scores">Classifier AUC Scores</h4>
-<!-- raw HTML omitted -->
+<table class="display"><tbody>
+  <tr class="display">
+    <th class="display">Model</th>
+    <th class="display">Original Headlines</th>
+    <th class="display">Generated Headlines</th>
+    <th class="display">No Headlines</th>
+  </tr>
+  <tr class="display">
+    <td class="display">AUC</td>
+    <td class="display">0.9546</td>
+    <td class="display">0.9369</td>
+    <td class="display">0.9434</td>
+  </tr>
+</tbody>
+</table>
 <p>These results show that the seq2seq generation model could not provide inputs that improve the classifier but rather decrease the AUC (and thereby the model&rsquo;s efficacy). The implication here is that the headlines produced by the generation model actually introduce noise into the data set. There are several possible causes of this:</p>
 <p>Firstly, during the cleaning and preparation process, choices regarding the optimal fixed length of headlines and articles have to be made. Here, it is a trade off between information loss, introducing noise, and computational resources. While the decision in this stage was made with confidence, further testing with more bracketing of values (akin to some kind of manual grid search) would be ideal.</p>
 <p>At a higher level, it is worth considering that the original headlines, used as targets in training the language (seq2seq) model, contained a degree of bias that limits the degree to which the newly generated headlines can break free from this suspected paradigm – that is, that human-produced headlines generally seek to draw attention at the expense of carrying valuable information about the article. This hypothesis can be discounted to some degree, however, as the AUC results for article text + original headlines proved to be the best of the three iterations. This in mind, the coming section on model enhancements provides indications of the next steps to take before running a similar experiment with an improved language model.</p>
@@ -565,7 +914,26 @@ BLEU = BP * exp(log \ p)
 <p>Beam search improves the quality of the decoder network, a pointer-generator network improves the accuracy of the model&rsquo;s performance, and the coverage layer helps to avoid token repetition in generated summaries.</p>
 <h3 id="increase-efficiency-beam-search">Increase Efficiency: Beam Search</h3>
 <p>At each time step, the decoder network calculates the probability distribution of the occurrence of the next word in the sequence. Then, it selects the token with the greatest probability. This is greedy search. Greedy search, however, does not consider the probabilities of words in subsequent time steps and thus may fail in producing the best overall output by being too &lsquo;near-sighted&rsquo;. [7]</p>
-<!-- raw HTML omitted -->
+<div class="row">
+  <div class="column">
+      <figure><a href="/blog/img/seminar/is1920_group9/GreedySearch.png">
+    <img src="/blog/img/seminar/is1920_group9/GreedySearch.png"
+         alt="Figure 10: Greedy Search considers one possibility per time step – Image Source: [6] O. Ni 2019 (adapted)" width="350"/> </a><figcaption>
+            <p><em>Figure 10: Greedy Search considers one possibility per time step – Image Source: [6] O. Ni 2019 (adapted)</em></p>
+        </figcaption>
+</figure>
+
+  </div>
+  <div class="column">
+<figure><a href="/blog/img/seminar/is1920_group9/BeamSearch.png">
+    <img src="/blog/img/seminar/is1920_group9/BeamSearch.png"
+         alt="Figure 11: With a beam width of 2, beam search considers 2 possibilities per time step – Image Source: [6] O. Ni 2019 (adapted)" width="350"/> </a><figcaption>
+            <p><em>Figure 11: With a beam width of 2, beam search considers 2 possibilities per time step – Image Source: [6] O. Ni 2019 (adapted)</em></p>
+        </figcaption>
+</figure>
+
+  </div>
+</div>
 <p>Because greedy search only considers a subset of the data, it does not recognize that the BBB branch is overall a better choice than the ABB branch. For the most part, beam search solves this problem by considering several paths simultaneously at each time step. The number of paths is defined by the beam width b, which can be chosen accordingly in respect to what is known about the data at hand.</p>
 <p>The choice between greedy- and beam search is a trade off between accuracy of prediction and computation time. Depending on the complexity of the data, it is not possible to check all possible paths. A beam search with b = 1 is equal to greedy search. [6]</p>
 <h3 id="increase-accuracy-pointer-generator-network">Increase Accuracy: Pointer-Generator Network</h3>

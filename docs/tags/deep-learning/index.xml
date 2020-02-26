@@ -57,9 +57,7 @@ Table of Contents   Introduction  Peer Review Process Motivation    Descriptive 
       <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/nlp_text_summarization_techniques/</guid>
-      <description>State of the Art Summarisation Techniques Generating Headlines as Short Summaries of Text  Information Systems Seminar 19/20
-Anna Franziska Bothe Alex Truesdale Lukas Kolbe
-Abstract This project combines two NLP use cases: generation of text summaries (in the form of short news headlines) and classification of a given article as containing or not containing political / economic uncertainty. The two approaches are joined by generating a set of new headlines alternative to the original headlines for each article in the given article set.</description>
+      <description>table.display{ margin-bottom: 25px; margin-top: 25px; } th.display,td.display { border-bottom: 1px solid #ddd; padding: 5px; text-align: left; } tr.display:hover {background-color: #f5f5f5;} .gist { width: 100%; overflow: auto; } .gist .blob-wrapper.data { max-height: 350px; overflow: auto; } * { box-sizing: border-box; } /* Create two equal columns that floats next to each other */ .column { float: left; width: 50%; padding: 10px; } /* Clear floats after the columns */ .row:after { content: &#34;</description>
     </item>
     
     <item>
@@ -115,7 +113,8 @@ Table of Contents:  Introduction Literature Review Descriptive Analysis of the D
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/group4_ulmfit/</guid>
-      <description>Universal Language Model Fine-Tuning (ULMFiT) State-of-the-Art in Text Analysis  Authors: Sandra Faltl, Michael Schimpke &amp;amp; Constantin Hackober Table of Contents   Introduction  Literature Review and Motivation Inductive Transfer Learning Our Datasets Overview ULMFiT    General-Domain Language Model Pretraining  Word Embeddings Example of a Forward Pass through the LM Preparations for Fine-Tuning  Matching Process for the Embedding Matrix Variable Length Backpropagation Sequences Adam Optimizer Dropout      Target Task Language Model Fine-Tuning  Freezing Learning Rate Schedule Discriminative Fine-Tuning    Target Task Classifier  Concat Pooling Linear Decoder Gradual Unfreezing Benchmarks Example of a Forward Pass through the Classifier    Our Model Extension  Results Without Vocabulary Reduction    Conclusion  Reference List  1.</description>
+      <description>Universal Language Model Fine-Tuning (ULMFiT) State-of-the-Art in Text Analysis  Authors: Sandra Faltl, Michael Schimpke &amp;amp; Constantin Hackober 
+Table of Contents   Introduction  Literature Review and Motivation Inductive Transfer Learning Our Datasets Overview ULMFiT    General-Domain Language Model Pretraining  Word Embeddings Example of a Forward Pass through the LM Preparations for Fine-Tuning  Matching Process for the Embedding Matrix Variable Length Backpropagation Sequences Adam Optimizer Dropout      Target Task Language Model Fine-Tuning  Freezing Learning Rate Schedule Discriminative Fine-Tuning    Target Task Classifier  Concat Pooling Linear Decoder Gradual Unfreezing Benchmarks Example of a Forward Pass through the Classifier    Our Model Extension  Results Without Vocabulary Reduction    Conclusion  Reference List  1.</description>
     </item>
     
     <item>
@@ -142,7 +141,7 @@ Table of Contents:  Introduction Literature Review Descriptive Analysis of the D
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/03imageanalysis/</guid>
-      <description>Image Analysis: Introduction to deep learning for computer vision Authors: Nargiz Bakhshaliyeva, Robert Kittel In this blog, we present the practical use of deep learning in computer vision. You will see how Convolutional Neural Networksare being applied to process the visual data, generating some valuable knowledge. In particular, we focused on the object recognition task, aiming to classify what kind of an object (a dog or a cat) is presented within a particular image by using the notion of Transfer Learning.</description>
+      <description>Image Analysis: Introduction to deep learning for computer vision Authors: Nargiz Bakhshaliyeva, Robert Kittel In this blog, we present the practical use of deep learning in computer vision. You will see how Convolutional Neural Networks are being applied to process the visual data, generating some valuable knowledge. In particular, we focused on the object recognition task, aiming to classify what kind of an object (a dog or a cat) is presented within a particular image by using the notion of Transfer Learning.</description>
     </item>
     
     <item>
@@ -160,7 +159,11 @@ Table of Contents:  Introduction Literature Review Descriptive Analysis of the D
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/05sentimentanalysis/</guid>
-      <description>Sentiment Analysis using Deep Learning Authors: Katja Metzger, Aydin Sader Fosalaie, Ninos Yonan Outline   Sentiment Analysis Introduction    Case Study  Keras IMDB Dataset Data Analysis Word Embeddings Convolutional Neural Network    Summary    Sentiment Analysis Introduction Sentiment analysis is a very beneficial approach to automate the classification of the polarity of a given text. A helpful indication to decide if the customers on amazon like a product or not is for example the star rating.</description>
+      <description>Sentiment Analysis using Deep Learning Authors: Katja Metzger, Aydin Sader Fosalaie, Ninos Yonan Outline   Sentiment Analysis Introduction    Case Study  Keras IMDB Dataset
+ Data Analysis
+ Word Embeddings
+ Convolutional Neural Network
+    Summary    Sentiment Analysis Introduction Sentiment analysis is a very beneficial approach to automate the classification of the polarity of a given text. A helpful indication to decide if the customers on amazon like a product or not is for example the star rating.</description>
     </item>
     
     <item>
@@ -169,7 +172,7 @@ Table of Contents:  Introduction Literature Review Descriptive Analysis of the D
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1718/08recommendation/</guid>
-      <description>Recommendation Systems Authors: Jingyi Liu, Brijesh Nanavati, Bharathi Srinivasan The explosion of information with the advent of the Internet and the multitude of choices available to customers introduces complexity in a customer’s decision processes. Recommender system is a useful information-filtering tool, which guides customers to a narrower selection of products and consequently helps them make better decisions. Matching users to the right products saves customers time and effort leading to increased user satisfaction, which in turn earns customer loyalty.</description>
+      <description>Recommendation Systems Authors: Jingyi Liu, Brijesh Nanavati, Bharathi Srinivasan ## **Introduction** The explosion of information with the advent of the Internet and the multitude of choices available to customers introduces complexity in a customer’s decision processes. Recommender system is a useful information-filtering tool, which guides customers to a narrower selection of products and consequently helps them make better decisions. Matching users to the right products saves customers time and effort leading to increased user satisfaction, which in turn earns customer loyalty.</description>
     </item>
     
     <item>
@@ -207,7 +210,7 @@ A very common way to accomplish that is by using an API.</description>
       
       <guid>https://humboldt-wi.github.io/blog/research/instruction/00samplepost/</guid>
       <description>TEST #hugo
-import numpy as np import pandas as pd 2+3 A Gentle Introduction to Neural Network Fundamentals There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.</description>
+import numpy as np import pandas as pd 2+3 A Gentle Introduction to Neural Network Fundamentals  #### Imagine the following problem: There are handwritten numbers that you want computer to correctly clasify. It would be an easy task for a person but an extremely complicated one for a machine, especially, if you want to use some traditional prediction model, like linear regression. Even though the computer is faster than the human brain in numeric computations, the brain far outperforms the computer in some tasks.</description>
     </item>
     
   </channel>
