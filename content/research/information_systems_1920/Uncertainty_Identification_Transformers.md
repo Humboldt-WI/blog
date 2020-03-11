@@ -50,10 +50,6 @@ description ="Identification of Economic Uncertainty from Newspaper Articles Usi
 # 1. Introduction <a class="anchor" id="introduction"></a>
 
 Within the past week, Brexit happened. The U.S. primaries for the next presidential election started. Donald Trump continues to fight for reelection while being acquitted in an impeachment trial. From events like these, economic policy uncertainty rises and households and firms take actions with wider impacts. To better analyze and predict these sentiments of economic policy uncertainty, Baker et al. (2016) built an economic policy uncertainty index. They analyzed whether newspaper articles contained references to economic policy uncertainty - but did so with a relatively simple search term and 12,000 human-labeled articles. Recently, much more complex classification algorithms have emerged in natural language processing (NLP). Researchers in the field are developing new and better language models at an unprecedented speed (Sanh 2019a). Applying these new state of the art models could improve current methods and replace manual labeling tasks for indices such as the economic policy uncertainty index, but also find widespread application in business and other fields. In this project, we want to test this: we apply new transformer models from the BERT-family to improve the current method of binary text classification in the context of economic policy uncertainty. We find that all of our models achieve remarkable results in classifying the given newspaper data (AUC's ranging from 0.87-0.90), with RoBERTa achieving the best results compared to BERT, DistilBERT, and ALBERT (as well as the non-transformer benchmarks). This indicates that the models are well equipped to take over tasks that researchers have previously solved in less optimal ways. To illustrate this finding, this blog post is organized as follows: in section [2. Motivation and Literature](#motivation) we give context on the case study of economic policy uncertainty, followed by [3. Theoretical Background](#theory) where we present and explain how transformers and specifically the four states of the art BERT-models work. In [4. Application to Economic Policy Uncertainty](#app), we demonstrate the implementation of the BERT-models to our case study and present the results. Finally, we highlight important considerations and take-aways in section [5. Further Discussion](#discussion). 
-<<<<<<< HEAD
-
-=======
->>>>>>> f0bc4aa316b6a7ba8a9846a3f51053e2498bf623
 
 # 2. Motivation and Literature <a class="anchor" id="motivation"></a>
 
@@ -61,21 +57,8 @@ Economic policy uncertainty can have substantial effects on the decisions of ind
 
 The EPU index stems from analyzing different newspaper articles and the coverage of topics related to economic uncertainty. In the original methodology, Baker et al. searched 10 major U.S. newspapers from 1985 - 2013 in the papers' digital archives for the keywords "economic" or "economy", "policy" and "uncertain" or "uncertainty". If an article contains all three keywords (and at least one from a list of words related to policy), it is marked as "1" (= it contains economic policy uncertainty). Based on the monthly frequency (accounting for the overall volume of articles in that time span), they create the EPU index. Various different keywords could be included here for customized analyses (which Baker et al. also do for several different policy fields). For example, if a Brexit related EPU index is to be calculated then "brexit" as a keyword could be included and then analyzed. Below is an example of the EPU index for the UK, comparing overall and Brexit-related economic policy uncertainty. The graph, taken from [Baker et al.'s website](https://www.policyuncertainty.com/), allows us to analyze trends and major changes during that time.
 
-
-
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-{{< figure src="/blog/img/seminar/uncertainty_identification/index2.png" width="800" caption="Brexit and Policy Uncertainty. From ,,What is Brexit-Related Uncertainty Doing to United Kingdom Growth?'' 2016. http://www.policyuncertainty.com/brexit.html" >}}
-=======
->>>>>>> f0bc4aa316b6a7ba8a9846a3f51053e2498bf623
 {{< figure src="/blog/img/seminar/uncertainty_identification/index2.png" width="800" caption="Brexit and Policy Uncertainty. From "What is Brexit-Related Uncertainty Doing to United Kingdom Growth?" 2016. http://www.policyuncertainty.com/brexit.html. " >}}
->>>>>>> d05d6864df37ad94347fa84aa000764528db07d0
 
-
-
-\
 Baker et al. (2016)'s approach also involved a human audit study: over an 18-month-period, student-teams manually classified over 12,000 articles for economic policy uncertainty. However, this is a tedious task and such an audit study is not easily replicable.
 With recent advances in the field of NLP in mind, we want to expand this methodology beyond the simple identification of keywords, and replace human classification by reliable, automated methods.
 
@@ -94,15 +77,7 @@ In order to use the best methods possible to identify economic uncertainty in th
 Highly complex convolutional and recurrent neural networks (CNNs and RNNs) achieved the best results in language modeling tasks, before Vaswani et al. (2017) proposed a simpler network architecture. The advantages of this newly born transformer were threefold: (1) it allowed for a parallelization of tasks, (2) resulted in simpler operations, and (3) achieved better results overall. How did Vaswani et al. do this? Their idea was to build a model based on attention mechanisms, which some of the CNNs and RNNs at that time used to connect their encoder and decoder. As the BERT family is built on the transformer architecture and it is helpful to have a basic understanding of it, we devote a short subchapter to the attention-based architecture. For a more in-depth explanation, we recommend taking a look at Jay Alammar's [Illustrated Transformer](http://jalammar.github.io/illustrated-transformer/) or Harvard NLP's [Annotated Transformer](https://nlp.seas.harvard.edu/2018/04/03/attention.html).
  
 ## 3.2 Transformers Architecture <a class=?anchor? id='architecture'></a>
-<<<<<<< HEAD
-=======
 
-
-{{< figure src="/blog/img/seminar/uncertainty_identification/arch.png" caption="Transformers Architecture. Created by Vaswani et al. 2017. From ,,Attention is All You Need.'' http://arxiv.org/abs/1706.03762" >}}
-
-
-
->>>>>>> f0bc4aa316b6a7ba8a9846a3f51053e2498bf623
 
 {{< figure src="/blog/img/seminar/uncertainty_identification/arch.png" caption="Transformers Architecture. Created by Vaswani et al. 2017. From ,,Attention is All You Need.'' http://arxiv.org/abs/1706.03762" >}}
 
