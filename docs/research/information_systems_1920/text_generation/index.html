@@ -14,7 +14,7 @@
   
 
   
-  <meta name="description" content="Blog Post for Seminar Information Systems WS 2019/20">
+  <meta name="description" content="Generating toxic comment text using GPT-2 to improve classification when data for one class is sparse">
   
 
   <meta name="generator" content="Hugo 0.65.3" />
@@ -184,73 +184,94 @@ LatexIT.add('p',true);
 </script>
 </head>
 <h2 id="table-of-contents">Table of Contents</h2>
-<ol>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#exploration">Data Exploration</a></li>
-<li><a href="#prepros1">Data Pre-Processing</a></li>
-<li><a href="#textgen2">Text Generation(1): Language Model - GloVe</a>
-<ol>
-<li><a href="#gloveprep">Further Text Preparation</a></li>
-<li><a href="#glovemodel">Modeling</a></li>
-<li><a href="#glovegen">Generation</a></li>
-</ol>
+<ul>
+<li><a href="#generating-synthetic-comments-to-balance-data-for-text-classification">Generating Synthetic Comments to Balance Data for Text Classification</a>
+<ul>
+<li><a href="#introduction">Introduction <a name="introduction"></a></a></li>
+<li><a href="#data-exploration">Data Exploration <a name="exploration"></a></a></li>
+<li><a href="#data-pre-processing">Data Pre-Processing<a name="prepros1"></a></a></li>
+<li><a href="#text-generation">Text Generation<a name="textgen1"></a></a>
+<ul>
+<li><a href="#language-model---glove">Language Model - GloVe<a name="textgen2"></a></a>
+<ul>
+<li><a href="#further-text-preparation">Further Text Preparation <a name="gloveprep"></a></a></li>
+<li><a href="#modeling">Modeling <a name="glovemodel"></a></a></li>
+<li><a href="#generation">Generation <a name="glovegen"></a></a></li>
+</ul>
 </li>
-<li><a href="#textgen3">Text Generation(2): Language Model - GPT-2</a>
-<ol>
-<li><a href="#gpt2_1">Why GPT-2?</a></li>
-<li><a href="#gpt2_2">What makes GPT-2 so powerful?</a></li>
-<li><a href="#gpt2_3">The Problem of Long-Term Dependencies</a></li>
-<li><a href="#gpt2_4">GPT-2 Architecture</a></li>
-<li><a href="#gpt2_5">How does GPT-2 create text?</a></li>
-<li><a href="#gpt2_6">Input Encoding</a>
-1. <a href="#gpt2_7">Token Embeddings (wte)</a>
-2. <a href="#gpt2_8">Positional Encoding (wpe)</a></li>
-<li><a href="#gpt2_9">GPT-2 - Token Processing Overview</a></li>
-<li><a href="#gpt2_10">Self-Attention Process</a>
-1. <a href="#gpt2_11">Query, Key and Value vector</a>
-2. <a href="#gpt2_12">Splitting into Attention Heads</a>
-3. <a href="#gpt2_13">Scoring</a>
-4. <a href="#gpt2_14">Sum</a></li>
-<li><a href="#gpt2_15">Masked Self-Attention</a></li>
-<li><a href="#gpt2_16">Feed-Forward Neural Network</a></li>
-<li><a href="#gpt2_17">Model Output</a></li>
-</ol>
+</ul>
 </li>
-<li><a href="#bpe">Byte Pair Encoding</a>
-<ol>
-<li><a href="#bpe_intro">BPE Introduction</a></li>
-<li><a href="#bpe_nlp">Byte Pair Encoding in NLP</a></li>
-</ol>
+<li><a href="#language-model-gpt-2">Language Model GPT-2 <a name="textgen3"></a></a>
+<ul>
+<li><a href="#why-gpt-2">Why GPT-2? <a name="gpt2_1"></a></a></li>
+<li><a href="#what-makes-gpt-2-so-powerful">What makes GPT-2 so powerful? <a name="gpt2_2"></a></a></li>
+<li><a href="#the-problem-of-long-term-dependencies">The Problem of Long-Term Dependencies <a name="gpt2_3"></a></a></li>
+<li><a href="#gpt-2-architecture">GPT-2 Architecture <a name="gpt2_4"></a></a></li>
+<li><a href="#how-does-gpt-2-create-text">How does GPT-2 create text? <a name="gpt2_5"></a></a>
+<ul>
+<li><a href="#input-encoding">Input Encoding <a name="gpt2_6"></a></a>
+<ul>
+<li><a href="#token-embeddings-wte">Token Embeddings (wte) <a name="gpt2_7"></a></a></li>
+<li><a href="#positional-encoding-wpe">Positional Encoding (wpe) <a name="gpt2_8"></a></a></li>
+</ul>
 </li>
-<li><a href="#compare">Comparison of Generated Text</a></li>
-<li><a href="#class">Comment Classification Task</a>
-<ol>
-<li><a href="#class_business">Relation to Business Case</a></li>
-<li><a href="#class_approach">Classification Approach</a></li>
-<li><a href="#class_architecture">Classification Architecture</a>
-<ol>
-<li><a href="#class_rnn">RNN Classifier</a></li>
-<li><a href="#class_bow">BOW - Logistic Regression-Classifier</a></li>
-</ol>
+<li><a href="#gpt-2---token-processing-overview">GPT-2 - Token Processing Overview <a name="gpt2_9"></a></a></li>
+<li><a href="#self-attention-process">Self-Attention Process <a name="gpt2_10"></a></a>
+<ul>
+<li><a href="#query-key-and-value-vector">Query, Key and Value vector <a name="gpt2_11"></a></a></li>
+<li><a href="#splitting-into-attention-heads">Splitting into Attention Heads <a name="gpt2_12"></a></a></li>
+<li><a href="#scoring">Scoring <a name="gpt2_13"></a></a></li>
+<li><a href="#sum">Sum <a name="gpt2_14"></a></a></li>
+</ul>
 </li>
-<li><a href="#class_settings">Classification Settings</a>
-<ol>
-<li><a href="#class_imbalanced">(1) Imbalanced</a></li>
-<li><a href="#class_undersampling">(2) Undersampling</a></li>
-<li><a href="#class_glove">(3) Oversampling GloVe</a></li>
-<li><a href="#class_gpt2">(4) Oversampling GPT-2</a></li>
-</ol>
+<li><a href="#masked-self-attention">Masked Self-Attention <a name="gpt2_15"></a></a></li>
+<li><a href="#feed-forward-neural-network">Feed-Forward Neural Network <a name="gpt2_16"></a></a></li>
+<li><a href="#model-output">Model Output <a name="gpt2_17"></a></a></li>
+</ul>
 </li>
-<li><a href="#class_drawbacks">Drawbacks of Oversampling with Generated Text</a></li>
-<li><a href="#class_limitations">Classification Task - Limitations</a></li>
-<li><a href="#class_evaluation">Evaluation</a></li>
-<li><a href="#class_not_sure">Including the &ldquo;Not-Sure&rdquo;-Category</a></li>
-<li><a href="#class_ratios">Different Balancing Ratios for Generated Comments</a></li>
-<li><a href="#class_conclusion">Conclusion and Discussion of Results</a></li>
-</ol>
+</ul>
 </li>
-<li><a href="#ref1">References</a></li>
-</ol>
+</ul>
+</li>
+<li><a href="#byte-pair-encoding">Byte Pair Encoding <a name="bpe"></a></a>
+<ul>
+<li><a href="#byte-pair-encoding---introduction">Byte Pair Encoding - Introduction <a name="bpe_intro"></a></a></li>
+<li><a href="#byte-pair-encoding-for-nlp">Byte Pair Encoding for NLP <a name="bpe_nlp"></a></a></li>
+</ul>
+</li>
+<li><a href="#comparing-generated-text">Comparing Generated Text <a name="compare"></a></a></li>
+<li><a href="#comment-classification-task">Comment Classification Task <a name="class"></a></a>
+<ul>
+<li><a href="#relation-to-business-case">Relation to Business Case <a name="class_business"></a></a></li>
+<li><a href="#classification-approach">Classification Approach <a name="class_approach"></a></a></li>
+<li><a href="#classification-architecture">Classification Architecture <a name="class_architecture"></a></a>
+<ul>
+<li><a href="#rnn-classifier">RNN Classifier <a name="class_rnn"></a></a></li>
+<li><a href="#bow---logistic-regression-classifier">BOW - Logistic Regression-Classifier <a name="class_bow"></a></a></li>
+</ul>
+</li>
+<li><a href="#classification-settings">Classification Settings <a name="class_settings"></a></a>
+<ul>
+<li><a href="#1-imbalanced">(1) Imbalanced <a name="class_imbalanced"></a></a></li>
+<li><a href="#2-undersampling">(2) Undersampling <a name="class_undersampling"></a></a></li>
+<li><a href="#3-oversampling-glove">(3) Oversampling GloVe <a name="class_glove"></a></a></li>
+<li><a href="#4-oversampling-gpt-2">(4) Oversampling GPT-2 <a name="class_gpt2"></a></a></li>
+</ul>
+</li>
+<li><a href="#drawbacks-of-oversampling-with-generated-text">Drawbacks of Oversampling with Generated Text <a name="class_drawbacks"></a></a></li>
+<li><a href="#classification-task---limitations">Classification Task - Limitations <a name="class_limitations"></a></a></li>
+<li><a href="#evaluation">Evaluation <a name="class_evaluation"></a></a></li>
+<li><a href="#including-the-%22not-sure%22-category">Including the &ldquo;Not-Sure&rdquo;-Category <a name="class_not_sure"></a></a></li>
+<li><a href="#different-balancing-ratios-for-generated-comments">Different Balancing Ratios for Generated Comments <a name="class_ratios"></a></a></li>
+<li><a href="#conclusion-and-discussion-of-results">Conclusion and Discussion of Results <a name="class_conclusion"></a></a></li>
+</ul>
+</li>
+<li><a href="#references">References <a name="ref1"></a></a>
+<ul>
+<li><a href="#image-sources">Image Sources</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="generating-synthetic-comments-to-balance-data-for-text-classification">Generating Synthetic Comments to Balance Data for Text Classification</h1>
 <p><strong>Lukas Faulbrück</strong> <br/>
 <strong>Asmir Muminovic</strong> <br/>

@@ -17,7 +17,7 @@
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/text_generation/</guid>
-      <description>LatexIT.add(&#39;p&#39;,true);   Table of Contents  Introduction Data Exploration Data Pre-Processing Text Generation(1): Language Model - GloVe  Further Text Preparation Modeling Generation   Text Generation(2): Language Model - GPT-2  Why GPT-2? What makes GPT-2 so powerful? The Problem of Long-Term Dependencies GPT-2 Architecture How does GPT-2 create text? Input Encoding 1. Token Embeddings (wte) 2. Positional Encoding (wpe) GPT-2 - Token Processing Overview Self-Attention Process 1.</description>
+      <description>LatexIT.add(&#39;p&#39;,true);   Table of Contents  Generating Synthetic Comments to Balance Data for Text Classification  Introduction  Data Exploration  Data Pre-Processing Text Generation  Language Model - GloVe  Further Text Preparation  Modeling  Generation      Language Model GPT-2   Why GPT-2?  What makes GPT-2 so powerful?  The Problem of Long-Term Dependencies  GPT-2 Architecture  How does GPT-2 create text?</description>
     </item>
     
   </channel>
