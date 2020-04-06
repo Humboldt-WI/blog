@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>GRU on Institute of Infomation Systems at HU-Berlin</title>
+    <title>Gru on Institute of Infomation Systems at HU-Berlin</title>
     <link>https://humboldt-wi.github.io/blog/tags/gru/</link>
-    <description>Recent content in GRU on Institute of Infomation Systems at HU-Berlin</description>
+    <description>Recent content in Gru on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 06 Feb 2020 00:00:00 +0000</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/nlp_text_summarization_techniques/</guid>
-      <description>table.display{ margin-bottom: 25px; margin-top: 25px; } th.display,td.display { border-bottom: 1px solid #ddd; padding: 5px; text-align: left; } tr.display:hover {background-color: #f5f5f5;} .gist { width: 100%; overflow: auto; } .gist .blob-wrapper.data { max-height: 350px; overflow: auto; } * { box-sizing: border-box; } /* Create two equal columns that floats next to each other */ .column { float: left; width: 50%; padding: 10px; } /* Clear floats after the columns */ .row:after { content: &#34;</description>
+      <description>table.display{ margin-bottom: 25px; margin-top: 25px; } th.display,td.display { border-bottom: 1px solid #ddd; padding: 5px; text-align: left; } tr.display:hover {background-color: #f5f5f5;} .gist { width: 100%; overflow: auto; } .gist .blob-wrapper.data { max-height: 350px; overflow: auto; } * { box-sizing: border-box; } /* Create two equal columns that floats next to each other */ .column { float: left; width: 50%; padding: 10px; } /* Clear floats after the columns */ .</description>
     </item>
     
     <item>

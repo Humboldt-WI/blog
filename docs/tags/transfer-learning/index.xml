@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Transfer Learning on Institute of Infomation Systems at HU-Berlin</title>
@@ -30,7 +30,7 @@ Introduction Motivation In 2018, a research paper by Devlin et, al. titled “BE
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group11_peer_reviews/</guid>
       <description>Big Peer Review Challenge Asena Ciloglu &amp;amp; Melike Merdan Abstract This blog post studies the first public dataset of scientific peer reviews available for research purposes PeerRead applying state-of-the-art NLP models ELMo and ULMFit to a text classification task [1]. It aims to examine the importance of the peer reviews on paper’s acceptance or rejection decision in well-known conferences of computational linguistics, AI and NLP.
-Table of Contents   Introduction  Peer Review Process Motivation    Descriptive Analytics  A Dataset of Peer Reviews  Approach and Data Extraction   Google Scholarly Data Cleaning Data &amp;amp; Insights    Application  Our Approach  Content-based Classification Review-based Classification Analysis with Auxiliary Data   Transfer Learning and Recent Applications Embedding for Language Models (ELMo)  Methodology  Deep Contextualized Word Representations Model Architecture     Universal Language Model Fine Tuning (ULMFit)  Methodology  General Knowledge Domain Training Target Task Language Model Fine Tuning Target Task Classifier     Support Vector Machine (SVM)    Empirical Results &amp;amp; Conclusion  Results Discussion and Conclusion    Reference List  1.</description>
+Table of Contents  Introduction  Peer Review Process Motivation   Descriptive Analytics  A Dataset of Peer Reviews  Approach and Data Extraction  Google Scholarly Data Cleaning Data &amp;amp; Insights   Application  Our Approach  Content-based Classification Review-based Classification Analysis with Auxiliary Data  Transfer Learning and Recent Applications Embedding for Language Models (ELMo)  Methodology  Deep Contextualized Word Representations Model Architecture   Universal Language Model Fine Tuning (ULMFit)  Methodology  General Knowledge Domain Training Target Task Language Model Fine Tuning Target Task Classifier   Support Vector Machine (SVM)   Empirical Results &amp;amp; Conclusion  Results Discussion and Conclusion   Reference List  1.</description>
     </item>
     
     <item>
@@ -39,8 +39,8 @@ Table of Contents   Introduction  Peer Review Process Motivation    Descriptive 
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/group4_ulmfit/</guid>
-      <description>Universal Language Model Fine-Tuning (ULMFiT) State-of-the-Art in Text Analysis  Authors: Sandra Faltl, Michael Schimpke &amp;amp; Constantin Hackober 
-Table of Contents   Introduction  Literature Review and Motivation Inductive Transfer Learning Our Datasets Overview ULMFiT    General-Domain Language Model Pretraining  Word Embeddings Example of a Forward Pass through the LM Preparations for Fine-Tuning  Matching Process for the Embedding Matrix Variable Length Backpropagation Sequences Adam Optimizer Dropout      Target Task Language Model Fine-Tuning  Freezing Learning Rate Schedule Discriminative Fine-Tuning    Target Task Classifier  Concat Pooling Linear Decoder Gradual Unfreezing Benchmarks Example of a Forward Pass through the Classifier    Our Model Extension  Results Without Vocabulary Reduction    Conclusion  Reference List  1.</description>
+      <description>Universal Language Model Fine-Tuning (ULMFiT) State-of-the-Art in Text Analysis Authors: Sandra Faltl, Michael Schimpke &amp;amp; Constantin Hackober 
+Table of Contents  Introduction  Literature Review and Motivation Inductive Transfer Learning Our Datasets Overview ULMFiT   General-Domain Language Model Pretraining  Word Embeddings Example of a Forward Pass through the LM Preparations for Fine-Tuning  Matching Process for the Embedding Matrix Variable Length Backpropagation Sequences Adam Optimizer Dropout    Target Task Language Model Fine-Tuning  Freezing Learning Rate Schedule Discriminative Fine-Tuning   Target Task Classifier  Concat Pooling Linear Decoder Gradual Unfreezing Benchmarks Example of a Forward Pass through the Classifier   Our Model Extension  Results Without Vocabulary Reduction   Conclusion  Reference List  1.</description>
     </item>
     
     <item>

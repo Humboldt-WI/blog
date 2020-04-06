@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>NLP on Institute of Infomation Systems at HU-Berlin</title>
+    <title>Nlp on Institute of Infomation Systems at HU-Berlin</title>
     <link>https://humboldt-wi.github.io/blog/tags/nlp/</link>
-    <description>Recent content in NLP on Institute of Infomation Systems at HU-Berlin</description>
+    <description>Recent content in Nlp on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 07 Feb 2020 00:00:00 +0000</lastBuildDate>
@@ -31,17 +31,14 @@ Introduction Motivation In 2018, a research paper by Devlin et, al. titled “BE
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/uncertainty_identification_transformers/</guid>
       <description>Economic Uncertainty Identification Using Transformers - Improving Current Methods Authors: Siddharth Godbole, Karolina Grubinska &amp;amp; Olivia Kelnreiter   Table of Contents  Introduction Motivation and Literature Theoretical Background
 3.1 Transformers, BERT and BERT-based Models
-3.2 Transformers Architecture
-3.3 BERT
+3.2 Transformers Architecture 3.3 BERT
 3.4 RoBERTa
 3.5 DistilBERT
-3.6 ALBERT
-3.7 Comparing RoBERTa, DistilBERT and ALBERT Application to Economic Policy Uncertainty
+3.6 ALBERT 3.7 Comparing RoBERTa, DistilBERT and ALBERT Application to Economic Policy Uncertainty
 4.1 Data Exploration
 4.1.1 Data Pre-Processing
 4.1.2 Data Imbalance
-4.2 Models Implementation
-4.2.1 Transformer-Based Models</description>
+4.2 Models Implementation</description>
     </item>
     
     <item>
@@ -50,7 +47,8 @@ Introduction Motivation In 2018, a research paper by Devlin et, al. titled “BE
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/text_generation/</guid>
-      <description>LatexIT.add(&#39;p&#39;,true);   Table of Contents  Generating Synthetic Comments to Balance Data for Text Classification  Introduction  Data Exploration  Data Pre-Processing Text Generation  Language Model - GloVe  Further Text Preparation  Modeling  Generation      Language Model GPT-2   Why GPT-2?  What makes GPT-2 so powerful?  The Problem of Long-Term Dependencies  GPT-2 Architecture  How does GPT-2 create text?</description>
+      <description>LatexIT.add(&amp;lsquo;p&amp;rsquo;,true);  
+Table of Contents  Generating Synthetic Comments to Balance Data for Text Classification  Introduction  Data Exploration  Data Pre-Processing Text Generation Language Model - GloVe  Further Text Preparation  Modeling  Generation   Language Model GPT-2  Why GPT-2?  What makes GPT-2 so powerful?  The Problem of Long-Term Dependencies  GPT-2 Architecture  How does GPT-2 create text?   Input Encoding  Token Embeddings (wte)  Positional Encoding (wpe)  GPT-2 - Token Processing Overview  Self-Attention Process  Query, Key and Value vector  Splitting into Attention Heads  Scoring  Sum  Masked Self-Attention  Feed-Forward Neural Network  Model Output    Byte Pair Encoding   Byte Pair Encoding - Introduction  Byte Pair Encoding for NLP   Comparing Generated Text  Comment Classification Task   Relation to Business Case  Classification Approach  Classification Architecture  RNN Classifier  BOW - Logistic Regression-Classifier  Classification Settings  (1) Imbalanced  (2) Undersampling  (3) Oversampling GloVe  (4) Oversampling GPT-2  Drawbacks of Oversampling with Generated Text  Classification Task - Limitations  Evaluation  Including the &amp;ldquo;Not-Sure&amp;rdquo;-Category  Different Balancing Ratios for Generated Comments  Conclusion and Discussion of Results   References   Image Sources   Generating Synthetic Comments to Balance Data for Text Classification Lukas Faulbrück  Asmir Muminovic  Tim Peschenz</description>
     </item>
     
     <item>
@@ -60,7 +58,7 @@ Introduction Motivation In 2018, a research paper by Devlin et, al. titled “BE
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group11_peer_reviews/</guid>
       <description>Big Peer Review Challenge Asena Ciloglu &amp;amp; Melike Merdan Abstract This blog post studies the first public dataset of scientific peer reviews available for research purposes PeerRead applying state-of-the-art NLP models ELMo and ULMFit to a text classification task [1]. It aims to examine the importance of the peer reviews on paper’s acceptance or rejection decision in well-known conferences of computational linguistics, AI and NLP.
-Table of Contents   Introduction  Peer Review Process Motivation    Descriptive Analytics  A Dataset of Peer Reviews  Approach and Data Extraction   Google Scholarly Data Cleaning Data &amp;amp; Insights    Application  Our Approach  Content-based Classification Review-based Classification Analysis with Auxiliary Data   Transfer Learning and Recent Applications Embedding for Language Models (ELMo)  Methodology  Deep Contextualized Word Representations Model Architecture     Universal Language Model Fine Tuning (ULMFit)  Methodology  General Knowledge Domain Training Target Task Language Model Fine Tuning Target Task Classifier     Support Vector Machine (SVM)    Empirical Results &amp;amp; Conclusion  Results Discussion and Conclusion    Reference List  1.</description>
+Table of Contents  Introduction  Peer Review Process Motivation   Descriptive Analytics  A Dataset of Peer Reviews  Approach and Data Extraction  Google Scholarly Data Cleaning Data &amp;amp; Insights   Application  Our Approach  Content-based Classification Review-based Classification Analysis with Auxiliary Data  Transfer Learning and Recent Applications Embedding for Language Models (ELMo)  Methodology  Deep Contextualized Word Representations Model Architecture   Universal Language Model Fine Tuning (ULMFit)  Methodology  General Knowledge Domain Training Target Task Language Model Fine Tuning Target Task Classifier   Support Vector Machine (SVM)   Empirical Results &amp;amp; Conclusion  Results Discussion and Conclusion   Reference List  1.</description>
     </item>
     
     <item>
@@ -69,7 +67,7 @@ Table of Contents   Introduction  Peer Review Process Motivation    Descriptive 
       <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/nlp_text_summarization_techniques/</guid>
-      <description>table.display{ margin-bottom: 25px; margin-top: 25px; } th.display,td.display { border-bottom: 1px solid #ddd; padding: 5px; text-align: left; } tr.display:hover {background-color: #f5f5f5;} .gist { width: 100%; overflow: auto; } .gist .blob-wrapper.data { max-height: 350px; overflow: auto; } * { box-sizing: border-box; } /* Create two equal columns that floats next to each other */ .column { float: left; width: 50%; padding: 10px; } /* Clear floats after the columns */ .row:after { content: &#34;</description>
+      <description>table.display{ margin-bottom: 25px; margin-top: 25px; } th.display,td.display { border-bottom: 1px solid #ddd; padding: 5px; text-align: left; } tr.display:hover {background-color: #f5f5f5;} .gist { width: 100%; overflow: auto; } .gist .blob-wrapper.data { max-height: 350px; overflow: auto; } * { box-sizing: border-box; } /* Create two equal columns that floats next to each other */ .column { float: left; width: 50%; padding: 10px; } /* Clear floats after the columns */ .</description>
     </item>
     
     <item>
@@ -78,7 +76,7 @@ Table of Contents   Introduction  Peer Review Process Motivation    Descriptive 
       <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/group5_han/</guid>
-      <description>Text Classification with Hierarchical Attention Networks How to assign documents to classes or topics Authors: Maria Kränkel, Hee-Eun Lee - Seminar Information System 18/19  After reading this blog post, you will know:
+      <description>Text Classification with Hierarchical Attention Networks How to assign documents to classes or topics Authors: Maria Kränkel, Hee-Eun Lee - Seminar Information System 18&amp;frasl;19 After reading this blog post, you will know:
  What text classification is and what it is used for What hierarchical attention networks are and how their architecture looks like How to classify documents by implementing a hierarchical attention network  Introduction Imagine you work for a company that sells cameras and you would like to find out what customers think about the latest release.</description>
     </item>
     
@@ -88,8 +86,8 @@ Table of Contents   Introduction  Peer Review Process Motivation    Descriptive 
       <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1819/group4_ulmfit/</guid>
-      <description>Universal Language Model Fine-Tuning (ULMFiT) State-of-the-Art in Text Analysis  Authors: Sandra Faltl, Michael Schimpke &amp;amp; Constantin Hackober 
-Table of Contents   Introduction  Literature Review and Motivation Inductive Transfer Learning Our Datasets Overview ULMFiT    General-Domain Language Model Pretraining  Word Embeddings Example of a Forward Pass through the LM Preparations for Fine-Tuning  Matching Process for the Embedding Matrix Variable Length Backpropagation Sequences Adam Optimizer Dropout      Target Task Language Model Fine-Tuning  Freezing Learning Rate Schedule Discriminative Fine-Tuning    Target Task Classifier  Concat Pooling Linear Decoder Gradual Unfreezing Benchmarks Example of a Forward Pass through the Classifier    Our Model Extension  Results Without Vocabulary Reduction    Conclusion  Reference List  1.</description>
+      <description>Universal Language Model Fine-Tuning (ULMFiT) State-of-the-Art in Text Analysis Authors: Sandra Faltl, Michael Schimpke &amp;amp; Constantin Hackober 
+Table of Contents  Introduction  Literature Review and Motivation Inductive Transfer Learning Our Datasets Overview ULMFiT   General-Domain Language Model Pretraining  Word Embeddings Example of a Forward Pass through the LM Preparations for Fine-Tuning  Matching Process for the Embedding Matrix Variable Length Backpropagation Sequences Adam Optimizer Dropout    Target Task Language Model Fine-Tuning  Freezing Learning Rate Schedule Discriminative Fine-Tuning   Target Task Classifier  Concat Pooling Linear Decoder Gradual Unfreezing Benchmarks Example of a Forward Pass through the Classifier   Our Model Extension  Results Without Vocabulary Reduction   Conclusion  Reference List  1.</description>
     </item>
     
   </channel>

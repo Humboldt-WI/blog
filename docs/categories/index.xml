@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Institute of Infomation Systems at HU-Berlin</title>
@@ -6,13 +6,12 @@
     <description>Recent content in Categories on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://humboldt-wi.github.io/blog/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Course projects</title>
+      <title>Course Projects</title>
       <link>https://humboldt-wi.github.io/blog/categories/course-projects/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
@@ -21,7 +20,7 @@
     </item>
     
     <item>
-      <title>instruction</title>
+      <title>Instruction</title>
       <link>https://humboldt-wi.github.io/blog/categories/instruction/</link>
       <pubDate>Mon, 19 Feb 2018 00:00:00 +0000</pubDate>
       
