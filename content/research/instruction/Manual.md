@@ -7,6 +7,7 @@ banner = "img/seminar/sample/hu-logo.jpg"
 author = "Class of Winter Term 2017 / 2018"
 disqusShortname = "https-humbodt-wi-github-io-blog"
 description = " A Manual on How To Write a Blog Post"
+hide = true
 +++
 
 The Website of the Institute of Information Systems is based on a framework called Hugo. Hugo is a static website generator, which allows us to easily present your content of your deep learning projects. In order to present results in the best way, we combine this tool with another tool called Gist. Within this documentation you will learn how to work with those tools.
