@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Institute of Infomation Systems at HU-Berlin</title>
@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Albert</title>
+      <title>ALBERT</title>
       <link>https://humboldt-wi.github.io/blog/tags/albert/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
@@ -21,56 +21,11 @@
     </item>
     
     <item>
-      <title>Attention</title>
-      <link>https://humboldt-wi.github.io/blog/tags/attention/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/attention/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Awd Lstm</title>
-      <link>https://humboldt-wi.github.io/blog/tags/awd-lstm/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/awd-lstm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Bayesian Deep Learning</title>
-      <link>https://humboldt-wi.github.io/blog/tags/bayesian-deep-learning/</link>
-      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/bayesian-deep-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Bayesian Topic Modelling</title>
-      <link>https://humboldt-wi.github.io/blog/tags/bayesian-topic-modelling/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/bayesian-topic-modelling/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Bert</title>
+      <title>BERT</title>
       <link>https://humboldt-wi.github.io/blog/tags/bert/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/bert/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Bilm</title>
-      <link>https://humboldt-wi.github.io/blog/tags/bilm/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/bilm/</guid>
       <description></description>
     </item>
     
@@ -84,51 +39,6 @@
     </item>
     
     <item>
-      <title>Black Box</title>
-      <link>https://humboldt-wi.github.io/blog/tags/black-box/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/black-box/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Blockchain</title>
-      <link>https://humboldt-wi.github.io/blog/tags/blockchain/</link>
-      <pubDate>Fri, 02 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/blockchain/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Class17/18</title>
-      <link>https://humboldt-wi.github.io/blog/tags/class17/18/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/class17/18/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Class18/19</title>
-      <link>https://humboldt-wi.github.io/blog/tags/class18/19/</link>
-      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/class18/19/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Class19/20</title>
-      <link>https://humboldt-wi.github.io/blog/tags/class19/20/</link>
-      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/class19/20/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Classification</title>
       <link>https://humboldt-wi.github.io/blog/tags/classification/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
@@ -138,38 +48,11 @@
     </item>
     
     <item>
-      <title>Cnn</title>
+      <title>CNN</title>
       <link>https://humboldt-wi.github.io/blog/tags/cnn/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/cnn/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Conversion</title>
-      <link>https://humboldt-wi.github.io/blog/tags/conversion/</link>
-      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/conversion/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Convolutional Neural Networks</title>
-      <link>https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Credit Risk</title>
-      <link>https://humboldt-wi.github.io/blog/tags/credit-risk/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/credit-risk/</guid>
       <description></description>
     </item>
     
@@ -183,7 +66,7 @@
     </item>
     
     <item>
-      <title>Deeplearning</title>
+      <title>DeepLearning</title>
       <link>https://humboldt-wi.github.io/blog/tags/deeplearning/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
@@ -192,65 +75,11 @@
     </item>
     
     <item>
-      <title>Distant Transfer Learning</title>
-      <link>https://humboldt-wi.github.io/blog/tags/distant-transfer-learning/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/distant-transfer-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Doc2vec</title>
-      <link>https://humboldt-wi.github.io/blog/tags/doc2vec/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/doc2vec/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Document Embeddings</title>
-      <link>https://humboldt-wi.github.io/blog/tags/document-embeddings/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/document-embeddings/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Economicuncertainty</title>
+      <title>EconomicUncertainty</title>
       <link>https://humboldt-wi.github.io/blog/tags/economicuncertainty/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/economicuncertainty/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Elmo</title>
-      <link>https://humboldt-wi.github.io/blog/tags/elmo/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/elmo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Embeddings</title>
-      <link>https://humboldt-wi.github.io/blog/tags/embeddings/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/embeddings/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Explanation</title>
-      <link>https://humboldt-wi.github.io/blog/tags/explanation/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/explanation/</guid>
       <description></description>
     </item>
     
@@ -264,7 +93,7 @@
     </item>
     
     <item>
-      <title>Fine Tuning</title>
+      <title>Fine-Tuning</title>
       <link>https://humboldt-wi.github.io/blog/tags/fine-tuning/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
@@ -273,7 +102,7 @@
     </item>
     
     <item>
-      <title>Glove</title>
+      <title>GloVe</title>
       <link>https://humboldt-wi.github.io/blog/tags/glove/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
@@ -282,56 +111,11 @@
     </item>
     
     <item>
-      <title>Gpt 2</title>
+      <title>GPT-2</title>
       <link>https://humboldt-wi.github.io/blog/tags/gpt-2/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/gpt-2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Gru</title>
-      <link>https://humboldt-wi.github.io/blog/tags/gru/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/gru/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hierarchical Network</title>
-      <link>https://humboldt-wi.github.io/blog/tags/hierarchical-network/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/hierarchical-network/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ice</title>
-      <link>https://humboldt-wi.github.io/blog/tags/ice/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/ice/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Image Analysis</title>
-      <link>https://humboldt-wi.github.io/blog/tags/image-analysis/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/image-analysis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Image Captioning</title>
-      <link>https://humboldt-wi.github.io/blog/tags/image-captioning/</link>
-      <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/image-captioning/</guid>
       <description></description>
     </item>
     
@@ -345,33 +129,6 @@
     </item>
     
     <item>
-      <title>Inference</title>
-      <link>https://humboldt-wi.github.io/blog/tags/inference/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/inference/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ite</title>
-      <link>https://humboldt-wi.github.io/blog/tags/ite/</link>
-      <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/ite/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Keras Imdb Dataset</title>
-      <link>https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Language Model</title>
       <link>https://humboldt-wi.github.io/blog/tags/language-model/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
@@ -381,81 +138,9 @@
     </item>
     
     <item>
-      <title>Language Modeling</title>
-      <link>https://humboldt-wi.github.io/blog/tags/language-modeling/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/language-modeling/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Language Modelling</title>
-      <link>https://humboldt-wi.github.io/blog/tags/language-modelling/</link>
-      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/language-modelling/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Lda</title>
-      <link>https://humboldt-wi.github.io/blog/tags/lda/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/lda/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Lime</title>
-      <link>https://humboldt-wi.github.io/blog/tags/lime/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/lime/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Long Short Term Memory</title>
-      <link>https://humboldt-wi.github.io/blog/tags/long-short-term-memory/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/long-short-term-memory/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Lstm</title>
-      <link>https://humboldt-wi.github.io/blog/tags/lstm/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/lstm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Monte Carlo Dropout</title>
-      <link>https://humboldt-wi.github.io/blog/tags/monte-carlo-dropout/</link>
-      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/monte-carlo-dropout/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Movie Reviews</title>
-      <link>https://humboldt-wi.github.io/blog/tags/movie-reviews/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/movie-reviews/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Neural Network</title>
       <link>https://humboldt-wi.github.io/blog/tags/neural-network/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/neural-network/</guid>
       <description></description>
@@ -471,7 +156,7 @@
     </item>
     
     <item>
-      <title>Nlp</title>
+      <title>NLP</title>
       <link>https://humboldt-wi.github.io/blog/tags/nlp/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
@@ -480,7 +165,7 @@
     </item>
     
     <item>
-      <title>Nn</title>
+      <title>NN</title>
       <link>https://humboldt-wi.github.io/blog/tags/nn/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
@@ -494,15 +179,6 @@
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/oversampling/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pdp</title>
-      <link>https://humboldt-wi.github.io/blog/tags/pdp/</link>
-      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/pdp/</guid>
       <description></description>
     </item>
     
@@ -525,7 +201,7 @@
     </item>
     
     <item>
-      <title>Recommender System</title>
+      <title>recommender system</title>
       <link>https://humboldt-wi.github.io/blog/tags/recommender-system/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
@@ -534,7 +210,7 @@
     </item>
     
     <item>
-      <title>Recommender Systems</title>
+      <title>Recommender-Systems</title>
       <link>https://humboldt-wi.github.io/blog/tags/recommender-systems/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
@@ -543,16 +219,7 @@
     </item>
     
     <item>
-      <title>Rnn</title>
-      <link>https://humboldt-wi.github.io/blog/tags/rnn/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/rnn/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Roberta</title>
+      <title>ROBERTA</title>
       <link>https://humboldt-wi.github.io/blog/tags/roberta/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
@@ -570,47 +237,11 @@
     </item>
     
     <item>
-      <title>Sentiment Classification</title>
-      <link>https://humboldt-wi.github.io/blog/tags/sentiment-classification/</link>
-      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/sentiment-classification/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Seq2seq</title>
-      <link>https://humboldt-wi.github.io/blog/tags/seq2seq/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/seq2seq/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Share Price Prediction</title>
-      <link>https://humboldt-wi.github.io/blog/tags/share-price-prediction/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/share-price-prediction/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Simpletransformers</title>
+      <title>SimpleTransformers</title>
       <link>https://humboldt-wi.github.io/blog/tags/simpletransformers/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/simpletransformers/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Survival Analysis</title>
-      <link>https://humboldt-wi.github.io/blog/tags/survival-analysis/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/survival-analysis/</guid>
       <description></description>
     </item>
     
@@ -642,42 +273,6 @@
     </item>
     
     <item>
-      <title>Text Mining</title>
-      <link>https://humboldt-wi.github.io/blog/tags/text-mining/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/text-mining/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Text Summarization</title>
-      <link>https://humboldt-wi.github.io/blog/tags/text-summarization/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/text-summarization/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Time Series</title>
-      <link>https://humboldt-wi.github.io/blog/tags/time-series/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/time-series/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Time Series Forecasting</title>
-      <link>https://humboldt-wi.github.io/blog/tags/time-series-forecasting/</link>
-      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/time-series-forecasting/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Toxic Comments</title>
       <link>https://humboldt-wi.github.io/blog/tags/toxic-comments/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
@@ -705,24 +300,6 @@
     </item>
     
     <item>
-      <title>Twitter</title>
-      <link>https://humboldt-wi.github.io/blog/tags/twitter/</link>
-      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/twitter/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ulmfit</title>
-      <link>https://humboldt-wi.github.io/blog/tags/ulmfit/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://humboldt-wi.github.io/blog/tags/ulmfit/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Uncertainty</title>
       <link>https://humboldt-wi.github.io/blog/tags/uncertainty/</link>
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
@@ -732,9 +309,162 @@
     </item>
     
     <item>
+      <title>Word Embeddings</title>
+      <link>https://humboldt-wi.github.io/blog/tags/word-embeddings/</link>
+      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/word-embeddings/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Attention</title>
+      <link>https://humboldt-wi.github.io/blog/tags/attention/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/attention/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AWD-LSTM</title>
+      <link>https://humboldt-wi.github.io/blog/tags/awd-lstm/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/awd-lstm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>biLM</title>
+      <link>https://humboldt-wi.github.io/blog/tags/bilm/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/bilm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Credit risk</title>
+      <link>https://humboldt-wi.github.io/blog/tags/credit-risk/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/credit-risk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ELMo</title>
+      <link>https://humboldt-wi.github.io/blog/tags/elmo/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/elmo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Embeddings</title>
+      <link>https://humboldt-wi.github.io/blog/tags/embeddings/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/embeddings/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GRU</title>
+      <link>https://humboldt-wi.github.io/blog/tags/gru/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/gru/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Language Modeling</title>
+      <link>https://humboldt-wi.github.io/blog/tags/language-modeling/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/language-modeling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LSTM</title>
+      <link>https://humboldt-wi.github.io/blog/tags/lstm/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/lstm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RNN</title>
+      <link>https://humboldt-wi.github.io/blog/tags/rnn/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/rnn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Seq2Seq</title>
+      <link>https://humboldt-wi.github.io/blog/tags/seq2seq/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/seq2seq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Survival Analysis</title>
+      <link>https://humboldt-wi.github.io/blog/tags/survival-analysis/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/survival-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Text Summarization</title>
+      <link>https://humboldt-wi.github.io/blog/tags/text-summarization/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/text-summarization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ULMFiT</title>
+      <link>https://humboldt-wi.github.io/blog/tags/ulmfit/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/ulmfit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WikiText-103</title>
+      <link>https://humboldt-wi.github.io/blog/tags/wikitext-103/</link>
+      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/wikitext-103/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ITE</title>
+      <link>https://humboldt-wi.github.io/blog/tags/ite/</link>
+      <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/ite/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Uplift</title>
       <link>https://humboldt-wi.github.io/blog/tags/uplift/</link>
-      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/tags/uplift/</guid>
       <description></description>
@@ -750,6 +480,24 @@
     </item>
     
     <item>
+      <title>Bayesian Deep Learning</title>
+      <link>https://humboldt-wi.github.io/blog/tags/bayesian-deep-learning/</link>
+      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/bayesian-deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Monte Carlo Dropout</title>
+      <link>https://humboldt-wi.github.io/blog/tags/monte-carlo-dropout/</link>
+      <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/monte-carlo-dropout/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Variational Inference</title>
       <link>https://humboldt-wi.github.io/blog/tags/variational-inference/</link>
       <pubDate>Sat, 09 Feb 2019 00:00:00 +0000</pubDate>
@@ -759,20 +507,272 @@
     </item>
     
     <item>
-      <title>Wikitext 103</title>
-      <link>https://humboldt-wi.github.io/blog/tags/wikitext-103/</link>
-      <pubDate>Thu, 06 Feb 2020 00:00:00 +0000</pubDate>
+      <title>Bayesian topic modelling</title>
+      <link>https://humboldt-wi.github.io/blog/tags/bayesian-topic-modelling/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://humboldt-wi.github.io/blog/tags/wikitext-103/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/bayesian-topic-modelling/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Word Embeddings</title>
-      <link>https://humboldt-wi.github.io/blog/tags/word-embeddings/</link>
-      <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
+      <title>Black Box</title>
+      <link>https://humboldt-wi.github.io/blog/tags/black-box/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://humboldt-wi.github.io/blog/tags/word-embeddings/</guid>
+      <guid>https://humboldt-wi.github.io/blog/tags/black-box/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Explanation</title>
+      <link>https://humboldt-wi.github.io/blog/tags/explanation/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/explanation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hierarchical Network</title>
+      <link>https://humboldt-wi.github.io/blog/tags/hierarchical-network/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/hierarchical-network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ICE</title>
+      <link>https://humboldt-wi.github.io/blog/tags/ice/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/ice/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Inference</title>
+      <link>https://humboldt-wi.github.io/blog/tags/inference/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/inference/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LDA</title>
+      <link>https://humboldt-wi.github.io/blog/tags/lda/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/lda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LIME</title>
+      <link>https://humboldt-wi.github.io/blog/tags/lime/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/lime/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PDP</title>
+      <link>https://humboldt-wi.github.io/blog/tags/pdp/</link>
+      <pubDate>Fri, 08 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/pdp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Language Modelling</title>
+      <link>https://humboldt-wi.github.io/blog/tags/language-modelling/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/language-modelling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sentiment Classification</title>
+      <link>https://humboldt-wi.github.io/blog/tags/sentiment-classification/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/sentiment-classification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Twitter</title>
+      <link>https://humboldt-wi.github.io/blog/tags/twitter/</link>
+      <pubDate>Thu, 07 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/twitter/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Conversion</title>
+      <link>https://humboldt-wi.github.io/blog/tags/conversion/</link>
+      <pubDate>Thu, 20 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/conversion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Convolutional Neural Networks</title>
+      <link>https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/convolutional-neural-networks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Distant Transfer Learning</title>
+      <link>https://humboldt-wi.github.io/blog/tags/distant-transfer-learning/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/distant-transfer-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>doc2vec</title>
+      <link>https://humboldt-wi.github.io/blog/tags/doc2vec/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/doc2vec/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Document Embeddings</title>
+      <link>https://humboldt-wi.github.io/blog/tags/document-embeddings/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/document-embeddings/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Image Analysis</title>
+      <link>https://humboldt-wi.github.io/blog/tags/image-analysis/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/image-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Keras IMDB Dataset</title>
+      <link>https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/keras-imdb-dataset/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Long Short Term Memory</title>
+      <link>https://humboldt-wi.github.io/blog/tags/long-short-term-memory/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/long-short-term-memory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Movie Reviews</title>
+      <link>https://humboldt-wi.github.io/blog/tags/movie-reviews/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/movie-reviews/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Share Price Prediction</title>
+      <link>https://humboldt-wi.github.io/blog/tags/share-price-prediction/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/share-price-prediction/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Text Mining</title>
+      <link>https://humboldt-wi.github.io/blog/tags/text-mining/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/text-mining/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Time Series</title>
+      <link>https://humboldt-wi.github.io/blog/tags/time-series/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/time-series/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Time Series Forecasting</title>
+      <link>https://humboldt-wi.github.io/blog/tags/time-series-forecasting/</link>
+      <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/time-series-forecasting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Image Captioning</title>
+      <link>https://humboldt-wi.github.io/blog/tags/image-captioning/</link>
+      <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/image-captioning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blockchain</title>
+      <link>https://humboldt-wi.github.io/blog/tags/blockchain/</link>
+      <pubDate>Fri, 02 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/blockchain/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Class17/18</title>
+      <link>https://humboldt-wi.github.io/blog/tags/class17/18/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/class17/18/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Class18/19</title>
+      <link>https://humboldt-wi.github.io/blog/tags/class18/19/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/class18/19/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Class19/20</title>
+      <link>https://humboldt-wi.github.io/blog/tags/class19/20/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://humboldt-wi.github.io/blog/tags/class19/20/</guid>
       <description></description>
     </item>
     

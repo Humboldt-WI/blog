@@ -17,7 +17,7 @@
   <meta name="description" content="This blog post is a guide to help readers build a neural network from the very basics. ">
   
 
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
 
@@ -177,230 +177,146 @@
                         <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Seminar Information Systems (WS17/18)</a> | December 14, 2017</p>
 
                         <div id="post-content">
-                          
-
-<h1 id="neural-network-fundamentals">Neural Network Fundamentals</h1>
-
+                          <h1 id="neural-network-fundamentals">Neural Network Fundamentals</h1>
 <h4 id="authors-mahdi-bayat-denis-augusto-pinto-maciel-roman-proskalovich">Authors: Mahdi Bayat, Denis Augusto Pinto Maciel, Roman Proskalovich</h4>
-
 <p>This blog post is a guide to help readers build a neural network from the very basics. It starts with an introduction to the concept of a neural networks concept and its early development. A step-by-step coding tutorial follows, through which relevant concepts are illustrated. Later in the post, there is also an introduction on how to build neural networks in Keras. Finally, the reader will find instructions on how to deploy the model via an API to make it accessible to anyone interested on it.</p>
-
 <h2 id="neural-networks-and-its-early-development">Neural Networks and its early development</h2>
-
 <p>As the name tells, the idea of neural networks is inspired by how neurons work in the human brain. It is, however, crucial for the readers to know that despite the original motivation of neural networks, the NN models being used today have little resemblance to what a human brain does.  In its basic form, neural networks are composed of nodes interconnected to each other in several layers. The basic form of a NN would include an input, a hidden and an output layer. The number of nodes and layers can add to the complexity and efficiency of neural networks.</p>
-
 <p>The McCulloch-Pitts model of neuron in 1943 was one of the earliest simplified version of neural networks. It consisted of a simple neuron which received a weighted sum of inputs and output either zero if the sum was smaller than a threshold or one when it was greater than the threshold. This idea is called firing and is an interesting analogy to what an actual neuron does. Later on, in the early 1960s, Rosenblatt introduced the simple perceptron model. This was a developed version of the McCulloch-Pitts with an input and output layer. However, the linear separablilty limitation of simple perceptron took away the research interest in neural networks for a while. In the early 1980s, the Hopfield model of content-addressable memory, however, motivated researchers in the area again and later on with the introduction of backpropagation learning algorithm, interest in neural networks research soared. Nowadays, neural nets are used in a variety of applications to tackle problems such as classification, speech and image recognition, control systems and predictions.</p>
-
 <p>In what follows, the reader will find an easy step-by-step guide on how to implement all these processes from scratch, the coding part of which draws inspiration from the works of <a href="http://neuralnetworksanddeeplearning.com/index.html">Nielsen, 2017</a>, <a href="http://www.cristiandima.com/neural-networks-from-scratch-in-python/">Dima, 2016</a> and <a href="https://ebook4expert.com/2016/07/12/make-your-own-neural-network-ebook-free-by-tariq-rashid-epubmobi/">Rashid, 2016</a>.</p>
-
 <h1 id="nn-from-scratch">NN from scratch</h1>
-
 <h2 id="problem-statement">Problem Statement</h2>
-
 <p>The best way to understand how neural networks work is to build one yourself from scratch.
 The understanding becomes even more comprehensive if there is a particular problem that can be solved using NNs. Therefore let&rsquo;s start our work by taking a look at the picture below.</p>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/pics/problem.png" alt="Drawing" style="width: 600px;"/></p>
-
+<img src="/blog/img/seminar/nn_fundamentals/pics/problem.png" alt="Drawing" style="width: 600px;"/>
 <p>There are handwritten numbers that you want computer to correctly classify. This would be an easy task for a person but at least for a long period of time was an extremely complicated one for a machine.</p>
-
 <p>Even though the computer is faster than the human brain in numeric computations, the brain outperforms the computer in some other tasks. Many of those tasks are related to the human ability for sentience (which is a concept different from intelligence). The trick is to find a way, so that the computer could apply its numeric computation skills to solve these later tasks (at least to some degree).</p>
-
 <p>The first step would be to limit the scope of the task. In our particular case the broad task of image recognition will be addressed as a classification problem - a task of giving an object a label from a given set of labels.</p>
-
 <p>As we will see during the process of building our own NN, its output is based almost exclusively on application of linear algebra methods. Despite the name (which is sometimes related to the fear of artificial intelligence), neural networks in fact are much more related to statistical methods (like regression analysis or curve fitting) than to the way human brain works [<a href="http://www.turingfinance.com/misconceptions-about-neural-networks/">Stuart Reid, 2014</a>].</p>
-
 <p>NNs are inspired by human brain only to certain extent. For instance the main element that makes them similar is a multilayer net structure of simple elements that are connected in some way, receiving and transmitting information. But the structure of the human brain is much more complicated, besides it is self-organizing and adaptive in contrast to the fixed manually designed architecture of a NN. Hence, there is a good reason to stop being afraid of neural networks and instead to create one ourselves.</p>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/pics/neurons_net3.png" alt="Drawing" style="width: 500px;"/></p>
-
+<img src="/blog/img/seminar/nn_fundamentals/pics/neurons_net3.png" alt="Drawing" style="width: 500px;"/>
 <p>[Source: <a href="https://pixabay.com/">Pixabay.com</a>]</p>
-
 <h2 id="schematic-representation">Schematic Representation</h2>
-
 <p>A complex multilayer structure that all neural networks have in common in a simplified way can be depicted using the following picture.</p>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/pics//neural_network1.jpg" alt="Drawing" style="width: 800px;"/></p>
-
+<img src="/blog/img/seminar/nn_fundamentals/pics//neural_network1.jpg" alt="Drawing" style="width: 800px;"/>
 <p>All we need in order to implement such a structure is base Python and numpy, a library for numerical computation, which we will be using to do linear algebra.</p>
-
 <p>First let&rsquo;s determine the elements of a neural network depicted above: nodes, layers, weights across nodes and activation functions.</p>
-
 <p><strong>Nodes.</strong> A node is basically a point where data points are received, processed and then transferred to the node. A node could be either an endpoint or a redistribution point or even both when iterations are done through the learning algorithm. The number of nodes to use is optional.</p>
-
 <p><strong>Layers.</strong> A layer consists of one or several nodes. The initial layer in the network is called the input layer and it is the entry point through which the data is fed into the neural net. The middle layers are called hidden layer because the computation results of them are not directly visible to someone interacting with the neural net. In the hidden layers, which can range from one to thousands, the features are transformed and most of the structure (both linear and nonlinear) is captured. Finally, there is the final layer, from which results are output. The nodes in each layer are fully interconnected to the ones in the next and the previous layers.</p>
-
 <p>In our case we have a structure with 3 layers: input, output and one hidden layer. The number of nodes in the input  (&ldquo;i_n&rdquo;), hidden (&ldquo;h_n&rdquo;) and output (&ldquo;o_n&rdquo;) layers are 3, 5 and 2 respectively. In Python, such a structure can be represented in the following way:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Load the package to work with numbers:</span>
+<span style="color:#00a">import</span> <span style="color:#0aa;text-decoration:underline">numpy</span> <span style="color:#00a">as</span> <span style="color:#0aa;text-decoration:underline">np</span>
 
-<pre><code class="language-python"># Load the package to work with numbers:
-import numpy as np
-
-# Determine the structure of the NN:
-i_n = 3
-h_n = 5
-o_n = 2
-</code></pre>
-
-<p><strong>Weights.</strong> In order to transfer an input data point to the next layer, a predetermined number (called weight) is stored in each connection from the sender node to the receiver node. Each weight accounts for the impact between the interconnected nodes.</p>
-
+<span style="color:#aaa;font-style:italic"># Determine the structure of the NN:</span>
+i_n = <span style="color:#099">3</span>
+h_n = <span style="color:#099">5</span>
+o_n = <span style="color:#099">2</span>
+</code></pre></div><p><strong>Weights.</strong> In order to transfer an input data point to the next layer, a predetermined number (called weight) is stored in each connection from the sender node to the receiver node. Each weight accounts for the impact between the interconnected nodes.</p>
 <p>Initially, we assign weights between nodes in neighboring layers randomly. This is needed only for the sake of initializing the structure. Later these weights will be changed in order to solve our classification problem. The weight updating will be better described in the following sections.</p>
-
 <p>Neural nets will have n-1 matrices of weights, where n is the number of layers in the NN. You can imagine these weight matrices sitting between two layers representing the strength of the connection between every single node of neighbouring layers. Thus, each of these matrices will be of size f x p, where p is the number of nodes in the preceding layer and f is the number of nodes in the following layer.</p>
-
-<p>This becomes more clear once you check the code below that creates 2 matrices of weights:
-* matrix of weights between input and hidden layers (&ldquo;w_i_h&rdquo;) - 5 by 3 matrix
-* matrix of weights between hidden and output layers (&ldquo;w_h_o&rdquo;) - 2 by 5 matrix.</p>
-
+<p>This becomes more clear once you check the code below that creates 2 matrices of weights:</p>
+<ul>
+<li>matrix of weights between input and hidden layers (&ldquo;w_i_h&rdquo;) - 5 by 3 matrix</li>
+<li>matrix of weights between hidden and output layers (&ldquo;w_h_o&rdquo;) - 2 by 5 matrix.</li>
+</ul>
 <p>Such a dimensions of matrices are necessary in order to accomplish matrix and vector multiplications that are done in the following stages.</p>
-
-<pre><code class="language-python"># Randomly define the weights between the layers:
-w_i_h = np.random.rand(h_n, i_n) # create an array of the given shape and populate it with random values.
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Randomly define the weights between the layers:</span>
+w_i_h = np.random.rand(h_n, i_n) <span style="color:#aaa;font-style:italic"># create an array of the given shape and populate it with random values.</span>
 w_h_o = np.random.rand(o_n, h_n)
 
-# Show matrices of randomly assigned weights:
+<span style="color:#aaa;font-style:italic"># Show matrices of randomly assigned weights:</span>
 w_i_h
-# w_h_o # uncomment this line in order to see the values for w_h_o.
-# Use Cmd + / in MacOS and CTRL + / in MS Windows as a shortcut to comment/uncomment lines.
-</code></pre>
-
-<pre><code>array([[ 0.90777842,  0.73311418,  0.11434952],
+<span style="color:#aaa;font-style:italic"># w_h_o # uncomment this line in order to see the values for w_h_o.</span>
+<span style="color:#aaa;font-style:italic"># Use Cmd + / in MacOS and CTRL + / in MS Windows as a shortcut to comment/uncomment lines.</span>
+</code></pre></div><pre><code>array([[ 0.90777842,  0.73311418,  0.11434952],
        [ 0.98934683,  0.76666849,  0.69625713],
        [ 0.30095531,  0.72558061,  0.50910764],
        [ 0.96351366,  0.65874791,  0.06047322],
        [ 0.94092134,  0.3455386 ,  0.83219342]])
 </code></pre>
-
 <p><strong>Activation Function.</strong> The remaining element of the NN&rsquo;s structure is an activation function - a function which transforms an input data point that it receives from the previous nodes to an output value which will be the input for the nodes in the next layer. The activation function plays an important role in the efficiency of the neural network as it accounts for non-linearity of data.
 It is to certain extent inspired by the concept of &ldquo;firing&rdquo;, which means that neurons &ldquo;fire&rdquo; or transmit information further only if the input surpasses certain threshold. The simplest activation function can be represented by a step function as on the picture below.</p>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/pics/step_function.png" alt="Drawing" style="width: 700px";/></p>
-
+<p>&lt;img src=&rdquo;/blog/img/seminar/nn_fundamentals/pics/step_function.png&rdquo; alt=&quot;Drawing&rdquo; style=&quot;width: 700px&rdquo;;/&gt;</p>
 <p>[Source: <a href="https://www.researchgate.net/figure/Three-different-types-of-transfer-function-step-sigmoid-and-linear-in-unipolar-and_306323136">Research Gate</a>]</p>
-
 <p>In our NN, we will use a slightly more elaborate activation function, the sigmoid function (logistic), which allows for more efficient use of the input data. Extended description of various activation functions, their benefits and disadvantages is given in sections below.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Determine activation function:</span>
+<span style="color:#00a">def</span> <span style="color:#0a0">sigmoid</span>(x):
+    <span style="color:#aaa;font-style:italic"># np.exp() calculates the exponential</span>
+    <span style="color:#aaa;font-style:italic"># of all elements in the input array.</span>
+    <span style="color:#00a">return</span> <span style="color:#099">1</span> / (<span style="color:#099">1</span> + np.exp(-x))
 
-<pre><code class="language-python"># Determine activation function:
-def sigmoid(x):
-    # np.exp() calculates the exponential
-    # of all elements in the input array.
-    return 1 / (1 + np.exp(-x))
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Draw activation function:</span>
+<span style="color:#00a">import</span> <span style="color:#0aa;text-decoration:underline">matplotlib.pyplot</span> <span style="color:#00a">as</span> <span style="color:#0aa;text-decoration:underline">plt</span>
 
-</code></pre>
-
-<pre><code class="language-python"># Draw activation function:
-import matplotlib.pyplot as plt
-
-# return 100 evenly spaced numbers over an interval from -10 to 10.
-x = np.linspace(-10, 10, 100)
-# plot sigmoid function for sampled values:
+<span style="color:#aaa;font-style:italic"># return 100 evenly spaced numbers over an interval from -10 to 10.</span>
+x = np.linspace(-<span style="color:#099">10</span>, <span style="color:#099">10</span>, <span style="color:#099">100</span>)
+<span style="color:#aaa;font-style:italic"># plot sigmoid function for sampled values:</span>
 plt.plot(x, sigmoid(x))
 plt.show()
-</code></pre>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/1_NN_from_scratch_files/1_NN_from_scratch_20_0.png" alt="png" /></p>
-
+</code></pre></div><p><img src="/blog/img/seminar/nn_fundamentals/1_NN_from_scratch_files/1_NN_from_scratch_20_0.png" alt="png"></p>
 <h2 id="data-inspection">Data Inspection</h2>
-
 <p>By now we have collected all the elements of the NN. Can we use this structure in order to solve the classification problem stated in the beginning? In order to answer this question we need first to get a better understanding of the data at our disposal.</p>
-
 <p>We are trying to check whether NN is able to solve the classification problem using a collection of 70 000 handwritten numbers. Each of this handwritten number is represented as 28x28 image.</p>
-
 <p>The original source of the data is &ldquo;THE MNIST DATABASE&rdquo;. A detailed description of the dataset is available at
 <a href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a>. There you can also find, for example, a summary of the performance results achieved by various classification algorithms.</p>
-
 <p>For the sake of simplicity we suggest obtaining the data from another source:
 <a href="https://pjreddie.com/projects/mnist-in-csv/">https://pjreddie.com/projects/mnist-in-csv/</a>. Here the original images are saved in CSV, which allows to work with them directly.</p>
-
 <p>For the purposes of demonstration below we use a smaller dataset (100 images), which will be expanded at a later stage.</p>
-
-<pre><code class="language-python"># Load the data:
-raw_data = open(&quot;data/mnist_train_100.csv&quot;, 'r') # &quot;r&quot; stands for &quot;read only&quot; mode.
-data = raw_data.readlines() # read all the lines of a file in a list.
-raw_data.close() # remove temporal file from the environment in order to save memory.
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Load the data:</span>
+raw_data = <span style="color:#0aa">open</span>(<span style="color:#a50">&#34;data/mnist_train_100.csv&#34;</span>, <span style="color:#a50">&#39;r&#39;</span>) <span style="color:#aaa;font-style:italic"># &#34;r&#34; stands for &#34;read only&#34; mode.</span>
+data = raw_data.readlines() <span style="color:#aaa;font-style:italic"># read all the lines of a file in a list.</span>
+raw_data.close() <span style="color:#aaa;font-style:italic"># remove temporal file from the environment in order to save memory.</span>
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Inspect the data - check the number of observations:</span>
+<span style="color:#0aa">len</span>(data) <span style="color:#aaa;font-style:italic"># length of the object.</span>
+</code></pre></div><pre><code>100
 </code></pre>
-
-<pre><code class="language-python"># Inspect the data - check the number of observations:
-len(data) # length of the object.
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Inspect a particular observation of the data:</span>
+data[<span style="color:#099">0</span>] <span style="color:#aaa;font-style:italic"># show observation number 0 from the list (remember that in Python numbering starts from 0).</span>
+</code></pre></div><pre><code>'3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,254,254,254,254,255,209,126,67,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,119,230,233,241,216,248,254,254,239,223,132,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,25,38,0,48,126,245,244,251,254,243,198,131,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,66,113,192,254,254,235,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,29,226,254,37,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,107,254,249,35,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,26,186,254,254,130,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,96,216,254,228,100,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,89,212,254,254,210,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,127,213,255,254,247,66,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,57,254,219,71,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,157,254,202,78,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,91,251,231,27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,98,254,213,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,238,244,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,19,19,4,0,0,0,0,5,228,244,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,142,254,123,14,0,0,0,0,129,254,213,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,219,254,40,0,0,34,103,221,254,210,26,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,254,233,139,57,232,254,243,166,28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,94,212,254,254,141,101,41,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\n'
 </code></pre>
-
-<pre><code>100
-</code></pre>
-
-<pre><code class="language-python"># Inspect a particular observation of the data:
-data[0] # show observation number 0 from the list (remember that in Python numbering starts from 0).
-</code></pre>
-
-<pre><code>'3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,254,254,254,254,255,209,126,67,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,119,230,233,241,216,248,254,254,239,223,132,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,21,25,38,0,48,126,245,244,251,254,243,198,131,11,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,66,113,192,254,254,235,25,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,29,226,254,37,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,107,254,249,35,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,26,186,254,254,130,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,96,216,254,228,100,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,89,212,254,254,210,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,127,213,255,254,247,66,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,57,254,219,71,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,157,254,202,78,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,91,251,231,27,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,98,254,213,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,238,244,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,19,19,4,0,0,0,0,5,228,244,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,142,254,123,14,0,0,0,0,129,254,213,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,219,254,40,0,0,34,103,221,254,210,26,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,72,254,233,139,57,232,254,243,166,28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,94,212,254,254,141,101,41,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\n'
-</code></pre>
-
 <ul>
 <li>A particular observation looks like a string of 785 elements (label of the image + 784 elements for each pixels of a 28x28 image).</li>
 <li>Each element representing a pixel is a number from 0 to 255 (from white to black color).</li>
 <li>The first element in the line is the label of the image and therefore is a number from 0 to 9.</li>
 </ul>
-
 <p>Using <code>matplotlib</code>, we can also reconstruct the original image based on the data about each pixel in the string.</p>
-
-<pre><code class="language-python"># Load the package to plot the data:
-import matplotlib.pyplot as mpp
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Load the package to plot the data:</span>
+<span style="color:#00a">import</span> <span style="color:#0aa;text-decoration:underline">matplotlib.pyplot</span> <span style="color:#00a">as</span> <span style="color:#0aa;text-decoration:underline">mpp</span>
 %matplotlib inline
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Plot the data:</span>
+observation = data[<span style="color:#099">0</span>].split(<span style="color:#a50">&#39;,&#39;</span>) <span style="color:#aaa;font-style:italic"># break down observation number 0 (comma is used to identify each element).</span>
+image = np.asfarray(observation[<span style="color:#099">1</span>:]).reshape((<span style="color:#099">28</span>,<span style="color:#099">28</span>)) <span style="color:#aaa;font-style:italic"># take all the elements starting from the element 1</span>
+<span style="color:#aaa;font-style:italic"># (exclude element number 0, that corresponds to the label) and reshape them as an array with dimension 28 by 28.</span>
+mpp.imshow(image, cmap=<span style="color:#a50">&#39;Blues&#39;</span>, interpolation=<span style="color:#a50">&#39;None&#39;</span>) <span style="color:#aaa;font-style:italic"># show the plot of this array using blue pallete.</span>
+</code></pre></div><pre><code>&lt;matplotlib.image.AxesImage at 0x10f404d68&gt;
 </code></pre>
-
-<pre><code class="language-python"># Plot the data:
-observation = data[0].split(',') # break down observation number 0 (comma is used to identify each element).
-image = np.asfarray(observation[1:]).reshape((28,28)) # take all the elements starting from the element 1
-# (exclude element number 0, that corresponds to the label) and reshape them as an array with dimension 28 by 28.
-mpp.imshow(image, cmap='Blues', interpolation='None') # show the plot of this array using blue pallete.
-</code></pre>
-
-<pre><code>&lt;matplotlib.image.AxesImage at 0x10f404d68&gt;
-</code></pre>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/1_NN_from_scratch_files/1_NN_from_scratch_27_1.png" alt="png" /></p>
-
-<pre><code class="language-python"># Save an observation of the data as an input to work with:
-input = np.array(np.asfarray(observation[1:]), ndmin=2).T # save necessary elements in a vertical vector shape.
-</code></pre>
-
-<h2 id="fitting-the-structure-of-the-nn-to-the-data">Fitting the structure of the NN to the Data</h2>
-
+<p><img src="/blog/img/seminar/nn_fundamentals/1_NN_from_scratch_files/1_NN_from_scratch_27_1.png" alt="png"></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Save an observation of the data as an input to work with:</span>
+<span style="color:#0aa">input</span> = np.array(np.asfarray(observation[<span style="color:#099">1</span>:]), ndmin=<span style="color:#099">2</span>).T <span style="color:#aaa;font-style:italic"># save necessary elements in a vertical vector shape.</span>
+</code></pre></div><h2 id="fitting-the-structure-of-the-nn-to-the-data">Fitting the structure of the NN to the Data</h2>
 <p>Let&rsquo;s take a look once again at the NN&rsquo;s structure we have created at the beginning of the tutorial.</p>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/pics/neural_network1.jpg" alt="Drawing" style="width: 800px;"/></p>
-
+<img src="/blog/img/seminar/nn_fundamentals/pics/neural_network1.jpg" alt="Drawing" style="width: 800px;"/>
 <p>After inspecting the data, we can conclude that the structure with 3-5-2 nodes is probably not optimal and therefore should be updated in order to fit the data we have and peculiarities of the classification problem:</p>
-
 <ul>
 <li>For each observation we have 784 elements as an input (label element is excluded). Accordingly, instead of 3 input nodes we should better have 784.</li>
 <li>Similarly, as we have 10 different options for the outcome (handwritten numbers are labeled from 0 to 9) the number of output nodes should be 10 instead of 2.</li>
 <li>We also change the number of hidden nodes from 5 to 90. Such a number has been assigned based on some proportionality assumptions which will be checked later: 90 is 9 times higher than 10 and approximately 9 times smaller than 784.</li>
 </ul>
-
-<pre><code class="language-python"># Determine the new structure of the NN:
-i_n = 784
-h_n = 90
-o_n = 10
-</code></pre>
-
-<p>As we have new structure of the NN we should reassign the weights - now the size of each weight matrix will increase as we have more nodes in each layer.</p>
-
-<pre><code class="language-python"># Determine the weights:
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Determine the new structure of the NN:</span>
+i_n = <span style="color:#099">784</span>
+h_n = <span style="color:#099">90</span>
+o_n = <span style="color:#099">10</span>
+</code></pre></div><p>As we have new structure of the NN we should reassign the weights - now the size of each weight matrix will increase as we have more nodes in each layer.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Determine the weights:</span>
 w_i_h = np.random.rand(h_n, i_n)
 w_h_o = np.random.rand(o_n, h_n)
-</code></pre>
-
-<p>So far we have not used the first element of our observation - the label. It will be necessary to compare the predictions of the NN to the real state of the world and to train the NN to make correct predictions. The target should therefore have the same shape as the output layer of the NN, so that they could be comparable. We can represent the label as a vector of n binary (0 or 1) elements (n corresponds to the number of nodes in the output layer). There should be only one element equal to 1 and the position of this element should correspond to the index number of the label we want to predict.</p>
-
-<pre><code class="language-python"># Create target array:
-target = np.array(np.zeros(o_n), ndmin=2).T
-target[int(observation[0])] = 1 # int() method returns an integer object from any number or string.
-</code></pre>
-
-<pre><code class="language-python"># Inspect how the target looks like (remember that the label of observations is 5):
+</code></pre></div><p>So far we have not used the first element of our observation - the label. It will be necessary to compare the predictions of the NN to the real state of the world and to train the NN to make correct predictions. The target should therefore have the same shape as the output layer of the NN, so that they could be comparable. We can represent the label as a vector of n binary (0 or 1) elements (n corresponds to the number of nodes in the output layer). There should be only one element equal to 1 and the position of this element should correspond to the index number of the label we want to predict.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Create target array:</span>
+target = np.array(np.zeros(o_n), ndmin=<span style="color:#099">2</span>).T
+target[<span style="color:#0aa">int</span>(observation[<span style="color:#099">0</span>])] = <span style="color:#099">1</span> <span style="color:#aaa;font-style:italic"># int() method returns an integer object from any number or string.</span>
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Inspect how the target looks like (remember that the label of observations is 5):</span>
 target
-</code></pre>
-
-<pre><code>array([[ 0.],
+</code></pre></div><pre><code>array([[ 0.],
        [ 0.],
        [ 0.],
        [ 1.],
@@ -411,54 +327,36 @@ target
        [ 0.],
        [ 0.]])
 </code></pre>
-
-<pre><code class="language-python"># Show the sizes of matrices of weights, input and target vectors:
-w_i_h.shape, input.shape, w_h_o.shape, target.shape
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Show the sizes of matrices of weights, input and target vectors:</span>
+w_i_h.shape, <span style="color:#0aa">input</span>.shape, w_h_o.shape, target.shape
+</code></pre></div><pre><code>((90, 784), (784, 1), (10, 90), (10, 1))
 </code></pre>
-
-<pre><code>((90, 784), (784, 1), (10, 90), (10, 1))
-</code></pre>
-
 <h2 id="feedforwarding">Feedforwarding</h2>
-
 <p>Once we have the structure of the NN updated for the specific task of classifying the numbers depicted on the images, we can run our network in order to get the first predictions that will be represented by a vector of 10 elements. This vector in its turn can be compared to the target.</p>
-
 <p>To run the NN, i.e. to feed forward our input data in order to get some predictions, we should follow certain steps:</p>
-
 <ol>
 <li>Multiply an input vector by a matrix of weights that connects it with the next layer;</li>
 <li>Transform the result using activation function;</li>
 <li>Use the output obtained in the 2nd step as an input vector for the next layer.</li>
 </ol>
-
 <p>A sequence of this steps should be repeated n-1 times (where n corresponds to the number of layers). The output of the previous layer will always be the input vector for the next layer. In our case the procedure will happen twice.</p>
-
 <p>In the picture bellow, you can see the procedure necessary to obtain the output of the hidden layer. The result of matrix multiplication here is called &ldquo;Hidden_Input&rdquo;. Result of the transformation of &ldquo;Hidden_Input&rdquo; through activation function is called &ldquo;Hidden_Output&rdquo;.</p>
-
 <p>This output will be used as the input vector that should be multiplied by the next weight matrix and transformed through activation function in order to calculate the final output of the NN. If our NN would have more than one hidden layer, the procedure would be repeated more times.</p>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/pics/multiplication.png" alt="Drawing" style="width: 800px;"/></p>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/pics/activation.jpg" alt="Drawing" style="width: 800px;"/></p>
-
+<img src="/blog/img/seminar/nn_fundamentals/pics/multiplication.png" alt="Drawing" style="width: 800px;"/>
+<img src="/blog/img/seminar/nn_fundamentals/pics/activation.jpg" alt="Drawing" style="width: 800px;"/>
 <p>Below you can see the code implementation of all the steps for all layers of the NN.</p>
-
-<pre><code class="language-python"># Calculate the output of hidden and output layers of our NN:
-h_input = np.dot(w_i_h, input) # dot() performs matrix multiplication; &quot;h_input&quot; stands for &quot;Hidden_Input&quot;.
-h_output = sigmoid(h_input) # &quot;Hidden_Output&quot; - result after activation function.
-o_input = np.dot(w_h_o, h_output) # &quot;Output_Input&quot; - input used for the next layer.
-o_output = sigmoid(o_input) # &quot;Output_Output&quot; - final output of the NN.
-</code></pre>
-
-<pre><code class="language-python"># Show intermediate data and output:
-# Uncomment the line of interest in order to see the the corresponding object.
-# h_input
-# h_output
-# o_input
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Calculate the output of hidden and output layers of our NN:</span>
+h_input = np.dot(w_i_h, <span style="color:#0aa">input</span>) <span style="color:#aaa;font-style:italic"># dot() performs matrix multiplication; &#34;h_input&#34; stands for &#34;Hidden_Input&#34;.</span>
+h_output = sigmoid(h_input) <span style="color:#aaa;font-style:italic"># &#34;Hidden_Output&#34; - result after activation function.</span>
+o_input = np.dot(w_h_o, h_output) <span style="color:#aaa;font-style:italic"># &#34;Output_Input&#34; - input used for the next layer.</span>
+o_output = sigmoid(o_input) <span style="color:#aaa;font-style:italic"># &#34;Output_Output&#34; - final output of the NN.</span>
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Show intermediate data and output:</span>
+<span style="color:#aaa;font-style:italic"># Uncomment the line of interest in order to see the the corresponding object.</span>
+<span style="color:#aaa;font-style:italic"># h_input</span>
+<span style="color:#aaa;font-style:italic"># h_output</span>
+<span style="color:#aaa;font-style:italic"># o_input</span>
 o_output
-</code></pre>
-
-<pre><code>array([[ 1.],
+</code></pre></div><pre><code>array([[ 1.],
        [ 1.],
        [ 1.],
        [ 1.],
@@ -469,86 +367,59 @@ o_output
        [ 1.],
        [ 1.]])
 </code></pre>
-
 <h2 id="data-treatment-good-practices">Data treatment good practices</h2>
-
 <p>Once we check the output of the NN and the results of each performed step, we can observe that already at the stage of the h_output all the data converts to a vector in which all the values are equal to 1. Such a vector does not provide us with any helpful insight. Apparently, something is wrong with what we have done so far. There could be several reasons for the problem we face.</p>
-
 <p><strong>First of all, let&rsquo;s take a look at our sigmoid function once again:</strong></p>
-
-<pre><code class="language-python">x = np.linspace(-10, 10, 100)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x = np.linspace(-<span style="color:#099">10</span>, <span style="color:#099">10</span>, <span style="color:#099">100</span>)
 plt.plot(x, sigmoid(x))
 plt.show()
-</code></pre>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/1_NN_from_scratch_files/1_NN_from_scratch_50_0.png" alt="png" /></p>
-
+</code></pre></div><p><img src="/blog/img/seminar/nn_fundamentals/1_NN_from_scratch_files/1_NN_from_scratch_50_0.png" alt="png"></p>
 <p>As we can see the output of the sigmoid function will be almost identical once we feed a number bigger than 2. Similarly there is no significant difference between the outputs if numbers used are smaller than -2. Hence the application of sigmoid function to the original data leads to a loss of valuable information. The NN has problems learning something from the inputs, which are almost undifferentiable.</p>
-
 <p>One solution is to transform the input we have. Ideally we should have our data in a range between 0 and 1. It is also desirable to avoid zeros as inputs, because the output of a zero input will always be zero, no matter how large the weights are, in which case the NN will not be able to use this input to learn.</p>
-
 <p>We can perform a transformation of the original data as the one coded below:</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Good practice transformation of the input values:</span>
+<span style="color:#0aa">input</span> = np.array((np.asfarray(observation[<span style="color:#099">1</span>:])/<span style="color:#099">255.0</span>*<span style="color:#099">0.99</span>) + <span style="color:#099">0.01</span>, ndmin=<span style="color:#099">2</span>).T
+<span style="color:#aaa;font-style:italic"># Our values in our input vector are in the range from 0 to 255. Therefore we should divide input vector by 255,</span>
+<span style="color:#aaa;font-style:italic"># multiply it by 0,99 and add 0,01 in order to get values in the range from 0,01 to 1.</span>
 
-<pre><code class="language-python"># Good practice transformation of the input values:
-input = np.array((np.asfarray(observation[1:])/255.0*0.99) + 0.01, ndmin=2).T
-# Our values in our input vector are in the range from 0 to 255. Therefore we should divide input vector by 255,
-# multiply it by 0,99 and add 0,01 in order to get values in the range from 0,01 to 1.
-
-# Good practice transformation of the target value:
-target = np.array(np.zeros(o_n) + 0.01, ndmin=2).T
-target[int(observation[0])] = 0.99
-</code></pre>
-
-<p><strong>Secondly, we can check our way to randomly assign initial weights:</strong></p>
-
+<span style="color:#aaa;font-style:italic"># Good practice transformation of the target value:</span>
+target = np.array(np.zeros(o_n) + <span style="color:#099">0.01</span>, ndmin=<span style="color:#099">2</span>).T
+target[<span style="color:#0aa">int</span>(observation[<span style="color:#099">0</span>])] = <span style="color:#099">0.99</span>
+</code></pre></div><p><strong>Secondly, we can check our way to randomly assign initial weights:</strong></p>
 <p>Let&rsquo;s take a look once at the function we used to randomly assign weights:</p>
-
-<pre><code class="language-python">np.random.rand(3, 5)
-</code></pre>
-
-<pre><code>array([[ 0.22583725,  0.12109248,  0.02590624,  0.12690234,  0.62018663],
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">np.random.rand(<span style="color:#099">3</span>, <span style="color:#099">5</span>)
+</code></pre></div><pre><code>array([[ 0.22583725,  0.12109248,  0.02590624,  0.12690234,  0.62018663],
        [ 0.81179976,  0.46311266,  0.71892529,  0.44099911,  0.43754171],
        [ 0.49648974,  0.30002541,  0.04783774,  0.69393036,  0.58613769]])
 </code></pre>
-
 <p>As we can see, all the weights are positive, while the actual relationship between the features in the data and the values of the output vector can be negative. Hence, the way we employ to assign random weights should allow for negative weights too.</p>
-
 <p>Below there are too alternatives how this can be implemented in Python.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Good practice for initial weights assignment:</span>
 
-<pre><code class="language-python"># Good practice for initial weights assignment:
+alternative1 = np.random.rand(<span style="color:#099">3</span>, <span style="color:#099">5</span>) - <span style="color:#099">0.5</span>
+<span style="color:#aaa;font-style:italic"># or</span>
+alternative2 = np.random.normal(<span style="color:#099">0.0</span>, <span style="color:#0aa">pow</span>(<span style="color:#099">3</span>, -<span style="color:#099">0.5</span>), (<span style="color:#099">3</span>, <span style="color:#099">5</span>))
+<span style="color:#aaa;font-style:italic"># arguments: Mean of the distribution, Standard deviation of the distribution, Output shape.</span>
+<span style="color:#aaa;font-style:italic"># Second approach is better as it takes in account the standard deviation</span>
+<span style="color:#aaa;font-style:italic"># that is related to the number of incoming links into a node, 1/√(number of incoming links).</span>
 
-alternative1 = np.random.rand(3, 5) - 0.5
-# or
-alternative2 = np.random.normal(0.0, pow(3, -0.5), (3, 5))
-# arguments: Mean of the distribution, Standard deviation of the distribution, Output shape.
-# Second approach is better as it takes in account the standard deviation
-# that is related to the number of incoming links into a node, 1/√(number of incoming links).
-
-# alternative1
+<span style="color:#aaa;font-style:italic"># alternative1</span>
 alternative2
-</code></pre>
-
-<pre><code>array([[ 0.06685916, -0.17391294,  0.14547523, -0.48137787,  0.03086745],
+</code></pre></div><pre><code>array([[ 0.06685916, -0.17391294,  0.14547523, -0.48137787,  0.03086745],
        [-0.06936764,  0.21306989, -0.89904039, -0.99947961,  0.22077087],
        [ 0.85971567, -0.21178824, -0.26656818, -0.30837416,  0.92054582]])
 </code></pre>
-
-<pre><code class="language-python"># Define the weights in accordance with the best practice:
-w_i_h = np.random.normal(0.0, pow(h_n, -0.5), (h_n, i_n))
-w_h_o = np.random.normal(0.0, pow(o_n, -0.5), (o_n, h_n))
-</code></pre>
-
-<p>Now that we have all the elements assigned in accordance with good practices, we can feedforward the data once again.</p>
-
-<pre><code class="language-python"># Run NN to get new classification of the particular observation:
-h_input = np.dot(w_i_h, input)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Define the weights in accordance with the best practice:</span>
+w_i_h = np.random.normal(<span style="color:#099">0.0</span>, <span style="color:#0aa">pow</span>(h_n, -<span style="color:#099">0.5</span>), (h_n, i_n))
+w_h_o = np.random.normal(<span style="color:#099">0.0</span>, <span style="color:#0aa">pow</span>(o_n, -<span style="color:#099">0.5</span>), (o_n, h_n))
+</code></pre></div><p>Now that we have all the elements assigned in accordance with good practices, we can feedforward the data once again.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Run NN to get new classification of the particular observation:</span>
+h_input = np.dot(w_i_h, <span style="color:#0aa">input</span>)
 h_output = sigmoid(h_input)
 o_input = np.dot(w_h_o, h_output)
 o_output = sigmoid(o_input)
 o_output
-</code></pre>
-
-<pre><code>array([[ 0.07373055],
+</code></pre></div><pre><code>array([[ 0.07373055],
        [ 0.14887152],
        [ 0.96694188],
        [ 0.70200766],
@@ -559,17 +430,12 @@ o_output
        [ 0.37623992],
        [ 0.47408493]])
 </code></pre>
-
 <h2 id="first-evaluation-of-the-results">First evaluation of the results</h2>
-
 <p>Once we have obtained the output of the NN, we can compare it to the target.</p>
-
-<pre><code class="language-python"># Calculate the errors of the classification:
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Calculate the errors of the classification:</span>
 o_errors = target - o_output
 o_errors
-</code></pre>
-
-<pre><code>array([[-0.06373055],
+</code></pre></div><pre><code>array([[-0.06373055],
        [-0.13887152],
        [-0.95694188],
        [ 0.28799234],
@@ -580,51 +446,37 @@ o_errors
        [-0.36623992],
        [-0.46408493]])
 </code></pre>
-
 <p>The result we would like to achieve should look like as a vector of values where almost all values are negligibly small except for the one value that has the position in the vector corresponding to the index of the true label.</p>
-
 <p>It is not the case now. Nevertheless one should remember that so far all the weights have been assigned randomly and no training has been performed yet. In any case, it is not a vector of ones anymore, which an improvement.</p>
-
 <p>Thus, we can proceed to the next stage, which is to find out where the errors come from and how they can be minimized.</p>
-
 <h2 id="backpropagation">Backpropagation</h2>
-
 <p>Back propagation is a learning algorithm which aims to minimize the errors/cost function of the NN. Through this learning algorithm, the random weights and biases which were initially given to the network will be optimized to give the best output.</p>
-
 <p>Output of each node is the sum of the multiplications of the output of previous nodes by certain weights. Therefore we can associate how much error is coming with every weight and how much error has been brought from each particular node from the previous layer.</p>
-
-<p>To understand this better it is worth imagining the following example:
-* node 1 in the output layer of the NN should be equal to 0,01 ;
-* instead the NN is providing us with 0,8.</p>
-
+<p>To understand this better it is worth imagining the following example:</p>
+<ul>
+<li>node 1 in the output layer of the NN should be equal to 0,01 ;</li>
+<li>instead the NN is providing us with 0,8.</li>
+</ul>
 <p>In this case we should do the following:</p>
-
 <ol>
-<li><p>Calculate the error of the node (-0,79 in our example);</p></li>
-
-<li><p>Calculate how much error has been brought by every link to this node.</p></li>
+<li>
+<p>Calculate the error of the node (-0,79 in our example);</p>
+</li>
+<li>
+<p>Calculate how much error has been brought by every link to this node.</p>
+</li>
 </ol>
-
 <p>For instance if weight w<sub>11</sub> is 0,6 and w<sub>21</sub> is 0,4 then they are associated with an error of -0,79 multiplied by 0,6 and -0,79 multiplied by 0,4 respectively (see Pictures below).</p>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/pics/bp.jpg" alt="Drawing" style="width: 800px;"/></p>
-
+<img src="/blog/img/seminar/nn_fundamentals/pics/bp.jpg" alt="Drawing" style="width: 800px;"/>
 <p>After calculation of how much error is associated with every weight we can obtain the errors for the nodes in the proceeding layer.</p>
-
 <p>For instance error term for node 1 in the hidden layer will be equal to:</p>
-
 <p>the sum of errors associated with all the weights (w<sub>11</sub> and w<sub>12</sub> in our case) that link this node with the next layer (see Picture above).</p>
-
 <p>Once we repeat this procedure for all the nodes in all layers we can find out how much every node should be changed.</p>
-
 <p>To do so in Python we just need to make multiplication of vector that contain errors by corresponding matrix of weights.</p>
-
-<pre><code class="language-python"># Find the errors associated with hidden layer output:
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Find the errors associated with hidden layer output:</span>
 h_errors = np.dot(w_h_o.T, o_errors)
-h_errors[0:10] # errors in the hidden layer - show the first 10 nodes out of 90.
-</code></pre>
-
-<pre><code>array([[ 0.39443768],
+h_errors[<span style="color:#099">0</span>:<span style="color:#099">10</span>] <span style="color:#aaa;font-style:italic"># errors in the hidden layer - show the first 10 nodes out of 90.</span>
+</code></pre></div><pre><code>array([[ 0.39443768],
        [-0.16865836],
        [ 0.0304721 ],
        [-0.85442941],
@@ -635,79 +487,50 @@ h_errors[0:10] # errors in the hidden layer - show the first 10 nodes out of 90.
        [-0.07071894],
        [-1.63579796]])
 </code></pre>
-
 <h2 id="gradient-descent">Gradient descent</h2>
-
 <p>Gradient descent is one the most popular algorithms to optimize the neural networks. The name gradient descent is rooted in the procedure where the gradient is repeatedly evaluated to update the parameters. The objective of the gradient descent is to find weight parameters that will minimize the cost function.</p>
-
 <p>To understand the concept of gradient descent we should ask ourselves the following question: What can be done to improve the weights we have assigned randomly at the beginning, so that the overall result improves?</p>
-
 <p>To change the output of any node we should change the weights that connect it with the previous layer. Basically we want to find out how much error in every node changes once we change associated weights. Next we want to select the weights that would lead to a minimal error in the output layer. That can be achieved by differentiation of the cost function and search for its minimum.</p>
-
 <p>Given multidimensionality of the function, which we need to differentiate, the search for its minimum can be a complicated task. This task is similar to some extent to the search of the path in the darkness from the top of a mountain to its valley. Because it is dark it is almost impossible to reach the valley immediately. The only way to achieve the goal is by exploring the neighbourhood (the radius you are able to see) and tacking small steps in the direction that leads downhill and constantly updating the path for the next steps. This process is illustrated below:</p>
-
-<p><iframe src="https://giphy.com/embed/8tvzvXhB3wcmI" width="1000" height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-<p><a href="https://giphy.com/gifs/deep-learning-8tvzvXhB3wcmI"></p>
-
+<iframe src="https://giphy.com/embed/8tvzvXhB3wcmI" width="1000" height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+<p><a href="https://giphy.com/gifs/deep-learning-8tvzvXhB3wcmI">
 <p>[Source: Giphy.com]</a></p></p>
-
 <p>Mathematically the differentiation process can be illustrated on the example of weights between output and hidden layers (w<sub>ho</sub>). The same process but with corresponding values should be applied for the weights between input and hidden layers (w<sub>ih</sub>).</p>
-
 <p>As it can be seen from the formulas below the error we want to minimize (E) can be defined as the sum of squared differences between the target (t<sub>n</sub>) and output (o<sub>n</sub>) values of the NN. The sum of differences for all the nodes in the layer is relevant but when doing calculation for a particular node this sum can be omitted - only the difference between particular output (o<sub>o</sub>) and target (t<sub>o</sub>) matters.</p>
-
 <p>Target value is constant. Output value depends on weights and is obtained after applying sigmoid function to the sum of inputs (outputs of the previous layer - o<sub>h</sub>) multiplied by corresponding weights (w<sub>ho</sub>).</p>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/pics/formula2.png"  alt="Drawing" style="width: 1000px;"/></p>
-
+<img src="/blog/img/seminar/nn_fundamentals/pics/formula2.png"  alt="Drawing" style="width: 1000px;"/>
 <p>The formula for derivative of the sigmoid function is provided below. It is necessary to keep in mind that the sum to which we apply sigmoid function also depends on the change of weights (w<sub>ho</sub>). Therefore one should follow the chain rule for derivation.</p>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/pics/formula3.png"  alt="Drawing" style="width: 1000px;"/></p>
-
+<img src="/blog/img/seminar/nn_fundamentals/pics/formula3.png"  alt="Drawing" style="width: 1000px;"/>
 <p>The formula we derive is for one particular node. We can however apply it to all the nodes in the layer. In order to do so the only thing we need is to consider this formula in matrix notation. Thus, necessary update of weights linked to all the nodes in a layer will be calculated.</p>
-
 <p>After solving the minimization problem we can update the weights we have assigned before.</p>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/pics/formula5.png"  alt="Drawing" style="width: 1000px;"/></p>
-
+<img src="/blog/img/seminar/nn_fundamentals/pics/formula5.png"  alt="Drawing" style="width: 1000px;"/>
 <p>In code this can be represented as follows:</p>
-
-<pre><code class="language-python"># Update the matrix for weights between hidden and output layers:
-w_h_o += np.dot((o_errors * o_output * (1.0 - o_output)), np.transpose(h_output))
-# Update the matrix for weights between input and hidden layers:
-w_i_h += np.dot((h_errors * h_output * (1.0 - h_output)), np.transpose(input))
-</code></pre>
-
-<h2 id="learning-rate">Learning Rate</h2>
-
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Update the matrix for weights between hidden and output layers:</span>
+w_h_o += np.dot((o_errors * o_output * (<span style="color:#099">1.0</span> - o_output)), np.transpose(h_output))
+<span style="color:#aaa;font-style:italic"># Update the matrix for weights between input and hidden layers:</span>
+w_i_h += np.dot((h_errors * h_output * (<span style="color:#099">1.0</span> - h_output)), np.transpose(<span style="color:#0aa">input</span>))
+</code></pre></div><h2 id="learning-rate">Learning Rate</h2>
 <p>Now, there is something else, we should add in the weights updating procedure. If we completely change our weights with every new observation - our model learns to predict only the last input. Instead of updating weights 100 % every time we can change them only partially - this way every new observation will bring some new knowledge while the previous one will still be in memory even though updated to certain extent. The bigger the learning rate the more importance has the last observation, the smaller it is the more important is all the previous knowledge. The smaller the steps - the more accurate will be the prediction. At the same time it might take more time to learn.</p>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/pics/learning_rate.png" alt="Drawing" style="width: 400px;"/></p>
-
+<img src="/blog/img/seminar/nn_fundamentals/pics/learning_rate.png" alt="Drawing" style="width: 400px;"/>
 <p>[Source: &ldquo;Business Analytics &amp; Data Science Course by Professor S. Lessmann, Chapter 5:
 Artificial Neural Networks&rdquo;]</p>
-
 <p>Below is the code for weight&rsquo;s update procedure with learning rate included.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Define the learning rate:</span>
+l_r = <span style="color:#099">0.3</span>
 
-<pre><code class="language-python"># Define the learning rate:
-l_r = 0.3
-
-# Update the weights for the links between the hidden and output layers:
-w_h_o += l_r * np.dot((o_errors * o_output * (1.0 - o_output)), np.transpose(h_output))
-# Update the weights for the links between the input and hidden layers:
-w_i_h += l_r * np.dot((h_errors * h_output * (1.0 - h_output)), np.transpose(input))
-</code></pre>
-
-<h2 id="training">Training</h2>
-
+<span style="color:#aaa;font-style:italic"># Update the weights for the links between the hidden and output layers:</span>
+w_h_o += l_r * np.dot((o_errors * o_output * (<span style="color:#099">1.0</span> - o_output)), np.transpose(h_output))
+<span style="color:#aaa;font-style:italic"># Update the weights for the links between the input and hidden layers:</span>
+w_i_h += l_r * np.dot((h_errors * h_output * (<span style="color:#099">1.0</span> - h_output)), np.transpose(<span style="color:#0aa">input</span>))
+</code></pre></div><h2 id="training">Training</h2>
 <p>So far we have been working with one particular observation. Let&rsquo;s put all the steps done before in a for-loop, so that we can perform them for all observations in our training set. More observations will allow the NN to learn from more information. Every time a new observation is feedforwarded, the error term backpropagated and the cost function minimized, the matrices of weights become more capable to label yet unknown observations.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a">for</span> i <span style="color:#00a">in</span> data:
+    observation = i.split(<span style="color:#a50">&#39;,&#39;</span>)
+    <span style="color:#0aa">input</span> = np.array((np.asfarray(observation[<span style="color:#099">1</span>:])/<span style="color:#099">255.0</span>*<span style="color:#099">0.99</span>) + <span style="color:#099">0.01</span>, ndmin=<span style="color:#099">2</span>).T
+    target = np.array(np.zeros(o_n) + <span style="color:#099">0.01</span>, ndmin=<span style="color:#099">2</span>).T
+    target[<span style="color:#0aa">int</span>(observation[<span style="color:#099">0</span>])] = <span style="color:#099">0.99</span>
 
-<pre><code class="language-python">for i in data:
-    observation = i.split(',')
-    input = np.array((np.asfarray(observation[1:])/255.0*0.99) + 0.01, ndmin=2).T
-    target = np.array(np.zeros(o_n) + 0.01, ndmin=2).T
-    target[int(observation[0])] = 0.99
-
-    h_input = np.dot(w_i_h, input)
+    h_input = np.dot(w_i_h, <span style="color:#0aa">input</span>)
     h_output = sigmoid(h_input)
     o_input = np.dot(w_h_o, h_output)
     o_output = sigmoid(o_input)
@@ -715,49 +538,37 @@ w_i_h += l_r * np.dot((h_errors * h_output * (1.0 - h_output)), np.transpose(inp
     o_errors = target - o_output
     h_errors = np.dot(w_h_o.T, o_errors)
 
-    w_h_o += l_r * np.dot((o_errors * o_output * (1.0 - o_output)), np.transpose(h_output))
-    w_i_h += l_r * np.dot((h_errors * h_output * (1.0 - h_output)), np.transpose(input))
+    w_h_o += l_r * np.dot((o_errors * o_output * (<span style="color:#099">1.0</span> - o_output)), np.transpose(h_output))
+    w_i_h += l_r * np.dot((h_errors * h_output * (<span style="color:#099">1.0</span> - h_output)), np.transpose(<span style="color:#0aa">input</span>))
 
-    pass
-</code></pre>
-
-<h2 id="second-evaluation-of-the-results">Second evaluation of the results</h2>
-
+    <span style="color:#00a">pass</span>
+</code></pre></div><h2 id="second-evaluation-of-the-results">Second evaluation of the results</h2>
 <p>Once we have trained the model with 100 observations we can test it with new data it has never seen. After loading the test set we can first work with a particular observation to get an intuition about how good our NN can solve considered classification problem.</p>
-
-<pre><code class="language-python"># Load the mnist test data CSV file:
-raw_data_test = open(&quot;data/mnist_test.csv&quot;, 'r')
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Load the mnist test data CSV file:</span>
+raw_data_test = <span style="color:#0aa">open</span>(<span style="color:#a50">&#34;data/mnist_test.csv&#34;</span>, <span style="color:#a50">&#39;r&#39;</span>)
 data_test = raw_data_test.readlines()
 raw_data_test.close()
-</code></pre>
-
-<pre><code class="language-python"># Check a particular observation:
-observation = data_test[0].split(',')
-# Print the label:
-print(observation[0])
-# Image the number:
-image = np.asfarray(observation[1:]).reshape((28,28))
-mpp.imshow(image, cmap='Blues', interpolation='None')
-</code></pre>
-
-<pre><code>7
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Check a particular observation:</span>
+observation = data_test[<span style="color:#099">0</span>].split(<span style="color:#a50">&#39;,&#39;</span>)
+<span style="color:#aaa;font-style:italic"># Print the label:</span>
+<span style="color:#00a">print</span>(observation[<span style="color:#099">0</span>])
+<span style="color:#aaa;font-style:italic"># Image the number:</span>
+image = np.asfarray(observation[<span style="color:#099">1</span>:]).reshape((<span style="color:#099">28</span>,<span style="color:#099">28</span>))
+mpp.imshow(image, cmap=<span style="color:#a50">&#39;Blues&#39;</span>, interpolation=<span style="color:#a50">&#39;None&#39;</span>)
+</code></pre></div><pre><code>7
 
 &lt;matplotlib.image.AxesImage at 0x10f518828&gt;
 </code></pre>
-
-<p><img src="/blog/img/seminar/nn_fundamentals/1_NN_from_scratch_files/1_NN_from_scratch_96_2.png" alt="png" /></p>
-
-<pre><code class="language-python"># Use this observation as an input and run NN with it:
-input = np.array((np.asfarray(observation[1:])/255.0*0.99) + 0.01, ndmin=2).T
-h_input = np.dot(w_i_h, input)
+<p><img src="/blog/img/seminar/nn_fundamentals/1_NN_from_scratch_files/1_NN_from_scratch_96_2.png" alt="png"></p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Use this observation as an input and run NN with it:</span>
+<span style="color:#0aa">input</span> = np.array((np.asfarray(observation[<span style="color:#099">1</span>:])/<span style="color:#099">255.0</span>*<span style="color:#099">0.99</span>) + <span style="color:#099">0.01</span>, ndmin=<span style="color:#099">2</span>).T
+h_input = np.dot(w_i_h, <span style="color:#0aa">input</span>)
 h_output = sigmoid(h_input)
 o_input = np.dot(w_h_o, h_output)
 o_output = sigmoid(o_input)
 
 o_output
-</code></pre>
-
-<pre><code>array([[ 0.05086044],
+</code></pre></div><pre><code>array([[ 0.05086044],
        [ 0.01692228],
        [ 0.03306648],
        [ 0.01855151],
@@ -768,216 +579,163 @@ o_output
        [ 0.13214786],
        [ 0.05988345]])
 </code></pre>
-
-<pre><code class="language-python"># Get the prediction of NN for this test observation:
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Get the prediction of NN for this test observation:</span>
 label = np.argmax(o_output)
 label
+</code></pre></div><pre><code>7
 </code></pre>
-
-<pre><code>7
-</code></pre>
-
 <p>After working with a particular observation from the test set we can label all of them and evaluate the accuracy of our NN.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Test the neural network using all test dataset:</span>
 
-<pre><code class="language-python"># Test the neural network using all test dataset:
+score = [] <span style="color:#aaa;font-style:italic"># create a list in which the predictions of the network will we saved.</span>
 
-score = [] # create a list in which the predictions of the network will we saved.
+<span style="color:#aaa;font-style:italic"># Go through all the observations in the test data set:</span>
+<span style="color:#00a">for</span> i <span style="color:#00a">in</span> data_test:
+    observation = i.split(<span style="color:#a50">&#39;,&#39;</span>)
+    expected = <span style="color:#0aa">int</span>(observation[<span style="color:#099">0</span>])
+    <span style="color:#0aa">input</span> = np.array((np.asfarray(observation[<span style="color:#099">1</span>:])/<span style="color:#099">255.0</span>*<span style="color:#099">0.99</span>) + <span style="color:#099">0.01</span>, ndmin=<span style="color:#099">2</span>).T
 
-# Go through all the observations in the test data set:
-for i in data_test:
-    observation = i.split(',')
-    expected = int(observation[0])
-    input = np.array((np.asfarray(observation[1:])/255.0*0.99) + 0.01, ndmin=2).T
-
-    h_input = np.dot(w_i_h, input)
+    h_input = np.dot(w_i_h, <span style="color:#0aa">input</span>)
     h_output = sigmoid(h_input)
     o_input = np.dot(w_h_o, h_output)
     o_output = sigmoid(o_input)
 
     label = np.argmax(o_output)
 
-    if (label == expected):
-        score.append(1)
-    else:
-        score.append(0)
-        pass
+    <span style="color:#00a">if</span> (label == expected):
+        score.append(<span style="color:#099">1</span>)
+    <span style="color:#00a">else</span>:
+        score.append(<span style="color:#099">0</span>)
+        <span style="color:#00a">pass</span>
 
-    pass
-</code></pre>
-
-<pre><code class="language-python"># Calculate the performance score, the fraction of correct answers:
+    <span style="color:#00a">pass</span>
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Calculate the performance score, the fraction of correct answers:</span>
 score_array = np.asarray(score)
-print (&quot;performance = &quot;, score_array.sum() / score_array.size)
+<span style="color:#00a">print</span> (<span style="color:#a50">&#34;performance = &#34;</span>, score_array.sum() / score_array.size)
+</code></pre></div><pre><code>performance =  0.3959
 </code></pre>
-
-<pre><code>performance =  0.3959
-</code></pre>
-
 <p>It is several times better than naive, which would be 0.1 (given that we have 10 levels of the categorical variable we have to classify). Can we do better?</p>
-
 <h2 id="further-improvements">Further Improvements</h2>
-
 <p><strong>Training with several epochs</strong></p>
-
 <p>One way to improve the results of the NN is to train it more. For instance we can feedforward the same 100 observations more than once. Despite the fact that these are the same observations, longer training allows NN to accumulate more knowledge. Keep in mind that due to the presence of a learning rate NN receives only part of the information that is available and useful to predict particular observation. Seeing the same observations several times leads to smaller loss of the data.</p>
-
 <p>So let&rsquo;s introduce one extra parameter called &ldquo;epochs&rdquo; and create a loop around the number of epochs. The rest of the code we see below is the same as before.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">epochs = <span style="color:#099">5</span>
+</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># The &#34;big loop&#34; with epochs:</span>
+<span style="color:#00a">for</span> e <span style="color:#00a">in</span> <span style="color:#0aa">range</span>(epochs):
+    <span style="color:#00a">for</span> i <span style="color:#00a">in</span> data:
+        observation = i.split(<span style="color:#a50">&#39;,&#39;</span>)
+        <span style="color:#0aa">input</span> = np.array((np.asfarray(observation[<span style="color:#099">1</span>:])/<span style="color:#099">255.0</span>*<span style="color:#099">0.99</span>) + <span style="color:#099">0.01</span>, ndmin=<span style="color:#099">2</span>).T
+        target = np.array(np.zeros(o_n) + <span style="color:#099">0.01</span>, ndmin=<span style="color:#099">2</span>).T
+        target[<span style="color:#0aa">int</span>(observation[<span style="color:#099">0</span>])] = <span style="color:#099">0.99</span>
 
-<pre><code class="language-python">epochs = 5
-</code></pre>
-
-<pre><code class="language-python"># The &quot;big loop&quot; with epochs:
-for e in range(epochs):
-    for i in data:
-        observation = i.split(',')
-        input = np.array((np.asfarray(observation[1:])/255.0*0.99) + 0.01, ndmin=2).T
-        target = np.array(np.zeros(o_n) + 0.01, ndmin=2).T
-        target[int(observation[0])] = 0.99
-
-        h_input = np.dot(w_i_h, input)
+        h_input = np.dot(w_i_h, <span style="color:#0aa">input</span>)
         h_output = sigmoid(h_input)
         o_input = np.dot(w_h_o, h_output)
         o_output = sigmoid(o_input)
 
         o_errors = target - o_output
         h_errors = np.dot(w_h_o.T, o_errors)
-        w_h_o += l_r * np.dot((o_errors * o_output * (1.0 - o_output)), np.transpose(h_output))
-        w_i_h += l_r * np.dot((h_errors * h_output * (1.0 - h_output)), np.transpose(input))
+        w_h_o += l_r * np.dot((o_errors * o_output * (<span style="color:#099">1.0</span> - o_output)), np.transpose(h_output))
+        w_i_h += l_r * np.dot((h_errors * h_output * (<span style="color:#099">1.0</span> - h_output)), np.transpose(<span style="color:#0aa">input</span>))
 
-        pass
-    pass
+        <span style="color:#00a">pass</span>
+    <span style="color:#00a">pass</span>
 
 
-# test
+<span style="color:#aaa;font-style:italic"># test</span>
 score = []
 
-for i in data_test:
-    observation = i.split(',')
-    correct_label = int(observation[0])
-    input = np.array((np.asfarray(observation[1:])/255.0*0.99) + 0.01, ndmin=2).T
+<span style="color:#00a">for</span> i <span style="color:#00a">in</span> data_test:
+    observation = i.split(<span style="color:#a50">&#39;,&#39;</span>)
+    correct_label = <span style="color:#0aa">int</span>(observation[<span style="color:#099">0</span>])
+    <span style="color:#0aa">input</span> = np.array((np.asfarray(observation[<span style="color:#099">1</span>:])/<span style="color:#099">255.0</span>*<span style="color:#099">0.99</span>) + <span style="color:#099">0.01</span>, ndmin=<span style="color:#099">2</span>).T
 
-    h_input = np.dot(w_i_h, input)
+    h_input = np.dot(w_i_h, <span style="color:#0aa">input</span>)
     h_output = sigmoid(h_input)
     o_input = np.dot(w_h_o, h_output)
     o_output = sigmoid(o_input)
 
     label = np.argmax(o_output)
-    if (label == correct_label):
-        score.append(1)
-    else:
-        score.append(0)
-        pass
+    <span style="color:#00a">if</span> (label == correct_label):
+        score.append(<span style="color:#099">1</span>)
+    <span style="color:#00a">else</span>:
+        score.append(<span style="color:#099">0</span>)
+        <span style="color:#00a">pass</span>
 
-    pass
+    <span style="color:#00a">pass</span>
 
 
-# calculate accuracy
+<span style="color:#aaa;font-style:italic"># calculate accuracy</span>
 score_array = np.asarray(score)
-print (&quot;performance = &quot;, score_array.sum() / score_array.size)
+<span style="color:#00a">print</span> (<span style="color:#a50">&#34;performance = &#34;</span>, score_array.sum() / score_array.size)
+</code></pre></div><pre><code>performance =  0.690
 </code></pre>
-
-<pre><code>performance =  0.690
-</code></pre>
-
 <p><strong>Training with other l_r</strong></p>
-
 <p>The smaller the learning rate the more capable the network to optimize the weights in a more accurate way. At the same time one should keep in mind that small l_r also means additional loss of information extracted from each particular observation. Hence, there should be many training observations available in order to make the trade-off between accuracy and usage of available data reasonable. Given that we have more epochs now, it is interesting to try a smaller learning rate.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">l_r = <span style="color:#099">0.1</span>
 
-<pre><code class="language-python">l_r = 0.1
-
-# run the &quot;big loop&quot; with epochs again to get measure accuracy for new settings.
-</code></pre>
-
-<p><strong>A more complicated structure</strong></p>
-
+<span style="color:#aaa;font-style:italic"># run the &#34;big loop&#34; with epochs again to get measure accuracy for new settings.</span>
+</code></pre></div><p><strong>A more complicated structure</strong></p>
 <p>As you may remember in the beginning we have assigned the number of nodes in the hidden layer based on some rule of thumb assumptions. Now we can test if the NN will perform better if we increase the number of hidden nodes.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">h_n = <span style="color:#099">150</span>
 
-<pre><code class="language-python">h_n = 150
+<span style="color:#aaa;font-style:italic"># Determine the weights for a bigger matrices</span>
+w_i_h = np.random.normal(<span style="color:#099">0.0</span>, <span style="color:#0aa">pow</span>(h_n, -<span style="color:#099">0.5</span>), (h_n, i_n))
+w_h_o = np.random.normal(<span style="color:#099">0.0</span>, <span style="color:#0aa">pow</span>(o_n, -<span style="color:#099">0.5</span>), (o_n, h_n))
 
-# Determine the weights for a bigger matrices
-w_i_h = np.random.normal(0.0, pow(h_n, -0.5), (h_n, i_n))
-w_h_o = np.random.normal(0.0, pow(o_n, -0.5), (o_n, h_n))
-
-# run the &quot;big loop&quot; with epochs again to get measure accuracy for new settings.
-</code></pre>
-
-<p>It is always possible to train neural networks where the number of neurons is larger. But, with a smaller number of neurons the neural network has much better generalization abilities.</p>
-
+<span style="color:#aaa;font-style:italic"># run the &#34;big loop&#34; with epochs again to get measure accuracy for new settings.</span>
+</code></pre></div><p>It is always possible to train neural networks where the number of neurons is larger. But, with a smaller number of neurons the neural network has much better generalization abilities.</p>
 <p><strong>Overfitting.</strong> To many nodes is one of the reasons that leads to a problem when the neural network is over trained which would mean that it will fail to recognize patterns which were never used in the training.</p>
-
 <p>With a smaller number of neurons, it is more complicated to train the network to very small errors, but it may produce much better approximations for new patterns. The most common mistake made by many researchers is that in order to speed up the training process and to reduce the training errors, they use neural networks with a larger number of neurons than required. Such networks could perform poorly for new patterns not seen previously by the NN.</p>
-
 <p><strong>Other training set</strong></p>
-
 <p>One other source of improvement is providing the NN with a relatively big dataset for training. Everything that was done before was implemented with just 100 observations. Let&rsquo;s see if our results improve if we increase our training dataset to 60 000 observations. As we have more data now we will reduce the number of epochs and keep having low learning rate.</p>
-
-<pre><code class="language-python"># Load the data
-raw_data = open(&quot;data/mnist_train.csv&quot;, 'r')
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#aaa;font-style:italic"># Load the data</span>
+raw_data = <span style="color:#0aa">open</span>(<span style="color:#a50">&#34;data/mnist_train.csv&#34;</span>, <span style="color:#a50">&#39;r&#39;</span>)
 data = raw_data.readlines()
 raw_data.close()
 
-# Settings
-epochs = 2
-l_r = 0.1
-h_n = 90
-w_i_h = np.random.normal(0.0, pow(h_n, -0.5), (h_n, i_n))
-w_h_o = np.random.normal(0.0, pow(o_n, -0.5), (o_n, h_n))
+<span style="color:#aaa;font-style:italic"># Settings</span>
+epochs = <span style="color:#099">2</span>
+l_r = <span style="color:#099">0.1</span>
+h_n = <span style="color:#099">90</span>
+w_i_h = np.random.normal(<span style="color:#099">0.0</span>, <span style="color:#0aa">pow</span>(h_n, -<span style="color:#099">0.5</span>), (h_n, i_n))
+w_h_o = np.random.normal(<span style="color:#099">0.0</span>, <span style="color:#0aa">pow</span>(o_n, -<span style="color:#099">0.5</span>), (o_n, h_n))
 
-# run the &quot;big loop&quot; with epochs again to get measure accuracy for new settings
-</code></pre>
-
-<p>The result we achieve with a big training set is already pretty impressive. In more than 90 % of cases our NN is able to solve the classification problem properly. And we should remember that it was implemented from scratch using only basic linear algebra packages. Let&rsquo;s see in the following section if we can do better or if we can simplify the process using specialized packages to build neural networks.</p>
-
+<span style="color:#aaa;font-style:italic"># run the &#34;big loop&#34; with epochs again to get measure accuracy for new settings</span>
+</code></pre></div><p>The result we achieve with a big training set is already pretty impressive. In more than 90 % of cases our NN is able to solve the classification problem properly. And we should remember that it was implemented from scratch using only basic linear algebra packages. Let&rsquo;s see in the following section if we can do better or if we can simplify the process using specialized packages to build neural networks.</p>
 <h1 id="neural-networks-with-keras">Neural Networks with Keras</h1>
-
 <p>We are now going to reimplement the previous neural network with the Keras framework. Keras is an open source neural network library written in Python. It has the advantage of abstracting most of the boiler-plate code one needs to write when implementing a neural net only with a linear algebra library. Thus, it is suitable to fast prototyping and experimentation.</p>
-
 <p>It&rsquo;s important you make sure you have the required libraries installed for it to work. We will make use of three main libraries and their dependencies, which will be automatically installed.</p>
-
 <p>If you are using Anconda&rsquo;s Python distribution, we advise you to run <code>conda install keras pandas numpy</code> on the terminal. Otherwise, using the <code>pip</code> package manager should also do the trick. Run <code>pip install keras pandas numpy</code> on the terminal.</p>
-
 <p>The version of Python that will be used throughout this notebook is Python 3.6.4 from Anaconda&rsquo;s distribution. You can check your version of Python by executing the cell below.</p>
-
-<pre><code class="language-bash">!python --version
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">!python --version
+</code></pre></div><pre><code>Python 3.6.4 :: Anaconda, Inc.
 </code></pre>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a">import</span> <span style="color:#0aa;text-decoration:underline">numpy</span> <span style="color:#00a">as</span> <span style="color:#0aa;text-decoration:underline">np</span>
+<span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">keras.models</span> <span style="color:#00a">import</span> Sequential
+<span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">keras.layers</span> <span style="color:#00a">import</span> Dense
+<span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">keras.utils</span> <span style="color:#00a">import</span> np_utils
 
-<pre><code>Python 3.6.4 :: Anaconda, Inc.
-</code></pre>
-
-<pre><code class="language-python">import numpy as np
-from keras.models import Sequential
-from keras.layers import Dense
-from keras.utils import np_utils
-
-import pandas as pd
-</code></pre>
-
-<h2 id="load-the-data">Load the data</h2>
-
-<p>To load the data, we will use the very handy <code>panda</code>&rsquo;s <code>read_csv</code> function. It frees us from the burden of parsing the text file.</p>
-
-<pre><code class="language-python">names = [&quot;y&quot;] + list(range(1,785))
+<span style="color:#00a">import</span> <span style="color:#0aa;text-decoration:underline">pandas</span> <span style="color:#00a">as</span> <span style="color:#0aa;text-decoration:underline">pd</span>
+</code></pre></div><h2 id="load-the-data">Load the data</h2>
+<p>To load the data, we will use the very handy <code>panda</code>'s <code>read_csv</code> function. It frees us from the burden of parsing the text file.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">names = [<span style="color:#a50">&#34;y&#34;</span>] + <span style="color:#0aa">list</span>(<span style="color:#0aa">range</span>(<span style="color:#099">1</span>,<span style="color:#099">785</span>))
 
 
-df = pd.read_csv(&quot;data/mnist_train.csv&quot;,
+df = pd.read_csv(<span style="color:#a50">&#34;data/mnist_train.csv&#34;</span>,
                  names=names)
 
-df_test = pd.read_csv(&quot;data/mnist_test.csv&quot;,
+df_test = pd.read_csv(<span style="color:#a50">&#34;data/mnist_test.csv&#34;</span>,
                      names=names)
-</code></pre>
+</code></pre></div><p>Next we separate labels from features in both train and test set and transform them from dataframes to numpy arrays, which are better suited for modeling.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">y_train = df[<span style="color:#a50">&#39;y&#39;</span>].values
+X_train = df.iloc[:, <span style="color:#099">1</span>:].values/<span style="color:#099">255</span>*<span style="color:#099">0.99</span>+<span style="color:#099">0.01</span>
 
-<p>Next we separate labels from features in both train and test set and transform them from dataframes to numpy arrays, which are better suited for modeling.</p>
-
-<pre><code class="language-python">y_train = df['y'].values
-X_train = df.iloc[:, 1:].values/255*0.99+0.01
-
-y_test = df_test['y'].values
-X_test = df_test.iloc[:, 1:].values/255*0.99+0.01
+y_test = df_test[<span style="color:#a50">&#39;y&#39;</span>].values
+X_test = df_test.iloc[:, <span style="color:#099">1</span>:].values/<span style="color:#099">255</span>*<span style="color:#099">0.99</span>+<span style="color:#099">0.01</span>
 
 [y_train, y_test, X_train, X_test]
-</code></pre>
-
-<pre><code>[array([5, 0, 4, ..., 5, 6, 8]),
+</code></pre></div><pre><code>[array([5, 0, 4, ..., 5, 6, 8]),
  array([7, 2, 1, ..., 4, 5, 6]),
  array([[0.01, 0.01, 0.01, ..., 0.01, 0.01, 0.01],
         [0.01, 0.01, 0.01, ..., 0.01, 0.01, 0.01],
@@ -994,30 +752,19 @@ X_test = df_test.iloc[:, 1:].values/255*0.99+0.01
         [0.01, 0.01, 0.01, ..., 0.01, 0.01, 0.01],
         [0.01, 0.01, 0.01, ..., 0.01, 0.01, 0.01]])]
 </code></pre>
-
 <p>We now check if the shape of the arrays correspond to the expected. In fact, the shape is correct. We have 60 thousand observations in the train set and 10 thousand in the test set.</p>
-
-<pre><code class="language-python">[y_train.shape, X_train.shape, y_test.shape, X_test.shape]
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">[y_train.shape, X_train.shape, y_test.shape, X_test.shape]
+</code></pre></div><pre><code>[(60000,), (60000, 784), (10000,), (10000, 784)]
 </code></pre>
-
-<pre><code>[(60000,), (60000, 784), (10000,), (10000, 784)]
-</code></pre>
-
 <p>Before defining the model, one extra step is necessary: transform the labels so they are one-hot encoded. One-hot encoding a vector means transforming it into a matrix of ones and zeroes only with as many columns as the number of different values in the vector. In the specific case, the label vector becomes a ten-column array, each column representing one digit. If the label of the observation is 2, it will have zeroes in columns expect in the third column, which will have a one. The number of rows remains the same.</p>
-
-<pre><code class="language-python">y_train = np_utils.to_categorical(y_train)
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">y_train = np_utils.to_categorical(y_train)
 y_test = np_utils.to_categorical(y_test)
 
 [y_test.shape, y_train.shape]
+</code></pre></div><pre><code>[(10000, 10), (60000, 10)]
 </code></pre>
-
-<pre><code>[(10000, 10), (60000, 10)]
-</code></pre>
-
-<pre><code class="language-python">y_train
-</code></pre>
-
-<pre><code>array([[0., 0., 0., ..., 0., 0., 0.],
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">y_train
+</code></pre></div><pre><code>array([[0., 0., 0., ..., 0., 0., 0.],
        [1., 0., 0., ..., 0., 0., 0.],
        [0., 0., 0., ..., 0., 0., 0.],
        ...,
@@ -1025,84 +772,64 @@ y_test = np_utils.to_categorical(y_test)
        [0., 0., 0., ..., 0., 0., 0.],
        [0., 0., 0., ..., 0., 1., 0.]])
 </code></pre>
-
 <h2 id="model">Model</h2>
-
 <p>We finally come to the most important part. We will accomplish the task of building the neural network with only eight lines of code. But before we dive into that, a few words about the activation function and the optimizer are due.</p>
-
 <h3 id="activation-functions-and-gradient-descent">Activation Functions and Gradient Descent</h3>
-
 <p>The activation functions are compared to each other in terms of their efficient approximation (Schnitger &amp; DasGupta, 1993). There are several types of them but the common ones are the sigmoid, tangent hyperbolic and the ReLU functions. The following is a short explanation on the advantages and disadvantages of each of these activation functions.</p>
-
 <ul>
-<li><p><strong>Sigmoid function:</strong> This function squashes the input value into a value in the range of [0,1]. It is powerful to compute bolean functions and the smoothness of sigmoid allows for better approximation (Schnitger &amp; DasGupta, 1993). However, there are two major drawbacks. First, the sigmoid outputs 0 for high negative values and 1 for high positive values and this result in no signal flows from the nodes because the gradient at these two tails are 0. Second, its output is not centered at 0. This would ultimately result in either all positive gradients on weights or all negative during the backpropogation.</p></li>
-
-<li><p><strong>Tangent hyperbolic:</strong> Unlike to sigmoid, this function’s output is zero cantered and outputs a value in the range of [-1,1]. Although it is more preferred over sigmoid but it suffers from the same problem because it kills the gradient descent at high or low values.</p></li>
-
-<li><p><strong>ReLU:</strong> This function is zero whenever input is negative and when the input is positive, its behaviour is linear with slope 1. According to Glorot et al. (2011), the ReLU activation functions outperform sigmoidal functions in Deep Neural Networks on text classification and image recognition tasks. ReLU also excels the sigmoid and tangent hyperbolic in accelerating the stochastic gradient descent convergence. However, the ReLU is not prone to the training process and the nodes can die. This means that if a large gradient runs through the nodes, it may update the weights in a way that the node will never be active for any inputs again and this will result in gradient of zero from that node onward.</p></li>
+<li>
+<p><strong>Sigmoid function:</strong> This function squashes the input value into a value in the range of [0,1]. It is powerful to compute bolean functions and the smoothness of sigmoid allows for better approximation (Schnitger &amp; DasGupta, 1993). However, there are two major drawbacks. First, the sigmoid outputs 0 for high negative values and 1 for high positive values and this result in no signal flows from the nodes because the gradient at these two tails are 0. Second, its output is not centered at 0. This would ultimately result in either all positive gradients on weights or all negative during the backpropogation.</p>
+</li>
+<li>
+<p><strong>Tangent hyperbolic:</strong> Unlike to sigmoid, this function’s output is zero cantered and outputs a value in the range of [-1,1]. Although it is more preferred over sigmoid but it suffers from the same problem because it kills the gradient descent at high or low values.</p>
+</li>
+<li>
+<p><strong>ReLU:</strong> This function is zero whenever input is negative and when the input is positive, its behaviour is linear with slope 1. According to Glorot et al. (2011), the ReLU activation functions outperform sigmoidal functions in Deep Neural Networks on text classification and image recognition tasks. ReLU also excels the sigmoid and tangent hyperbolic in accelerating the stochastic gradient descent convergence. However, the ReLU is not prone to the training process and the nodes can die. This means that if a large gradient runs through the nodes, it may update the weights in a way that the node will never be active for any inputs again and this will result in gradient of zero from that node onward.</p>
+</li>
 </ul>
-
 <p>As we mentioned before gradient descent is one the most popular algorithms to optimize the neural networks. There are many variations of this algorithm. The most popular of them are Mini-batch Gradient Descent and the Stochastic Gradient Descent.</p>
-
 <ul>
 <li><strong>The Mini-batch Gradient Descent (BGD)</strong> is used when there is a large scale training data set where the computation of the cost function over the whole training data set is computationally expensive. Therefore, a batch of the training data set, say 250 observations, is randomly selected to compute the gradient with the assumption that the observations in the training dataset are correlated.</li>
 <li>If this procedure is done only one observation instead of 250, but with 250 iterations, then this procedure is called <strong>Stochastic Gradient Descent (SGD)</strong>. This approach is repeatedly sampling a training example, which is used to evaluate the gradient. Sometimes it is considered less efficient as the loss function calculated 250 times based on a single sampled training example can be noisy.</li>
 </ul>
-
-<p>You can learn more about different types of activation functions and optimizers using the official documentation of the keras package:
-- <a href="https://keras.io/optimizers/">https://keras.io/optimizers/</a>
-- <a href="https://keras.io/activations/">https://keras.io/activations/</a></p>
-
+<p>You can learn more about different types of activation functions and optimizers using the official documentation of the keras package:</p>
+<ul>
+<li><a href="https://keras.io/optimizers/">https://keras.io/optimizers/</a></li>
+<li><a href="https://keras.io/activations/">https://keras.io/activations/</a></li>
+</ul>
 <p>A very insightful overview of optimization mechanisms is done by [<a href="arxiv.org/abs/1609.04747">Rueder, 2016</a>].</p>
-
 <h3 id="define-the-model">Define the model</h3>
-
 <p>The model in question consists of one input, one hidden and one output layer. The activation function of the hidden layer is a ReLU. And we use as the optimizer Stochastic Gradient Descent.</p>
-
 <p>Once the activation function and optimizers are selected, it is time to determine the structure of the NN. Keras makes it very simple to add new layers. One needs only to call the <code>add</code> method on the model and pass the layer with its specifications. As you can see, the number of inputs needs to be specified only in the first layer. Keras infers the input number of a layer by looking at the number of outputs of its predecessor.</p>
-
 <p>For this neural network, we will only use dense layers, which are layers with all nodes fully connected to each other. Keras, however, allows you to arbitrarily build your neural networks by providing different types of layers, such as convolutional and pooling layers.</p>
-
-<pre><code class="language-python">def baseline_model(num_hidden_n, num_pixels, num_classes, optimizer):
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a">def</span> <span style="color:#0a0">baseline_model</span>(num_hidden_n, num_pixels, num_classes, optimizer):
     model = Sequential()
-    model.add(Dense(num_hidden_n, input_dim=num_pixels, kernel_initializer='normal', activation='relu'))
-    model.add(Dense(num_classes, kernel_initializer='normal', activation='softmax'))
+    model.add(Dense(num_hidden_n, input_dim=num_pixels, kernel_initializer=<span style="color:#a50">&#39;normal&#39;</span>, activation=<span style="color:#a50">&#39;relu&#39;</span>))
+    model.add(Dense(num_classes, kernel_initializer=<span style="color:#a50">&#39;normal&#39;</span>, activation=<span style="color:#a50">&#39;softmax&#39;</span>))
 
-    # Compile model
-    model.compile(loss='categorical_crossentropy',
+    <span style="color:#aaa;font-style:italic"># Compile model</span>
+    model.compile(loss=<span style="color:#a50">&#39;categorical_crossentropy&#39;</span>,
                   optimizer=optimizer,
-                  metrics=['accuracy'])
-    return model
-</code></pre>
-
-<h3 id="instantiate-the-model">Instantiate the model</h3>
-
+                  metrics=[<span style="color:#a50">&#39;accuracy&#39;</span>])
+    <span style="color:#00a">return</span> model
+</code></pre></div><h3 id="instantiate-the-model">Instantiate the model</h3>
 <p>Having defined the structure of the model, we can now instantiate a concrete version of it by picking the relevant parameters and calling the function that returns the model object.</p>
-
 <p>Here we have chosen the hidden layers to have 90 nodes, while input and output layers have 784 and 10 nodes respectively.</p>
-
-<pre><code class="language-python">num_pixels, num_hidden_n, num_classes = 784, 90, 10
-optimizer = 'sgd'
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">num_pixels, num_hidden_n, num_classes = <span style="color:#099">784</span>, <span style="color:#099">90</span>, <span style="color:#099">10</span>
+optimizer = <span style="color:#a50">&#39;sgd&#39;</span>
 
 model = baseline_model(num_hidden_n, num_pixels, num_classes, optimizer)
-</code></pre>
-
-<h3 id="train-and-evaluate-the-model">Train and evaluate the model</h3>
-
+</code></pre></div><h3 id="train-and-evaluate-the-model">Train and evaluate the model</h3>
 <p>With the model instantiated, we can finally call the fit method on it using the data set we prepared before.</p>
-
 <p>After training the model we evaluate its performance by looking at its accuracy.</p>
-
-<pre><code class="language-python">model.fit(X_train,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model.fit(X_train,
           y_train,
-          epochs=5,
-          batch_size=200,
-          verbose=2)
-scores = model.evaluate(X_test, y_test, verbose=0)
-print(&quot;Error Rate: %.2f%%&quot; % (100-scores[1]*100))
-</code></pre>
-
-<pre><code>Epoch 1/5
+          epochs=<span style="color:#099">5</span>,
+          batch_size=<span style="color:#099">200</span>,
+          verbose=<span style="color:#099">2</span>)
+scores = model.evaluate(X_test, y_test, verbose=<span style="color:#099">0</span>)
+<span style="color:#00a">print</span>(<span style="color:#a50">&#34;Error Rate: </span><span style="color:#a50">%.2f%%</span><span style="color:#a50">&#34;</span> % (<span style="color:#099">100</span>-scores[<span style="color:#099">1</span>]*<span style="color:#099">100</span>))
+</code></pre></div><pre><code>Epoch 1/5
  - 2s - loss: 1.9561 - acc: 0.4904
 Epoch 2/5
  - 2s - loss: 1.1276 - acc: 0.7666
@@ -1114,24 +841,20 @@ Epoch 5/5
  - 2s - loss: 0.5081 - acc: 0.8670
 Error Rate: 11.97%
 </code></pre>
-
 <p>The error rate does not seem very good. Maybe we could try a different optimizer. We will instantiate and fit the model again with the RMSprop optimization algorithm. By using Keras, the only thing you need to do is to pass a different argument to the model.</p>
-
-<pre><code class="language-python">model = baseline_model(num_hidden_n,
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model = baseline_model(num_hidden_n,
                        num_pixels,
                        num_classes,
-                       optimizer = &quot;rmsprop&quot;)
+                       optimizer = <span style="color:#a50">&#34;rmsprop&#34;</span>)
 
 model.fit(X_train,
           y_train,
-          epochs=5,
-          batch_size=200,
-          verbose=2)
-scores = model.evaluate(X_test, y_test, verbose=0)
-print(&quot;Error Rate: %.2f%%&quot; % (100-scores[1]*100))
-</code></pre>
-
-<pre><code>Epoch 1/5
+          epochs=<span style="color:#099">5</span>,
+          batch_size=<span style="color:#099">200</span>,
+          verbose=<span style="color:#099">2</span>)
+scores = model.evaluate(X_test, y_test, verbose=<span style="color:#099">0</span>)
+<span style="color:#00a">print</span>(<span style="color:#a50">&#34;Error Rate: </span><span style="color:#a50">%.2f%%</span><span style="color:#a50">&#34;</span> % (<span style="color:#099">100</span>-scores[<span style="color:#099">1</span>]*<span style="color:#099">100</span>))
+</code></pre></div><pre><code>Epoch 1/5
  - 2s - loss: 0.4846 - acc: 0.8785
 Epoch 2/5
  - 2s - loss: 0.2387 - acc: 0.9319
@@ -1143,36 +866,23 @@ Epoch 5/5
  - 2s - loss: 0.1199 - acc: 0.9660
 Error Rate: 3.59%
 </code></pre>
-
 <h3 id="save-the-model">Save the model</h3>
-
 <p>Once trained, you might want to use the model in the future. You can do so by saving it to a file for later use. Keras comes equipped with the <code>save</code> method, which allows you to easily save your trained model to the disk.</p>
-
 <p>We are going to save the model into a file called <code>model.h5</code> and delete it from memory.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model.save(<span style="color:#a50">&#34;model.h5&#34;</span>)
+<span style="color:#00a">del</span> model
+</code></pre></div><p>Then we load the model from the file we just created and evaluate it again to make sure that during the saving process, the model hasn&rsquo;t been corrupted. The error rate is the same: the model has been successfully saved and can be shared with third-parties.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#00a">from</span> <span style="color:#0aa;text-decoration:underline">keras.models</span> <span style="color:#00a">import</span> load_model
 
-<pre><code class="language-python">model.save(&quot;model.h5&quot;)
-del model
+model2 = load_model(<span style="color:#a50">&#34;model.h5&#34;</span>)
+
+scores2 = model2.evaluate(X_test, y_test, verbose=<span style="color:#099">0</span>)
+<span style="color:#00a">print</span>(<span style="color:#a50">&#34;Error Rate: </span><span style="color:#a50">%.2f%%</span><span style="color:#a50">&#34;</span> % (<span style="color:#099">100</span>-scores2[<span style="color:#099">1</span>]*<span style="color:#099">100</span>))
+</code></pre></div><pre><code>Error Rate: 3.59%
 </code></pre>
-
-<p>Then we load the model from the file we just created and evaluate it again to make sure that during the saving process, the model hasn&rsquo;t been corrupted. The error rate is the same: the model has been successfully saved and can be shared with third-parties.</p>
-
-<pre><code class="language-python">from keras.models import load_model
-
-model2 = load_model(&quot;model.h5&quot;)
-
-scores2 = model2.evaluate(X_test, y_test, verbose=0)
-print(&quot;Error Rate: %.2f%%&quot; % (100-scores2[1]*100))
-</code></pre>
-
-<pre><code>Error Rate: 3.59%
-</code></pre>
-
 <h1 id="conclusion">Conclusion</h1>
-
 <p>We have shown how to implement a neural network in Python from scratch while explaining the intuition and mathematics behind each concept. We also compared the result of our work with other ready-to-use packages such as Keras and we noticed that the accuracy of our basic neural network is reasonable taking into account the more advanced optimizers available in Keras and used in the second part of the tutorial.</p>
-
 <p>You should now have a clear concept of how a neural network performs and what basic techniques can be applied to optimize it. Neural networks are nowadays very popular and there are a handful of literatures, some of which were discussed, on how to optimize them. They have a huge range of application in medicine, business, engineering and so forth. Although there was little room to discuss on a wide topic like neural network in a blog post, we tried our best to familiarize you with as many concepts as a blog post permits.</p>
-
 <p>Our discussion on the activation functions and optimizations were intentionally focused on the most common examples to provide reader with a better intuition. It should be noted that there are different types of neural nets and a variety of learning algorithms which were not covered in this blog post. We hope we managed to catch you attention to such a fascinating topic and served as a starting point for you to advance your knowledge on neural networks.</p>
 
                         </div>

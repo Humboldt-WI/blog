@@ -17,7 +17,7 @@
   <meta name="description" content="Application of state-of-the-art text analysis technique ULMFiT to a Twitter Dataset">
   
 
-  <meta name="generator" content="Hugo 0.54.0" />
+  <meta name="generator" content="Hugo 0.68.3" />
 
   <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
 
@@ -177,57 +177,47 @@
                         <p class="text-muted text-uppercase mb-small text-right">By <a href="#">Seminar Information Systems (WS18/19)</a> | February 7, 2019</p>
 
                         <div id="post-content">
-                          
-
-<h1 id="universal-language-model-fine-tuning-ulmfit">Universal Language Model Fine-Tuning (ULMFiT)</h1>
-
+                          <h1 id="universal-language-model-fine-tuning-ulmfit">Universal Language Model Fine-Tuning (ULMFiT)</h1>
 <h3 id="state-of-the-art-in-text-analysis">State-of-the-Art in Text Analysis</h3>
-
-<hr />
-
-<h4 id="authors-sandra-faltl-michael-schimpke-constantin-hackober">Authors: Sandra Faltl, Michael Schimpke &amp; Constantin Hackober</h4>
-
+<hr>
+<h4 id="authors-sandra-faltl-michael-schimpke--constantin-hackober">Authors: Sandra Faltl, Michael Schimpke &amp; Constantin Hackober</h4>
 <p><br><br><br></p>
-
 <h3 id="table-of-contents">Table of Contents</h3>
-
-<hr />
-
+<hr>
 <ol>
 <li><a href="#introduction">Introduction</a>
-
 <ol>
 <li><a href="#motivation">Literature Review and Motivation</a></li>
 <li><a href="#translearning">Inductive Transfer Learning</a></li>
 <li><a href="#datasets">Our Datasets</a></li>
 <li><a href="#overviewulmfit">Overview ULMFiT</a>
 <br><br></li>
-</ol></li>
+</ol>
+</li>
 <li><a href="#gdlmp">General-Domain Language Model Pretraining</a>
-
 <ol>
 <li><a href="#embeddings">Word Embeddings</a></li>
 <li><a href="#forwardpass">Example of a Forward Pass through the LM</a></li>
 <li><a href="#prepforfine">Preparations for Fine-Tuning</a>
-
 <ol>
 <li><a href="#matching">Matching Process for the Embedding Matrix</a></li>
 <li><a href="#vlbs">Variable Length Backpropagation Sequences</a></li>
 <li><a href="#adam">Adam Optimizer</a></li>
 <li><a href="#dropout">Dropout</a>
 <br><br></li>
-</ol></li>
-</ol></li>
+</ol>
+</li>
+</ol>
+</li>
 <li><a href="#ttlmft">Target Task Language Model Fine-Tuning</a>
-
 <ol>
 <li><a href="#freezing">Freezing</a></li>
 <li><a href="#lrschedule">Learning Rate Schedule</a></li>
 <li><a href="#discrft">Discriminative Fine-Tuning</a>
 <br><br></li>
-</ol></li>
+</ol>
+</li>
 <li><a href="#ttc">Target Task Classifier</a>
-
 <ol>
 <li><a href="#concatpool">Concat Pooling</a></li>
 <li><a href="#lindecoder">Linear Decoder</a></li>
@@ -236,29 +226,25 @@
 <li><a href="#fwdpassclass">Example of a Forward Pass through the
 Classifier</a>
 <br><br></li>
-</ol></li>
+</ol>
+</li>
 <li><a href="#ome">Our Model Extension</a>
-
 <ol>
 <li><a href="#extresults">Results</a></li>
 <li><a href="#novocabred">Without Vocabulary Reduction</a>
 <br><br></li>
-</ol></li>
+</ol>
+</li>
 <li><a href="#conclusion">Conclusion</a>
 <br><br></li>
 <li><a href="#references">Reference List</a></li>
 </ol>
-
-<h2 id="1-introduction-a-class-anchor-id-introduction-a">1. Introduction <a class="anchor" id="introduction"></a></h2>
-
-<hr />
-
-<h3 id="1-1-literature-review-and-motivation-a-class-anchor-id-motivation-a">1.1. Literature Review and Motivation <a class="anchor" id="motivation"></a></h3>
-
+<h2 id="1-introduction-a-classanchor-idintroductiona">1. Introduction <a class="anchor" id="introduction"></a></h2>
+<hr>
+<h3 id="11-literature-review-and-motivation-a-classanchor-idmotivationa">1.1. Literature Review and Motivation <a class="anchor" id="motivation"></a></h3>
 <p><em>“It only seems to be a question of time until pretrained word
 embeddings will be dethroned and replaced by pretrained language models
 in the toolbox of every NLP practitioner”.</em> [1]</p>
-
 <p>This bold prognosis by the researcher Sebastian Ruder has sparked
 widespread debates among experts in NLP and led many to re-evaluate the
 current state of NLP. In light of this, it makes sense to take a quick
@@ -267,7 +253,6 @@ In this review we will refer to several concepts that will be introduced
 in more detail in the course of this blog post. Therefore, if you are
 not familiar with some of these terms, do not worry about it and move on
 to the rest of the post.</p>
-
 <p>For many years, reduction operations, such as stemming or lemmatization,
 as well as shallow models, such as SVMs, had dominated NLP
 [2]. Young et al. [2] claim that it was the
@@ -287,7 +272,6 @@ vectors with the pretrained word embeddings. Neelakantan et al.
 individual vectors for each word sense. These approaches tackle the
 issue of missing context. However, they do not eliminate the need to
 train the actual task model from scratch.</p>
-
 <p>In their search for novel approaches, many NLP researchers looked to
 methods that had previously proven successful in computer vision (CV). A
 breakthrough in CV whose importance cannot be understated was
@@ -312,7 +296,6 @@ Ruder. Apart from achieving state-of-the-art results in numerous tasks,
 ULMFiT incorporates several fine-tuning techniques which are broadly
 applicable and could boost performance for other methods as well, e.g.
 the OpenAI Transformer [12].</p>
-
 <p>With this blog post we, therefore, hope to provide an understanding of
 ULMFiT and what makes it such a cutting-edge technique. While ULMFiT can
 be applied to any kind of text classification task (e.g. topic
@@ -331,9 +314,7 @@ for the sentiment analysis. These explanations will also be accompanied
 by code snippets to enable you to implement your very own ULMFiT model.
 Lastly, we will also show an extension we made to the original ULMFiT
 model and discuss the resulting changes in performance.</p>
-
-<h3 id="1-2-inductive-transfer-learning-a-class-anchor-id-translearning-a">1.2. Inductive Transfer Learning <a class="anchor" id="translearning"></a></h3>
-
+<h3 id="12-inductive-transfer-learning-a-classanchor-idtranslearninga">1.2. Inductive Transfer Learning <a class="anchor" id="translearning"></a></h3>
 <p>As already mentioned, many state-of-the-art models in NLP have to be
 trained from scratch and require large datasets to achieve reasonable
 results, they do not only take up huge quantities of memory but are also
@@ -341,13 +322,11 @@ quite time consuming. Specifically in text classification, there might
 not even be enough labeled examples to begin with. Inductive transfer
 learning tackles exactly these challenges [13]. It is also
 the central concept ULMFiT is based on.</p>
-
 <p style="float:right">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_1.png" width="450" style="clear: left">
 <br><br>
  &emsp; <i>Figure 1:</i> Traditional ML vs. Transfer Learning. Adapted from [14]. <br>
 </p>
-
 <p align="justify">
 <b>Transfer learning</b> aims to mimic the human ability to acquire
 knowledge while learning one task and to then utilize this knowledge to
@@ -360,7 +339,6 @@ features) from training a model 1 and to then utilize this knowledge to
 train a model 2. In this case, model 1 would be called the source task
 and model 2 the target task [14].
 </p>
-
 <p>To qualify as <b>INDUCTIVE transfer learning</b>, the source task has to be
 different from the target task and labeled data has to available in the
 target domain [13]. Both these definitional requirements
@@ -368,15 +346,12 @@ are given in our specific case, with our source task being a language
 model (LM) and our target task (i.e. what we ultimately want to achieve)
 being a sentiment analysis. The Twitter dataset used for the latter is
 also labeled.</p>
-
 <p><em>Quick note:</em> A LM can predict the probability of the next word in a
 sequence, based on the words already observed in this sequence (for a
 more in-depth introduction to LMs, take a look at <a href="https://towardsdatascience.com/learning-nlp-language-models-with-real-data-cdff04c51c25">this
 blog</a>)
 <br></p>
-
-<h3 id="1-3-our-datasets-a-class-anchor-id-datasets-a">1.3. Our Datasets <a class="anchor" id="datasets"></a></h3>
-
+<h3 id="13-our-datasets-a-classanchor-iddatasetsa">1.3. Our Datasets <a class="anchor" id="datasets"></a></h3>
 <p>For our source task (i.e. the LM) we chose the <b>WikiText-103 dataset</b>
 which consists of 28 595 preprocessed Wikipedia articles whose contents
 sum up to a total of 103 million words. For the sentiment analysis on
@@ -385,13 +360,11 @@ dataset</b>. It contains 14 485 tweets concerning major US airlines. Based
 on the sentiment they convey, these tweets are labeled as either
 positive, negative or neutral. The dataset is imbalanced in that there
 are more negative than positive or neutral tweets (see Figure 2).</p>
-
 <p style="float:right">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_2.png" width="250" style="clear: left"> <br>
 &emsp; <i>Figure 2:</i> Sentiment Distribution in the <br>
 &emsp; Twitter US Airline Sentiment Dataset.
 </p>
-
 <p align="left">
 With our project we aimed at not only giving an introduction to a
 state-of-the-art technique in text analysis but also at advancing the
@@ -410,7 +383,6 @@ us to answer the following questions:
 <li> How well can knowledge be transferred from a source domain that is
     quite different to the target domain?</li>
 </ul>
-
 <p>
 The original datasets can be found here:
 <ul>
@@ -418,19 +390,16 @@ The original datasets can be found here:
 <li><a href="https://www.kaggle.com/crowdflower/twitter-airline-sentiment/">Twitter US Airline Sentiment</a>
 </ul>
 </p>
-
-<h3 id="1-4-overview-ulmfit-a-class-anchor-id-overviewulmfit-a">1.4. Overview ULMFiT <a class="anchor" id="overviewulmfit"></a></h3>
-
+<h3 id="14-overview-ulmfit-a-classanchor-idoverviewulmfita">1.4. Overview ULMFiT <a class="anchor" id="overviewulmfit"></a></h3>
 <p style="clear:left">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_3.png" width="800" style="clear: left">
 <br><br>
 <i>Figure 3:</i> Overview ULMFiT. <br>
 </p>
-
 <p>After having introduced the basic ideas underlying ULMFiT, we can now
 focus on the structure of the actual model. For the purpose of providing
-a general overview, the model can be split into three steps</p>
-
+a general overview, the model can be split into three steps
+[10]:</p>
 <ul>
 <li><strong>General-Domain LM Pretraining:</strong> In a first step, a LM is
 pretrained on a large general-domain corpus (in our case the
@@ -456,7 +425,6 @@ expanded by two linear blocks so that the final output is a
 probability distribution over the sentiment labels (i.e. positive,
 negative and neutral).</li>
 </ul>
-
 <p>In the following we are going to delve deeper into each of these three
 steps, beginning with the General-Domain LM Pretraining. As this section
 will already contain code snippets, it should be mentioned that the
@@ -469,11 +437,8 @@ find it in our <a href="https://github.com/MichaelSchimpke/SIS_ULMFiT">GitHub
 repository</a>. To make sure
 the code runs smoothly, please take a look at the README file for
 instructions regarding the correct versions of the required libraries.</p>
-
-<h2 id="2-general-domain-language-model-pretraining-a-class-anchor-id-gdlmp-a">2. General-Domain Language Model Pretraining <a class="anchor" id="gdlmp"></a></h2>
-
-<hr />
-
+<h2 id="2-general-domain-language-model-pretraining-a-classanchor-idgdlmpa">2. General-Domain Language Model Pretraining <a class="anchor" id="gdlmp"></a></h2>
+<hr>
 <p>As already described, in a first step a LM should be pretrained on the
 WikiText-103 dataset. Luckily Howard and Ruder [10] did
 exactly that and made the trained model <a href="http://files.fast.ai/models/wt103/">available
@@ -490,25 +455,20 @@ Language Modeling and are beginning to be widely used by other
 researchers, e.g. [16], [17]. If you are not yet
 familiar with LSTMs or need to refresh your memory, have a look at this
 <a href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">blog</a>.</p>
-
 <p>Regarding the architecture of their AWD-LSTM, Howard and Ruder
 [10] chose an embedding size of 400, 3 layers and 1150 hidden
 activations per layer.</p>
-
-<h3 id="2-1-word-embedding-a-class-anchor-id-embeddings-a">2.1. Word Embedding <a class="anchor" id="embeddings"></a></h3>
-
+<h3 id="21-word-embedding-a-classanchor-idembeddingsa">2.1. Word Embedding <a class="anchor" id="embeddings"></a></h3>
 <p>What does an embedding size of 400 refer to? To answer this question it
 is crucial to understand word embeddings. Neural networks (or any
 machine learning algorithm for that matter) require language to be
 transformed to some sort of numerical representation in order to be
 processable.</p>
-
 <p style="float:right">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_4.png" width="400" style="clear: left">
 <br><br>
  &emsp; &emsp; <i>Figure 4:</i> Word Embeddings. Adapted from [15]. <br>
 </p>
-
 <p align="left">
 Word embeddings enable the representation of words in the form of
 real-valued vectors in a predefined vector space [18]. If,
@@ -532,16 +492,13 @@ while training the neural network. As already mentioned, the embedding
 size equals 400 in our case, i.e. we represent each word in our corpus
 in a 400-dimensional vector space.
 </p>
-
-<h3 id="2-2-example-of-a-forward-pass-through-the-lm-a-class-anchor-id-forwardpass-a">2.2. Example of a Forward Pass through the LM <a class="anchor" id="forwardpass"></a></h3>
-
+<h3 id="22-example-of-a-forward-pass-through-the-lm-a-classanchor-idforwardpassa">2.2. Example of a Forward Pass through the LM <a class="anchor" id="forwardpass"></a></h3>
 <p style="clear:left">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_5.png" width="700" style="clear: left">
 <br><br>
 <i>Figure 5:</i> Detailed Overview ULMFiT: General-Domain LM Pretraining.
 Adapted from [10]. <br>
  </p>
-
 <p>Figure 5 displays a detailed overview of our ULMFiT model and provides
 an insight into each layer (the numbers in brackets refer to the
 dimensions of the inputs and outputs of the respective layer). While we
@@ -550,10 +507,8 @@ show you an exemplary forward pass through the LM that was trained on
 the WikiText-103 dataset (i.e. the red-rimmed section). By taking a look
 at the respective inputs, mathematical computations and outputs, we hope
 to provide a better understanding of what exactly happens in each layer. We are going to use self-defined classes and functions from the code file &lsquo;functions&rsquo;, which we rebuilt to illustrate what happens inside the fastai library</p>
-
 <p>For this purpose we start off by defining an exemplary sentence we are
 going to feed into the model.</p>
-
 <p>Whether it be to train or test a LM, texts that are going to be passed
 through the model first have to be tokenized and encoded with an
 integer. The <em>tokenize</em> function automatically segments the running text
@@ -567,15 +522,12 @@ tokens in the dataset, ordered from most often to least often used
 information formatted as a dictionary (variable <em>stoi_wiki</em>: &ldquo;string to
 integer&rdquo;). Consequently loading this vocabulary and dictionary enables
 us to encode our exemplary sentence accordingly.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/ab15fff76ce59e6cf4bdf8b58615f5c2.js"></script>
-
 <p style="float:right">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_6.png" width="120" style="clear: left">
 <br>
 <i>Figure 6:</i> Embedding Layer. <br>
  </p>
-
 <p>At this point in time, the sentence enters the first layer of the LM,
 i.e. the embedding layer. The embedding matrix
 <em>lm_wgts_wiki[&lsquo;0.encoder.weight&rsquo;]</em> (again, ready-made provided by
@@ -590,28 +542,22 @@ being the number of tokens in our sentence) of size <em>1</em> $\times$ <em>238
 the first of these vectors refers to the first token in the sentence,
 the second to the second and so on, this procedure also makes sure that
 the model understands the word order in the sentence.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/fd5311d934c4bc7e900e747a0491b306.js"></script>
-
 <p>In order to obtain the embeddings for each encoded token in the
 sentence, the one-hot encoded tensor is now multiplied with the
 embedding matrix, resulting in tensor of 13 vectors of size <em>1</em>
 $\times$ <em>400</em>.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/addc19af34f665b0ba489c51b7bcfccd.js"></script>
-
 <p style="float:right">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_7.png" width="120" style="clear: left">
 <br>
 &emsp;<i>Figure 7:</i> LSTM Layers. <br>
  </p>
-
 <p>After the embedding layer, the sentence is now passed through the three
 stacked LSTM layers. We defined the class <em>LSTM</em> to reveal their modus
 operandi. Since the focus of this demonstration lies on describing the
 memory and the hidden state, we exclude dropouts and further
 regularization techniques.</p>
-
 <p>The mentioned class contains a function which performs the calculations
 within one LSTM and returns the output. To be precise, this function
 returns the hidden state after each token has been processd and arranges
@@ -623,7 +569,6 @@ vector of the first token there is no context information gathered yet.
 However, the later a word occurs in the sentence, the more memory of
 prior context is stored in the cell state and included in the hidden
 state.</p>
-
 <p>The function <em>stacked</em> combines three individual LSTMs to obtain the
 model structure illustrated in Figure 7. Our tensor with the word
 embeddings is the input to the first layer (dimension: <em>13</em> $\times$
@@ -631,32 +576,25 @@ embeddings is the input to the first layer (dimension: <em>13</em> $\times$
 states of the previous layer as input (dimension: <em>13</em> $\times$ <em>1</em>
 $\times$ <em>1150</em>). Besides the model parameters, the created object
 <em>st_lstm</em> now stores hidden states for every layer.</p>
-
 <p>The hidden state of the last layer has the same shape as the embedded
 input, i.e. a tensor of size <em>13</em> $\times$<em>1</em> $\times$ <em>400</em>.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/eb6969c4516c99b7a4c3b0c23ce17e4f.js"></script>
-
 <p>Inverse to the embedding process, the output hidden state tensor of the
 LSTMs is now multiplied with a decoder matrix, shaped <em>400</em> $\times$
 <em>238 462</em>. Our decoded tensor has the same shape as our one-hot encoded
 tensor.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/833260174a54e91f5cf87ed4352210e0.js"></script>
-
 <p style="float:right">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_8.png" width="120" style="clear: left">
 <br>
 &emsp;<i>Figure 8:</i> Softmax. <br>
  </p>
-
 <p>In a last step, the softmax function transforms all values in the
 decoded tensor into probabilities. For every token in the exemplary
 sentence, the <em>1</em> $\times$ <em>238 462</em> vector indicates the probability
 for every token in the WikiText-103 vocabulary to be the next token. For
 example the second vector contains the probabilities for which token
 could be the third token in the sentence based on the first two tokens.</p>
-
 <p>The output below displays the ten most likely tokens to follow
 <em>&ldquo;Yesterday I flew with a new airline and it was really&rdquo;</em>
 <br>
@@ -664,18 +602,14 @@ could be the third token in the sentence based on the first two tokens.</p>
 <br>
 <br>
 <br></p>
-
 <script src="https://gist.github.com/MichaelSchimpke/ae1098aaca01092ad70ef47fd0747e0d.js"></script>
-
-<h3 id="2-3-preparations-for-fine-tuning-a-class-anchor-id-prepforfine-a">2.3. Preparations for Fine-Tuning <a class="anchor" id="prepforfine"></a></h3>
-
+<h3 id="23-preparations-for-fine-tuning-a-classanchor-idprepforfinea">2.3. Preparations for Fine-Tuning <a class="anchor" id="prepforfine"></a></h3>
 <p style="clear:left">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_9.png" width="700" style="clear: left">
 <br><br>
 &emsp;<i>Figure 9:</i> Detailed Overview ULMFiT: Preparations for Target Task LM
 Fine-Tuning. <br>
  </p>
-
 <p>
 After having discussed the General-Domain LM Pretraining, we are now
 going to elaborate on the necessary steps to prepare for the Target Task
@@ -684,8 +618,7 @@ the Twitter dataset. In preparation for this, the Twitter dataset has to
 be prepped and the model architecture of Howard and Ruder's AWD-LSTM has
 to be rebuilt in order to be able to load in the weights of the trained
 model the authors provided online.
-
-The prepping of the Twitter US Airline Sentiment dataset involves data
+<p>The prepping of the Twitter US Airline Sentiment dataset involves data
 cleaning (e.g. the removal of links), the splitting into train and test
 datasets as well as the tokenization and encoding of all tweets. These
 steps will not be displayed here. As already described in section 2.2.
@@ -700,13 +633,10 @@ the 60 000 most used tokens on the other hand, we would loose a
 substantial amount of Twitter specific tokens since these appear far
 less often owing to the Twitter dataset being fairly small.
 Consequently, we are only including the Twitter vocabulary (4409 unique
-tokens) and dictionary for the Target Task LM Fine-Tuning.
+tokens) and dictionary for the Target Task LM Fine-Tuning.</p>
 </p>
-
 <script src="https://gist.github.com/MichaelSchimpke/81943da5228be51ece031a3fc5ddfacd.js"></script>
-
-<h4 id="2-3-1-matching-process-for-the-embedding-matrix-a-class-anchor-id-matching-a">2.3.1. Matching Process for the Embedding Matrix <a class="anchor" id="matching"></a></h4>
-
+<h4 id="231-matching-process-for-the-embedding-matrix-a-classanchor-idmatchinga">2.3.1. Matching Process for the Embedding Matrix <a class="anchor" id="matching"></a></h4>
 <p>Before we recreate the architecture of the AWD-LSTM (embedding size of
 400; 3 layers; 1150 hidden activations) and subsequently fill in the
 weights (<em>lm_wgts_wiki</em>) of the model trained on the WikiText-103
@@ -718,31 +648,25 @@ fine-tuning, the embedding matrix has to be adapted as it currently
 contains the embeddings for the 238 462 WikiText-103 tokens. For a
 better understanding of the changing dimensions and the necessity of the
 changes, please refer to section 2.2.</p>
-
 <p>As displayed in Figure 10, all embeddings of tokens that do not occur in
 the Twitter dataset are deleted, while those that are part of both
 datasets remain unchanged. Tokens that can only be found in the Twitter
 dataset but not the WikiText-103 dataset obviously have not yet been
 embedded. Thus, they are assigned the row mean of all WikiText-103
 embeddings.</p>
-
-<p><br>
+<br>
 <p style="clear:left">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_10.png" width="450" style="clear: left">
 <br> <br>
 <i>Figure 10:</i> Matching Process for the Embedding Matrix. <br>
-</p></p>
-
+</p>
 <p>Ultimately, the resulting embedding matrix is of size <em>4409</em>
 $\times$<em>400</em> and overwrites the former embedding matrix. We also
 have to overwrite the decoding weights with the new embeddings as
 otherwise the mathematical operations shown in section 2.2. would not be
 possible (i.e. the dimensions have to match).</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/2ca66ac38b6a1425b52d71ba543aca23.js"></script>
-
-<h4 id="2-3-2-variable-length-backpropagation-sequences-a-class-anchor-id-vlbs-a">2.3.2. Variable Length Backpropagation Sequences <a class="anchor" id="vlbs"></a></h4>
-
+<h4 id="232-variable-length-backpropagation-sequences-a-classanchor-idvlbsa">2.3.2. Variable Length Backpropagation Sequences <a class="anchor" id="vlbs"></a></h4>
 <p>At this point we can begin to rebuild the architecture of the LM that
 was trained on the WikiText-103 dataset. In a first step we create data
 loaders for the training and validation data sets. These data loaders
@@ -752,9 +676,7 @@ parameter. Backpropagation through time is the training algorithm used
 to update weights in a RNN. If you are not familiar with this, we
 recommend to read an introduction into the technique on <a href="https://machinelearningmastery.com/gentle-introduction-backpropagation-time/">this
 blog</a>.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/41cc5c83442a7c5f406ecc91d32bc9b9.js"></script>
-
 <p>The concept behind mini-batches is displayed in Figure 11. As already
 mentioned earlier, all tweets (whether in the training or validation
 data set) will be concatenated before they are passed into the AWD-LSTM.
@@ -775,7 +697,7 @@ the next tokens will be predicted and the loss calculated before the
 backpropagation will begin. Following this, the next mini-batch will be
 processed and so on. Exactly this iterative process is performed by a
 data loader.
-<br><br>
+<br><br></p>
 <p style="clear:left">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_11.png" width="750" style="clear: left">
 <br>
@@ -783,18 +705,17 @@ data loader.
 </p>
 <br>
 Merity et al. [19] extended this technique by introducing
-<strong>variable length backpropagation through time</strong>. The main problem with
+**variable length backpropagation through time**. The main problem with
 the previously described method for creating mini-batches is that epoch
 for epoch exactly the same sequences of words are being backpropagated
 through. Variable length backpropagation through time tackles this issue
 by introducing a certain degree of randomness. When truncating the
-batches to mini-batches, 95% of the time <em>bptt</em> will be set to its
+batches to mini-batches, 95% of the time *bptt* will be set to its
 original value (in our case 70) but 5% of the time a random number is
 chosen from a normal distribution. Consequently, different combinations
 of tokens will be backpropagated through. Ultimately, this facilitates a
 more efficient use of the existing data. This technique is included in
-fastai&rsquo;s data loader.</p>
-
+fastai's data loader.
 <p>The next important step to recreate the architecture of the AWD-LSTM is
 to initialize the class <em>LanguageModelData</em>. We provide it with
 important information: The path where it should save all temporary and
@@ -806,9 +727,7 @@ same length which might not always be the case due to the process of
 creating mini-batches and using variable length backpropagation through
 time. Shorter sequences are thus padded with the encoded token 1 to
 reach the same overall length.</p>
-
-<h4 id="2-3-3-adam-optimizer-a-class-anchor-id-adam-a">2.3.3. Adam Optimizer <a class="anchor" id="adam"></a></h4>
-
+<h4 id="233-adam-optimizer-a-classanchor-idadama">2.3.3. Adam Optimizer <a class="anchor" id="adam"></a></h4>
 <p>As the optimization algorithm we choose the so-called <strong>Adam</strong>. Howard
 and Ruder [10] found this algorithm to work particularly well
 for NLP tasks when the parameters are set in an appropriate way. Adam
@@ -818,23 +737,19 @@ moments of the gradient to adapt the learning rate for each weight of a
 neural network. These moments are estimated by moving averages of the
 gradient and squared gradient (numerator) which are corrected for a
 certain bias (denominator) [20]:</p>
-
 <p>
 $\begin{equation*}    
 m_t  = \frac{\beta_1 m_{t-1}+(1-\beta_1)g_t}{1-\beta_1^t} \\
 v_t  = \frac{\beta_2 v_{t-1}+(1-\beta_2)g_t^2}{1-\beta_2^t} \\
 \end{equation*}$
 </p>
-
 <p style="float:right">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_12.png" width="300" style="clear: left">
 <br>
 &emsp;<i>Figure 12:</i> Adam Optimizer. Reprinted from [27]. <br>
 </p>
-
 <p>(m, v: moving averages; g: gradient on current mini-batch; betas:
 hyper-parameters)</p>
-
 <p>The concept behind Gradient Descent is often illustrated by means of a
 ball rolling down a slope (e.g.
 <a href="https://towardsdatascience.com/machine-learning-101-an-intuitive-introduction-to-gradient-descent-366b77b52645">here</a>)
@@ -843,14 +758,11 @@ minimum). Using the same analogy, one could describe Adam as a heavy
 ball with friction [27]. As shown in Figure 12, it thus
 overshoots local minima and tends to settle at flat minima due to its
 mass.</p>
-
 <p>As already mentioned, Howard and Ruder [10] suggest a
 specific setting for the parameters $\beta_1$ and $\beta_2$.
 Particularly, the default of 0.9 for $\beta_1$ should be reset to a
 value between 0.7 and 0.8.</p>
-
-<h4 id="2-3-4-dropout-a-class-anchor-id-dropout-a">2.3.4. Dropout <a class="anchor" id="dropout"></a></h4>
-
+<h4 id="234-dropout-a-classanchor-iddropouta">2.3.4. Dropout <a class="anchor" id="dropout"></a></h4>
 <p>One regularization technique that is an essential part of AWD-LSTMs and
 applied in numerous forms throughout the model is called <strong>dropout</strong>.
 During the training of a neural network and thus the updating of weights
@@ -862,13 +774,11 @@ overfitting could be to fit all possible different neural networks on
 the same dataset and to average the predictions from each model. Since
 this is obviously not feasible in practice, the idea is implemented with
 dropout [21].</p>
-
 <p style="float:right">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_13.png" width="400" style="clear: left">
 <br>
 &emsp;<i>Figure 13:</i> No Dropout vs. Dropout. Adapted from [22]. <br>
 </p>
-
 <p>Dropout means that some of the units in a neural network are randomly
 deleted, as displayed in Figure 13. Following this, for one mini-batch
 the forward and backward pass are performed and the weights are updated.
@@ -881,7 +791,6 @@ adjusted, depending on the dropout rate. E.g. if the dropout rate equals
 0.5 the weights have to be rescaled by half in the end. Since one unit
 cannot rely on the presence of particular other units, there are less
 co-adaptations [22].</p>
-
 <p>For our LM we apply five different dropout methods, e.g. by setting
 certain rows of the embedding matrix to zero so that the model learns
 not to depend on single words. For details on the other forms of dropout
@@ -892,7 +801,6 @@ following proportion of dropouts performs well. Thus, we merely have to
 choose a scaling parameter between 0 and 1 which is set to 0.7 in our
 case. In case of overfitting, we could for example increase this
 parameter.</p>
-
 <p>Finally, we can build our model architecture. We do so by calling the
 method <em>get_model</em> of the <em>LanguageModelData</em> class. With this method
 we can apply all the attributes and functions we need to train our
@@ -900,19 +808,14 @@ model, predict and so on. We provide our chosen optimizer, embedding
 size, number of hidden layers, number of hidden activations and dropout.
 Based on this information, our AWD-LSTM is built layer by layer by
 grabbing a PyTorch neural network model.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/bd438de38083fd7794b7a777878acc7e.js"></script>
-
-<h2 id="3-target-task-language-model-fine-tuning-a-class-anchor-id-ttlmft-a">3. Target Task Language Model Fine-Tuning <a class="anchor" id="ttlmft"></a></h2>
-
-<hr />
-
+<h2 id="3-target-task-language-model-fine-tuning-a-classanchor-idttlmfta">3. Target Task Language Model Fine-Tuning <a class="anchor" id="ttlmft"></a></h2>
+<hr>
 <p style="clear:left">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_14.png" width="700" style="clear: left">
 <br><br>
 <i>Figure 14:</i> Detailed Overview ULMFiT: Target Task LM Fine-Tuning. <br>
 </p>
-
 <p>After we have made all the necessary provisions, we can now begin with
 the actual LM fine-tuning. It should be mentioned that while Howard and
 Ruder [10] were not the first to apply inductive transfer via
@@ -924,15 +827,12 @@ the source task. Howard and Ruder solved these issues by introducing
 novel NLP-specific fine-tuning methods. Since these methods are an
 essential part of what makes ULMFiT a state-of-the-art technique, we are
 also going to expand on them as well.</p>
-
-<h3 id="3-1-freezing-a-class-anchor-id-freezing-a">3.1. Freezing <a class="anchor" id="freezing"></a></h3>
-
+<h3 id="31-freezing-a-classanchor-idfreezinga">3.1. Freezing <a class="anchor" id="freezing"></a></h3>
 <p style="float:right">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_15.png" width="150" style="clear: left">
 <br>
 &emsp;<i>Figure 15:</i> Freezing. <br>
 </p>
-
 <p>Since we transformed the embedding matrix in major ways (see section
 2.3.1), part of our embedding (and decoding) layer is untrained with
 initial random weights (i.e. the row means of the WikiText-103 embedding
@@ -944,20 +844,16 @@ order to adjust them to the LSTM weights. This technique, called
 <strong>freezing</strong>, was introduced by Felbo et al. [23] and is
 implemented by the function <em>freeze_to(-1)</em>. For the second step all
 layers are unfrozen so that also the LSTM layers can be fine-tuned.</p>
-
 <p>We will illustrate the concept of freezing by showing the model weight
 matrices after each step. The first output displays the weights
 pretrained on the WikiText-103 dataset whose embedding and decoding
 weights have been adjusted in section 2.3.1..</p>
-
-<h3 id="3-2-learning-rate-schedule-a-class-anchor-id-lr-find-a">3.2. Learning Rate Schedule <a class="anchor" id="lr_find"></a></h3>
-
+<h3 id="32-learning-rate-schedule-a-classanchor-idlr_finda">3.2. Learning Rate Schedule <a class="anchor" id="lr_find"></a></h3>
 <p style="float:right">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_16.png" width="200" style="clear: left">
 <br>
 &emsp;<i>Figure 16:</i> Slanted Triangular LRs. <br>
 </p>
-
 <p>For our model we apply a learning rate (LR) schedule which means that
 the LR does not remain constant across the iterations in the training
 process but is adjusted. We start of with a short steep increase in size
@@ -966,28 +862,21 @@ and a long decay period to precisely fine-tune the weights. This
 particular approach of adjusting the LR is called <strong>slanted triangular
 LRs</strong> [10] and is inspired by cyclical LRs which Smith
 [24] has introduced.</p>
-
 <p>Slanted triangular LRs are implemented in the <em>fit</em> function by
 <em>use_clr</em>. The first parameter represents the ratio of highest to
 lowest LR, the second the ratio of decaying to increasing periods. We
 merely have to set the value for the starting LR, which we do here with
 0.001.</p>
-
 <p>As described before, we are now training our frozen model for one epoch.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/d737d5816a1853c662a61cc9366f12df.js"></script>
-
 <p>When checking the updated weights in our model, the freezing becomes
 obvious, as only encoder and decoder weights changed while those of the
 LSTM layers remained the same.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/eb67d3c9795b9bf4cd443d212a532ba3.js"></script>
-
 <p>In a next step all layers are unfrozen in order to train the entire
 model. Before this phase can begin, it is necessary to find an adequate
 peak LR. A procedure, also introduced by Smith [24], has been
 proven to be very useful for this purpose.</p>
-
 <p>Followings his approach, we conduct an &ldquo;exploratory training process&rdquo;.
 We start off with our initial weights and update them with a very small
 initial LR, in our case. In our case we do so for all LRs in between
@@ -996,11 +885,8 @@ against the loss. Using this plot, we can check how big the LR can grow
 so that the descent of the loss is still big enough. Based on our own
 visual judgement, we set the peak LR to the highest LR in the area where
 the loss has its sharpest descent. In our case this seems to be 0.01.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/c9add42404906f55a54416511733473a.js"></script>
-
-<h3 id="3-3-discriminative-fine-tuning-a-class-anchor-id-discrft-a">3.3. Discriminative Fine-Tuning <a class="anchor" id="discrft"></a></h3>
-
+<h3 id="33-discriminative-fine-tuning-a-classanchor-iddiscrfta">3.3. Discriminative Fine-Tuning <a class="anchor" id="discrft"></a></h3>
 <p>As already described, our AWD-LSTM contains three stacked LSTMs.
 Yosinski et al. [25] found, that such a stacked structure
 is particularly valuable when working with data as complex as text since
@@ -1010,33 +896,26 @@ more and more specific on every further layer. In the textual data
 context, the first layer might catch information like basic sentence
 structure, while the next ones dig deeper, such as the workings of
 different tenses.</p>
-
 <p>These differences in processing can be addressed by using different LRs
 depending on the respective layer. Usually, the model parameters
 $\theta$ are updated during the training process with a fixed LR
 $\eta$ [26]:</p>
-
 <p>
 $ \begin{equation*} \theta_{t} = \theta_{t-1} - \eta
 \nabla_{\theta} J(\theta) \end{equation*} $
 </p>
-
 <p>In the discriminative approach, each layer has its own LR
 $\eta^{l}$:</p>
-
 <p>
 $ \begin{equation*} \theta_{t}^{l} = \theta_{t-1}^{l} -
 \eta^{l} \nabla_{\theta^{l}} J(\theta) \end{equation*} $
 </p>
-
 <p>Starting with a small LR in the first LSTM, it increases through the
 layers due to the increasing amount of acquired knowledge and
 information complexity. In the code we define a numpy array with the
 exponentially increasing LRs, starting with the smallest one for the
 first LSTM.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/8b175329fc29cfc8e603daccab803039.js"></script>
-
 <p>After training the model for three epochs, the accuracy on the
 validation dataset is about 30 percent. While this may seem low at first
 glance, one has to keep in mind that the predicted word is part of a
@@ -1044,18 +923,14 @@ vocabulary of 4409 possible next tokens. However, we do not quite reach
 Howard&rsquo;s [15] 31 percent when training the LM on the well
 known IMDb dataset. This might be owed to the much smaller dataset we
 use compared to his.</p>
-
 <p>Reviewing the model weights one last time, we can see that in this step
 all parameters were trained.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/c3e60ec024d47abe0af5df78ced7b27d.js"></script>
-
 <p style="float:right">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_17.png" width="150" style="clear: left">
 <br>
 &emsp;&emsp;<i>Figure 17:</i> Cut-Off.<br>
 </p>
-
 <p>Our LM has now learned task-specific features of the language. However,
 in order for this model to be capable of sentiment analysis, its
 architecture needs to be adjusted. At the same time, the knowledge
@@ -1064,17 +939,13 @@ gained from training the LM has to be preserved. As displayed in Figure
 the LM, while the decoder and the softmax layer are cut off. This step
 is executed by the <em>save_encoder</em> command.
 <br><br><br><br><br><br><br><br></p>
-
-<h2 id="4-target-task-classifier-a-class-anchor-id-ttc-a">4. Target Task Classifier <a class="anchor" id="ttc"></a></h2>
-
-<hr />
-
+<h2 id="4-target-task-classifier-a-classanchor-idttca">4. Target Task Classifier <a class="anchor" id="ttc"></a></h2>
+<hr>
 <p style="clear:left">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_18.png" width="700" style="clear: left">
 <br><br>
 <i>Figure 18:</i> Detailed Overview ULMFiT: Target Task Classifier.<br>
 </p>
-
 <p>In the final stage of ULMFiT, we are now going to perform our actual
 target task, the sentiment classification. As already mentioned, the LMs
 architecture has to be adjusted to do so. Two linear blocks with a ReLU
@@ -1084,7 +955,6 @@ outputs probabilities for each label (positive, negative or neutral) of
 the corresponding tweet. Applied methods, the architecture of the
 classifier and input as well as output dimensions will be discussed in
 the following.</p>
-
 <p>When feeding mini-batches into the LM (see section 2.3.2.), some of the
 sequences might contain one tweet and half of another tweet. Such an
 input could not be fed into the classifier as it needs to predict the
@@ -1097,7 +967,6 @@ number of vectors equal to the number of tokens in the document and
 again each embedding vector is of dimension 400. This output tensor is
 the last hidden state of the tweet, meaning that every token of the
 tweet has been fully processed in the LSTM layer.</p>
-
 <p>In the first step of code implementation, the model data is defined. The
 function <em>data_loader</em>, based on fastai sampling techniques, performs
 several tasks at a time. A data loader takes the encoded tweets and
@@ -1108,17 +977,13 @@ computation time. Technically, encoded tweets are padded with the index
 1 to the same length as the longest document in the mini-batch. As
 elaborated on before, the data loader takes care of iterating the
 mini-batches through the model.</p>
-
-<p><script src="https://gist.github.com/MichaelSchimpke/475b395db62b6625f9cc9762c2f420d3.js"></script></p>
-
-<h3 id="4-1-concat-pooling-a-class-anchor-id-concatpool-a">4.1. Concat Pooling <a class="anchor" id="concatpool"></a></h3>
-
+ <script src="https://gist.github.com/MichaelSchimpke/475b395db62b6625f9cc9762c2f420d3.js"></script>
+<h3 id="41-concat-pooling-a-classanchor-idconcatpoola">4.1. Concat Pooling <a class="anchor" id="concatpool"></a></h3>
 <p style="float:right">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_19.png" width="150" style="clear: left">
 <br>
 <i>Figure 19:</i> Concat Pooling.<br>
 </p>
-
 <p>Usually some of the words in an input document contain more relevant
 information for the classification than others. After each time step (in
 this case processing one word in a LSTM layer) the hidden state of the
@@ -1129,7 +994,6 @@ problem of catastrophic forgetting and takes information throughout time
 steps into account. In other words, the last hidden state is
 concatenated with a max-pooled and a mean-pooled representation of the
 hidden states.</p>
-
 <p>The max-pooled representation is generated by collecting the largest
 values for each of the 400 features over all hidden states of a document
 (in our case a tweet) in the third LSTM layer, whereas mean-pool
@@ -1138,15 +1002,12 @@ Figure 20 (hidden state: h; time steps: 1 &hellip; T) both approaches return
 vectors of dimension <em>1</em> $\times$<em>400</em> and concatenation results in
 <em>1</em> $\times$<em>1200</em> feature vectors for each word. Following this,
 they can be passed as a tensor to the decoder.</p>
-
-<h3 id="4-2-linear-decoder-a-class-anchor-id-lindecoder-a">4.2. Linear Decoder <a class="anchor" id="lindecoder"></a></h3>
-
+<h3 id="42-linear-decoder-a-classanchor-idlindecodera">4.2. Linear Decoder <a class="anchor" id="lindecoder"></a></h3>
 <p style="float:right">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_20.png" width="150" style="clear: left">
 <br>
 <i>Figure 20:</i> Linear Decoder.<br>
 </p>
-
 <p>The <strong>linear decoder</strong> works as a feedforward neural network, which
 applies a ReLU and Softmax activation function on the concat-pooled
 tensor. In the ReLU layer with 50 activations, each vector of the tensor
@@ -1156,7 +1017,6 @@ dimension to 3 and returns probabilities by scaling output values
 between 0 and 1. In a last step, a cross entropy loss function
 determines the loss and an Adam optimizer is applied. Weights are
 adjusted accordingly.</p>
-
 <p>Regarding the implementation, we can now build the architecture of the
 Target Task Classifier with the function <em>get_rnn_classifier()</em>.
 Embedding layer and LSTM layers are rebuilt by using the fastai
@@ -1165,7 +1025,6 @@ order to build an equivalent embedding matrix and LSTM to our LM, the
 hyperparameters remain the same. After having recreated the LM&rsquo;s
 architecture the weights from our previously trained model can be loaded
 in and thus, weights do not have to be randomly initialized.</p>
-
 <p>In order to build the linear decoder on top of the LSTM, the PyTorch
 container <em>SequentialRNN</em> is used to add modules in the order they are
 passed to it. <em>PoolingLinearClassifier</em> is a class that contains the
@@ -1176,18 +1035,13 @@ model. A ReLU activation function is assigned to the first linear block.
 However, the softmax activation of the output layer is combined with the
 cross entropy loss function, defined by another PyTorch module in the
 <em>RNN_Learner</em> class.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/f3f0b4478122b0b4a093f2864ad55d4d.js"></script>
-
 <p>The resulting object is now passed to a learner that actually trains the
 classifier. Whereas LRs defines the step size (towards a minimum),
 <em>learn.clip</em> limits the size of the actual update of the weights in the
 model. Thus, it prevents overly aggressive updating.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/8a295271c31d3e071a1a282e6950cf7a.js"></script>
-
-<h3 id="4-3-gradual-unfreezing-a-class-anchor-id-gradunfr-a">4.3. Gradual Unfreezing <a class="anchor" id="gradunfr"></a></h3>
-
+<h3 id="43-gradual-unfreezing-a-classanchor-idgradunfra">4.3. Gradual Unfreezing <a class="anchor" id="gradunfr"></a></h3>
 <p>As mentioned before, two linear blocks are added on top of the embedding
 layer and the LSTM. Since the linear layers are initialized by randomly
 distributed weights and therefore risk catastrophic forgetting in
@@ -1198,26 +1052,19 @@ all layers but the softmax output layer are frozen and weights of frozen
 layers will not be updated. During the next epoch, the ReLU layer is
 unfrozen and fine-tuned as well. In all following epochs the entire
 model is fine-tuned.</p>
-
-<p><br>
+<br>
 <p style="clear:left">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_21.png" width="500" style="clear: left">
 <br><br>
 <i>Figure 21:</i> Gradual Unfreezing.<br>
-</p></p>
-
+</p>
 <script src="https://gist.github.com/MichaelSchimpke/431e5a47746ed0b4f8eb1a7df4a2bd5e.js"></script>
-
 <p>After the <i>lr_find</i> algorithm we set our learning rate schedule and get an accuracy of 84%.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/c17d98d851f091cb1ed8a082d8935b9e.js"></script>
-
-<h3 id="4-4-benchmarks-a-class-anchor-id-benchmarks-a">4.4. Benchmarks <a class="anchor" id="benchmarks"></a></h3>
-
+<h3 id="44-benchmarks-a-classanchor-idbenchmarksa">4.4. Benchmarks <a class="anchor" id="benchmarks"></a></h3>
 <p>After training the entire model for six epochs, the classifier achieves
 an accuracy of around 83%. How good is this result compared to possible
 benchmarks?</p>
-
 <p>For this purpose, we can consider a probabilistic as well as a random
 approach. Since our dataset is imbalanced with around 60% of the tweets
 labeled negative, assigning a tweet to this label is most likely. This
@@ -1225,34 +1072,27 @@ method would result in an accuracy of 60%. If we just randomly drew
 labels for each tweet, every third tweet would be guessed right on
 average. Hence, the classifier model clearly outperforms both these
 benchmarks.</p>
-
 <p>Comparing our results to other approaches on the same datasets
 <a href="https://www.kaggle.com/crowdflower/twitter-airline-sentiment/kernels">Kaggle</a>,
 the ULMFiT model is clearly superior in terms of accuracy:</p>
-
 <ul>
 <li>Support Vector Machine (SVM) - 78.5%</li>
 <li>Bag-of-words SVM - 78.5%</li>
 <li>Deep Learning Model with Dropouts in Keras - 77.9%</li>
 <li>Our result - <strong>84.1%</strong></li>
 </ul>
-
 <p>In the beginning of this blog post we asked the following questions:</p>
-
 <ul>
 <li>Can ULMFiT really perform well on small datasets as Howard and Ruder
 claim?</li>
 <li>How well can knowledge be transferred from a source domain that is
 quite different to the target domain?</li>
 </ul>
-
 <p>The results of our project indicate that ULMFiT indeed provides
 state-of-the-art results even with a dataset as small as our Twitter US
 Airline Sentiment. In addition to that the disparity between source and
 target domain does not appear to impair performance.</p>
-
-<h3 id="4-5-example-of-a-forward-pass-through-the-classifier-a-class-anchor-id-fwdpassclass-a">4.5. Example of a Forward Pass through the Classifier <a class="anchor" id="fwdpassclass"></a></h3>
-
+<h3 id="45-example-of-a-forward-pass-through-the-classifier-a-classanchor-idfwdpassclassa">4.5. Example of a Forward Pass through the Classifier <a class="anchor" id="fwdpassclass"></a></h3>
 <p>As for the LM, we implemented an exemplary forward pass through the
 classifier. Firstly, the vocabulary of the fine-tuned Twitter US Airline
 Sentiment dataset and the model weights of the classifier we just
@@ -1262,27 +1102,19 @@ and LSTM forward pass, which was already explained earlier for the
 Wikitext-103 model. The output of this function is the hidden state
 tensor of the last LSTM layer with the shape of <em>13</em> $\times$ <em>1</em>
 $\times$ <em>400</em>.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/b423f86204e9dcdd952e0eda42d79d10.js"></script>
-
 <p>In the next step, we apply Concat Pooling for the last hidden state
 vector of the tensor, which represents the last word and contains the
 remembered information about all previous words. The resulting vector
 has a size of 400 multiplied by three.</p>
-
 <p>In the next layer, the Concat Pooled output vector is scaled down to the
 length of 50 and processed by a ReLU function.</p>
-
 <p>Eventually, the <em>Classifier</em> function <em>clas_predict</em> scales the vector
 down to our 3 classes and performs a softmax activation in order to
 obtain the probabilities for the three classes.</p>
-
 <script src="https://gist.github.com/MichaelSchimpke/be99f92e98905c552a0c513011ec99eb.js"></script>
-
-<h2 id="5-our-model-extension-a-class-anchor-id-ome-a">5. Our Model Extension <a class="anchor" id="ome"></a></h2>
-
-<hr />
-
+<h2 id="5-our-model-extension-a-classanchor-idomea">5. Our Model Extension <a class="anchor" id="ome"></a></h2>
+<hr>
 <p>In the very beginning of our project, we contemplated pretraining our
 own LM, instead of using Howard and Ruder&rsquo;s WikiText-103 LM. For that
 purpose, we intended to use the <strong>Sentiment140</strong> dataset which consists
@@ -1294,7 +1126,6 @@ reached the limit of memory capacities available to us. At this point we
 cycled back to the idea of transfer learning. As already elaborated on,
 one of the problems transfer learning tackles is the time and resource
 consuming nature of training models from scratch.</p>
-
 <p>Consequently, we decided to use Howard and Ruder&rsquo;s LM that was trained
 on WikiText-103 for the General-Domain LM Pretraining but to then
 fine-tune this model with 300 000 tweets from the Sentiment140 dataset
@@ -1302,14 +1133,12 @@ fine-tune this model with 300 000 tweets from the Sentiment140 dataset
 step was then followed by the usual fine-tuning with the Twitter US
 Airline Sentiment dataset as well as the transformation into a
 classifier. Figure 22 displays the structure of our model extension.</p>
-
-<p><br>
+<br>
 <p style="clear:left">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_22.png" width="700" style="clear: left">
 <br><br>
 <i>Figure 22:</i> Our Extension of ULMFiT.<br>
-</p></p>
-
+</p>
 <p>Researchers and practitioners alike are often faced with the problem of
 not having enough labeled data for text classification tasks. Since it
 does not require labeled data, we believed that Target-Domain LM
@@ -1320,77 +1149,59 @@ overfit rather fast, we expected the huge Sentiment140 dataset to
 improve the LM, i.e. to improve its knowledge of Twitter slang by means
 of its many examples. The improved LM should then also allow for a
 better sentiment classification.</p>
-
-<h3 id="5-1-results-a-class-anchor-id-extresults-a">5.1. Results <a class="anchor" id="extresults"></a></h3>
-
+<h3 id="51-results-a-classanchor-idextresultsa">5.1. Results <a class="anchor" id="extresults"></a></h3>
 <p>In the following, we are going to examine the results of the experiments regarding our model extension. Table 1 displays the accuracy of the LM after the Target-Domain LM Fine-Tuning (i.e. the Target Task LM Fine-Tuning had not yet been performed). An accuracy of about 27% is a fairly good result. What is, however, far more interesting is to compare the results of the original ULMFiT and the extended version.</p>
-
-<p><br>
+<br>
 <p style="clear:left">
 <img src="/blog/img/seminar/group4_ULMFiT/Table_1.png" width="390" style="clear: left">
 <br>
 <i>Table 1</i>: Results LM Post Target-Domain LM Fine-Tuning.
 </p>
-<br></p>
-
+<br>
 <p>As displayed in Figure 23 we are first going to compare the perfomance of the original vs. the extended ULMFiT at the step of Target Task LM Fine-Tuning when only the embedding layer had been trained.</p>
-
-<p><br>
+<br>
 <p style="clear:left">
 <img src="/blog/img/seminar/group4_ULMFiT/Figure_23.png" width="450" style="clear: left">
 <br><br>
 <i>Figure 23:</i> Our Extension of ULMFiT: Results Post Training the LM Embedding Layer
 </p>
-<br></p>
-
+<br>
 <p>The considerably higher accuracy of the LM in the extended ULMFiT, shown in Table 2, seems to confirm our intuition that due to the fine-tuning with the Sentiment140 dataset the LM has already learned a significant amount of &ldquo;Twitter slang&rdquo; compared to the original ULMFiT at the same stage.</p>
-
-<p><br>
+<br>
 <p style="clear:left">
 <img src="/blog/img/seminar/group4_ULMFiT/Table_2.png" width="800" style="clear: left">
 <br>
 <i>Table 2</i>: Results Post Training the LM Embedding Layer.
 </p>
-<br></p>
-
+<br>
 <p>However, after we trained the latter for a couple of epochs it quickly caught up to the extended version and ultimately both LMs achieved approximately the same accuracy. Both models also performed equally well with regard to the sentiment classification as displayed in Table 3. For the moment, we can, thus, not detect any significant improvements by extending the ULMFiT model.</p>
-
-<p><br>
+<br>
 <p style="clear:left">
 <img src="/blog/img/seminar/group4_ULMFiT/Table_3.png" width="800" style="clear: left">
 <br>
 <i>Table 3</i>: Results Post Training the LM Embedding Layer.
 </p>
-<br></p>
-
-<h3 id="5-2-without-vocabulary-reduction-a-class-anchor-id-novocabred-a">5.2. Without Vocabulary Reduction <a class="anchor" id="novocabred"></a></h3>
-
+<br>
+<h3 id="52-without-vocabulary-reduction-a-classanchor-idnovocabreda">5.2. Without Vocabulary Reduction <a class="anchor" id="novocabred"></a></h3>
 <p>As our first experiments did not show any benefits of adding an additional step to the ULMFiT model, we slightly changed our approach. As explained in section 2.3.1., when fine-tuning the LM of the original ULMFiT we only used the Twitter US Airline vocabulary. In our extended model we also only used the Sentiment140 vocabulary in the first fine-tuning step and only the Twitter US Airline vocabulary in the second fine-tuning step.</p>
-
 <p>Now, however, we wanted to investigate whether it might be beneficial for the performance of the extended model to keep the Sentiment140 vocabulary in addition to the Twitter US Airline vocabulary for the Target Task LM Fine-Tuning. As the combined vocabulary has less than 60 000 unique tokens, there should be no losses in efficiency. Due to the increased vocabulary, we assumed that less tokens in the validation dataset might be assigned the token for unknown words and subsequently, the performance in the LM and ultimately the classifier might improve compared to the results for the extended model in Table 2 and 3. However, the results in Table 4 do not confirm our assumptions.</p>
-
-<p><br>
+<br>
 <p style="clear:left">
 <img src="/blog/img/seminar/group4_ULMFiT/Table_4.png" width="800" style="clear: left">
 <br>
 <i>Table 4</i>: Results Post Target Task LM Fine-Tuning.
 </p>
-<br></p>
-
+<br>
 <p>Even though combining the vocabularies does not seem to make a difference for the accuracy regarding the sentiment classification of the airline tweets, it might make a difference, if we feed a new dataset into our trained model. Again, due to the increased vocabulary, completely unknown data might be better classified in our extended model than in the original ULMFiT. To test this hypothesis, we used the <b>First GOP Debate Twitter Sentiment</b> dataset which consists of almost 14 000 tweets about the first GOP debate in the 2016 presidential election in the US. The dataset can be found <a href="https://machinelearningmastery.com/gentle-introduction-backpropagation-time/">here</a>. Since this dataset and our Twitter US Airline Sentiment dataset are thematically very different we expected mediocre results either way. As displayed in Table 5 this was indeed the case with results worse than our benchmark (60% of all tweets are negative) but in addition to this, we could, again, not detect any notable difference between the original and extended model.</p>
-
-<p><br>
+<br>
 <p style="clear:left">
 <img src="/blog/img/seminar/group4_ULMFiT/Table_4.png" width="800" style="clear: left">
 <br>
 <i>Table 4</i>: Results GOP Sentiment Classification.
 </p>
-<br></p>
-
-<h2 id="6-conclusion-a-class-anchor-id-conclusion-a">6. Conclusion <a class="anchor" id="conclusion"></a></h2>
-
-<hr />
-
+<br>
+<h2 id="6-conclusion-a-classanchor-idconclusiona">6. Conclusion <a class="anchor" id="conclusion"></a></h2>
+<hr>
 <p>We hope this blog post gave you a comprehensive overview of ULMFiT and
 what makes it such a state-of-the-art technique, from inductive transfer
 learning, to useful regularization and optimization techniques and to
@@ -1401,7 +1212,6 @@ extensions! Whether in regard to novel applications or further
 techniques, there are numerous ways to go beyond what we did in this
 blog post, e.g by applying ULMFiT to non-English datasets or by
 implementing a bidirectional LM to boost performance [10].</p>
-
 <p>Both the research on ULMFiT and the implementations in the fastai
 library are constantly evolving. Regarding the latter, Howard is for
 example currently working on implementing hyperparameter tuning. In
@@ -1410,130 +1220,98 @@ applicability of ULMFiT for various scenarios
 [28],[29]. When looking at NLP on a larger scale,
 it seems likely that the field will continue to discover and customize
 approaches proven successful in CV (e.g. data augmentation).</p>
-
-<h2 id="7-reference-list-a-class-anchor-id-references-a">7. Reference List <a class="anchor" id="references"></a></h2>
-
-<hr />
-
+<h2 id="7-reference-list-a-classanchor-idreferencesa">7. Reference List <a class="anchor" id="references"></a></h2>
+<hr>
 <p>[1] Sebastian Ruder, NLP&rsquo;s ImageNet moment has arrived, The Gradient,
 Jul. 8, 2018,
 <a href="https://thegradient.pub/nlp-imagenet/">https://thegradient.pub/nlp-imagenet/</a>
 [Blog]</p>
-
 <p>[2] Tom Young, Devamanyu Hazarika, Soujanya Poria and Erik Cambria,
 Recent Trends in Deep Learning Based Natural Language Processing, IEEE
 Computational Intelligence Magazine, vol. 13, issue 3, pp. 55-75, Aug.
 2018</p>
-
 <p>[3] Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg Corrado and Jeffrey
 Dean, Distributed Representations of Words and Phrases and their
 Compositionality, arXiv:1310.4546v1 [cs.CL], Oct. 16, 2013</p>
-
 <p>[4] Jeffrey Pennington, Richard Socher and Christopher D. Manning,
 GloVe: Global Vectors for Word Representation, Computer Science
 Department, Stanford University, 2014</p>
-
 <p>[5] Matthew E. Peters, Waleed Ammar, Chandra Bhagavatula and Russell
 Power, Semi-supervised sequence tagging with bidirectional language
 models, arXiv:1705.00108v1 [cs.CL], Apr. 29, 2017</p>
-
 <p>[6] Arvind Neelakantan, Jeevan Shankar, Alexandre Passos and Andrew
 McCallum, Efficient Non-parametric Estimation of Multiple Embeddings per
 Word in Vector Space, arXiv:1504.06654v1 [cs.CL], Apr. 24, 2015</p>
-
 <p>[7] Bryan McCann, James Bradbury, Caiming Xiong and Richard Socher,
 Learned in Translation: Contextualized Word Vectors, arXiv:1708.00107v2
 [cs.CL], Jun. 20, 2018</p>
-
 <p>[8] Kaiming He, Georgia Gkioxari, Piotr Dollár and Ross Girshick, Mask
 R-CNN, arXiv:1703.06870v3 [cs.CV], Jan. 24, 2018</p>
-
 <p>[9] Joao Carreira, Andrew Zisserman, Quo Vadis, Action Recognition? A
 New Model and the Kinetics Dataset, arXiv:1705.07750v3 [cs.CV], Feb. 12,
 2018</p>
-
 <p>[10] Jeremy Howard, Sebastian Ruder, Universal Language Model
 Fine-tuning for Text Classification, arXiv:1801.06146, Jan. 18, 2018</p>
-
 <p>[11] Matthew E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner,
 Christopher Clark, Kenton Lee and Luke Zettlemoyer, Deep contextualized
 word representations, arXiv:1802.05365v2 [cs.CL], Mar. 22, 2018</p>
-
 <p>[12] Alec Radford, Karthik Narasimhan, Tim Salimans and Ilya Sutskever,
 Improving Language Understanding by Generative Pre-Training, OpenAI
 Blog, Jun. 11, 2018</p>
-
 <p>[13] Sinno Jialin Pan, Qiang Yang, A Survey on Transfer Learning, IEEE
 Transactions on Knowledge and Data Engineering, vol. 22, issue 10, Oct.
 2010</p>
-
 <p>[14] Dipanjan Sarkar, A Comprehensive Hands-on Guide to Transfer
 Learning with Real-World Applications in Deep Learning, Towards Data
 Science, Nov. 14, 2018 [Blog]</p>
-
 <p>[15] Jeremy Howard, Lesson 10: Deep Learning Part 2 2018 - NLP
 Classification and Translation,
 <a href="https://www.youtube.com/watch?v=h5Tz7gZT9Fo&amp;t=4191s%5D">https://www.youtube.com/watch?v=h5Tz7gZT9Fo&amp;t=4191s%5D</a>,
 May 7, 2018 [Video]</p>
-
 <p>[16] Ben Krause, Emmanuel Kahembwe, Iain Murray and Steve Renals,
 Dynamic Evaluation of Neural Sequence Models, arXiv:1709.07432, Sep. 21,
 2017</p>
-
 <p>[17] Zhilin Yang, Zihang Dai, Ruslan Salakhutdinov and William W. Cohen,
 Breaking the Softmax Bottleneck: A High-Rank RNN Language Model,
 arXiv:1711.03953, Nov. 10, 2017</p>
-
 <p>[18] Jason Brownlee, What Are Word Embeddings for Text?, Machine
 Learning Mastery, posted on Oct. 11, 2017,
 <a href="https://machinelearningmastery.com/what-are-word-embeddings/">https://machinelearningmastery.com/what-are-word-embeddings/</a></p>
-
 <p>[19] Stephen Merity, Nitish Shirish Keskar, Richard Socher, Regularizing
 and Optimizing LSTM Language Models, arXiv:1708.02182v1 [cs.CL], Aug. 8,
 2017</p>
-
 <p>[20] Diederik P. Kingma, Jimmy Ba, Adam: A Method for Stochastic
 Optimization, arXiv:1412.6980v9 [cs.LG], Jan. 20, 2017</p>
-
 <p>[21] Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever
 and Ruslan Salakhutdinov, Dropout: a simple way to prevent neural
 networks from overfitting, The Journal of Machine Learning Research,
 vol. 15, issue 1, pp. 1929-1958 Jan. 2014</p>
-
 <p>[22] Michael Nielsen, Improving the way neural networks learn, Neural
 Networks and Deep Learning, posted in Oct. 2018,
 <a href="http://neuralnetworksanddeeplearning.com/chap3.html">http://neuralnetworksanddeeplearning.com/chap3.html</a></p>
-
 <p>[23] Bjarke Felbo, Alan Mislove, Anders Søgaard, Iyad Rahwan and Sune
 Lehmann, Using millions of emoji occurrences to learn any-domain
 representations for detecting sentiment, emotion and sarcasm,
 arXiv:1708.00524v2 [stat.ML], Oct. 7, 2017</p>
-
 <p>[24] Leslie N. Smith, Cyclical Learning Rates for Training Neural
 Networks, arXiv:1506.01186v6 [cs.CV], Apr. 4, 2017</p>
-
 <p>[25] Jason Yosinski, Jeff Clune, Yoshua Bengio and Hod Lipson, How
 transferable are features in deep neural networks?, arXiv:1411.1792v1
 [cs.LG], Nov. 6, 2014</p>
-
 <p>[26] Sebastian Ruder, An overview of gradient descent optimization
 algorithms, arXiv:1609.04747v2 [cs.LG], Jun. 15, 2017</p>
-
 <p>[27] Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard
 Nessler und Sepp Hochreiter, GANs Trained by a Two Time-Scale Update
 Rule Converge to a Local Nash Equilibrium, arXiv:1706.08500v6 [cs.LG],
 Jan. 12, 2018</p>
-
 <p>[28] Xiang Jiang, Mohammad Havaei, Gabriel Chartrand, Hassan Chouaib,
 Thomas Vincent, Andrew Jesson, Nicolas Chapados and Stan Matwin,
 Attentive Task-Agnostic Meta-Learning for Few-Shot Text Classification,
 ICLR 2019 Conference Blind Submission, Sep. 28, 2018</p>
-
 <p>[29] Arun Rajendran, Chiyu Zhang and Muhammad Abdul-Mageed, Happy
 Together: Learning and Understanding Appraisal From Natural Language,
 Natural Language Processing Lab, The University of British Columbia,
 2019</p>
-
 <p>[30] Roopal Garg, Deep Learning for Natural Language Processing: Word
 Embeddings, datascience.com, posted on Apr. 26, 2018 [Blog]</p>
 

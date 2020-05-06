@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Glove on Institute of Infomation Systems at HU-Berlin</title>
+    <title>GloVe on Institute of Infomation Systems at HU-Berlin</title>
     <link>https://humboldt-wi.github.io/blog/tags/glove/</link>
-    <description>Recent content in Glove on Institute of Infomation Systems at HU-Berlin</description>
+    <description>Recent content in GloVe on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 07 Feb 2020 00:00:00 +0000</lastBuildDate>
@@ -17,8 +17,7 @@
       <pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/text_generation/</guid>
-      <description>LatexIT.add(&amp;lsquo;p&amp;rsquo;,true);  
-Table of Contents  Generating Synthetic Comments to Balance Data for Text Classification  Introduction  Data Exploration  Data Pre-Processing Text Generation Language Model - GloVe  Further Text Preparation  Modeling  Generation   Language Model GPT-2  Why GPT-2?  What makes GPT-2 so powerful?  The Problem of Long-Term Dependencies  GPT-2 Architecture  How does GPT-2 create text?   Input Encoding  Token Embeddings (wte)  Positional Encoding (wpe)  GPT-2 - Token Processing Overview  Self-Attention Process  Query, Key and Value vector  Splitting into Attention Heads  Scoring  Sum  Masked Self-Attention  Feed-Forward Neural Network  Model Output    Byte Pair Encoding   Byte Pair Encoding - Introduction  Byte Pair Encoding for NLP   Comparing Generated Text  Comment Classification Task   Relation to Business Case  Classification Approach  Classification Architecture  RNN Classifier  BOW - Logistic Regression-Classifier  Classification Settings  (1) Imbalanced  (2) Undersampling  (3) Oversampling GloVe  (4) Oversampling GPT-2  Drawbacks of Oversampling with Generated Text  Classification Task - Limitations  Evaluation  Including the &amp;ldquo;Not-Sure&amp;rdquo;-Category  Different Balancing Ratios for Generated Comments  Conclusion and Discussion of Results   References   Image Sources   Generating Synthetic Comments to Balance Data for Text Classification Lukas Faulbrück  Asmir Muminovic  Tim Peschenz</description>
+      <description>LatexIT.add(&#39;p&#39;,true);   Table of Contents  Generating Synthetic Comments to Balance Data for Text Classification  Introduction  Data Exploration  Data Pre-Processing Text Generation  Language Model - GloVe  Further Text Preparation  Modeling  Generation      Language Model GPT-2   Why GPT-2?  What makes GPT-2 so powerful?  The Problem of Long-Term Dependencies  GPT-2 Architecture  How does GPT-2 create text?</description>
     </item>
     
   </channel>

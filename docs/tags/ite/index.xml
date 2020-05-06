@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ite on Institute of Infomation Systems at HU-Berlin</title>
+    <title>ITE on Institute of Infomation Systems at HU-Berlin</title>
     <link>https://humboldt-wi.github.io/blog/tags/ite/</link>
-    <description>Recent content in Ite on Institute of Infomation Systems at HU-Berlin</description>
+    <description>Recent content in ITE on Institute of Infomation Systems at HU-Berlin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 05 Feb 2020 00:00:00 +0000</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://humboldt-wi.github.io/blog/research/information_systems_1920/group5_causal_neural_networks/</guid>
-      <description>Causal Neural Networks - Optimizing Marketing Spendings Effectivness Hasan Reda Alchahwan, Lukas Baumann, Darius Schulz
+      <description>Causal Neural Networks - Optimizing Marketing Spendings Effectivness Hasan Reda Alchahwan, Lukas	Baumann, Darius Schulz
 Table of Contents:  Introduction Literature Review Descriptive Analysis of the Dataset Estimation of Treatment Effects considering the checkout amount Estimation of Treatment Effects considering conversion Placebo Experiment Conclusion  1. Introduction Targeting the right customers in marketing campaigns has always been a struggle for marketeers. Data-driven approaches allowed to select targets with the highest probability to buy or the greatest revenue expected, if the costs of the activity deter you from targeting every customer.</description>
     </item>
     
