@@ -37,7 +37,23 @@ description = "This blog post analyzes publicly available tweets for the purpose
 
 ## Introduction <a class="anchor" id="introduction"></a>
 
-The aim of the current project is to determine whether sentiment analysis is a reliable method for opinion modeling in the field of politics. For this purpose, the way the presidential candidates (US Elections 2020) talk about a topic of high social importance - gun control/violence - is examined, by performing sentiment analysis. The social media platform used for the purpose is Twitter.<br>
+Sentiment analysis, also known as opinion mining, has emerged as a powerful tool in understanding and analyzing human emotions and opinions. 
+
+In the realm of mental health, sentiment analysis offers valuable insights into the emotional well-being of individuals. By analyzing text data such as social media posts, online forums, and personal diaries, sentiment analysis algorithms can detect and quantify emotions expressed by individuals. This data can be used to assess mental health trends at both individual and population levels, identify potential risks, and develop personalized interventions. Sentiment analysis in mental health holds promise for early detection of mental health disorders, monitoring treatment progress, and supporting timely interventions.
+
+In the political landscape, sentiment analysis provides a unique lens to understand public opinion and gauge the sentiments surrounding political figures, policies, and events. By analyzing textual data from social media, news articles, and public speeches, sentiment analysis algorithms can classify sentiments as positive, negative, or neutral, and even detect underlying emotions such as anger, fear, or joy. This information can help political analysts, policymakers, and campaigns gain insights into public sentiment, evaluate the impact of their messages, and make informed decisions. Sentiment analysis in politics has the potential to enhance political campaigns, improve policy formulation, and foster better communication between politicians and the public.
+
+In this context, this project aims to explore the effectiveness of sentiment analysis as a reliable method for mental state and opinion modeling in the domain of mental health and politics respectively. By understanding the role sentiment analysis plays in these domains, we can harness its power to promote mental well-being and facilitate informed decision-making in the political arena.
+
+For the use case "Mental Health", the way randomly selected users of the social media platform Twitter write is examined, by performing sentiment analysis. The purpose of the application is to determine whether a certain user is prone to a certain mental illness or not.<br>
+The conditions we consider are:<br>
+1. Depression<br>
+2. Obsessive-compulsive-disorder (OCD)<br>
+3. Post-traumatic stress disorder (PTSD)<br>
+4. Axiety disorder<br>
+5. Bipolar disorder<br>
+
+For the use case "Politics", the way presidential candidates for US Elections 2020 talk about a topic of high social importance - gun control/violence - is examined. The purpose of the application is to determine whether a certain politician is pro or against a certain socio-political measure.. The social media platform used for the purpose is as well Twitter.<br>
 The presidential candidates whose tweets the project is based on, are the following ones:<br>
 1. Republican Party: Donald Trump<br>
 2. Democratic Party: Cory Booker, Elizabeth Warren, Joe Biden, Bernie Sanders<br>
