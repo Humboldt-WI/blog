@@ -1,7 +1,7 @@
 +++
 title = "Analysis of social media behavior of the 2020 presidential election candidates"
 date = '2020-02-07'
-tags = [ "Fasttext", "CNN", "Class19/20", "Sentiment Analysis"]
+tags = [ "Fasttext", "CNN", "Class19/20", "Sentiment Analysis", "Mental Health", "Politics"]
 categories = ["Course projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
 author = "Seminar Information Systems (WS19/20)"
