@@ -1,12 +1,12 @@
 +++
-title = "Analysis of social media behavior of the 2020 presidential election candidates"
+title = "Sentiment Analysis for Applications in Mental Health and Politics"
 date = '2020-02-07'
 tags = [ "Fasttext", "CNN", "Class19/20", "Sentiment Analysis", "Mental Health", "Politics"]
 categories = ["Course projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
 author = "Seminar Information Systems (WS19/20)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
-description = "This blog post analyzes the tweets of the 2020 presidential candidates using Fasttext and CNN"
+description = "This blog post analyzes publicly available tweets for the purpose of sentiment analysis for applications in mental health and politics."
 +++
 
 
