@@ -17,7 +17,8 @@ description = "This blog post analyzes publicly available tweets for the purpose
 1. [Introduction](#introduction)<br>
 2. [Data Retrieval](#data_retrieval)<br>
     2.1. [Libraries: GetOldTweets3 vs Tweepy](#libraries)<br>
-    2.2. [Descriptive Statistics](#descriptive_statistics)<br>
+    2.2. [Descriptive Statistics Mental Health](#descriptive_statistics_health)<br>
+    2.3. [Descriptive Statistics Politics](#descriptive_statistics_politics)<br>
 3. [Methodology](#methodology)<br>
    3.1. [Retrieval of pre-labeled Twitter Data](#retrieval)<br>
    3.2. [Machine Learning Algorithms](#algorithms)<br>
