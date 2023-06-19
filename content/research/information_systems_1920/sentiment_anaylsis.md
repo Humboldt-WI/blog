@@ -1,12 +1,12 @@
 +++
-title = "Analysis of social media behavior of the 2020 presidential election candidates"
+title = "Sentiment Analysis for Applications in Mental Health and Politics"
 date = '2020-02-07'
-tags = [ "Fasttext", "CNN", "Class19/20", "Sentiment Analysis"]
+tags = [ "Fasttext", "CNN", "Class19/20", "Sentiment Analysis", "Mental Health", "Politics"]
 categories = ["Course projects"]
 banner = "img/seminar/sample/hu-logo.jpg"
 author = "Seminar Information Systems (WS19/20)"
 disqusShortname = "https-humbodt-wi-github-io-blog"
-description = "This blog post analyzes the tweets of the 2020 presidential candidates using Fasttext and CNN"
+description = "This blog post analyzes publicly available tweets for the purpose of sentiment analysis for applications in mental health and politics."
 +++
 
 
@@ -17,7 +17,8 @@ description = "This blog post analyzes the tweets of the 2020 presidential candi
 1. [Introduction](#introduction)<br>
 2. [Data Retrieval](#data_retrieval)<br>
     2.1. [Libraries: GetOldTweets3 vs Tweepy](#libraries)<br>
-    2.2. [Descriptive Statistics](#descriptive_statistics)<br>
+    2.2. [Descriptive Statistics Mental Health](#descriptive_statistics_health)<br>
+    2.3. [Descriptive Statistics Politics](#descriptive_statistics_politics)<br>
 3. [Methodology](#methodology)<br>
    3.1. [Retrieval of pre-labeled Twitter Data](#retrieval)<br>
    3.2. [Machine Learning Algorithms](#algorithms)<br>
@@ -31,13 +32,30 @@ description = "This blog post analyzes the tweets of the 2020 presidential candi
 5. [Performance Evaluation](#evaluation)<br>
     5.1. [Initial Results](#initial)<br>
     5.2. [Hyperparameter Tuning using Bayesian Optimization](#tuning)<br>
-6. [Analysis of the Results on unlabeled Twitter Data](#results)<br>
-7. [Conclusion](#conclusion)<br>
-8. [References](#references)<br>
+6. [Analysis of the Results on unlabeled Twitter Data: Use Case Mental Health](#results_health)<br>
+7. [Analysis of the Results on unlabeled Twitter Data: Use Case Politics](#results_politics)<br>
+8. [Conclusion](#conclusion)<br>
+9. [References](#references)<br>
 
 ## Introduction <a class="anchor" id="introduction"></a>
 
-The aim of the current project is to determine whether sentiment analysis is a reliable method for opinion modeling in the field of politics. For this purpose, the way the presidential candidates (US Elections 2020) talk about a topic of high social importance - gun control/violence - is examined, by performing sentiment analysis. The social media platform used for the purpose is Twitter.<br>
+Sentiment analysis, also known as opinion mining, has emerged as a powerful tool in understanding and analyzing human emotions and opinions. 
+
+In the realm of mental health, sentiment analysis offers valuable insights into the emotional well-being of individuals. By analyzing text data such as social media posts, online forums, and personal diaries, sentiment analysis algorithms can detect and quantify emotions expressed by individuals. This data can be used to assess mental health trends at both individual and population levels, identify potential risks, and develop personalized interventions. Sentiment analysis in mental health holds promise for early detection of mental health disorders, monitoring treatment progress, and supporting timely interventions.
+
+In the political landscape, sentiment analysis provides a unique lens to understand public opinion and gauge the sentiments surrounding political figures, policies, and events. By analyzing textual data from social media, news articles, and public speeches, sentiment analysis algorithms can classify sentiments as positive, negative, or neutral, and even detect underlying emotions such as anger, fear, or joy. This information can help political analysts, policymakers, and campaigns gain insights into public sentiment, evaluate the impact of their messages, and make informed decisions. Sentiment analysis in politics has the potential to enhance political campaigns, improve policy formulation, and foster better communication between politicians and the public.
+
+In this context, this project aims to explore the effectiveness of sentiment analysis as a reliable method for mental state and opinion modeling in the domain of mental health and politics respectively. By understanding the role sentiment analysis plays in these domains, we can harness its power to promote mental well-being and facilitate informed decision-making in the political arena.
+
+For the use case "Mental Health", the way randomly selected users of the social media platform Twitter write is examined, by performing sentiment analysis. The purpose of the application is to determine whether a certain user is prone to a certain mental illness or not.<br>
+The conditions we consider are:<br>
+1. Depression<br>
+2. Obsessive-compulsive-disorder (OCD)<br>
+3. Post-traumatic stress disorder (PTSD)<br>
+4. Axiety disorder<br>
+5. Bipolar disorder<br>
+
+For the use case "Politics", the way presidential candidates for US Elections 2020 talk about a topic of high social importance - gun control/violence - is examined. The purpose of the application is to determine whether a certain politician is pro or against a certain socio-political measure.. The social media platform used for the purpose is as well Twitter.<br>
 The presidential candidates whose tweets the project is based on, are the following ones:<br>
 1. Republican Party: Donald Trump<br>
 2. Democratic Party: Cory Booker, Elizabeth Warren, Joe Biden, Bernie Sanders<br>
@@ -79,12 +97,20 @@ def collect_history_twitter_data(presidential_candidate):
 
   return twitter_data
 ```
-### Descriptive Statistics of retrieved Tweets
 
-Figure 1 represents the tweets' descriptive statistics for 2019 aggregated by topic and presidential candidate. Regarding the Twitter activity of the candidates, the most active one (when considering average activity related to all topics) is Cory Booker. An interesting discovery is that the current president of the US - Donald Trump - is the most inactive candidate regarding the topic.
+### Descriptive Statistics of retrieved Tweets in Health <a class="anchor" id="descriptive_statistics_health"></a>
+
+Figure 1 represents the tweets' descriptive statistics for mental health aggregated by disease. The statistics reflect the direct mentions of each disease in percents. The two most frequently mentioned mental diseases are depression and anxiety.
+
+<img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/descr.png?raw=true" width= "750" /> <br>
+**Figure 1: Descriptive Statistics Mental Health Diseases**
+
+### Descriptive Statistics of retrieved Tweets in Politics <a class="anchor" id="descriptive_statistics_politics"></a>
+
+Figure 2 represents the tweets' descriptive statistics for 2019 aggregated by topic and presidential candidate. Regarding the Twitter activity of the candidates, the most active one (when considering average activity related to all topics) is Cory Booker. An interesting discovery is that the current president of the US - Donald Trump - is the most inactive candidate regarding the topic.
 
 <img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Descriptive_Statistics.png?raw=true" width= "750" /> <br>
-**Figure 1: Descriptive Statistics Gun Control**
+**Figure 2: Descriptive Statistics Gun Control**
 
 ## Methodology <a class="anchor" id="methodology"></a>
 
@@ -115,37 +141,37 @@ Finally, all of the three datasets introduced above are combined into a new (sof
 FastText is a library developed by Facebook that can be used for both text classification and word embeddings.
 
 ##### FastText for Text Classification
-FastText can be regarded as a shallow neural network that consists of three layers as shown in Figure 2: an input layer, a single hidden layer and an output one. Each of the documents  (in this research: tweets) in the input file is first tokenized into single words and all unique words are saved by the model. Later  the vector containing all unique words is filtered in order to ensure that only words having a pre-defined minimum number of occurances will be included in the further preprocessing. Then the character n-grams are generated for each word. The hyperparameter maxn controls for the maximal length of the subwords retrieved from the initial words. If maxn is set to 0, then the model does not use character n-grams. For example if the word “voting” is taken and maxn is set to 2, then the resulting character bigrams would be “vo”,”ot”,”ti”,”in” and “ng” [7][9].<br>
+FastText can be regarded as a shallow neural network that consists of three layers as shown in Figure 3: an input layer, a single hidden layer and an output one. Each of the documents  (in this research: tweets) in the input file is first tokenized into single words and all unique words are saved by the model. Later  the vector containing all unique words is filtered in order to ensure that only words having a pre-defined minimum number of occurances will be included in the further preprocessing. Then the character n-grams are generated for each word. The hyperparameter maxn controls for the maximal length of the subwords retrieved from the initial words. If maxn is set to 0, then the model does not use character n-grams. For example if the word “voting” is taken and maxn is set to 2, then the resulting character bigrams would be “vo”,”ot”,”ti”,”in” and “ng” [7][9].<br>
 Afterwards, the embedding matrix is created. If the parameter pretrainedVectors receives an input file containing pre-trained embeddings, then the embedding matrix is initialized with them. Otherwise, the matrix is randomly initialized with values between -1/dim and 1/dim. Dim is the size of the word vectors. The embedding matrix has a dimension of the size (n_words + bucket) x dim. Bucket stands for the maximal number of character n-grams and word n-grams and n_words for the maximal number of unique words. It is important to mention that only if the hyperparameter wordNgrams is set to a value higher than 1, for example 2 or 3, then FastText additionally would generate bi-grams or tri-grams for each pair of words in each sentence. For example if the sentence “I post a lot on social media” is taken and wordNgram is set to 3, the resulting word n-grams would be “I post a”, “post a lot”,”a lot on”,”on social media” [7][9]. <br>
 The words, character n-grams as well as the word n-grams are regarded as the features of each sentence fed to the input layer of FastText. The indices of each of these features per sentence are used in order to retrieve the corrersponding embedding vectors. The latter are averaged together into a sentence vector which is passed to the hidden layer of the model. The output of the hidden layer which is a linear transformation of the document vector is then fed to the final softmax layer. The softmax function computes the probability that the preprocessed record get assigned to the pre-defined classes and also the log-loss. For a pre-specified number of iterations the performance of the model is optimized using Stochastic Gradient Descent [7][9].
 
 <img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/FastText_Architecture.png?raw=true" width= "450" > <br>
-**Figure 2: FastText Architecture [1]**
+**Figure 3: FastText Architecture [1]**
 
 ##### FastText for Word Reresentation
-FastText can also be used in order to generate embedding vectors instead of taking pre-trained ones. Two models are supported for that: CBOW (Continuous Bag of Words) and Skipgram. Figure 3 shows that both of these models are neural networks with a single hidden layer: w(t-1) and w(t-2) are the context words that come before the target word w(t) that has to be predicted, w(t+1) and w(t+2) are the context words that come after the target one. The difference between the two models is that CBOW tries to predict a target word given the surrounding / context words and skipgram takes as an input the target word and tries to predict the neighbours of that word. During the training process of the both models the weights are adjusted and optimized. Once the training process is over, the weights are taken and used as the trained word vectors. Therefore, the actual output of the training process is not relevant for the generation of word embeddings. In this regard, it is important to point out the main difference between GloVe, Word2Vec and FastText. Both GloVe and Word2Vec generate embedding vectors for each word in the training corpus. Therefore, in these models the words represent the smallest unit to train the text representations on. In comparison to that, FastText additionally generates embeddings for the character n-grams within each word. Hence, the smallest unit in FastText are not the words but the character n-grams as part of these words. In this way, FastText achieves better generalization for rare, unknown words [2].
+FastText can also be used in order to generate embedding vectors instead of taking pre-trained ones. Two models are supported for that: CBOW (Continuous Bag of Words) and Skipgram. Figure 4 shows that both of these models are neural networks with a single hidden layer: w(t-1) and w(t-2) are the context words that come before the target word w(t) that has to be predicted, w(t+1) and w(t+2) are the context words that come after the target one. The difference between the two models is that CBOW tries to predict a target word given the surrounding / context words and skipgram takes as an input the target word and tries to predict the neighbours of that word. During the training process of the both models the weights are adjusted and optimized. Once the training process is over, the weights are taken and used as the trained word vectors. Therefore, the actual output of the training process is not relevant for the generation of word embeddings. In this regard, it is important to point out the main difference between GloVe, Word2Vec and FastText. Both GloVe and Word2Vec generate embedding vectors for each word in the training corpus. Therefore, in these models the words represent the smallest unit to train the text representations on. In comparison to that, FastText additionally generates embeddings for the character n-grams within each word. Hence, the smallest unit in FastText are not the words but the character n-grams as part of these words. In this way, FastText achieves better generalization for rare, unknown words [2].
 
 <img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Cbow%20and%20Skipgram.png?raw=true" width= "700" /> <br>
-**Figure 3: CBOW & Skip-gram Models for Text Representations [6]**
+**Figure 4: CBOW & Skip-gram Models for Text Representations [6]**
 
 #### Convolutional Neural Network <a class="anchor" id="cnn"></a>
 
-The second algorithm this project implements is a convolutional neural network (CNN). The most often application of CNNs is in the field of image recognition, where an image is decomposed in its pixels, which together form a matrix. A kernel (filter, feature detector) then convolves over the matrix, which results into a feature map of the pixel matrix. The process is visualized in Figure 4.
+The second algorithm this project implements is a convolutional neural network (CNN). The most often application of CNNs is in the field of image recognition, where an image is decomposed in its pixels, which together form a matrix. A kernel (filter, feature detector) then convolves over the matrix, which results into a feature map of the pixel matrix. The process is visualized in Figure 5.
 
 ![Figure 1](http://deeplearning.stanford.edu/wiki/images/6/6c/Convolution_schematic.gif) <br>
-**Figure 4: CNN for Image Classification [4]**
+**Figure 5: CNN for Image Classification [4]**
 
-In the case of natural language processing the process is similar in its nature. Instead of having a pixel matrix resulting from an image, one has an embedding matrix resulting from a natural language sentence. Similarly to the kernel convolving over the pixel matrix, the kernel in the context of NLP convolves over the embedding matrix. An important difference is that as shown in Figure 4, the kernel slides along both dimensions (x and y) of the matrix. Thus, the kernel itself is also two-dimensional, meaning its size is defined by two numbers. This is due to the fact the location of the single pixels within the pixel matrix is often of high relevance. Also similarities/differences between neighboring pixels also reflect in similarities/difference in the actual image, so it makes sense to let the kernel convolve over multiple neighboring pixels in both dimensions. Thus, a layer of two or more dimensions makes sense regarding the neural network architecture. Figrue 2 is a step-by-step visualization of the convolutional process when having an embedding matrix as input. Each row of the embedding matrix is a numerical representation of a word from the input text. Unlike in the case of image recognition, a similarity/difference between neighboring numbers, contained in the same row of the embedding matrix, is of low relevance, since one cannot base any assumptions on it. Accordingly, the kernel then only convolves over the embedding matrix vertically, meaning over only one dimension. For this reason, 1D layers (instead of layers of two or more dimensions) are mostly considered when determining the neural network architecture. As seen from Figure 5, six kernels - two for region sizes 2,3 and 4 (--> only dimension y changes, x remains of size 5, which is the number of columns in the embedding matrix) respectively - slide along the embedding matrix. After the application of the activation function, the convolution of the six kernels over the input matrix results into 2 feature maps for each region size of the kernels - in total six featurs maps. Afterwards, a 1-max pooling layer is added. The output is six univariate vectors (one for each feature map), which together form a single feature vector to be fed to the softmax activation function in the last neural network layer [3][4].
+In the case of natural language processing the process is similar in its nature. Instead of having a pixel matrix resulting from an image, one has an embedding matrix resulting from a natural language sentence. Similarly to the kernel convolving over the pixel matrix, the kernel in the context of NLP convolves over the embedding matrix. An important difference is that as shown in Figure 4, the kernel slides along both dimensions (x and y) of the matrix. Thus, the kernel itself is also two-dimensional, meaning its size is defined by two numbers. This is due to the fact the location of the single pixels within the pixel matrix is often of high relevance. Also similarities/differences between neighboring pixels also reflect in similarities/difference in the actual image, so it makes sense to let the kernel convolve over multiple neighboring pixels in both dimensions. Thus, a layer of two or more dimensions makes sense regarding the neural network architecture. Figrue 3 is a step-by-step visualization of the convolutional process when having an embedding matrix as input. Each row of the embedding matrix is a numerical representation of a word from the input text. Unlike in the case of image recognition, a similarity/difference between neighboring numbers, contained in the same row of the embedding matrix, is of low relevance, since one cannot base any assumptions on it. Accordingly, the kernel then only convolves over the embedding matrix vertically, meaning over only one dimension. For this reason, 1D layers (instead of layers of two or more dimensions) are mostly considered when determining the neural network architecture. As seen from Figure 6, six kernels - two for region sizes 2,3 and 4 (--> only dimension y changes, x remains of size 5, which is the number of columns in the embedding matrix) respectively - slide along the embedding matrix. After the application of the activation function, the convolution of the six kernels over the input matrix results into 2 feature maps for each region size of the kernels - in total six featurs maps. Afterwards, a 1-max pooling layer is added. The output is six univariate vectors (one for each feature map), which together form a single feature vector to be fed to the softmax activation function in the last neural network layer [3][4].
 
 <img src="http://www.wildml.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-06-at-12.05.40-PM-1024x937.png" width="600" /> <br>
-**Figure 5: CNN for Natural Language Processing [4]**
+**Figure 6: CNN for Natural Language Processing [4]**
 
 #### Multinominal Naive Bayes <a class="anchor" id="bayes"></a>
 
-The algorithm used to create a benchmark is Multinominal Naive Bayes (MNB). MNB is an approach going one step further that the binomial Bernoulli Naive Bayes (BNB). BNB is a discrete data Naive Bayes classification algorithm, requiring binary input exclusively, meaning it can be only applied to data, consisting of boolean features. In the context of text classification a possible application of BNB would be in case of having data which consists of binary feature vectores (0 & 1), where 0 would mean that a word occurs in a document and 1 would that a word does not occur in a document. On the other hand, MNB's applicability is not limited to binary data - meaning a MNB can be used when having a feature vector consisting of the count of each word in a document (instead of solely a binary representation of a word's presence or absence in this document). An example of such vectors can be seen in Figure 6, which represents the so called document term matrix. The matrix contains all the words (or a predefined threshold which only considers the 200,300 etc. most frequent words) found in all documents, which in the current case are tweets and how often a word can be found in each document (tweet), meaning each row of the matrix is a tweet in the context of this project. In the case of BNB such matrix would be binary and filled with 0 and 1 only. To create the matrix, the method "fit_transform" from CountVectorizer is used. It learns the vocabulary from the train set and returns the corresponding document term matrix. Afterwards the test set is transformed to a document term matrix by the function "transform" (also from CountVectorizer). Both matrices are then fed to the MNB Classifier. The algorithm has the parameters “alpha”, “fit_prior” and “class_prior”. “Alpha” is a smoothing parameter, which implies no smoothing if assigned 0 and maximal smoothing if assigned 1. The “fit_prior” determines whether the model should learn class prior possibilities or not. The default setting is TRUE. If set to FALSE, a uniform prior is assumed. Finally, “class_prior” contains the prior probabilities of the classes. If no probabilities are handed, the priors are adjusted according to the data, which is the current case. The accuracy reached with MBN is 75%, which is lower than the accuracy reached by FastText (81.8%) and the CNN (79.8) after hyperparameter optimization [8].
+The algorithm used to create a benchmark is Multinominal Naive Bayes (MNB). MNB is an approach going one step further that the binomial Bernoulli Naive Bayes (BNB). BNB is a discrete data Naive Bayes classification algorithm, requiring binary input exclusively, meaning it can be only applied to data, consisting of boolean features. In the context of text classification a possible application of BNB would be in case of having data which consists of binary feature vectores (0 & 1), where 0 would mean that a word occurs in a document and 1 would that a word does not occur in a document. On the other hand, MNB's applicability is not limited to binary data - meaning a MNB can be used when having a feature vector consisting of the count of each word in a document (instead of solely a binary representation of a word's presence or absence in this document). An example of such vectors can be seen in Figure 7, which represents the so called document term matrix. The matrix contains all the words (or a predefined threshold which only considers the 200,300 etc. most frequent words) found in all documents, which in the current case are tweets and how often a word can be found in each document (tweet), meaning each row of the matrix is a tweet in the context of this project. In the case of BNB such matrix would be binary and filled with 0 and 1 only. To create the matrix, the method "fit_transform" from CountVectorizer is used. It learns the vocabulary from the train set and returns the corresponding document term matrix. Afterwards the test set is transformed to a document term matrix by the function "transform" (also from CountVectorizer). Both matrices are then fed to the MNB Classifier. The algorithm has the parameters “alpha”, “fit_prior” and “class_prior”. “Alpha” is a smoothing parameter, which implies no smoothing if assigned 0 and maximal smoothing if assigned 1. The “fit_prior” determines whether the model should learn class prior possibilities or not. The default setting is TRUE. If set to FALSE, a uniform prior is assumed. Finally, “class_prior” contains the prior probabilities of the classes. If no probabilities are handed, the priors are adjusted according to the data, which is the current case. The accuracy reached with MBN is 75%, which is lower than the accuracy reached by FastText (81.8%) and the CNN (79.8) after hyperparameter optimization [8].
 
 <img src="http://www.darrinbishop.com/wp-content/uploads/2017/10/Document-Term-Matrix.png" width="800" /> <br>
-**Figure 6: Document Term Matrix [1]**
+**Figure 7: Document Term Matrix [1]**
 
 ## Data preprocessing <a class="anchor" id="preprocessing"></a>
 
@@ -257,23 +283,23 @@ corresponding training record that can be fed to FastText looks in the following
 
 ### Initial Results <a class="anchor" id="initial"></a>
 
-Both CNN and FastText are tested with the embedding matrices described in Section 4  in order to examine which word vectors should be used in the next steps. Figure 7 and 8 provide an overview of the initial results. It is important to mention that FastText is also trained without providing any input to the parameter pretrainedVectors. This implies that the embedding matrix is randomly initialized with values between -1/200 and 1/200. Both analytical models achieve the best performance in terms of accuracy with the Twitter pre-trained embeddings from GloVe. Therefore, the GloVe word representations are used in the further analysis of the results.
+Both CNN and FastText are tested with the embedding matrices described in Section 4  in order to examine which word vectors should be used in the next steps. Figure 8 and 9 provide an overview of the initial results. It is important to mention that FastText is also trained without providing any input to the parameter pretrainedVectors. This implies that the embedding matrix is randomly initialized with values between -1/200 and 1/200. Both analytical models achieve the best performance in terms of accuracy with the Twitter pre-trained embeddings from GloVe. Therefore, the GloVe word representations are used in the further analysis of the results.
 
 <img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Initial_Results_CNN.png?raw=true" width="500" /> <br>
-**Figure 7: Initial Results CNN**
+**Figure 8: Initial Results CNN**
 
 <img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Initial_Results_FastText.png?raw=true" width="500" /> <br>
-**Figure 8: Initial Results FastText**
+**Figure 9: Initial Results FastText**
 
 ### Hyperparameter Tuning using Bayesian Optimization <a class="anchor" id="tuning"></a>
 
 The hyperparameters of the two models are optimized by using Bayesian Optimization (BO). The library scikit-optimize which is used for the modeling phase applies Gaussian Process  (GPs) for the BO. In the context of hyperparameter tuning, GPs are regarded as the surrogate model of the objective function. The later is the evaluation metric according to which the optimal hyperparameters are chosen, for example accuracy, precision, recall etc. The surrogate model learns the mappings between the already tested hyperparameters and the achieved scores by the objective function. The next set of hyperparameter values is chosen according to a selection function, for example the Expected Improvement (EI). The set of configurations that leads to the highest EI is chosen for the next call to the objective function. In this way fewer calls are made to the objective function with hyperparameters that are expected to lead to better results.
 
 #### Hyperparameter Optimization FastText
-Figure 9 contains the five tested hyperparameters of FastText, the corresponding value ranges, the final optimal set of configurations and the highest achieved accuracy. It can be seen that the model developed by Facebook performs best when the feature space of each sentence contains not only words, but also trigrams and character n-grams of a maximal length of 1. Furthermore, the optimal hyperparameters lead to a slight increase in the accuracy of 1.5% compared to the initial results of FastText using the GloVe embeddings.
+Figure 10 contains the five tested hyperparameters of FastText, the corresponding value ranges, the final optimal set of configurations and the highest achieved accuracy. It can be seen that the model developed by Facebook performs best when the feature space of each sentence contains not only words, but also trigrams and character n-grams of a maximal length of 1. Furthermore, the optimal hyperparameters lead to a slight increase in the accuracy of 1.5% compared to the initial results of FastText using the GloVe embeddings.
 
 <img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/HO_fastText.png?raw=true" width="600" /> <br>
-**Figure 9: FastText Hyperparameters**
+**Figure 10: FastText Hyperparameters**
 
 #### Hyperparameter Optimization CNN
 The following function is used to generate the CNN architecture while looping through the different sets of tested configurations.
@@ -323,42 +349,62 @@ def CNN_architecture(number_conv_layers,number_filters,pooling_layers,kernel_reg
   return model
 ```
 
-Figure 10 contains the tested hyperparameters of CNN. It can be seen that the CNN performs best with two convolutional layers. There is an increase of 1.6% in the accuracy compared to the initial performance of the CNN with the GloVe Embeddings.
+Figure 11 contains the tested hyperparameters of CNN. It can be seen that the CNN performs best with two convolutional layers. There is an increase of 1.6% in the accuracy compared to the initial performance of the CNN with the GloVe Embeddings.
 
 <img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/HO_CNN.png?raw=true" width="600" /> <br>
-**Figure 10: CNN Hyperparameters**
+**Figure 11: CNN Hyperparameters**
 
-## Analysis of the Results on unlabeled Twitter Data <a class="anchor" id="results"></a>
+## Analysis of the Results on unlabeled Twitter Data: Use Case Mental Health <a class="anchor" id="results_health"></a>
 
-Figures 11 and 12 show several examples of how the tweets are classified (Trump and Booker). For each tweet both the predicted labels and their corresponding probabilities are printed out. The label, which has the higher probability, is considered to be the correct one by the algorithm. The example tweets show best the difference between a positive and negative sentiment. Thus, one must be careful when using sentiment analysis for opinion modeling.
+Figures 12 and 13 show several examples of how the tweets are classified. For each tweet both the predicted labels and their corresponding probabilities are printed out. The label, which has the higher probability, is considered to be the correct one by the algorithm. The example tweets show best the difference between a positive and negative sentiment. 
+
+<img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/user1_table.png?raw=true" width="600" /> <br>
+**Figure 12: User 1 - Depression and Anxiety**
+
+<img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/user2_table.png?raw=true" width="600" /> <br>
+**Figure 13: User 2 - OCD and Anxiety**
+
+Figures 14 and 15 show the ratio of positive and negative sentiments for 2 users as classified by FastText in the way described above.<br>
+
+<img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/user1_plots.png?raw=true" width="600" /> <br>
+**Figure 15: User 1 - Results**
+
+<img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/user2_plots.png?raw=true" width="600" /> <br>
+**Figure 16: User 2 - Results**
+
+## Analysis of the Results on unlabeled Twitter Data: Use Case Politics <a class="anchor" id="results_politics"></a>
+
+Figures 16 and 17 visualize examples of the tweets of the presidential candidates are classified. These results demonstrate that one must be cautious when using sentiment analysis for opinion modeling.
 
 <img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Trump_exc.png?raw=true" width="600" /> <br>
-**Figure 11: Trump Positive & Negative Sentiment**
+**Figure 16: Trump Positive & Negative Sentiment**
 
 <img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Booker_exc.png?raw=true" width="600" /> <br>
-**Figure 12: Booker Positive & Negative Sentiment**
+**Figure 17: Booker Positive & Negative Sentiment**
 
-Figures 13 to 17 show the ratio of positive and negative sentiments for all candidates as classified by FastText in the way described above. As it can be seen all of the candidates have a higher percentage of negative sentiments in their tweets.<br>
+Figures 17 to 21 show the ratio of positive and negative sentiments for all presidential candidates as classified by FastText in the way described above. As it can be seen all of the candidates have a higher percentage of negative sentiments in their tweets.<br>
 
 <img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Trump.png?raw=true" width="500" /> <br>
-**Figure 13: Trump Gun Control**
+**Figure 17: Trump Gun Control**
 
 <img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Sanders.png?raw=true" width="500" /> <br>
-**Figure 14: Sanders Gun Control**
+**Figure 18: Sanders Gun Control**
 
 <img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/warren.png?raw=true" width="500" /> <br>
-**Figure 15: Warren Gun Control**
+**Figure 19: Warren Gun Control**
 
 <img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Biden.png?raw=true" width="500" /> <br>
-**Figure 16: Biden Gun Control**
+**Figure 20: Biden Gun Control**
 
 <img src="https://github.com/pekova13/blog/blob/master/static/img/seminar/Analysis_of_social_media_behavior_of_2020_presidential_elections_candidate/Booker.png?raw=true" width="500" /> <br>
-**Figure 17: Booker Gun Control**
+**Figure 21: Booker Gun Control**
 
-As shown in Figures 11 and 12 a negative sentiment often relates to expressing sadness or disappointment from a violent shooting act or from the current state of the issue. Hence, it is important pointing out that a negative sentiment indeed does not mean that the corresponding candidate is against gun control or pro gun violence. The results from this research show that the negative sentiment strongly relates to a pro gun control setting.
+As shown in Figures 16 and 17 a negative sentiment often relates to expressing sadness or disappointment from a violent shooting act or from the current state of the issue. Hence, it is important pointing out that a negative sentiment indeed does not mean that the corresponding candidate is against gun control or pro gun violence. The results from this research show that the negative sentiment strongly relates to a pro gun control setting.
 In comparison to the negative sentiment, the positive one expresses happiness and satisfaction of an anti gun-violence events. Therefore, the positive sentiment is related to approval of measurements taken into action for ending gun violence. <br>
 ## Conclusion<a class="anchor" id="conclusion"></a>
-Since the explored topic is one with a positive conotation (gun control which can also be seen as a part of violence control), it was initially expected that a very high percentage of the tweets would belong to the positive sentiment, because the politicians would "support a positive idea". However, as the results demonstrate, the majority of the tweets belong to the negative sentiment. However, this does not mean that the candidates do not support gun control (as seen when looking at the content of the tweets). This shows that one cannot blindly draw conclusions simply from the label of a tweet and that a sentiment analysis does not necessarily represent a basis for deriving someone's opinion on a certain topic, meaning a positive/negative sentiment is not necessarily a reflection of a positive/negative opinion or setting.
+As demonstrated, in the field of mental health, sentiment analysis enables the detection and analysis of emotions expressed in textual data, offering insights into one's emotional well-being. This has the potential to support mental health professionals in identifying early warning signs, track treatment progress, and provide timely interventions, ultimately improving mental health outcomes. 
+Similarly, sentiment analysis has proven to be instrumental in the area of politics. By analyzing public sentiment expressed through social media, news articles, and other textual sources, sentiment analysis algorithms provide valuable insights into public opinion, enabling political analysts, policymakers, and campaigns to make informed decisions. Understanding the emotions and sentiments surrounding political figures, policies, and events enhances political campaigns, facilitates policy formulation, and promotes better communication between politicians and the public.
+However, the applications of sentiment analysis in mental health and politics also present challenges. The complexity of human emotions, the subjective nature of opinions, and ethical considerations regarding privacy and bias necessitate careful interpretation of results and responsible use of sentiment analysis algorithms. Thus, discoveries delivered by sentiment analysis must also be used as an addition to professional expertise and not instead of it.
 ## References <a class="anchor" id="references"></a>
 
 [1] Bishop, D. (2017). Text Analytics – Document Term Matrix. http://www.darrinbishop.com/blog/2017/10/text-analytics-document-term-matrix/. Accessed on: 07.01.2020.
